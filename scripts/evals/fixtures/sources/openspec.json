@@ -1,0 +1,1885 @@
+{
+  "schema": 1,
+  "package": "@fission-ai/openspec",
+  "version": "1.14.3",
+  "license": "MIT",
+  "repository": "https://github.com/Fission-AI/OpenSpec",
+  "integrity": "sha512-ALFW1d5bSm6t27Kmcle93SDFuqUc8fLwy5ZdBfIiNffo0Yk9AEOJxw6xDqBv38eMM7l7TeOZBB/7C08luxYGfg==",
+  "resources": [
+    {
+      "path": "bin/openspec.js",
+      "hash": "ca136f0e9fd4951dcf93d8ed729ebc97b2d97d3980cd9dc9d42fc80e32e797c6"
+    },
+    {
+      "path": "dist/cli/commands/config.d.ts",
+      "hash": "e9585f66b94f60050ab71789a71b5c280920a2790e83e25a70a410453bb05283"
+    },
+    {
+      "path": "dist/cli/commands/config.js",
+      "hash": "ee23d32e26148751af39b3e4434d7bbcb7049bc06739eddef6fc02ef0e37514d"
+    },
+    {
+      "path": "dist/cli/commands/context.d.ts",
+      "hash": "9bb86b726eea4614b8a04218ca50413ab4fea689de41934e382be66dd96bff68"
+    },
+    {
+      "path": "dist/cli/commands/context.js",
+      "hash": "33c1980e7a4f674b9a7a158c81452630328c98e8c9352a4f8ca394ba1bc3df72"
+    },
+    {
+      "path": "dist/cli/commands/doctor.d.ts",
+      "hash": "65c781f3de4852b2803061b937202cbedc26d44dd029ecc3f08c812f075bb682"
+    },
+    {
+      "path": "dist/cli/commands/doctor.js",
+      "hash": "f75cda808650fd61ffed3ebad8b41f62d0f68c0f2eaba2f6044477c47357d393"
+    },
+    {
+      "path": "dist/cli/commands/schema.d.ts",
+      "hash": "44ff837f045a12d6e383ddf8a305c577797fddbca95c6bd8c97f46eeac43b715"
+    },
+    {
+      "path": "dist/cli/commands/schema.js",
+      "hash": "e549dc5e4460120245e3430cb89204a71ef4c60a163487ffa1ce19030722f432"
+    },
+    {
+      "path": "dist/cli/commands/spec.d.ts",
+      "hash": "d6690fc230407a4557b29aeb255514f5f7b1f8b1241e166f1158dd2de0a6d7ac"
+    },
+    {
+      "path": "dist/cli/commands/spec.js",
+      "hash": "b374ebe770c9077b0f02d511ac49acd907a60a82774e0d133132cc3450fa57a5"
+    },
+    {
+      "path": "dist/cli/commands/store.d.ts",
+      "hash": "7936666089488872434469bb24bbb354239155e820a67d43fe048e7c1c6b1db4"
+    },
+    {
+      "path": "dist/cli/commands/store.js",
+      "hash": "a909855a87479cebe1b706afeb422a6db0b9c6388410ad5251836adf5c1db99e"
+    },
+    {
+      "path": "dist/cli/commands/workset.d.ts",
+      "hash": "7edd1c4b189fb69d3d0a8bfd389f92d27b247c9094fc0fda48dc47b10c58c8ed"
+    },
+    {
+      "path": "dist/cli/commands/workset.js",
+      "hash": "18bce1802239af155e8efb09b02c886c9ae1f6343a9c8f3dab0d3ebbd3f980dc"
+    },
+    {
+      "path": "dist/cli/index.d.ts",
+      "hash": "18f0d11fe886403b0ae94be802fe34b6b061dff341cba3e6a29277d0eaaba90c"
+    },
+    {
+      "path": "dist/cli/index.js",
+      "hash": "10074ec7c2a06e633270e05a47a8dfca96602947d79e76a04428072f3e13953b"
+    },
+    {
+      "path": "dist/commands/change.d.ts",
+      "hash": "444ecd7ca5118bfd22a29db84f015658992cff0d8d2ea3150906775c5eaf8596"
+    },
+    {
+      "path": "dist/commands/change.js",
+      "hash": "40fd48a39ab52505524eb3a4de40de4c76e847c95ee0adccb7823114b43637d7"
+    },
+    {
+      "path": "dist/commands/completion.d.ts",
+      "hash": "42a5eacb32abcce6679d9aca554e9229b64cda028ea8b49e0143f4d662ec8a66"
+    },
+    {
+      "path": "dist/commands/completion.js",
+      "hash": "37b11baf85a51e09c16777ffa115c22a375a351fd9f2baab2702df5711977cae"
+    },
+    {
+      "path": "dist/commands/config.d.ts",
+      "hash": "a34bc42f6dc4b78e5ad7349cdc4f913827e0d6db66ec0c09e9a4f08c43b19ff5"
+    },
+    {
+      "path": "dist/commands/config.js",
+      "hash": "9853c65508344c5f40f8f0f9ac7cc1cb6665ed16abd68cfd56fa60d84bc14807"
+    },
+    {
+      "path": "dist/commands/context.d.ts",
+      "hash": "cb450fb8e2847c63229c45d9ace2a9b9e4ff78b084c9269428c761b91aa84491"
+    },
+    {
+      "path": "dist/commands/context.js",
+      "hash": "f0b671b65753c0acc5297082f29da8480ba84a85735518d4f2df7a548b33e5e8"
+    },
+    {
+      "path": "dist/commands/doctor.d.ts",
+      "hash": "45eebe9ae02ae84396c825a3c3f37bdb019e57aa05a372dde13540d9afb0e67e"
+    },
+    {
+      "path": "dist/commands/doctor.js",
+      "hash": "ec5fed0250f8fa6c8ce4d6447fcab52face338c8119381249f8b75d28cc885f3"
+    },
+    {
+      "path": "dist/commands/feedback.d.ts",
+      "hash": "fff52bc291098dc7c2ec9d4ecb0f3debd03288e48dfc908c74631e6465f527ac"
+    },
+    {
+      "path": "dist/commands/feedback.js",
+      "hash": "05b42bdda63803721d5ab8afc07073a52c01e4be4455c9a9baf3826934236f3e"
+    },
+    {
+      "path": "dist/commands/schema.d.ts",
+      "hash": "e3e638df703fb25cec74429b92370bbdfd7b906737dafc8ea40594043f4d0057"
+    },
+    {
+      "path": "dist/commands/schema.js",
+      "hash": "76fb5607f2800e5278a170e61c418e40a64090443ba4d8b5204291d00ece581a"
+    },
+    {
+      "path": "dist/commands/shared-gather.d.ts",
+      "hash": "9a1615ff88b1c60ba4b9415dc3a57a4563352439481d0cbc0529dc8051f1b334"
+    },
+    {
+      "path": "dist/commands/shared-gather.js",
+      "hash": "54d05b30c213c76d39d2b5203f0fabf516546165668f665bb87896895932f3f8"
+    },
+    {
+      "path": "dist/commands/shared-output.d.ts",
+      "hash": "d5348e170c8e5de6788af03bde2f5c5c1bd8fb9b5263809d627d28bdf3946111"
+    },
+    {
+      "path": "dist/commands/shared-output.js",
+      "hash": "3a624e7eeed805149678ed1c4adae98dabb77f23ac4cd11d61568c5d3a29b437"
+    },
+    {
+      "path": "dist/commands/show.d.ts",
+      "hash": "6fcda82cbd72b888ebdd11b099bae037e859744845a0d88e48fd0668e765361d"
+    },
+    {
+      "path": "dist/commands/show.js",
+      "hash": "733a6c043d23919161535e796d57e02be240d87ef4071aa874bd802d9e072f21"
+    },
+    {
+      "path": "dist/commands/spec.d.ts",
+      "hash": "41adad2440f7f075faa23b3b1f5eaf21da2b7b3c5373d6abeec6d42e5b9d9846"
+    },
+    {
+      "path": "dist/commands/spec.js",
+      "hash": "c0b9da3b936f8360591d77ddcfeb1fa5a6d9d9214b74422f8ddd38691d88eeac"
+    },
+    {
+      "path": "dist/commands/store.d.ts",
+      "hash": "121e99c4fad722ad61b8c93bea6f7dcfec29889afbc05cb6f4b7979790802f41"
+    },
+    {
+      "path": "dist/commands/store.js",
+      "hash": "0d5797a8848fe05ffa79c561bc36b180f0f0c8ac7dca4801e75f4a6e209a701c"
+    },
+    {
+      "path": "dist/commands/validate.d.ts",
+      "hash": "6f263940681cf123c12b9960895e1121ecce7e6a61e598581b021e4b68ec9e24"
+    },
+    {
+      "path": "dist/commands/validate.js",
+      "hash": "a34168ff339a157ec4b821989c99ce8d2019374c89a4d9bfdb06905e9efe038c"
+    },
+    {
+      "path": "dist/commands/workflow/default-schema.d.ts",
+      "hash": "3a6021dec5278ef90cd3b1147211c3677b4e5dfca89a8dd5b712b653f2fa9939"
+    },
+    {
+      "path": "dist/commands/workflow/default-schema.js",
+      "hash": "f9701771b90b1f9ef56f66026d34a6e797b74ba7630df3c26e3247c2dafb4e7e"
+    },
+    {
+      "path": "dist/commands/workflow/index.d.ts",
+      "hash": "5d51960e95db6e02898644b7236a557c9929ea16b9268c2201764e57c9fce9cc"
+    },
+    {
+      "path": "dist/commands/workflow/index.js",
+      "hash": "7eea31b25f3956b1c9cea9c0b7d65a598f8ecccebcd922ec0e4c54ad762c41b9"
+    },
+    {
+      "path": "dist/commands/workflow/instructions.d.ts",
+      "hash": "38562d949aba99c57d01bf99dcf84a59cd777d526c16192cc2a4d59687acb18d"
+    },
+    {
+      "path": "dist/commands/workflow/instructions.js",
+      "hash": "2891599e8c39aff4c1abd8974ad9cc495fbaa284532f044cb33ac02a7203a3b1"
+    },
+    {
+      "path": "dist/commands/workflow/new-change.d.ts",
+      "hash": "54115f0352e81e5f24fb26bf42727387c8fbb1c37b73f7a8440b7a3ce06eb58a"
+    },
+    {
+      "path": "dist/commands/workflow/new-change.js",
+      "hash": "dd2e6c256499dd279348f53df47c3febd8335b6ae4053d007c3e62f9367ecafd"
+    },
+    {
+      "path": "dist/commands/workflow/schemas.d.ts",
+      "hash": "e7ddcb32ece85bf1bd8b51553917e12a65a9ec439bc6b9f1e8ff4a5fbc728762"
+    },
+    {
+      "path": "dist/commands/workflow/schemas.js",
+      "hash": "d5208640b074fcad00355dbb24dda1d0bd305b345131dd77b362dd49cbe01e32"
+    },
+    {
+      "path": "dist/commands/workflow/shared.d.ts",
+      "hash": "0e3cea8d624c271a51669bccd8bd1810f45e319ccbe4c11112fb68896433411b"
+    },
+    {
+      "path": "dist/commands/workflow/shared.js",
+      "hash": "f28f15fa9d8511b161159fdd16c65a869e6fb93598f1033b60b07217f2146fe8"
+    },
+    {
+      "path": "dist/commands/workflow/status.d.ts",
+      "hash": "b945bfac64e6e10d584f4f5ead2c22d1ca90ea51052c835d4653b4e2c03f9707"
+    },
+    {
+      "path": "dist/commands/workflow/status.js",
+      "hash": "d39265fb1d08feb75178bb029885a1167447bee49c64755817af27ff4c4577c6"
+    },
+    {
+      "path": "dist/commands/workflow/templates.d.ts",
+      "hash": "77e84c69de89771d0e4d7176eb659249e36e1d75ce465b6d607d1bbc2ce6e757"
+    },
+    {
+      "path": "dist/commands/workflow/templates.js",
+      "hash": "9524b9e4cf85baf729be87aa80feb4db7dfe17f1e18d1e681d41e76b3bc30eb6"
+    },
+    {
+      "path": "dist/commands/workset-input.d.ts",
+      "hash": "a006b359e586f1cae403da0306fa7864df28dc3c122945ce8ea75b2dea77e177"
+    },
+    {
+      "path": "dist/commands/workset-input.js",
+      "hash": "d50f86c97d28e8d4aebaa4b28babe4e384a4906a5836f01b177a30cae6721907"
+    },
+    {
+      "path": "dist/commands/workset-prompts.d.ts",
+      "hash": "19abc4b4320af4551bdb58f14f4f3608aa1b70227dddc0ec537fb8839eb705ad"
+    },
+    {
+      "path": "dist/commands/workset-prompts.js",
+      "hash": "543304f7f72a7f8ecd39cd7c8672ade19846719f194862c129e18e682288deab"
+    },
+    {
+      "path": "dist/commands/workset.d.ts",
+      "hash": "cd5b01ca8e89ef45c66abb3c9cc94b9a0b8b12f5d2dcce67fe58801a3ae1a531"
+    },
+    {
+      "path": "dist/commands/workset.js",
+      "hash": "8ab149d2536209ac11192224fa9ee26cc09416eabfc8d2bd1d8b53e9b1a7b6a5"
+    },
+    {
+      "path": "dist/core/archive.d.ts",
+      "hash": "f88d5f84d777e3c23a69daef3955e6b5f3ce900605c258c126b0bf5fffe46647"
+    },
+    {
+      "path": "dist/core/archive.js",
+      "hash": "735ba65808316699b10022da7a66408cf0ef0d412e00ca0b4f18c88a04202853"
+    },
+    {
+      "path": "dist/core/artifact-graph/graph.d.ts",
+      "hash": "814984a77e922920efdf9b721eda353c275e3121d360b83e3c553d968334562b"
+    },
+    {
+      "path": "dist/core/artifact-graph/graph.js",
+      "hash": "36cae9d6a447ab5593258530f106554ca477a9a5ab2e67654364f64c921f53e2"
+    },
+    {
+      "path": "dist/core/artifact-graph/index.d.ts",
+      "hash": "d5825e0d2f62787b93e2b66068e9669537cce92c922eee819c18e04d47dd91aa"
+    },
+    {
+      "path": "dist/core/artifact-graph/index.js",
+      "hash": "bd5faef37b6df66a80475c6569d175f8a9565372824600ccf5b84a19ff42754a"
+    },
+    {
+      "path": "dist/core/artifact-graph/instruction-loader.d.ts",
+      "hash": "5d96a3acd8b60872cedcf78e56b7de948ae610554bf2ce0243eee4f0f253b47a"
+    },
+    {
+      "path": "dist/core/artifact-graph/instruction-loader.js",
+      "hash": "5a280c3a02b0289a9fa63fbcc356da0ac831e4bcd0a0b61c1725be73afa5d3dc"
+    },
+    {
+      "path": "dist/core/artifact-graph/outputs.d.ts",
+      "hash": "12882527fd7c7b7094c40bebf5d406fc13eedbdc7a10633f91b9ff65b4b1c73c"
+    },
+    {
+      "path": "dist/core/artifact-graph/outputs.js",
+      "hash": "65ee4846f6eee8fb35042ebce4d11b51a396977a096058d5f56ecf47d38ec303"
+    },
+    {
+      "path": "dist/core/artifact-graph/resolver.d.ts",
+      "hash": "b00dbf983c0e74cedebb46e38a2726b695452eed23efad509fca18f674df536b"
+    },
+    {
+      "path": "dist/core/artifact-graph/resolver.js",
+      "hash": "d3f4963910ad064667328404f7fc04dde0c300f3ee3b50c26c169470d88557d0"
+    },
+    {
+      "path": "dist/core/artifact-graph/schema.d.ts",
+      "hash": "f8b6e5fa5347ed0d80aac33560ca1b74195522e009cc150744aeb6ad60c4a267"
+    },
+    {
+      "path": "dist/core/artifact-graph/schema.js",
+      "hash": "6cad3ce56958b8c92a27057820ecfb0aa842e2c38598673de9beda02f1fcd146"
+    },
+    {
+      "path": "dist/core/artifact-graph/state.d.ts",
+      "hash": "533b74803b820eaf5fa43864f8300138cca5c421130f9989a93c1a8fb3fedab4"
+    },
+    {
+      "path": "dist/core/artifact-graph/state.js",
+      "hash": "d7e1d06d6174562e2be6a82c72eb8544278e3044abed84c34cef2c67d4853fa7"
+    },
+    {
+      "path": "dist/core/artifact-graph/types.d.ts",
+      "hash": "d85179eaa52d140300f69c215e839a84d74681d4de627f79d32e071cee8e75ae"
+    },
+    {
+      "path": "dist/core/artifact-graph/types.js",
+      "hash": "244dc5e9380c4eadf2a340932972705b283183c520104b623ca20b0f5a55457c"
+    },
+    {
+      "path": "dist/core/available-tools.d.ts",
+      "hash": "1e7fa0bcd93cb0d9a897a16659386fb68b8e1d6102bc5ecf6cee678a938940be"
+    },
+    {
+      "path": "dist/core/available-tools.js",
+      "hash": "56a06da88cb4e50d9394cf1fc1bbf192291da278413d8e780c21ee8824e589eb"
+    },
+    {
+      "path": "dist/core/change-metadata/index.d.ts",
+      "hash": "2d15b2315332c0693abd7b195e23466ce9475a701283a5411d9a9b98095444a1"
+    },
+    {
+      "path": "dist/core/change-metadata/index.js",
+      "hash": "d93766b6cbdd38ed149434a8a8821610099b0e02e9e447e96d586e604de72690"
+    },
+    {
+      "path": "dist/core/change-metadata/schema.d.ts",
+      "hash": "d8472d9ca2051281a7bfb24a268cbef5779e501e7fd41bd77e6462f315ecf4ec"
+    },
+    {
+      "path": "dist/core/change-metadata/schema.js",
+      "hash": "5d5f98e3f79756443f926af59bfc49894f37dc40ca6877071c1d4123188eb91a"
+    },
+    {
+      "path": "dist/core/change-status-policy.d.ts",
+      "hash": "61aaf7b3cf6539878ada16d763dbe1a4d502cf0cbc2f00bea1be3f6c87ea807f"
+    },
+    {
+      "path": "dist/core/change-status-policy.js",
+      "hash": "a999a6e286f45c72424a2dd14c3c5edba5e7392d3c17330a38a100b30d17b1a3"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/amazon-q.d.ts",
+      "hash": "abf59f4d7f9ddd5529a5528be68f643bfb0f1d8d535ffada9b402d0826098846"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/amazon-q.js",
+      "hash": "bd5d27818e8dc87b4bf9cbc6c609a2c8deaec74abd36621556961967e54d6211"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/antigravity.d.ts",
+      "hash": "b9948919ff1c8301dba3e03ab975e402c30aae0bce53f4a7419c22a198b3146d"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/antigravity.js",
+      "hash": "8591aaa46cdd84ef176cbbe65c9ee66a8479d8ad689a9fcba7e51ae20092808f"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/atomcode.d.ts",
+      "hash": "b4db65447b792d8539072af077e405ed24e35fd7cac444656d1309f701575f49"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/atomcode.js",
+      "hash": "a0ff8ff03d5882320522a5816725095153622b6b7736a31ef8a850632c28d60c"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/auggie.d.ts",
+      "hash": "502108bc9ea3ad745f9f844724c72f8a75e0cdb9ad7b8010631074bb0dd9212c"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/auggie.js",
+      "hash": "3f51a1f24bfd3e0c869a3bc92fdcc8317912da11d54ed47ded746fbaf673e8ea"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/bob.d.ts",
+      "hash": "44a6fbb1a535127745b991827b77d0d618dd7f7c57e277b0499ad6cd654941a4"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/bob.js",
+      "hash": "fa1d3aba950f9350292d384b48cf45998bf769861e4c66debf277958faba18a4"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/claude.d.ts",
+      "hash": "07c6a4280c2acfc2d17a4fea46c15a493b38e404cb2cdc5f10873a93cf3e28f4"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/claude.js",
+      "hash": "2831ca9ddf7824201f6d7abf4922abdaf9b2be503dcf3ced5fd15e17eac3032e"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/cline.d.ts",
+      "hash": "fd9aba39a302c36d6ad96b66b9cfe4c476882d56983f7e26fdcaad742115c842"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/cline.js",
+      "hash": "5ab398f471cc177f40e2e5ad9e4329299c88a21ed52d565057019dafb3529d8c"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/codeassistant.d.ts",
+      "hash": "d8887ab7aac6a083ef9ceaa1bd0a1dbee273aa61304b97225755b65325b1f353"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/codeassistant.js",
+      "hash": "ac6ba186ce282467089a8edb1947dda4766d79f5eb047ead12e636343d892223"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/codebuddy.d.ts",
+      "hash": "e7956361db3257dbb2aa23a5ac5342c40fd7df1fefa60943ecd12beadff4d0a8"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/codebuddy.js",
+      "hash": "3c7543663b94c324602f3ecea9546183adf1f8f86ef0f62588a51073935c38fa"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/codestudio.d.ts",
+      "hash": "0626d3b5a28e7e45a62f76c7821f609b6c822f0c61396839d51a93c9f2489bc0"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/codestudio.js",
+      "hash": "a51f76f08ad366cd26cee3a0f26027e190bbddbe3f366500f7c1055746cecc9f"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/command-code.d.ts",
+      "hash": "3fda110a131522c1963d4aeddc07f030a8c017b0d5139cc971bcad13d37576d7"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/command-code.js",
+      "hash": "e06661f84dacbaea66badca63fbd4fd79dfb52c62309b1fc398f264ed7fca701"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/continue.d.ts",
+      "hash": "032ef704e6b33436fb447bba58c8247f64f64efe29ba21980cfbad408f478989"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/continue.js",
+      "hash": "72056775ccbf2491fe18d064f1c8a586bd877ecc8d4d5538f8e88cbe7d91948f"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/costrict.d.ts",
+      "hash": "4715188640b87c0ccc9a2058316434f00df1b5d892dbb66acefc7cbdafbda895"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/costrict.js",
+      "hash": "80ff165162c645d3a96d37f40f8a0f2904e6110ef77934bf7fd5d0f780425a37"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/crush.d.ts",
+      "hash": "4a3a8af6e697550f11263a6a70597b503ad3287981d0d6e724748ac341e5ac61"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/crush.js",
+      "hash": "816078c9437a135938a6339865e52d072d440651a1fce589a9c328fbfd2bc43c"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/cursor.d.ts",
+      "hash": "d2fb70656720417af34d6d61fc6f755072b581ce52345da56a9df67fb23c6cdd"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/cursor.js",
+      "hash": "7c25463c2e794616047bab560af163b1ffb785083f7e177237efcde030a645ac"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/devin.d.ts",
+      "hash": "28445e906ac8d30924e14abb42b5de0358dca01641f85c9babf2ae20e331ba42"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/devin.js",
+      "hash": "3aa721119c28b5b95aa657c7336f0bbda7bf766ae468a3d21d2e7f0f5a45c233"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/easycode.d.ts",
+      "hash": "025b323e5caf1a3b4cf1e95c6fc9722212d76abb24245d51de558362d09485ac"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/easycode.js",
+      "hash": "7b6d4688401dbb3696448782eea11aae86b770c72f87f6c6d960b38b9e46c5bd"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/factory.d.ts",
+      "hash": "85ec54a32316611ed86cdb9d9fcc8b5699c63977d2c226e7d82c853253c1d66d"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/factory.js",
+      "hash": "d7f6e17c6691ab4af7cf21de55c3555276e9d220c2e6882a8a2b53861429ebea"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/gemini.d.ts",
+      "hash": "3e284edea71b4dad6e5340f5d054ec5a7985b0230f7aa4c9caaab316ccdc8e77"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/gemini.js",
+      "hash": "a9e878a16344f4a22278d0d549ca730862ed1c2261859c8d28c791fcb30d05d2"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/gigacode.d.ts",
+      "hash": "39efd48c702db2b06209f55150d269289f9a6572fdb3552686721a61ef660a4f"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/gigacode.js",
+      "hash": "38932b733f8e98f521d5bfb2f2b8a041f80a28edb71b1c8d2c42b45a17c84c6c"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/github-copilot.d.ts",
+      "hash": "43df29b2d256b8acce846906e5511172bb5743ceefadb909305d927b43cf3a10"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/github-copilot.js",
+      "hash": "7ffe2fcfc309c3463958147a9ef9bc2060d662e047bddc0b59569b466ba34158"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/iflow.d.ts",
+      "hash": "14f64b50969e27639b8293b7099c5148eafa7a805f1fdb636f46d764a54dfe2c"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/iflow.js",
+      "hash": "e09f689964507c16ee3b04be8d1ee3822f397006988c8c1900f829cd565cd526"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/index.d.ts",
+      "hash": "4c7688eb17cf943e148359f292a4e18f1b904d9e067ee2386902f64bc3652cbd"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/index.js",
+      "hash": "da57984949aec23d994da72e17f112f404170055419fd2825ad83e6f450ebd8b"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/junie.d.ts",
+      "hash": "a1f655178f66f123a9a037be81437dca0ee22e290d3e194b687a3627ac7b179a"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/junie.js",
+      "hash": "2946e6923f1411aa57e5ce501d45656769d2022d3668dad2a0de1e6b87a7cadb"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/kilocode.d.ts",
+      "hash": "63a58d5077b9b6b41cf74b598891f0d1d9caa86ed6f4e42f17732390b6d0b1a4"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/kilocode.js",
+      "hash": "fce0c1e69b0f87309ac31f3c21318b5f0a09b7c51b792b2bd0d33bdcc67394a1"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/kiro.d.ts",
+      "hash": "6548bf572371e7f141ad4cf9731f9a726b65813c542846d9d5086174995df7c2"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/kiro.js",
+      "hash": "0fc76fb63054ba3d981db1f10f0bc0dd892e680be9f42fc2c04019b5a62c3179"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/lingma.d.ts",
+      "hash": "44fc872f0467de15ff835761b5c03f038799d2e158239e0710a7576e044a1ab1"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/lingma.js",
+      "hash": "cf630f3ba8156bd01b994876bc2f4b58bdd0e6b07063163864101ddca522e664"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/oh-my-pi.d.ts",
+      "hash": "999c707e45499fb6cc5a65e522908b3c939f9ec722c758c2646e31ef5354a8ef"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/oh-my-pi.js",
+      "hash": "162231c460855bf13ce3bd9428df4cf66ba43887b50d1483e5e135d35f20a2bc"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/opencode.d.ts",
+      "hash": "c23748f1e0b63b4b608ba619c9ce6fb2dabfe4481d8788137d5adfa77716b3c4"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/opencode.js",
+      "hash": "f0c05354c08469d431655ae2c9396545be5da716e0e898347abb88a5f6be17ef"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/pi.d.ts",
+      "hash": "b47fac0058206371fdd13a829364c55f1b7ad63609639c231a9a93326614f0f6"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/pi.js",
+      "hash": "5c540d4b7e3007085d77725015a03c122f4cf9f3bdb59764ab039aaed893a45c"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/qoder.d.ts",
+      "hash": "3df2254bf269b28d51eb10044449ff81a44b1a4351a14f540bb6d1d2bb22e7b2"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/qoder.js",
+      "hash": "bf9766dfdea1abe431294d8bbe4cd358d0246e04c81b6e99b7f842e15088c3c8"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/qwen.d.ts",
+      "hash": "9d375c3519e20c5c1ce9f9a92bf30c6fbd2052dc175fe4c7483ac25b4dda13eb"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/qwen.js",
+      "hash": "a04c46a9d408cd8d2e8f5c119c6274223e389390c809361ec11137d5542e6ba1"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/roocode.d.ts",
+      "hash": "c2a16d7b29c9112ad848c5971d8d080755c0979bfd3aa5245a610fd2d463650e"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/roocode.js",
+      "hash": "38216c8ecf85bc43c9a46d91d77565a82593450da29df9e64161d943b351141f"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/trae.d.ts",
+      "hash": "7a3663d50f1c6547c1de40ab7e9be438b966367fc90cee7844f0b83e65b83c1f"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/trae.js",
+      "hash": "2ae23173668191fcda4956f6438c7fa1b895d57f57e5ccd6b18bd7e7ddce4eaf"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/zcode.d.ts",
+      "hash": "9568319c9e5b5a794f768b8b34ee5b8677786750795c64f6cbcc50c8dd47597b"
+    },
+    {
+      "path": "dist/core/command-generation/adapters/zcode.js",
+      "hash": "b9e58e485d7b6c17a543a692d6612905bb0d7792296f5d04ec134a4307d083c2"
+    },
+    {
+      "path": "dist/core/command-generation/generator.d.ts",
+      "hash": "9e10f8c88566865db250f69f535cfd793efa06dc5716867bade2f24f3a0c9da1"
+    },
+    {
+      "path": "dist/core/command-generation/generator.js",
+      "hash": "c6f09f247cdb8566580aa1e9ca501e246065ef908b13a468fa4da73ff2ec424a"
+    },
+    {
+      "path": "dist/core/command-generation/index.d.ts",
+      "hash": "b8c60a9b2f6bd83a5ba4048b1626bfdabb7948e62430d0f012af18a758bc6eb1"
+    },
+    {
+      "path": "dist/core/command-generation/index.js",
+      "hash": "425d984fe048c26eb8eb81034ff6f1ce1749c79ff1d4d6f31c0ada99ad4cb4da"
+    },
+    {
+      "path": "dist/core/command-generation/invocation.d.ts",
+      "hash": "dfd1f7db51fc2aec0567eca7ed4f643a6d3a8e432eee3dfa380f9f017482e974"
+    },
+    {
+      "path": "dist/core/command-generation/invocation.js",
+      "hash": "ce76ceb766584214fc78604b20fdbd3ae8217b22cdf997475e8716d9cc400d9c"
+    },
+    {
+      "path": "dist/core/command-generation/registry.d.ts",
+      "hash": "cb49594660f57c9ce98037444242cead6cb9da1c0e6a0770cf4928d05c6d1351"
+    },
+    {
+      "path": "dist/core/command-generation/registry.js",
+      "hash": "5aa18363d1ce0c671ee0875af2e5d2a26f3e62182ffcaf7aeee2989754c85e4a"
+    },
+    {
+      "path": "dist/core/command-generation/toml.d.ts",
+      "hash": "2e5db23ac8e4e75a39acedc182ec2669ea9b935f6f92352676f11c1dae0bce2a"
+    },
+    {
+      "path": "dist/core/command-generation/toml.js",
+      "hash": "883a9813c3bfad3d120000fdcf365a08d1b4fc5b09bd9a99407c257e09ad475a"
+    },
+    {
+      "path": "dist/core/command-generation/types.d.ts",
+      "hash": "8eda475fd3d9099df6cf25c542b53ee56ea955fd6d6b23c878391482987d814a"
+    },
+    {
+      "path": "dist/core/command-generation/types.js",
+      "hash": "be70a5246b0a50cf70e9ff491f2bd4ef07927b184dc8207a5ff287b05025b023"
+    },
+    {
+      "path": "dist/core/command-generation/yaml.d.ts",
+      "hash": "e797c755216729915ebfb7859f2d4ce70882f2b1acafd746881ad8d27bff7412"
+    },
+    {
+      "path": "dist/core/command-generation/yaml.js",
+      "hash": "96fcc9c1d6d7e1c35390d4adec37afda140a4c8b4ebdcbe9f69b0da1ae63173c"
+    },
+    {
+      "path": "dist/core/command-surface.d.ts",
+      "hash": "8a2fc1efe0d19eebf467f61640ed8f1559b57049a57ff6a7b43011b3a2dd79ac"
+    },
+    {
+      "path": "dist/core/command-surface.js",
+      "hash": "cdb552c8d919cff4196303cc1190cff33e18ff98258b1eb84742ea84796942c3"
+    },
+    {
+      "path": "dist/core/completion-tip.d.ts",
+      "hash": "a401bf9c637e7de102e798eb01cd60d8b35f2f6683b93488e98c9619dfbb8df3"
+    },
+    {
+      "path": "dist/core/completion-tip.js",
+      "hash": "622164ff548285c7dcb11817d0c6cf283b40e20626846753bfdd71b3fbd4ae8a"
+    },
+    {
+      "path": "dist/core/completions/command-registry.d.ts",
+      "hash": "3b776c1a8a38d6b3d9786e2757afd25e98967636cd1322c7758fd195db5be42e"
+    },
+    {
+      "path": "dist/core/completions/command-registry.js",
+      "hash": "5929f5ba83b6ef2ec3f94661b8633584d78bddfce60032d2a3e7c34b7947f3b9"
+    },
+    {
+      "path": "dist/core/completions/completion-provider.d.ts",
+      "hash": "e47ea2918bb486736729f5ff7a91fac4a236fc524d9319661d0981de5caa7acb"
+    },
+    {
+      "path": "dist/core/completions/completion-provider.js",
+      "hash": "73c585dd8ea05bf104bf183bf5e4afadcfafcd4f538653797052189c4ed10306"
+    },
+    {
+      "path": "dist/core/completions/factory.d.ts",
+      "hash": "9c2ad7191370e140113da52c6ee7ee177122d3cd8d54b2943edf9078223195c5"
+    },
+    {
+      "path": "dist/core/completions/factory.js",
+      "hash": "f17c6f4a407ff87ec049c4274e567cf412afa7374bfe1141d6c1edd194c6337b"
+    },
+    {
+      "path": "dist/core/completions/generators/bash-generator.d.ts",
+      "hash": "b45f617884c346b8d8c0061ec3e7d78240a33054e2964bccf8bbe792aada31b0"
+    },
+    {
+      "path": "dist/core/completions/generators/bash-generator.js",
+      "hash": "3998e1bc112cbff326a8a1c86e1a13a2f57f48eddf92e3cc8271de1289682364"
+    },
+    {
+      "path": "dist/core/completions/generators/fish-generator.d.ts",
+      "hash": "1baadd4f09ac99d0164955694a3ef962da267b6eb6f4aaab067dcc90724b337a"
+    },
+    {
+      "path": "dist/core/completions/generators/fish-generator.js",
+      "hash": "808a8938c5c6751575a13866e4684ca5d4147a6f3b320211090587ce83b32302"
+    },
+    {
+      "path": "dist/core/completions/generators/powershell-generator.d.ts",
+      "hash": "ff055a30503638618782cfaed1e0a6965d7f295aa7eacf8836b87f5575e693ed"
+    },
+    {
+      "path": "dist/core/completions/generators/powershell-generator.js",
+      "hash": "5345b65a568742e73e54d8237d26f27cf019c20b8521f7ee1e2511702e847059"
+    },
+    {
+      "path": "dist/core/completions/generators/zsh-generator.d.ts",
+      "hash": "1bb590074c29570ae810946d6e1b6a87e5ad432e87ef2d0ef686e07587189585"
+    },
+    {
+      "path": "dist/core/completions/generators/zsh-generator.js",
+      "hash": "a183994ddb15b5fe54f3e9962219dd6cd553e9005907b80ae7b7b0a416f7a1bd"
+    },
+    {
+      "path": "dist/core/completions/installers/bash-installer.d.ts",
+      "hash": "fe8109b269f0d65bdcca84e8316a82c4284aaf04688daa93c4ec3272559b206b"
+    },
+    {
+      "path": "dist/core/completions/installers/bash-installer.js",
+      "hash": "9a9c1ad1ffa30407f1377e0b0d95a72b55c01c48c06ffff4131d71f3a10c76bb"
+    },
+    {
+      "path": "dist/core/completions/installers/fish-installer.d.ts",
+      "hash": "5e1dc0ab478e38f23c3cdf575111a466b8e94c825dc4b76d68300213ac92c86c"
+    },
+    {
+      "path": "dist/core/completions/installers/fish-installer.js",
+      "hash": "557aa9f4a9b8bfa0fa56045f698314a1be42b101c4e255061c31175a7060c449"
+    },
+    {
+      "path": "dist/core/completions/installers/powershell-installer.d.ts",
+      "hash": "860c9df69ca12f17e9ae6b0ccf592ba8197f52252e603930ce0c970562fcb3cb"
+    },
+    {
+      "path": "dist/core/completions/installers/powershell-installer.js",
+      "hash": "e5b99651b09daf3279861f1ae98c355e6dff334b2f8a9e197e3b4923aa39e31e"
+    },
+    {
+      "path": "dist/core/completions/installers/shell-quote.d.ts",
+      "hash": "84f8240eb5f1a04681ebc8cafada59722e92f48c21eff7a929704e317f3b120d"
+    },
+    {
+      "path": "dist/core/completions/installers/shell-quote.js",
+      "hash": "6f821521c00d4753189a6861959939dc89773d6c7504acf059a4d4ccf7bd8fbd"
+    },
+    {
+      "path": "dist/core/completions/installers/zsh-installer.d.ts",
+      "hash": "525f6a1ee51850d6ac00f32c69dc6db6cb57749c4ead399fc68b38c76b04f3cf"
+    },
+    {
+      "path": "dist/core/completions/installers/zsh-installer.js",
+      "hash": "ce6137a77f8f254105ca371532c506aa32170a16e1ed630ba9be3992456bf28b"
+    },
+    {
+      "path": "dist/core/completions/shared-flags.d.ts",
+      "hash": "d26d1286794d94a1bdee27e747630bd28da4fb57fe26019e31bbdc43e5b688e6"
+    },
+    {
+      "path": "dist/core/completions/shared-flags.js",
+      "hash": "b30b10ecbf5ef965d96ff27f184fe3d79be1da130426bb41cb8e1fef966e69c3"
+    },
+    {
+      "path": "dist/core/completions/templates/bash-templates.d.ts",
+      "hash": "358f94610f1bac91319a896bd36b55503d025d70dc1d2d29b5fd1ada8cfd52e6"
+    },
+    {
+      "path": "dist/core/completions/templates/bash-templates.js",
+      "hash": "7cbb133d5c5b9de800f964e1dfbc132db857ce316499c4ed5ef30e8b1c8c8774"
+    },
+    {
+      "path": "dist/core/completions/templates/fish-templates.d.ts",
+      "hash": "34f965264c8fa4832e0e8de4b385d52579421866b2dabfbfe9baf4e9d9a828d8"
+    },
+    {
+      "path": "dist/core/completions/templates/fish-templates.js",
+      "hash": "2b5b5015c0763840063ca117f2822eb112c8a25b5099438e47d55074de10ac4f"
+    },
+    {
+      "path": "dist/core/completions/templates/powershell-templates.d.ts",
+      "hash": "4c29e9cef7a3310127e768fc296b697828faa11130768e474b35967bfe9ebf70"
+    },
+    {
+      "path": "dist/core/completions/templates/powershell-templates.js",
+      "hash": "ba45d65267c2e4c8014c83927c295485284d270bc8aec60463dd99524b766151"
+    },
+    {
+      "path": "dist/core/completions/templates/zsh-templates.d.ts",
+      "hash": "4e9edd71d68b09983014f10694701c98d3ec5009c7ef933b793f6f7d319f630b"
+    },
+    {
+      "path": "dist/core/completions/templates/zsh-templates.js",
+      "hash": "90210829f6a16054c83c20bfc24b009eb9023c71daebf1efa23b5833c1861c67"
+    },
+    {
+      "path": "dist/core/completions/types.d.ts",
+      "hash": "a86cda2a1db27e43b5c9ce29a0765d88224d8ecb666fd6d03adb200fd4de73df"
+    },
+    {
+      "path": "dist/core/completions/types.js",
+      "hash": "01ae2a5b120382f9a648ced7ee8507493a134f216d100fc61600c6c9738235d2"
+    },
+    {
+      "path": "dist/core/config-prompts.d.ts",
+      "hash": "e47f544f6373b490ec3453ce4ec98d8dc7920dbf19b7db04f75c6410894a5359"
+    },
+    {
+      "path": "dist/core/config-prompts.js",
+      "hash": "96d147455eedc67f90a87f4ed71f1805195e1a8ba8fe8c297f05283ac7aeac39"
+    },
+    {
+      "path": "dist/core/config-schema.d.ts",
+      "hash": "dd98b1395eb788ae23f15d3ad19dbbedb4c21d1b6ad9fe69b8269cfa0f678527"
+    },
+    {
+      "path": "dist/core/config-schema.js",
+      "hash": "89c31363da3dfa8b6663a81f20f4800813e07d8c2b8bd39a4b219f456cbdc166"
+    },
+    {
+      "path": "dist/core/config.d.ts",
+      "hash": "314ff6998f9bb2adc385de4410fcb809879871f9ab34257ef3fbe6f020ac29b7"
+    },
+    {
+      "path": "dist/core/config.js",
+      "hash": "b9e751e2d637268683f1760d3470bf4bda8333d5c12fdefe996dfc5668a02b9f"
+    },
+    {
+      "path": "dist/core/converters/json-converter.d.ts",
+      "hash": "6a4ccd0b47935afd86efa011661a1961733a8d9f8e65587fcb1a16a7a88e7ca3"
+    },
+    {
+      "path": "dist/core/converters/json-converter.js",
+      "hash": "a6376ff08e35ea2e897f3d690cae077e4baf4ab248b82bc18d78e90ab14afd4e"
+    },
+    {
+      "path": "dist/core/file-state.d.ts",
+      "hash": "eda6219da57da6daac132b9567bf70b39b1c1f3ee76a79614b4ecd5a96d98f8f"
+    },
+    {
+      "path": "dist/core/file-state.js",
+      "hash": "6a20562afe1d8151eabaf271381e2c39c820d5bf346427c1b9644bc24ffd6277"
+    },
+    {
+      "path": "dist/core/github-copilot/cloud-agent.d.ts",
+      "hash": "cb28b5687450dd16e5dca7ec92e5b5c32b2ef01eab49877956ec2151d66451ef"
+    },
+    {
+      "path": "dist/core/github-copilot/cloud-agent.js",
+      "hash": "5426499c0fdb060235469673ba29b07d4c8e7f759d10811293ffd26bc6fef9df"
+    },
+    {
+      "path": "dist/core/global-config.d.ts",
+      "hash": "65533784f62bbfb7257de8dc8015d61f0d89f1fbe021726987f4d86c79cc3da0"
+    },
+    {
+      "path": "dist/core/global-config.js",
+      "hash": "f2701f932592372b6c60a87f5a5a9b6149d4ff3641b7085bec31893e660bb14a"
+    },
+    {
+      "path": "dist/core/id.d.ts",
+      "hash": "afe8753208cc20b67f767818b6615a0888d92022a55ee9c16f5ecaf673c0606f"
+    },
+    {
+      "path": "dist/core/id.js",
+      "hash": "2576b0e60420f02517c8a4350b201ecb1591d7241ad543f099ed5204c8572fbc"
+    },
+    {
+      "path": "dist/core/index.d.ts",
+      "hash": "112b24376c5e75f292d9e9202adc6ea3b472ea54896f41556941f23130a8a9de"
+    },
+    {
+      "path": "dist/core/index.js",
+      "hash": "aa9dd0e8b4bdc154d6eb7a4d20aeb749eda6e387f5c5769b627ff7b819a1f0ac"
+    },
+    {
+      "path": "dist/core/init.d.ts",
+      "hash": "67417b4fff6e72ad21a1c8975fbe5880f5142ecd31b20d50adbf8bf14714a219"
+    },
+    {
+      "path": "dist/core/init.js",
+      "hash": "8519d706c03c1c8536c73fc7743d2aa6272114be5e5fef091228385282ee2b6b"
+    },
+    {
+      "path": "dist/core/legacy-cleanup.d.ts",
+      "hash": "bdf782cdd9d9d627967c17125403946c9990609193bb36c97e797697e9db2241"
+    },
+    {
+      "path": "dist/core/legacy-cleanup.js",
+      "hash": "1392c44d48bc06b9594cab70d2a4d1099a6859c7e4e2561f2141a0412b1cc273"
+    },
+    {
+      "path": "dist/core/list.d.ts",
+      "hash": "a0c1b455d3709379f1ba7a9030da08ae99b7cd8ad6913d30e385ffc9175152a0"
+    },
+    {
+      "path": "dist/core/list.js",
+      "hash": "b01d13c0b531684774949350dc53011905b10c060ac33044b0602fa9c621773c"
+    },
+    {
+      "path": "dist/core/migration.d.ts",
+      "hash": "938726d9956fa35661accfb16bd34c04a3c12ce1f8422d779a1d0433108ed984"
+    },
+    {
+      "path": "dist/core/migration.js",
+      "hash": "1f9dda4a8f429afb0260aa11cdc2eaa1d9399e467e8843d62d3bb66167bd06de"
+    },
+    {
+      "path": "dist/core/onboarding-commands.d.ts",
+      "hash": "0c5f81212c2af13466e3bbc846a101f138fd3c678a1b3919f25eb26633c0f8f4"
+    },
+    {
+      "path": "dist/core/onboarding-commands.js",
+      "hash": "8ad3dbe11d608995b9d5a5811062c008d32ed618b8d889720d60b8188580bc06"
+    },
+    {
+      "path": "dist/core/openers.d.ts",
+      "hash": "683aa959302c7e4622b5dafa6b4956904b68bc38f6edec0fb56e3c21755cb135"
+    },
+    {
+      "path": "dist/core/openers.js",
+      "hash": "c96698546b22fa89a14292fe0710799f00316ad576965ea821d888993f8b0a28"
+    },
+    {
+      "path": "dist/core/openspec-root.d.ts",
+      "hash": "1a27d2f787daf72715520d99089f9fc6969a014693ee5727335522b49b0c66e1"
+    },
+    {
+      "path": "dist/core/openspec-root.js",
+      "hash": "c196b2eb6a19ba5696c1d00f1407c9441b2b84630eb70e389ba890f15ffea944"
+    },
+    {
+      "path": "dist/core/parsers/change-parser.d.ts",
+      "hash": "48863fa3bd5c0fe3c2a5554203ec3587e512c14cda4809871135939915463ceb"
+    },
+    {
+      "path": "dist/core/parsers/change-parser.js",
+      "hash": "5f04dd9c2b033aa54432c2b06e738424a5d7c518969ce35b0a45581c1f07ce1d"
+    },
+    {
+      "path": "dist/core/parsers/code-fence.d.ts",
+      "hash": "f04fc9e6e00c8d5dadcad78dc6c8b6d43482349f8a5ea41f767976d3cb576203"
+    },
+    {
+      "path": "dist/core/parsers/code-fence.js",
+      "hash": "e7ebf34d595b2fd8f273f215fa5a354ea6d5054cc18ef3e6b4462896396e43f9"
+    },
+    {
+      "path": "dist/core/parsers/markdown-parser.d.ts",
+      "hash": "52b67e940348306cde5d237c0b2964601dfc69f939685b2718ce29f906bc4a0a"
+    },
+    {
+      "path": "dist/core/parsers/markdown-parser.js",
+      "hash": "c835dc5438aacb480f2a411868e9ccf6d68b070e1fa790cbe0906670192b2c89"
+    },
+    {
+      "path": "dist/core/parsers/requirement-blocks.d.ts",
+      "hash": "45771c02be5675e80f83ecccb67c8c716332a8f7ba059eea4ea1d229da71a923"
+    },
+    {
+      "path": "dist/core/parsers/requirement-blocks.js",
+      "hash": "8b1e4fae7b079f7a58c7c8115da326131f3adff7f14c4af9be8c06e65dfa2ee4"
+    },
+    {
+      "path": "dist/core/parsers/requirement-text.d.ts",
+      "hash": "a7d63ec98a3cec03957fa3236f3065147ff137827f7c074fe6ee4d04db471161"
+    },
+    {
+      "path": "dist/core/parsers/requirement-text.js",
+      "hash": "132d47303c0f1e8d6fc13021a59898b14a914a3753007bde6a1324689f41b9ea"
+    },
+    {
+      "path": "dist/core/parsers/spec-structure.d.ts",
+      "hash": "518043cfe8d5ed0e0a665310fbc6fe2364a57c080d21d7446b2c6d55b385839f"
+    },
+    {
+      "path": "dist/core/parsers/spec-structure.js",
+      "hash": "010aa703e85657e9f1048ebec52a96798c386ef2615eef20a55843942bfbffa4"
+    },
+    {
+      "path": "dist/core/planning-home.d.ts",
+      "hash": "4b6ea1a6ace2d1c76a345b5a3dea8561fb30e15a1518a59c0903a58bccf8fcde"
+    },
+    {
+      "path": "dist/core/planning-home.js",
+      "hash": "42a82c508ec5d27407a5676471da85184744710b5cde8d58518905e47b34005e"
+    },
+    {
+      "path": "dist/core/profile-sync-drift.d.ts",
+      "hash": "f192f71185f0a0af6a761fb1ab93bd91ddf2a8b5e10f0acdb7834bc4393129f8"
+    },
+    {
+      "path": "dist/core/profile-sync-drift.js",
+      "hash": "49759d0127e93655b98ad15f77b6644d5c4fbc62c4a04c6445dba2cf914f09f9"
+    },
+    {
+      "path": "dist/core/profiles.d.ts",
+      "hash": "8d51bf3f2c668a1a01640a10a50a2c4544eea154e7961bb1a94269b3a4111914"
+    },
+    {
+      "path": "dist/core/profiles.js",
+      "hash": "9ac30d888490d9f46c559dc34e9561ef1d2c306d3c82d73c5048d99a8c50c7b8"
+    },
+    {
+      "path": "dist/core/project-config.d.ts",
+      "hash": "d8799ea5fa413b035a5279d82fb4472de98fc3dde14d4eba4b7cebdb70f5ea5e"
+    },
+    {
+      "path": "dist/core/project-config.js",
+      "hash": "8ba0fee6d679f9340af8d10f64863f43b480d845ea40f0d69cbd73e26e812927"
+    },
+    {
+      "path": "dist/core/references.d.ts",
+      "hash": "cb995b85e934c7623d9b62af925014ed2230f27268db2714ca30a9750cde2561"
+    },
+    {
+      "path": "dist/core/references.js",
+      "hash": "941ed1164ff18df2cb4a444a2e14c2fd903cc8f3c774c6822d435481558216cb"
+    },
+    {
+      "path": "dist/core/relationship-health.d.ts",
+      "hash": "88ab75f5e53d07773114b5081cd93a4831fc8c075b32a934a1b4ae2d0a1572fb"
+    },
+    {
+      "path": "dist/core/relationship-health.js",
+      "hash": "e9ebc76050d1157c7c85b9e1253ab583a15fdaa6ddbf10ce7e53cfb3f1ef0c22"
+    },
+    {
+      "path": "dist/core/root-selection.d.ts",
+      "hash": "6c428e45b296a24d543e3cedd9da29072460765affa29af862a9329f12f42ff2"
+    },
+    {
+      "path": "dist/core/root-selection.js",
+      "hash": "73360a4ca1da5414ee7917bc2ee5290a99d4da58600335b7b1dd56756fef20b3"
+    },
+    {
+      "path": "dist/core/schemas/base.schema.d.ts",
+      "hash": "4618d56d42693c76af4fe3fff892bc83b1878bec86851fae055cc78d1c4275c6"
+    },
+    {
+      "path": "dist/core/schemas/base.schema.js",
+      "hash": "e353558485fd997b39cda56f46b33586b3a7156ecf3bc069fbd967e4bfedbc40"
+    },
+    {
+      "path": "dist/core/schemas/change.schema.d.ts",
+      "hash": "0b0b3d5e27d9476d70bc07b18d0358e034085dd0d46618bd7865b19cf3b219b9"
+    },
+    {
+      "path": "dist/core/schemas/change.schema.js",
+      "hash": "94cf73573e30eb221319aa23fdb2a90ea91da82f09be31cbb53b81cc5be890b9"
+    },
+    {
+      "path": "dist/core/schemas/index.d.ts",
+      "hash": "4c9fa28a532f76c9f8087c4670acd7de7a001b78a694ec153e526fd5b3cf377a"
+    },
+    {
+      "path": "dist/core/schemas/index.js",
+      "hash": "42546cc49cb93e34b5b8f6c784e72c1d5b38dca03c56ba55de4089d6d9f8d809"
+    },
+    {
+      "path": "dist/core/schemas/spec.schema.d.ts",
+      "hash": "3a21bbe0b7a610b4b279c6e952e78b24d510b283287f4abffeaebedceec2d9ce"
+    },
+    {
+      "path": "dist/core/schemas/spec.schema.js",
+      "hash": "1a36966f2cc59edb7fd5f47e7ed473740f5ba3056f48decc7b2c30d8d83e2381"
+    },
+    {
+      "path": "dist/core/shared/allowed-tools.d.ts",
+      "hash": "beac6bc54226d2ebd41756abe8e986a0c3d5059e0dd10cb148426425d1d2237b"
+    },
+    {
+      "path": "dist/core/shared/allowed-tools.js",
+      "hash": "b9245be6517c3242adb6b32d776da9c32976e9ed3fea4de7445c190ca3acc29e"
+    },
+    {
+      "path": "dist/core/shared/ide-restart.d.ts",
+      "hash": "7c6b0ebf5b938612c5aa8e372bb6e5a5f067739a774a1df65a9f771eac5465ea"
+    },
+    {
+      "path": "dist/core/shared/ide-restart.js",
+      "hash": "db65d5a5dc6968463e25543e222972529f1c6c9c3fec6ba14ef623a9faf355fb"
+    },
+    {
+      "path": "dist/core/shared/index.d.ts",
+      "hash": "2ae71d6618d171bd239cc480206e943a0ad978271d97f9f1fd1fe113089ebb5f"
+    },
+    {
+      "path": "dist/core/shared/index.js",
+      "hash": "424bc0bb6f87327d5436d9d982b615ae8d7a967cfc14e3127e9e1ec5733a9ddf"
+    },
+    {
+      "path": "dist/core/shared/skill-content-equivalence.d.ts",
+      "hash": "4f85fab72f4d6e4a49b53ab6a7c544e15a392ce05039313a66485cef44274254"
+    },
+    {
+      "path": "dist/core/shared/skill-content-equivalence.js",
+      "hash": "0e287e67f31cc9f8b447757c09d528a67fe33e618e2c223e32a589a802256217"
+    },
+    {
+      "path": "dist/core/shared/skill-generation.d.ts",
+      "hash": "d7d2709daf4ed5f06bc78a05e2f3af824dd999553b4f0463e9c5f85e6f4aec04"
+    },
+    {
+      "path": "dist/core/shared/skill-generation.js",
+      "hash": "ef5419e82d0d89fe25f85a78ae9b53c0f564e7cd6c720fc59267c27fdd196b9a"
+    },
+    {
+      "path": "dist/core/shared/skill-paths.d.ts",
+      "hash": "a0172a398ab92de9c83ccff4bc8bd33b6261f946af60c4561dab7109d1072a7f"
+    },
+    {
+      "path": "dist/core/shared/skill-paths.js",
+      "hash": "22ce63e704dd19b2f5bbd327c1966ed45b43debf1a2e75e86360cb4342527191"
+    },
+    {
+      "path": "dist/core/shared/tool-detection.d.ts",
+      "hash": "24f81273ab2bcd6350af64a612da7ba09dbca794e6704ba271430d397bbff7a7"
+    },
+    {
+      "path": "dist/core/shared/tool-detection.js",
+      "hash": "8bfbd76c6f72659b3da77a1a09f58fc906ec90f162da276d2dd5c6b43e087640"
+    },
+    {
+      "path": "dist/core/shared-skill-target.d.ts",
+      "hash": "ae12006514d569cda6630137ac8c8cf8df3094533da940aceccea08a68f129aa"
+    },
+    {
+      "path": "dist/core/shared-skill-target.js",
+      "hash": "ea08ecc7f35dec80c8caeec2438d8995507353d12c7abdd7bba41015f83bfbd7"
+    },
+    {
+      "path": "dist/core/specs-apply.d.ts",
+      "hash": "a35ab6460fc41c2bf32d5a95da622989f935629b191bf15d2b44ed144432b98f"
+    },
+    {
+      "path": "dist/core/specs-apply.js",
+      "hash": "54eb0e80c13e569ca2bfe84ed5ff937545d925e629b372533129923827d4c3ff"
+    },
+    {
+      "path": "dist/core/store/errors.d.ts",
+      "hash": "7cc2640297ded0bfcaae7757fb4a54f48a21a1652b2c431c83b33e242e2ef216"
+    },
+    {
+      "path": "dist/core/store/errors.js",
+      "hash": "0d5c3dc17639f4eb7ff4777769cdb8e9df69519f5980272041474eb93444a55d"
+    },
+    {
+      "path": "dist/core/store/foundation.d.ts",
+      "hash": "1dc2f723ae124a650790ba02f88e43073a52b10f6fa09ced245d36ab5c1aee36"
+    },
+    {
+      "path": "dist/core/store/foundation.js",
+      "hash": "27c4d5919c32f291b04485c528c54b31e9d131cea20b088ce0109d3f0f89346f"
+    },
+    {
+      "path": "dist/core/store/git.d.ts",
+      "hash": "0a9f6da2cc8267649bbab64cce38555e57754d8fa6d33e6d8328524e410dedc9"
+    },
+    {
+      "path": "dist/core/store/git.js",
+      "hash": "0990eb0c48bf68bde557de2b21793f6fc32d5e1d5eda19f61cfd6ac5be39aa49"
+    },
+    {
+      "path": "dist/core/store/index.d.ts",
+      "hash": "b47fe5ab756f4eb26b0bdd9c1f4e088f2d99a66031731b6b0f4a2a2451a3f690"
+    },
+    {
+      "path": "dist/core/store/index.js",
+      "hash": "39ad3596b61a43f069d167bcf89a8ab9c9efdd36503819e0d7f207eeb320ef33"
+    },
+    {
+      "path": "dist/core/store/operations.d.ts",
+      "hash": "869e7218ddfe23598319d51cf8cbcda2215967b59dbbba9f0297848a09f31e18"
+    },
+    {
+      "path": "dist/core/store/operations.js",
+      "hash": "0f76cf7be405e67ebc592ecf775771ce70e9003456e8ef76c688ab817c48df7d"
+    },
+    {
+      "path": "dist/core/store/registry.d.ts",
+      "hash": "affc5350094937599d63b3e7f96eb4af6718b76f68f74588319f0ee5acb73857"
+    },
+    {
+      "path": "dist/core/store/registry.js",
+      "hash": "55fd214623a76c3b5f613ad2d4f8a07a2cf88fb8cbf1d6b20559da9589a59b8c"
+    },
+    {
+      "path": "dist/core/styles/palette.d.ts",
+      "hash": "4a41196cad60e874466a314491582b3c3a933853e803dbb7e05ed910923eee52"
+    },
+    {
+      "path": "dist/core/styles/palette.js",
+      "hash": "ce4a6ab2db11cfffb145fb4d95f0b03956b0013d479350666ae5fb5e0c65ccd3"
+    },
+    {
+      "path": "dist/core/templates/index.d.ts",
+      "hash": "8bf4284000d39de61836165a2de2edb887ecb60ac356e4248086c5ebd53f0978"
+    },
+    {
+      "path": "dist/core/templates/index.js",
+      "hash": "032cb44e410845f8e03f04b4bccfb0198fa95fad371ad36c9daad860c83126f4"
+    },
+    {
+      "path": "dist/core/templates/optional-workflow.d.ts",
+      "hash": "c31669fffa9070b828aff7bbd84d5fd3b2eb48bb6feaf7c29a69c3babb4a6ad1"
+    },
+    {
+      "path": "dist/core/templates/optional-workflow.js",
+      "hash": "cae0eceffdd97adeab0d6b9f4d3b08e89d64a3fa7e8f01862cd9bebac3b2a1ee"
+    },
+    {
+      "path": "dist/core/templates/skill-templates.d.ts",
+      "hash": "6d0611e0508e363ad1ee43c8a2c91a7b01d6b78ebf14c68356a91c70681b2591"
+    },
+    {
+      "path": "dist/core/templates/skill-templates.js",
+      "hash": "1189318c279cdf0bfd2e83848137cbebd196070a36707c0dfa5ca5dfd70b263d"
+    },
+    {
+      "path": "dist/core/templates/types.d.ts",
+      "hash": "536e5eacfac07015e1d603745e7435925cebdb89261245a1e9ad2e15f830a187"
+    },
+    {
+      "path": "dist/core/templates/types.js",
+      "hash": "a460685cf45d99223b787a15de37a9bfd9a94d3b6d485eb4d2b9000632adb03c"
+    },
+    {
+      "path": "dist/core/templates/workflows/apply-change.d.ts",
+      "hash": "9d46dc004fd975b581e81aef9c06e27de1bd1d96f420139caa797e9f2893e34c"
+    },
+    {
+      "path": "dist/core/templates/workflows/apply-change.js",
+      "hash": "889429a56e6f0efb310e8fdba977efccb3954a737369a8ff60398110efd39f30"
+    },
+    {
+      "path": "dist/core/templates/workflows/archive-change.d.ts",
+      "hash": "bdd1151c30c026a9726a941830793b9553f70751ecf49ae8285ecc77e15c9d06"
+    },
+    {
+      "path": "dist/core/templates/workflows/archive-change.js",
+      "hash": "eb8fe442efcdf8078e0a27b1db6467e48d824d7b82aee244e9cea127d7f0c920"
+    },
+    {
+      "path": "dist/core/templates/workflows/bulk-archive-change.d.ts",
+      "hash": "465e9a1eabfadd88b082235365b886d0b780500cb9cdb8fc9b2d63d5bbdf9b77"
+    },
+    {
+      "path": "dist/core/templates/workflows/bulk-archive-change.js",
+      "hash": "d1cae8d2daef00aaf8c83b55d0bdc9bd7f67aff6e9a4c127f74390453ebf10a0"
+    },
+    {
+      "path": "dist/core/templates/workflows/continue-change.d.ts",
+      "hash": "80995aa75da90e4880ffa5c0c756d99f8cfbb99eb8e556dbb2e5d446f4600b93"
+    },
+    {
+      "path": "dist/core/templates/workflows/continue-change.js",
+      "hash": "8e75d17edfae7a16deeacf9520cf46efccef3c2986dbfbf94c7e49f4a071a9df"
+    },
+    {
+      "path": "dist/core/templates/workflows/explore.d.ts",
+      "hash": "f2b3a27dc6ce00c032265d074abb3ff876020d850ffe0687977ad26e28a78ff7"
+    },
+    {
+      "path": "dist/core/templates/workflows/explore.js",
+      "hash": "498f743d5a2ed3a12e0f83cde5eaba4ade747e52c9b58c1062669d6a89fb7e63"
+    },
+    {
+      "path": "dist/core/templates/workflows/feedback.d.ts",
+      "hash": "0c2204be0d237b8838d9ceec27965c125a6665b37c4053dc8929b53e3f2853df"
+    },
+    {
+      "path": "dist/core/templates/workflows/feedback.js",
+      "hash": "65d9749076130465c02b93a1a7c759bffa9dbd82322159bd4fb9d78ceac98ad8"
+    },
+    {
+      "path": "dist/core/templates/workflows/ff-change.d.ts",
+      "hash": "1c5cbfb494d7df8059ae0a099f4cc4764f424dc1ec50b400447fbdb1e8477edb"
+    },
+    {
+      "path": "dist/core/templates/workflows/ff-change.js",
+      "hash": "573cf4ec0ac768950ab0890bcfa850028876d4e04fd70416fc9d32b9ba3f5c25"
+    },
+    {
+      "path": "dist/core/templates/workflows/new-change.d.ts",
+      "hash": "d5b52aaf9387469a5f8bb42982536560a823788751256cde55bf3695b25ce738"
+    },
+    {
+      "path": "dist/core/templates/workflows/new-change.js",
+      "hash": "1bd79706905d1feda61c822c4aa2a74f212abffd2a1cf98f114ea90395dfe297"
+    },
+    {
+      "path": "dist/core/templates/workflows/onboard.d.ts",
+      "hash": "2bf8aca4f667f1035d06a197a8efcc57ed4b9ec5421605dd8293add0438002c2"
+    },
+    {
+      "path": "dist/core/templates/workflows/onboard.js",
+      "hash": "39c9e6148473baa1a93f8ea82b1fca6c337f7e99429b3dc7f67f0f4b728d4ea8"
+    },
+    {
+      "path": "dist/core/templates/workflows/project-root.d.ts",
+      "hash": "36fe7d9684b8c798d390826809c58fe44681a2d2c8c5d6db866f2e0eb840b45c"
+    },
+    {
+      "path": "dist/core/templates/workflows/project-root.js",
+      "hash": "02acf82044d4583383bf944879a0446a823fa14f6eee6680a982acf5e513ebf7"
+    },
+    {
+      "path": "dist/core/templates/workflows/propose.d.ts",
+      "hash": "940d72764e7975852060190629f7efbf2f05f93c3ba08b6a1c6d7c23d9e8fadb"
+    },
+    {
+      "path": "dist/core/templates/workflows/propose.js",
+      "hash": "f98c4dde68bc4c5614fe821c281d067ce50006c7236460413358f3f8284dd4bc"
+    },
+    {
+      "path": "dist/core/templates/workflows/store-selection.d.ts",
+      "hash": "b7bb9c1759c4bc2de6f29c63b61b7294d230bf381eb4a9e31c841a5ca7d9b196"
+    },
+    {
+      "path": "dist/core/templates/workflows/store-selection.js",
+      "hash": "5ffe7021b0428287fcf805ac89afee8b6ba04ad3898c269c3878dfe8335b8f22"
+    },
+    {
+      "path": "dist/core/templates/workflows/sync-specs.d.ts",
+      "hash": "cd2676be416c5bc77d2f1dc0170116c8a7f8c2f87ade9b9bef7a5814b951bcaf"
+    },
+    {
+      "path": "dist/core/templates/workflows/sync-specs.js",
+      "hash": "ca4480746dd9e6af293caf69547fc3e38502b06ff8a8cdbfc2e180135ce2dafc"
+    },
+    {
+      "path": "dist/core/templates/workflows/update-change.d.ts",
+      "hash": "6f886939ff8c43b82b6b1083420e12ee309c4c1a66bcfaf06af614ff3ee3bb96"
+    },
+    {
+      "path": "dist/core/templates/workflows/update-change.js",
+      "hash": "86a26257f7386cfa27ef3ca8a0e7c56f58a2a0dd420f1367ef48613eac55fe97"
+    },
+    {
+      "path": "dist/core/templates/workflows/verify-change.d.ts",
+      "hash": "c5c0d1f27f44acb7a1679126deffdcb6b59d4a5e8985e7d31f458cf7770e65ff"
+    },
+    {
+      "path": "dist/core/templates/workflows/verify-change.js",
+      "hash": "6f44b6e191b62e894188e9617fe0121e3b9aa6b699175cc9c4b379660c34508d"
+    },
+    {
+      "path": "dist/core/update.d.ts",
+      "hash": "d43aeafb503fa3c5aaff7acde1fa9790803e8b81c40a2ac65fa90d4857447edb"
+    },
+    {
+      "path": "dist/core/update.js",
+      "hash": "dc2c7cb3939fecaf7b164b384b373585d3bf95da3c5ca8bf572992de457a0846"
+    },
+    {
+      "path": "dist/core/validation/constants.d.ts",
+      "hash": "de6267f902416b844b6fdb93d943f8e9426428d2989fc69fba02dc0409b53a0b"
+    },
+    {
+      "path": "dist/core/validation/constants.js",
+      "hash": "64ea007a9c43d628247355af815f9668c10e14bc51e3c9ca1a3c13c5c4df56f7"
+    },
+    {
+      "path": "dist/core/validation/purpose-placeholder.d.ts",
+      "hash": "0aea898401378bd3a5f128ef632d89949528222bbcbfd13d9eb883fa279fc12a"
+    },
+    {
+      "path": "dist/core/validation/purpose-placeholder.js",
+      "hash": "687e5301534324f9a35ce6b7251a041102cd6b3b8465ccf997f61c404b84d4db"
+    },
+    {
+      "path": "dist/core/validation/task-checkboxes.d.ts",
+      "hash": "1fa49fac4063b3233c1a96bbce59264271b4d3d69704d39771c88a36f456a938"
+    },
+    {
+      "path": "dist/core/validation/task-checkboxes.js",
+      "hash": "2080df98de8475843f1425c6e73f2d8c26492d107c0fe90f44cb31d7bfe046d8"
+    },
+    {
+      "path": "dist/core/validation/task-numbering.d.ts",
+      "hash": "505b19d62bca5a10768a6dcbfec4498d6a963439bbe432ec1066ebda06954d76"
+    },
+    {
+      "path": "dist/core/validation/task-numbering.js",
+      "hash": "4521ed49214ad201b56db08340a2fca91d83d4b04c4387fb4159f10463e2ebda"
+    },
+    {
+      "path": "dist/core/validation/types.d.ts",
+      "hash": "b5b3a3ab28d4ab8ba279ce36f4c22394193d8fefa299bfd76761cd326d0c28c1"
+    },
+    {
+      "path": "dist/core/validation/types.js",
+      "hash": "01ae2a5b120382f9a648ced7ee8507493a134f216d100fc61600c6c9738235d2"
+    },
+    {
+      "path": "dist/core/validation/validator.d.ts",
+      "hash": "367225f307608f76037c5f0334dc6f64f6662f2e8b1906bcde538e1ec433532c"
+    },
+    {
+      "path": "dist/core/validation/validator.js",
+      "hash": "18064ba318b17ccdb5ceddcb849fdfd8b7844367ce5fc800c1a9699c5261d8dc"
+    },
+    {
+      "path": "dist/core/version-check.d.ts",
+      "hash": "c7f26e2f0d29b5f339aaba12ae3c1c26ff4d4dbc3f112247265b1ebdf4b49cb3"
+    },
+    {
+      "path": "dist/core/version-check.js",
+      "hash": "06436569f4a46db25f8d9849fcce8576fd41bcd7750b8678309b33455be8b3f5"
+    },
+    {
+      "path": "dist/core/view.d.ts",
+      "hash": "e701b1eb32caeb71d12caf1660c34c3120fc44e5194d280362cd8b1c72059fac"
+    },
+    {
+      "path": "dist/core/view.js",
+      "hash": "79eee70605951c5d15fd7b8a4b03a73be9bc035b896adfe40fb4862950b1aded"
+    },
+    {
+      "path": "dist/core/working-set.d.ts",
+      "hash": "a21bf20740f6c768c65fd55ee2bea072563a756a4b58f38767ab102e21b7fc39"
+    },
+    {
+      "path": "dist/core/working-set.js",
+      "hash": "95be21c895581e658c1275f714dec2d2db798a9c055128850100c25e042d2825"
+    },
+    {
+      "path": "dist/core/worksets.d.ts",
+      "hash": "b0a8523359d11dcfe35859faa003c4b16e93371deb3bbcf3bea5e37f406d15bf"
+    },
+    {
+      "path": "dist/core/worksets.js",
+      "hash": "d8244d5f8fabf1685bf94a03a09a0e0a295132ec9b7f2ebdacf9a41c8d763f6c"
+    },
+    {
+      "path": "dist/core/zod-issues.d.ts",
+      "hash": "879d06d91d864761795b5fed55a09fab2e4fa55a9bb67bb65fd5c57c8233ea30"
+    },
+    {
+      "path": "dist/core/zod-issues.js",
+      "hash": "3dceb0a2bc811c72312fa5ddfac718bc513efe644a45a903eacb1051b8c437d4"
+    },
+    {
+      "path": "dist/index.d.ts",
+      "hash": "065874345ad074ecf3bd9c3537b5065c9fc89b1cebc4b5f53206f5e3cb1dcc57"
+    },
+    {
+      "path": "dist/index.js",
+      "hash": "f3c978b5cb9a11c01aa79e895d3c6697620e74870c7980fe04cdd8e7cae83174"
+    },
+    {
+      "path": "dist/prompts/searchable-multi-select.d.ts",
+      "hash": "8d30e36bfaff883982a8ae4da047c95dfce00f16756c04152bb17104a6665472"
+    },
+    {
+      "path": "dist/prompts/searchable-multi-select.js",
+      "hash": "3174de5a89d99e7957e923f9f9f0354c383fc29693ff65567c9286e92b15c3e5"
+    },
+    {
+      "path": "dist/telemetry/config.d.ts",
+      "hash": "6190832945c4bc41187f4e1c2f0c5ac5f9c8b51764906be0deef65d4569d4beb"
+    },
+    {
+      "path": "dist/telemetry/config.js",
+      "hash": "fc674af75e3870aedc65d54f3086a34c0043ea7c131924354bf6c6a81b916b1a"
+    },
+    {
+      "path": "dist/telemetry/index.d.ts",
+      "hash": "a7f6e639d143ffbde64eff022e3e13cb77e908236b338932177e9746fae0257d"
+    },
+    {
+      "path": "dist/telemetry/index.js",
+      "hash": "ab7d16cbd229e1c2affb632d2ad63c9a33440468b1a86c17a2859f298a771134"
+    },
+    {
+      "path": "dist/telemetry/opt-out.d.ts",
+      "hash": "54ade12e8795570ae35d66eaa495b1772e87980097e42092a8f5cab9c6a8f8dd"
+    },
+    {
+      "path": "dist/telemetry/opt-out.js",
+      "hash": "b4d38001fa142235431920a481d8559331246cf5dedd71692c89ee4d063fb577"
+    },
+    {
+      "path": "dist/ui/ascii-patterns.d.ts",
+      "hash": "2a11837431aab1eecd9d0a2f0e846bd11e10844262775b7b5eea376096460e2d"
+    },
+    {
+      "path": "dist/ui/ascii-patterns.js",
+      "hash": "ebd2c3d89f5b4a88e7b47bfa9db6628389c31140ac950c00a63ca35d9afe3457"
+    },
+    {
+      "path": "dist/ui/welcome-screen.d.ts",
+      "hash": "a841259eef6872a86298df57f1c9747c7410b51d1d7e026f9b8a33e70f77c81b"
+    },
+    {
+      "path": "dist/ui/welcome-screen.js",
+      "hash": "0aab0bc0f2d79ab6d84d562298e4e6e9c988e68c7b53a12f7efc85734fae9537"
+    },
+    {
+      "path": "dist/utils/change-metadata.d.ts",
+      "hash": "487f748ee27f918c5b6ff8e84d198831475925ecd05d06d03522e5972f8bc9ce"
+    },
+    {
+      "path": "dist/utils/change-metadata.js",
+      "hash": "267d1ab9e49ba76aaff6b9c5b427e60957f2bbcf778c03a15c7d9fb788a8149d"
+    },
+    {
+      "path": "dist/utils/change-utils.d.ts",
+      "hash": "30d26ba82f3ad74079320cf091b2197f5b7b727ba9ad9558268841c676fa4c1f"
+    },
+    {
+      "path": "dist/utils/change-utils.js",
+      "hash": "5328849607b6c4bc259f66b4e2976659879351104294a30b72edf0575ab6518b"
+    },
+    {
+      "path": "dist/utils/ci.d.ts",
+      "hash": "d830e57be74595270be079d0a7697c7a26ad4d3f09c67ec540db09365f235c72"
+    },
+    {
+      "path": "dist/utils/ci.js",
+      "hash": "de3093a422e6582fc0dcca5eb6789ec3b14ab60901d321429856d7df78b0d4e4"
+    },
+    {
+      "path": "dist/utils/command-references.d.ts",
+      "hash": "ef5e4d3d9e44f7f8121264379206955760d716ce52fe72ca64b59fe23f363bb1"
+    },
+    {
+      "path": "dist/utils/command-references.js",
+      "hash": "f4ce5fd9b9648546572fd2f4ea5317738a10b77cf3c5b1422482de9c6bf7e47a"
+    },
+    {
+      "path": "dist/utils/date.d.ts",
+      "hash": "2a2981cf57b211b5cced9e52ccd4248f3b49798ee85ddc5e58d8bdad184ded6c"
+    },
+    {
+      "path": "dist/utils/date.js",
+      "hash": "2e10ba09b6419d75f20aad5e311611b43d5fa789ff113cf517388e4b7c700b8b"
+    },
+    {
+      "path": "dist/utils/file-system.d.ts",
+      "hash": "4e6de486274105056ef3a4ce554fcf751d4ddc6ec4c6ffc4cdf7818b6142c9c7"
+    },
+    {
+      "path": "dist/utils/file-system.js",
+      "hash": "376c4174bcb3cbb74471bd7d3fa6b8162c87dc1a2ff96c7be4120a335b26e089"
+    },
+    {
+      "path": "dist/utils/index.d.ts",
+      "hash": "0fa96b8ba6a1888464011fcce2d6e2e3778a8dc97b487b3bccdd8fb1a2c0bf96"
+    },
+    {
+      "path": "dist/utils/index.js",
+      "hash": "23f41ad77d335556e865c94b6ab49d237919fed9eac6003133f8a487c01a0d5e"
+    },
+    {
+      "path": "dist/utils/interactive.d.ts",
+      "hash": "6be7108c07648819159b34cf191b119987aead7190cb6365b3ab561b02dfdbe3"
+    },
+    {
+      "path": "dist/utils/interactive.js",
+      "hash": "6731ebf609f4d0fc38d14eaef5153b8b7bced36c7777a6d7c7ad9b386f6f64fe"
+    },
+    {
+      "path": "dist/utils/item-discovery.d.ts",
+      "hash": "3178becfe64c006d5a9346b0e220873898719241a48fa6461f879ef9df6e5197"
+    },
+    {
+      "path": "dist/utils/item-discovery.js",
+      "hash": "ef440db722c52d4f58008312caf98c916c78ee1412814b629de21fd70a789306"
+    },
+    {
+      "path": "dist/utils/line-endings.d.ts",
+      "hash": "c58146a2ea9c24abe84d7e0ad23955bae7684499730f7541ea654ac2e9e60463"
+    },
+    {
+      "path": "dist/utils/line-endings.js",
+      "hash": "da4293ab58a3c2e4248e09eb50328a18e370e0d468beeacc005037b823e1e6d5"
+    },
+    {
+      "path": "dist/utils/match.d.ts",
+      "hash": "98af362123e504e72020aaa5db7a81c62fef768a17b447e3ee5a61363cf17e31"
+    },
+    {
+      "path": "dist/utils/match.js",
+      "hash": "d849bf476327185a9e6ba669cd88a11cda42a4d3f1955f73acfe7e24f0d4ded3"
+    },
+    {
+      "path": "dist/utils/nested-change.d.ts",
+      "hash": "40ca59b7508fd86401030d567108b5c07daf3a24029a6b6918f753944fe6c7f3"
+    },
+    {
+      "path": "dist/utils/nested-change.js",
+      "hash": "281b08028127cfd60939a7c3831e66483c0004f3b736611489a579a64a392659"
+    },
+    {
+      "path": "dist/utils/requirement-diff.d.ts",
+      "hash": "9a164525c7a2463bdc3d534ab6ab9a8e13122c42b80835a6b13527f78080850d"
+    },
+    {
+      "path": "dist/utils/requirement-diff.js",
+      "hash": "ce7f550af938b9045e7f3c7deab3330bc922fefd3a8bb1e34893623bc2a2798c"
+    },
+    {
+      "path": "dist/utils/shell-detection.d.ts",
+      "hash": "f95d6355eab6651f07e4d1950a95a2f3ac7c2bd677d00971dd8a7aa4592cc8c5"
+    },
+    {
+      "path": "dist/utils/shell-detection.js",
+      "hash": "1fef004716dcfc0c80088e4bca699ea489240233d82b006e36656dab19f78fff"
+    },
+    {
+      "path": "dist/utils/spec-discovery.d.ts",
+      "hash": "1671651b93710fb0d12aec06703803d2c43abf4893a0ef3d5e0abc166d5e1589"
+    },
+    {
+      "path": "dist/utils/spec-discovery.js",
+      "hash": "8b937e91b40a858ea16dbc6ebe94bd032427416851286ab13dcdbe15b534f003"
+    },
+    {
+      "path": "dist/utils/spec-path-containment.d.ts",
+      "hash": "957dc093cc8c8f3b71963dbe71f403834f55d5fa6832203033ce96d119b1d714"
+    },
+    {
+      "path": "dist/utils/spec-path-containment.js",
+      "hash": "c18ff7e1768950737327807f19be6b00b4aa70f16249df757b9e30235e4b96ec"
+    },
+    {
+      "path": "dist/utils/task-progress.d.ts",
+      "hash": "33d210c6b1201e45c31baa79644d40f40cdf6fe34e1d3725405648003746b284"
+    },
+    {
+      "path": "dist/utils/task-progress.js",
+      "hash": "dc679fb1fe47ba1430abd5f8c06a971af9f8b8aa916fbe0da2f16e67f53a6efc"
+    },
+    {
+      "path": "LICENSE",
+      "hash": "c3c7235bea1214ab62df643473975c2e8b8848f528901a976693f7d069713e64"
+    },
+    {
+      "path": "package.json",
+      "hash": "f1ec4479b28e107da8bf7a7963d01a0ebb664061cbc2e5fd9c3bca70f18814af"
+    },
+    {
+      "path": "README.md",
+      "hash": "3473779bcf99e0a463eaf7a5bbc02aec57fd34f013ce8c84272f27dd6135bf1c"
+    },
+    {
+      "path": "schemas/spec-driven/schema.yaml",
+      "hash": "b6f28f305ab7f33b061949251bba82c79de66c82424cfed60582327db3f888f2"
+    },
+    {
+      "path": "schemas/spec-driven/templates/design.md",
+      "hash": "6ccc87f5017fb190e69e8759dd4e20d5ac3320cc4dabf152708bf8f2aa5205f8"
+    },
+    {
+      "path": "schemas/spec-driven/templates/proposal.md",
+      "hash": "0dd70e35db5c696ba8ac3cc3a53e2d6561865c1e4e7d49db5a1eaa3e4a6ad86e"
+    },
+    {
+      "path": "schemas/spec-driven/templates/spec.md",
+      "hash": "1cccfb573f031c6352bed2a879b7035ff710bc909112fc23d10bdcfcdd8d4318"
+    },
+    {
+      "path": "schemas/spec-driven/templates/tasks.md",
+      "hash": "fa67d99fb4a93b12d702f89ea83e1838219d1cad1c90a4192c402278001cd30e"
+    }
+  ],
+  "resourceHash": "0a812545d00615244b51d1ac9cfd3f04527a91c421843a89824033064da24692",
+  "native": {
+    "environment": "Fresh explicit HOME/XDG, CI=1, telemetry off; trusted locked CLI only. This is an observed file inventory, not an OS sandbox or agent loading proof.",
+    "effects": [
+      {
+        "argv": [
+          "init",
+          "--tools",
+          "codex",
+          "--profile",
+          "core",
+          "--no-animation",
+          "--no-copilot-cloud"
+        ],
+        "changed": [
+          {
+            "path": "project/.agents/skills/.openspec-target",
+            "hash": "243b0dc9b847e66c440dca985e10fe0ce9e29c379b018ddd5747ba8948f84cc8"
+          },
+          {
+            "path": "project/.agents/skills/openspec-apply-change/SKILL.md",
+            "hash": "adc163db16c7ba8461e9c431a2f03e3d81853ed063aa04c58b01a789beb35127"
+          },
+          {
+            "path": "project/.agents/skills/openspec-archive-change/SKILL.md",
+            "hash": "3402bb3270f7a542f97f637495020316670ebca8e5adde1d719fb2aa58304147"
+          },
+          {
+            "path": "project/.agents/skills/openspec-explore/SKILL.md",
+            "hash": "bb9f7b5e24f0a611389fb2d159c04724a4f56f06a96b61158d505b583242fc92"
+          },
+          {
+            "path": "project/.agents/skills/openspec-propose/SKILL.md",
+            "hash": "69aca1758e23cf7afc200a569326140dd62b2a7199b1bcb51095accaf70c7b5b"
+          },
+          {
+            "path": "project/.agents/skills/openspec-sync-specs/SKILL.md",
+            "hash": "739def6ad75b3ec886a041e51aae618949d91aff9481ccb0df37fee5603aa65c"
+          },
+          {
+            "path": "project/.agents/skills/openspec-update-change/SKILL.md",
+            "hash": "e907bbcfabbbaf5fe3702f72b9fa2866e0da744032b50d95f231d25146451b9d"
+          },
+          {
+            "path": "project/openspec/changes/archive/.gitkeep",
+            "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "path": "project/openspec/config.yaml",
+            "hash": "f0082e9c22e8ce1d611c0f3b4d4915ce445e7ff2553cda6b713b6c25f390984c"
+          },
+          {
+            "path": "project/openspec/specs/.gitkeep",
+            "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "removed": []
+      },
+      {
+        "argv": [
+          "update"
+        ],
+        "changed": [
+          {
+            "path": "home/.config/openspec/config.json",
+            "hash": "c154b9eefaaa1dcfa40c85fa2174671c408212a30646e09a06458747bd2d7ba4"
+          }
+        ],
+        "removed": []
+      },
+      {
+        "argv": [
+          "update"
+        ],
+        "changed": [],
+        "removed": []
+      }
+    ],
+    "files": [
+      {
+        "path": "home/.config/openspec/config.json",
+        "hash": "c154b9eefaaa1dcfa40c85fa2174671c408212a30646e09a06458747bd2d7ba4"
+      },
+      {
+        "path": "project/.agents/skills/.openspec-target",
+        "hash": "243b0dc9b847e66c440dca985e10fe0ce9e29c379b018ddd5747ba8948f84cc8"
+      },
+      {
+        "path": "project/.agents/skills/openspec-apply-change/SKILL.md",
+        "hash": "adc163db16c7ba8461e9c431a2f03e3d81853ed063aa04c58b01a789beb35127"
+      },
+      {
+        "path": "project/.agents/skills/openspec-archive-change/SKILL.md",
+        "hash": "3402bb3270f7a542f97f637495020316670ebca8e5adde1d719fb2aa58304147"
+      },
+      {
+        "path": "project/.agents/skills/openspec-explore/SKILL.md",
+        "hash": "bb9f7b5e24f0a611389fb2d159c04724a4f56f06a96b61158d505b583242fc92"
+      },
+      {
+        "path": "project/.agents/skills/openspec-propose/SKILL.md",
+        "hash": "69aca1758e23cf7afc200a569326140dd62b2a7199b1bcb51095accaf70c7b5b"
+      },
+      {
+        "path": "project/.agents/skills/openspec-sync-specs/SKILL.md",
+        "hash": "739def6ad75b3ec886a041e51aae618949d91aff9481ccb0df37fee5603aa65c"
+      },
+      {
+        "path": "project/.agents/skills/openspec-update-change/SKILL.md",
+        "hash": "e907bbcfabbbaf5fe3702f72b9fa2866e0da744032b50d95f231d25146451b9d"
+      },
+      {
+        "path": "project/openspec/changes/archive/.gitkeep",
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "project/openspec/config.yaml",
+        "hash": "f0082e9c22e8ce1d611c0f3b4d4915ce445e7ff2553cda6b713b6c25f390984c"
+      },
+      {
+        "path": "project/openspec/specs/.gitkeep",
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  "bounded": {
+    "files": [
+      {
+        "path": "openspec/config.yaml",
+        "hash": "6bee6431eb5f082ec14e0ccc7c78e295c2a1b0cf8a2c023a135e9021a552a3c4",
+        "role": "config"
+      },
+      {
+        "path": "openspec/specs/.gitkeep",
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "role": "anchor"
+      },
+      {
+        "path": "openspec/changes/archive/.gitkeep",
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "role": "anchor"
+      },
+      {
+        "path": ".agents/skills/tibicen-openspec/SKILL.md",
+        "hash": "d1b76d78d7e29fcce416d8685a7f8c954541c6ec441e66b91eb0094e5c0e5f79",
+        "role": "instructions"
+      }
+    ],
+    "commands": [],
+    "note": "Tibicen compiles four reviewed files, does not call native init/update and does not install the CLI. Existing config/templates/changes are preserved."
+  }
+}

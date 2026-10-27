@@ -1,0 +1,28 @@
+diff --git a/dist/chunk-JWOHPTG5.js b/dist/chunk-JWOHPTG5.js
+index a2c00ada60d27f0bb4d30add28dcfe21f6534d60..5fa1377fa8fbf94eab7cc4fbb2557cb4184a8ca2 100644
+--- a/dist/chunk-JWOHPTG5.js
++++ b/dist/chunk-JWOHPTG5.js
+@@ -515,15 +515,6 @@ var SelectController = class {
+   bindPortalEvents() {
+     const popup = this.elements.popup;
+     const signal = this.portalSurfaceAbortController?.signal ?? this.abortController.signal;
+-    popup.addEventListener(
+-      "pointerdown",
+-      (event) => {
+-        if (this.openState && event.pointerType === "touch") {
+-          event.preventDefault();
+-        }
+-      },
+-      { signal }
+-    );
+     popup.addEventListener(
+       "click",
+       (event) => {
+@@ -1283,6 +1274,7 @@ var SelectController = class {
+   }
+   focusItem(index, direction = 1) {
+     this.ownedList.highlightIndex(index, { direction, focus: true });
++    this.getItems()[this.activeIndex]?.scrollIntoView({ block: "nearest", inline: "nearest" });
+   }
+   highlightItemByElement(item, options) {
+     if (this.ownedList.highlightItem(item, options)) return;

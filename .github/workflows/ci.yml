@@ -1,0 +1,52 @@
+name: Offline checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24.15.0
+          package-manager-cache: false
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          version: 11.21.0
+          run_install: false
+
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run full offline gate
+        run: pnpm test
+
+      - name: Build standalone skills
+        run: pnpm build
+
+      - name: Check unpacked distribution outside the checkout
+        shell: bash
+        run: |
+          tibicen_node="$(command -v node)"
+          tibicen_smoke_dir="$(mktemp -d)"
+          trap 'rm -rf "$tibicen_smoke_dir"' EXIT
+          tar -C dist -cf - tibicen-init tibicen-adopt SHA256SUMS | tar -C "$tibicen_smoke_dir" -xf -
+          cd "$tibicen_smoke_dir"
+          shasum -a 256 -c SHA256SUMS
+          PATH='' "$tibicen_node" tibicen-init/scripts/tibicen.ts self-test
+          PATH='' "$tibicen_node" tibicen-adopt/scripts/tibicen.ts self-test

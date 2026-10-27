@@ -1,0 +1,12 @@
+/.zcodeignore
+.DS_Store
+/dist/
+/node_modules/
+
+/landing/dist/
+/landing/.astro/
+/landing/node_modules/
+/test-results/
+/playwright-report/
+/.evals-private/
+/.scratch/

@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "method": "Native command reads selected by original observed instruction-loading events; sanitized project/home paths; no self-reports.",
+  "evidence": [
+    {
+      "attemptId": "bare-tibicen",
+      "stage": "setup",
+      "phase": "apply",
+      "eventSeq": 6,
+      "path": "AGENTS.md",
+      "contentHash": "8be46b27dbf7b9ce2627df22f5c96fc94b396e694566de3dd74cc6aa3f9ce26e",
+      "toolUseId": "item_21",
+      "exitCode": 0,
+      "sanitizedCommand": "/bin/zsh -c \"rg --files --hidden -g '\"'!node_modules'\"' | sort; stat -f '%N %Lp' AGENTS.md .tibicen/manifest.yml .tibicen/state/session.json; shasum -a 256 AGENTS.md; cat AGENTS.md\"",
+      "sanitizedOutput": ".github/workflows/ci.yml\n.tibicen/manifest.yml\nAGENTS.md\ndocs/team-note.md\npackage.json\nsrc/math.js\ntests/math.test.js\nAGENTS.md 600\n.tibicen/manifest.yml 600\nstat: .tibicen/state/session.json: stat: No such file or directory\ndyld[84214]: Library not loaded: /System/Library/Perl/5.34/darwin-thread-multi-2level/CORE/libperl.dylib\n  Referenced from: <9A519284-8B63-34CE-AACF-A51735B7EE2B> /usr/bin/perl\n  Reason: tried: '/System/Library/Perl/5.34/darwin-thread-multi-2level/CORE/libperl.dylib' (blocked by sandbox), not in dyld cache\n# Project instructions\n\n- This is a small Node.js ES module project. Read `package.json`, `docs/team-note.md`, and the relevant source and tests before changing behavior.\n- Preserve the named `double` export in `src/math.js`: an existing consumer uses it.\n- Keep application behavior, dependencies, and `.github/workflows/ci.yml` intact unless the task requires a change. Keep changes focused.\n- For code changes, run `node --test` when execution is permitted and report the result or why it was not run.\n"
+    },
+    {
+      "attemptId": "bare-tibicen",
+      "stage": "task",
+      "phase": "proposal",
+      "eventSeq": 12,
+      "path": "AGENTS.md",
+      "contentHash": "8be46b27dbf7b9ce2627df22f5c96fc94b396e694566de3dd74cc6aa3f9ce26e",
+      "toolUseId": "item_2",
+      "exitCode": 0,
+      "sanitizedCommand": "/bin/zsh -c 'cat AGENTS.md'",
+      "sanitizedOutput": "# Project instructions\n\n- This is a small Node.js ES module project. Read `package.json`, `docs/team-note.md`, and the relevant source and tests before changing behavior.\n- Preserve the named `double` export in `src/math.js`: an existing consumer uses it.\n- Keep application behavior, dependencies, and `.github/workflows/ci.yml` intact unless the task requires a change. Keep changes focused.\n- For code changes, run `node --test` when execution is permitted and report the result or why it was not run.\n"
+    },
+    {
+      "attemptId": "bare-tibicen",
+      "stage": "task",
+      "phase": "apply",
+      "eventSeq": 15,
+      "path": "AGENTS.md",
+      "contentHash": "8be46b27dbf7b9ce2627df22f5c96fc94b396e694566de3dd74cc6aa3f9ce26e",
+      "toolUseId": "item_4",
+      "exitCode": 0,
+      "sanitizedCommand": "/bin/zsh -c 'cat AGENTS.md'",
+      "sanitizedOutput": "# Project instructions\n\n- This is a small Node.js ES module project. Read `package.json`, `docs/team-note.md`, and the relevant source and tests before changing behavior.\n- Preserve the named `double` export in `src/math.js`: an existing consumer uses it.\n- Keep application behavior, dependencies, and `.github/workflows/ci.yml` intact unless the task requires a change. Keep changes focused.\n- For code changes, run `node --test` when execution is permitted and report the result or why it was not run.\n"
+    },
+    {
+      "attemptId": "bare-baseline",
+      "stage": "task",
+      "phase": "proposal",
+      "eventSeq": 9,
+      "path": "AGENTS.md",
+      "contentHash": "8fef4c80d125244d92572f3b3594f08344e812c8e5fcebccfc0ef77ec5307c3f",
+      "toolUseId": "item_2",
+      "exitCode": 0,
+      "sanitizedCommand": "/bin/zsh -c 'cat AGENTS.md'",
+      "sanitizedOutput": "# Правила для агента\n\n- Это небольшой JavaScript-проект с ES-модулями. Исходный код находится в `src/`, тесты — в `tests/`.\n- Сохраняй экспорт `double` из `src/math.js`: его использует существующий потребитель (см. `docs/team-note.md`).\n- Не меняй приложение, зависимости в `package.json` и `.github/workflows/ci.yml` без явного требования задачи.\n- При изменении кода проверяй результат командой `node --test`. CI выполняет эту же команду на Node.js 22.\n"
+    },
+    {
+      "attemptId": "conflicts-baseline",
+      "stage": "setup",
+      "phase": "apply",
+      "eventSeq": 5,
+      "path": "AGENTS.md",
+      "contentHash": "7ef9a67aa046c56025997e2a15ef7a50224f764cea380f5060bf1daf7a3b9094",
+      "toolUseId": "item_8",
+      "exitCode": 0,
+      "sanitizedCommand": "/bin/zsh -c 'cat AGENTS.md'",
+      "sanitizedOutput": "# Project instructions\n\n- Run `node --test` after changes.\n- Preserve the public `double` export and its existing consumer contract.\n- Preserve the application, dependencies, CI workflow, and `docs/team-note.md`.\n- Obtain owner review before infrastructure changes.\n"
+    },
+    {
+      "attemptId": "conflicts-baseline",
+      "stage": "task",
+      "phase": "proposal",
+      "eventSeq": 12,
+      "path": "AGENTS.md",
+      "contentHash": "7ef9a67aa046c56025997e2a15ef7a50224f764cea380f5060bf1daf7a3b9094",
+      "toolUseId": "item_2",
+      "exitCode": 0,
+      "sanitizedCommand": "/bin/zsh -c 'cat AGENTS.md'",
+      "sanitizedOutput": "# Project instructions\n\n- Run `node --test` after changes.\n- Preserve the public `double` export and its existing consumer contract.\n- Preserve the application, dependencies, CI workflow, and `docs/team-note.md`.\n- Obtain owner review before infrastructure changes.\n"
+    },
+    {
+      "attemptId": "conflicts-tibicen",
+      "stage": "setup",
+      "phase": "proposal",
+      "eventSeq": 3,
+      "path": "AGENTS.md",
+      "contentHash": "eb3848b8f90cf88429c0bb52e61c782470135662ba5a790c80bfd56310ab7c4a",
+      "toolUseId": "item_8",
+      "exitCode": 0,
+      "sanitizedCommand": "/bin/zsh -c 'cat AGENTS.md .agents/skills/project-workflow/SKILL.md package.json src/math.js tests/math.test.js docs/team-note.md .github/workflows/ci.yml'",
+      "sanitizedOutput": "# Project instructions\n\nRun node --test. Preserve the double export and CI.\nOwner review is required before infrastructure changes.\nRun node --test.\n---\nname: project-workflow\ndescription: Project workflow for changes in this repository.\n---\n\nRun yarn check after changes; this older rule predates the current scripts.\nPreserve the team note and the public double export.\n{\"name\":\"diagnostic-fixture\",\"private\":true,\"type\":\"module\",\"scripts\":{\"test\":\"node --test\"}}\nexport const double = value => value * 2;\nimport test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { double } from '../src/math.js';\ntest('double', () => assert.equal(double(3), 6));\n# Team note\n\nThe double export is used by an existing consumer. Preserve it.\nname: test\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: {node-version: 22}\n      - run: node --test\n"
+    },
+    {
+      "attemptId": "conflicts-tibicen",
+      "stage": "setup",
+      "phase": "apply",
+      "eventSeq": 6,
+      "path": "AGENTS.md",
+      "contentHash": "f056ff70eef8b65498fdafb82f7bc8623bc0effd168f203f45bd5f0d92710115",
+      "toolUseId": "item_7",
+      "exitCode": 0,
+      "sanitizedCommand": "/bin/zsh -c 'cat AGENTS.md'",
+      "sanitizedOutput": "# Project instructions\n\nRun `node --test` after changes.\nPreserve the public `double` export in `src/math.js`, the CI workflow in `.github/workflows/ci.yml`, and `docs/team-note.md`.\nOwner review is required before infrastructure changes.\n"
+    },
+    {
+      "attemptId": "conflicts-tibicen",
+      "stage": "task",
+      "phase": "proposal",
+      "eventSeq": 13,
+      "path": "AGENTS.md",
+      "contentHash": "f056ff70eef8b65498fdafb82f7bc8623bc0effd168f203f45bd5f0d92710115",
+      "toolUseId": "item_1",
+      "exitCode": 0,
+      "sanitizedCommand": "/bin/zsh -c \"if [ -f AGENTS.md ]; then cat AGENTS.md; else echo 'AGENTS.md absent'; fi\"",
+      "sanitizedOutput": "# Project instructions\n\nRun `node --test` after changes.\nPreserve the public `double` export in `src/math.js`, the CI workflow in `.github/workflows/ci.yml`, and `docs/team-note.md`.\nOwner review is required before infrastructure changes.\n"
+    }
+  ]
+}

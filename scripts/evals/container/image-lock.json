@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "platform": "linux/arm64",
+  "base": {
+    "reference": "docker.io/library/node:24.15.0-bookworm-slim@sha256:682f301a9e8e5731d4bb1889182a2186fe65a312cc81ae86cea6038ef8b1603f",
+    "indexDigest": "sha256:4e6b70dd6cbfc88c8157ba19aa3d9f9cce6ba4703576d55459e45efcbc9c5f5d",
+    "nodeVersion": "24.15.0"
+  },
+  "packages": [
+    {
+      "name": "@openai/codex",
+      "version": "0.157.0-linux-arm64",
+      "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.157.0-linux-arm64.tgz",
+      "integrity": "sha512-67Y2HL4s+DEKtWr1oFz86iN+wLDRsdm6fuq8rhaxlt8QeIK79aO7Eg82Wfucou4QSisq/SSWYkwa9q7hWi8fLA==",
+      "sha256": "e94d36849541bb0e07aacbbf3edc99af7eba22ff813e6878eabd3e4c328309eb",
+      "directory": "/opt/codex"
+    },
+    {
+      "name": "pnpm",
+      "version": "11.21.0",
+      "url": "https://registry.npmjs.org/pnpm/-/pnpm-11.21.0.tgz",
+      "integrity": "sha512-UhcFvOaJkk6scvWjWHEi82JonvZXHlW6gAdv1jfBETLs/62ib61Op5xIW/3b/T1aKlsFgFp36JPeceyKbMo7sQ==",
+      "sha256": "87237d37eadb79dc626a0576eb3a52d23d70422c323ae5e00fc05c91f4323780",
+      "directory": "/opt/pnpm"
+    }
+  ],
+  "executor": {
+    "program": "/usr/local/bin/codex",
+    "args": ["exec-server", "--listen", "stdio://"],
+    "uid": 1000,
+    "gid": 1000,
+    "maxLifetimeMs": 180000
+  }
+}

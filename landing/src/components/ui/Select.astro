@@ -1,0 +1,75 @@
+---
+import { Select } from '@starwind-ui/astro/select';
+
+interface Props {
+  id: string;
+  name?: string;
+  label: string;
+  value: string;
+  options: { value: string; label: string }[];
+  describedBy?: string;
+}
+
+const { id, name, label, value, options, describedBy } = Astro.props;
+---
+
+<Select.Root
+  id={`${id}-select`}
+  name={name}
+  defaultValue={value}
+  class="ui-select"
+  modal={false}
+>
+  <Select.Label class="sr-only">{label}</Select.Label>
+  <Select.Trigger
+    id={id}
+    class="ui-select-trigger"
+    aria-label={label}
+    aria-describedby={describedBy}
+  >
+    <Select.Value
+      placeholder={options.find((option) => option.value === '')?.label}
+    >
+      {options.find((option) => option.value === value)?.label}
+    </Select.Value>
+    <Select.Icon class="ui-select-icon">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path
+          d="m6 8 4 4 4-4"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </Select.Icon>
+  </Select.Trigger>
+  <Select.Portal>
+    <Select.Positioner
+      class="ui-select-positioner"
+      alignItemWithTrigger={false}
+      sideOffset={8}
+    >
+      <Select.Popup class="ui-select-popup" aria-label={label}>
+        <Select.List class="ui-select-list">
+          {options.map((option) => (
+            <Select.Item value={option.value} class="ui-select-item">
+              <Select.ItemText>{option.label}</Select.ItemText>
+              <Select.ItemIndicator class="ui-select-indicator">
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path
+                    d="m5 10 3.5 3.5L15 7"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </Select.ItemIndicator>
+            </Select.Item>
+          ))}
+        </Select.List>
+      </Select.Popup>
+    </Select.Positioner>
+  </Select.Portal>
+</Select.Root>

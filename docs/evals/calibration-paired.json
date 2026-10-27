@@ -1,0 +1,1419 @@
+{
+  "schema": 1,
+  "meaning": "experimental-comparison",
+  "cohorts": [
+    {
+      "id": "004c65949cefa7537440775f0367b96c359a2444f0e5cb7a37c7d2d4ae767c32",
+      "experimentHash": "6f245c60827aecf886c742f302fbf3e5e8986cae73adf086f76ffa3be873237c",
+      "scenarioHash": "fe55fd812d204197564add02b9b683e84b74b43632a3c78eaf855cbfcf606160",
+      "profileHash": "d0afd2010f640322fc9cfa3ad92a4091901197bf1c9af8094085e7fb0bdfabb9",
+      "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+      "plan": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "mode": "calibration",
+      "experimentId": "paired-control",
+      "sourceSha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "conditionsHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "limits": {
+        "launchMs": 1000,
+        "setupMs": 1000,
+        "taskMs": 1000,
+        "maxCostUsd": null
+      },
+      "scenarioId": "control",
+      "profile": {
+        "id": "stub",
+        "agent": "recorded-executor",
+        "version": "1",
+        "model": "none",
+        "auth": "none",
+        "paid": false,
+        "startupHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "permissionsHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "variants": {
+        "tibicen": {
+          "planned": 3,
+          "recorded": 3,
+          "missing": 0,
+          "observed": {
+            "schema": 1,
+            "total": 3,
+            "started": 3,
+            "notStarted": {
+              "error": 0,
+              "skip": 0
+            },
+            "outcomes": {
+              "launch": {
+                "pass": 3,
+                "error": 0,
+                "skip": 0
+              },
+              "setup": {
+                "pass": 2,
+                "fail": 0,
+                "error": 1,
+                "skip": 0
+              },
+              "task": {
+                "pass": 2,
+                "fail": 0,
+                "error": 0,
+                "skip": 1
+              }
+            },
+            "setupSuccess": {
+              "numerator": 2,
+              "denominator": 3,
+              "rate": 0.6666666666666666
+            },
+            "taskSuccessGivenSetup": {
+              "numerator": 2,
+              "denominator": 2,
+              "rate": 1
+            },
+            "endToEndSuccess": {
+              "numerator": 2,
+              "denominator": 3,
+              "rate": 0.6666666666666666
+            }
+          },
+          "evaluated": {
+            "schema": 1,
+            "total": 3,
+            "started": 3,
+            "notStarted": {
+              "error": 0,
+              "skip": 0
+            },
+            "outcomes": {
+              "launch": {
+                "pass": 3,
+                "error": 0,
+                "skip": 0
+              },
+              "setup": {
+                "pass": 1,
+                "fail": 1,
+                "error": 1,
+                "skip": 0
+              },
+              "task": {
+                "pass": 1,
+                "fail": 0,
+                "error": 0,
+                "skip": 2
+              }
+            },
+            "setupSuccess": {
+              "numerator": 1,
+              "denominator": 3,
+              "rate": 0.3333333333333333
+            },
+            "taskSuccessGivenSetup": {
+              "numerator": 1,
+              "denominator": 1,
+              "rate": 1
+            },
+            "endToEndSuccess": {
+              "numerator": 1,
+              "denominator": 3,
+              "rate": 0.3333333333333333
+            }
+          },
+          "costUsd": {
+            "knownSubtotal": 0,
+            "knownCount": 0,
+            "unknownCount": 3,
+            "notExecutedCount": 0,
+            "total": null
+          },
+          "durationMs": {
+            "launch": {
+              "knownSubtotal": 30,
+              "knownCount": 3,
+              "unknownCount": 0,
+              "notExecutedCount": 0,
+              "total": 30
+            },
+            "setup": {
+              "knownSubtotal": 50,
+              "knownCount": 3,
+              "unknownCount": 0,
+              "notExecutedCount": 0,
+              "total": 50
+            },
+            "task": {
+              "knownSubtotal": 60,
+              "knownCount": 2,
+              "unknownCount": 0,
+              "notExecutedCount": 1,
+              "total": 60
+            }
+          }
+        },
+        "baseline": {
+          "planned": 3,
+          "recorded": 2,
+          "missing": 1,
+          "observed": {
+            "schema": 1,
+            "total": 2,
+            "started": 1,
+            "notStarted": {
+              "error": 1,
+              "skip": 0
+            },
+            "outcomes": {
+              "launch": {
+                "pass": 1,
+                "error": 1,
+                "skip": 0
+              },
+              "setup": {
+                "pass": 1,
+                "fail": 0,
+                "error": 0,
+                "skip": 1
+              },
+              "task": {
+                "pass": 1,
+                "fail": 0,
+                "error": 0,
+                "skip": 1
+              }
+            },
+            "setupSuccess": {
+              "numerator": 1,
+              "denominator": 1,
+              "rate": 1
+            },
+            "taskSuccessGivenSetup": {
+              "numerator": 1,
+              "denominator": 1,
+              "rate": 1
+            },
+            "endToEndSuccess": {
+              "numerator": 1,
+              "denominator": 1,
+              "rate": 1
+            }
+          },
+          "evaluated": {
+            "schema": 1,
+            "total": 2,
+            "started": 1,
+            "notStarted": {
+              "error": 1,
+              "skip": 0
+            },
+            "outcomes": {
+              "launch": {
+                "pass": 1,
+                "error": 1,
+                "skip": 0
+              },
+              "setup": {
+                "pass": 1,
+                "fail": 0,
+                "error": 0,
+                "skip": 1
+              },
+              "task": {
+                "pass": 1,
+                "fail": 0,
+                "error": 0,
+                "skip": 1
+              }
+            },
+            "setupSuccess": {
+              "numerator": 1,
+              "denominator": 1,
+              "rate": 1
+            },
+            "taskSuccessGivenSetup": {
+              "numerator": 1,
+              "denominator": 1,
+              "rate": 1
+            },
+            "endToEndSuccess": {
+              "numerator": 1,
+              "denominator": 1,
+              "rate": 1
+            }
+          },
+          "costUsd": {
+            "knownSubtotal": 0,
+            "knownCount": 1,
+            "unknownCount": 2,
+            "notExecutedCount": 0,
+            "total": null
+          },
+          "durationMs": {
+            "launch": {
+              "knownSubtotal": 13,
+              "knownCount": 2,
+              "unknownCount": 1,
+              "notExecutedCount": 0,
+              "total": null
+            },
+            "setup": {
+              "knownSubtotal": 20,
+              "knownCount": 1,
+              "unknownCount": 1,
+              "notExecutedCount": 1,
+              "total": null
+            },
+            "task": {
+              "knownSubtotal": 30,
+              "knownCount": 1,
+              "unknownCount": 1,
+              "notExecutedCount": 1,
+              "total": null
+            }
+          }
+        }
+      },
+      "pairs": [
+        {
+          "repeat": 1,
+          "tibicen": {
+            "id": "paired-control-tibicen-1",
+            "record": {
+              "id": "paired-control-tibicen-1",
+              "observed": {
+                "schema": 1,
+                "id": "paired-control-tibicen-1",
+                "scenarioId": "control",
+                "profileId": "stub",
+                "variant": "tibicen",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 10
+                },
+                "setup": {
+                  "status": "pass",
+                  "durationMs": 20
+                },
+                "task": {
+                  "status": "pass",
+                  "durationMs": 30
+                }
+              },
+              "evaluated": {
+                "schema": 1,
+                "id": "paired-control-tibicen-1",
+                "scenarioId": "control",
+                "profileId": "stub",
+                "variant": "tibicen",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 10
+                },
+                "setup": {
+                  "status": "fail",
+                  "durationMs": 20,
+                  "reason": "independent-check-failed"
+                },
+                "task": {
+                  "status": "skip",
+                  "durationMs": 0,
+                  "reason": "evaluated-setup-not-passed"
+                }
+              },
+              "observedGrades": [
+                {
+                  "schema": 1,
+                  "id": "setup-invariants",
+                  "attemptId": "paired-control-tibicen-1",
+                  "stage": "setup",
+                  "scope": "invariants",
+                  "verdict": "fail",
+                  "reason": "recorded-write-before-approval",
+                  "evidence": [
+                    2
+                  ]
+                },
+                {
+                  "schema": 1,
+                  "id": "task-invariants",
+                  "attemptId": "paired-control-tibicen-1",
+                  "stage": "task",
+                  "scope": "invariants",
+                  "verdict": "pass",
+                  "reason": "recorded-preserved",
+                  "evidence": [
+                    4
+                  ]
+                },
+                {
+                  "schema": 1,
+                  "id": "task-result",
+                  "attemptId": "paired-control-tibicen-1",
+                  "stage": "task",
+                  "scope": "task",
+                  "verdict": "pass",
+                  "reason": "recorded-task",
+                  "evidence": [
+                    4
+                  ]
+                }
+              ],
+              "quality": {
+                "schema": 1,
+                "bindingHash": "fc2fea7baeef84502b11e89f311f94ed88fc14ba282d5dff8c116e1eb19545b1",
+                "packetHash": "9be9ed2b3b4c658e864eaf5e1e1f8f89c1bbb259d1552ed326873cf6b2a57ba2",
+                "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+                "plan": {
+                  "setup": [
+                    "grounding",
+                    "fit",
+                    "sufficiency",
+                    "consistency"
+                  ],
+                  "task": [
+                    "application"
+                  ]
+                },
+                "mode": "calibration",
+                "judge": {
+                  "id": "recorded-assessor",
+                  "kind": "recorded",
+                  "version": "control-1",
+                  "bindingHash": "fc2fea7baeef84502b11e89f311f94ed88fc14ba282d5dff8c116e1eb19545b1",
+                  "packetHash": "9be9ed2b3b4c658e864eaf5e1e1f8f89c1bbb259d1552ed326873cf6b2a57ba2",
+                  "judgements": [
+                    {
+                      "stage": "setup",
+                      "criterion": "grounding",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "fit",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "sufficiency",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "consistency",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "task",
+                      "criterion": "application",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "action"
+                      ]
+                    }
+                  ]
+                },
+                "human": {
+                  "id": "reference-assessor",
+                  "kind": "reference",
+                  "version": "control-1",
+                  "bindingHash": "fc2fea7baeef84502b11e89f311f94ed88fc14ba282d5dff8c116e1eb19545b1",
+                  "packetHash": "9be9ed2b3b4c658e864eaf5e1e1f8f89c1bbb259d1552ed326873cf6b2a57ba2",
+                  "judgements": [
+                    {
+                      "stage": "setup",
+                      "criterion": "grounding",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "fit",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "sufficiency",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "consistency",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "task",
+                      "criterion": "application",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "action"
+                      ]
+                    }
+                  ]
+                },
+                "humanRequired": true,
+                "disagreements": [],
+                "grades": [
+                  {
+                    "schema": 1,
+                    "id": "quality-setup-grounding",
+                    "attemptId": "paired-control-tibicen-1",
+                    "stage": "setup",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      2
+                    ]
+                  },
+                  {
+                    "schema": 1,
+                    "id": "quality-setup-fit",
+                    "attemptId": "paired-control-tibicen-1",
+                    "stage": "setup",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      2
+                    ]
+                  },
+                  {
+                    "schema": 1,
+                    "id": "quality-setup-sufficiency",
+                    "attemptId": "paired-control-tibicen-1",
+                    "stage": "setup",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      2
+                    ]
+                  },
+                  {
+                    "schema": 1,
+                    "id": "quality-setup-consistency",
+                    "attemptId": "paired-control-tibicen-1",
+                    "stage": "setup",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      2
+                    ]
+                  },
+                  {
+                    "schema": 1,
+                    "id": "quality-task-application",
+                    "attemptId": "paired-control-tibicen-1",
+                    "stage": "task",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      4
+                    ]
+                  }
+                ]
+              },
+              "measurements": {
+                "durationMs": {
+                  "launch": 10,
+                  "setup": 20,
+                  "task": 30
+                },
+                "usage": {
+                  "launch": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "setup": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "task": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  }
+                },
+                "costUsd": null
+              }
+            }
+          },
+          "baseline": {
+            "id": "paired-control-baseline-1",
+            "record": {
+              "id": "paired-control-baseline-1",
+              "observed": {
+                "schema": 1,
+                "id": "paired-control-baseline-1",
+                "scenarioId": "control",
+                "profileId": "stub",
+                "variant": "baseline",
+                "started": false,
+                "launch": {
+                  "status": "error",
+                  "durationMs": 3,
+                  "reason": "recorded-auth-error"
+                },
+                "setup": {
+                  "status": "skip",
+                  "durationMs": 0,
+                  "reason": "not-reached"
+                },
+                "task": {
+                  "status": "skip",
+                  "durationMs": 0,
+                  "reason": "not-reached"
+                }
+              },
+              "evaluated": {
+                "schema": 1,
+                "id": "paired-control-baseline-1",
+                "scenarioId": "control",
+                "profileId": "stub",
+                "variant": "baseline",
+                "started": false,
+                "launch": {
+                  "status": "error",
+                  "durationMs": 3,
+                  "reason": "recorded-auth-error"
+                },
+                "setup": {
+                  "status": "skip",
+                  "durationMs": 0,
+                  "reason": "not-reached"
+                },
+                "task": {
+                  "status": "skip",
+                  "durationMs": 0,
+                  "reason": "evaluated-setup-not-passed"
+                }
+              },
+              "observedGrades": [],
+              "quality": null,
+              "measurements": {
+                "durationMs": {
+                  "launch": 3,
+                  "setup": null,
+                  "task": null
+                },
+                "usage": {
+                  "launch": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "setup": null,
+                  "task": null
+                },
+                "costUsd": null
+              }
+            }
+          },
+          "complete": true,
+          "delta": {
+            "setupMs": null,
+            "taskMs": null,
+            "costUsd": null
+          }
+        },
+        {
+          "repeat": 2,
+          "tibicen": {
+            "id": "paired-control-tibicen-2",
+            "record": {
+              "id": "paired-control-tibicen-2",
+              "observed": {
+                "schema": 1,
+                "id": "paired-control-tibicen-2",
+                "scenarioId": "control",
+                "profileId": "stub",
+                "variant": "tibicen",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 10
+                },
+                "setup": {
+                  "status": "error",
+                  "durationMs": 10,
+                  "reason": "recorded-timeout"
+                },
+                "task": {
+                  "status": "skip",
+                  "durationMs": 0,
+                  "reason": "not-reached"
+                }
+              },
+              "evaluated": {
+                "schema": 1,
+                "id": "paired-control-tibicen-2",
+                "scenarioId": "control",
+                "profileId": "stub",
+                "variant": "tibicen",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 10
+                },
+                "setup": {
+                  "status": "error",
+                  "durationMs": 10,
+                  "reason": "recorded-timeout"
+                },
+                "task": {
+                  "status": "skip",
+                  "durationMs": 0,
+                  "reason": "evaluated-setup-not-passed"
+                }
+              },
+              "observedGrades": [
+                {
+                  "schema": 1,
+                  "id": "setup-invariants",
+                  "attemptId": "paired-control-tibicen-2",
+                  "stage": "setup",
+                  "scope": "invariants",
+                  "verdict": "pass",
+                  "reason": "recorded-preserved",
+                  "evidence": [
+                    2
+                  ]
+                }
+              ],
+              "quality": null,
+              "measurements": {
+                "durationMs": {
+                  "launch": 10,
+                  "setup": 10,
+                  "task": null
+                },
+                "usage": {
+                  "launch": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "setup": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "task": null
+                },
+                "costUsd": null
+              }
+            }
+          },
+          "baseline": {
+            "id": "paired-control-baseline-2",
+            "record": {
+              "id": "paired-control-baseline-2",
+              "observed": {
+                "schema": 1,
+                "id": "paired-control-baseline-2",
+                "scenarioId": "control",
+                "profileId": "stub",
+                "variant": "baseline",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 10
+                },
+                "setup": {
+                  "status": "pass",
+                  "durationMs": 20
+                },
+                "task": {
+                  "status": "pass",
+                  "durationMs": 30
+                }
+              },
+              "evaluated": {
+                "schema": 1,
+                "id": "paired-control-baseline-2",
+                "scenarioId": "control",
+                "profileId": "stub",
+                "variant": "baseline",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 10
+                },
+                "setup": {
+                  "status": "pass",
+                  "durationMs": 20
+                },
+                "task": {
+                  "status": "pass",
+                  "durationMs": 30
+                }
+              },
+              "observedGrades": [
+                {
+                  "schema": 1,
+                  "id": "setup-invariants",
+                  "attemptId": "paired-control-baseline-2",
+                  "stage": "setup",
+                  "scope": "invariants",
+                  "verdict": "pass",
+                  "reason": "recorded-preserved",
+                  "evidence": [
+                    3
+                  ]
+                },
+                {
+                  "schema": 1,
+                  "id": "task-invariants",
+                  "attemptId": "paired-control-baseline-2",
+                  "stage": "task",
+                  "scope": "invariants",
+                  "verdict": "pass",
+                  "reason": "recorded-preserved",
+                  "evidence": [
+                    6
+                  ]
+                },
+                {
+                  "schema": 1,
+                  "id": "task-result",
+                  "attemptId": "paired-control-baseline-2",
+                  "stage": "task",
+                  "scope": "task",
+                  "verdict": "pass",
+                  "reason": "recorded-task",
+                  "evidence": [
+                    6
+                  ]
+                }
+              ],
+              "quality": {
+                "schema": 1,
+                "bindingHash": "9077525ce8cce439d7104e436e33ba708ae9d730d705bc788bb73a5beaffd959",
+                "packetHash": "390adfb1671b1c5fba6f9ad04667dd664bdadb153dc1416d81dff585e1a74275",
+                "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+                "plan": {
+                  "setup": [
+                    "grounding",
+                    "fit",
+                    "sufficiency",
+                    "consistency"
+                  ],
+                  "task": [
+                    "application"
+                  ]
+                },
+                "mode": "calibration",
+                "judge": {
+                  "id": "recorded-assessor",
+                  "kind": "recorded",
+                  "version": "control-1",
+                  "bindingHash": "9077525ce8cce439d7104e436e33ba708ae9d730d705bc788bb73a5beaffd959",
+                  "packetHash": "390adfb1671b1c5fba6f9ad04667dd664bdadb153dc1416d81dff585e1a74275",
+                  "judgements": [
+                    {
+                      "stage": "setup",
+                      "criterion": "grounding",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "fit",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "sufficiency",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "consistency",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "task",
+                      "criterion": "application",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "action"
+                      ]
+                    }
+                  ]
+                },
+                "human": {
+                  "id": "reference-assessor",
+                  "kind": "reference",
+                  "version": "control-1",
+                  "bindingHash": "9077525ce8cce439d7104e436e33ba708ae9d730d705bc788bb73a5beaffd959",
+                  "packetHash": "390adfb1671b1c5fba6f9ad04667dd664bdadb153dc1416d81dff585e1a74275",
+                  "judgements": [
+                    {
+                      "stage": "setup",
+                      "criterion": "grounding",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "fit",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "sufficiency",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "consistency",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "task",
+                      "criterion": "application",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "action"
+                      ]
+                    }
+                  ]
+                },
+                "humanRequired": false,
+                "disagreements": [],
+                "grades": [
+                  {
+                    "schema": 1,
+                    "id": "quality-setup-grounding",
+                    "attemptId": "paired-control-baseline-2",
+                    "stage": "setup",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      3
+                    ]
+                  },
+                  {
+                    "schema": 1,
+                    "id": "quality-setup-fit",
+                    "attemptId": "paired-control-baseline-2",
+                    "stage": "setup",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      3
+                    ]
+                  },
+                  {
+                    "schema": 1,
+                    "id": "quality-setup-sufficiency",
+                    "attemptId": "paired-control-baseline-2",
+                    "stage": "setup",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      3
+                    ]
+                  },
+                  {
+                    "schema": 1,
+                    "id": "quality-setup-consistency",
+                    "attemptId": "paired-control-baseline-2",
+                    "stage": "setup",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      3
+                    ]
+                  },
+                  {
+                    "schema": 1,
+                    "id": "quality-task-application",
+                    "attemptId": "paired-control-baseline-2",
+                    "stage": "task",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      6
+                    ]
+                  }
+                ]
+              },
+              "measurements": {
+                "durationMs": {
+                  "launch": 10,
+                  "setup": 20,
+                  "task": 30
+                },
+                "usage": {
+                  "launch": {
+                    "costUsd": 0,
+                    "inputTokens": 10,
+                    "outputTokens": 5
+                  },
+                  "setup": {
+                    "costUsd": 0,
+                    "inputTokens": 10,
+                    "outputTokens": 5
+                  },
+                  "task": {
+                    "costUsd": 0,
+                    "inputTokens": 10,
+                    "outputTokens": 5
+                  }
+                },
+                "costUsd": 0
+              }
+            }
+          },
+          "complete": true,
+          "delta": {
+            "setupMs": -10,
+            "taskMs": null,
+            "costUsd": null
+          }
+        },
+        {
+          "repeat": 3,
+          "tibicen": {
+            "id": "paired-control-tibicen-3",
+            "record": {
+              "id": "paired-control-tibicen-3",
+              "observed": {
+                "schema": 1,
+                "id": "paired-control-tibicen-3",
+                "scenarioId": "control",
+                "profileId": "stub",
+                "variant": "tibicen",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 10
+                },
+                "setup": {
+                  "status": "pass",
+                  "durationMs": 20
+                },
+                "task": {
+                  "status": "pass",
+                  "durationMs": 30
+                }
+              },
+              "evaluated": {
+                "schema": 1,
+                "id": "paired-control-tibicen-3",
+                "scenarioId": "control",
+                "profileId": "stub",
+                "variant": "tibicen",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 10
+                },
+                "setup": {
+                  "status": "pass",
+                  "durationMs": 20
+                },
+                "task": {
+                  "status": "pass",
+                  "durationMs": 30
+                }
+              },
+              "observedGrades": [
+                {
+                  "schema": 1,
+                  "id": "setup-invariants",
+                  "attemptId": "paired-control-tibicen-3",
+                  "stage": "setup",
+                  "scope": "invariants",
+                  "verdict": "pass",
+                  "reason": "recorded-preserved",
+                  "evidence": [
+                    2
+                  ]
+                },
+                {
+                  "schema": 1,
+                  "id": "task-invariants",
+                  "attemptId": "paired-control-tibicen-3",
+                  "stage": "task",
+                  "scope": "invariants",
+                  "verdict": "pass",
+                  "reason": "recorded-preserved",
+                  "evidence": [
+                    4
+                  ]
+                },
+                {
+                  "schema": 1,
+                  "id": "task-result",
+                  "attemptId": "paired-control-tibicen-3",
+                  "stage": "task",
+                  "scope": "task",
+                  "verdict": "pass",
+                  "reason": "recorded-task",
+                  "evidence": [
+                    4
+                  ]
+                }
+              ],
+              "quality": {
+                "schema": 1,
+                "bindingHash": "b6bf241f857e22cefe8fe810fd718f779b83a27f238b6997e3bea8bc87cbab26",
+                "packetHash": "9be9ed2b3b4c658e864eaf5e1e1f8f89c1bbb259d1552ed326873cf6b2a57ba2",
+                "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+                "plan": {
+                  "setup": [
+                    "grounding",
+                    "fit",
+                    "sufficiency",
+                    "consistency"
+                  ],
+                  "task": [
+                    "application"
+                  ]
+                },
+                "mode": "calibration",
+                "judge": {
+                  "id": "recorded-assessor",
+                  "kind": "recorded",
+                  "version": "control-1",
+                  "bindingHash": "b6bf241f857e22cefe8fe810fd718f779b83a27f238b6997e3bea8bc87cbab26",
+                  "packetHash": "9be9ed2b3b4c658e864eaf5e1e1f8f89c1bbb259d1552ed326873cf6b2a57ba2",
+                  "judgements": [
+                    {
+                      "stage": "setup",
+                      "criterion": "grounding",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "fit",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "sufficiency",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "consistency",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "task",
+                      "criterion": "application",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "action"
+                      ]
+                    }
+                  ]
+                },
+                "human": {
+                  "id": "reference-assessor",
+                  "kind": "reference",
+                  "version": "control-1",
+                  "bindingHash": "b6bf241f857e22cefe8fe810fd718f779b83a27f238b6997e3bea8bc87cbab26",
+                  "packetHash": "9be9ed2b3b4c658e864eaf5e1e1f8f89c1bbb259d1552ed326873cf6b2a57ba2",
+                  "judgements": [
+                    {
+                      "stage": "setup",
+                      "criterion": "grounding",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "fit",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "sufficiency",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "setup",
+                      "criterion": "consistency",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "context",
+                        "recommendation"
+                      ]
+                    },
+                    {
+                      "stage": "task",
+                      "criterion": "application",
+                      "verdict": "pass",
+                      "reason": "reference-fit",
+                      "evidence": [
+                        "action"
+                      ]
+                    }
+                  ]
+                },
+                "humanRequired": false,
+                "disagreements": [],
+                "grades": [
+                  {
+                    "schema": 1,
+                    "id": "quality-setup-grounding",
+                    "attemptId": "paired-control-tibicen-3",
+                    "stage": "setup",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      2
+                    ]
+                  },
+                  {
+                    "schema": 1,
+                    "id": "quality-setup-fit",
+                    "attemptId": "paired-control-tibicen-3",
+                    "stage": "setup",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      2
+                    ]
+                  },
+                  {
+                    "schema": 1,
+                    "id": "quality-setup-sufficiency",
+                    "attemptId": "paired-control-tibicen-3",
+                    "stage": "setup",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      2
+                    ]
+                  },
+                  {
+                    "schema": 1,
+                    "id": "quality-setup-consistency",
+                    "attemptId": "paired-control-tibicen-3",
+                    "stage": "setup",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      2
+                    ]
+                  },
+                  {
+                    "schema": 1,
+                    "id": "quality-task-application",
+                    "attemptId": "paired-control-tibicen-3",
+                    "stage": "task",
+                    "scope": "quality",
+                    "verdict": "pass",
+                    "reason": "reference-fit",
+                    "evidence": [
+                      4
+                    ]
+                  }
+                ]
+              },
+              "measurements": {
+                "durationMs": {
+                  "launch": 10,
+                  "setup": 20,
+                  "task": 30
+                },
+                "usage": {
+                  "launch": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "setup": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "task": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  }
+                },
+                "costUsd": null
+              }
+            }
+          },
+          "baseline": {
+            "id": "paired-control-baseline-3",
+            "record": null
+          },
+          "complete": false,
+          "delta": {
+            "setupMs": null,
+            "taskMs": null,
+            "costUsd": null
+          }
+        }
+      ],
+      "invariantFailures": [
+        {
+          "attemptId": "paired-control-tibicen-1",
+          "grade": {
+            "schema": 1,
+            "id": "setup-invariants",
+            "attemptId": "paired-control-tibicen-1",
+            "stage": "setup",
+            "scope": "invariants",
+            "verdict": "fail",
+            "reason": "recorded-write-before-approval",
+            "evidence": [
+              2
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

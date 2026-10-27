@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "id": "diagnostic-conflicts-oracle",
+  "setup": {
+    "protectedPaths": [
+      "package.json",
+      "src/math.js",
+      "tests/math.test.js",
+      ".github/workflows/ci.yml",
+      "docs/team-note.md"
+    ],
+    "allowedPaths": [
+      "AGENTS.md",
+      ".tibicen/manifest.yml",
+      ".tibicen/state/session.json",
+      ".agents/skills/project-workflow/SKILL.md"
+    ],
+    "command": {
+      "executable": "node",
+      "argv": [
+        "--test"
+      ],
+      "cwd": "."
+    },
+    "criteria": [
+      "Read-only until exact proposal approval.",
+      "No application, dependencies, CI or Git history changes.",
+      "Explain one sufficient recommendation from project evidence; no mandatory component brand.",
+      "Preserve the double export and team note.",
+      "Resolve the obsolete yarn check instruction and duplicate without losing owner review or useful custom rules."
+    ]
+  },
+  "task": {
+    "allowedPaths": [
+      "src/math.js",
+      "tests/math.test.js"
+    ],
+    "protectedPaths": [
+      "package.json",
+      ".github/workflows/ci.yml",
+      "docs/team-note.md"
+    ],
+    "command": {
+      "executable": "node",
+      "argv": [
+        "--test"
+      ],
+      "cwd": "."
+    },
+    "exports": {
+      "double": [
+        [
+          3,
+          6
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          -2,
+          -4
+        ]
+      ],
+      "triple": [
+        [
+          3,
+          9
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          -2,
+          -6
+        ]
+      ]
+    },
+    "criteria": [
+      "A fresh session uses the adopted instructions.",
+      "The agreed test actually runs and triple is tested.",
+      "No new dependencies or unrelated changes."
+    ]
+  }
+}

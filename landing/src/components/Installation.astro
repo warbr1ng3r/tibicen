@@ -1,0 +1,77 @@
+---
+import { agents, managers, installationCommand } from '../scripts/install';
+import Select from './ui/Select.astro';
+---
+
+<div class="installation">
+  <div class="installation-head">
+    <span>Alpha 0.1.0-alpha.1</span>
+    <button
+      class="copy-button"
+      type="button"
+      data-copy-target="install-command"
+      aria-label="Скопировать команду установки"
+    >
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <rect
+          x="7"
+          y="7"
+          width="9"
+          height="10"
+          rx="1.5"
+          stroke="currentColor"
+        />
+        <path d="M12 7V3H3v10h4" stroke="currentColor" />
+      </svg>
+      <span data-copy-label>Копировать</span>
+    </button>
+  </div>
+  <fieldset
+    id="install-controls"
+    class="install-options"
+    aria-label="Настройки установки"
+    disabled
+  >
+    <div>
+      <label for="install-agent">Ваш агент</label>
+      <Select
+        id="install-agent"
+        label="Ваш агент"
+        value="codex"
+        options={Object.entries(agents).map(([value, label]) => ({
+          value,
+          label,
+        }))}
+      />
+    </div>
+    <div>
+      <label for="install-manager">Запустить через</label>
+      <Select
+        id="install-manager"
+        label="Запустить через"
+        value="npm"
+        options={Object.keys(managers).map((value) => ({
+          value,
+          label: value === 'yarn' ? 'Yarn 2+' : value,
+        }))}
+      />
+    </div>
+  </fieldset>
+  <pre><code id="install-command">{installationCommand('npm', 'codex')}</code></pre>
+  <p>
+    Установщик добавит два скилла в окружение вашего агента. Менеджер пакетов и
+    зависимости целевого проекта не меняются.
+  </p>
+  <noscript>
+    <p>
+      Без JavaScript показана команда для npm и Codex. Для pnpm используйте{' '}
+      <code>pnpm dlx</code>, для Yarn 2+ — <code>yarn dlx</code> вместо{' '}
+      <code>npx</code>. Значение <code>--agent</code>: <code>codex</code>,{' '}
+      <code>claude-code</code> или <code>cursor</code>.
+    </p>
+  </noscript>
+</div>
+<script>
+  import { mountInstallation } from '../scripts/install';
+  mountInstallation();
+</script>

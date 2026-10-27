@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "files": [
+    {
+      "id": "ponytail-current",
+      "repository": "https://github.com/DietrichGebert/ponytail",
+      "commit": "09c434ab73ca43761c5d8b0c5d341926c2fba710",
+      "path": "skills/ponytail/SKILL.md",
+      "license": "MIT",
+      "gitBlob": "d64edd32265ba21cbf5270158f04e97d96925f27",
+      "local": "scripts/evals/fixtures/sources/ponytail-current/skills/ponytail/SKILL.md",
+      "sha256": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509",
+      "bytes": 3496
+    },
+    {
+      "id": "ponytail-current",
+      "repository": "https://github.com/DietrichGebert/ponytail",
+      "commit": "09c434ab73ca43761c5d8b0c5d341926c2fba710",
+      "path": "LICENSE",
+      "license": "MIT",
+      "gitBlob": "715d483338cea4365f0d91a27799cf61226d6bcf",
+      "local": "scripts/evals/fixtures/sources/ponytail-current/LICENSE",
+      "sha256": "fb1bc6909ac3ef82d5c22106e32ef682b0cff66788fa915fb9b53b15c9d2f3ab",
+      "bytes": 1071
+    },
+    {
+      "id": "ponytail-previous",
+      "repository": "https://github.com/DietrichGebert/ponytail",
+      "commit": "fe963cae99d986dae3199fe56403f99e87db7c6c",
+      "path": "skills/ponytail/SKILL.md",
+      "license": "MIT",
+      "gitBlob": "ef4760780726f4fe2a48cb21790b9771523d228d",
+      "local": "scripts/evals/fixtures/sources/ponytail-previous/skills/ponytail/SKILL.md",
+      "sha256": "4d3499fdfb6f2544021963ff5d15ad1c0ba1e3d5d9a65924d2bd5dfb7285e729",
+      "bytes": 5770
+    },
+    {
+      "id": "ponytail-previous",
+      "repository": "https://github.com/DietrichGebert/ponytail",
+      "commit": "fe963cae99d986dae3199fe56403f99e87db7c6c",
+      "path": "LICENSE",
+      "license": "MIT",
+      "gitBlob": "715d483338cea4365f0d91a27799cf61226d6bcf",
+      "local": "scripts/evals/fixtures/sources/ponytail-previous/LICENSE",
+      "sha256": "fb1bc6909ac3ef82d5c22106e32ef682b0cff66788fa915fb9b53b15c9d2f3ab",
+      "bytes": 1071
+    },
+    {
+      "id": "ponytail-previous",
+      "repository": "https://github.com/DietrichGebert/ponytail",
+      "commit": "fe963cae99d986dae3199fe56403f99e87db7c6c",
+      "path": "examples/web-platform-lookup.md",
+      "license": "MIT",
+      "gitBlob": "135fea00c7e7ec73da11b845bb897ea13de29c04",
+      "local": "scripts/evals/fixtures/sources/ponytail-previous/examples/web-platform-lookup.md",
+      "sha256": "e340abeb0643b99b61b5925e9be99202741c87812fab46cefc134e4cd99334d0",
+      "bytes": 2038
+    },
+    {
+      "id": "spec-kit",
+      "repository": "https://github.com/github/spec-kit",
+      "commit": "27d14e20c187c1f2916540ea201ecbdc9f8ed588",
+      "path": "LICENSE",
+      "license": "MIT",
+      "gitBlob": "28a50fa22639e32febe14e4ffc7a732b0ba8c90a",
+      "local": "scripts/evals/fixtures/sources/spec-kit/LICENSE",
+      "sha256": "2510b446bc1f0cf9702453075d20cd88631e20e5642658edb7325d9c1eb534f7",
+      "bytes": 1060
+    },
+    {
+      "id": "spec-kit",
+      "repository": "https://github.com/github/spec-kit",
+      "commit": "27d14e20c187c1f2916540ea201ecbdc9f8ed588",
+      "path": "templates/spec-template.md",
+      "license": "MIT",
+      "gitBlob": "ceb28776215a098e977650ac090c785dcbf53651",
+      "local": "scripts/evals/fixtures/sources/spec-kit/templates/spec-template.md",
+      "sha256": "3945437fc35cd30a5b2bf7beea680337c3516826d3efa5a6b92c4a7eca1ba28e",
+      "bytes": 4556
+    },
+    {
+      "id": "spec-kit",
+      "repository": "https://github.com/github/spec-kit",
+      "commit": "27d14e20c187c1f2916540ea201ecbdc9f8ed588",
+      "path": "templates/plan-template.md",
+      "license": "MIT",
+      "gitBlob": "36f2eab16880bac670fe43cbe7ef2b9bc8c3aa2f",
+      "local": "scripts/evals/fixtures/sources/spec-kit/templates/plan-template.md",
+      "sha256": "dfba43da2b2a207ff8c177a0fba03af074fd45e261696b4b64172041fad2e992",
+      "bytes": 3770
+    },
+    {
+      "id": "spec-kit",
+      "repository": "https://github.com/github/spec-kit",
+      "commit": "27d14e20c187c1f2916540ea201ecbdc9f8ed588",
+      "path": "templates/tasks-template.md",
+      "license": "MIT",
+      "gitBlob": "7fff087cc5a3c51a889d865fd9126607a032d233",
+      "local": "scripts/evals/fixtures/sources/spec-kit/templates/tasks-template.md",
+      "sha256": "1e448e9153462e8c5b5a55231a54c756d870a82950d4dd9425a2bf5b7008a0d9",
+      "bytes": 9182
+    },
+    {
+      "id": "spec-kit",
+      "repository": "https://github.com/github/spec-kit",
+      "commit": "27d14e20c187c1f2916540ea201ecbdc9f8ed588",
+      "path": "templates/constitution-template.md",
+      "license": "MIT",
+      "gitBlob": "a4670ff46919b276a4c9663b4ca51830108fcfc0",
+      "local": "scripts/evals/fixtures/sources/spec-kit/templates/constitution-template.md",
+      "sha256": "ce7549540fa45543cca797a150201d868e64495fdff39dc38246fb17bd4024b3",
+      "bytes": 2346
+    }
+  ],
+  "removedInCurrent": [
+    "examples/web-platform-lookup.md"
+  ],
+  "selection": "Ponytail skill-only, without plugin/hooks/installer. Previous optional example selected explicitly for update preservation. Spec Kit templates are an existing-process fixture, not an implemented adapter.",
+  "agentFormat": {
+    "agent": "codex",
+    "version": "0.157.0",
+    "projectSkillDirectory": ".agents/skills",
+    "entrypoint": "SKILL.md",
+    "basis": "Installed CLI --version and observed controlled preflight, 2026-10-23; this does not yet prove Ponytail task application."
+  }
+}

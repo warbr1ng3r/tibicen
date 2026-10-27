@@ -1,0 +1,51 @@
+---
+// Adapted from AstroWind Features2; provenance and MIT notice: landing/README.md.
+import Headline from './Headline.astro';
+import WidgetWrapper from './WidgetWrapper.astro';
+import type { Features as Props } from './types';
+const { id, title, subtitle, tagline, items } = Astro.props;
+---
+
+<WidgetWrapper id={id}>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+  <div
+    class:list={[
+      'grid gap-5',
+      items.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3',
+    ]}
+  >
+    {items.map(({ title: itemTitle, description, label, prompt }, index) => (
+      <article class="flex min-w-0 flex-col rounded-lg border border-line bg-surface p-6 md:p-8">
+        {label && <p class="skill-label mb-6 self-start">{label}</p>}
+        <h3 class="mb-4 text-xl font-semibold tracking-tight">{itemTitle}</h3>
+        <p class="text-sm leading-7 text-muted">{description}</p>
+        {prompt && (
+          <div class="prompt-example mt-6 pt-6">
+            <code id={`prompt-${id}-${index}`}>{prompt}</code>
+            <button
+              class="copy-icon"
+              type="button"
+              data-copy-target={`prompt-${id}-${index}`}
+              aria-label={`Скопировать запрос: ${itemTitle}`}
+            >
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect
+                  x="7"
+                  y="7"
+                  width="9"
+                  height="10"
+                  rx="1.5"
+                  stroke="currentColor"
+                />
+                <path d="M12 7V3H3v10h4" stroke="currentColor" />
+              </svg>
+              <span class="sr-only" data-copy-label>
+                Копировать
+              </span>
+            </button>
+          </div>
+        )}
+      </article>
+    ))}
+  </div>
+</WidgetWrapper>

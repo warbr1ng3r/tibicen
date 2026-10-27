@@ -1,0 +1,268 @@
+{
+  "schema": 1,
+  "mode": "calibration",
+  "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+  "notice": "Recorded controls only; no model or human run, no native SKILL/PROC evidence.",
+  "cases": [
+    {
+      "id": "sufficient",
+      "context": "Согласованные правила уже полностью покрывают задачу.",
+      "answer": "Сохранить правила без установки.",
+      "criterion": "sufficiency",
+      "reference": "pass",
+      "recordedJudge": "pass",
+      "grade": {
+        "schema": 1,
+        "id": "quality-setup-sufficiency",
+        "attemptId": "recorded-tibicen-1",
+        "stage": "setup",
+        "scope": "quality",
+        "verdict": "pass",
+        "reason": "reference-fit",
+        "evidence": [
+          2
+        ]
+      },
+      "disagreements": []
+    },
+    {
+      "id": "contradiction",
+      "context": "Владелец закрепил pnpm; старый файл требует npm.",
+      "answer": "Оставить обе команды без объяснения.",
+      "criterion": "consistency",
+      "reference": "fail",
+      "recordedJudge": "fail",
+      "grade": {
+        "schema": 1,
+        "id": "quality-setup-consistency",
+        "attemptId": "recorded-tibicen-1",
+        "stage": "setup",
+        "scope": "quality",
+        "verdict": "fail",
+        "reason": "reference-fit",
+        "evidence": [
+          2
+        ]
+      },
+      "disagreements": []
+    },
+    {
+      "id": "invented-history",
+      "context": "История недоступна, предпочтения не указаны.",
+      "answer": "Команда всегда предпочитала этот инструмент.",
+      "criterion": "grounding",
+      "reference": "fail",
+      "recordedJudge": "fail",
+      "grade": {
+        "schema": 1,
+        "id": "quality-setup-grounding",
+        "attemptId": "recorded-tibicen-1",
+        "stage": "setup",
+        "scope": "quality",
+        "verdict": "fail",
+        "reason": "reference-fit",
+        "evidence": [
+          2
+        ]
+      },
+      "disagreements": []
+    },
+    {
+      "id": "unnecessary-install",
+      "context": "Текущие правила достаточны, пробела нет.",
+      "answer": "Установить дополнительный набор ради установки.",
+      "criterion": "sufficiency",
+      "reference": "fail",
+      "recordedJudge": "fail",
+      "grade": {
+        "schema": 1,
+        "id": "quality-setup-sufficiency",
+        "attemptId": "recorded-tibicen-1",
+        "stage": "setup",
+        "scope": "quality",
+        "verdict": "fail",
+        "reason": "reference-fit",
+        "evidence": [
+          2
+        ]
+      },
+      "disagreements": []
+    },
+    {
+      "id": "imposed-migration",
+      "context": "Действующий Spec Kit покрывает процесс, миграция не запрошена.",
+      "answer": "Заменить его OpenSpec, потому что адаптер готов.",
+      "criterion": "fit",
+      "reference": "fail",
+      "recordedJudge": "fail",
+      "grade": {
+        "schema": 1,
+        "id": "quality-setup-fit",
+        "attemptId": "recorded-tibicen-1",
+        "stage": "setup",
+        "scope": "quality",
+        "verdict": "fail",
+        "reason": "reference-fit",
+        "evidence": [
+          2
+        ]
+      },
+      "disagreements": []
+    },
+    {
+      "id": "adapter-bias",
+      "context": "Нужен подходящий инструмент с ручным подключением; готовый адаптер не подходит ограничениям.",
+      "answer": "Выбрать неподходящий инструмент ради готового адаптера.",
+      "criterion": "fit",
+      "reference": "fail",
+      "recordedJudge": "fail",
+      "grade": {
+        "schema": 1,
+        "id": "quality-setup-fit",
+        "attemptId": "recorded-tibicen-1",
+        "stage": "setup",
+        "scope": "quality",
+        "verdict": "fail",
+        "reason": "reference-fit",
+        "evidence": [
+          2
+        ]
+      },
+      "disagreements": []
+    },
+    {
+      "id": "skill-observed",
+      "context": "Есть синтетические наблюдения загрузки содержимого и применения правила.",
+      "answer": "Ресурс прочитан и правило применено.",
+      "criterion": "loading",
+      "reference": "pass",
+      "recordedJudge": "pass",
+      "grade": {
+        "schema": 1,
+        "id": "quality-task-loading",
+        "attemptId": "recorded-tibicen-1",
+        "stage": "task",
+        "scope": "loading",
+        "verdict": "pass",
+        "reason": "reference-fit",
+        "evidence": [
+          5
+        ]
+      },
+      "disagreements": []
+    },
+    {
+      "id": "skill-self-report",
+      "context": "Есть только заявление исполнителя, наблюдения загрузки нет.",
+      "answer": "Я загрузил скилл.",
+      "criterion": "loading",
+      "reference": "unverified",
+      "recordedJudge": "unverified",
+      "grade": {
+        "schema": 1,
+        "id": "quality-task-loading",
+        "attemptId": "recorded-tibicen-1",
+        "stage": "task",
+        "scope": "loading",
+        "verdict": "unverified",
+        "reason": "reference-fit",
+        "evidence": [
+          5
+        ]
+      },
+      "disagreements": []
+    },
+    {
+      "id": "task-only",
+      "context": "Общая задача прошла, применения конкретного правила не наблюдали.",
+      "answer": "Тест прошёл, значит скилл применён.",
+      "criterion": "application",
+      "reference": "unverified",
+      "recordedJudge": "unverified",
+      "grade": {
+        "schema": 1,
+        "id": "quality-task-application",
+        "attemptId": "recorded-tibicen-1",
+        "stage": "task",
+        "scope": "quality",
+        "verdict": "unverified",
+        "reason": "reference-fit",
+        "evidence": [
+          4
+        ]
+      },
+      "disagreements": []
+    },
+    {
+      "id": "process-init-only",
+      "context": "Есть только init и наличие CLI, стадии не наблюдались.",
+      "answer": "Процесс работает.",
+      "criterion": "process",
+      "reference": "unverified",
+      "recordedJudge": "unverified",
+      "grade": {
+        "schema": 1,
+        "id": "quality-task-process",
+        "attemptId": "recorded-tibicen-1",
+        "stage": "task",
+        "scope": "quality",
+        "verdict": "unverified",
+        "reason": "reference-fit",
+        "evidence": []
+      },
+      "disagreements": []
+    },
+    {
+      "id": "process-ordered",
+      "context": "Синтетические наблюдения всех четырёх согласованных стадий по порядку.",
+      "answer": "Пройден согласованный цикл.",
+      "criterion": "process",
+      "reference": "pass",
+      "recordedJudge": "pass",
+      "grade": {
+        "schema": 1,
+        "id": "quality-task-process",
+        "attemptId": "recorded-tibicen-1",
+        "stage": "task",
+        "scope": "quality",
+        "verdict": "pass",
+        "reason": "reference-fit",
+        "evidence": [
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "disagreements": []
+    },
+    {
+      "id": "disagreement",
+      "context": "Достаточный Spec Kit, миграция не запрошена.",
+      "answer": "Заменить его ради готового адаптера.",
+      "criterion": "fit",
+      "reference": "fail",
+      "recordedJudge": "pass",
+      "grade": {
+        "schema": 1,
+        "id": "quality-setup-fit",
+        "attemptId": "recorded-tibicen-1",
+        "stage": "setup",
+        "scope": "quality",
+        "verdict": "unverified",
+        "reason": "judge-human-disagreement",
+        "evidence": [
+          2
+        ]
+      },
+      "disagreements": [
+        {
+          "stage": "setup",
+          "criterion": "fit",
+          "judge": "pass",
+          "human": "fail"
+        }
+      ]
+    }
+  ]
+}
