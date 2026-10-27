@@ -1,0 +1,10 @@
+{
+  "name": "tibicen-adopt",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.20.0"
+  },
+  "license": "MIT"
+}
