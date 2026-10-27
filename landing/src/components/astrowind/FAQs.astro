@@ -1,0 +1,31 @@
+---
+// Adapted from AstroWind FAQs; provenance and MIT notice: landing/README.md.
+import Headline from './Headline.astro';
+import WidgetWrapper from './WidgetWrapper.astro';
+import type { Faqs as Props } from './types';
+const { id, title, subtitle, tagline, items, defaultOpen = 0 } = Astro.props;
+---
+
+<WidgetWrapper id={id}>
+  <div class="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
+    <Headline title={title} subtitle={subtitle} tagline={tagline} />
+    <div class="divide-y divide-line border-y border-line">
+      {items.map(({ title: itemTitle, description }, index) => (
+        <details class="group" name={`faq-${id}`} open={index === defaultOpen}>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-5 py-6 text-sm font-semibold">
+            <span>{itemTitle}</span>
+            <svg
+              class="h-4 w-4 shrink-0 text-accent transition-transform group-open:rotate-180 motion-reduce:transition-none"
+              viewBox="0 0 20 20"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path d="m4 7 6 6 6-6" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </summary>
+          <p class="pb-6 pr-6 text-sm leading-7 text-muted">{description}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</WidgetWrapper>

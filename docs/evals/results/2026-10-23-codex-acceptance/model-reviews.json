@@ -1,0 +1,2334 @@
+{
+  "schema": 1,
+  "independentSessions": 8,
+  "humanReviews": 0,
+  "humanReviewRequired": true,
+  "reviews": [
+    {
+      "attemptId": "skill-01-tibicen-1",
+      "schema": 1,
+      "judge": {
+        "id": "independent-model-judge-1",
+        "kind": "model",
+        "version": "codex-0.157.0-gpt-6-sol",
+        "bindingHash": "1ad1e1b657ac652ee454353d490fd6aea25b86ccb1ea30e4cf1056c34bccc9e8",
+        "packetHash": "e2aa13f251a829525a473e34c8965798a49ea1c0e26bb1bae38b04355b3d3327",
+        "judgements": [
+          {
+            "stage": "setup",
+            "criterion": "grounding",
+            "verdict": "unverified",
+            "reason": "no_observed_reasoning",
+            "evidence": [
+              "native-0",
+              "native-1"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "fit",
+            "verdict": "unverified",
+            "reason": "no_observed_solution",
+            "evidence": [
+              "native-0"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "sufficiency",
+            "verdict": "unverified",
+            "reason": "no_observed_rules",
+            "evidence": [
+              "native-0"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "consistency",
+            "verdict": "unverified",
+            "reason": "no_observed_changes",
+            "evidence": [
+              "native-0",
+              "native-2"
+            ]
+          },
+          {
+            "stage": "task",
+            "criterion": "application",
+            "verdict": "unverified",
+            "reason": "no_task_actions",
+            "evidence": []
+          },
+          {
+            "stage": "task",
+            "criterion": "loading",
+            "verdict": "unverified",
+            "reason": "no_new_session_load",
+            "evidence": []
+          }
+        ]
+      },
+      "explanation": "Показаны запрос, перечень источников, заметка команды и отметка о завершении. Действия исполнителя и новая сессия не представлены, поэтому оценить соблюдение критериев нельзя.",
+      "assessment": {
+        "schema": 1,
+        "bindingHash": "1ad1e1b657ac652ee454353d490fd6aea25b86ccb1ea30e4cf1056c34bccc9e8",
+        "packetHash": "e2aa13f251a829525a473e34c8965798a49ea1c0e26bb1bae38b04355b3d3327",
+        "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+        "plan": {
+          "setup": [
+            "grounding",
+            "fit",
+            "sufficiency",
+            "consistency"
+          ],
+          "task": [
+            "application",
+            "loading"
+          ]
+        },
+        "mode": "observed",
+        "judge": {
+          "id": "independent-model-judge-1",
+          "kind": "model",
+          "version": "codex-0.157.0-gpt-6-sol",
+          "bindingHash": "1ad1e1b657ac652ee454353d490fd6aea25b86ccb1ea30e4cf1056c34bccc9e8",
+          "packetHash": "e2aa13f251a829525a473e34c8965798a49ea1c0e26bb1bae38b04355b3d3327",
+          "judgements": [
+            {
+              "stage": "setup",
+              "criterion": "grounding",
+              "verdict": "unverified",
+              "reason": "no_observed_reasoning",
+              "evidence": [
+                "native-0",
+                "native-1"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "fit",
+              "verdict": "unverified",
+              "reason": "no_observed_solution",
+              "evidence": [
+                "native-0"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "sufficiency",
+              "verdict": "unverified",
+              "reason": "no_observed_rules",
+              "evidence": [
+                "native-0"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "consistency",
+              "verdict": "unverified",
+              "reason": "no_observed_changes",
+              "evidence": [
+                "native-0",
+                "native-2"
+              ]
+            },
+            {
+              "stage": "task",
+              "criterion": "application",
+              "verdict": "unverified",
+              "reason": "no_task_actions",
+              "evidence": []
+            },
+            {
+              "stage": "task",
+              "criterion": "loading",
+              "verdict": "unverified",
+              "reason": "no_new_session_load",
+              "evidence": []
+            }
+          ]
+        },
+        "human": null,
+        "humanRequired": true,
+        "disagreements": [],
+        "grades": [
+          {
+            "schema": 1,
+            "id": "quality-setup-grounding",
+            "attemptId": "skill-01-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": []
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-fit",
+            "attemptId": "skill-01-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": []
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-sufficiency",
+            "attemptId": "skill-01-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": []
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-consistency",
+            "attemptId": "skill-01-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": []
+          },
+          {
+            "schema": 1,
+            "id": "quality-task-application",
+            "attemptId": "skill-01-tibicen-1",
+            "stage": "task",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": []
+          },
+          {
+            "schema": 1,
+            "id": "quality-task-loading",
+            "attemptId": "skill-01-tibicen-1",
+            "stage": "task",
+            "scope": "loading",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": []
+          }
+        ]
+      }
+    },
+    {
+      "attemptId": "skill-01-refusal-baseline-1",
+      "schema": 1,
+      "judge": {
+        "id": "independent-model-judge-3",
+        "kind": "model",
+        "version": "codex-0.157.0-gpt-6-sol",
+        "bindingHash": "b77181cdf0515fefe9360c7492fa0a9e887dea9560f59c3ef4988e747f27090d",
+        "packetHash": "085cea686439ccc12dbe85753c5c4f6977a20dd2a19d74dfe75cb0e2a4a903f3",
+        "judgements": [
+          {
+            "stage": "setup",
+            "criterion": "grounding",
+            "verdict": "unverified",
+            "reason": "checks_unobserved",
+            "evidence": [
+              "native-1",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "fit",
+            "verdict": "fail",
+            "reason": "source_path_mismatch",
+            "evidence": [
+              "native-1",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "sufficiency",
+            "verdict": "unverified",
+            "reason": "content_unseen",
+            "evidence": [
+              "native-1",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "consistency",
+            "verdict": "fail",
+            "reason": "source_path_mismatch",
+            "evidence": [
+              "native-1",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "task",
+            "criterion": "application",
+            "verdict": "unverified",
+            "reason": "no_task_evidence",
+            "evidence": []
+          },
+          {
+            "stage": "task",
+            "criterion": "loading",
+            "verdict": "unverified",
+            "reason": "no_task_evidence",
+            "evidence": []
+          }
+        ]
+      },
+      "explanation": "Предложение называет локальный путь, которого нет в приведённом перечне источников. Чтение и проверка файлов подтверждены только самоотчётом. Данных о новой сессии, загрузке и применении нет.",
+      "assessment": {
+        "schema": 1,
+        "bindingHash": "b77181cdf0515fefe9360c7492fa0a9e887dea9560f59c3ef4988e747f27090d",
+        "packetHash": "085cea686439ccc12dbe85753c5c4f6977a20dd2a19d74dfe75cb0e2a4a903f3",
+        "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+        "plan": {
+          "setup": [
+            "grounding",
+            "fit",
+            "sufficiency",
+            "consistency"
+          ],
+          "task": [
+            "application",
+            "loading"
+          ]
+        },
+        "mode": "observed",
+        "judge": {
+          "id": "independent-model-judge-3",
+          "kind": "model",
+          "version": "codex-0.157.0-gpt-6-sol",
+          "bindingHash": "b77181cdf0515fefe9360c7492fa0a9e887dea9560f59c3ef4988e747f27090d",
+          "packetHash": "085cea686439ccc12dbe85753c5c4f6977a20dd2a19d74dfe75cb0e2a4a903f3",
+          "judgements": [
+            {
+              "stage": "setup",
+              "criterion": "grounding",
+              "verdict": "unverified",
+              "reason": "checks_unobserved",
+              "evidence": [
+                "native-1",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "fit",
+              "verdict": "fail",
+              "reason": "source_path_mismatch",
+              "evidence": [
+                "native-1",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "sufficiency",
+              "verdict": "unverified",
+              "reason": "content_unseen",
+              "evidence": [
+                "native-1",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "consistency",
+              "verdict": "fail",
+              "reason": "source_path_mismatch",
+              "evidence": [
+                "native-1",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "task",
+              "criterion": "application",
+              "verdict": "unverified",
+              "reason": "no_task_evidence",
+              "evidence": []
+            },
+            {
+              "stage": "task",
+              "criterion": "loading",
+              "verdict": "unverified",
+              "reason": "no_task_evidence",
+              "evidence": []
+            }
+          ]
+        },
+        "human": null,
+        "humanRequired": true,
+        "disagreements": [],
+        "grades": [
+          {
+            "schema": 1,
+            "id": "quality-setup-grounding",
+            "attemptId": "skill-01-refusal-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              5
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-fit",
+            "attemptId": "skill-01-refusal-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              5
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-sufficiency",
+            "attemptId": "skill-01-refusal-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              5
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-consistency",
+            "attemptId": "skill-01-refusal-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              5
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-task-application",
+            "attemptId": "skill-01-refusal-baseline-1",
+            "stage": "task",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": []
+          },
+          {
+            "schema": 1,
+            "id": "quality-task-loading",
+            "attemptId": "skill-01-refusal-baseline-1",
+            "stage": "task",
+            "scope": "loading",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": []
+          }
+        ]
+      }
+    },
+    {
+      "attemptId": "skill-01-baseline-1",
+      "schema": 1,
+      "judge": {
+        "id": "independent-model-judge-2",
+        "kind": "model",
+        "version": "codex-0.157.0-gpt-6-sol",
+        "bindingHash": "2d0d69c99b2d3771159aaff22492dff5964ab82adcd0c0c501fb4413a7bc8a03",
+        "packetHash": "97dc6b47c6ba2f5e18b7b5242d79c19999874c764663030bcfbf526d07bfea1b",
+        "judgements": [
+          {
+            "stage": "setup",
+            "criterion": "grounding",
+            "verdict": "pass",
+            "reason": "pinned_source_matches",
+            "evidence": [
+              "native-1",
+              "native-3",
+              "native-4"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "fit",
+            "verdict": "pass",
+            "reason": "requested_minimal_install",
+            "evidence": [
+              "native-0",
+              "native-3",
+              "native-4"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "sufficiency",
+            "verdict": "unverified",
+            "reason": "rules_not_observed",
+            "evidence": [
+              "native-3",
+              "native-4"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "consistency",
+            "verdict": "unverified",
+            "reason": "consent_not_shown",
+            "evidence": [
+              "native-0",
+              "native-3",
+              "native-4"
+            ]
+          },
+          {
+            "stage": "task",
+            "criterion": "application",
+            "verdict": "unverified",
+            "reason": "actions_not_shown",
+            "evidence": [
+              "native-6",
+              "native-9",
+              "native-10"
+            ]
+          },
+          {
+            "stage": "task",
+            "criterion": "loading",
+            "verdict": "pass",
+            "reason": "skill_content_observed",
+            "evidence": [
+              "native-9"
+            ]
+          }
+        ]
+      },
+      "explanation": "Источник и установка подтверждены, а в новой сессии видно содержимое скилла. Данных о точном согласии на запись, сохранности всех правил и применении Ponytail при выполнении задачи нет.",
+      "assessment": {
+        "schema": 1,
+        "bindingHash": "2d0d69c99b2d3771159aaff22492dff5964ab82adcd0c0c501fb4413a7bc8a03",
+        "packetHash": "97dc6b47c6ba2f5e18b7b5242d79c19999874c764663030bcfbf526d07bfea1b",
+        "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+        "plan": {
+          "setup": [
+            "grounding",
+            "fit",
+            "sufficiency",
+            "consistency"
+          ],
+          "task": [
+            "application",
+            "loading"
+          ]
+        },
+        "mode": "observed",
+        "judge": {
+          "id": "independent-model-judge-2",
+          "kind": "model",
+          "version": "codex-0.157.0-gpt-6-sol",
+          "bindingHash": "2d0d69c99b2d3771159aaff22492dff5964ab82adcd0c0c501fb4413a7bc8a03",
+          "packetHash": "97dc6b47c6ba2f5e18b7b5242d79c19999874c764663030bcfbf526d07bfea1b",
+          "judgements": [
+            {
+              "stage": "setup",
+              "criterion": "grounding",
+              "verdict": "pass",
+              "reason": "pinned_source_matches",
+              "evidence": [
+                "native-1",
+                "native-3",
+                "native-4"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "fit",
+              "verdict": "pass",
+              "reason": "requested_minimal_install",
+              "evidence": [
+                "native-0",
+                "native-3",
+                "native-4"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "sufficiency",
+              "verdict": "unverified",
+              "reason": "rules_not_observed",
+              "evidence": [
+                "native-3",
+                "native-4"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "consistency",
+              "verdict": "unverified",
+              "reason": "consent_not_shown",
+              "evidence": [
+                "native-0",
+                "native-3",
+                "native-4"
+              ]
+            },
+            {
+              "stage": "task",
+              "criterion": "application",
+              "verdict": "unverified",
+              "reason": "actions_not_shown",
+              "evidence": [
+                "native-6",
+                "native-9",
+                "native-10"
+              ]
+            },
+            {
+              "stage": "task",
+              "criterion": "loading",
+              "verdict": "pass",
+              "reason": "skill_content_observed",
+              "evidence": [
+                "native-9"
+              ]
+            }
+          ]
+        },
+        "human": null,
+        "humanRequired": true,
+        "disagreements": [],
+        "grades": [
+          {
+            "schema": 1,
+            "id": "quality-setup-grounding",
+            "attemptId": "skill-01-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4,
+              6,
+              9
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-fit",
+            "attemptId": "skill-01-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4,
+              6,
+              9
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-sufficiency",
+            "attemptId": "skill-01-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4,
+              6,
+              9
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-consistency",
+            "attemptId": "skill-01-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4,
+              6,
+              9
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-task-application",
+            "attemptId": "skill-01-baseline-1",
+            "stage": "task",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              16,
+              18
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-task-loading",
+            "attemptId": "skill-01-baseline-1",
+            "stage": "task",
+            "scope": "loading",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              16
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "attemptId": "skill-01-refusal-tibicen-1",
+      "schema": 1,
+      "judge": {
+        "id": "independent-model-judge-4",
+        "kind": "model",
+        "version": "codex-0.157.0-gpt-6-sol",
+        "bindingHash": "9882dced755b60d08fb821774aa3f9e5850c4851ba13712aa60896714d8e835c",
+        "packetHash": "b1508d8961152b12b8e2ebc664dba42526b199aa0c740838856d31913a13947d",
+        "judgements": [
+          {
+            "stage": "setup",
+            "criterion": "grounding",
+            "verdict": "unverified",
+            "reason": "source_read_unobserved",
+            "evidence": [
+              "native-1",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "fit",
+            "verdict": "unverified",
+            "reason": "skill_fit_unknown",
+            "evidence": [
+              "native-0",
+              "native-1",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "sufficiency",
+            "verdict": "unverified",
+            "reason": "rules_not_shown",
+            "evidence": [
+              "native-1",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "consistency",
+            "verdict": "unverified",
+            "reason": "no_change_evidence",
+            "evidence": [
+              "native-2",
+              "native-3",
+              "native-4"
+            ]
+          },
+          {
+            "stage": "task",
+            "criterion": "application",
+            "verdict": "unverified",
+            "reason": "no_task_actions",
+            "evidence": []
+          },
+          {
+            "stage": "task",
+            "criterion": "loading",
+            "verdict": "unverified",
+            "reason": "no_new_session",
+            "evidence": []
+          }
+        ]
+      },
+      "explanation": "В данных есть предложение установить Ponytail и последующий отказ, но нет наблюдаемого чтения содержимого, изменений или действий в новой сессии. Самоотчёт исполнителя этого не подтверждает.",
+      "assessment": {
+        "schema": 1,
+        "bindingHash": "9882dced755b60d08fb821774aa3f9e5850c4851ba13712aa60896714d8e835c",
+        "packetHash": "b1508d8961152b12b8e2ebc664dba42526b199aa0c740838856d31913a13947d",
+        "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+        "plan": {
+          "setup": [
+            "grounding",
+            "fit",
+            "sufficiency",
+            "consistency"
+          ],
+          "task": [
+            "application",
+            "loading"
+          ]
+        },
+        "mode": "observed",
+        "judge": {
+          "id": "independent-model-judge-4",
+          "kind": "model",
+          "version": "codex-0.157.0-gpt-6-sol",
+          "bindingHash": "9882dced755b60d08fb821774aa3f9e5850c4851ba13712aa60896714d8e835c",
+          "packetHash": "b1508d8961152b12b8e2ebc664dba42526b199aa0c740838856d31913a13947d",
+          "judgements": [
+            {
+              "stage": "setup",
+              "criterion": "grounding",
+              "verdict": "unverified",
+              "reason": "source_read_unobserved",
+              "evidence": [
+                "native-1",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "fit",
+              "verdict": "unverified",
+              "reason": "skill_fit_unknown",
+              "evidence": [
+                "native-0",
+                "native-1",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "sufficiency",
+              "verdict": "unverified",
+              "reason": "rules_not_shown",
+              "evidence": [
+                "native-1",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "consistency",
+              "verdict": "unverified",
+              "reason": "no_change_evidence",
+              "evidence": [
+                "native-2",
+                "native-3",
+                "native-4"
+              ]
+            },
+            {
+              "stage": "task",
+              "criterion": "application",
+              "verdict": "unverified",
+              "reason": "no_task_actions",
+              "evidence": []
+            },
+            {
+              "stage": "task",
+              "criterion": "loading",
+              "verdict": "unverified",
+              "reason": "no_new_session",
+              "evidence": []
+            }
+          ]
+        },
+        "human": null,
+        "humanRequired": true,
+        "disagreements": [],
+        "grades": [
+          {
+            "schema": 1,
+            "id": "quality-setup-grounding",
+            "attemptId": "skill-01-refusal-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-fit",
+            "attemptId": "skill-01-refusal-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-sufficiency",
+            "attemptId": "skill-01-refusal-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-consistency",
+            "attemptId": "skill-01-refusal-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4,
+              5
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-task-application",
+            "attemptId": "skill-01-refusal-tibicen-1",
+            "stage": "task",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": []
+          },
+          {
+            "schema": 1,
+            "id": "quality-task-loading",
+            "attemptId": "skill-01-refusal-tibicen-1",
+            "stage": "task",
+            "scope": "loading",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": []
+          }
+        ]
+      }
+    },
+    {
+      "attemptId": "skill-02-tibicen-1",
+      "schema": 1,
+      "judge": {
+        "id": "independent-model-judge-5",
+        "kind": "model",
+        "version": "codex-0.157.0-gpt-6-sol",
+        "bindingHash": "3105459bb9d3041ee4f9e0cd00d2a4af7bc774c97f279cfd47e80abdbbc8e23d",
+        "packetHash": "04b2fa78370c1e99098b377bb2e90164cfd0bf590ecc7537e2e7a4473d631714",
+        "judgements": [
+          {
+            "stage": "setup",
+            "criterion": "grounding",
+            "verdict": "unverified",
+            "reason": "checks_not_observed",
+            "evidence": [
+              "native-4"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "fit",
+            "verdict": "pass",
+            "reason": "no_setup_needed",
+            "evidence": [
+              "native-0",
+              "native-1",
+              "native-4",
+              "native-5"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "sufficiency",
+            "verdict": "pass",
+            "reason": "rules_cover_workflow",
+            "evidence": [
+              "native-0",
+              "native-1",
+              "native-2"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "consistency",
+            "verdict": "pass",
+            "reason": "no_conflict_observed",
+            "evidence": [
+              "native-1",
+              "native-2",
+              "native-4",
+              "native-5"
+            ]
+          },
+          {
+            "stage": "task",
+            "criterion": "application",
+            "verdict": "fail",
+            "reason": "npm_test_not_used",
+            "evidence": [
+              "native-8",
+              "native-11",
+              "native-12"
+            ]
+          }
+        ]
+      },
+      "explanation": "Настройка соответствует запросу и сохраняет нужные правила, но заявленные проверки конфигурации и CI не подтверждены наблюдениями. В задаче план учитывает инструкции, однако среди одобренных команд указан node --test вместо требуемого npm test.",
+      "assessment": {
+        "schema": 1,
+        "bindingHash": "3105459bb9d3041ee4f9e0cd00d2a4af7bc774c97f279cfd47e80abdbbc8e23d",
+        "packetHash": "04b2fa78370c1e99098b377bb2e90164cfd0bf590ecc7537e2e7a4473d631714",
+        "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+        "plan": {
+          "setup": [
+            "grounding",
+            "fit",
+            "sufficiency",
+            "consistency"
+          ],
+          "task": [
+            "application"
+          ]
+        },
+        "mode": "observed",
+        "judge": {
+          "id": "independent-model-judge-5",
+          "kind": "model",
+          "version": "codex-0.157.0-gpt-6-sol",
+          "bindingHash": "3105459bb9d3041ee4f9e0cd00d2a4af7bc774c97f279cfd47e80abdbbc8e23d",
+          "packetHash": "04b2fa78370c1e99098b377bb2e90164cfd0bf590ecc7537e2e7a4473d631714",
+          "judgements": [
+            {
+              "stage": "setup",
+              "criterion": "grounding",
+              "verdict": "unverified",
+              "reason": "checks_not_observed",
+              "evidence": [
+                "native-4"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "fit",
+              "verdict": "pass",
+              "reason": "no_setup_needed",
+              "evidence": [
+                "native-0",
+                "native-1",
+                "native-4",
+                "native-5"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "sufficiency",
+              "verdict": "pass",
+              "reason": "rules_cover_workflow",
+              "evidence": [
+                "native-0",
+                "native-1",
+                "native-2"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "consistency",
+              "verdict": "pass",
+              "reason": "no_conflict_observed",
+              "evidence": [
+                "native-1",
+                "native-2",
+                "native-4",
+                "native-5"
+              ]
+            },
+            {
+              "stage": "task",
+              "criterion": "application",
+              "verdict": "fail",
+              "reason": "npm_test_not_used",
+              "evidence": [
+                "native-8",
+                "native-11",
+                "native-12"
+              ]
+            }
+          ]
+        },
+        "human": null,
+        "humanRequired": true,
+        "disagreements": [],
+        "grades": [
+          {
+            "schema": 1,
+            "id": "quality-setup-grounding",
+            "attemptId": "skill-02-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              6
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-fit",
+            "attemptId": "skill-02-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              6,
+              8,
+              9
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-sufficiency",
+            "attemptId": "skill-02-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": []
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-consistency",
+            "attemptId": "skill-02-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              6,
+              8,
+              9
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-task-application",
+            "attemptId": "skill-02-tibicen-1",
+            "stage": "task",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              17,
+              19,
+              22
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "attemptId": "skill-02-baseline-1",
+      "schema": 1,
+      "judge": {
+        "id": "independent-model-judge-6",
+        "kind": "model",
+        "version": "codex-0.157.0-gpt-6-sol",
+        "bindingHash": "5e5ddc1356e7c5f4a561719939c05be044c5a5d30ef483eeac78673963c7ebed",
+        "packetHash": "1c0c446d7acd97431a15430283a1f172a97d69926d1c5235e6e8cd5bcc9c5a77",
+        "judgements": [
+          {
+            "stage": "setup",
+            "criterion": "grounding",
+            "verdict": "unverified",
+            "reason": "no_attempt_evidence",
+            "evidence": [
+              "native-0",
+              "native-1",
+              "native-2",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "fit",
+            "verdict": "unverified",
+            "reason": "no_solution_shown",
+            "evidence": [
+              "native-0",
+              "native-1",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "sufficiency",
+            "verdict": "unverified",
+            "reason": "no_rules_or_gap_shown",
+            "evidence": [
+              "native-0",
+              "native-1",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "consistency",
+            "verdict": "unverified",
+            "reason": "no_changes_shown",
+            "evidence": [
+              "native-1",
+              "native-2",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "task",
+            "criterion": "application",
+            "verdict": "unverified",
+            "reason": "no_task_actions_shown",
+            "evidence": []
+          }
+        ]
+      },
+      "explanation": "Приведены исходные условия и отметка о завершении контрольной точки, но нет наблюдаемых действий или результата попытки. Применение правил оценить нельзя.",
+      "assessment": {
+        "schema": 1,
+        "bindingHash": "5e5ddc1356e7c5f4a561719939c05be044c5a5d30ef483eeac78673963c7ebed",
+        "packetHash": "1c0c446d7acd97431a15430283a1f172a97d69926d1c5235e6e8cd5bcc9c5a77",
+        "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+        "plan": {
+          "setup": [
+            "grounding",
+            "fit",
+            "sufficiency",
+            "consistency"
+          ],
+          "task": [
+            "application"
+          ]
+        },
+        "mode": "observed",
+        "judge": {
+          "id": "independent-model-judge-6",
+          "kind": "model",
+          "version": "codex-0.157.0-gpt-6-sol",
+          "bindingHash": "5e5ddc1356e7c5f4a561719939c05be044c5a5d30ef483eeac78673963c7ebed",
+          "packetHash": "1c0c446d7acd97431a15430283a1f172a97d69926d1c5235e6e8cd5bcc9c5a77",
+          "judgements": [
+            {
+              "stage": "setup",
+              "criterion": "grounding",
+              "verdict": "unverified",
+              "reason": "no_attempt_evidence",
+              "evidence": [
+                "native-0",
+                "native-1",
+                "native-2",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "fit",
+              "verdict": "unverified",
+              "reason": "no_solution_shown",
+              "evidence": [
+                "native-0",
+                "native-1",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "sufficiency",
+              "verdict": "unverified",
+              "reason": "no_rules_or_gap_shown",
+              "evidence": [
+                "native-0",
+                "native-1",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "consistency",
+              "verdict": "unverified",
+              "reason": "no_changes_shown",
+              "evidence": [
+                "native-1",
+                "native-2",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "task",
+              "criterion": "application",
+              "verdict": "unverified",
+              "reason": "no_task_actions_shown",
+              "evidence": []
+            }
+          ]
+        },
+        "human": null,
+        "humanRequired": true,
+        "disagreements": [],
+        "grades": [
+          {
+            "schema": 1,
+            "id": "quality-setup-grounding",
+            "attemptId": "skill-02-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-fit",
+            "attemptId": "skill-02-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-sufficiency",
+            "attemptId": "skill-02-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-consistency",
+            "attemptId": "skill-02-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-task-application",
+            "attemptId": "skill-02-baseline-1",
+            "stage": "task",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": []
+          }
+        ]
+      }
+    },
+    {
+      "attemptId": "skill-03-baseline-1",
+      "schema": 1,
+      "judge": {
+        "id": "independent-model-judge-7",
+        "kind": "model",
+        "version": "codex-0.157.0-gpt-6-sol",
+        "bindingHash": "1988d1360efedeb2b913d6afeecdfbf5c92958d8ce290bd337de2ccf39c72c2d",
+        "packetHash": "80de8f4f7c387b8fc446d49cd1418428662035058c724a3d2f563564dfa996e6",
+        "judgements": [
+          {
+            "stage": "setup",
+            "criterion": "grounding",
+            "verdict": "unverified",
+            "reason": "no_observed_reasoning",
+            "evidence": [
+              "native-0",
+              "native-1",
+              "native-2",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "fit",
+            "verdict": "unverified",
+            "reason": "no_observed_solution",
+            "evidence": [
+              "native-0",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "sufficiency",
+            "verdict": "unverified",
+            "reason": "no_observed_rules_or_gap",
+            "evidence": [
+              "native-0",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "consistency",
+            "verdict": "unverified",
+            "reason": "no_observed_resolution",
+            "evidence": [
+              "native-2",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "task",
+            "criterion": "application",
+            "verdict": "unverified",
+            "reason": "no_task_evidence",
+            "evidence": []
+          }
+        ]
+      },
+      "explanation": "Приведены исходный контекст и отметка о завершении, но нет наблюдаемых действий или результата попытки. Поэтому выполнение критериев подтвердить нельзя.",
+      "assessment": {
+        "schema": 1,
+        "bindingHash": "1988d1360efedeb2b913d6afeecdfbf5c92958d8ce290bd337de2ccf39c72c2d",
+        "packetHash": "80de8f4f7c387b8fc446d49cd1418428662035058c724a3d2f563564dfa996e6",
+        "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+        "plan": {
+          "setup": [
+            "grounding",
+            "fit",
+            "sufficiency",
+            "consistency"
+          ],
+          "task": [
+            "application"
+          ]
+        },
+        "mode": "observed",
+        "judge": {
+          "id": "independent-model-judge-7",
+          "kind": "model",
+          "version": "codex-0.157.0-gpt-6-sol",
+          "bindingHash": "1988d1360efedeb2b913d6afeecdfbf5c92958d8ce290bd337de2ccf39c72c2d",
+          "packetHash": "80de8f4f7c387b8fc446d49cd1418428662035058c724a3d2f563564dfa996e6",
+          "judgements": [
+            {
+              "stage": "setup",
+              "criterion": "grounding",
+              "verdict": "unverified",
+              "reason": "no_observed_reasoning",
+              "evidence": [
+                "native-0",
+                "native-1",
+                "native-2",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "fit",
+              "verdict": "unverified",
+              "reason": "no_observed_solution",
+              "evidence": [
+                "native-0",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "sufficiency",
+              "verdict": "unverified",
+              "reason": "no_observed_rules_or_gap",
+              "evidence": [
+                "native-0",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "consistency",
+              "verdict": "unverified",
+              "reason": "no_observed_resolution",
+              "evidence": [
+                "native-2",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "task",
+              "criterion": "application",
+              "verdict": "unverified",
+              "reason": "no_task_evidence",
+              "evidence": []
+            }
+          ]
+        },
+        "human": null,
+        "humanRequired": true,
+        "disagreements": [],
+        "grades": [
+          {
+            "schema": 1,
+            "id": "quality-setup-grounding",
+            "attemptId": "skill-03-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              8
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-fit",
+            "attemptId": "skill-03-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              8
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-sufficiency",
+            "attemptId": "skill-03-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              8
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-consistency",
+            "attemptId": "skill-03-baseline-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              8
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-task-application",
+            "attemptId": "skill-03-baseline-1",
+            "stage": "task",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": []
+          }
+        ]
+      }
+    },
+    {
+      "attemptId": "skill-03-tibicen-1",
+      "schema": 1,
+      "judge": {
+        "id": "independent-model-judge-8",
+        "kind": "model",
+        "version": "codex-0.157.0-gpt-6-sol",
+        "bindingHash": "e8896fe033de64414da0862da03558e0b52dae64e8b906ef2cb2eec02e541a3c",
+        "packetHash": "6174270849855ead0a721312b27ccc3e7204fa7ab539a572d9b5d18e09b69a65",
+        "judgements": [
+          {
+            "stage": "setup",
+            "criterion": "grounding",
+            "verdict": "unverified",
+            "reason": "no_response_record",
+            "evidence": [
+              "native-0",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "fit",
+            "verdict": "unverified",
+            "reason": "no_solution_record",
+            "evidence": [
+              "native-0",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "sufficiency",
+            "verdict": "unverified",
+            "reason": "no_rules_or_gap_record",
+            "evidence": [
+              "native-0",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "consistency",
+            "verdict": "unverified",
+            "reason": "no_reconciliation_record",
+            "evidence": [
+              "native-2",
+              "native-3"
+            ]
+          },
+          {
+            "stage": "task",
+            "criterion": "application",
+            "verdict": "unverified",
+            "reason": "no_task_observations",
+            "evidence": []
+          }
+        ]
+      },
+      "explanation": "В данных есть запрос, справочные материалы и отметка о завершении проверки, но нет наблюдаемого решения или действий исполнителя. Оценить применение правил на этапе task также невозможно.",
+      "assessment": {
+        "schema": 1,
+        "bindingHash": "e8896fe033de64414da0862da03558e0b52dae64e8b906ef2cb2eec02e541a3c",
+        "packetHash": "6174270849855ead0a721312b27ccc3e7204fa7ab539a572d9b5d18e09b69a65",
+        "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+        "plan": {
+          "setup": [
+            "grounding",
+            "fit",
+            "sufficiency",
+            "consistency"
+          ],
+          "task": [
+            "application"
+          ]
+        },
+        "mode": "observed",
+        "judge": {
+          "id": "independent-model-judge-8",
+          "kind": "model",
+          "version": "codex-0.157.0-gpt-6-sol",
+          "bindingHash": "e8896fe033de64414da0862da03558e0b52dae64e8b906ef2cb2eec02e541a3c",
+          "packetHash": "6174270849855ead0a721312b27ccc3e7204fa7ab539a572d9b5d18e09b69a65",
+          "judgements": [
+            {
+              "stage": "setup",
+              "criterion": "grounding",
+              "verdict": "unverified",
+              "reason": "no_response_record",
+              "evidence": [
+                "native-0",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "fit",
+              "verdict": "unverified",
+              "reason": "no_solution_record",
+              "evidence": [
+                "native-0",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "sufficiency",
+              "verdict": "unverified",
+              "reason": "no_rules_or_gap_record",
+              "evidence": [
+                "native-0",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "consistency",
+              "verdict": "unverified",
+              "reason": "no_reconciliation_record",
+              "evidence": [
+                "native-2",
+                "native-3"
+              ]
+            },
+            {
+              "stage": "task",
+              "criterion": "application",
+              "verdict": "unverified",
+              "reason": "no_task_observations",
+              "evidence": []
+            }
+          ]
+        },
+        "human": null,
+        "humanRequired": true,
+        "disagreements": [],
+        "grades": [
+          {
+            "schema": 1,
+            "id": "quality-setup-grounding",
+            "attemptId": "skill-03-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-fit",
+            "attemptId": "skill-03-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-sufficiency",
+            "attemptId": "skill-03-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-setup-consistency",
+            "attemptId": "skill-03-tibicen-1",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": [
+              4
+            ]
+          },
+          {
+            "schema": 1,
+            "id": "quality-task-application",
+            "attemptId": "skill-03-tibicen-1",
+            "stage": "task",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidence": []
+          }
+        ]
+      }
+    }
+  ],
+  "summary": [
+    {
+      "attemptId": "skill-01-tibicen-1",
+      "status": "reviewed",
+      "humanRequired": true,
+      "judgements": [
+        {
+          "stage": "setup",
+          "criterion": "grounding",
+          "verdict": "unverified",
+          "reason": "no_observed_reasoning"
+        },
+        {
+          "stage": "setup",
+          "criterion": "fit",
+          "verdict": "unverified",
+          "reason": "no_observed_solution"
+        },
+        {
+          "stage": "setup",
+          "criterion": "sufficiency",
+          "verdict": "unverified",
+          "reason": "no_observed_rules"
+        },
+        {
+          "stage": "setup",
+          "criterion": "consistency",
+          "verdict": "unverified",
+          "reason": "no_observed_changes"
+        },
+        {
+          "stage": "task",
+          "criterion": "application",
+          "verdict": "unverified",
+          "reason": "no_task_actions"
+        },
+        {
+          "stage": "task",
+          "criterion": "loading",
+          "verdict": "unverified",
+          "reason": "no_new_session_load"
+        }
+      ]
+    },
+    {
+      "attemptId": "skill-01-refusal-baseline-1",
+      "status": "reviewed",
+      "humanRequired": true,
+      "judgements": [
+        {
+          "stage": "setup",
+          "criterion": "grounding",
+          "verdict": "unverified",
+          "reason": "checks_unobserved"
+        },
+        {
+          "stage": "setup",
+          "criterion": "fit",
+          "verdict": "fail",
+          "reason": "source_path_mismatch"
+        },
+        {
+          "stage": "setup",
+          "criterion": "sufficiency",
+          "verdict": "unverified",
+          "reason": "content_unseen"
+        },
+        {
+          "stage": "setup",
+          "criterion": "consistency",
+          "verdict": "fail",
+          "reason": "source_path_mismatch"
+        },
+        {
+          "stage": "task",
+          "criterion": "application",
+          "verdict": "unverified",
+          "reason": "no_task_evidence"
+        },
+        {
+          "stage": "task",
+          "criterion": "loading",
+          "verdict": "unverified",
+          "reason": "no_task_evidence"
+        }
+      ]
+    },
+    {
+      "attemptId": "skill-01-baseline-1",
+      "status": "reviewed",
+      "humanRequired": true,
+      "judgements": [
+        {
+          "stage": "setup",
+          "criterion": "grounding",
+          "verdict": "pass",
+          "reason": "pinned_source_matches"
+        },
+        {
+          "stage": "setup",
+          "criterion": "fit",
+          "verdict": "pass",
+          "reason": "requested_minimal_install"
+        },
+        {
+          "stage": "setup",
+          "criterion": "sufficiency",
+          "verdict": "unverified",
+          "reason": "rules_not_observed"
+        },
+        {
+          "stage": "setup",
+          "criterion": "consistency",
+          "verdict": "unverified",
+          "reason": "consent_not_shown"
+        },
+        {
+          "stage": "task",
+          "criterion": "application",
+          "verdict": "unverified",
+          "reason": "actions_not_shown"
+        },
+        {
+          "stage": "task",
+          "criterion": "loading",
+          "verdict": "pass",
+          "reason": "skill_content_observed"
+        }
+      ]
+    },
+    {
+      "attemptId": "skill-01-refusal-tibicen-1",
+      "status": "reviewed",
+      "humanRequired": true,
+      "judgements": [
+        {
+          "stage": "setup",
+          "criterion": "grounding",
+          "verdict": "unverified",
+          "reason": "source_read_unobserved"
+        },
+        {
+          "stage": "setup",
+          "criterion": "fit",
+          "verdict": "unverified",
+          "reason": "skill_fit_unknown"
+        },
+        {
+          "stage": "setup",
+          "criterion": "sufficiency",
+          "verdict": "unverified",
+          "reason": "rules_not_shown"
+        },
+        {
+          "stage": "setup",
+          "criterion": "consistency",
+          "verdict": "unverified",
+          "reason": "no_change_evidence"
+        },
+        {
+          "stage": "task",
+          "criterion": "application",
+          "verdict": "unverified",
+          "reason": "no_task_actions"
+        },
+        {
+          "stage": "task",
+          "criterion": "loading",
+          "verdict": "unverified",
+          "reason": "no_new_session"
+        }
+      ]
+    },
+    {
+      "attemptId": "skill-02-tibicen-1",
+      "status": "reviewed",
+      "humanRequired": true,
+      "judgements": [
+        {
+          "stage": "setup",
+          "criterion": "grounding",
+          "verdict": "unverified",
+          "reason": "checks_not_observed"
+        },
+        {
+          "stage": "setup",
+          "criterion": "fit",
+          "verdict": "pass",
+          "reason": "no_setup_needed"
+        },
+        {
+          "stage": "setup",
+          "criterion": "sufficiency",
+          "verdict": "pass",
+          "reason": "rules_cover_workflow"
+        },
+        {
+          "stage": "setup",
+          "criterion": "consistency",
+          "verdict": "pass",
+          "reason": "no_conflict_observed"
+        },
+        {
+          "stage": "task",
+          "criterion": "application",
+          "verdict": "fail",
+          "reason": "npm_test_not_used"
+        }
+      ]
+    },
+    {
+      "attemptId": "skill-02-baseline-1",
+      "status": "reviewed",
+      "humanRequired": true,
+      "judgements": [
+        {
+          "stage": "setup",
+          "criterion": "grounding",
+          "verdict": "unverified",
+          "reason": "no_attempt_evidence"
+        },
+        {
+          "stage": "setup",
+          "criterion": "fit",
+          "verdict": "unverified",
+          "reason": "no_solution_shown"
+        },
+        {
+          "stage": "setup",
+          "criterion": "sufficiency",
+          "verdict": "unverified",
+          "reason": "no_rules_or_gap_shown"
+        },
+        {
+          "stage": "setup",
+          "criterion": "consistency",
+          "verdict": "unverified",
+          "reason": "no_changes_shown"
+        },
+        {
+          "stage": "task",
+          "criterion": "application",
+          "verdict": "unverified",
+          "reason": "no_task_actions_shown"
+        }
+      ]
+    },
+    {
+      "attemptId": "skill-03-baseline-1",
+      "status": "reviewed",
+      "humanRequired": true,
+      "judgements": [
+        {
+          "stage": "setup",
+          "criterion": "grounding",
+          "verdict": "unverified",
+          "reason": "no_observed_reasoning"
+        },
+        {
+          "stage": "setup",
+          "criterion": "fit",
+          "verdict": "unverified",
+          "reason": "no_observed_solution"
+        },
+        {
+          "stage": "setup",
+          "criterion": "sufficiency",
+          "verdict": "unverified",
+          "reason": "no_observed_rules_or_gap"
+        },
+        {
+          "stage": "setup",
+          "criterion": "consistency",
+          "verdict": "unverified",
+          "reason": "no_observed_resolution"
+        },
+        {
+          "stage": "task",
+          "criterion": "application",
+          "verdict": "unverified",
+          "reason": "no_task_evidence"
+        }
+      ]
+    },
+    {
+      "attemptId": "skill-04-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "skill-04-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "skill-04-license-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "skill-04-license-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "skill-04-changed-bytes-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "skill-04-changed-bytes-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "skill-04-missing-resource-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "skill-04-missing-resource-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "skill-04-foreign-path-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "skill-04-foreign-path-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-01-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-01-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-02-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-02-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-03-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-03-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-04-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-04-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-05-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-05-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-06-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-06-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-06-no-questions-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-06-no-questions-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-07-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-07-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-08a-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-08a-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-08b-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-08b-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-08c-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-08c-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-08d-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "pref-08d-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-01-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-01-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-02-adopt-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-02-adopt-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-02-update-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-02-update-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-03-unknown-version-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-03-unknown-version-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-03-path-conflict-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-03-path-conflict-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-03-unsafe-init-tibicen-1",
+      "status": "skip",
+      "reason": "executor-not-started"
+    },
+    {
+      "attemptId": "proc-03-unsafe-init-baseline-1",
+      "status": "skip",
+      "reason": "executor-not-started"
+    },
+    {
+      "attemptId": "proc-03-interrupted-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-03-interrupted-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-04-team-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-04-team-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-04-openspec-baseline-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "proc-04-openspec-tibicen-1",
+      "status": "skip",
+      "reason": "no-executor-response"
+    },
+    {
+      "attemptId": "skill-03-tibicen-1",
+      "status": "reviewed",
+      "humanRequired": true,
+      "judgements": [
+        {
+          "stage": "setup",
+          "criterion": "grounding",
+          "verdict": "unverified",
+          "reason": "no_response_record"
+        },
+        {
+          "stage": "setup",
+          "criterion": "fit",
+          "verdict": "unverified",
+          "reason": "no_solution_record"
+        },
+        {
+          "stage": "setup",
+          "criterion": "sufficiency",
+          "verdict": "unverified",
+          "reason": "no_rules_or_gap_record"
+        },
+        {
+          "stage": "setup",
+          "criterion": "consistency",
+          "verdict": "unverified",
+          "reason": "no_reconciliation_record"
+        },
+        {
+          "stage": "task",
+          "criterion": "application",
+          "verdict": "unverified",
+          "reason": "no_task_observations"
+        }
+      ]
+    }
+  ]
+}

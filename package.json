@@ -1,0 +1,54 @@
+{
+  "name": "tibicen",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "pnpm lint --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "pnpm typecheck:core && pnpm --filter @tibicen/landing typecheck",
+    "typecheck:core": "tsc --noEmit",
+    "test": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm build:site && pnpm spec:check && node scripts/build.ts && node --test",
+    "test:core": "node --test tests/compat/*.test.ts tests/core/*.test.ts tests/discovery/*.test.ts tests/mcp/*.test.ts tests/presets/*.test.ts tests/process/*.test.ts tests/scan/*.test.ts tests/skills/*.test.ts tests/verify/*.test.ts",
+    "test:evals": "node scripts/build.ts && node --test tests/evals/*.test.ts",
+    "test:site:unit": "pnpm build:site && node --test tests/site/*.test.ts",
+    "build:site": "pnpm --filter @tibicen/landing build",
+    "test:site": "pnpm build:site && playwright test --config landing/playwright.config.ts",
+    "build": "pnpm typecheck && pnpm build:site && node scripts/build.ts",
+    "self-test": "node scripts/tibicen.ts self-test",
+    "eval:diagnostic": "node scripts/evals/diagnostic.ts",
+    "eval:external": "node scripts/evals/external.ts",
+    "dev:site": "pnpm --filter @tibicen/landing dev",
+    "preview:site": "pnpm --filter @tibicen/landing preview",
+    "openspec": "openspec",
+    "spec:check": "openspec validate --all --strict && openspec validate --archived --strict"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@fission-ai/openspec": "1.14.3",
+    "@playwright/test": "1.64.1",
+    "@types/node": "22.20.5",
+    "eslint": "10.13.0",
+    "eslint-plugin-astro": "1.7.0",
+    "globals": "17.13.0",
+    "prettier": "3.9.10",
+    "prettier-plugin-astro": "1.1.1",
+    "typescript": "6.0.2",
+    "typescript-eslint": "8.72.0"
+  },
+  "packageManager": "pnpm@11.21.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/warbr1ng3r/tibicen.git"
+  },
+  "homepage": "https://warbr1ng3r.github.io/tibicen/",
+  "bugs": {
+    "url": "https://github.com/warbr1ng3r/tibicen/issues"
+  }
+}

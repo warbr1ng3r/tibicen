@@ -1,0 +1,343 @@
+---
+import ProjectPreview from '../components/ProjectPreview.astro';
+import Installation from '../components/Installation.astro';
+import PresetForm from '../components/PresetForm.astro';
+import Features from '../components/astrowind/Features.astro';
+import Steps from '../components/astrowind/Steps.astro';
+import FAQs from '../components/astrowind/FAQs.astro';
+import '../styles/global.css';
+
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const scenarios = [
+  {
+    label: 'tibicen-init',
+    title: 'Настроить впервые',
+    description:
+      'Для пустой папки или приложения без агентских настроек. Tibicen изучит проект и предложит инструкции, скиллы и подключения под ваши задачи.',
+    prompt:
+      'Используй tibicen-init. Настрой агентскую инфраструктуру этого проекта.',
+  },
+  {
+    label: 'tibicen-adopt',
+    title: 'Исправить и обновить',
+    description:
+      'Для проекта, где уже есть инструкции и инструменты. Tibicen проверит их, найдёт конфликты и предложит изменения с сохранением полезных настроек.',
+    prompt:
+      'Используй tibicen-adopt. Проверь и обнови агентскую инфраструктуру проекта.',
+  },
+];
+const outputs = [
+  {
+    label: '01 / Инструкции',
+    title: 'Правила работы с проектом',
+    description:
+      'Команды, ограничения и порядок работы в формате вашего агента: например, AGENTS.md или CLAUDE.md.',
+  },
+  {
+    label: '02 / Инструменты',
+    title: 'Скиллы и MCP по необходимости',
+    description:
+      'Дополнения с понятной задачей и указанным происхождением. Если проекту достаточно инструкций, лишних компонентов не будет.',
+  },
+  {
+    label: '03 / Паспорт',
+    title: 'Запись о настройке',
+    description:
+      '.tibicen/manifest.yml сохраняет происхождение компонентов, внесённые изменения и результаты проверок. Это помогает продолжить работу и обновить настройку.',
+  },
+];
+const steps = [
+  {
+    title: 'Изучает проект',
+    description:
+      'Читает структуру, команды, существующие инструкции и ваши ограничения. Обращается к официальным источникам выбранных инструментов.',
+  },
+  {
+    title: 'Показывает план',
+    description:
+      'Какие файлы изменятся, что будет установлено, какие команды запустятся и что потребуется сделать вручную. Перед применением нужно ваше согласие.',
+  },
+  {
+    title: 'Применяет и проверяет',
+    description:
+      'Вносит согласованные изменения и передаёт результат. Выполненные проверки, ошибки и непроверенные возможности показываются отдельно.',
+  },
+];
+const questions = [
+  {
+    title: 'С какими агентами можно начать?',
+    description:
+      'Предусмотрены настройки для Codex, Claude Code и Cursor. Форматы сверены с документацией; CLI Cursor локально не проверен. Полные испытания обоих сценариев на настоящих агентах ещё впереди. Наличие формата настройки не означает, что весь процесс уже подтверждён.',
+  },
+  {
+    title: 'Хватит подписки или нужен API-ключ?',
+    description:
+      'Для основной настройки используется обычный вход в вашего агента: отдельный API-ключ Tibicen не нужен. Некоторые контролируемые проверки Claude Code требуют API-авторизации. Если её нет, такие проверки отмечаются как непроверенные. Стоимость агента и API оплачивается отдельно от Tibicen.',
+  },
+  {
+    title: 'Подойдёт проект с pnpm или Yarn?',
+    description:
+      'Да: запуск установщика не меняет менеджер пакетов вашего проекта и не устанавливает в него Tibicen как зависимость. В блоке установки можно выбрать npm, pnpm или Yarn 2+. В Yarn Classic команды dlx нет — используйте npx. Разработка самого Tibicen использует pnpm и pnpm-lock.yaml.',
+  },
+  {
+    title: 'Что произойдёт с существующим кодом?',
+    description:
+      'Tibicen меняет согласованную агентскую инфраструктуру. Исходники приложения, данные, существующие пакетные манифесты и CI сохраняются. Установка компонентов и запуск проектного кода требуют согласия. Tibicen не создаёт Git-коммиты и не оставляет постоянно работающий процесс.',
+  },
+  {
+    title: 'Как поддерживается актуальность?',
+    description:
+      'При настройке Tibicen получает рекомендации из выбранных официальных источников и указывает источники и даты. Агент оценивает их применимость к проекту. Обновление установленного Tibicen и уже созданных настроек запускает пользователь; фонового самообновления нет. Свежая дата источника сама по себе не гарантирует качество.',
+  },
+  {
+    title: 'Какие проекты и проверки поддерживаются?',
+    description:
+      'Структурная проверка агентских файлов доступна для разных стеков. Автоматические build, test и lint пока реализованы для web-профиля. Команды запускаются только при согласованном и подтверждённом окружении. Неподдерживаемая или недоступная проверка получает причину, а не отметку об успехе.',
+  },
+  {
+    title: 'Куда отправляются данные?',
+    description:
+      'Конструктор пресета создаёт файл прямо в браузере и никуда не отправляет ответы. При работе с проектом действуют правила обработки данных вашего агента и его провайдера. Для поиска компонентов и рекомендаций Tibicen обращается к внешним источникам. Передавать секреты в пресете не нужно.',
+  },
+];
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#1c1c1c" />
+    <meta
+      name="description"
+      content="Tibicen настраивает инструкции, скиллы и MCP для вашего агента. Для новых проектов и обновления существующих настроек. Сначала план, затем согласованные изменения."
+    />
+    <title>Tibicen — подготовьте проект к работе с агентом</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href={`${basePath}/assets/favicon.svg`}
+    />
+    <script src="../scripts/app.ts"></script>
+    <script src="../scripts/background.ts"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      К содержимому
+    </a>
+    <header class="header page-width">
+      <a class="wordmark" href="#" aria-label="Tibicen — в начало">
+        <img
+          class="brand-mark"
+          src={`${basePath}/assets/logo.svg`}
+          width="36"
+          height="36"
+          alt=""
+        />
+        tibicen
+      </a>
+      <nav aria-label="Основная навигация">
+        <a href="#scenarios">Сценарии</a>
+        <a href="#result">Результат</a>
+        <a href="#faq">Вопросы</a>
+      </nav>
+      <a class="header-start" href="#start">
+        Установить <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+    <nav
+      class="geometry-preview page-width"
+      aria-label="Сравнение вариантов фона"
+      hidden
+    >
+      <span>Варианты фона</span>
+      <a href="?preview=geometry&amp;geometry=waves" data-geometry="waves">
+        Контурная волна
+      </a>
+      <a href="?preview=geometry&amp;geometry=cubes" data-geometry="cubes">
+        Каркасные кубы
+      </a>
+      <a
+        href="?preview=geometry&amp;geometry=scaffold"
+        data-geometry="scaffold"
+      >
+        Строительные леса
+      </a>
+      <a href="?preview=geometry&amp;geometry=truss" data-geometry="truss">
+        Плоский граф
+      </a>
+      <a href="?preview=geometry&amp;geometry=lattice" data-geometry="lattice">
+        Модульная решётка
+      </a>
+      <a
+        href="?preview=geometry&amp;geometry=clusters"
+        data-geometry="clusters"
+      >
+        Сеть центров
+      </a>
+      <a href="?preview=geometry&amp;geometry=dag" data-geometry="dag">
+        Граф с ветвлениями
+      </a>
+    </nav>
+    <main id="main">
+      <div class="hero-surface" data-geometry="truss">
+        <section class="hero page-width" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span class="eyebrow-line" aria-hidden="true"></span> Два скилла
+              для вашего агента
+            </p>
+            <h1 id="hero-title">
+              Подготовьте
+              <br />
+              проект к работе
+              <br />
+              <span>с агентом.</span>
+            </h1>
+            <p class="hero-description">
+              Инструкции, скиллы и MCP для нового проекта или обновления
+              существующих настроек. Tibicen изучит репозиторий и предложит план
+              — вы решите, что применить.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#start">
+                Установить скиллы <span aria-hidden="true">↗</span>
+              </a>
+              <a class="text-link" href="#result">
+                Что появится в проекте <span aria-hidden="true">↓</span>
+              </a>
+            </div>
+            <p class="hero-note">
+              <span class="status-dot" aria-hidden="true"></span> Alpha
+              0.1.0-alpha.1 · MIT · полный MVP ещё впереди
+            </p>
+          </div>
+          <ProjectPreview />
+        </section>
+      </div>
+      <Features
+        id="scenarios"
+        tagline="Выберите задачу"
+        title="Первая настройка или обновление"
+        subtitle="Установите оба скилла, откройте свой проект в агенте и используйте подходящий запрос."
+        items={scenarios}
+      />
+      <Features
+        id="result"
+        tagline="Результат настройки"
+        title="Что останется в проекте"
+        subtitle="Состав зависит от репозитория и агента. Каждое дополнение должно решать конкретную задачу."
+        items={outputs}
+      />
+      <Steps
+        id="workflow"
+        tagline="Как работает Tibicen"
+        title="Сначала план, затем изменения"
+        items={steps}
+      >
+        <p class="max-w-md text-sm leading-7 text-muted">
+          Ваше приложение продолжает жить своей жизнью: Tibicen настраивает
+          работу агента и не добавляет себя в зависимости проекта.
+        </p>
+      </Steps>
+      <section
+        class="start-section section-space"
+        id="start"
+        aria-labelledby="start-title"
+      >
+        <div class="page-width start-grid">
+          <div class="start-copy">
+            <p class="eyebrow">
+              <span class="eyebrow-line" aria-hidden="true"></span> Первая alpha
+            </p>
+            <h2 id="start-title">
+              Установка
+              <br />
+              двух скиллов
+            </h2>
+            <p>
+              Команда устанавливает готовые скиллы версии 0.1.0-alpha.1. Сборка
+              из исходников не нужна. Локально проверено на macOS с Node 24 и
+              Codex; другие ОС и агенты требуют отдельной приёмки.
+            </p>
+            <div class="requirements">
+              <span>Node ≥22.20</span>
+              <span>Git для установщика</span>
+              <span>Настроенный агент</span>
+            </div>
+          </div>
+          <div class="min-w-0">
+            <Installation />
+            <div class="installation-next">
+              <span>После установки</span>
+              <p>
+                Откройте нужный проект в агенте и используйте запрос из{' '}
+                <a href="#scenarios">сценария выше ↑</a>. Пресет для начала не
+                нужен.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <FAQs
+        id="faq"
+        tagline="До первого запуска"
+        title="Что нужно знать"
+        subtitle="Tibicen находится в разработке. Здесь — возможности текущей версии и её ограничения."
+        items={questions}
+      />
+      <section
+        class="preset-section section-space page-width"
+        id="preset"
+        aria-labelledby="preset-title"
+      >
+        <div class="preset-intro">
+          <p class="eyebrow">Необязательно</p>
+          <h2 id="preset-title">Сохраните предпочтения</h2>
+          <p>
+            Для похожих проектов можно сохранить язык, стиль ответов и
+            ограничения в preset.yaml. Передайте файл агенту при следующей
+            настройке — он заново изучит проект и проверит применимость.
+          </p>
+          <p class="privacy-note">
+            Файл создаётся в вашем браузере.
+            <br />
+            Ответы никуда не отправляются.
+          </p>
+        </div>
+        <PresetForm />
+      </section>
+    </main>
+    <footer class="footer page-width">
+      <a class="wordmark" href="#" aria-label="Tibicen — в начало">
+        <img
+          class="brand-mark"
+          src={`${basePath}/assets/logo.svg`}
+          width="28"
+          height="28"
+          alt=""
+        />
+        tibicen
+      </a>
+      <p>Настройте проект. Вернитесь к работе.</p>
+      <span>
+        MIT · в разработке · секции на{' '}
+        <a href="https://github.com/arthelokyo/astrowind">AstroWind</a> ·{' '}
+        <a href={`${basePath}/licenses/astrowind.txt`}>лицензия</a>
+      </span>
+    </footer>
+    <p
+      id="copy-status"
+      class="copy-status"
+      role="status"
+      aria-live="polite"
+    ></p>
+    <noscript>
+      <p class="noscript-note">
+        Команды установки и примеры доступны без JavaScript. Для копирования и
+        скачивания пресета включите JavaScript.
+      </p>
+    </noscript>
+  </body>
+</html>

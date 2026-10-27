@@ -1,0 +1,563 @@
+{
+  "schema": 1,
+  "createdBy": "Real kernel hard exit, schema 3 state; expectations held by host only. No model runs.",
+  "cases": [
+    {
+      "id": "resume-add-before-file-write",
+      "action": "add",
+      "point": "before-file-write",
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "content": "name: test\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: {node-version: 22}\n      - run: node --test\n"
+        },
+        {
+          "path": ".tibicen/state/session.json",
+          "content": "{\n  \"schema\": 3,\n  \"id\": \"2e871587-3403-4c88-a286-1e364eaa363e\",\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"add\",\n        \"beforeHash\": null,\n        \"beforeMode\": null,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\nold mode absent\\nnew mode 644\\n@@ -1,0 +1,3 @@\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"proposalDigest\": \"19c19c6c4ce8fad64becc74a1431a2c8513703a9ba7b7ed0c5817dd69bf49295\",\n  \"originalEmpty\": false,\n  \"originals\": {\n    \"AGENTS.md\": null\n  },\n  \"planOriginals\": {\n    \"AGENTS.md\": null\n  },\n  \"applied\": [],\n  \"history\": {\n    \"changes\": [],\n    \"components\": [],\n    \"sharedRules\": []\n  },\n  \"attempts\": [\n    {\n      \"number\": 1,\n      \"kind\": \"infrastructure\",\n      \"outcome\": \"incomplete\",\n      \"reason\": \"interrupted\"\n    }\n  ],\n  \"status\": \"incomplete\",\n  \"checks\": {\n    \"infrastructure\": {\n      \"kind\": \"infrastructure\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"verify\": {\n      \"kind\": \"verify\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"task\": {\n      \"kind\": \"task\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    },\n    \"quiz\": {\n      \"kind\": \"quiz\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    }\n  },\n  \"baseline\": {\n    \"id\": \"original-baseline\",\n    \"complete\": true,\n    \"runs\": []\n  },\n  \"completedCommands\": [],\n  \"commandAttempts\": [],\n  \"componentBaseline\": {\n    \"manifest\": null,\n    \"hash\": null\n  },\n  \"manifestHash\": null\n}\n"
+        },
+        {
+          "path": "docs/previously-reviewed-plan.json",
+          "content": "{\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"add\",\n        \"beforeHash\": null,\n        \"beforeMode\": null,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\nold mode absent\\nnew mode 644\\n@@ -1,0 +1,3 @@\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"digest\": \"19c19c6c4ce8fad64becc74a1431a2c8513703a9ba7b7ed0c5817dd69bf49295\",\n  \"summary\": {\n    \"files\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"add\",\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"beforeMode\": null,\n        \"fileMode\": 420\n      }\n    ],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"sharedRules\": {\n      \"status\": \"passed\",\n      \"copies\": [],\n      \"issues\": []\n    },\n    \"commands\": [],\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"manualActions\": [],\n    \"gaps\": []\n  }\n}\n"
+        },
+        {
+          "path": "docs/team-note.md",
+          "content": "# Team note\n\nThe double export is used by an existing consumer. Preserve it.\n"
+        },
+        {
+          "path": "package.json",
+          "content": "{\"name\":\"diagnostic-fixture\",\"private\":true,\"type\":\"module\",\"scripts\":{\"test\":\"node --test\"}}\n"
+        },
+        {
+          "path": "src/math.js",
+          "content": "export const double = value => value * 2;\n"
+        },
+        {
+          "path": "tests/math.test.js",
+          "content": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { double } from '../src/math.js';\ntest('double', () => assert.equal(double(3), 6));\n"
+        }
+      ],
+      "expected": {
+        "sessionId": "2e871587-3403-4c88-a286-1e364eaa363e",
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "state": "pending"
+          }
+        ],
+        "manifest": "unchanged",
+        "unknownCommands": []
+      }
+    },
+    {
+      "id": "resume-add-after-file-write",
+      "action": "add",
+      "point": "after-file-write",
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "content": "name: test\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: {node-version: 22}\n      - run: node --test\n"
+        },
+        {
+          "path": ".tibicen/state/session.json",
+          "content": "{\n  \"schema\": 3,\n  \"id\": \"d7db38ce-eea0-4075-8769-90383bcb60a9\",\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"add\",\n        \"beforeHash\": null,\n        \"beforeMode\": null,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\nold mode absent\\nnew mode 644\\n@@ -1,0 +1,3 @@\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"proposalDigest\": \"19c19c6c4ce8fad64becc74a1431a2c8513703a9ba7b7ed0c5817dd69bf49295\",\n  \"originalEmpty\": false,\n  \"originals\": {\n    \"AGENTS.md\": null\n  },\n  \"planOriginals\": {\n    \"AGENTS.md\": null\n  },\n  \"applied\": [],\n  \"history\": {\n    \"changes\": [],\n    \"components\": [],\n    \"sharedRules\": []\n  },\n  \"attempts\": [\n    {\n      \"number\": 1,\n      \"kind\": \"infrastructure\",\n      \"outcome\": \"incomplete\",\n      \"reason\": \"interrupted\"\n    }\n  ],\n  \"status\": \"incomplete\",\n  \"checks\": {\n    \"infrastructure\": {\n      \"kind\": \"infrastructure\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"verify\": {\n      \"kind\": \"verify\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"task\": {\n      \"kind\": \"task\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    },\n    \"quiz\": {\n      \"kind\": \"quiz\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    }\n  },\n  \"baseline\": {\n    \"id\": \"original-baseline\",\n    \"complete\": true,\n    \"runs\": []\n  },\n  \"completedCommands\": [],\n  \"commandAttempts\": [],\n  \"componentBaseline\": {\n    \"manifest\": null,\n    \"hash\": null\n  },\n  \"manifestHash\": null\n}\n"
+        },
+        {
+          "path": "AGENTS.md",
+          "content": "# Updated\r\nKeep double and owner review.  \r\n"
+        },
+        {
+          "path": "docs/previously-reviewed-plan.json",
+          "content": "{\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"add\",\n        \"beforeHash\": null,\n        \"beforeMode\": null,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\nold mode absent\\nnew mode 644\\n@@ -1,0 +1,3 @@\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"digest\": \"19c19c6c4ce8fad64becc74a1431a2c8513703a9ba7b7ed0c5817dd69bf49295\",\n  \"summary\": {\n    \"files\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"add\",\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"beforeMode\": null,\n        \"fileMode\": 420\n      }\n    ],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"sharedRules\": {\n      \"status\": \"passed\",\n      \"copies\": [],\n      \"issues\": []\n    },\n    \"commands\": [],\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"manualActions\": [],\n    \"gaps\": []\n  }\n}\n"
+        },
+        {
+          "path": "docs/team-note.md",
+          "content": "# Team note\n\nThe double export is used by an existing consumer. Preserve it.\n"
+        },
+        {
+          "path": "package.json",
+          "content": "{\"name\":\"diagnostic-fixture\",\"private\":true,\"type\":\"module\",\"scripts\":{\"test\":\"node --test\"}}\n"
+        },
+        {
+          "path": "src/math.js",
+          "content": "export const double = value => value * 2;\n"
+        },
+        {
+          "path": "tests/math.test.js",
+          "content": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { double } from '../src/math.js';\ntest('double', () => assert.equal(double(3), 6));\n"
+        }
+      ],
+      "expected": {
+        "sessionId": "d7db38ce-eea0-4075-8769-90383bcb60a9",
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "state": "matches-approved-result"
+          }
+        ],
+        "manifest": "unchanged",
+        "unknownCommands": []
+      }
+    },
+    {
+      "id": "resume-modify-before-file-write",
+      "action": "modify",
+      "point": "before-file-write",
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "content": "name: test\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: {node-version: 22}\n      - run: node --test\n"
+        },
+        {
+          "path": ".tibicen/state/session.json",
+          "content": "{\n  \"schema\": 3,\n  \"id\": \"e2f96a9f-8c0e-46c3-9c42-b0c6b769fd92\",\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,3 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"proposalDigest\": \"eb1d219b3811eb218a49991785ef3bc8b9ebb83802f7638833c8a59de1766a1f\",\n  \"originalEmpty\": false,\n  \"originals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"planOriginals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"applied\": [],\n  \"history\": {\n    \"changes\": [],\n    \"components\": [],\n    \"sharedRules\": []\n  },\n  \"attempts\": [\n    {\n      \"number\": 1,\n      \"kind\": \"infrastructure\",\n      \"outcome\": \"incomplete\",\n      \"reason\": \"interrupted\"\n    }\n  ],\n  \"status\": \"incomplete\",\n  \"checks\": {\n    \"infrastructure\": {\n      \"kind\": \"infrastructure\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"verify\": {\n      \"kind\": \"verify\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"task\": {\n      \"kind\": \"task\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    },\n    \"quiz\": {\n      \"kind\": \"quiz\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    }\n  },\n  \"baseline\": {\n    \"id\": \"original-baseline\",\n    \"complete\": true,\n    \"runs\": []\n  },\n  \"completedCommands\": [],\n  \"commandAttempts\": [],\n  \"componentBaseline\": {\n    \"manifest\": null,\n    \"hash\": null\n  },\n  \"manifestHash\": null\n}\n"
+        },
+        {
+          "path": "AGENTS.md",
+          "content": "# Owner\r\nKeep double.  \r\n"
+        },
+        {
+          "path": "docs/previously-reviewed-plan.json",
+          "content": "{\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,3 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"digest\": \"eb1d219b3811eb218a49991785ef3bc8b9ebb83802f7638833c8a59de1766a1f\",\n  \"summary\": {\n    \"files\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"beforeMode\": 420,\n        \"fileMode\": 420\n      }\n    ],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"sharedRules\": {\n      \"status\": \"passed\",\n      \"copies\": [],\n      \"issues\": []\n    },\n    \"commands\": [],\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"manualActions\": [],\n    \"gaps\": []\n  }\n}\n"
+        },
+        {
+          "path": "docs/team-note.md",
+          "content": "# Team note\n\nThe double export is used by an existing consumer. Preserve it.\n"
+        },
+        {
+          "path": "package.json",
+          "content": "{\"name\":\"diagnostic-fixture\",\"private\":true,\"type\":\"module\",\"scripts\":{\"test\":\"node --test\"}}\n"
+        },
+        {
+          "path": "src/math.js",
+          "content": "export const double = value => value * 2;\n"
+        },
+        {
+          "path": "tests/math.test.js",
+          "content": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { double } from '../src/math.js';\ntest('double', () => assert.equal(double(3), 6));\n"
+        }
+      ],
+      "expected": {
+        "sessionId": "e2f96a9f-8c0e-46c3-9c42-b0c6b769fd92",
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "state": "pending"
+          }
+        ],
+        "manifest": "unchanged",
+        "unknownCommands": []
+      }
+    },
+    {
+      "id": "resume-modify-after-file-write",
+      "action": "modify",
+      "point": "after-file-write",
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "content": "name: test\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: {node-version: 22}\n      - run: node --test\n"
+        },
+        {
+          "path": ".tibicen/state/session.json",
+          "content": "{\n  \"schema\": 3,\n  \"id\": \"1aa13553-a07f-4d69-9fd7-99265d49223d\",\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,3 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"proposalDigest\": \"eb1d219b3811eb218a49991785ef3bc8b9ebb83802f7638833c8a59de1766a1f\",\n  \"originalEmpty\": false,\n  \"originals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"planOriginals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"applied\": [],\n  \"history\": {\n    \"changes\": [],\n    \"components\": [],\n    \"sharedRules\": []\n  },\n  \"attempts\": [\n    {\n      \"number\": 1,\n      \"kind\": \"infrastructure\",\n      \"outcome\": \"incomplete\",\n      \"reason\": \"interrupted\"\n    }\n  ],\n  \"status\": \"incomplete\",\n  \"checks\": {\n    \"infrastructure\": {\n      \"kind\": \"infrastructure\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"verify\": {\n      \"kind\": \"verify\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"task\": {\n      \"kind\": \"task\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    },\n    \"quiz\": {\n      \"kind\": \"quiz\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    }\n  },\n  \"baseline\": {\n    \"id\": \"original-baseline\",\n    \"complete\": true,\n    \"runs\": []\n  },\n  \"completedCommands\": [],\n  \"commandAttempts\": [],\n  \"componentBaseline\": {\n    \"manifest\": null,\n    \"hash\": null\n  },\n  \"manifestHash\": null\n}\n"
+        },
+        {
+          "path": "AGENTS.md",
+          "content": "# Updated\r\nKeep double and owner review.  \r\n"
+        },
+        {
+          "path": "docs/previously-reviewed-plan.json",
+          "content": "{\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,3 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"digest\": \"eb1d219b3811eb218a49991785ef3bc8b9ebb83802f7638833c8a59de1766a1f\",\n  \"summary\": {\n    \"files\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"beforeMode\": 420,\n        \"fileMode\": 420\n      }\n    ],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"sharedRules\": {\n      \"status\": \"passed\",\n      \"copies\": [],\n      \"issues\": []\n    },\n    \"commands\": [],\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"manualActions\": [],\n    \"gaps\": []\n  }\n}\n"
+        },
+        {
+          "path": "docs/team-note.md",
+          "content": "# Team note\n\nThe double export is used by an existing consumer. Preserve it.\n"
+        },
+        {
+          "path": "package.json",
+          "content": "{\"name\":\"diagnostic-fixture\",\"private\":true,\"type\":\"module\",\"scripts\":{\"test\":\"node --test\"}}\n"
+        },
+        {
+          "path": "src/math.js",
+          "content": "export const double = value => value * 2;\n"
+        },
+        {
+          "path": "tests/math.test.js",
+          "content": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { double } from '../src/math.js';\ntest('double', () => assert.equal(double(3), 6));\n"
+        }
+      ],
+      "expected": {
+        "sessionId": "1aa13553-a07f-4d69-9fd7-99265d49223d",
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "state": "matches-approved-result"
+          }
+        ],
+        "manifest": "unchanged",
+        "unknownCommands": []
+      }
+    },
+    {
+      "id": "resume-delete-before-file-write",
+      "action": "delete",
+      "point": "before-file-write",
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "content": "name: test\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: {node-version: 22}\n      - run: node --test\n"
+        },
+        {
+          "path": ".tibicen/state/session.json",
+          "content": "{\n  \"schema\": 3,\n  \"id\": \"2e3c4f93-8653-494d-9ed5-15960517ddef\",\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"delete\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,0 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"proposalDigest\": \"ec2c0f786f10b64631a787d97c5d40b7f813fa32365b3e932c2d2f84043d805f\",\n  \"originalEmpty\": false,\n  \"originals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"planOriginals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"applied\": [],\n  \"history\": {\n    \"changes\": [],\n    \"components\": [],\n    \"sharedRules\": []\n  },\n  \"attempts\": [\n    {\n      \"number\": 1,\n      \"kind\": \"infrastructure\",\n      \"outcome\": \"incomplete\",\n      \"reason\": \"interrupted\"\n    }\n  ],\n  \"status\": \"incomplete\",\n  \"checks\": {\n    \"infrastructure\": {\n      \"kind\": \"infrastructure\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"verify\": {\n      \"kind\": \"verify\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"task\": {\n      \"kind\": \"task\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    },\n    \"quiz\": {\n      \"kind\": \"quiz\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    }\n  },\n  \"baseline\": {\n    \"id\": \"original-baseline\",\n    \"complete\": true,\n    \"runs\": []\n  },\n  \"completedCommands\": [],\n  \"commandAttempts\": [],\n  \"componentBaseline\": {\n    \"manifest\": null,\n    \"hash\": null\n  },\n  \"manifestHash\": null\n}\n"
+        },
+        {
+          "path": "AGENTS.md",
+          "content": "# Owner\r\nKeep double.  \r\n"
+        },
+        {
+          "path": "docs/previously-reviewed-plan.json",
+          "content": "{\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"delete\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,0 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"digest\": \"ec2c0f786f10b64631a787d97c5d40b7f813fa32365b3e932c2d2f84043d805f\",\n  \"summary\": {\n    \"files\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"delete\",\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"beforeMode\": 420\n      }\n    ],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"sharedRules\": {\n      \"status\": \"passed\",\n      \"copies\": [],\n      \"issues\": []\n    },\n    \"commands\": [],\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"manualActions\": [],\n    \"gaps\": []\n  }\n}\n"
+        },
+        {
+          "path": "docs/team-note.md",
+          "content": "# Team note\n\nThe double export is used by an existing consumer. Preserve it.\n"
+        },
+        {
+          "path": "package.json",
+          "content": "{\"name\":\"diagnostic-fixture\",\"private\":true,\"type\":\"module\",\"scripts\":{\"test\":\"node --test\"}}\n"
+        },
+        {
+          "path": "src/math.js",
+          "content": "export const double = value => value * 2;\n"
+        },
+        {
+          "path": "tests/math.test.js",
+          "content": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { double } from '../src/math.js';\ntest('double', () => assert.equal(double(3), 6));\n"
+        }
+      ],
+      "expected": {
+        "sessionId": "2e3c4f93-8653-494d-9ed5-15960517ddef",
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "state": "pending"
+          }
+        ],
+        "manifest": "unchanged",
+        "unknownCommands": []
+      }
+    },
+    {
+      "id": "resume-delete-after-file-write",
+      "action": "delete",
+      "point": "after-file-write",
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "content": "name: test\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: {node-version: 22}\n      - run: node --test\n"
+        },
+        {
+          "path": ".tibicen/state/session.json",
+          "content": "{\n  \"schema\": 3,\n  \"id\": \"12f24677-1111-47ff-807f-2f3392d75833\",\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"delete\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,0 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"proposalDigest\": \"ec2c0f786f10b64631a787d97c5d40b7f813fa32365b3e932c2d2f84043d805f\",\n  \"originalEmpty\": false,\n  \"originals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"planOriginals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"applied\": [],\n  \"history\": {\n    \"changes\": [],\n    \"components\": [],\n    \"sharedRules\": []\n  },\n  \"attempts\": [\n    {\n      \"number\": 1,\n      \"kind\": \"infrastructure\",\n      \"outcome\": \"incomplete\",\n      \"reason\": \"interrupted\"\n    }\n  ],\n  \"status\": \"incomplete\",\n  \"checks\": {\n    \"infrastructure\": {\n      \"kind\": \"infrastructure\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"verify\": {\n      \"kind\": \"verify\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"task\": {\n      \"kind\": \"task\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    },\n    \"quiz\": {\n      \"kind\": \"quiz\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    }\n  },\n  \"baseline\": {\n    \"id\": \"original-baseline\",\n    \"complete\": true,\n    \"runs\": []\n  },\n  \"completedCommands\": [],\n  \"commandAttempts\": [],\n  \"componentBaseline\": {\n    \"manifest\": null,\n    \"hash\": null\n  },\n  \"manifestHash\": null\n}\n"
+        },
+        {
+          "path": "docs/previously-reviewed-plan.json",
+          "content": "{\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"delete\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,0 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"digest\": \"ec2c0f786f10b64631a787d97c5d40b7f813fa32365b3e932c2d2f84043d805f\",\n  \"summary\": {\n    \"files\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"delete\",\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"beforeMode\": 420\n      }\n    ],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"sharedRules\": {\n      \"status\": \"passed\",\n      \"copies\": [],\n      \"issues\": []\n    },\n    \"commands\": [],\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"manualActions\": [],\n    \"gaps\": []\n  }\n}\n"
+        },
+        {
+          "path": "docs/team-note.md",
+          "content": "# Team note\n\nThe double export is used by an existing consumer. Preserve it.\n"
+        },
+        {
+          "path": "package.json",
+          "content": "{\"name\":\"diagnostic-fixture\",\"private\":true,\"type\":\"module\",\"scripts\":{\"test\":\"node --test\"}}\n"
+        },
+        {
+          "path": "src/math.js",
+          "content": "export const double = value => value * 2;\n"
+        },
+        {
+          "path": "tests/math.test.js",
+          "content": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { double } from '../src/math.js';\ntest('double', () => assert.equal(double(3), 6));\n"
+        }
+      ],
+      "expected": {
+        "sessionId": "12f24677-1111-47ff-807f-2f3392d75833",
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "state": "matches-approved-result"
+          }
+        ],
+        "manifest": "unchanged",
+        "unknownCommands": []
+      }
+    },
+    {
+      "id": "resume-before-manifest-write",
+      "action": "modify",
+      "point": "before-manifest-write",
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "content": "name: test\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: {node-version: 22}\n      - run: node --test\n"
+        },
+        {
+          "path": ".tibicen/state/session.json",
+          "content": "{\n  \"schema\": 3,\n  \"id\": \"5e84df86-e2dd-4a93-9be4-bcd206580afb\",\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,3 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"proposalDigest\": \"eb1d219b3811eb218a49991785ef3bc8b9ebb83802f7638833c8a59de1766a1f\",\n  \"originalEmpty\": false,\n  \"originals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"planOriginals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"applied\": [\n    {\n      \"path\": \"AGENTS.md\",\n      \"action\": \"modify\",\n      \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n      \"afterHash\": \"e83ca2b908d865604db40c15a3a4fb52a6f39dc561dc86c7e72a2f0db75db747\",\n      \"beforeMode\": 420,\n      \"afterMode\": 420,\n      \"evidence\": \"written\"\n    }\n  ],\n  \"history\": {\n    \"changes\": [],\n    \"components\": [],\n    \"sharedRules\": []\n  },\n  \"attempts\": [\n    {\n      \"number\": 1,\n      \"kind\": \"infrastructure\",\n      \"outcome\": \"passed\",\n      \"newRegressions\": []\n    }\n  ],\n  \"status\": \"complete\",\n  \"checks\": {\n    \"infrastructure\": {\n      \"kind\": \"infrastructure\",\n      \"status\": \"passed\",\n      \"scope\": \"structure-only\",\n      \"issues\": [],\n      \"sharedRules\": {\n        \"status\": \"passed\",\n        \"copies\": [],\n        \"issues\": []\n      }\n    },\n    \"verify\": {\n      \"kind\": \"verify\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\",\n      \"newRegressions\": []\n    },\n    \"task\": {\n      \"kind\": \"task\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    },\n    \"quiz\": {\n      \"kind\": \"quiz\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    }\n  },\n  \"baseline\": {\n    \"id\": \"original-baseline\",\n    \"complete\": true,\n    \"runs\": []\n  },\n  \"completedCommands\": [],\n  \"commandAttempts\": [],\n  \"componentBaseline\": {\n    \"manifest\": null,\n    \"hash\": null\n  },\n  \"manifestHash\": null,\n  \"pendingManifest\": {\n    \"beforeHash\": null,\n    \"afterHash\": \"dc68ab83e129f584c202d3d745333c60e6b00cb37955c0e6bad4d705fc38b742\",\n    \"content\": \"{\\n  \\\"schema\\\": 2,\\n  \\\"tibicen\\\": {\\n    \\\"version\\\": \\\"0.1.0\\\",\\n    \\\"rulesVersion\\\": \\\"0.1.0\\\",\\n    \\\"built\\\": \\\"2026-10-23\\\",\\n    \\\"mode\\\": \\\"improve\\\",\\n    \\\"status\\\": \\\"complete\\\"\\n  },\\n  \\\"practices\\\": [],\\n  \\\"installed\\\": [],\\n  \\\"mcpSources\\\": [],\\n  \\\"changes\\\": [\\n    {\\n      \\\"path\\\": \\\"AGENTS.md\\\",\\n      \\\"action\\\": \\\"modify\\\",\\n      \\\"beforeHash\\\": \\\"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\\\",\\n      \\\"afterHash\\\": \\\"e83ca2b908d865604db40c15a3a4fb52a6f39dc561dc86c7e72a2f0db75db747\\\",\\n      \\\"beforeMode\\\": 420,\\n      \\\"afterMode\\\": 420,\\n      \\\"evidence\\\": \\\"written\\\"\\n    }\\n  ],\\n  \\\"sharedRules\\\": [],\\n  \\\"assumptions\\\": [],\\n  \\\"gaps\\\": [],\\n  \\\"checks\\\": {\\n    \\\"infrastructure\\\": {\\n      \\\"kind\\\": \\\"infrastructure\\\",\\n      \\\"status\\\": \\\"passed\\\",\\n      \\\"scope\\\": \\\"structure-only\\\",\\n      \\\"issues\\\": [],\\n      \\\"sharedRules\\\": {\\n        \\\"status\\\": \\\"passed\\\",\\n        \\\"copies\\\": [],\\n        \\\"issues\\\": []\\n      }\\n    },\\n    \\\"verify\\\": {\\n      \\\"kind\\\": \\\"verify\\\",\\n      \\\"status\\\": \\\"unverified\\\",\\n      \\\"reason\\\": \\\"not-run\\\",\\n      \\\"newRegressions\\\": []\\n    },\\n    \\\"task\\\": {\\n      \\\"kind\\\": \\\"task\\\",\\n      \\\"status\\\": \\\"unverified\\\",\\n      \\\"reason\\\": \\\"not-requested\\\"\\n    },\\n    \\\"quiz\\\": {\\n      \\\"kind\\\": \\\"quiz\\\",\\n      \\\"status\\\": \\\"unverified\\\",\\n      \\\"reason\\\": \\\"not-requested\\\"\\n    }\\n  },\\n  \\\"compat\\\": {\\n    \\\"enabled\\\": true\\n  },\\n  \\\"mcp\\\": [],\\n  \\\"manualFragments\\\": [],\\n  \\\"sessions\\\": [\\n    {\\n      \\\"id\\\": \\\"5e84df86-e2dd-4a93-9be4-bcd206580afb\\\",\\n      \\\"attempts\\\": [\\n        {\\n          \\\"number\\\": 1,\\n          \\\"kind\\\": \\\"infrastructure\\\",\\n          \\\"outcome\\\": \\\"passed\\\",\\n          \\\"newRegressions\\\": []\\n        }\\n      ],\\n      \\\"manualActions\\\": [],\\n      \\\"status\\\": \\\"complete\\\",\\n      \\\"changes\\\": [\\n        {\\n          \\\"path\\\": \\\"AGENTS.md\\\",\\n          \\\"action\\\": \\\"modify\\\",\\n          \\\"beforeHash\\\": \\\"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\\\",\\n          \\\"afterHash\\\": \\\"e83ca2b908d865604db40c15a3a4fb52a6f39dc561dc86c7e72a2f0db75db747\\\",\\n          \\\"beforeMode\\\": 420,\\n          \\\"afterMode\\\": 420,\\n          \\\"evidence\\\": \\\"written\\\"\\n        }\\n      ],\\n      \\\"components\\\": [],\\n      \\\"sharedRules\\\": [],\\n      \\\"commandAttempts\\\": []\\n    }\\n  ]\\n}\\n\"\n  }\n}\n"
+        },
+        {
+          "path": "AGENTS.md",
+          "content": "# Updated\r\nKeep double and owner review.  \r\n"
+        },
+        {
+          "path": "docs/previously-reviewed-plan.json",
+          "content": "{\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,3 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"digest\": \"eb1d219b3811eb218a49991785ef3bc8b9ebb83802f7638833c8a59de1766a1f\",\n  \"summary\": {\n    \"files\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"beforeMode\": 420,\n        \"fileMode\": 420\n      }\n    ],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"sharedRules\": {\n      \"status\": \"passed\",\n      \"copies\": [],\n      \"issues\": []\n    },\n    \"commands\": [],\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"manualActions\": [],\n    \"gaps\": []\n  }\n}\n"
+        },
+        {
+          "path": "docs/team-note.md",
+          "content": "# Team note\n\nThe double export is used by an existing consumer. Preserve it.\n"
+        },
+        {
+          "path": "package.json",
+          "content": "{\"name\":\"diagnostic-fixture\",\"private\":true,\"type\":\"module\",\"scripts\":{\"test\":\"node --test\"}}\n"
+        },
+        {
+          "path": "src/math.js",
+          "content": "export const double = value => value * 2;\n"
+        },
+        {
+          "path": "tests/math.test.js",
+          "content": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { double } from '../src/math.js';\ntest('double', () => assert.equal(double(3), 6));\n"
+        }
+      ],
+      "expected": {
+        "sessionId": "5e84df86-e2dd-4a93-9be4-bcd206580afb",
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "state": "matches-approved-result"
+          }
+        ],
+        "manifest": "pending",
+        "unknownCommands": []
+      }
+    },
+    {
+      "id": "resume-after-manifest-write",
+      "action": "modify",
+      "point": "after-manifest-write",
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "content": "name: test\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: {node-version: 22}\n      - run: node --test\n"
+        },
+        {
+          "path": ".tibicen/manifest.yml",
+          "content": "{\n  \"schema\": 2,\n  \"tibicen\": {\n    \"version\": \"0.1.0\",\n    \"rulesVersion\": \"0.1.0\",\n    \"built\": \"2026-10-23\",\n    \"mode\": \"improve\",\n    \"status\": \"complete\"\n  },\n  \"practices\": [],\n  \"installed\": [],\n  \"mcpSources\": [],\n  \"changes\": [\n    {\n      \"path\": \"AGENTS.md\",\n      \"action\": \"modify\",\n      \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n      \"afterHash\": \"e83ca2b908d865604db40c15a3a4fb52a6f39dc561dc86c7e72a2f0db75db747\",\n      \"beforeMode\": 420,\n      \"afterMode\": 420,\n      \"evidence\": \"written\"\n    }\n  ],\n  \"sharedRules\": [],\n  \"assumptions\": [],\n  \"gaps\": [],\n  \"checks\": {\n    \"infrastructure\": {\n      \"kind\": \"infrastructure\",\n      \"status\": \"passed\",\n      \"scope\": \"structure-only\",\n      \"issues\": [],\n      \"sharedRules\": {\n        \"status\": \"passed\",\n        \"copies\": [],\n        \"issues\": []\n      }\n    },\n    \"verify\": {\n      \"kind\": \"verify\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\",\n      \"newRegressions\": []\n    },\n    \"task\": {\n      \"kind\": \"task\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    },\n    \"quiz\": {\n      \"kind\": \"quiz\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    }\n  },\n  \"compat\": {\n    \"enabled\": true\n  },\n  \"mcp\": [],\n  \"manualFragments\": [],\n  \"sessions\": [\n    {\n      \"id\": \"3562c7d0-7241-4e5b-9837-bd759f4ba9ea\",\n      \"attempts\": [\n        {\n          \"number\": 1,\n          \"kind\": \"infrastructure\",\n          \"outcome\": \"passed\",\n          \"newRegressions\": []\n        }\n      ],\n      \"manualActions\": [],\n      \"status\": \"complete\",\n      \"changes\": [\n        {\n          \"path\": \"AGENTS.md\",\n          \"action\": \"modify\",\n          \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n          \"afterHash\": \"e83ca2b908d865604db40c15a3a4fb52a6f39dc561dc86c7e72a2f0db75db747\",\n          \"beforeMode\": 420,\n          \"afterMode\": 420,\n          \"evidence\": \"written\"\n        }\n      ],\n      \"components\": [],\n      \"sharedRules\": [],\n      \"commandAttempts\": []\n    }\n  ]\n}\n"
+        },
+        {
+          "path": ".tibicen/state/session.json",
+          "content": "{\n  \"schema\": 3,\n  \"id\": \"3562c7d0-7241-4e5b-9837-bd759f4ba9ea\",\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,3 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"proposalDigest\": \"eb1d219b3811eb218a49991785ef3bc8b9ebb83802f7638833c8a59de1766a1f\",\n  \"originalEmpty\": false,\n  \"originals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"planOriginals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"applied\": [\n    {\n      \"path\": \"AGENTS.md\",\n      \"action\": \"modify\",\n      \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n      \"afterHash\": \"e83ca2b908d865604db40c15a3a4fb52a6f39dc561dc86c7e72a2f0db75db747\",\n      \"beforeMode\": 420,\n      \"afterMode\": 420,\n      \"evidence\": \"written\"\n    }\n  ],\n  \"history\": {\n    \"changes\": [],\n    \"components\": [],\n    \"sharedRules\": []\n  },\n  \"attempts\": [\n    {\n      \"number\": 1,\n      \"kind\": \"infrastructure\",\n      \"outcome\": \"passed\",\n      \"newRegressions\": []\n    }\n  ],\n  \"status\": \"complete\",\n  \"checks\": {\n    \"infrastructure\": {\n      \"kind\": \"infrastructure\",\n      \"status\": \"passed\",\n      \"scope\": \"structure-only\",\n      \"issues\": [],\n      \"sharedRules\": {\n        \"status\": \"passed\",\n        \"copies\": [],\n        \"issues\": []\n      }\n    },\n    \"verify\": {\n      \"kind\": \"verify\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\",\n      \"newRegressions\": []\n    },\n    \"task\": {\n      \"kind\": \"task\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    },\n    \"quiz\": {\n      \"kind\": \"quiz\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    }\n  },\n  \"baseline\": {\n    \"id\": \"original-baseline\",\n    \"complete\": true,\n    \"runs\": []\n  },\n  \"completedCommands\": [],\n  \"commandAttempts\": [],\n  \"componentBaseline\": {\n    \"manifest\": null,\n    \"hash\": null\n  },\n  \"manifestHash\": null,\n  \"pendingManifest\": {\n    \"beforeHash\": null,\n    \"afterHash\": \"4475fb1c5f120ae38dcce08e65aae4d7beaa5b8f1f6f482bd23c05c84845e94a\",\n    \"content\": \"{\\n  \\\"schema\\\": 2,\\n  \\\"tibicen\\\": {\\n    \\\"version\\\": \\\"0.1.0\\\",\\n    \\\"rulesVersion\\\": \\\"0.1.0\\\",\\n    \\\"built\\\": \\\"2026-10-23\\\",\\n    \\\"mode\\\": \\\"improve\\\",\\n    \\\"status\\\": \\\"complete\\\"\\n  },\\n  \\\"practices\\\": [],\\n  \\\"installed\\\": [],\\n  \\\"mcpSources\\\": [],\\n  \\\"changes\\\": [\\n    {\\n      \\\"path\\\": \\\"AGENTS.md\\\",\\n      \\\"action\\\": \\\"modify\\\",\\n      \\\"beforeHash\\\": \\\"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\\\",\\n      \\\"afterHash\\\": \\\"e83ca2b908d865604db40c15a3a4fb52a6f39dc561dc86c7e72a2f0db75db747\\\",\\n      \\\"beforeMode\\\": 420,\\n      \\\"afterMode\\\": 420,\\n      \\\"evidence\\\": \\\"written\\\"\\n    }\\n  ],\\n  \\\"sharedRules\\\": [],\\n  \\\"assumptions\\\": [],\\n  \\\"gaps\\\": [],\\n  \\\"checks\\\": {\\n    \\\"infrastructure\\\": {\\n      \\\"kind\\\": \\\"infrastructure\\\",\\n      \\\"status\\\": \\\"passed\\\",\\n      \\\"scope\\\": \\\"structure-only\\\",\\n      \\\"issues\\\": [],\\n      \\\"sharedRules\\\": {\\n        \\\"status\\\": \\\"passed\\\",\\n        \\\"copies\\\": [],\\n        \\\"issues\\\": []\\n      }\\n    },\\n    \\\"verify\\\": {\\n      \\\"kind\\\": \\\"verify\\\",\\n      \\\"status\\\": \\\"unverified\\\",\\n      \\\"reason\\\": \\\"not-run\\\",\\n      \\\"newRegressions\\\": []\\n    },\\n    \\\"task\\\": {\\n      \\\"kind\\\": \\\"task\\\",\\n      \\\"status\\\": \\\"unverified\\\",\\n      \\\"reason\\\": \\\"not-requested\\\"\\n    },\\n    \\\"quiz\\\": {\\n      \\\"kind\\\": \\\"quiz\\\",\\n      \\\"status\\\": \\\"unverified\\\",\\n      \\\"reason\\\": \\\"not-requested\\\"\\n    }\\n  },\\n  \\\"compat\\\": {\\n    \\\"enabled\\\": true\\n  },\\n  \\\"mcp\\\": [],\\n  \\\"manualFragments\\\": [],\\n  \\\"sessions\\\": [\\n    {\\n      \\\"id\\\": \\\"3562c7d0-7241-4e5b-9837-bd759f4ba9ea\\\",\\n      \\\"attempts\\\": [\\n        {\\n          \\\"number\\\": 1,\\n          \\\"kind\\\": \\\"infrastructure\\\",\\n          \\\"outcome\\\": \\\"passed\\\",\\n          \\\"newRegressions\\\": []\\n        }\\n      ],\\n      \\\"manualActions\\\": [],\\n      \\\"status\\\": \\\"complete\\\",\\n      \\\"changes\\\": [\\n        {\\n          \\\"path\\\": \\\"AGENTS.md\\\",\\n          \\\"action\\\": \\\"modify\\\",\\n          \\\"beforeHash\\\": \\\"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\\\",\\n          \\\"afterHash\\\": \\\"e83ca2b908d865604db40c15a3a4fb52a6f39dc561dc86c7e72a2f0db75db747\\\",\\n          \\\"beforeMode\\\": 420,\\n          \\\"afterMode\\\": 420,\\n          \\\"evidence\\\": \\\"written\\\"\\n        }\\n      ],\\n      \\\"components\\\": [],\\n      \\\"sharedRules\\\": [],\\n      \\\"commandAttempts\\\": []\\n    }\\n  ]\\n}\\n\"\n  }\n}\n"
+        },
+        {
+          "path": "AGENTS.md",
+          "content": "# Updated\r\nKeep double and owner review.  \r\n"
+        },
+        {
+          "path": "docs/previously-reviewed-plan.json",
+          "content": "{\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,3 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"digest\": \"eb1d219b3811eb218a49991785ef3bc8b9ebb83802f7638833c8a59de1766a1f\",\n  \"summary\": {\n    \"files\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"beforeMode\": 420,\n        \"fileMode\": 420\n      }\n    ],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"sharedRules\": {\n      \"status\": \"passed\",\n      \"copies\": [],\n      \"issues\": []\n    },\n    \"commands\": [],\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"manualActions\": [],\n    \"gaps\": []\n  }\n}\n"
+        },
+        {
+          "path": "docs/team-note.md",
+          "content": "# Team note\n\nThe double export is used by an existing consumer. Preserve it.\n"
+        },
+        {
+          "path": "package.json",
+          "content": "{\"name\":\"diagnostic-fixture\",\"private\":true,\"type\":\"module\",\"scripts\":{\"test\":\"node --test\"}}\n"
+        },
+        {
+          "path": "src/math.js",
+          "content": "export const double = value => value * 2;\n"
+        },
+        {
+          "path": "tests/math.test.js",
+          "content": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { double } from '../src/math.js';\ntest('double', () => assert.equal(double(3), 6));\n"
+        }
+      ],
+      "expected": {
+        "sessionId": "3562c7d0-7241-4e5b-9837-bd759f4ba9ea",
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "state": "matches-approved-result"
+          }
+        ],
+        "manifest": "matches-approved-result",
+        "unknownCommands": []
+      }
+    },
+    {
+      "id": "resume-before-state-cleanup",
+      "action": "modify",
+      "point": "before-state-cleanup",
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "content": "name: test\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: {node-version: 22}\n      - run: node --test\n"
+        },
+        {
+          "path": ".tibicen/manifest.yml",
+          "content": "{\n  \"schema\": 2,\n  \"tibicen\": {\n    \"version\": \"0.1.0\",\n    \"rulesVersion\": \"0.1.0\",\n    \"built\": \"2026-10-23\",\n    \"mode\": \"improve\",\n    \"status\": \"complete\"\n  },\n  \"practices\": [],\n  \"installed\": [],\n  \"mcpSources\": [],\n  \"changes\": [\n    {\n      \"path\": \"AGENTS.md\",\n      \"action\": \"modify\",\n      \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n      \"afterHash\": \"e83ca2b908d865604db40c15a3a4fb52a6f39dc561dc86c7e72a2f0db75db747\",\n      \"beforeMode\": 420,\n      \"afterMode\": 420,\n      \"evidence\": \"written\"\n    }\n  ],\n  \"sharedRules\": [],\n  \"assumptions\": [],\n  \"gaps\": [],\n  \"checks\": {\n    \"infrastructure\": {\n      \"kind\": \"infrastructure\",\n      \"status\": \"passed\",\n      \"scope\": \"structure-only\",\n      \"issues\": [],\n      \"sharedRules\": {\n        \"status\": \"passed\",\n        \"copies\": [],\n        \"issues\": []\n      }\n    },\n    \"verify\": {\n      \"kind\": \"verify\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\",\n      \"newRegressions\": []\n    },\n    \"task\": {\n      \"kind\": \"task\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    },\n    \"quiz\": {\n      \"kind\": \"quiz\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    }\n  },\n  \"compat\": {\n    \"enabled\": true\n  },\n  \"mcp\": [],\n  \"manualFragments\": [],\n  \"sessions\": [\n    {\n      \"id\": \"804332ea-37aa-41e3-bdc7-1ef459b9a930\",\n      \"attempts\": [\n        {\n          \"number\": 1,\n          \"kind\": \"infrastructure\",\n          \"outcome\": \"passed\",\n          \"newRegressions\": []\n        }\n      ],\n      \"manualActions\": [],\n      \"status\": \"complete\",\n      \"changes\": [\n        {\n          \"path\": \"AGENTS.md\",\n          \"action\": \"modify\",\n          \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n          \"afterHash\": \"e83ca2b908d865604db40c15a3a4fb52a6f39dc561dc86c7e72a2f0db75db747\",\n          \"beforeMode\": 420,\n          \"afterMode\": 420,\n          \"evidence\": \"written\"\n        }\n      ],\n      \"components\": [],\n      \"sharedRules\": [],\n      \"commandAttempts\": []\n    }\n  ]\n}\n"
+        },
+        {
+          "path": ".tibicen/state/session.json",
+          "content": "{\n  \"schema\": 3,\n  \"id\": \"804332ea-37aa-41e3-bdc7-1ef459b9a930\",\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,3 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"proposalDigest\": \"eb1d219b3811eb218a49991785ef3bc8b9ebb83802f7638833c8a59de1766a1f\",\n  \"originalEmpty\": false,\n  \"originals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"planOriginals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"applied\": [\n    {\n      \"path\": \"AGENTS.md\",\n      \"action\": \"modify\",\n      \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n      \"afterHash\": \"e83ca2b908d865604db40c15a3a4fb52a6f39dc561dc86c7e72a2f0db75db747\",\n      \"beforeMode\": 420,\n      \"afterMode\": 420,\n      \"evidence\": \"written\"\n    }\n  ],\n  \"history\": {\n    \"changes\": [],\n    \"components\": [],\n    \"sharedRules\": []\n  },\n  \"attempts\": [\n    {\n      \"number\": 1,\n      \"kind\": \"infrastructure\",\n      \"outcome\": \"passed\",\n      \"newRegressions\": []\n    }\n  ],\n  \"status\": \"complete\",\n  \"checks\": {\n    \"infrastructure\": {\n      \"kind\": \"infrastructure\",\n      \"status\": \"passed\",\n      \"scope\": \"structure-only\",\n      \"issues\": [],\n      \"sharedRules\": {\n        \"status\": \"passed\",\n        \"copies\": [],\n        \"issues\": []\n      }\n    },\n    \"verify\": {\n      \"kind\": \"verify\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\",\n      \"newRegressions\": []\n    },\n    \"task\": {\n      \"kind\": \"task\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    },\n    \"quiz\": {\n      \"kind\": \"quiz\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    }\n  },\n  \"baseline\": {\n    \"id\": \"original-baseline\",\n    \"complete\": true,\n    \"runs\": []\n  },\n  \"completedCommands\": [],\n  \"commandAttempts\": [],\n  \"componentBaseline\": {\n    \"manifest\": null,\n    \"hash\": null\n  },\n  \"manifestHash\": \"7e296a20f86221c9dedc90e865b1a2d43f7a61cd8843417ea6afef36abd93732\"\n}\n"
+        },
+        {
+          "path": "AGENTS.md",
+          "content": "# Updated\r\nKeep double and owner review.  \r\n"
+        },
+        {
+          "path": "docs/previously-reviewed-plan.json",
+          "content": "{\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,3 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"digest\": \"eb1d219b3811eb218a49991785ef3bc8b9ebb83802f7638833c8a59de1766a1f\",\n  \"summary\": {\n    \"files\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"beforeMode\": 420,\n        \"fileMode\": 420\n      }\n    ],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"sharedRules\": {\n      \"status\": \"passed\",\n      \"copies\": [],\n      \"issues\": []\n    },\n    \"commands\": [],\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"manualActions\": [],\n    \"gaps\": []\n  }\n}\n"
+        },
+        {
+          "path": "docs/team-note.md",
+          "content": "# Team note\n\nThe double export is used by an existing consumer. Preserve it.\n"
+        },
+        {
+          "path": "package.json",
+          "content": "{\"name\":\"diagnostic-fixture\",\"private\":true,\"type\":\"module\",\"scripts\":{\"test\":\"node --test\"}}\n"
+        },
+        {
+          "path": "src/math.js",
+          "content": "export const double = value => value * 2;\n"
+        },
+        {
+          "path": "tests/math.test.js",
+          "content": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { double } from '../src/math.js';\ntest('double', () => assert.equal(double(3), 6));\n"
+        }
+      ],
+      "expected": {
+        "sessionId": "804332ea-37aa-41e3-bdc7-1ef459b9a930",
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "state": "matches-approved-result"
+          }
+        ],
+        "manifest": "unchanged",
+        "unknownCommands": []
+      }
+    },
+    {
+      "id": "resume-ambiguous",
+      "action": "modify",
+      "point": "after-file-write",
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "content": "name: test\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: {node-version: 22}\n      - run: node --test\n"
+        },
+        {
+          "path": ".tibicen/state/session.json",
+          "content": "{\n  \"schema\": 3,\n  \"id\": \"ba2cd0ce-2c35-4c7d-9cc9-2d4d9016dc00\",\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,3 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"proposalDigest\": \"eb1d219b3811eb218a49991785ef3bc8b9ebb83802f7638833c8a59de1766a1f\",\n  \"originalEmpty\": false,\n  \"originals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"planOriginals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"applied\": [],\n  \"history\": {\n    \"changes\": [],\n    \"components\": [],\n    \"sharedRules\": []\n  },\n  \"attempts\": [\n    {\n      \"number\": 1,\n      \"kind\": \"infrastructure\",\n      \"outcome\": \"incomplete\",\n      \"reason\": \"interrupted\"\n    }\n  ],\n  \"status\": \"incomplete\",\n  \"checks\": {\n    \"infrastructure\": {\n      \"kind\": \"infrastructure\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"verify\": {\n      \"kind\": \"verify\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"task\": {\n      \"kind\": \"task\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    },\n    \"quiz\": {\n      \"kind\": \"quiz\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    }\n  },\n  \"baseline\": {\n    \"id\": \"original-baseline\",\n    \"complete\": true,\n    \"runs\": []\n  },\n  \"completedCommands\": [],\n  \"commandAttempts\": [],\n  \"componentBaseline\": {\n    \"manifest\": null,\n    \"hash\": null\n  },\n  \"manifestHash\": null\n}\n"
+        },
+        {
+          "path": "AGENTS.md",
+          "content": "# Concurrent owner edit\r\nDo not overwrite.\r\n"
+        },
+        {
+          "path": "docs/previously-reviewed-plan.json",
+          "content": "{\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,3 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"digest\": \"eb1d219b3811eb218a49991785ef3bc8b9ebb83802f7638833c8a59de1766a1f\",\n  \"summary\": {\n    \"files\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"beforeMode\": 420,\n        \"fileMode\": 420\n      }\n    ],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"sharedRules\": {\n      \"status\": \"passed\",\n      \"copies\": [],\n      \"issues\": []\n    },\n    \"commands\": [],\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"manualActions\": [],\n    \"gaps\": []\n  }\n}\n"
+        },
+        {
+          "path": "docs/team-note.md",
+          "content": "# Team note\n\nThe double export is used by an existing consumer. Preserve it.\n"
+        },
+        {
+          "path": "package.json",
+          "content": "{\"name\":\"diagnostic-fixture\",\"private\":true,\"type\":\"module\",\"scripts\":{\"test\":\"node --test\"}}\n"
+        },
+        {
+          "path": "src/math.js",
+          "content": "export const double = value => value * 2;\n"
+        },
+        {
+          "path": "tests/math.test.js",
+          "content": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { double } from '../src/math.js';\ntest('double', () => assert.equal(double(3), 6));\n"
+        }
+      ],
+      "expected": {
+        "sessionId": "ba2cd0ce-2c35-4c7d-9cc9-2d4d9016dc00",
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "state": "ambiguous"
+          }
+        ],
+        "manifest": "unchanged",
+        "unknownCommands": []
+      }
+    },
+    {
+      "id": "resume-command-unknown",
+      "action": "modify",
+      "point": "after-command",
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "content": "name: test\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: {node-version: 22}\n      - run: node --test\n"
+        },
+        {
+          "path": ".tibicen/state/session.json",
+          "content": "{\n  \"schema\": 3,\n  \"id\": \"b2b08d5e-748c-4ab8-96d0-1de161e17f1c\",\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,3 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [\n      {\n        \"cwd\": \".\",\n        \"envNames\": [],\n        \"id\": \"node-test\",\n        \"kind\": \"test\",\n        \"executable\": \"node\",\n        \"argv\": [\n          \"--test\"\n        ],\n        \"trusted\": true\n      }\n    ],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"proposalDigest\": \"d9f2dd2865b95b3ddf848fa795975305531879f2a5a4f7a57ea8e9947465c635\",\n  \"originalEmpty\": false,\n  \"originals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"planOriginals\": {\n    \"AGENTS.md\": \"# Owner\\r\\nKeep double.  \\r\\n\"\n  },\n  \"applied\": [\n    {\n      \"path\": \"AGENTS.md\",\n      \"action\": \"modify\",\n      \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n      \"afterHash\": \"e83ca2b908d865604db40c15a3a4fb52a6f39dc561dc86c7e72a2f0db75db747\",\n      \"beforeMode\": 420,\n      \"afterMode\": 420,\n      \"evidence\": \"written\"\n    }\n  ],\n  \"history\": {\n    \"changes\": [],\n    \"components\": [],\n    \"sharedRules\": []\n  },\n  \"attempts\": [\n    {\n      \"number\": 1,\n      \"kind\": \"infrastructure\",\n      \"outcome\": \"incomplete\",\n      \"reason\": \"interrupted\"\n    }\n  ],\n  \"status\": \"incomplete\",\n  \"checks\": {\n    \"infrastructure\": {\n      \"kind\": \"infrastructure\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"verify\": {\n      \"kind\": \"verify\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-run\"\n    },\n    \"task\": {\n      \"kind\": \"task\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    },\n    \"quiz\": {\n      \"kind\": \"quiz\",\n      \"status\": \"unverified\",\n      \"reason\": \"not-requested\"\n    }\n  },\n  \"baseline\": {\n    \"id\": \"original-baseline\",\n    \"complete\": true,\n    \"runs\": []\n  },\n  \"completedCommands\": [],\n  \"commandAttempts\": [\n    {\n      \"id\": \"node-test\",\n      \"kind\": \"test\",\n      \"commandDigest\": \"7101eefeeeef55abc330015c26b4b7ac6aaf03c51f1973d643899da3e7bfbf32\",\n      \"status\": \"running\"\n    }\n  ],\n  \"componentBaseline\": {\n    \"manifest\": null,\n    \"hash\": null\n  },\n  \"manifestHash\": null\n}\n"
+        },
+        {
+          "path": "AGENTS.md",
+          "content": "# Updated\r\nKeep double and owner review.  \r\n"
+        },
+        {
+          "path": "docs/previously-reviewed-plan.json",
+          "content": "{\n  \"proposal\": {\n    \"schema\": 1,\n    \"root\": \"/fixture/project\",\n    \"mode\": \"improve\",\n    \"emptyProject\": false,\n    \"forbiddenPaths\": [],\n    \"changes\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"beforeHash\": \"3fdc77202ab1ec7975c32195d51ebd4d759828fad04f7026111d3d326e935f99\",\n        \"beforeMode\": 420,\n        \"content\": \"# Updated\\r\\nKeep double and owner review.  \\r\\n\",\n        \"fileMode\": 420,\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"diff\": \"--- AGENTS.md\\n+++ AGENTS.md\\n@@ -1,3 +1,3 @@\\n-# Owner\\r\\n-Keep double.  \\r\\n-\\n+# Updated\\r\\n+Keep double and owner review.  \\r\\n+\"\n      }\n    ],\n    \"commands\": [\n      {\n        \"cwd\": \".\",\n        \"envNames\": [],\n        \"id\": \"node-test\",\n        \"kind\": \"test\",\n        \"executable\": \"node\",\n        \"argv\": [\n          \"--test\"\n        ],\n        \"trusted\": true\n      }\n    ],\n    \"sources\": [],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"componentUpdates\": [],\n    \"sharedRules\": [],\n    \"migrateManifest\": false,\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"gaps\": [],\n    \"manualActions\": [],\n    \"manualFragments\": [],\n    \"mcp\": [],\n    \"checks\": {},\n    \"compat\": {\n      \"enabled\": true\n    },\n    \"practices\": [],\n    \"unavailableChecks\": [],\n    \"serviceWrites\": [\n      \".tibicen/manifest.yml\",\n      \".tibicen/state/session.json\"\n    ],\n    \"usageFile\": \"/fixture/home/.tibicen/usage.json\"\n  },\n  \"digest\": \"d9f2dd2865b95b3ddf848fa795975305531879f2a5a4f7a57ea8e9947465c635\",\n  \"summary\": {\n    \"files\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"action\": \"modify\",\n        \"reason\": \"Previously reviewed infrastructure change.\",\n        \"beforeMode\": 420,\n        \"fileMode\": 420\n      }\n    ],\n    \"components\": {\n      \"schema\": 1,\n      \"baselineDigest\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\",\n      \"manifestHash\": null,\n      \"fromSchema\": null,\n      \"toSchema\": 2,\n      \"files\": []\n    },\n    \"sharedRules\": {\n      \"status\": \"passed\",\n      \"copies\": [],\n      \"issues\": []\n    },\n    \"commands\": [\n      {\n        \"id\": \"node-test\",\n        \"kind\": \"test\",\n        \"executable\": \"node\",\n        \"argv\": [\n          \"--test\"\n        ],\n        \"cwd\": \".\",\n        \"envNames\": []\n      }\n    ],\n    \"retryCommands\": [],\n    \"assumptions\": [],\n    \"manualActions\": [],\n    \"gaps\": []\n  }\n}\n"
+        },
+        {
+          "path": "docs/team-note.md",
+          "content": "# Team note\n\nThe double export is used by an existing consumer. Preserve it.\n"
+        },
+        {
+          "path": "package.json",
+          "content": "{\"name\":\"diagnostic-fixture\",\"private\":true,\"type\":\"module\",\"scripts\":{\"test\":\"node --test\"}}\n"
+        },
+        {
+          "path": "src/math.js",
+          "content": "export const double = value => value * 2;\n"
+        },
+        {
+          "path": "tests/math.test.js",
+          "content": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { double } from '../src/math.js';\ntest('double', () => assert.equal(double(3), 6));\n"
+        }
+      ],
+      "expected": {
+        "sessionId": "b2b08d5e-748c-4ab8-96d0-1de161e17f1c",
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "state": "matches-approved-result"
+          }
+        ],
+        "manifest": "unchanged",
+        "unknownCommands": [
+          {
+            "id": "node-test",
+            "kind": "test",
+            "commandDigest": "7101eefeeeef55abc330015c26b4b7ac6aaf03c51f1973d643899da3e7bfbf32",
+            "reason": "command-outcome-unknown"
+          }
+        ]
+      }
+    }
+  ]
+}

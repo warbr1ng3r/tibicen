@@ -1,0 +1,9 @@
+# Keep documentation, frozen evidence and upstream resources byte-for-byte.
+**/*.md
+.agents/
+docs/
+openspec/
+references/
+scripts/evals/fixtures/
+landing/public/
+pnpm-lock.yaml

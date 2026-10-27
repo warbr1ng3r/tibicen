@@ -1,0 +1,22 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  hint?: string;
+  name?: string;
+}
+const { id, label, hint, name = id } = Astro.props;
+---
+
+<div class="field" data-field={name}>
+  <label for={id}>{label}</label>
+  <slot />
+  {hint && <small id={`${id}-hint`}>{hint}</small>}
+  <p
+    id={`${id}-error`}
+    class="field-error"
+    data-field-error
+    role="alert"
+    hidden
+  ></p>
+</div>

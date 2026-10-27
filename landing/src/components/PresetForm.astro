@@ -1,0 +1,224 @@
+---
+import Field from './ui/Field.astro';
+import Select from './ui/Select.astro';
+
+const languages = [
+  { value: '', label: 'Определить в проекте' },
+  ...['TypeScript', 'JavaScript', 'Python', 'Go', 'Rust', 'Java'].map(
+    (label) => ({ value: label.toLowerCase(), label }),
+  ),
+  { value: 'csharp', label: 'C#' },
+];
+const kinds = [
+  { value: '', label: 'Разные проекты' },
+  { value: 'application', label: 'Приложения' },
+  { value: 'service', label: 'Сервисы' },
+  { value: 'library', label: 'Библиотеки' },
+  { value: 'experiment', label: 'Эксперименты' },
+];
+---
+
+<details class="preset-details">
+  <summary>
+    <span>
+      <strong>Собрать свой пресет</strong>
+      <small>Параметры работы для следующих проектов</small>
+    </span>
+    <span class="details-toggle" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path
+          d="M12 5v14M5 12h14"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+      </svg>
+    </span>
+  </summary>
+  <form id="preset-form" class="preset-form" novalidate>
+    <fieldset
+      id="preset-controls"
+      class="preset-controls"
+      aria-label="Параметры пресета"
+      disabled
+    >
+      <Field
+        id="name"
+        label="Имя пресета"
+        hint="Латинские буквы, цифры и дефисы. Например, hackathon."
+      >
+        <input
+          id="name"
+          name="name"
+          value="my-setup"
+          maxlength="64"
+          pattern="[a-z0-9][a-z0-9\-]{0,63}"
+          aria-describedby="name-hint name-error"
+          required
+        />
+      </Field>
+      <div class="field-row">
+        <Field id="language" label="Основной язык">
+          <Select
+            id="language"
+            name="language"
+            label="Основной язык"
+            value=""
+            options={languages}
+            describedBy="language-error"
+          />
+        </Field>
+        <Field id="kind" label="Тип проектов">
+          <Select
+            id="kind"
+            name="kind"
+            label="Тип проектов"
+            value=""
+            options={kinds}
+            describedBy="kind-error"
+          />
+        </Field>
+      </div>
+      <fieldset data-field="process">
+        <legend>Сколько процесса вам нужно?</legend>
+        <div class="choice-grid">
+          <label class="choice">
+            <input
+              type="radio"
+              name="process"
+              value="minimal"
+              aria-describedby="process-error"
+            />
+            <span>
+              <strong>Минимум</strong>
+              <small>Без лишних шагов</small>
+            </span>
+          </label>
+          <label class="choice">
+            <input
+              type="radio"
+              name="process"
+              value="balanced"
+              aria-describedby="process-error"
+              checked
+            />
+            <span>
+              <strong>Баланс</strong>
+              <small>Разумная структура</small>
+            </span>
+          </label>
+          <label class="choice">
+            <input
+              type="radio"
+              name="process"
+              value="structured"
+              aria-describedby="process-error"
+            />
+            <span>
+              <strong>Подробнее</strong>
+              <small>Больше этапов</small>
+            </span>
+          </label>
+        </div>
+        <p
+          id="process-error"
+          class="field-error"
+          data-field-error
+          role="alert"
+          hidden
+        ></p>
+      </fieldset>
+      <Field id="style" label="Ответы агента">
+        <Select
+          id="style"
+          name="style"
+          label="Ответы агента"
+          value="concise"
+          describedBy="style-error"
+          options={[
+            { value: 'concise', label: 'Коротко и по делу' },
+            { value: 'detailed', label: 'С подробным объяснением' },
+          ]}
+        />
+      </Field>
+      <fieldset data-field="agents">
+        <legend>Какими агентами пользуетесь?</legend>
+        <div class="agent-choices">
+          <label>
+            <input
+              type="checkbox"
+              name="agents"
+              value="claude-code"
+              aria-describedby="agents-hint agents-error"
+            />{' '}
+            Claude Code
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="agents"
+              value="codex"
+              aria-describedby="agents-hint agents-error"
+            />{' '}
+            Codex
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="agents"
+              value="cursor"
+              aria-describedby="agents-hint agents-error"
+            />{' '}
+            Cursor
+          </label>
+        </div>
+        <small id="agents-hint">
+          Можно оставить пустым — агент уточнит окружение.
+        </small>
+        <p
+          id="agents-error"
+          class="field-error"
+          data-field-error
+          role="alert"
+          hidden
+        ></p>
+      </fieldset>
+      <details class="advanced">
+        <summary>Пути, которые нельзя трогать</summary>
+        <Field
+          id="forbidden-paths"
+          name="forbiddenPaths"
+          label="По одному относительному пути на строку"
+          hint="Только названия путей, без содержимого файлов и секретов."
+        >
+          <textarea
+            id="forbidden-paths"
+            name="forbiddenPaths"
+            rows="3"
+            placeholder="data/raw&#10;private/"
+            aria-describedby="forbidden-paths-hint forbidden-paths-error"
+          ></textarea>
+        </Field>
+      </details>
+      <p id="form-error" class="form-error" role="alert" hidden></p>
+      <button
+        id="download-preset"
+        class="button button-primary download-button"
+        type="submit"
+        disabled
+      >
+        Скачать preset.yaml <span aria-hidden="true">↓</span>
+      </button>
+    </fieldset>
+    <p class="form-footnote">
+      Пресет сохраняет предпочтения. План изменений согласуется отдельно в
+      каждом проекте.
+    </p>
+    <p
+      id="download-status"
+      class="download-status"
+      role="status"
+      aria-live="polite"
+    ></p>
+  </form>
+</details>

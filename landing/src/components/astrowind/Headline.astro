@@ -1,0 +1,13 @@
+---
+// Adapted from AstroWind; provenance and MIT notice: landing/README.md.
+import type { Headline as Props } from './types';
+const { title, subtitle, tagline } = Astro.props;
+---
+
+<div class="mb-9 max-w-3xl md:mb-12">
+  {tagline && <p class="eyebrow">{tagline}</p>}
+  <h2 class="text-balance">{title}</h2>
+  {subtitle && (
+    <p class="mt-5 max-w-2xl text-sm leading-7 text-muted">{subtitle}</p>
+  )}
+</div>

@@ -1,0 +1,25 @@
+schema: spec-driven
+
+context: |
+  Language: Russian. Keep structural headings and SHALL/MUST keywords in English.
+  Tibicen provides tibicen-init and tibicen-adopt for agent infrastructure.
+  docs/PRODUCT_VISION.md owns product intent and MVP boundaries.
+  docs/PRODUCT_VISION_ADDENDUM.md sections 1-3, 7 and 9 clarify MVP guarantees;
+  section 9 covers evidence-based preferences and proactive component selection.
+  The first bounded OpenSpec process adapter from section 6 is explicitly in the first release;
+  named-skill installation/loading/use and process init/adopt need observed acceptance.
+  sections 4-5 and 8, Spec Kit and additional process adapters remain future extensions.
+  OpenSpec owns detailed behavior requirements for the capabilities being changed.
+  docs/DEVELOPMENT_PLAN.md, when present, owns milestone order, not duplicate task lists.
+  OpenSpec CLI and generated development skills must not ship in Tibicen skills;
+  optional target-project integration uses separately approved versioned tooling.
+  Product behavior forbids automatic Git commits in target projects.
+  Retrospective archives reconstruct existing changes; never invent prior approvals or test results.
+
+rules:
+  proposal:
+    - Describe the concrete problem and keep scope within the product vision.
+  specs:
+    - Include observable acceptance scenarios and distinguish target behavior from verified implementation.
+  tasks:
+    - Mark verification complete only with actual evidence and identify unavailable checks.

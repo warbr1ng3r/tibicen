@@ -1,0 +1,527 @@
+{
+  "schema": 1,
+  "cases": [
+    {
+      "id": "product-a-new",
+      "hash": "9acbcc691d91a669bbe3c6072e7f36a96d15fc41dfaa3678248af6f3479534d2",
+      "coverage": [
+        "product:A"
+      ]
+    },
+    {
+      "id": "product-b-existing",
+      "hash": "b74a9b48437a1e448c4ffda06ebc8de1a1897cec5700922a242dc4f0a381c88b",
+      "coverage": [
+        "product:B"
+      ]
+    },
+    {
+      "id": "product-c-conflicts",
+      "hash": "b56a163c0b34a3b3f60a5e07e5b531c0c58473d7720b12a79183e792680aa88a",
+      "coverage": [
+        "product:C"
+      ]
+    },
+    {
+      "id": "product-g-repeat",
+      "hash": "84ce4237c6a70013719debcf403b67f696b6052c20e3bfaedbca1457ef2da537",
+      "coverage": [
+        "product:Г"
+      ]
+    },
+    {
+      "id": "product-d-refusal",
+      "hash": "12bee93d937f088b8459c0716712a6c97e18453c2e710b6ab544efc6fb0da7e5",
+      "coverage": [
+        "product:Д",
+        "consent:refusal"
+      ]
+    },
+    {
+      "id": "product-d-manual",
+      "hash": "5ae05bde1750293efeea3a265016c97538aa7a01dea7db7140c9a29e6a8195d5",
+      "coverage": [
+        "product:Д",
+        "status:manual"
+      ]
+    },
+    {
+      "id": "product-d-incomplete",
+      "hash": "f64e4fefe1e81a2f20b22ec143604b1bf61bd617f2e291307708354d39271e52",
+      "coverage": [
+        "product:Д",
+        "status:incomplete"
+      ]
+    },
+    {
+      "id": "product-d-baseline",
+      "hash": "6b5b4b559449861546e8b93ef388b6c96697896dfeeeb259925f159ab433a9c3",
+      "coverage": [
+        "product:Д",
+        "status:baseline"
+      ]
+    },
+    {
+      "id": "product-e-preset",
+      "hash": "fb1bf1055954381da8a2f4f182c9e2c7bc915b7b18d8122a82d2ec20e8fce80e",
+      "coverage": [
+        "product:Е",
+        "preset:import",
+        "trio:codex"
+      ]
+    },
+    {
+      "id": "trio-claude-code",
+      "hash": "d7b67373baa436f20a7e8b92bc72b159785d9e53ddbc0be82e9e037a04e8881e",
+      "coverage": [
+        "trio:claude-code"
+      ]
+    },
+    {
+      "id": "trio-cursor",
+      "hash": "23a96aa1fb5c9d2b0755c40c4ae5118f8d5af09aeff08c0057fdf86f2a22f4bb",
+      "coverage": [
+        "trio:cursor"
+      ]
+    },
+    {
+      "id": "ml-infrastructure",
+      "hash": "0fc6d94acb148e337cd2a5997124a735f04a73aa506d15093db731745be1dc6d",
+      "coverage": [
+        "profile:ML",
+        "product:B"
+      ]
+    },
+    {
+      "id": "pref-01",
+      "hash": "434c7f2808fedb3273d54eeecbf2804ef69988c139cb746fe0d3da01c0fae515",
+      "coverage": [
+        "PREF-01"
+      ]
+    },
+    {
+      "id": "pref-02",
+      "hash": "a046f191a7203738979b5490fd20ce03443098462c368ac6c1debfb80fac4460",
+      "coverage": [
+        "PREF-02"
+      ]
+    },
+    {
+      "id": "pref-03",
+      "hash": "99399d8f50c036c7a1bc13f12ee0014dc183e90576ac8b78f1b91f5624f1aaf7",
+      "coverage": [
+        "PREF-03"
+      ]
+    },
+    {
+      "id": "pref-04",
+      "hash": "c27d1cf69988997a13d523b570dbef7b3ed00b56f4c60eb618ba120e3f84a42c",
+      "coverage": [
+        "PREF-04"
+      ]
+    },
+    {
+      "id": "pref-05",
+      "hash": "7c017a8efa5bb8e8f799c3ad11d236cb083379812841561f06ac0aa80062fd5b",
+      "coverage": [
+        "PREF-05"
+      ]
+    },
+    {
+      "id": "pref-06",
+      "hash": "c6ce1ce12f5ced36f5c364ca6c52ba9f8b8b1c5bd29ef4dc47d5536c518e689d",
+      "coverage": [
+        "PREF-06",
+        "PREF-06:clarification"
+      ]
+    },
+    {
+      "id": "pref-06-no-questions",
+      "hash": "6515c9ea8cbf2ff7c0eec1360367d3d2367d4c33991a2fe085bf8252eda82607",
+      "coverage": [
+        "PREF-06",
+        "PREF-06:no-questions"
+      ]
+    },
+    {
+      "id": "pref-07",
+      "hash": "f6992930bdbcde17f935ee26536c52d597be6f99ee6b546ad6585a2b9cf0aeae",
+      "coverage": [
+        "PREF-07"
+      ]
+    },
+    {
+      "id": "pref-08a",
+      "hash": "86bd2bd385ac07ea9c32a93c30ec2a23cf821fab0d91b52659c7edd8345a5d06",
+      "coverage": [
+        "PREF-08:A"
+      ]
+    },
+    {
+      "id": "pref-08b",
+      "hash": "46980e93c055e9121a373256e80822ef2df56c0209b7e80efac2ee27e39da14e",
+      "coverage": [
+        "PREF-08:B"
+      ]
+    },
+    {
+      "id": "pref-08c",
+      "hash": "77d22dd62fe56dd9a6f29ba4bf16791cd7aba1caec0c54d4a67c623248155aad",
+      "coverage": [
+        "PREF-08:C"
+      ]
+    },
+    {
+      "id": "pref-08d",
+      "hash": "1b9beca3888cfe737eb98467bd46943e0584acf23a5f4ab5a6239b8cc0999f38",
+      "coverage": [
+        "PREF-08:D"
+      ]
+    },
+    {
+      "id": "blocks-absent",
+      "hash": "2378c3ef5e2a6bd287d4730af733b986e4d5c99862b5c79c44a010d7c2c99832",
+      "coverage": [
+        "addendum:1",
+        "blocks:absent"
+      ]
+    },
+    {
+      "id": "blocks-valid",
+      "hash": "ccacaf6f1a4407b75ea2df6fdd53755656fc87d80b1d0d81fea8d311f8be5d21",
+      "coverage": [
+        "addendum:1",
+        "blocks:valid"
+      ]
+    },
+    {
+      "id": "blocks-equal",
+      "hash": "cc711a762ad28a4b6bddd969dd7c8fefa97b9f5d3f4546eb2dd04f91f8b87041",
+      "coverage": [
+        "addendum:1",
+        "blocks:equal"
+      ]
+    },
+    {
+      "id": "blocks-empty",
+      "hash": "05085cf86e7da5019b3de593d652b240b4ca1b7fbd3eeff16a42024eca705806",
+      "coverage": [
+        "addendum:1",
+        "blocks:empty"
+      ]
+    },
+    {
+      "id": "blocks-moved",
+      "hash": "8cb827531eea415defabc3e033e94e1fe488446e378358095fad81877fc9f5dc",
+      "coverage": [
+        "addendum:1",
+        "blocks:moved"
+      ]
+    },
+    {
+      "id": "blocks-remove",
+      "hash": "2fb60ba17be338ae07bae2db299f50731567121eb7304b24365fe5a362885a49",
+      "coverage": [
+        "addendum:1",
+        "blocks:remove"
+      ]
+    },
+    {
+      "id": "blocks-duplicate",
+      "hash": "b53e1578fbfee946e50a5a066a76b072e2fe2aafa203651d84baac8281d5c3e0",
+      "coverage": [
+        "addendum:1",
+        "blocks:duplicate"
+      ]
+    },
+    {
+      "id": "blocks-nested",
+      "hash": "0daf24366543d87abe56a6c63524c3a190d9ef577cf8dc00773e64f653ee0e6d",
+      "coverage": [
+        "addendum:1",
+        "blocks:nested"
+      ]
+    },
+    {
+      "id": "blocks-reversed",
+      "hash": "2416d757e6a645d21e21851cc00fd1b8523af63dfa73e3d90281d58277efb4e6",
+      "coverage": [
+        "addendum:1",
+        "blocks:reversed"
+      ]
+    },
+    {
+      "id": "blocks-unclosed",
+      "hash": "33e578b4867ce89ba6473238d51b8d5ec1d799b10be1b743f993191528de6165",
+      "coverage": [
+        "addendum:1",
+        "blocks:unclosed"
+      ]
+    },
+    {
+      "id": "blocks-legacy",
+      "hash": "47f3f900840463a9cea8ab9471d82217af721b3b13038f6a37139a82e373f3e5",
+      "coverage": [
+        "addendum:1",
+        "blocks:legacy"
+      ]
+    },
+    {
+      "id": "blocks-unknown",
+      "hash": "948f49096b77363c6d1db02f39b81853d7acff025dd9e29ccaa18f7b03496e2f",
+      "coverage": [
+        "addendum:1",
+        "blocks:unknown"
+      ]
+    },
+    {
+      "id": "resume-add-before-file-write",
+      "hash": "42941d5c96825857de0cf7db6179847d28fceb7e89a69b08c26661bb0c920438",
+      "coverage": [
+        "product:Д",
+        "addendum:3",
+        "recovery:before-file-write"
+      ]
+    },
+    {
+      "id": "resume-add-after-file-write",
+      "hash": "c1af301203848c86042f77da0157c45cf0ebe2212477c23450999176c8aad8ba",
+      "coverage": [
+        "product:Д",
+        "addendum:3",
+        "recovery:after-file-write"
+      ]
+    },
+    {
+      "id": "resume-modify-before-file-write",
+      "hash": "89482cf477b400bb228363b80a988c46c7a95749fd3f4fc2baa0253dc096d124",
+      "coverage": [
+        "product:Д",
+        "addendum:3",
+        "recovery:before-file-write"
+      ]
+    },
+    {
+      "id": "resume-modify-after-file-write",
+      "hash": "2e0e07b6509a2a695a2dbc0ded12c7ba24a33d790f1b67fc6e28eb06dd5fe0be",
+      "coverage": [
+        "product:Д",
+        "addendum:3",
+        "recovery:after-file-write"
+      ]
+    },
+    {
+      "id": "resume-delete-before-file-write",
+      "hash": "ab72860cf5265e7ac474fea346454bcd1f24736b0c6fee3eb5501e740725e234",
+      "coverage": [
+        "product:Д",
+        "addendum:3",
+        "recovery:before-file-write"
+      ]
+    },
+    {
+      "id": "resume-delete-after-file-write",
+      "hash": "c91dc5cac658b45837517feaa2a133cdcab8deb591a3064112234c168186a1d9",
+      "coverage": [
+        "product:Д",
+        "addendum:3",
+        "recovery:after-file-write"
+      ]
+    },
+    {
+      "id": "resume-before-manifest-write",
+      "hash": "c88f538add02e938fb2f3899845b98f4e178ba4abaa6ea94423dcd652309c9d5",
+      "coverage": [
+        "product:Д",
+        "addendum:3",
+        "recovery:before-manifest-write"
+      ]
+    },
+    {
+      "id": "resume-after-manifest-write",
+      "hash": "9633906c23aafd7873dec4341e23f788f11d5148fd581d43a39e02756e58319e",
+      "coverage": [
+        "product:Д",
+        "addendum:3",
+        "recovery:after-manifest-write"
+      ]
+    },
+    {
+      "id": "resume-before-state-cleanup",
+      "hash": "38e49b2293865c587c0415892b06984c3ab383790062309e18accd4fa50ee6a1",
+      "coverage": [
+        "product:Д",
+        "addendum:3",
+        "recovery:before-state-cleanup"
+      ]
+    },
+    {
+      "id": "resume-ambiguous",
+      "hash": "4674c2488dedda929b0b8113a876377dada3c8b9d0ec732e06fd586a19da9717",
+      "coverage": [
+        "product:Д",
+        "addendum:3",
+        "recovery:after-file-write",
+        "recovery:ambiguous"
+      ]
+    },
+    {
+      "id": "resume-command-unknown",
+      "hash": "517ebfcb8a465dd4e528f7603baf0a1bdd88d2999e020db33bd0c5f030dca423",
+      "coverage": [
+        "product:Д",
+        "addendum:3",
+        "recovery:after-command"
+      ]
+    },
+    {
+      "id": "two-tools-agreed",
+      "hash": "fbe604303c25388b43c854b8269d30302857cd40ca04552cff3165d1b5086845",
+      "coverage": [
+        "addendum:7",
+        "tools:codex+claude",
+        "shared:equal"
+      ]
+    },
+    {
+      "id": "two-tools-stale",
+      "hash": "44cceab0c942422de69b8392b849bc1a60a2d6f763f2596132171d5fd2cd717a",
+      "coverage": [
+        "addendum:7",
+        "tools:codex+claude",
+        "shared:stale"
+      ]
+    },
+    {
+      "id": "skill-01",
+      "hash": "538bdd6f511538c8534fac7ca4b4e2de55c268da08925d14986a790ea97e104c",
+      "coverage": [
+        "SKILL-01:install"
+      ]
+    },
+    {
+      "id": "skill-01-refusal",
+      "hash": "337135ecd975919e0d3d13a99d36250b00e8492b1b0709f1e1a2402ad6bc0a68",
+      "coverage": [
+        "SKILL-01:refusal"
+      ]
+    },
+    {
+      "id": "skill-02",
+      "hash": "a2d6c19181b57b9dda96966361c79d3c138d9868bcadf5dfe6a7e75f3f7a4d22",
+      "coverage": [
+        "SKILL-02"
+      ]
+    },
+    {
+      "id": "skill-03",
+      "hash": "f7fee30721afda268d4026eaa47720bc172e8dea0a6f99829df0a9ba34460ff5",
+      "coverage": [
+        "SKILL-03"
+      ]
+    },
+    {
+      "id": "skill-04",
+      "hash": "451ed1845bbdf282ad524bbe9fabaae55a19ee32ab1446ca27336bcfbec8daaf",
+      "coverage": [
+        "SKILL-04:update",
+        "addendum:2"
+      ]
+    },
+    {
+      "id": "skill-04-license",
+      "hash": "e439ba8d8f38037dab20c324a6e2ddbf07418108b1c13d49ee69a25919f07668",
+      "coverage": [
+        "SKILL-04:license",
+        "addendum:2"
+      ]
+    },
+    {
+      "id": "skill-04-changed-bytes",
+      "hash": "db33445223eeccd8b678e86908d103465ff8e228797a7e45d078a7d7b5aad969",
+      "coverage": [
+        "SKILL-04:changed-bytes",
+        "addendum:2"
+      ]
+    },
+    {
+      "id": "skill-04-missing-resource",
+      "hash": "5c42d14606644dfd1ab0e15f058e870476de4358e1090c404b786963829da08b",
+      "coverage": [
+        "SKILL-04:missing-resource",
+        "addendum:2"
+      ]
+    },
+    {
+      "id": "skill-04-foreign-path",
+      "hash": "fff8c74df5941e2a188b359532dad08f74c8d2c48559257b800a8de9c5587ad0",
+      "coverage": [
+        "SKILL-04:foreign-path",
+        "addendum:2"
+      ]
+    },
+    {
+      "id": "proc-01",
+      "hash": "653b6963c0a4c236d4d7d70a786a8496e4dff331e12dc285cf4c2a0517fd8346",
+      "coverage": [
+        "PROC-01:init+workflow"
+      ]
+    },
+    {
+      "id": "proc-02-adopt",
+      "hash": "a2a5adf2d4e602d384e4d1ac08d8ba973d432af8df24659d3d6b52efdef73227",
+      "coverage": [
+        "PROC-02:adopt"
+      ]
+    },
+    {
+      "id": "proc-02-update",
+      "hash": "c2ac5ccd99cfa93811cd12cff6db9ccd1b3361cadb22d4bcb7c4bbc4b2138a4c",
+      "coverage": [
+        "PROC-02:update"
+      ]
+    },
+    {
+      "id": "proc-03-unknown-version",
+      "hash": "6ccb9941df8715356e2805a0c200f9d1973e52f0b4da9519632bbcf57446b25c",
+      "coverage": [
+        "PROC-03:unknown-version"
+      ]
+    },
+    {
+      "id": "proc-03-path-conflict",
+      "hash": "f0d3220cfcb6fbccd912f5bbc8d7576d4c1f228dd9b8949bbb4d5c2f3de059d8",
+      "coverage": [
+        "PROC-03:path-conflict"
+      ]
+    },
+    {
+      "id": "proc-03-unsafe-init",
+      "hash": "08c6bd55d97a2e84600add372e3e8a687d46273587f637e0f95708a2c91ff451",
+      "coverage": [
+        "PROC-03:unsafe-init"
+      ]
+    },
+    {
+      "id": "proc-03-interrupted",
+      "hash": "e21686ad5d21dbac50a0c87956c96555699d4b7c7c2673548c3384b5235a140b",
+      "coverage": [
+        "PROC-03:interrupted"
+      ]
+    },
+    {
+      "id": "proc-04-team",
+      "hash": "5537a89930d61fa71442a821e3e6ec32033d60a7d9e15cd20a6b034f03f15ce4",
+      "coverage": [
+        "PROC-04:team"
+      ]
+    },
+    {
+      "id": "proc-04-openspec",
+      "hash": "64b0098d95053d6a7a8db4ac5208e4aa44bc9fcab82e30478306f20329acd50a",
+      "coverage": [
+        "PROC-04:openspec"
+      ]
+    }
+  ]
+}

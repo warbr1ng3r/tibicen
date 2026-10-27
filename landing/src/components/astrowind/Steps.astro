@@ -1,0 +1,32 @@
+---
+// Adapted from AstroWind Steps2; provenance and MIT notice: landing/README.md.
+import Headline from './Headline.astro';
+import WidgetWrapper from './WidgetWrapper.astro';
+import type { Features as Props } from './types';
+const { id, title, subtitle, tagline, items } = Astro.props;
+---
+
+<WidgetWrapper id={id}>
+  <div class="grid gap-10 lg:grid-cols-2 lg:gap-24">
+    <div>
+      <Headline title={title} subtitle={subtitle} tagline={tagline} />
+      <slot />
+    </div>
+    <ol class="space-y-8">
+      {items.map(({ title: itemTitle, description }, index) => (
+        <li class="flex gap-5">
+          <span
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line text-sm text-accent"
+            aria-hidden="true"
+          >
+            {index + 1}
+          </span>
+          <div>
+            <h3 class="mb-3 text-lg font-semibold">{itemTitle}</h3>
+            <p class="text-sm leading-7 text-muted">{description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</WidgetWrapper>

@@ -1,0 +1,13 @@
+---
+// Adapted from AstroWind; provenance and MIT notice: landing/README.md.
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+---
+
+<section id={id} class="relative scroll-mt-8 border-t border-line">
+  <div class="page-width py-16 md:py-24">
+    <slot />
+  </div>
+</section>
