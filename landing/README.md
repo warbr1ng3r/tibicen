@@ -1,8 +1,8 @@
-# Лендинг Tibicen
+# Tibicen landing page
 
-Отдельный статический Astro workspace. Страница и компоненты — `.astro`, клиентские скрипты — TypeScript, оформление — Tailwind CSS и локальные стили. Нет React, shadcn, аналитики, внешних шрифтов и сервера приложения.
+A separate static Astro workspace. Pages and components use `.astro`, client scripts use TypeScript, and styling uses Tailwind CSS with local styles. There is no React, shadcn, analytics, external font service or application server.
 
-Из корня репозитория, Node 24 LTS:
+From the repository root, with Node 24 LTS:
 
 ```sh
 pnpm install --frozen-lockfile
@@ -12,60 +12,60 @@ pnpm build:site
 pnpm preview:site
 ```
 
-На главной используется плоский граф с движущимися вершинами. Остальная геометрия доступна в режиме сравнения `?preview=geometry`.
+The home page uses a flat graph with moving vertices. Alternative geometry is available in comparison mode at `?preview=geometry`.
 
-Локальный адрес — http://127.0.0.1:8371/. Для preview сначала остановите dev-сервер на этом порту. Результат сборки — `landing/dist/`.
+The local address is http://127.0.0.1:8371/. Stop the development server on that port before using preview. Build output goes to `landing/dist/`.
 
 ## GitHub Pages
 
-[Ручной workflow](../.github/workflows/pages.yml) публикует только лендинг. Выпуск скиллов, пилот и контакты сопровождения не требуются для хостинга страницы.
+The [manual workflow](../.github/workflows/pages.yml) deploys the landing page separately. Skill publication, pilot results and support contacts are not prerequisites for hosting the page.
 
-После выбора репозитория и размещения reviewed кода с workflow в default branch:
+To redeploy reviewed code from the default branch:
 
-1. В Settings → Pages выберите Source: GitHub Actions.
-2. В Actions откройте **Deploy landing to GitHub Pages** → **Run workflow** и выберите проверенную ветку.
-3. Дождитесь build и deploy; URL появится в environment **github-pages**. Проверьте главную, логотип/лицензию и скачивание пресета на этом адресе.
+1. In Settings → Pages, select Source: GitHub Actions.
+2. In Actions, open **Deploy landing to GitHub Pages** → **Run workflow** and select the reviewed branch.
+3. Wait for build and deploy; the URL appears in the **github-pages** environment. Check the home page, logo/license and preset download at that address.
 
-Workflow получает origin/base из Pages, передаёт их Astro и проверяет собранные файлы перед upload. Он поддерживает project path и корень пользовательского сайта/настроенного домена. На push/PR публикация не запускается; собственный домен настраивается отдельно в Pages. Поля `homepage`/`repository` в package.json описывают пакет; текущая сборка использует параметры Astro `site`/`base`.
+The workflow gets origin/base from Pages, passes them to Astro and checks the built files before upload. It supports a project path and the root of a user site or configured domain. Push/PR does not trigger deployment; configure a custom domain separately in Pages. The package.json `homepage`/`repository` fields describe the package; the build uses Astro `site`/`base` parameters.
 
-Эквивалент локальной проверки project path из корня репозитория:
+Equivalent local project-path checks from the repository root:
 
 ```sh
 pnpm --filter @tibicen/landing build --site https://tibicen.invalid --base /repo/
 TIBICEN_SITE_BASE=/repo/ node --test tests/site/*.test.ts
 ```
 
-`tibicen.invalid` здесь — пример origin для локальной проверки, без публикации или обращения к нему. После неё верните обычную сборку командой `pnpm build:site`. Для просмотра project-path сборки используйте preview с тем же `--base /repo/` и адресом `/repo/`.
+`tibicen.invalid` is an example origin for local checking, without publication or requests to it. Restore the ordinary build afterward with `pnpm build:site`. To inspect a project-path build, use preview with the same `--base /repo/` and visit `/repo/`.
 
-Выбран репозиторий [warbr1ng3r/tibicen](https://github.com/warbr1ng3r/tibicen), origin настроен. Workflow подготовлен локально; код ещё не отправлен, фактический GitHub run и опубликованный URL не подтверждены.
+The [landing page](https://warbr1ng3r.github.io/tibicen/) was published on 27 October 2026 from source [`e0f59a5`](https://github.com/warbr1ng3r/tibicen/tree/e0f59a55c7ce7581e402c3e270aa162fa1e0dc52); the [GitHub Pages run](https://github.com/warbr1ng3r/tibicen/actions/runs/40438226284) succeeded. Page publication does not close full MVP acceptance of the skills.
 
 ## AstroWind
 
-Секции `src/components/astrowind/` адаптированы из [AstroWind](https://github.com/arthelokyo/astrowind/tree/14e1a691f80548dcc36370847b1a02c0d0b12821): `Features2`, `Steps2`, `FAQs`, `Headline` и `WidgetWrapper`. Сохранены композиция виджетов, типизированные props, сетки Tailwind и нативные details. Убраны неиспользуемые варианты, интеграции и анимации появления; добавлены палитра Tibicen и копирование запросов. Полный шаблон с блогом, CMS и аналитикой не переносился.
+Sections in `src/components/astrowind/` are adapted from [AstroWind](https://github.com/arthelokyo/astrowind/tree/14e1a691f80548dcc36370847b1a02c0d0b12821): `Features2`, `Steps2`, `FAQs`, `Headline` and `WidgetWrapper`. Widget composition, typed props, Tailwind grids and native details are retained. Unused variants, integrations and reveal animations were removed; Tibicen colors and prompt-copying were added. The full blog/CMS/analytics template was not imported.
 
-MIT-уведомление upstream сохранено в `public/licenses/astrowind.txt` и доступно на странице. Собственные `ProjectPreview`, конструктор пресета и фоновая графика остаются отдельными компонентами Tibicen.
+The upstream MIT notice is preserved in `public/licenses/astrowind.txt` and linked from the page. The custom `ProjectPreview`, preset builder and background graphics remain separate Tibicen components.
 
-## UI-компоненты и браузерные проверки
+## UI components and browser checks
 
-AstroWind не установлен как пакет: его адаптированные секции хранятся в репозитории. Пять полей выбора используют общий `src/components/ui/Select.astro` на примитиве `@starwind-ui/astro/select` с локальными стилями. Из Starwind UI не подключаются полный шаблон, styled registry, React или глобальная тема. `Field.astro` связывает подпись, пояснение и ошибку поля. Все ответы остаются в браузере.
+AstroWind is not installed as a package; its adapted sections are stored in the repository. Five selection fields share `src/components/ui/Select.astro`, built on `@starwind-ui/astro/select` with local styles. The full Starwind template, styled registry, React and global theme are not included. `Field.astro` connects labels, descriptions and errors to each field. All answers remain in the browser.
 
-MIT-уведомление Starwind UI сохранено в `public/licenses/starwind.txt` и попадает в статическую сборку.
+The Starwind UI MIT notice is preserved in `public/licenses/starwind.txt` and included in the static build.
 
-Для runtime 1.3.0 закреплён pnpm-патч в `patches/`: удалена отмена `pointerdown` внутри Select, подавляющая последующий `click` при касании в WebKit; добавлена явная прокрутка к пункту после клавиатурного перехода, чтобы Firefox не обрезал его в низком окне. Выбор по-прежнему выполняет штатный обработчик Select. Оба случая покрыты браузерными сценариями; при обновлении Starwind проверьте необходимость патча до его удаления.
+A pnpm patch in `patches/` pins changes to runtime 1.3.0: it removes `pointerdown` cancellation inside Select, which suppressed the following touch `click` in WebKit, and explicitly scrolls to the active option after keyboard navigation so Firefox does not clip it in a short window. Selection still uses the standard Select handler. Browser scenarios cover both cases; check whether the patch remains necessary before removing it during a Starwind update.
 
 ```sh
 pnpm exec playwright install chromium firefox webkit
 pnpm test:site
 ```
 
-Проверки запускают собранную страницу на отдельном порту 8372, не останавливая dev-сервер 8371. Проверяются выбор мышью и клавиатурой, девять команд установки, ошибки и локальное скачивание пресета, отключённый JavaScript и размеры 320/390/768/1024/1440 px. Дополнительно проверяются касания в мобильной эмуляции Chromium и WebKit; этот сценарий пропускается в Firefox без поддержки такой эмуляции. Эталонные скриншоты Chromium хранятся в `e2e/controls.spec.ts-snapshots/`; обновляйте их осознанно через `pnpm test:site --update-snapshots` после просмотра изменений. Результаты и trace ошибок находятся в игнорируемой папке `test-results/landing/`. WebKit — проверка движка, не замена испытанию на настоящем iPhone.
+Checks serve the built page on port 8372 without stopping the development server on 8371. They cover mouse and keyboard selection, nine installation commands, errors and local preset downloads, JavaScript disabled, and widths of 320/390/768/1024/1440 px. Touch checks also run in Chromium and WebKit mobile emulation; Firefox skips that scenario because it lacks the required emulation. Chromium reference screenshots are stored in `e2e/controls.spec.ts-snapshots/`; update them deliberately with `pnpm test:site --update-snapshots` after reviewing the changes. Results and failure traces go into the ignored `test-results/landing/` directory. WebKit checks the engine and does not replace testing on a real iPhone.
 
-Текущие эталоны сняты на macOS. Для другой ОС Playwright использует отдельные эталоны: их нужно сформировать и просмотреть в той среде.
+Current references were recorded on macOS. Playwright uses separate references for another OS; generate and inspect them in that environment.
 
-`e2e/responsive.spec.ts` проверяет всю страницу на 31 ширине от 280 до 5120 px, включая границы media queries, четыре низких окна, все ответы FAQ, движение/остановку графа и перестроение при CSS viewport, эквивалентном 200% и 400% масштабу окна 1280×900. Эта эмуляция проверяет вёрстку и плотность пикселей, но не заменяет ручное изменение масштаба в интерфейсе браузера. В узкой иллюстрации пояснения переносятся под имена файлов, а длинные меню прокручиваются внутри своей рамки.
+`e2e/responsive.spec.ts` checks the whole page at 31 widths from 280 to 5120 px, including media-query boundaries, four short windows, all FAQ answers, graph motion/pause, and layout at CSS viewports equivalent to 200% and 400% zoom in a 1280×900 window. This emulation checks layout and pixel density; it does not replace manually changing browser zoom. In the narrow illustration, explanations move below filenames and long menus scroll within their frame.
 
-## Установка продукта и разработка сайта
+## Product installation and site development
 
-Посетитель устанавливает два готовых скилла из отдельного version tag `v0.1.0-alpha.1` через skills 1.7.4 и npm, pnpm или Yarn 2+. Исходники и зависимости сайта не нужны. Этот tag публикуется только после проверки Git-доставки; выкладка страницы выполняется после публикации tag. Другие варианты агента экспериментальны; наблюдения alpha ограничены macOS/Node 24/Codex.
+Visitors install two ready-to-use skills from the separate version tag `v0.1.0-alpha.1` through skills 1.7.4 and npm, pnpm or Yarn 2+. Site source and dependencies are unnecessary. The tag and page were published on 27 October 2026 after Git delivery checks: full-SHA and tag installations matched all 86 distribution files, and resume/removal checks passed. Other agent choices remain experimental; alpha observations cover macOS, Node 24 and Codex.
 
-Разработка репозитория использует pnpm 11.21.0, `pnpm-workspace.yaml` и единый `pnpm-lock.yaml`. Версия закреплена в корневом `packageManager`. Включите pnpm через `corepack enable pnpm` либо установите указанную версию самостоятельно. npm/Yarn в примерах страницы относятся только к запуску установщика скиллов.
+Repository development uses pnpm 11.21.0, `pnpm-workspace.yaml` and one `pnpm-lock.yaml`. The version is pinned in the root `packageManager`. Enable pnpm with `corepack enable pnpm` or install the specified version separately. npm/Yarn examples on the page only select how to run the skill installer.

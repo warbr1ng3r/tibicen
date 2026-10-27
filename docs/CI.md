@@ -1,19 +1,19 @@
-# Офлайн-CI
+# Offline CI
 
-[Workflow](../.github/workflows/ci.yml) запускается на push, pull request и вручную: Ubuntu 24.04, Node 24.15.0 и pnpm 11.21.0 из package.json. Actions закреплены полными SHA; обновляя их, проверяйте соответствующий официальный action.yml и локальные команды. Разрешён только `contents: read`, checkout не сохраняет credentials.
+The [workflow](../.github/workflows/ci.yml) runs on push, pull request and manual dispatch using Ubuntu 24.04, Node 24.15.0 and pnpm 11.21.0 from package.json. Actions are pinned to full SHAs; check the corresponding official action.yml and local commands when updating them. Permissions are limited to `contents: read`, and checkout does not persist credentials.
 
-После `pnpm install --frozen-lockfile` выполняются:
+After `pnpm install --frozen-lockfile`, it runs:
 
-1. `pnpm test`: lint, format, все typecheck, сборка сайта, strict OpenSpec и все Node-тесты.
-2. `pnpm build`: две самостоятельные поставки.
-3. Распаковка обеих поставок во временный каталог вне checkout, проверка SHA256SUMS и self-test каждой CLI с пустым PATH.
+1. `pnpm test`: lint, formatting, all type checks, the site build, strict OpenSpec validation, standalone resources and all Node tests.
+2. `pnpm build`: type checks, the site build and both standalone skill distributions.
+3. Unpacking both distributions into a temporary directory outside the checkout, verifying SHA256SUMS and running each CLI self-test with an empty PATH.
 
-Стенд использует офлайн-фикстуры и fake drivers. Workflow не передаёт secrets, не вызывает модели и не запускает `eval:external`. Доступ к реестру пакетов и загрузкам Actions/Node/pnpm нужен для установки; «офлайн» относится к проверкам продукта и моделей.
+The harness uses offline fixtures and fake drivers. The workflow supplies no secrets, calls no models and does not run `eval:external`. Installing dependencies still requires access to the package registry and Actions/Node/pnpm downloads; “offline” describes the product checks and model execution.
 
-Браузерная приёмка остаётся отдельной командой `pnpm test:site`. Текущие эталонные скриншоты записаны на macOS; этот Ubuntu workflow не заявляет проверку Linux-скриншотов, всех ОС или живых агентов.
+Browser acceptance remains the separate `pnpm test:site` command. Current reference screenshots were recorded on macOS; this Ubuntu workflow does not establish Linux screenshot, all-platform or live-agent acceptance.
 
-По состоянию на 25.10.2026 YAML и команды проверены локально на macOS; Git remote у checkout не настроен, удалённого запуска GitHub Actions ещё не было. Успех локальных команд не равен успешному запуску на Ubuntu. После подключения remote подтвердите первый запуск до включения обязательной проверки ветки; публикация и release pipeline остаются отдельной работой.
+On 27 October 2026, source snapshot [`e0f59a5`](https://github.com/warbr1ng3r/tibicen/tree/e0f59a55c7ce7581e402c3e270aa162fa1e0dc52) was published. A clean local copy passed 668/668 tests and the build; the [first main CI run](https://github.com/warbr1ng3r/tibicen/actions/runs/40437643480) succeeded on Ubuntu. The separate manual [Pages workflow](../.github/workflows/pages.yml) also [succeeded](https://github.com/warbr1ng3r/tibicen/actions/runs/40438226284), and the [site](https://warbr1ng3r.github.io/tibicen/) is live. These results cover the stated offline checks; full platform and live-agent acceptance remain open.
 
-27.10.2026: создан публичный [warbr1ng3r/tibicen](https://github.com/warbr1ng3r/tibicen) и настроен origin. Push и удалённый CI пока не выполнялись. Для страницы добавлен отдельный ручной [Pages workflow](../.github/workflows/pages.yml); локальные проверки не заменяют первый GitHub run.
+Both `pnpm test` and `pnpm test:evals` build standalone resources before Node tests, so a previous ignored `dist/` is unnecessary. The pinned OpenSpec development package fingerprint excludes only generated package-manager launchers in `node_modules/.bin`, retaining checks for all other files and observed effects.
 
-Полный `pnpm test` и `pnpm test:evals` собирают standalone-ресурсы перед Node-тестами; прежний ignored `dist/` не требуется. Fingerprint закреплённого dev-пакета OpenSpec исключает только генерируемые package-manager launchers `node_modules/.bin`, сохраняя проверку остальных файлов и наблюдаемых effects.
+The current workflow can run twice for a change in an open PR: once for push and once for pull request. Within one run, `pnpm test` and `pnpm build` repeat type checks and the site build. Those repetitions remain in the current gate.

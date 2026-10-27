@@ -61,19 +61,23 @@ version. There is no background update of installed Tibicen or project setup.
 
 ## Inputs still required for the full MVP
 
-- Published distribution tree and immutable installation URL in the chosen
-  [warbr1ng3r/tibicen](https://github.com/warbr1ng3r/tibicen) repository.
-- Site address, responsible maintainer and private security/conduct contacts.
+- Responsible maintainer and private security/conduct contacts.
 - Independent channel for advisories and distribution checksums.
-- Voluntary pilot participants and agreed measurements; actual pilot results.
-- First remote CI run and completed acceptance for the claimed platform scope.
+- Voluntary pilot participants and agreed measurements; actual human/pilot results.
+- Full component coverage and acceptance for additional agents and platforms.
 
-These inputs are pending. Do not substitute example addresses or claim that a
-local candidate is already a public release. Maintenance is monthly and after
-significant tool changes; changed recommendations need fresh init/adopt checks.
+These inputs remain open after the limited alpha. Maintenance is monthly and
+after significant tool changes; changed recommendations need fresh init/adopt checks.
 
-## Approved first alpha
+## Published first alpha
 
-The owner approved 0.1.0-alpha.1 as a limited prerelease on 27 October 2026, including commit/push, Git delivery checks, prerelease and Pages. The full MVP checklist remains open. This alpha requires source/distribution SHA, checked bytes, real Git installation and a distribution transition with preserved user state. Release notes must state actual platform/agent observations and pending scenarios, human review/pilot and support contacts.
+[0.1.0-alpha.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1) was published on 27 October 2026 as a limited prerelease; the [configuration page](https://warbr1ng3r.github.io/tibicen/) is live.
 
-Publish a checked public source snapshot without local development history/private records; preserve the original repository locally. Keep ready-to-install skills in a separate distribution branch. Pin the installer to an exact GitHub tree SHA (and later the immutable version tag), selecting only tibicen-init and tibicen-adopt. In skills 1.7.4, owner/repo@name selects a skill rather than a Git ref. GitHub release assets and Pages are separate outputs.
+- Source: `e0f59a55c7ce7581e402c3e270aa162fa1e0dc52`.
+- Distribution: `db03ebc988af1e38ea9f62c02027945ba40660fc`; immutable tag `v0.1.0-alpha.1`.
+- Clean-source local gate: 668/668 tests and build passed. [Main CI](https://github.com/warbr1ng3r/tibicen/actions/runs/40437643480) and [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/40438226284) succeeded.
+- Public installation through both SHA and tag matched all 86 distribution files; approved session resume and removal checks passed. Observations cover macOS, Node 24 and Codex.
+
+The public source snapshot omits local development history and private/raw records; the original repository is preserved locally. Ready-to-install skills live in the separate distribution branch. Pin skills 1.7.4 to the full GitHub tree SHA or immutable version tag and select only tibicen-init and tibicen-adopt. In this installer, owner/repo@name selects a skill rather than a Git ref. Release assets and Pages remain separate outputs.
+
+Full MVP acceptance, broader component/agent/platform coverage, human review/pilot and support contacts remain open.

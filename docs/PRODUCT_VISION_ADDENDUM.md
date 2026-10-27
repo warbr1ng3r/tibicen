@@ -1,121 +1,121 @@
-# Дополнение к продуктовому видению Tibicen
+# Tibicen product vision addendum
 
-**Редакция:** 2026-10-22. **Основа:** [PRODUCT_VISION.md](PRODUCT_VISION.md).
+**Revision:** 2026-10-22. **Basis:** [PRODUCT_VISION.md](PRODUCT_VISION.md).
 
-Здесь определены дополнительные правила изменения инфраструктуры, выявления предпочтений пользователя и развитие настройки рабочих процессов. Ссылки на параграфы относятся к основному видению; его требования применяются без повторного перечисления. Этапы и готовность реализации ведутся в [DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md).
+This document defines additional rules for infrastructure changes, identifying user preferences, and extending workflow setup. Section references point to the main vision; its requirements apply without being repeated here. Implementation stages and readiness are tracked in [DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md).
 
-Разделы 1–3 конкретизируют существующие обязательства. Раздел 7 уточняет смысл поддержки нескольких агентов; раздел 9 — выявление предпочтений и подбор компонентов. В §6 первый ограниченный адаптер OpenSpec явно включён в ближайший выпуск по §13. Разделы 4–5 и 8, Spec Kit и остальные адаптеры остаются дальнейшим развитием.
+Sections 1–3 detail existing obligations. Section 7 clarifies support for multiple agents; section 9 covers preference identification and component selection. In §6, the first bounded OpenSpec adapter is explicitly included in the nearest release under §13. Sections 4–5 and 8, Spec Kit, and other adapters remain future development.
 
-## 1 Обработка управляемых блоков
+## 1 Managed block handling
 
-**Дополняет §8:** сохранение областей вне обычного обновления собственного блока проверяется механически. Если план отдельно меняет окружающие инструкции, проверяются только области, которые этот план оставляет нетронутыми.
+**Supplements §8:** preservation of areas outside an ordinary update of Tibicen's own block is checked mechanically. If the plan separately changes surrounding instructions, only the areas that the plan leaves untouched are checked for preservation.
 
-| Состояние маркеров `tibicen:begin/end` | Операция обработчика |
+| State of `tibicen:begin/end` markers | Handler operation |
 |---|---|
-| Маркеров нет | Подготовить добавление блока; необходимый разделитель включить в дифф |
-| Одна корректная пара | Изменить или удалить блок на прежнем месте |
-| Текст блока уже совпадает | Не создавать операцию повторной замены блока |
-| Повторение, вложение, обратный порядок или незамкнутая пара | Не изменять блок автоматически; указать место неоднозначности |
+| No markers | Prepare to add a block; include any required separator in the diff |
+| One valid pair | Update or delete the block in its existing location |
+| Block text already matches | Do not create another block replacement operation |
+| Duplicate, nested, reversed, or unclosed pair | Do not change the block automatically; identify where the ambiguity occurs |
 
-Формат маркеров имеет различимую версию. Старый формат распознаётся явно, неизвестная версия требует отдельного преобразования. Ремонт повреждённых маркеров описывается точным диффом.
+The marker format has a distinguishable version. The legacy format is recognized explicitly; an unknown version requires a separate conversion. Repair of damaged markers is described through an exact diff.
 
-**Дополнительная приёмка:** пустой и перемещённый блоки, повреждённые пары и смена версии маркеров; побайтное сравнение нетронутых областей, включая окончания строк. Повреждённый блок не проходит проверку корректности блоков, даже если весь файл совпадает с ожидаемым хэшем.
+**Additional acceptance criteria:** empty and moved blocks, damaged pairs, and marker version changes; byte-for-byte comparison of untouched areas, including line endings. A damaged block fails block validation even if the entire file matches its expected hash.
 
-## 2 Сопоставление файлов при обновлении компонента
+## 2 Matching files during a component update
 
-**Дополняет §6.3 и §8:** план обновления строится по трём состояниям — прежнему составу из паспорта, фактическим файлам и выбранному новому составу компонента.
+**Supplements §6.3 and §8:** an update plan is built from three states — the previous inventory in the project manifest, actual files, and the component's selected new inventory.
 
-| Различие между состояниями | Дополнительное решение в плане |
+| Difference between states | Additional decision in the plan |
 |---|---|
-| Файл изменён локально | Объединить правки, сохранить локальную версию или заменить её; выбранный вариант показать явно |
-| Ресурс исчез из новой поставки | Установить, нужен ли он проекту; исчезновение из поставки само по себе не требует удаления |
-| В каталоге появился пользовательский файл | Не включать его в принадлежавший компоненту состав по одному расположению |
-| Новый ресурс занимает существующий чужой путь | Зафиксировать конфликт вместо автоматического присвоения файла компоненту |
+| A file was edited locally | Merge the changes, preserve the local version, or replace it; show the selected option explicitly |
+| A resource disappeared from the new distribution | Determine whether the project still needs it; disappearance from a distribution does not itself require deletion |
+| A user file appeared in the directory | Do not assign it to the component's inventory based solely on its location |
+| A new resource occupies an existing path owned by something else | Record a conflict rather than automatically assigning the file to the component |
 
-При сохранении локальных правок паспорт различает исходное содержимое поставки и фактическое состояние файла после сессии. Локальная версия сохраняет связь с источником и не обозначается как точная копия выбранного SHA. Удалённые ресурсы исключаются из установленного состава; прежние записи не теряются из истории изменений.
+When local changes are preserved, the project manifest distinguishes original distribution content from the actual file state after the session. The local version retains its source link and is not labeled an exact copy of the selected SHA. Deleted resources are excluded from the installed inventory; previous records remain in change history.
 
-**Дополнительная приёмка:** обновление компонента с локальной правкой, соседним пользовательским файлом и исчезнувшим ресурсом. В паспорте нет удалённых файлов среди установленных и нет ложного подтверждения неизменённого происхождения локальной версии.
+**Additional acceptance criteria:** update a component with a local edit, a neighboring user file, and a removed resource. The manifest lists no deleted files as installed and does not falsely confirm that the local version has unchanged source content.
 
-## 3 Сбой между изменением файла и записью результата
+## 3 Failure between a file change and recording its result
 
-**Дополняет §10.3:** state должен позволять распознать прерывание после изменения файла, но до записи результата операции. Для этого сопоставляются ожидаемое исходное содержимое, точный согласованный результат и фактическое состояние; отсутствие файла учитывается для добавления и удаления.
+**Supplements §10.3:** state must make it possible to recognize an interruption after a file change but before the operation's result was recorded. This requires comparing the expected original content, exact approved result, and actual state; absence of a file is accounted for in additions and deletions.
 
-| Фактическое состояние | Что известно при продолжении |
+| Actual state | What is known on continuation |
 |---|---|
-| Совпадает с исходным | Файловое изменение ещё требуется |
-| Совпадает с согласованным результатом | Файловая часть уже соответствует плану; повторная запись не нужна |
-| Отличается от обоих | Исход операции неоднозначен; путь требует разбора |
+| Matches the original | The file change is still required |
+| Matches the approved result | The file already conforms to the plan; another write is unnecessary |
+| Differs from both | The operation's outcome is ambiguous; the path requires investigation |
 
-Совпадение конечного файла не устанавливает, какой процесс его записал, и не подтверждает исполнение связанных команд. Если после сбоя исход команды неизвестен, её повторный запуск должен быть отдельно обоснован в оставшемся плане. Дальнейшее продолжение регулируется §10.3–5.
+A matching final file does not establish which process wrote it and does not confirm execution of related commands. If a command's outcome is unknown after a failure, retrying it must be justified separately in the remaining plan. Further continuation is governed by §10.3–5.
 
-**Дополнительная приёмка:** сбои до замены файла, после замены до записи результата, при записи паспорта и перед удалением state. Проверяется корректное восстановление сведений о применении, а не только наличие сохранённой сессии.
+**Additional acceptance criteria:** failures before file replacement, after replacement but before recording the result, during manifest writing, and before state deletion. Check correct recovery of records of applied changes, not merely the existence of a saved session.
 
-## 4 Происхождение составной поставки
+## 4 Provenance of a composite distribution
 
-**Расширяет §6.1 и §8 при добавлении таких источников:** упаковка компонента может ссылаться на материалы из другого репозитория. Паспорт связывает каждый выбранный материал с его действительным источником, отдельно от происхождения упаковки. Авторство и лицензия упаковки не подменяют авторство и лицензию вложенных материалов.
+**Extends §6.1 and §8 when such sources are added:** a component's packaging may reference material from another repository. The project manifest links each selected material to its actual source, separately from the packaging's provenance. The packaging's authorship and license do not replace those of the included materials.
 
-Проверки §6.1 применяются к каждому используемому источнику. Дополнительно проверяется полнота поставки: доступны ли ссылки, шаблоны и вспомогательные файлы, необходимые выбранному процессу. Если преобразование меняет содержимое, фиксируются исходные материалы и результат преобразования. Неподдержанная составная поставка получает gap, а не подтверждение по метаданным одной обёртки.
+The checks in §6.1 apply to every source used. Distribution completeness is also checked: are the links, templates, and supporting files required for the selected process available? If a transformation changes content, record the source materials and the transformation's result. An unsupported composite distribution receives a gap, rather than verification based on a single wrapper's metadata.
 
-**Дополнительная приёмка:** неизменённая обёртка с изменившимся оригиналом, разные лицензии источников и отсутствующий связанный ресурс. Каждый установленный файл прослеживается до исходного материала или явно описанного преобразования.
+**Additional acceptance criteria:** an unchanged wrapper with a changed original, sources with different licenses, and a missing linked resource. Every installed file can be traced to source material or an explicitly described transformation.
 
-## 5 Схема подключённого контекста
+## 5 Connected context map
 
-**Расширяет передачу результата в §4:** краткая схема связывает точку входа агента, основные инструкции, скиллы и справочные материалы. Для связи указываются способ подключения и условие чтения, если оно поддержано выбранным агентом. Неизвестные связи отмечаются на месте.
+**Extends handoff in §4:** a concise map links the agent entry point, main instructions, skills, and reference materials. Each link specifies the connection method and reading condition, where supported by the selected agent. Unknown links are marked where they occur.
 
-Пример: `AGENTS.md → команды проекта; скилл проверки → по соответствующей задаче; справочные материалы → по ссылке из скилла`. Схема описывает конфигурацию; свидетельства фактической загрузки берутся из §6.4. Для неё используются уже собранные сведения; отдельный компилятор контекста и расчёт точного числа токенов не требуются.
+Example: `AGENTS.md → project commands; review skill → for the relevant task; reference materials → through a link in the skill`. The map describes configuration; evidence of actual loading comes from §6.4. It uses information already gathered; no separate context compiler or exact token count is required.
 
-**Дополнительная приёмка:** отсутствующая ссылка видна в цепочке, порядок чтения не придумывается, подробные материалы не показываются как постоянно загружаемые без основания. Сохранение схемы в файле подчиняется правилам отчёта из §8.
+**Additional acceptance criteria:** a missing link is visible in the chain, reading order is not invented, and detailed materials are not presented as continuously loaded without evidence. Saving the map to a file follows the report rules in §8.
 
-## 6 Подключение процессных фреймворков
+## 6 Connecting process frameworks
 
-**Развивает использование готовых компонентов из §2:** Tibicen может подобрать и настроить фреймворк работы со спецификациями, например OpenSpec или Spec Kit. Настройка охватывает его служебную структуру, инструкции выбранных агентов, шаблоны и доступные команды перехода между стадиями процесса.
+**Develops the use of existing components from §2:** Tibicen can select and configure a specification workflow framework such as OpenSpec or Spec Kit. Setup covers its service structure, instructions for selected agents, templates, and available commands for moving between process stages.
 
-В ближайший первый выпуск включён один ограниченный адаптер OpenSpec с отдельной приёмкой. Это возможность по потребности проекта; уже достаточный процесс сохраняется. Spec Kit и остальные адаптеры остаются дальнейшим развитием. Этот выбор не переносит автоматически весь объём §§4–5 и 8 в первый выпуск.
+The nearest first release includes one bounded OpenSpec adapter with separate acceptance. This capability is used according to the project's needs; an already sufficient process is preserved. Spec Kit and other adapters remain future development. This choice does not automatically move the full scope of §§4–5 and 8 into the first release.
 
-Для поддержанного фреймворка адаптер описывает проверенные версии, создаваемые и изменяемые файлы, побочные действия инициализатора, способ обновления и проверки интеграции. Установка служебного CLI, если она нужна, является отдельным действием с указанными версией и местом установки. Она не делает этот CLI обязательной зависимостью дистрибутива Tibicen.
+For a supported framework, the adapter describes verified versions, files created and changed, initializer side effects, the update method, and integration checks. Installing a supporting CLI, when needed, is a separate action with a specified version and installation location. It does not make that CLI a mandatory dependency of the Tibicen distribution.
 
-Для этого расширения в область агентской инфраструктуры из §8 могут входить явно перечисленные служебные пути фреймворка, например его конфиги и шаблоны. Это не разрешение менять любые файлы внутри одноимённого каталога. Поддержанный запуск инициализатора допускается сверх набора команд §10.2 только по контракту адаптера, с известными эффектами и общими ограничениями исполнения этого параграфа. Если способ установки требует правок защищённого приложения или имеет неконтролируемые эффекты, остаётся ручной шаг.
+For this extension, the agent infrastructure scope from §8 may include explicitly listed framework service paths, such as its configurations and templates. This does not authorize changing any file inside a directory with that name. A supported initializer may be executed beyond the command set in §10.2 only under the adapter's contract, with known effects and the general execution constraints in that section. If installation requires changes to the protected application or has uncontrolled effects, it remains a manual step.
 
-Общий lifecycle подключается через выбранный фреймворк: стадии, необходимые артефакты, критерии перехода и команды связываются с задачами проекта. После передачи процесс выполняют агенты и подключённые инструменты. Уже принятый командой процесс может быть сохранён и настроен без перехода на другую систему.
+The common lifecycle is connected through the selected framework: stages, required artifacts, transition criteria, and commands are linked to project tasks. After handoff, agents and connected tools execute the process. A process already accepted by the team may be preserved and configured without switching systems.
 
-**Дополнительная приёмка:** фреймворк настраивается с нуля и подключается к существующему процессу; его рабочая команда и необходимые материалы доступны в новой сессии выбранного агента. Наличие CLI без подключения процесса не считается законченной интеграцией. Проверки загрузки и типичной задачи выполняются в пределах §6.4 и §10.10.
+**Additional acceptance criteria:** set up the framework from scratch and connect it to an existing process; its working command and required materials are available in a new session of the selected agent. A CLI without a connected process does not count as completed integration. Loading and representative-task checks operate within §6.4 and §10.10.
 
-## 7 Один проект и несколько coding agents
+## 7 One project and multiple coding agents
 
-**Уточняет §6.4, §7 и §10.7:** поддержка нескольких агентов означает настройку одного проекта для нескольких выбранных coding tools. Запуск команды агентов, распределение задач и координация параллельной работы этим требованием не задаются.
+**Clarifies §6.4, §7, and §10.7:** support for multiple agents means configuring one project for several selected coding tools. This requirement does not define running an agent team, distributing tasks, or coordinating parallel work.
 
-Общие правила проекта и стадии выбранного процесса согласованы между адаптерами. Копии общих материалов, если они необходимы, имеют проверяемую связь, чтобы обнаруживать расхождение при обновлении. Различия форматов и способы проверки берутся из матрицы §10.7 и процедуры §6.4.
+Common project rules and the selected process's stages are consistent across adapters. Copies of shared materials, where needed, have a verifiable link so divergence can be detected during updates. Format differences and verification methods follow the matrix in §10.7 and procedure in §6.4.
 
-**Дополнительная приёмка:** в одном проекте два агента получают одну согласованную редакцию правил и процесса через свои форматы. Обновление не оставляет незамеченную старую копию.
+**Additional acceptance criteria:** in one project, two agents receive the same approved revision of rules and process through their respective formats. An update does not leave an unnoticed outdated copy.
 
-## 8 Переносимый пользовательский манифест настройки
+## 8 Portable user setup manifest
 
-**Расширяет повторное использование из §9:** автор процесса или команда может описать конкретный набор правил, компонентов и настроек для применения в других проектах. Для этого вводится отдельный переносимый манифест настройки. Это новый вход для настройки; паспорт и пресет из §8–9 не используются вместо него.
+**Extends reuse from §9:** a process author or team may describe a specific set of rules, components, and settings for use in other projects. A separate portable setup manifest is introduced for this purpose. It is a new setup input; the project manifest and preset from §8–9 are not substitutes for it.
 
-Манифест имеет версию схемы, имя и версию набора. Он содержит условия применимости, выбранные источники компонентов, параметры поддержанных адаптеров, целевые агенты и описание стадий процесса. Собственные правила и шаблоны поставляются как отдельные материалы с явным происхождением. Автор может распространять их вместе с манифестом или через указанные источники.
+The setup manifest has a schema version, a name, and a version for the set. It contains applicability conditions, selected component sources, supported adapter parameters, target agents, and a description of process stages. First-party rules and templates are supplied as separate materials with explicit provenance. The author may distribute them alongside the manifest or through specified sources.
 
-Применение сопоставляет набор с фактической инфраструктурой проекта и показывает отклонения от манифеста. Пресет может заполнить незаданные предпочтения. Конфликт манифеста с запросом пользователя или принятыми решениями проекта разрешается через рекомендуемую редакцию обычного предложения; порядок загрузки файлов не выбирает победителя автоматически.
+When applying the setup, Tibicen compares the set with the project's actual infrastructure and shows deviations from the setup manifest. A preset may fill unspecified preferences. A conflict between the manifest and the user's request or accepted project decisions is resolved through a recommended revision of the normal proposal; file loading order does not automatically determine a winner.
 
-Зафиксированные источники сохраняют выбранные версии, пока изменение набора не показано отдельно. Это позволяет повторить явно заданный состав. Разрешение транзитивных зависимостей остаётся задачей подключённых инструментов; воспроизводимость всей их среды не выводится из совпадения одного манифеста. Неподдержанные версия схемы, компонент или параметр адаптера дают понятный отказ либо gap вместо частичного применения без предупреждения.
+Pinned sources preserve selected versions until a change to the set is shown separately. This makes it possible to repeat an explicitly specified composition. Resolving transitive dependencies remains the responsibility of connected tools; matching one manifest does not establish reproducibility of their entire environment. An unsupported schema version, component, or adapter parameter produces a clear refusal or gap rather than undisclosed partial application.
 
-Манифест описывает желаемую настройку, а не произвольную программу установки: исполняемые действия формируются поддержанными адаптерами по §6 этого дополнения. Получение материалов и применение регулируются §5–6 основного видения. Паспорт сохраняет версию применённого набора и фактические отклонения от него.
+The setup manifest describes a desired configuration, not an arbitrary installer program: supported adapters form executable actions under §6 of this addendum. Obtaining materials and applying changes follow §5–6 of the main vision. The project manifest preserves the version of the applied set and actual deviations from it.
 
-**Дополнительная приёмка:** один набор применяется к двум подходящим проектам с сохранением заданных источников; неподходящий проект получает объяснение несовместимости. Проверены конфликт с пресетом, локально изменённый компонент, неизвестная версия схемы и отсутствующий адаптер. Экспорт манифеста отделяет распространяемые материалы от фактического состояния исходного проекта и проходит правила сохранения пользовательских артефактов из §9.
+**Additional acceptance criteria:** one set is applied to two suitable projects while preserving its specified sources; an unsuitable project receives an explanation of incompatibility. Check a conflict with a preset, a locally modified component, an unknown schema version, and a missing adapter. Exporting a setup manifest separates distributable materials from the actual state of the source project and follows the user artifact saving rules in §9.
 
-## 9 Выявление предпочтений и подбор компонентов
+## 9 Identifying preferences and selecting components
 
-**Уточняет §3, §5 и §6.1:** Tibicen учитывает явно заданные и обоснованно выведенные потребности и предпочтения работы с агентом, включая подробность ответов, самостоятельность и рабочий процесс. Пользователю достаточно описать желаемую работу; называть конкретный инструмент или формулировать каждую потребность напрямую необязательно.
+**Clarifies §3, §5, and §6.1:** Tibicen accounts for explicitly stated and reasonably inferred needs and preferences for working with an agent, including response detail, autonomy, and workflow. Users only need to describe the work they want; they do not have to name a particular tool or state every need directly.
 
-Основания берутся из доступного диалога, материалов проекта, существующих инструкций и выбранного пресета. Например, просьбы «сразу к делу» и «без длинных объяснений» либо требование коротких ответов в инструкциях проекта дают основание учитывать лаконичность при подборе. Недоступная история общения не предполагается. Явное решение пользователя имеет приоритет перед выведенным предпочтением.
+Evidence comes from the available conversation, project materials, existing instructions, and the selected preset. For example, requests to “get straight to the point” or “avoid long explanations,” or a requirement for short answers in project instructions, justify considering concision during selection. Unavailable conversation history is not assumed. An explicit user decision takes precedence over an inferred preference.
 
-Выявленная потребность используется для поиска и оценки подходящих скиллов, MCP и других поддержанных компонентов по §6.1. Tibicen сам предлагает подходящее решение, даже если пользователь не просил установить инструмент. Для каждого компонента объясняется связь с потребностью и польза относительно существующей настройки и встроенных возможностей агента. Достаточные существующие правила могут быть сохранены без нового компонента; обязательного набора инструментов не вводится.
+An identified need informs discovery and assessment of suitable skills, MCP connections, and other supported components under §6.1. Tibicen proposes a suitable solution itself even if the user did not request a tool installation. For every component, it explains the connection to the need and the benefit compared with the existing setup and the agent's built-in capabilities. Sufficient existing rules may be preserved without adding a component; there is no mandatory toolset.
 
-Выведенные предпочтения показываются в общем предложении как допущения с кратким основанием и возможностью исправления. При достаточных основаниях отдельный вопрос о каждом предпочтении или компоненте не требуется. Существенные противоречия и неизвестное с высокой ценой ошибки уточняются в пределах интервью §5. Допущение не становится согласием на установку или исполнение: применяется обычное согласование точного плана.
+Inferred preferences appear in the overall proposal as assumptions, with a brief basis and an opportunity to correct them. When the evidence is sufficient, no separate question is required for every preference or component. Significant conflicts and unknowns where an incorrect assumption would be costly are clarified within the interview limits in §5. An assumption does not become consent to installation or execution: normal approval of the exact plan still applies.
 
-Если оснований для предпочтения нет, Tibicen не приписывает его пользователю. Исходная рекомендация предполагает короткие, ясные ответы с необходимыми подробностями; лаконичность сохраняет условия, ограничения и сведения, нужные для решения пользователя.
+If there is no evidence for a preference, Tibicen does not attribute it to the user. The initial recommendation assumes short, clear responses with necessary detail; concision preserves the conditions, limitations, and information the user needs to decide.
 
-**Дополнительная приёмка:**
+**Additional acceptance criteria:**
 
-- В инструкциях проекта заданы короткие ответы, но пользователь не назвал предпочтение или инструмент: Tibicen учитывает лаконичность при подборе, объясняет решение и не требует отдельного вопроса при достаточных основаниях.
-- В доступном диалоге есть косвенные признаки предпочтения: предложение связывает их с рекомендацией и отмечает вывод как допущение; явное уточнение пользователя меняет рекомендацию.
-- Признаков нет: скрытое предпочтение не выдумывается и специальный компонент ради него не добавляется автоматически. Существующая достаточная настройка и существенный конфликт проверяются отдельными вариантами сценария; при конфликте применяется правило уточнения выше.
+- Project instructions require short answers, but the user has not named a preference or tool: Tibicen considers concision in selection, explains its decision, and does not require a separate question when the evidence is sufficient.
+- The available conversation contains indirect signs of a preference: the proposal links them to its recommendation and labels the inference as an assumption; an explicit user clarification changes the recommendation.
+- No signs exist: no hidden preference is invented, and no special component is automatically added for it. A sufficient existing setup and a significant conflict are checked as separate scenario variants; a conflict follows the clarification rule above.

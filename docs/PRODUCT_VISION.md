@@ -1,374 +1,374 @@
 # PRODUCT_VISION.md — Tibicen
 
-## Резюме
+## Summary
 
-**Что:** Tibicen — лёгкий фреймворк, который снимает с разработчика работу по настройке агентской инфраструктуры проекта. Он помогает настроить её впервые или привести существующую в порядок: изучает проект, предлагает подходящее решение, применяет согласованные изменения и проверяет результат.
+**What:** Tibicen is a lightweight framework that takes project agent infrastructure setup off the developer's hands. It helps set it up for the first time or put an existing setup in order: it studies the project, proposes a suitable solution, applies approved changes, and checks the result.
 
-**Для кого:** разработчик, который часто создаёт репозитории или хочет улучшить работу агентов в уже существующем проекте. Пользователю достаточно описать задачу и ограничения; знание устройства агентских конфигов не является условием использования.
+**For whom:** developers who frequently create repositories or want to improve how agents work in an existing project. Users only need to describe their task and constraints; understanding agent configuration internals is not a prerequisite.
 
-**Два сценария:** «Настроить впервые» — пустая папка или существующий проект без агентской инфраструктуры; «Улучшить и обновить» — проект с инфраструктурой Tibicen или любого другого происхождения. Формат поставки — два скилла: `tibicen-init` и `tibicen-adopt`.
+**Two scenarios:** “Set up for the first time” — an empty directory or an existing project without agent infrastructure; “Improve and update” — a project with infrastructure from Tibicen or any other source. The distribution consists of two skills: `tibicen-init` and `tibicen-adopt`.
 
-**Результат:** инфраструктура соответствует проекту и выбранным агентам, содержит необходимое, подключена и проверена в доступных пределах. Её качество определяется полезностью следующей рабочей сессии, согласованностью инструкций и количеством ручной работы пользователя. Число установленных скиллов и файлов не является показателем качества.
+**Result:** infrastructure that fits the project and selected agents, contains what is needed, is connected, and has been checked within the available limits. Its quality is measured by the usefulness of the next working session, consistent instructions, and the amount of manual work left to the user. The number of installed skills or files is not a quality measure.
 
-**Лёгкость:** Tibicen работает внутри привычного агента. После завершения в проекте остаются инфраструктура и паспорт `.tibicen/`; постоянного рантайма или зависимости от установленного Tibicen нет. Инструмент можно повторно вызвать в том же проекте для проверки и обновления.
+**Lightweight operation:** Tibicen works inside the user's usual agent. After it finishes, the project retains the infrastructure and its `.tibicen/` project manifest; there is no persistent runtime or dependency on an installed Tibicen. The tool can be invoked again in the same project for checks and updates.
 
-**Актуальность:** живой подбор компонентов дополняется проверкой применимых официальных рекомендаций и поддержкой версионируемого ядра правил. Обновление проекта выполняется по запросу пользователя, через согласованный план изменений.
+**Keeping current:** live component selection is supplemented by checking applicable official guidance and maintaining a versioned core of rules. Project updates happen at the user's request through an approved change plan.
 
-**Статус:** основной продуктовый документ и основа реализации, 2026-10-21. Целевое поведение — §1–5; первый выпуск и этапы реализации — §13; критерии пользы — §14.
+**Status:** the main product document and basis for implementation, dated 2026-10-21. Target behavior is defined in §1–5; the first release and implementation stages in §13; usefulness criteria in §14.
 
-Уточнения и расширения требований — в [дополнении к продуктовому видению](PRODUCT_VISION_ADDENDUM.md) от 2026-10-22.
+Requirement clarifications and extensions are in the [product vision addendum](PRODUCT_VISION_ADDENDUM.md), dated 2026-10-22.
 
-> *Tibicen — временные леса: помогают построить или исправить конструкцию и убираются после работы.*
+> *Tibicen is temporary scaffolding: it helps build or repair a structure and is removed when the work is done.*
 
-## Решения этой редакции
+## Decisions in this revision
 
-1. Два пользовательских сценария: настроить инфраструктуру впервые; улучшить и обновить существующую.
-2. В первом выпуске оба сценария доводятся до применения согласованных изменений, а не только до рекомендаций.
-3. Обычный путь — одна рекомендуемая настройка и одно итоговое согласование. Подробный выбор доступен по желанию.
-4. Существующие файлы агентской инфраструктуры можно исправлять, дополнять, заменять и удалять только в явно согласованном объёме. Код существующего приложения защищён от изменений.
-5. После завершения постоянного процесса Tibicen в проекте нет. Повторные запуски для того же проекта поддерживаются.
-6. Состав скиллов и MCP подбирается под задачу. Отсутствие лишних компонентов — положительное свойство результата.
-7. MCP — stdio/local, секреты вне репозитория, по одному целевому конфигу у каждого выбранного для MCP агента. `.tibicen/` не является MCP-конфигуратором.
-8. Проверки совместимости, происхождения и загрузки остаются внутренними механизмами качества. Динамические compat-пробы включены по умолчанию и могут быть отключены пользователем.
-9. Пресеты и статическая страница с конструктором входят в первый выпуск. Автоматическая телеметрия — после релиза.
-10. Лучшие практики оцениваются в контексте проекта и версий инструментов. Их актуальность требует поддержки самого Tibicen и повторной проверки проекта по запросу.
+1. Two user scenarios: set up infrastructure for the first time; improve and update existing infrastructure.
+2. In the first release, both scenarios proceed through applying approved changes, rather than stopping at recommendations.
+3. The normal path is one recommended setup and one final approval. Detailed choices are available on request.
+4. Existing agent infrastructure files may be corrected, extended, replaced, or deleted only within an explicitly approved scope. Existing application code is protected from changes.
+5. No persistent Tibicen process remains in the project after completion. Repeated runs for the same project are supported.
+6. Skills and MCP connections are selected for the task. The absence of unnecessary components is a positive property of the result.
+7. MCP uses stdio/local transport, with secrets outside the repository and one target configuration per agent selected for MCP. `.tibicen/` is not an MCP configurator.
+8. Compatibility, provenance, and loading checks remain internal quality mechanisms. Dynamic compatibility probes are enabled by default and may be disabled by the user.
+9. Presets and a static page with a builder are part of the first release. Automatic telemetry comes after release.
+10. Best practices are assessed in the context of the project and tool versions. Keeping them current requires maintaining Tibicen itself and rechecking projects on request.
 
-**Глоссарий:** инфраструктура — инструкции, правила, скиллы, выбранные MCP-подключения и команды работы агента · каркас — их файлы вместе с паспортом · ядро правил — версионируемые процедуры принятия решений и критерии качества · предложение — рекомендуемое решение и точный план изменений перед согласием · паспорт — `.tibicen/manifest.yml` · gap — явно зафиксированные недоступные сведения или возможности · baseline — исходное состояние и результаты проверки для сравнения · compat-проба — проверка конкретной пары «скилл × агент», с различением обнаружения и загрузки инструкций · `manual-action-required` — подключение ожидает обязательного внешнего действия пользователя · `incomplete` — работа остановлена из-за внутреннего сбоя или неисправленного обязательного дефекта подключения.
+**Glossary:** infrastructure — instructions, rules, skills, selected MCP connections, and agent working commands · scaffold — their files together with the project manifest · core rules — versioned decision procedures and quality criteria · proposal — the recommended solution and exact change plan presented before approval · project manifest — `.tibicen/manifest.yml` · gap — explicitly recorded unavailable information or capabilities · baseline — the initial state and check results used for comparison · compatibility probe — a check of a specific “skill × agent” pair that distinguishes discovery from instruction loading · `manual-action-required` — integration is waiting for a mandatory external action by the user · `incomplete` — work stopped because of an internal failure or an unresolved mandatory integration defect.
 
-## 1. Назначение и границы продукта
+## 1. Purpose and product boundaries
 
-Tibicen помогает получить подходящую проекту агентскую инфраструктуру с небольшими усилиями пользователя. Он изучает задачи, фактическое устройство репозитория и доступных агентов, рекомендует достаточную конфигурацию, показывает изменения, применяет согласованное и проверяет подключение и полезность результата.
+Tibicen helps users obtain agent infrastructure suited to their project with little effort. It studies tasks, the actual repository structure, and available agents; recommends a sufficient configuration; shows the changes; applies what is approved; and checks integration and the usefulness of the result.
 
-Первый сценарий — первоначальная настройка. Для пустой папки можно создать согласованный начальный каркас проекта и инфраструктуру. В существующем проекте без инфраструктуры добавляются необходимые агентские файлы, без переделки приложения.
+The first scenario is initial setup. In an empty directory, it can create an approved initial project scaffold and infrastructure. In an existing project without infrastructure, it adds the required agent files without reworking the application.
 
-Второй сценарий — улучшение и обновление. Tibicen выявляет устаревшие, лишние, противоречивые и неподключённые элементы, сохраняет полезные пользовательские решения, предлагает исправления и применяет их после согласования. Этот сценарий работает и для проектов, которые ранее настраивались другими инструментами.
+The second scenario is improvement and updating. Tibicen identifies outdated, unnecessary, conflicting, and disconnected elements; preserves useful user decisions; proposes corrections; and applies them after approval. This scenario also covers projects previously configured by other tools.
 
-**Полноценная инфраструктура** содержит достаточно контекста и инструментов для выбранных рабочих задач. Это не обязательный набор всех возможных процессов, скиллов, MCP-серверов, hooks или агентских ролей. Дополнительный компонент появляется при понятной пользе для проекта.
+**Complete infrastructure** provides enough context and tools for the selected working tasks. It does not mean a mandatory collection of every possible process, skill, MCP server, hook, or agent role. An additional component is introduced when it has a clear benefit for the project.
 
-Продукт поставляется как скиллы для существующих агентов. Отдельное приложение, сервер, аккаунт или постоянный процесс в репозитории для этих сценариев не требуются. Текущий состав проверок и ограничения среды раскрываются при передаче; само наличие файлов не доказывает правильность поведения агента.
+The product is distributed as skills for existing agents. These scenarios require no separate application, server, account, or persistent process in the repository. The checks performed and environment limitations are disclosed at handoff; the presence of files alone does not prove correct agent behavior.
 
-## 2. Проблема и продуктовая ценность
+## 2. Problem and product value
 
-При создании очередного репозитория разработчик повторяет одну и ту же работу: вспоминает правила выбранного агента, собирает инструкции, выбирает скиллы, подключает инструменты и проверяет, что части работают вместе. Копирование вчерашней настройки экономит время, но переносит устаревшие допущения и лишние правила.
+When creating another repository, developers repeat the same work: recall the chosen agent's rules, assemble instructions, select skills, connect tools, and check that the pieces work together. Copying yesterday's setup saves time but carries over outdated assumptions and unnecessary rules.
 
-В существующем проекте инфраструктура постепенно накапливает дубли, противоречия, неподходящие процессы и старые подключения. Пользователю нужна помощь не только с обнаружением этих проблем, но и с их исправлением.
+In an existing project, infrastructure gradually accumulates duplicates, conflicts, unsuitable processes, and old integrations. Users need help correcting these problems as well as identifying them.
 
-**Главная ценность Tibicen:** сократить время и ручную работу до полезной агентской сессии, сохранив контроль над изменениями. Подбор скиллов, проверка совместимости и генерация файлов служат этой цели.
+**Tibicen's main value:** reduce the time and manual work needed to reach a useful agent session while preserving control over changes. Skill selection, compatibility checks, and file generation serve that goal.
 
-| Задача пользователя | Результат Tibicen |
+| User task | Tibicen result |
 |---|---|
-| Начать новый проект | Согласованный каркас и подключённая агентская инфраструктура |
-| Подключить агентов к существующему проекту | Настройка с учётом фактических команд и структуры, без переделки приложения |
-| Исправить или обновить инфраструктуру | Применённые согласованные изменения, сохранённые полезные решения и отчёт о проверке |
-| Повторить настройку в следующем репозитории | Пресет решений со свежим сканом и повторной проверкой применимости |
+| Start a new project | An approved scaffold and connected agent infrastructure |
+| Connect agents to an existing project | Setup based on the actual commands and structure, without reworking the application |
+| Repair or update infrastructure | Approved changes applied, useful decisions preserved, and a verification report |
+| Repeat the setup in another repository | A preset of decisions, with a fresh scan and a new applicability check |
 
-Инструменты установки скиллов, форматы инструкций и процессные фреймворки используются как готовые компоненты. Конкурентная гипотеза Tibicen — удобство всей работы от понимания проекта до проверенной интеграции. Утверждение об уникальности требует отдельной проверки рынка; продукт не зависит от обещания, что аналогов нет.
+Skill installers, instruction formats, and process frameworks are used as existing components. Tibicen's competitive hypothesis is the convenience of the complete workflow from understanding the project to verified integration. Any claim of uniqueness requires separate market research; the product does not depend on a promise that no alternatives exist.
 
-Дистрибуция — готовый установщик скиллов и собственная статическая страница. Ежемесячный обзор изменений экосистемы используется для продуктовых решений и актуальности правил; сборка собственного маркетплейса не планируется.
+Distribution uses an existing skill installer and Tibicen's own static page. A monthly review of ecosystem changes informs product decisions and keeps rules current; building its own marketplace is not planned.
 
-## 3. Принципы и качество инфраструктуры
+## 3. Principles and infrastructure quality
 
-1. **Небольшое усилие пользователя.** Агент сам исследует проект и рекомендует решение. У пользователя спрашивают только сведения с высокой ценой ошибки, которые нельзя надёжно вывести из доступного контекста.
-2. **Достаточность.** Каждый добавленный элемент имеет назначение. Если существующая настройка подходит, её сохраняют. Повторный запуск может закончиться выводом «изменения не нужны».
-3. **Согласованность.** Точки входа подключены, пути и команды соответствуют проекту, инструкции не содержат выявленных дублей и конфликтов. Объём постоянно загружаемого контекста ограничен необходимым для работы.
-4. **Применимость.** Решения учитывают стек, версии агентов, задачи и ограничения пользователя. Популярность или свежесть компонента сами по себе не доказывают его пригодность.
-5. **Проверяемая польза.** Проверяется не только состав файлов, но и возможность агента найти нужные инструкции и выполнить согласованную типичную задачу. Недоступные проверки отмечаются явно.
-6. **Прозрачное согласие.** До записи, установки и стороннего исполнения показывается предложение с точным составом изменений и запусков. Чужой контент при исследовании — данные, а не инструкции Tibicen.
-7. **Безопасные границы.** Исправление существующего проекта ограничено согласованными файлами и блоками агентской инфраструктуры. Секреты не попадают в контекст, логи и репозиторий. Рабочий код приложения не меняется.
-8. **Повторяемость без резидентности.** Инструмент работает на время задачи и может быть снова вызван позднее. В проекте нет постоянного рантайма Tibicen.
-9. **Актуальность с основаниями.** Ядро правил имеет версию, значимые источники — дату проверки и область применимости. Невозможность получить свежие данные не маскируется заявлением о текущих лучших практиках.
+1. **Little user effort.** The agent investigates the project and recommends a solution itself. It asks the user only for information that cannot be reliably inferred from available context and where a wrong assumption would be costly.
+2. **Sufficiency.** Every added element has a purpose. A suitable existing setup is preserved. A repeated run may conclude that no changes are needed.
+3. **Consistency.** Entry points are connected, paths and commands match the project, and instructions contain no identified duplicates or conflicts. The amount of context loaded continuously is limited to what the work requires.
+4. **Applicability.** Decisions account for the stack, agent versions, tasks, and user constraints. A component's popularity or freshness alone does not establish suitability.
+5. **Verifiable usefulness.** Checks cover both the file inventory and the agent's ability to find the required instructions and perform an approved representative task. Unavailable checks are identified explicitly.
+6. **Transparent approval.** Before writing, installing, or executing third-party code, a proposal shows the exact changes and executions. Third-party content encountered during research is data, not instructions for Tibicen.
+7. **Safe boundaries.** Changes to an existing project are limited to approved agent infrastructure files and blocks. Secrets do not enter context, logs, or the repository. Working application code is not changed.
+8. **Repeatability without a resident runtime.** The tool runs for the duration of a task and can be invoked again later. No persistent Tibicen runtime remains in the project.
+9. **Evidence for current guidance.** The core rules have a version; significant sources have a check date and scope of applicability. An inability to obtain fresh information is not concealed behind a claim of current best practices.
 
-**Критерии результата:** подходящий состав; корректное подключение; отсутствие обнаруженных конфликтов и лишних элементов; сохранность приложения и полезных решений пользователя; доступные проверки; понятный первый рабочий шаг. Установленные ограничения проверки остаются частью отчёта.
+**Result criteria:** suitable composition; correct integration; no identified conflicts or unnecessary elements; preservation of the application and useful user decisions; available checks; and a clear first working step. Known verification limitations remain part of the report.
 
-## 4. Два сценария и стадии сессии
+## 4. Two scenarios and session stages
 
-Скиллы остаются двумя: `tibicen-init` — настроить впервые; `tibicen-adopt` — улучшить и обновить. Маршрут определяется наличием и состоянием агентской инфраструктуры, а не только пустотой папки. Если запрос и обнаруженное состояние расходятся, агент объясняет выбранный маршрут; дополнительный технический выбор от пользователя не требуется.
+There are still two skills: `tibicen-init` for first-time setup and `tibicen-adopt` for improvement and updates. Routing is determined by the presence and condition of agent infrastructure, not only by whether the directory is empty. If the request and observed state differ, the agent explains the selected route; no additional technical choice is required from the user.
 
-Стадийные инструкции: `scan`, `inventory`, `interview`, `product-arch`, `agent-arch`, `proposal`, `build`, `verify`, `handoff`. Стадия `build` включает создание и применение согласованных изменений. Имена файлов — `references/stage-<имя>.md`.
+Stage instructions: `scan`, `inventory`, `interview`, `product-arch`, `agent-arch`, `proposal`, `build`, `verify`, `handoff`. The `build` stage includes creating and applying approved changes. File names follow `references/stage-<name>.md`.
 
-### Настроить впервые — `tibicen-init`
+### Set up for the first time — `tibicen-init`
 
 ```text
-Запрос пользователя: что за проект, какие задачи; можно «всё по умолчанию»
-scan          окружение, версии агентов, фактическое дерево и ограничения;
-              наличие инфраструктуры → при необходимости маршрут improve;
-              доступные материалы и применимые источники практик
-interview     только недостающие важные сведения; автопилот — без вопросов
-product-arch  только для нового проекта: предлагаемое дерево и допущения;
-              для существующего проекта структура приложения сохраняется
-agent-arch    одна рекомендуемая конфигурация; живой подбор; проверка
-              происхождения, применимости и конфликтов
-proposal      короткое объяснение + точные изменения/запуски/права/стоимость
-              → одно исходное согласие
-build         в существующем проекте сначала baseline, если он поддержан
-              и запуск согласован; затем создание инфраструктуры и паспорта
-verify        подключение и качество; согласованные проверки проекта;
-              типичная задача, квиз и compat в доступных пределах
-handoff       что готово, что проверено, ограничения, первый полезный запрос;
-              предложение сохранить пресет
+User request: the project and its tasks; “all defaults” is allowed
+scan          environment, agent versions, actual tree, and constraints;
+              existing infrastructure → improve route if needed;
+              available materials and applicable practice sources
+interview     only important missing information; no questions in autopilot
+product-arch  new projects only: proposed tree and assumptions;
+              preserve the application structure of an existing project
+agent-arch    one recommended configuration; live selection; checks for
+              provenance, applicability, and conflicts
+proposal      short explanation + exact changes/executions/permissions/cost
+              → one initial approval
+build         in an existing project, baseline first if supported
+              and execution is approved; then infrastructure and manifest
+verify        integration and quality; approved project checks;
+              representative task, quiz, and compatibility within available limits
+handoff       what is ready, what was checked, limitations, first useful prompt;
+              offer to save a preset
 ```
 
-### Улучшить и обновить — `tibicen-adopt`
+### Improve and update — `tibicen-adopt`
 
 ```text
-Запрос пользователя: «проверь и приведи агентскую инфраструктуру в порядок»
-inventory     фактические файлы, агенты и версии, паспорт, прежние решения;
-              конфликты, дубли, лишнее, устаревшее, неподключённое;
-              области чужих инструментов — данные для плана, не разрешение менять
-interview     одна итерация по важным недостающим сведениям; автопилот возможен
-agent-arch    сравнение с применимыми актуальными правилами и задачами;
-              сохранить подходящее; рекомендовать необходимые изменения
-proposal      добавить / изменить / заменить / удалить; точные пути и диффы;
-              причины, команды, доверие, стоимость и ручные шаги → согласие
-build         baseline до изменений, если возможен; сверка исходных хэшей;
-              применение согласованного плана только к инфраструктуре
-verify        исходный снимок + все применённые изменения; отсутствие новых
-              регрессий, подключение, качество; доступные task/quiz/compat-пробы
-handoff       добавлено N / изменено M / удалено K / ручных шагов R;
-              состояние инфраструктуры и результаты проверок раздельно
+User request: “review and put the agent infrastructure in order”
+inventory     actual files, agents and versions, manifest, previous decisions;
+              conflicts, duplicates, unnecessary, outdated, disconnected items;
+              other tools' areas are input to the plan, not permission to edit
+interview     one iteration for important missing information; autopilot available
+agent-arch    compare against applicable current rules and tasks;
+              preserve what fits; recommend necessary changes
+proposal      add / modify / replace / delete; exact paths and diffs;
+              reasons, commands, trust, cost, and manual steps → approval
+build         baseline before changes if possible; verify original hashes;
+              apply the approved plan to infrastructure only
+verify        initial snapshot + all applied changes; no new regressions;
+              integration, quality, and available task/quiz/compatibility probes
+handoff       added N / modified M / deleted K / manual steps R;
+              infrastructure status and verification results reported separately
 ```
 
-При изменении среды или выходе за согласованный план показывается новое предложение на оставшуюся работу. Ремонт-цикл — не более двух попыток; неисправленный обязательный дефект подключения после них даёт `incomplete` с причиной и перечнем применённых изменений. Результаты проектных и поведенческих проверок отражаются отдельно (§10.4). Исправление не разрешает незаметно расширять область записи.
+If the environment changes or the work would exceed the approved plan, a new proposal covers the remaining work. The repair cycle allows no more than two attempts; an unresolved mandatory integration defect after those attempts produces `incomplete`, with the reason and a list of applied changes. Project and behavioral check results are reported separately (§10.4). Repairs do not permit an undisclosed expansion of the write scope.
 
-## 5. Простой пользовательский путь и согласование
+## 5. A simple user flow and approval
 
-**Обычный путь:** описать задачу → получить рекомендуемую настройку с объяснением → согласовать → получить применённый результат. Топ кандидатов, технические варианты и ручная настройка доступны по желанию, но не являются обязательными шагами.
+**Normal flow:** describe the task → receive a recommended setup with an explanation → approve → receive the applied result. Candidate rankings, technical alternatives, and manual configuration are available on request, but are not required steps.
 
-Внутри остаются девять осей: рамки и дедлайн, запретные пути, доверие к коду, стек, целевые агенты, рабочий процесс, структура, скиллы, MCP. Они закрываются сканом, контекстом и рекомендациями. Снаружи — не более четырёх составных вопросов за 1–2 итерации; для улучшения — одна итерация. Вопрос задаётся, если ответ нельзя надёжно вывести, а цена ошибки высока.
+Internally, nine dimensions remain: scope and deadline, forbidden paths, code trust, stack, target agents, workflow, structure, skills, and MCP. Scanning, context, and recommendations resolve them. Externally, there are no more than four compound questions over 1–2 iterations; improvement uses one iteration. A question is asked when the answer cannot be reliably inferred and a wrong assumption would be costly.
 
-| Вопрос при необходимости | Что уточняет |
+| Question, when needed | What it clarifies |
 |---|---|
-| Жёсткие ограничения | Сроки, запретные области, допустимое исполнение |
-| Окружение | Неоднозначный стек и выбранные агенты |
-| Работа и структура | Задачи, предпочтения и обязательные пользовательские решения |
-| Необходимые подключения | Недостающий контекст о внешних инструментах и требованиях команды |
+| Hard constraints | Deadlines, forbidden areas, permitted execution |
+| Environment | Ambiguous stack and selected agents |
+| Work and structure | Tasks, preferences, and mandatory user decisions |
+| Required connections | Missing context about external tools and team requirements |
 
-**Автопилот:** «по умолчанию», «делай как считаешь», «не спрашивай» означают ноль вопросов интервью. Агент выводит рекомендации и показывает допущения; автопилот не заменяет согласие на итоговый план.
+**Autopilot:** “use the defaults,” “use your judgment,” and “don't ask” mean zero interview questions. The agent derives recommendations and shows its assumptions; autopilot does not replace approval of the final plan.
 
-Предложение состоит из короткого резюме «что изменится, зачем, что потребуется от вас» и приложенных подробностей. До согласия доступны точные пути и диффы, источники/SHA, команды и argv, состав headless-запусков, границы прав, стоимость проверок и ручные шаги. Пользователь может принять рекомендацию целиком или изменить любую часть. Значимые риски и обязательные ручные действия видны в резюме, а не спрятаны в подробностях.
+The proposal consists of a short summary of “what will change, why, and what you will need to do,” with supporting details. Before approval, exact paths and diffs, sources/SHAs, commands and argv, headless executions, permission boundaries, check costs, and manual steps are available. The user may accept the recommendation as a whole or change any part. Significant risks and mandatory manual actions are visible in the summary rather than buried in details.
 
-До этого чекпоинта разрешены собственные доверенные read-only-скрипты и сетевое чтение по §10.14; запрещены запись state/кэша/счётчика, динамический `npx`, установки и стороннее исполнение. Подробности плана до согласия находятся в контексте, без скрытой записи на диск.
+Before this checkpoint, trusted first-party read-only scripts and network reads under §10.14 are allowed; writing state/cache/counters, dynamic `npx`, installations, and third-party execution are prohibited. Plan details remain in context before approval, without hidden disk writes.
 
-Для пустой папки предложение может включать манифесты пакетов, конфиги и `git init`. Это согласованный стартовый каркас, а не реализация функциональности приложения. В существующем проекте эти файлы читаются для понимания, но не переделываются ради настройки агента.
+For an empty directory, the proposal may include package manifests, configuration files, and `git init`. This is an approved initial scaffold, not implementation of application functionality. In an existing project, these files are read for understanding but are not reworked for agent setup.
 
-Изменение предложения — обычный диалог. Уточнение дерева не даёт согласия на ещё не показанные установки или команды. Новые источник, команда, область записи или удаление вне плана требуют нового согласия. Сохранение личного пресета или файла отчёта — отдельный явный запрос.
+Revising the proposal is an ordinary conversation. Clarifying the tree does not approve installations or commands that have not yet been shown. A new source, command, write area, or deletion outside the plan requires new approval. Saving a personal preset or report file requires a separate explicit request.
 
-## 6. Подбор компонентов и поддержание актуальности
+## 6. Component selection and keeping current
 
-### 6.1. Живой подбор
+### 6.1. Live selection
 
-Механика поиска, хэшей, проверки источников и подготовки изменений реализуется скриптами. Общая точка входа — `scripts/tibicen.ts <команда>`. Используются встроенный HTTP и уже установленные доверенные инструменты; загрузка и исполнение новых CLI через `npx` не являются способом read-only-исследования.
+Search, hashing, source validation, and change preparation are implemented in scripts. The common entry point is `scripts/tibicen.ts <command>`. They use built-in HTTP and already installed trusted tools; downloading and executing new CLIs through `npx` is not a read-only research method.
 
-1. Поиск ограничивается задачей, стеком и необходимыми возможностями. Источники — реестры скиллов, GitHub API, MCP-реестры; состав не хранится готовым каталогом внутри Tibicen.
-2. Входной недоверенный текст, досье и выводы проб проходят структурную экстракцию; сырой вывод не становится инструкцией Tibicen. README/SKILL.md читаются как данные для оценки выбранных кандидатов.
-3. Обязательные условия: проверяемое происхождение, разрешённый источник и SHA, лицензия по дереву на SHA, отсутствие запрещённых install-хуков и блоклиста. Неизвестная лицензия — отказ по умолчанию; исключение возможно только явно в предложении и паспорте. Репозиторий не должен быть архивирован; происхождение форка разрешается до канонического источника.
-4. В опубликованной версионируемой формуле отбора сохраняется фильтр возраста репозитория ≥90 дней. Число контрибьюторов не используется ни для допуска, ни для ранжирования; отдельный запрос не требуется. Установки, звёзды, свежесть и аудиты — дополнительные сигналы, а не доказательство качества или безопасности. Поле `verified` внешнего реестра хранится отдельно с указанием источника.
-5. Кандидаты оцениваются на применимость, объём лишних инструкций, конфликт с имеющимися правилами и пользу по сравнению со встроенными возможностями агента. По умолчанию предлагается одно решение с обоснованием; альтернативы и топ-3 доступны по желанию. «Не добавлять компонент» — полноценное решение.
-6. Сканер инъекций — эвристика: подозрение даёт `injection-suspect` и блок установки. Отсутствие находок не доказывает безопасность. Установка скилла как инструкций целевого агента отдельно отражается в предложении и не разрешает Tibicen исполнять произвольные команды из его текста.
-7. После согласия файлы получаются с пином SHA; их content-хэши фиксируются в паспорте. До получения файлов выбранное является планом, а не установленным. Неполученные файлы не записываются как установленные.
-8. Пустая выдача → одна переформулировка → честный gap: отложить возможность или предложить небольшой собственный скилл с `origin: self`. Его назначение и проверка входят в план. Один подходящий кандидат — допустимый результат.
+1. Search is limited by the task, stack, and required capabilities. Sources include skill registries, the GitHub API, and MCP registries; Tibicen does not contain a preassembled component catalog.
+2. Untrusted input text, dossiers, and probe outputs undergo structured extraction; raw output does not become an instruction for Tibicen. README/SKILL.md files are read as data for assessing selected candidates.
+3. Mandatory conditions: verifiable provenance, an allowed source and SHA, a license checked against the tree at that SHA, no prohibited install hooks, and no blocklist match. An unknown license causes refusal by default; an exception must be explicit in the proposal and project manifest. The repository must not be archived; fork provenance is resolved to the canonical source.
+4. The published, versioned selection formula retains a repository age filter of ≥90 days. Contributor count is used neither for admission nor ranking; no separate request is needed. Installs, stars, freshness, and audits are supplementary signals, not proof of quality or safety. An external registry's `verified` field is stored separately with its source identified.
+5. Candidates are assessed for applicability, unnecessary instruction volume, conflicts with existing rules, and benefit compared with the agent's built-in capabilities. By default, one solution is proposed with a rationale; alternatives and a top 3 are available on request. “Do not add a component” is a valid decision.
+6. The injection scanner is heuristic: suspicion produces `injection-suspect` and blocks installation. No findings does not prove safety. Installing a skill as instructions for the target agent is disclosed separately in the proposal and does not authorize Tibicen to execute arbitrary commands from its text.
+7. After approval, files are obtained with a pinned SHA; their content hashes are recorded in the project manifest. Until files are obtained, the selection is a plan, not an installation. Files that were not obtained are not recorded as installed.
+8. Empty results → one reformulation → an honest gap: defer the capability or propose a small first-party skill with `origin: self`. Its purpose and verification are included in the plan. One suitable candidate is an acceptable result.
 
-До согласия кэш только в памяти, после — в state. Таймауты и частичные результаты отражаются явно. При отсутствии сетевого доступа используются доступный механизм разрешения хоста или gap-протокол; ранее проверенные сведения не выдаются за свежепроверенные.
+Before approval, caching is in memory only; afterward, it is in state. Timeouts and partial results are disclosed explicitly. When network access is unavailable, use the host's available authorization mechanism or the gap protocol; previously checked information is not presented as freshly verified.
 
-### 6.2. Актуальность правил самого Tibicen
+### 6.2. Keeping Tibicen's own rules current
 
-Живой поиск компонентов дополняется версионируемым ядром критериев качества и процедур. Ядро хранит устойчивые правила и проверенные сведения о поддержке агентов; оно не является каталогом заранее выбранных скиллов.
+Live component search is supplemented by a versioned core of quality criteria and procedures. The core stores stable rules and verified agent support information; it is not a catalog of preselected skills.
 
-В каждом запуске определяются фактические версии агентов и стека. Проверяются относящиеся к задаче официальные рекомендации и изменения поддерживаемых возможностей из разрешённых источников. Не требуется исследовать всю экосистему при каждой сессии. Рекомендация должна иметь основание и область применимости; «самое новое» не означает «наиболее подходящее».
+Each run determines the actual agent and stack versions. It checks task-relevant official guidance and changes in supported capabilities using allowed sources. Researching the entire ecosystem in every session is not required. A recommendation must have a basis and a scope of applicability; “newest” does not mean “most suitable.”
 
-В паспорте записываются версия Tibicen/ядра, значимые версии инструментов, проверенные источники и дата проверки. Недоступность источника, расхождение документов и неподдержанная версия становятся gap с причиной. Доступная проверенная информация может использоваться с явным указанием её даты и ограничения.
+The project manifest records the Tibicen/core version, significant tool versions, checked sources, and check date. An unavailable source, conflicting documents, or an unsupported version becomes a gap with a reason. Available verified information may be used with its date and limitations explicitly stated.
 
-**Поддержка продукта:** владелец пересматривает ядро и адаптеры не реже раза в месяц и при значимом релизе поддерживаемого агента или стандарта. Изменения рекомендаций проверяются на типичных сценариях настройки и улучшения, затем выпускаются версией Tibicen. Дата и область проверки поддерживаются вместе с правилами. Обновление установленного Tibicen — явное действие пользователя через канал доставки (§11), без тихой самозамены.
+**Product maintenance:** the owner reviews the core and adapters at least monthly and whenever a supported agent or standard has a significant release. Changes to recommendations are checked against representative setup and improvement scenarios, then released as a Tibicen version. The check date and scope are maintained alongside the rules. Updating an installed Tibicen is an explicit user action through the delivery channel (§11), without silent self-replacement.
 
-Это процесс поддержки, а не гарантия вечной актуальности. Если сопровождение прекратилось, старую версию нельзя объявлять соответствующей сегодняшним практикам только на основании живого поиска скиллов.
+This is a maintenance process, not a guarantee of perpetual currency. If maintenance stops, an old version cannot be declared consistent with today's practices solely because it can perform live skill searches.
 
-### 6.3. Обновление уже настроенного проекта
+### 6.3. Updating an already configured project
 
-Запрос «проверь и обнови агентскую инфраструктуру» запускает обычный сценарий улучшения. Сравниваются фактические файлы, сохранённые решения, версии и актуальные применимые рекомендации. Новые версии компонентов рассматриваются как кандидаты: замена допускается при понятной пользе и после проверки, а не по одному факту нового коммита.
+A request to “review and update agent infrastructure” starts the normal improvement scenario. Actual files, saved decisions, versions, and current applicable guidance are compared. New component versions are treated as candidates: replacement requires a clear benefit and verification, not merely a new commit.
 
-Пользовательские ограничения и полезные настройки сохраняются. Ненужные инструкции и устаревшие компоненты могут быть удалены по показанному плану. После согласия изменения применяются и проверяются. Если всё подходит, результат — подтверждённое отсутствие необходимых изменений с описанием охвата проверки.
+User constraints and useful settings are preserved. Unnecessary instructions and outdated components may be removed under the displayed plan. After approval, changes are applied and checked. If everything fits, the result is a verified finding that no changes are needed, with the scope of the check described.
 
-### 6.4. Внутренние compat-пробы
+### 6.4. Internal compatibility probes
 
-Compat — вспомогательная проверка качества, по умолчанию включённая. После установки или замены скилла проверяется каждая выбранная пара «скилл × целевой агент» поддержанным headless-методом. При повторном запуске сохранённое свидетельство применимо только к тому же SHA, версии агента и существенному составу запуска; иное состояние требует новой пробы или `unverified`.
+Compatibility probing is a supplementary quality check, enabled by default. After a skill is installed or replaced, each selected “skill × target agent” pair is checked using a supported headless method. On a repeated run, saved evidence applies only to the same SHA, agent version, and material execution configuration; a different state requires a new probe or `unverified`.
 
-- Появление скилла в списке подтверждает обнаружение метаданных. Для загрузки это `loading: unverified`, причина `discovered-only`.
-- `loading: verified` требует наблюдаемого свидетельства загрузки инструкций зафиксированного SHA. Файл на диске, путь и список метаданных этого не доказывают.
-- Записываются SHA, версия агента, дата, метод, свидетельство либо причина отсутствия подтверждения.
-- Если метод требует исполнения команд скилла, действуют явное доверие и согласие (§10.2). Неконтролируемый startup — отказ от запуска, `startup-uncontrolled`.
-- Поддержка пути/формата из agent-matrix и подтверждение загрузки конкретной пары — разные результаты. Проба не доказывает безопасность поведения и качество решения рабочей задачи.
-- Стоимость, авторизация, состав запуска и минимальный env входят в предложение. Если пользователь отключил пробы, паспорт содержит `compat.enabled: false` и `reason: skipped-by-user`.
+- A skill appearing in a list confirms metadata discovery. For loading, this means `loading: unverified`, with reason `discovered-only`.
+- `loading: verified` requires observable evidence that instructions from the pinned SHA were loaded. A file on disk, its path, or a metadata listing does not prove this.
+- Record the SHA, agent version, date, method, and evidence, or the reason verification is unavailable.
+- If the method requires executing skill commands, explicit trust and approval apply (§10.2). Uncontrolled startup means no launch, with `startup-uncontrolled`.
+- Support for a path/format in the agent matrix and confirmed loading of a particular pair are separate results. A probe does not establish behavioral safety or the quality of a working task's solution.
+- Cost, authorization, execution configuration, and minimal environment are included in the proposal. If the user disables probes, the manifest records `compat.enabled: false` and `reason: skipped-by-user`.
 
-В обычном отчёте достаточно понятного результата; подробная таблица и свидетельства доступны без обязательного изучения пользователем.
+The normal report only needs a clear result; the detailed table and evidence are available without requiring the user to study them.
 
 ## 7. MCP
 
-MCP подключается при полезной для проекта задаче. По умолчанию агент рекомендует необходимый состав и объясняет назначение; меню альтернатив доступно по желанию. Для каждого выбранного агента используется его целевой конфиг, без промежуточной копии в `.tibicen/`.
+MCP is connected when it serves a useful project task. By default, the agent recommends the necessary connections and explains their purpose; a menu of alternatives is available on request. Each selected agent uses its target configuration, without an intermediate copy in `.tibicen/`.
 
-1. В предложение включаются выбранные серверы, происхождение, лицензия, версии, команды запуска и имена env. Автоматическое скачивание или запуск при открытии конфига тоже считается исполнением и учитывается до согласия.
-2. Секреты задаёт человек вне репозитория. Tibicen не запрашивает значения и не сохраняет их. Для неподдержанного способа передачи секрета выдаётся ручной шаг; перезапуск агента, если необходим, указан заранее.
-3. После согласия создаётся либо точечно изменяется конфиг: Claude — `.mcp.json`, Cursor — `.cursor/mcp.json`. Для Codex в первом выпуске выдаётся готовый TOML-блок с целевым путём и проверкой последующего применения; автоматическая правка его глобального конфига не входит в v1.
-4. В существующем конфиге меняются только согласованные записи; остальные серверы и настройки сохраняются. Неоднозначный смешанный формат или недоступная область записи дают обязательный ручной шаг. Для поддержанного локального формата ручная вставка фрагментов не является обычным путём.
-5. Env-ссылки используют синтаксис целевого агента: Claude — `${VAR}`, Cursor — `${env:VAR}`; для Codex — поддержанный способ передачи окружения. Синтаксис конфига и наличие env в контексте именно целевого запуска проверяются без вывода значений и без пробного запуска сервера.
+1. The proposal includes selected servers, provenance, licenses, versions, launch commands, and environment variable names. Automatic downloading or execution when a configuration is opened also counts as execution and is accounted for before approval.
+2. A person supplies secrets outside the repository. Tibicen neither requests nor stores their values. An unsupported way of passing a secret produces a manual step; any required agent restart is disclosed in advance.
+3. After approval, the configuration is created or edited selectively: Claude — `.mcp.json`, Cursor — `.cursor/mcp.json`. For Codex, the first release provides a ready-to-use TOML block with its target path and a check of subsequent application; automatic editing of its global configuration is outside v1.
+4. Only approved entries in an existing configuration are changed; other servers and settings are preserved. An ambiguous mixed format or inaccessible write area produces a mandatory manual step. Manually pasting fragments is not the normal path for a supported local format.
+5. Environment references use the target agent's syntax: Claude — `${VAR}`, Cursor — `${env:VAR}`; Codex uses its supported environment-passing method. Configuration syntax and environment availability in the specific target launch context are checked without exposing values or starting the server as a probe.
 
-При корректном конфиге: переменная доступна либо ключ не нужен — `configured-unverified`; переменной нет — `no-key`; её доступность в нужном контексте не доказана — `env-context-unverified`. Незавершённая обязательная ручная интеграция — `manual-action-required`. Проверка наличия env у Tibicen не подтверждает env уже запущенного другого агента; несколько контекстов рассматриваются отдельно.
+With a valid configuration: the variable is available or no key is needed — `configured-unverified`; the variable is missing — `no-key`; availability in the required context has not been established — `env-context-unverified`. Unfinished mandatory manual integration means `manual-action-required`. Checking environment availability in Tibicen does not confirm the environment of another agent that is already running; multiple contexts are considered separately.
 
-Транспорт в v1 — stdio/local. Remote и health-check серверов не входят в первый выпуск. Статус конфигурации не является доказательством здоровья MCP-сервера. Отказ от необязательного подключения фиксируется как `disabled-by-user` и не мешает завершить настройку.
+Transport in v1 is stdio/local. Remote transport and server health checks are outside the first release. Configuration status is not evidence of MCP server health. Declining an optional connection is recorded as `disabled-by-user` and does not prevent setup from completing.
 
-## 8. Артефакты и границы изменений
+## 8. Artifacts and change boundaries
 
-| Артефакт | Назначение |
+| Artifact | Purpose |
 |---|---|
-| `AGENTS.md` и точки входа выбранных агентов | Короткие применимые инструкции, команды и существенные решения проекта; для Claude при необходимости мостик `CLAUDE.md` |
-| Правила и скиллы | Только нужные рабочие процессы в поддержанных каталогах целевых агентов; пути и совместимость фиксируются для протестированных версий |
-| MCP-конфиги | Необходимые подключения, по целевому агенту, без значений секретов |
-| `.tibicen/manifest.yml` | Версии, происхождение/SHA/лицензии/хэши, решения и допущения, изменения, источники практик, результаты и история сессий |
-| `.tibicen/report.md` | Копия отчёта по явному запросу |
-| `.tibicen/state/` | Временное состояние после согласия: ход сборки, план и результаты; при обрыве или `incomplete` сохраняется для продолжения, при `complete` или `manual-action-required` удаляется после передачи и сохранения краткой истории в паспорте |
-| `~/.tibicen/presets/` и локальный счётчик | Личные пресеты, согласованные запуски и исходы; не фоновая телеметрия |
+| `AGENTS.md` and selected agents' entry points | Short, applicable instructions, commands, and significant project decisions; a `CLAUDE.md` bridge for Claude when needed |
+| Rules and skills | Only necessary workflows in supported directories for the target agents; paths and compatibility are recorded for tested versions |
+| MCP configurations | Necessary connections for each target agent, without secret values |
+| `.tibicen/manifest.yml` | Versions, provenance/SHAs/licenses/hashes, decisions and assumptions, changes, practice sources, results, and session history |
+| `.tibicen/report.md` | A report copy saved on explicit request |
+| `.tibicen/state/` | Temporary state after approval: build progress, plan, and results; retained for continuation after interruption or `incomplete`, removed after handoff and brief history storage in the manifest for `complete` or `manual-action-required` |
+| `~/.tibicen/presets/` and local counter | Personal presets, approved runs, and outcomes; not background telemetry |
 
-**Область изменения существующего проекта:** инструкции и rules выбранных агентов, каталоги выбранных скиллов, согласованные записи MCP и служебные файлы Tibicen. Состав задаётся точными путями и диффами в предложении. Наличие файла в области инфраструктуры само по себе не даёт разрешения его переписать.
+**Change scope in an existing project:** instructions and rules for selected agents, selected skill directories, approved MCP entries, and Tibicen service files. The proposal defines the scope through exact paths and diffs. A file being within an infrastructure area does not itself authorize overwriting it.
 
-Можно добавить, дополнить, исправить, заменить и удалить согласованные элементы. Сохраняются пользовательские решения и не затронутые планом блоки. Удаление всегда явно показано с причиной. Дубликаты не создаются вместо исправления существующего подходящего файла.
+Approved elements may be added, extended, corrected, replaced, or deleted. User decisions and blocks unaffected by the plan are preserved. Every deletion is shown explicitly with a reason. Duplicates are not created in place of correcting a suitable existing file.
 
-Исходники приложения, бизнес-логика, данные, существующие пакетные манифесты, CI и миграции не переписываются в ходе такой настройки. Для требуемой правки вне инфраструктурной области — объяснение и готовый ручной шаг. В пустой папке новые стартовые файлы допускаются только по согласованному дереву (§5).
+Application source, business logic, data, existing package manifests, CI, and migrations are not rewritten during this setup. A required change outside the infrastructure scope receives an explanation and a ready-to-perform manual step. In an empty directory, new starter files are allowed only under the approved tree (§5).
 
-Перед записью повторно сверяются исходные хэши затрагиваемых файлов. Изменение пользователем или другим процессом после составления плана → остановка применения и новое предложение. Исходные версии затрагиваемых файлов доступны во временном снимке до завершения применения и проверки. При сбое сохраняются state, перечень применённых изменений и план безопасного продолжения; тихий откат чужих изменений запрещён.
+Before writing, the original hashes of affected files are checked again. A user or another process changing a file after planning stops application and requires a new proposal. Original versions of affected files remain available in a temporary snapshot until application and verification finish. On failure, state, the list of applied changes, and a safe continuation plan are preserved; silently rolling back someone else's changes is prohibited.
 
-Печати `tibicen:begin/end` используются в допускающих комментарии форматах; для остальных — паспорт с путями и хэшами. Они подтверждают происхождение и помогают обнаружить случайные расхождения, но не являются независимой защитой от согласованной подмены файла и хэша. Пользовательские файлы без печатей тоже можно изменить после явного согласования точного диффа.
+`tibicen:begin/end` markers are used in formats that allow comments; other formats use manifest paths and hashes. They establish provenance and help detect accidental divergence, but do not independently protect against coordinated replacement of both a file and its hash. User files without markers may also be changed after explicit approval of the exact diff.
 
-## 9. Пресеты и страница
+## 9. Presets and the page
 
-Пресет — небольшая анкета решений строгой схемы: поддержанные значения, предпочтения источников и относительные запретные пути. Произвольные инструкции и секреты в пресет не включаются. Он помогает повторить предпочтения, а не заморозить вчерашний состав компонентов.
+A preset is a small decision questionnaire with a strict schema: supported values, source preferences, and relative forbidden paths. It contains no arbitrary instructions or secrets. It helps repeat preferences rather than freeze yesterday's component selection.
 
-- Сохранение — по запросу «запомни как пресет X», в `~/.tibicen/presets/<имя>/`; личные сведения вырезаются.
-- Применение — свежий скан, проверка совпадения условий, поиск и проверка применимости заново. Различия отражаются в предложении; прежнее согласие не переносится.
-- Статическая страница в v1 объясняет два сценария, даёт команду установки и клиентский конструктор, который скачивает `preset.yaml`. Сервера и аккаунтов нет. Вопросы конструктора относятся к задачам и ограничениям, а не требуют выбора технических деталей.
-- Библиотека чужих пресетов — после настройки ручной проверки, CI схемы и блоклиста. Любой пресет остаётся недоверенным вводом и не отменяет гейты.
+- Saving requires a request such as “remember this as preset X,” and uses `~/.tibicen/presets/<name>/`; personal details are removed.
+- Applying a preset requires a fresh scan, a check that conditions match, and renewed search and applicability checks. Differences are reflected in the proposal; previous approval does not carry over.
+- The static page in v1 explains the two scenarios, provides an install command, and includes a client-side builder that downloads `preset.yaml`. There is no server or account. Builder questions concern tasks and constraints rather than requiring technical choices.
+- A library of third-party presets comes after manual review, schema CI, and a blocklist are established. Every preset remains untrusted input and does not bypass the gates.
 
-## 10. Инженерный слой
+## 10. Engineering layer
 
-1. **Собственные скрипты:** Node ≥22.20, zero-dependency, кросс-платформенные, без шелл-обёрток. Механические операции сети, хэшей, получения файлов, применения плана и подготовки фрагментов — скриптами. Собственный read-only-код разрешён до согласия; запись, state и счётчик — после него.
-2. **Исполнение:** argv без шелла. Проектные проверки — только точные согласованные build/test/lint-команды. Установка зависимостей для согласованного нового каркаса — с `--ignore-scripts`; `git init`, квиз и compat — отдельные согласованные действия. Tibicen не создаёт коммиты ни в целевом репозитории, ни во временных репозиториях: настройка, проверки и продолжение выполняются без `git commit`, в том числе через вызываемые команды и агентов. migrate/deploy/push/prune — только показать. Worktree/temp-копия не являются sandbox. Тест, MCP или иной сторонний код запускается лишь после явного доверия показанному коду, с минимальным env без автоматически унаследованных секретов. При отсутствии доверия, прав или воспроизводимого окружения — не запускать, `unverified` с причиной. Права хоста не ослабляются; собственного sandbox в v1 нет.
-3. **State/resume:** state возникает после согласия. Обрыв до него — повторное исследование. При следующем запуске после обрыва или `incomplete` предлагается продолжение исходной сессии. State и паспорт читаются как данные-предложения, фактические файлы и хэши сверяются, оставшиеся изменения и команды согласуются заново. Согласие из state не наследуется. Неожиданное расхождение — `tamper-suspect`: показать различия и остановить автоматическое продолжение, без тихого отката. Ожидаемые пользовательские правки после `complete` проверяются как новый вход сценария улучшения; выполнение ранее выданных обязательных ручных шагов относится к исходной сессии.
-4. **Независимые результаты:** передача — `complete / manual-action-required / incomplete`; инфраструктура — `passed / issues-found / unverified`; проектные проверки — `green / red-fixed / pre-existing-red / unverified`; типичная задача — `passed / failed / unverified`; квиз — результат из пяти вопросов либо `unverified`; MCP и compat — по §7 и §6.4. У `unverified` есть причина. `complete` означает подключение инфраструктуры, выполнение обязательных ручных действий и передачу отчёта, без известных неустранённых обязательных дефектов подключения. `manual-action-required` означает, что доступные автоматические действия завершены и остаются обязательные внешние действия пользователя. Внутренний сбой или неисправленный обязательный дефект подключения даёт `incomplete`, даже если также остались ручные действия; причина, применённые изменения и оставшаяся работа указываются в отчёте. Само по себе отсутствие успешного проектного или поведенческого прогона не определяет статус передачи; эти результаты и ограничения видны отдельно.
-5. **Снимок проверки:** после согласия baseline существующего проекта выполняется до изменений на снимке фактического рабочего дерева, с согласованными staged/unstaged/untracked-файлами и исключением секретов/мусора. Итоговый прогон — тот же исходный снимок плюс все изменения Tibicen; для новой папки — созданные файлы. Worktree допустим с переносом фактического состояния без создания коммитов; temp-копия равноправна, Git для выполнения Tibicen необязателен. Состав и исключения зафиксированы. Некорректный снимок или окружение — `unverified`, не проверка другого дерева. Новая ошибка после изменений не считается старой из-за повторного запуска. `pre-existing-red` допустим только при состоявшемся сравнении без новых ошибок; неисправленная регрессия даёт `unverified` с её описанием.
+1. **First-party scripts:** Node ≥22.20, zero dependencies, cross-platform, without shell wrappers. Mechanical network operations, hashing, file retrieval, plan application, and fragment preparation are implemented in scripts. First-party read-only code is allowed before approval; writes, state, and the counter come afterward.
+2. **Execution:** argv without a shell. Project checks use only the exact approved build/test/lint commands. Dependency installation for an approved new scaffold uses `--ignore-scripts`; `git init`, quizzes, and compatibility probes are separate approved actions. Tibicen creates no commits in either the target repository or temporary repositories: setup, checks, and continuation run without `git commit`, including through invoked commands and agents. migrate/deploy/push/prune are shown only. A worktree or temporary copy is not a sandbox. Tests, MCP, or other third-party code run only after explicit trust in the displayed code, with a minimal environment and no automatically inherited secrets. Without trust, permissions, or a reproducible environment, do not execute; return `unverified` with a reason. Host permissions are not weakened; v1 has no sandbox of its own.
+3. **State/resume:** state is created after approval. An interruption before approval requires renewed research. On the next run after interruption or `incomplete`, offer continuation of the original session. State and the manifest are read as proposed data, actual files and hashes are checked, and remaining changes and commands require new approval. Approval is not inherited from state. An unexpected mismatch produces `tamper-suspect`: show the differences and stop automatic continuation, without silent rollback. Expected user edits after `complete` are checked as new input to the improvement scenario; completion of previously issued mandatory manual steps belongs to the original session.
+4. **Independent results:** handoff — `complete / manual-action-required / incomplete`; infrastructure — `passed / issues-found / unverified`; project checks — `green / red-fixed / pre-existing-red / unverified`; representative task — `passed / failed / unverified`; quiz — a result out of five questions or `unverified`; MCP and compatibility — as defined in §7 and §6.4. `unverified` includes a reason. `complete` means infrastructure integration, completion of mandatory manual actions, and report handoff, with no known unresolved mandatory integration defects. `manual-action-required` means available automatic actions are finished and mandatory external user actions remain. An internal failure or unresolved mandatory integration defect produces `incomplete`, even when manual actions also remain; the report states the reason, applied changes, and remaining work. The absence of a successful project or behavioral run alone does not determine handoff status; those results and limitations are shown separately.
+5. **Verification snapshot:** after approval, an existing project's baseline runs before changes on a snapshot of the actual working tree, including approved staged/unstaged/untracked files and excluding secrets and irrelevant files. The final run uses the same initial snapshot plus all Tibicen changes; a new directory uses the created files. A worktree is allowed if the actual state is carried over without creating commits; a temporary copy is equally valid, and Git is not required to run Tibicen. Contents and exclusions are recorded. An invalid snapshot or environment produces `unverified`, rather than checking a different tree. A new error after changes does not become pre-existing because a run was repeated. `pre-existing-red` is allowed only after an actual comparison with no new errors; an unresolved regression produces `unverified` with its description.
 
-   После ручного завершения интеграции исходный baseline не подменяется новым. Для подтверждения результата исходной сессии нужны сопоставимые доказательства, охват обязательных ручных изменений и история попыток. Если сравнение восстановить нельзя — `baseline-unavailable`; успех с первой попытки или отсутствие регрессий всей интеграции не заявляются.
+   After manual completion of integration, the original baseline is not replaced with a new one. Confirming the original session's result requires comparable evidence, coverage of mandatory manual changes, and attempt history. If comparison cannot be restored, report `baseline-unavailable`; do not claim first-attempt success or no regressions across the entire integration.
 
-   В паспорте сохраняются устойчивый идентификатор исходной сессии, краткие исходы попыток, известные новые ошибки и обязательные ручные действия со статусами. Продолжение связывается с той же сессией. История записывается атомарно до удаления state; при неудаче записи, обрыве или `incomplete` state остаётся. Полные логи, секреты и постоянные снимки для этого не добавляются. Краткая история не заменяет утраченный baseline.
+   The manifest preserves the stable original session identifier, brief attempt outcomes, known new errors, and mandatory manual actions with statuses. Continuation is linked to the same session. History is written atomically before state is deleted; failed writing, interruption, or `incomplete` leaves state in place. This does not add full logs, secrets, or permanent snapshots. Brief history does not replace a lost baseline.
 
-6. **Секреты:** определяется только наличие и имена необходимых переменных; значения не попадают в контекст, логи, репозиторий и снимки. Токены Tibicen передаются только нужному сетевому вызову через env, не argv; проектные прогоны и MCP автоматически их не наследуют. При невозможности получить корректный снимок без секретов проверка пропускается с причиной.
-7. **Матрица агентов:** `references/agent-matrix.md` содержит протестированные версии, каталоги, способы подключения и headless-методы с ограничениями startup, авторизации и env. Изменившаяся или неподдержанная версия не наследует доказательства старой. Для отсутствующего инструмента задана деградация с причиной.
-8. **Профили:** инфраструктурные проверки применяются к обоим сценариям независимо от языка проекта. Живой прогон приложения в v1 — web-профиль; другие стеки получают `verify: unverified / unsupported-profile`. Это не отменяет проверку путей, правил, подключения и совместимости инфраструктуры. ML/Unity-профили приложения — позже.
-9. **Чужая инфраструктура:** инвентаризация распознаёт основные форматы трио и несколько известных бутстрапов. Неизвестная область не переписывается по догадке: используется точное согласование затрагиваемых файлов либо ручной шаг. Полный реестр чужих инструментов — после релиза.
-10. **Проверка реальной работы:** в предложении задаётся небольшая типичная задача и ожидаемый результат из задач/решений пользователя. На контролируемой копии новая сессия должна найти нужные инструкции и выполнить согласованную работу без неподтверждённых действий. В v1 автоматический headless-прогон типичной задачи и вспомогательного квиза — только Claude Code; для остальных — `unverified` с причиной, без подмены поведенческой проверки структурной. Состав запуска, версия CLI, файлы, инструменты, авторизация и стоимость входят в предложение. Hooks, plugins, MCP, settings и auto-memory сверх плана не подхватываются; если это нельзя ограничить и проверить, запуск пропускается с `startup-uncontrolled`. Сам по себе `claude -p` не обеспечивает контроль. `--bare` не является универсальной заменой: меняются загрузка инструкций и авторизация. Новая обязательная авторизация или собственный sandbox в v1 не добавляются.
+6. **Secrets:** determine only the presence and names of required variables; values do not enter context, logs, the repository, or snapshots. Tibicen tokens are passed only to the required network call through the environment, not argv; project runs and MCP do not automatically inherit them. If a valid snapshot cannot be obtained without secrets, skip the check with a reason.
+7. **Agent matrix:** `references/agent-matrix.md` contains tested versions, directories, connection methods, and headless methods with startup, authorization, and environment limitations. A changed or unsupported version does not inherit evidence from an older one. A fallback with a reason is defined for an unavailable tool.
+8. **Profiles:** infrastructure checks apply to both scenarios regardless of the project's language. Live application execution in v1 uses the web profile; other stacks receive `verify: unverified / unsupported-profile`. This does not remove checks of infrastructure paths, rules, integration, or compatibility. ML/Unity application profiles come later.
+9. **Third-party infrastructure:** inventory recognizes the main formats of the three supported agents and several known bootstrap tools. An unknown area is not rewritten based on guesswork: use exact approval of affected files or a manual step. A complete registry of third-party tools comes after release.
+10. **Checking real work:** the proposal defines a small representative task and an expected result based on the user's tasks and decisions. In a controlled copy, a new session must find the required instructions and perform the approved work without unapproved actions. In v1, automatic headless execution of the representative task and supplementary quiz is supported only for Claude Code; other agents receive `unverified` with a reason, without substituting a structural check for a behavioral one. Execution configuration, CLI version, files, tools, authorization, and cost are included in the proposal. Hooks, plugins, MCP, settings, and auto-memory outside the plan are not picked up; if this cannot be constrained and verified, skip execution with `startup-uncontrolled`. `claude -p` alone does not provide control. `--bare` is not a universal substitute: it changes instruction loading and authorization. V1 does not add a new mandatory authorization requirement or a sandbox of its own.
 
-    Вспомогательный квиз проверяет пять вопросов из паспорта и пользовательских решений; порог ≥4/5. Он не входит в verify-pass, не подтверждает загрузку каждого скилла и не доказывает улучшение реальной работы. Типичная задача, квиз, compat и проектные проверки имеют отдельные результаты.
+    The supplementary quiz checks five questions from the manifest and user decisions; the threshold is ≥4/5. It is not part of verify-pass, does not confirm loading of every skill, and does not prove improved real work. The representative task, quiz, compatibility probes, and project checks have separate results.
 
-11. **Self-test:** L0 — строгие проверки скриптов на записанных ответах поиска. L1 — контролируемые прогоны новой папки, существующего проекта без инфраструктуры и проекта с конфликтующими/устаревшими агентскими файлами; есть повторный запуск и fixture ML без обещания запуска приложения. На каждой попытке обязательны read-only до согласия, отсутствие несогласованного исполнения, сохранность кода приложения, точное соблюдение плана изменений и корректные статусы ручных шагов. Нарушение инварианта проваливает релизный гейт, последующий удачный повтор его не отменяет. Для качества ответа/формы результата — мягкие проверки и максимум две попытки всего на сценарий релизного кандидата, включая первую; это отдельный лимит от ремонт-цикла §4. L1 оценивает достаточность и непротиворечивость инфраструктуры и согласованную типичную задачу при доступном запуске. Релизный гейт: L0 strict + L1 strict по инвариантам + L1 по критериям качества.
-12. **Измерения:** до телеметрии — локальный счётчик согласованных запусков и исходов, добровольные ручные сводки пилота. До согласия устойчивого события нет; ранние отказы учитываются только наблюдением пилота. Будущая телеметрия — opt-in, поля стадия/статус/версия/класс стека, без миссий, репозиториев, источников и секретов; авто-off в CI, приёмник и владелец должны быть определены до включения.
-13. **Инциденты:** публикуемый блоклист repo/SHA проверяется при установке, повторном прогоне и resume. SECURITY.md описывает раскрытие; advisory и суммы дистрибутива публикуются через независимый канал. Пин, хэши и сканер не являются аудитом безопасности кода.
-14. **Сетевые и файловые права:** собственные запросы Tibicen ограничены версионируемым списком разрешённых источников: `api.github.com`, выбранные реестры §6.1 и официальные сайты документации поддерживаемых агентов/стандартов/стека. В исходном наборе документации — `agents.md`, `agentskills.io`, `code.claude.com`, `cursor.com`, `developers.openai.com`, `learn.chatgpt.com`; домены реестров и стеков перечисляются явно в ядре, без wildcard на произвольные сайты. Переходы и редиректы не расширяют список автоматически. Пользовательский URL сам по себе не расширяет права: недоступное или неразрешённое становится gap с предложением локального материала. Расширение списка в конкретной сессии требует явного согласия до сетевого обращения. Поддерживаемая документация доступна на исследовании в пределах уже разрешённого списка. Запись — в согласованные пути целевого репозитория, свой user-scope скилл-каталог, `~/.tibicen/` и согласованные временные снимки/state, без выхода через `..`, абсолютные пути контента или симлинки. Это политика собственных скриптов, а не sandbox стороннего кода (§10.2).
+11. **Self-test:** L0 consists of strict script checks against recorded search responses. L1 consists of controlled runs for a new directory, an existing project without infrastructure, and a project with conflicting/outdated agent files; it includes a repeated run and an ML fixture without promising application execution. Every attempt must remain read-only before approval, avoid unapproved execution, preserve application code, follow the change plan exactly, and report manual-step statuses correctly. An invariant violation fails the release gate; a later successful repeat does not cancel it. Response quality and result presentation use soft checks, with at most two attempts in total per release-candidate scenario, including the first; this is a separate limit from the repair cycle in §4. L1 assesses sufficient, consistent infrastructure and the approved representative task when execution is available. The release gate is L0 strict + L1 strict invariants + L1 quality criteria.
+12. **Measurements:** before telemetry, use a local counter of approved runs and outcomes, plus voluntary manual pilot summaries. There is no persistent event before approval; early refusals are counted only through pilot observation. Future telemetry is opt-in, with stage/status/version/stack-class fields and no missions, repositories, sources, or secrets; it is automatically off in CI, and its receiver and owner must be defined before enabling it.
+13. **Incidents:** a published repo/SHA blocklist is checked during installation, repeated runs, and resume. SECURITY.md describes disclosure; advisories and distribution checksums are published through an independent channel. Pinning, hashes, and the scanner are not a code security audit.
+14. **Network and filesystem permissions:** Tibicen's own requests are limited to a versioned allowlist of sources: `api.github.com`, selected registries from §6.1, and official documentation sites for supported agents/standards/stacks. The initial documentation set is `agents.md`, `agentskills.io`, `code.claude.com`, `cursor.com`, `developers.openai.com`, and `learn.chatgpt.com`; registry and stack domains are listed explicitly in the core, without wildcards for arbitrary sites. Navigation and redirects do not automatically expand the allowlist. A user-supplied URL does not itself expand permissions: unavailable or disallowed material becomes a gap with an offer to use local material. Expanding the allowlist for a particular session requires explicit approval before making the network request. Supported documentation is available during research within the already allowed list. Writes are limited to approved target-repository paths, the tool's own user-scope skill directory, `~/.tibicen/`, and approved temporary snapshots/state, without escaping through `..`, absolute content paths, or symlinks. This is a policy for first-party scripts, not a sandbox for third-party code (§10.2).
 
-## 11. Доставка
+## 11. Delivery
 
-Установка в user-scope разработчика: `npx skills add <владелец>/tibicen -g`. В релизном README фиксируется протестированная версия установщика; bootstrap и обновление самого Tibicen — явные действия с доверием к установщику. Пин версии и контрольная сумма позволяют определить установленный дистрибутив. Лицензия продукта — MIT.
+Installation in the developer's user scope: `npx skills add <owner>/tibicen -g`. The release README specifies the tested installer version; bootstrap and updating Tibicen itself are explicit actions requiring trust in the installer. A version pin and checksum identify the installed distribution. The product license is MIT.
 
-Ровно два SKILL.md: `tibicen-init` и `tibicen-adopt`, с понятными триггерами «настрой агентскую инфраструктуру» и «проверь и обнови агентскую инфраструктуру». Оба доступны в новом и существующем проекте в зависимости от состояния и задачи. Стадийные инструкции загружаются по мере необходимости, по одной; дублировать весь процесс в контексте не требуется.
+Exactly two SKILL.md files: `tibicen-init` and `tibicen-adopt`, with clear triggers such as “set up agent infrastructure” and “review and update agent infrastructure.” Both are available in new and existing projects according to their state and task. Stage instructions are loaded as needed, one at a time; the entire process need not be duplicated in context.
 
-Пререквизиты — один поддержанный агент трио и Node ≥22.20. Для первоначальной установки показанной командой `npx skills add … -g` требуется Git; он также нужен при повторном использовании этого способа доставки. После установки Tibicen может работать с проектом без Git, используя временную копию для проверок. Конкретные пути скиллов, версии и особенности запуска определяются проверенной agent-matrix, а не заявлением о вечной совместимости.
+Prerequisites are one supported agent from the three-agent group and Node ≥22.20. Initial installation with the shown `npx skills add … -g` command requires Git; Git is also needed when reusing that delivery method. After installation, Tibicen can work with a project without Git by using a temporary copy for checks. Specific skill paths, versions, and launch behavior are determined by the verified agent matrix, not by a claim of perpetual compatibility.
 
-## 12. Сценарии приёмки
+## 12. Acceptance scenarios
 
-**А. Новый репозиторий.** «Настрой проект панели расчётов, React, всё по умолчанию» → скан → одна рекомендуемая настройка и дерево → предложение с подробностями → согласие → создание → инфраструктурные проверки, web-прогон, типичная задача/квиз/compat при доступном контролируемом запуске → отчёт и первый полезный запрос. Неподтверждённые проверки явно отмечены; пользователь не обязан выбирать скилл из каталога.
+**`А`. New repository.** “Set up a calculation dashboard project, React, all defaults” → scan → one recommended setup and tree → detailed proposal → approval → creation → infrastructure checks, web execution, representative task/quiz/compatibility when controlled execution is available → report and first useful prompt. Unverified checks are explicitly identified; the user does not have to choose a skill from a catalog.
 
-**Б. Существующее приложение без инфраструктуры.** Скан находит фактическую структуру и команды CI → предложение добавляет нужные агентские файлы → согласие → baseline при поддержанном профиле → подключение и проверка. Исходники, существующие пакетные манифесты и CI не изменены. Для Python нет ложного зелёного прогона приложения: проектная проверка `unsupported-profile`, инфраструктурные результаты — отдельно.
+**`Б`. Existing application without infrastructure.** The scan identifies the actual structure and CI commands → the proposal adds the necessary agent files → approval → baseline for a supported profile → integration and verification. Source files, existing package manifests, and CI remain unchanged. Python receives no false green application run: the project check is `unsupported-profile`, with infrastructure results reported separately.
 
-**В. Привести существующую инфраструктуру в порядок.** Найдены конфликтующие rules, дубли в AGENTS.md и устаревший скилл → рекомендованы необходимые изменения, сохранены полезные пользовательские ограничения → показаны точные диффы и удаление дубля → согласие → изменения применены самим Tibicen → проверены подключение, сравнение с baseline и доступная типичная задача. Если поддержанного способа применения нет, ручной шаг объяснён; обычное редактирование AGENTS.md не перекладывается на пользователя.
+**`В`. Put existing infrastructure in order.** Conflicting rules, duplicates in AGENTS.md, and an outdated skill are found → necessary changes are recommended and useful user constraints preserved → exact diffs and deletion of the duplicate are shown → approval → Tibicen applies the changes itself → integration, comparison with the baseline, and an available representative task are checked. If no supported method of applying changes exists, a manual step is explained; ordinary AGENTS.md editing is not handed back to the user.
 
-**Г. Повторное обновление.** Пользователь спустя время вызывает «проверь и обнови» → повторный скан и проверка применимых источников/версий → подходящее сохранено, необходимые изменения обоснованы. Если изменений не требуется, файлы не переписываются ради запуска. Новое согласие относится только к действительно предложенным действиям. Восстановление исходной незавершённой интеграции сохраняет её идентификатор и историю попыток.
+**`Г`. Repeated update.** Some time later, the user requests “review and update” → a fresh scan and check of applicable sources/versions → suitable elements are preserved and necessary changes justified. If no changes are needed, files are not rewritten just because the tool ran. New approval covers only the actions actually proposed. Recovery of the original unfinished integration preserves its identifier and attempt history.
 
-**Д. Обрыв, незавершённая работа и ручной шаг.** После части изменений обрывается сессия → state и хэши позволяют показать фактически применённое и оставшееся → новый план и согласие. Обязательный дефект подключения не исправлен после двух попыток → `incomplete`, причина и применённые изменения в отчёте, state сохранён; следующий запуск предлагает продолжить ту же сессию с новым согласием. Если остались только обязательные внешние действия пользователя, например секрет или TOML-блок Codex, → `manual-action-required`; после проверки применения — пересчёт подключения. Утраченный baseline даёт `baseline-unavailable`, а не новый фиктивный успех с первой попытки. Ни один сценарий не создаёт коммиты, в том числе для подготовки снимков или продолжения.
+**`Д`. Interruption, unfinished work, and a manual step.** A session is interrupted after some changes → state and hashes make it possible to show what was actually applied and what remains → a new plan and approval. A mandatory integration defect remains after two attempts → `incomplete`, with the reason and applied changes in the report, and state preserved; the next run offers continuation of the same session with new approval. If only mandatory external user actions remain, such as supplying a secret or applying a Codex TOML block, the status is `manual-action-required`; after application is checked, integration status is recalculated. A lost baseline produces `baseline-unavailable`, rather than a newly invented first-attempt success. No scenario creates commits, including for snapshot preparation or continuation.
 
-**Е. Много похожих проектов.** Пользователь сохраняет пресет, в новом проекте просит настройку по нему. Предпочтения предзаполнены, поиск и проверка актуальности выполняются заново, отличия объяснены. Пользователь не собирает набор инструментов с нуля и не переносит слепо старые инструкции.
+**`Е`. Many similar projects.** The user saves a preset and requests setup with it in a new project. Preferences are prefilled, search and freshness checks run again, and differences are explained. The user neither assembles the toolset from scratch nor blindly carries over old instructions.
 
-## 13. Целевой продукт, первый выпуск и порядок реализации
+## 13. Target product, first release, and implementation order
 
-**Целевой продукт:** два простых сценария — первоначальная настройка и улучшение/обновление — с применением согласованных изменений, понятным качеством результата и поддерживаемыми рекомендациями.
+**Target product:** two simple scenarios — initial setup and improvement/updating — with approved changes applied, understandable result quality, and maintained recommendations.
 
-Отдельно согласованные предварительные alpha-итерации имеют явный ограниченный охват и не закрывают критерии первого полного MVP. 27.10.2026 владелец подтвердил 0.1.0-alpha.1 с проверкой Git-доставки/update/resume/remove; непройденная полная матрица, human/pilot и сопровождение остаются открытыми.
+Separately approved preliminary alpha iterations have an explicit limited scope and do not satisfy the first full MVP's criteria. On 2026-10-27, the owner approved 0.1.0-alpha.1 with Git delivery/update/resume/remove verification; the uncompleted full matrix, human/pilot evaluation, and maintenance readiness remain open.
 
-**Первый выпуск включает оба сценария.** В существующем проекте он умеет менять согласованные файлы агентской инфраструктуры, сохранять пользовательские решения, удалять явно одобренное лишнее и повторно проверять результат. В v1 есть пресеты/конструктор, актуальные применимые источники, версия ядра, паспорт/история, MCP stdio, инфраструктурные проверки и динамические compat-пробы. Области автоматического применения и ограничения запуска явно заданы в §7–10.
+**The first release includes both scenarios.** In an existing project, it can change approved agent infrastructure files, preserve user decisions, remove explicitly approved unnecessary elements, and recheck the result. V1 includes presets/the builder, current applicable sources, a core version, the manifest/history, MCP stdio, infrastructure checks, and dynamic compatibility probes. Automatic application scopes and execution limitations are explicitly defined in §7–10.
 
-Уточнение первого выпуска от 22.10.2026: в ближайший объём включён первый ограниченный процессный адаптер — OpenSpec по §6 дополнения. Его подключение остаётся выбором для подходящего проекта, а не обязательной установкой каждому пользователю. Приёмка выпуска включает настройку с нуля, подключение существующего процесса и работу в новой сессии, а также установку и фактическое применение выбранного дополнительного скилла. Spec Kit и другие процессные адаптеры остаются следующим расширением. OpenSpec CLI и генерируемые им скиллы не включаются в дистрибутив Tibicen; установка в целевой проект согласуется отдельно.
+First-release clarification dated 2026-10-22: the nearest release scope includes the first bounded process adapter — OpenSpec, as defined in §6 of the addendum. Connecting it remains a choice for a suitable project, not a mandatory installation for every user. Release acceptance includes setup from scratch, connection to an existing process, and operation in a new session, as well as installation and actual use of a selected additional skill. Spec Kit and other process adapters remain a subsequent extension. The OpenSpec CLI and skills it generates are not included in the Tibicen distribution; installation into the target project is approved separately.
 
-| Этап | Состав | Гейт |
+| Stage | Scope | Gate |
 |---|---|---|
-| Ядро первоначальной настройки | Скан, автопилот, предложение, живой подбор, происхождение, каркас, паспорт/история, инфраструктурные проверки, отчёт | L0 strict; сценарии А и Б в части ядра без MCP/compat; read-only до согласия и сохранность существующего приложения |
-| Улучшение, актуальность и подключения | Инвентаризация, точные диффы и применение, baseline, state/resume, источники/версии правил, MCP, compat и проверка типичной задачи | Сценарии В, Г, Д; полный А с доступными пробами; инфраструктура исправлена, применение соответствует согласованному плану |
-| Подготовка релиза | Пресеты и статическая страница, фикстуры трио, SECURITY.md/блоклист, документация, пилот | Сценарий Е; релизный гейт §10.11, начальная проверка пользы и готовность сопровождения правил |
+| Initial setup core | Scan, autopilot, proposal, live selection, provenance, scaffold, manifest/history, infrastructure checks, report | L0 strict; core portions of scenarios `А` and `Б` without MCP/compatibility; read-only before approval and preservation of the existing application |
+| Improvement, current guidance, and integrations | Inventory, exact diffs and application, baseline, state/resume, rule sources/versions, MCP, compatibility, and representative task verification | Scenarios `В`, `Г`, `Д`; full `А` with available probes; infrastructure corrected and changes applied consistently with the approved plan |
+| Release preparation | Presets and static page, fixtures for the three agents, SECURITY.md/blocklist, documentation, pilot | Scenario `Е`; release gate from §10.11, initial usefulness assessment, and readiness to maintain the rules |
 
-Оценка сроков уточняется после проверки способов точечного применения и контролируемых headless-запусков.
+Time estimates are refined after checking selective application methods and controlled headless execution.
 
-**После релиза:** библиотека чужих пресетов с проверкой, дополнительные профили проверки приложений, полный реестр чужих бутстрапов, MCP health-check, телеметрия с определённым приёмником, корпоративные ограничения и зеркала. Работа с новыми агентами добавляется через протестированные адаптеры.
+**After release:** a reviewed library of third-party presets, additional application verification profiles, a complete registry of third-party bootstrap tools, MCP health checks, telemetry with a defined receiver, enterprise constraints, and mirrors. New agents are added through tested adapters.
 
-**Вне продукта:** собственный маркетплейс скиллов, SaaS для этих сценариев, аккаунты, постоянный агент в проекте, тихое автообновление инфраструктуры и самого Tibicen, глубокие интерактивные логины через браузер. Обновление по запросу является основной функцией и не относится к тихим автообновлениям.
+**Outside the product:** Tibicen's own skill marketplace, SaaS for these scenarios, accounts, a permanent agent in the project, silent automatic updating of infrastructure or Tibicen itself, and complex interactive browser logins. Updating on request is a core function and is not a silent automatic update.
 
-**Открытые решения владельца:** владелец репозитория и адрес страницы до публикации; протестированная версия установщика; состав пилотной когорты и минимальные размеры групп; цели охвата проверок и распространения. Эти решения не заменяют критерии качества и границы изменений.
+**Owner decisions:** the limited alpha fixed the repository as `warbr1ng3r/tibicen`, the page as `https://warbr1ng3r.github.io/tibicen/`, and the tested installer as `skills@1.7.4`. Pilot cohort composition and minimum group sizes, and verification and distribution coverage goals remain open. These decisions do not replace quality criteria or change boundaries.
 
-## 14. Метрики пользы и качества
+## 14. Usefulness and quality metrics
 
-**Главное доказательство пользы:** на реальных проектах сравнить Tibicen с привычным способом участника — время до первого полезного задания агента, число необходимых поправок пользователя, объём ручной интеграции и стоимость. Первоначальная настройка и улучшение оцениваются раздельно. Технические проверки дополняют это сравнение.
+**Primary evidence of usefulness:** on real projects, compare Tibicen with each participant's usual method — time to the agent's first useful task, the number of necessary user corrections, manual integration effort, and cost. Initial setup and improvement are assessed separately. Technical checks supplement this comparison.
 
-| Метрика | Что считается | Ограничение |
+| Metric | What is counted | Limitation |
 |---|---|---|
-| Completion | Доля начатых наблюдаемых сессий, дошедших до подключённой инфраструктуры и `complete` | `incomplete` и `manual-action-required` остаются в знаменателе без успеха до завершения; исходы показываются отдельно, продолжение той же сессии не создаёт второго наблюдения или успеха |
-| Ручная работа | Время и количество действий, необходимых пользователю для завершения | Секреты и обязательная внешняя авторизация отделены от ручной склейки файлов |
-| Полезная задача | Время, пользовательские поправки и исход типичного задания в новой сессии | Публикуются охват, агент/версия и причины пропуска; квиз не заменяет рабочую задачу |
-| Инфраструктура | Доля результатов с пройденными критериями §3 | Не объединяется с успешностью тестов приложения |
-| Verify-pass для новой папки | Зелёный согласованный прогон приложения с первой попытки | Только состоявшиеся прогоны поддержанного профиля |
-| Verify-pass для существующего проекта | Отсутствие новых ошибок к исходному baseline с первой попытки | Состоявшееся сопоставимое сравнение; `pre-existing-red` допустим |
-| Compat-покрытие | Пары с `loading: verified` и свидетельством загрузки выбранного SHA | Все выбранные пары при включённых пробах; причины `unverified` и отключение пользователем — отдельно |
-| Квиз | Доля состоявшихся квизов с ≥4/5 | Вспомогательный показатель; цель ≥80%, охват и причины пропуска рядом |
-| Повторное использование | Начат второй отдельный проект за 30 дней либо повторно использовано улучшение того же проекта | Это разные показатели; resume незавершённой сессии не является новым использованием |
+| Completion | Share of started, observed sessions that reach connected infrastructure and `complete` | `incomplete` and `manual-action-required` remain in the denominator without success until completion; outcomes are shown separately, and continuing the same session does not create a second observation or success |
+| Manual work | Time and number of actions the user needs to complete setup | Secrets and mandatory external authorization are distinguished from manually assembling files |
+| Useful task | Time, user corrections, and outcome of a representative task in a new session | Coverage, agent/version, and skip reasons are published; a quiz does not replace a working task |
+| Infrastructure | Share of results meeting the criteria in §3 | Not combined with application test success |
+| Verify-pass for a new directory | A green approved application run on the first attempt | Only actual runs of a supported profile |
+| Verify-pass for an existing project | No new errors against the original baseline on the first attempt | An actual comparable comparison is required; `pre-existing-red` is allowed |
+| Compatibility coverage | Pairs with `loading: verified` and evidence of loading the selected SHA | All selected pairs when probes are enabled; reasons for `unverified` and user-disabled probing are reported separately |
+| Quiz | Share of completed quizzes scoring ≥4/5 | A supplementary metric; target ≥80%, with coverage and skip reasons shown alongside |
+| Reuse | A second separate project started within 30 days, or repeated improvement of the same project | These are separate metrics; resuming an unfinished session is not a new use |
 
-До обязательных ручных изменений проверка предварительная и не считается verify-pass полной интеграции. История попыток не обнуляется. Неподдержанный профиль, несостоявшийся запуск и недоказуемый baseline исключаются из соответствующего знаменателя с причинами и долей; уже известная новая ошибка не исчезает из знаменателя из-за последующего `unverified`.
+Before mandatory manual changes, verification is provisional and does not count as verify-pass for the full integration. Attempt history is not reset. Unsupported profiles, runs that did not happen, and unprovable baselines are excluded from their respective denominators, with reasons and proportions; an already known new error does not disappear from the denominator because of a later `unverified` result.
 
-Пилот — добровольная когорта с ручной передачей сводок без содержимого репозитория и секретов. Звёзды/issues — дополнительные сигналы. До пилота фиксируются размеры групп и способ измерения времени/поправок; неизвестное наблюдение не приравнивается к неуспеху.
+The pilot is a voluntary cohort that manually submits summaries without repository contents or secrets. Stars/issues are supplementary signals. Group sizes and the method for measuring time/corrections are fixed before the pilot; an unknown observation is not treated as a failure.
 
-Контрольная точка — 50 измеренных сессий или 8 недель с публикации, что раньше. Пороги исходной гипотезы: completion <40%, соответствующий verify-pass <70%, второй отдельный проект <10% при созревшей 30-дневной когорте — повод пересмотреть решение. Возврат для улучшения того же проекта учитывается отдельно. Недостаток данных означает отдельное решение о наборе/продлении пилота или закрытии. Решение о продукте учитывает измеренную экономию усилий, а не подменяет её количеством пройденных внутренних проб.
+The review checkpoint is 50 measured sessions or 8 weeks after publication, whichever comes first. Thresholds for the initial hypothesis: completion <40%, the applicable verify-pass <70%, or a second separate project <10% in a mature 30-day cohort are reasons to reconsider the solution. Returning to improve the same project is counted separately. Insufficient data requires a separate decision to recruit/extend the pilot or close it. Product decisions account for measured effort savings rather than substituting the number of passed internal probes for that evidence.
 
-## 15. Риски и границы обещания
+## 15. Risks and limits of the promise
 
-| Риск | Ответ |
+| Risk | Response |
 |---|---|
-| Рекомендация свежая, но неподходящая | Применимость к проекту/версиям, достаточность состава, критерии качества и проверка типичной задачи |
-| Инструмент усложняет жизнь выбором деталей | Одна рекомендация по умолчанию, короткое резюме, подробности доступны до согласия |
-| Исправление затрагивает полезные пользовательские правила | Точный дифф, сохранение решений, исходные хэши и новый план при изменении состояния |
-| Повреждение приложения | Ограниченная область инфраструктуры, сохранность исходников/данных/манифестов/CI, baseline и строгие инварианты |
-| Prompt injection и опасный код | Чужой контент как данные, эвристический сканер, происхождение, явное доверие к запуску; собственный sandbox не обещается |
-| Файлы созданы, но работа агента не улучшилась | Проверка подключения, типичная задача, отдельное измерение времени и поправок |
-| Правила и адаптеры устаревают | Назначенное сопровождение, регулярный пересмотр, источники с датами, версия ядра и повторное обновление по запросу |
-| Недоступна документация или headless-запуск | Gap/`unverified` с причиной; старое свидетельство не выдаётся за свежее |
-| Пробы дорогие | Стоимость согласуется, compat отключаем, проверки ограничены задачей и доступной средой |
-| Ручные шаги остаются | Они видны до согласия; если это единственное препятствие завершению, статус — `manual-action-required`. При внутреннем сбое или неисправленном обязательном дефекте подключения — `incomplete` (§10.4). Обычные поддержанные правки инфраструктуры инструмент применяет сам |
+| A recommendation is current but unsuitable | Applicability to the project/versions, sufficient composition, quality criteria, and representative task verification |
+| Technical choices make the tool burdensome | One default recommendation, a short summary, and details available before approval |
+| A correction affects useful user rules | Exact diff, preservation of decisions, original hashes, and a new plan when state changes |
+| Application damage | Limited infrastructure scope, preservation of source/data/manifests/CI, baseline, and strict invariants |
+| Prompt injection and dangerous code | Third-party content treated as data, a heuristic scanner, provenance, and explicit trust for execution; no sandbox of its own is promised |
+| Files are created but agent work does not improve | Integration checks, a representative task, and separate measurement of time and corrections |
+| Rules and adapters become outdated | Assigned maintenance, regular review, dated sources, a core version, and repeated updates on request |
+| Documentation or headless execution is unavailable | Gap/`unverified` with a reason; old evidence is not presented as fresh |
+| Probes are expensive | Cost is approved, compatibility probes can be disabled, and checks are limited to the task and available environment |
+| Manual steps remain | They are visible before approval; if they are the only obstacle to completion, status is `manual-action-required`. An internal failure or unresolved mandatory integration defect means `incomplete` (§10.4). The tool applies ordinary supported infrastructure edits itself |
 
-## Приложение А — Основания рекомендаций и источники
+## Appendix A — Basis for recommendations and sources
 
-Проверены при подготовке редакции 2026-10-21; при реализации применимость сверяется с фактическими версиями. Это источники правил и форматов, а не замороженный список компонентов для установки.
+Checked while preparing the 2026-10-21 revision; implementation checks applicability against actual versions. These are sources for rules and formats, not a frozen component installation list.
 
-- [OpenAI: пересмотр скиллов и инструкций](https://learn.chatgpt.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra): рекомендации меняются вместе с моделями; лишние и конфликтующие инструкции требуют пересмотра.
-- [Claude Code: лучшие практики](https://code.claude.com/docs/en/best-practices): короткие применимые инструкции, ограничение лишнего контекста и проверка поведения.
-- [Agent Skills](https://agentskills.io/home): обнаружение метаданных, загрузка инструкций и выполнение — разные этапы.
-- [OpenAI: проверка скиллов](https://developers.openai.com/blog/eval-skills): ожидаемый результат, действия и эффективность проверяются отдельно.
-- [Установщик skills](https://github.com/vercel-labs/skills/blob/main/docs/commands.md): доставка, поиск, проверка и обновление компонентов; эти операции не заменяют оценку всей инфраструктуры проекта.
-- [MCP Claude](https://code.claude.com/docs/en/mcp#environment-variable-expansion-in-mcpjson) и [MCP Cursor](https://cursor.com/docs/mcp#config-interpolation): различающийся синтаксис ссылок на окружение.
+- [OpenAI: rethinking skills and instructions](https://learn.chatgpt.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra): recommendations change with models; unnecessary and conflicting instructions need review.
+- [Claude Code: best practices](https://code.claude.com/docs/en/best-practices): short, applicable instructions, limiting unnecessary context, and checking behavior.
+- [Agent Skills](https://agentskills.io/home): metadata discovery, instruction loading, and execution are separate stages.
+- [OpenAI: skill evaluation](https://developers.openai.com/blog/eval-skills): expected results, actions, and efficiency are assessed separately.
+- [skills installer](https://github.com/vercel-labs/skills/blob/main/docs/commands.md): delivery, discovery, checking, and updating components; these operations do not replace assessment of the project's entire infrastructure.
+- [Claude MCP](https://code.claude.com/docs/en/mcp#environment-variable-expansion-in-mcpjson) and [Cursor MCP](https://cursor.com/docs/mcp#config-interpolation): different syntax for environment references.
 
-## Приложение Б — Эскизы данных
+## Appendix B — Data sketches
 
 ```yaml
-# .tibicen/manifest.yml — условный пример улучшения Python-проекта
+# .tibicen/manifest.yml — illustrative example of improving a Python project
 schema: 1
 tibicen: { version: "1.0.0", rulesVersion: "1.0.0", built: "2026-10-21", mode: improve, status: complete }
 stack: { languages: [python], agents: [claude-code, cursor] }
@@ -385,7 +385,7 @@ changes:
   - { path: "AGENTS.md", action: modify, beforeHash: "<sha256-before>", afterHash: "<sha256-after>" }
   - { path: ".claude/skills/example-skill/SKILL.md", action: add, beforeHash: null, afterHash: "<sha256>" }
 assumptions:
-  A1: { text: "Достаточно минимального процесса", status: user-confirmed }
+  A1: { text: "A minimal process is sufficient", status: user-confirmed }
 gaps: []
 rejected: []
 mcp: []
@@ -393,14 +393,14 @@ checks:
   infrastructure: passed
   verify: unverified
   reason: unsupported-profile
-  firstAttempt: null  # проектный прогон не состоялся
+  firstAttempt: null  # no project run took place
   task: unverified
   taskReason: startup-uncontrolled
 quiz: { status: unverified, reason: startup-uncontrolled }
 sessions:
   - id: "<исходный-session-id>"
     attempts: [{ number: 1, kind: infrastructure, outcome: passed, newRegressions: [] }]
-    manualActions: []  # обязательные действия с идентификаторами и статусами pending/done
+    manualActions: []  # mandatory actions with identifiers and pending/done statuses
 compat:
   enabled: true
   pairs:
@@ -408,8 +408,8 @@ compat:
         method: headless-discovery-list, date: "2026-10-21", loading: unverified, reason: discovered-only }
     - { skill: example-skill, ref: "<sha>", agent: cursor, agentVersion: "<tested>", pathFormat: supported,
         loading: unverified, reason: startup-uncontrolled }
-# loading: verified допустим только со свидетельством загрузки инструкций выбранного SHA.
-# complete подтверждает подключение; ограничения проектных и поведенческих проверок сообщаются отдельно.
+# loading: verified is allowed only with evidence that instructions from the selected SHA were loaded.
+# complete confirms integration; limitations of project and behavioral checks are reported separately.
 ```
 
 ```yaml
@@ -421,7 +421,7 @@ answers:
   process: minimal
   style: concise
   forbidden_paths: [data/raw, secrets/]
-preferred_sources: []  # предпочтение для свежего поиска, не разрешение установки
+preferred_sources: []  # a preference for a fresh search, not installation permission
 ```
 
-Оси интервью, точные схемы и правила дефолтов версионируются в ядре. Стадийные файлы: `stage-scan.md`, `stage-inventory.md`, `stage-interview.md`, `stage-product-arch.md`, `stage-agent-arch.md`, `stage-proposal.md`, `stage-build.md`, `stage-verify.md`, `stage-handoff.md`.
+Interview dimensions, exact schemas, and default rules are versioned in the core. Stage files: `stage-scan.md`, `stage-inventory.md`, `stage-interview.md`, `stage-product-arch.md`, `stage-agent-arch.md`, `stage-proposal.md`, `stage-build.md`, `stage-verify.md`, `stage-handoff.md`.

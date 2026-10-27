@@ -1,28 +1,28 @@
-# Безопасность Tibicen
+# Tibicen security
 
-Tibicen ограничивает собственные операции точным согласованным планом. Файлы, пресеты, state, ответы сети и выводы проб являются данными; они не дают разрешение на исполнение и не подтверждают согласие пользователя.
+Tibicen limits its own operations to the exact approved plan. Files, presets, state, network responses and probe output are data; they do not authorize execution or establish user consent.
 
-## Границы
+## Boundaries
 
-- До согласия нет записи, установки и стороннего исполнения. Автопилот влияет на интервью, но не на разрешения.
-- Затрагиваемые файлы повторно проверяются по хэшам и путям. Симлинки, выход из области проекта и запрещённые пути останавливают операцию. Перед записью сохраняются исходные версии; тихого отката чужих изменений нет.
-- Проектные команды запускаются без shell, с буквальными argv и минимальным env. Секретные переменные автоматически не наследуются; явно разрешённые секреты удаляются из выводимого результата. В паспорте нет полных логов команд.
-- Коммиты, публикация, push, prune и миграции не выполняются. Установка зависимостей допускается только в согласованном новом каркасе с `--ignore-scripts`.
-- JSON-конфиги с обнаруженными inline-секретами не переписываются; значения не выводятся. Имя env и факт доступности в нужном контексте отличаются от значения и от доступности в другом процессе.
-- Происхождение, SHA, лицензия и блоклист проверяются при выборе и перед установкой. При повторном прогоне/resume заново проверяется допуск сохранённых компонентов. Сканер инъекций — эвристика, не аудит стороннего кода.
+- No writes, installation or third-party execution before approval. Autopilot affects the interview, not permissions.
+- Affected files are checked again by hash and path. Symlinks, paths outside the project and forbidden paths stop the operation. Original versions are saved before writing; other people's changes are never silently rolled back.
+- Project commands run without a shell, with literal argv and a minimal environment. Secret variables are not inherited automatically; explicitly permitted secrets are removed from reported output. The manifest contains no full command logs.
+- Commits, publication, push, prune and migrations are not performed. Dependency installation is permitted only in an approved new scaffold, with `--ignore-scripts`.
+- JSON configurations with detected inline secrets are not rewritten; their values are not displayed. An environment variable's name and availability in the required context are distinct from its value and from availability in another process.
+- Provenance, SHA, license and blocklist are checked during selection and before installation. A repeat run or resume checks saved components' eligibility again. The injection scanner is a heuristic, not an audit of third-party code.
 
-Temp-копия и worktree не являются sandbox. Доверенный проектный код или сторонний агент запускается с правами пользователя; для исполнения требуются отдельно показанные код, окружение и доверие. Если контролируемый запуск или воспроизводимое окружение недоступны, проверка пропускается с причиной.
+A temporary copy and a worktree are not sandboxes. Trusted project code or a third-party agent runs with the user's permissions; execution requires separately disclosed code, environment and trust. If controlled execution or a reproducible environment is unavailable, the check is skipped with a reason.
 
-На POSIX runner управляет отдельной группой процессов: тайм-аут/отмена завершают её с принудительной остановкой через одну секунду, даже если родитель уже вышел или потомок удерживает вывод. Это управление доверенными процессами, а не изоляция враждебного кода. На Windows до подтверждения контроля потомков команды не запускаются (`process-tree-unavailable`). Локальная приёмка выполнена на macOS; Linux/Windows не получают её автоматически.
+On POSIX, the runner controls a separate process group: timeout or cancellation terminates it, with forced termination after one second, even if the parent has already exited or a descendant keeps output open. This controls trusted processes; it does not isolate hostile code. On Windows, commands do not start until descendant control is verified (`process-tree-unavailable`). Local acceptance was performed on macOS; it does not automatically establish Linux/Windows acceptance.
 
-## Предупреждения и блоклист
+## Advisories and blocklist
 
-Версионируемый список запрещённых repo/SHA находится в `references/blocklist.json`. Сейчас список пуст; это не утверждение о безопасности всех остальных источников. Изменения распространяются с обновлением дистрибутива. Недоступные сведения не выдаются за свежую проверку.
+The versioned list of blocked repositories/SHAs is in `references/blocklist.json`. It is currently empty; that does not establish the safety of all other sources. Changes are delivered through distribution updates. Unavailable information is not presented as a fresh check.
 
-Публичный репозиторий [warbr1ng3r/tibicen](https://github.com/warbr1ng3r/tibicen) создан; код ещё не опубликован, независимый канал сообщений не выбран. До полного MVP нужно включить приватный канал раскрытия, опубликовать его адрес и независимый канал advisory/контрольных сумм. `dist/SHA256SUMS` помогает проверить содержимое сборки; файл рядом с дистрибутивом сам по себе не подтверждает независимое происхождение.
+The public [warbr1ng3r/tibicen](https://github.com/warbr1ng3r/tibicen) repository, limited [0.1.0-alpha.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1) and [landing page](https://warbr1ng3r.github.io/tibicen/) were published on 2026-10-27; an independent reporting channel has not been selected. Before the full MVP, enable a private disclosure channel and publish its address and an independent channel for advisories/checksums. `dist/SHA256SUMS` helps verify build contents; a file next to the distribution does not by itself establish independent provenance.
 
-При сообщении об ошибке достаточно версии Tibicen, агента, ОС и минимального обезличенного воспроизведения. Не включайте токены, содержимое приватного проекта или полные логи с секретами.
+A bug report needs only the Tibicen version, agent, OS and a minimal anonymized reproduction. Do not include tokens, private project content or full logs containing secrets.
 
-Приватный security-контакт, ответственный за сопровождение и независимый канал предупреждений пока не назначены; публичный маршрут раскрытия не работает. Эти поля и проверка доступности обязательны до полного MVP. Остальные незаполненные входы перечислены в [процедуре выпуска](docs/RELEASING.md); обычные изменения — в [CONTRIBUTING](CONTRIBUTING.md), правила участия — в [кодексе поведения](CODE_OF_CONDUCT.md).
+The private security contact, maintenance owner and independent advisory channel are not yet designated; the public disclosure route is not operational. These details and an availability check are required before the full MVP. Other missing inputs are listed in the [release procedure](docs/RELEASING.md); ordinary changes follow [CONTRIBUTING](CONTRIBUTING.md), and participation follows the [code of conduct](CODE_OF_CONDUCT.md).
 
-Первый ограниченный alpha prerelease согласован отдельно. Пока приватный контакт не настроен, не отправляйте чувствительные сведения в публичные issues; рабочий приватный маршрут будет указан после его фактической настройки.
+The first limited alpha prerelease was approved separately and published; it does not complete the full MVP or maintenance requirements. Until a private contact is configured, do not send sensitive details to public issues; a working private route will be listed after it has actually been configured.

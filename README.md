@@ -13,16 +13,17 @@ Two entry points:
 - `tibicen-init` — “Set up agent infrastructure.” For an empty directory or an existing application without an agent setup.
 - `tibicen-adopt` — “Review and update agent infrastructure.” For fixing, extending, and updating existing instructions and integrations.
 
-Version 0.1.0-alpha.1 is being prepared as a limited prerelease. Local macOS/Node 24/Codex app observations are available; full MVP acceptance, broader agent coverage, human/pilot evidence and support contacts remain open. See [CHANGELOG](CHANGELOG.md), [contributing](CONTRIBUTING.md) and [release preparation](docs/RELEASING.md).
+[Version 0.1.0-alpha.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1) was published on 27 October 2026 as a limited prerelease. The [configuration page](https://warbr1ng3r.github.io/tibicen/) is live. Observations cover macOS/Node 24/Codex; full MVP acceptance, broader agent coverage, human/pilot evidence and support contacts remain open. See [CHANGELOG](CHANGELOG.md), [contributing](CONTRIBUTING.md) and [release details](docs/RELEASING.md).
 
 Application source code, existing package manifests, CI, and data are preserved during setup. Nothing is written or installed, and no project code runs, before approval. Tibicen does not create commits, including in temporary repositories or during checks. Afterward, the project retains instructions and a `.tibicen/manifest.yml` record; no persistent Tibicen process remains.
 
 ## Install the limited alpha
 
-The alpha uses a versioned distribution tag, separate from the development
-source tree. Check [Releases](https://github.com/warbr1ng3r/tibicen/releases)
-for its publication status and checksums. The supported observation for this
-alpha is macOS with Node 24 and Codex; other agent options remain experimental.
+The [published alpha](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1) uses a versioned distribution tag, separate
+from the development source tree; release assets include checksums. Installation
+from both the full distribution SHA and tag matched all 86 files, and approved
+session resume and removal checks passed. These observations cover macOS with
+Node 24 and Codex; other agent options remain experimental.
 
 ```sh
 npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/v0.1.0-alpha.1 -g --agent codex --skill tibicen-init tibicen-adopt --copy
@@ -95,8 +96,8 @@ This removes their installed directories and any files inside them. In the local
 macOS check it preserved project files, `.tibicen` manifests/state, presets and
 agent configuration outside those directories. Empty parent directories and the
 installer's lock file may remain. Removal does not undo approved project setup;
-review project changes separately. The checked alpha scope is macOS with Codex;
-full cross-platform delivery acceptance remains pending.
+review project changes separately. See the [delivery evidence](docs/evals/results/2026-10-27-candidate-delivery/README.md)
+for the exact tested scope.
 
 ## Working with a project
 
@@ -152,7 +153,7 @@ Use focused checks while editing; run `pnpm test` before integrating changes.
 
 The full `pnpm test` gate still runs lint, formatting, all type checks, the site build, strict OpenSpec validation and every Node test. Browser tests remain the separate `pnpm test:site` command.
 
-[Offline CI](docs/CI.md) runs the full gate, build, distribution checksums and unpacked self-tests without model credentials. Its local validation and remote execution status are recorded separately.
+[Offline CI](docs/CI.md) runs the full gate, build, distribution checksums and unpacked self-tests without model credentials. The published source passed [GitHub Actions on Ubuntu](https://github.com/warbr1ng3r/tibicen/actions/runs/40437643480); the local clean-source gate passed all 668 tests.
 
 Use `pnpm eval:diagnostic` for the documented [diagnostic entry](docs/evals/EXTERNAL_RUNS.md): dry-run by default, or offline calibration with a fake driver. Native execution requires an explicit supported request; unsupported routes produce a saved blocked result.
 
@@ -168,11 +169,13 @@ The landing page is a separate Astro workspace in `landing/`, with adapted Astro
 
 ## Documentation and maintenance
 
-- [Product vision](docs/PRODUCT_VISION.md) (Russian).
-- [Development plan and work allocation](docs/DEVELOPMENT_PLAN.md) (Russian).
+English is canonical for project documentation. Russian translations live beside it as `*_ru.md`; all references target the English documents. Update a translation alongside its guide.
+
+- [Product vision](docs/PRODUCT_VISION.md).
+- [Development plan and work allocation](docs/DEVELOPMENT_PLAN.md).
 - [Security boundaries and vulnerability reporting](SECURITY.md).
 
-Before the full MVP, define the distribution owner/URL, an independent channel for advisories and checksums, the person responsible for reviewing rules, and the voluntary pilot parameters. The core and adapters are reviewed at least monthly and when supported tools change significantly. Updating an installed Tibicen is an explicit user action; there is no background self-update.
+Before the full MVP, define an independent channel for advisories and checksums, the person responsible for reviewing rules, support contacts, and the voluntary pilot parameters. The core and adapters are reviewed at least monthly and when supported tools change significantly. Updating an installed Tibicen is an explicit user action; there is no background self-update.
 
 License: MIT.
 

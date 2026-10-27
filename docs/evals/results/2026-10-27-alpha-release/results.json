@@ -1,0 +1,205 @@
+{
+  "schema": 1,
+  "date": "2026-10-27",
+  "version": "0.1.0-alpha.1",
+  "scope": "Limited alpha: macOS arm64 / Node24.15.0 / Codex app and user-scope; full MVP remains open",
+  "release": {
+    "schema": 1,
+    "releaseUrl": "https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1",
+    "tag": "v0.1.0-alpha.1",
+    "tagSha": "db03ebc988af1e38ea9f62c02027945ba40660fc",
+    "publishedPrerelease": true,
+    "installer": "skills@1.7.4 from previously reviewed cache",
+    "installUrl": "https://github.com/warbr1ng3r/tibicen/tree/v0.1.0-alpha.1",
+    "selectedSkills": [
+      "tibicen-init",
+      "tibicen-adopt"
+    ],
+    "installedFilesMatchingFrozen": 86,
+    "sha256sumsHash": "35f743a56b47e4f25743da5d6b6a1e606fb719b3382372384124094711e1b2dc",
+    "selfTests": [
+      {
+        "skill": "tibicen-init",
+        "status": "passed",
+        "version": "0.1.0-alpha.1"
+      },
+      {
+        "skill": "tibicen-adopt",
+        "status": "passed",
+        "version": "0.1.0-alpha.1"
+      }
+    ],
+    "remove": {
+      "exitCode": 0,
+      "bothDirectoriesAbsent": true,
+      "remainingLockSkills": 0
+    },
+    "releasedAssets": [
+      {
+        "name": "distribution-SHA256SUMS",
+        "bytes": 8949,
+        "sha256": "35f743a56b47e4f25743da5d6b6a1e606fb719b3382372384124094711e1b2dc",
+        "matchesLocalBytes": true,
+        "matchesPublishedDigest": true
+      },
+      {
+        "name": "SHA256SUMS",
+        "bytes": 185,
+        "sha256": "e363d7d079e46cbd5fa28b858a1dbed83ceb49bd966a6828679ded4f3079eb3c",
+        "matchesLocalBytes": true,
+        "matchesPublishedDigest": true
+      },
+      {
+        "name": "tibicen-0.1.0-alpha.1.tar.gz",
+        "bytes": 202535,
+        "sha256": "95d62ec9b8a2fdf78a47122a9fd8c16d58bbb8a6d2a2af564db4b3006e6bb606",
+        "matchesLocalBytes": true,
+        "matchesPublishedDigest": true
+      }
+    ],
+    "releaseChecksumsValid": true,
+    "boundaries": {
+      "newOwnedHome": true,
+      "personalHomeChanged": false,
+      "authUsed": false,
+      "modelCalls": 0,
+      "paidApiCalls": 0,
+      "fullGateRuns": 0,
+      "uploads": 0,
+      "offlineCliNetworkAttempts": 0,
+      "publicGithubApiGetRequestsByInstaller": 2
+    }
+  },
+  "source": {
+    "source_sha": "e0f59a55c7ce7581e402c3e270aa162fa1e0dc52",
+    "source_files": 409,
+    "exact_manifest_files": 409,
+    "git_line_ending_normalization_only": [],
+    "source_files_unexpected": [],
+    "distribution_sha": "db03ebc988af1e38ea9f62c02027945ba40660fc",
+    "built_distribution_files_equal_frozen": 86,
+    "checksum_inventory_equal": true,
+    "main_ci": "https://github.com/warbr1ng3r/tibicen/actions/runs/40437643480",
+    "main_ci_conclusion": "success"
+  },
+  "acceptance": {
+    "localFullGate": {
+      "tests": 668,
+      "pass": 668,
+      "fail": 0
+    },
+    "review": "ponytail Ship",
+    "distributionTransition": {
+      "from": {
+        "version": "0.1.0",
+        "sourceSha": "3fb29efb1087a616aeb69a3b22f400972bfb8a3e",
+        "delivery": "local frozen distribution",
+        "installedFilesMatchingFrozen": 86
+      },
+      "to": {
+        "version": "0.1.0-alpha.1",
+        "distributionSha": "db03ebc988af1e38ea9f62c02027945ba40660fc",
+        "sourceUrl": "https://github.com/warbr1ng3r/tibicen/tree/db03ebc988af1e38ea9f62c02027945ba40660fc",
+        "sha256sumsHash": "35f743a56b47e4f25743da5d6b6a1e606fb719b3382372384124094711e1b2dc",
+        "installedFilesMatchingFrozen": 86
+      },
+      "method": "explicit add of new immutable Git SHA with --copy; two selected skills only",
+      "ownedFilesUnchangedBeforeResume": 11,
+      "localSkillEdits": "replaced/deleted by add; complete backup and human-readable diff verified; no automatic merge",
+      "sourceMainUsed": false,
+      "developmentSkillsInstalled": false
+    },
+    "resume": {
+      "publicSha": "db03ebc988af1e38ea9f62c02027945ba40660fc",
+      "installedVersion": "0.1.0-alpha.1",
+      "sameSessionId": "183b5ffa-0c15-4b12-a2cc-8be5b0af4379",
+      "priorSessionPreserved": "49aa0f45-3969-4d8d-9346-32f548114aa4",
+      "attemptsPreserved": 1,
+      "attemptsAfterResume": 2,
+      "operationHistory": 2,
+      "status": "complete",
+      "infrastructure": "passed",
+      "unsupportedStateSchemaRefusedWithoutWrites": true,
+      "unsupportedManifestSchemaRefusedWithoutWrites": true,
+      "appChecks": 2,
+      "appAndUserFilesUnchanged": 7
+    },
+    "removal": {
+      "command": "skills remove tibicen-init tibicen-adopt -g --agent codex -y",
+      "exitCode": 0,
+      "bothDirectoriesRemoved": true,
+      "internalUserAddedFileRemoved": true,
+      "verifiedBackupsIntact": true,
+      "externalFilesPreserved": 16,
+      "realUnsupportedStateAndManifestPreserved": true,
+      "presetAndFinalProjectManifestPreserved": true,
+      "siblingUserFilePreserved": true,
+      "remainingLockSkills": 0,
+      "remainingSiblingFiles": [
+        "owner-note.txt"
+      ]
+    }
+  },
+  "pages": {
+    "url": "https://warbr1ng3r.github.io/tibicen/",
+    "workflow": "https://github.com/warbr1ng3r/tibicen/actions/runs/40438226284",
+    "sourceSha": "e0f59a55c7ce7581e402c3e270aa162fa1e0dc52",
+    "status": "success",
+    "httpResources": [
+      {
+        "path": "/tibicen/",
+        "status": 200,
+        "bytes": 48950,
+        "content_type": "text/html; charset=utf-8"
+      },
+      {
+        "path": "/tibicen/assets/logo.svg",
+        "status": 200,
+        "bytes": 305,
+        "content_type": "image/svg+xml"
+      },
+      {
+        "path": "/tibicen/assets/favicon.svg",
+        "status": 200,
+        "bytes": 355,
+        "content_type": "image/svg+xml"
+      },
+      {
+        "path": "/tibicen/licenses/astrowind.txt",
+        "status": 200,
+        "bytes": 1065,
+        "content_type": "text/plain; charset=utf-8"
+      },
+      {
+        "path": "/tibicen/_astro/index.DYFfi2rW.css",
+        "status": 200,
+        "bytes": 31035,
+        "content_type": "text/css; charset=utf-8"
+      },
+      {
+        "path": "/tibicen/_astro/index.astro_astro_type_script_index_1_lang.DT3-3a5N.js",
+        "status": 200,
+        "bytes": 5344,
+        "content_type": "application/javascript; charset=utf-8"
+      }
+    ],
+    "browserSmoke": {
+      "engine": "Codex in-app browser",
+      "logosLoaded": 2,
+      "taggedInstallCommand": true,
+      "pnpmSelectionUpdatesCommand": true,
+      "presetDownload": {
+        "schema": 1,
+        "name": "alpha-release-smoke"
+      },
+      "consoleErrors": null
+    }
+  },
+  "limits": [
+    "Full L1/PREF/SKILL/PROC coverage and fresh native startup remain incomplete.",
+    "Human review, usefulness pilot, ownership and private support contacts remain open.",
+    "Linux offline CI does not establish Linux product acceptance; Windows command execution remains unavailable.",
+    "The previous0.1.0 distribution was local; this is the first public release.",
+    "SHA/tag update requires explicit add of a new ref; installed local edits require backup and are not automatically merged."
+  ]
+}

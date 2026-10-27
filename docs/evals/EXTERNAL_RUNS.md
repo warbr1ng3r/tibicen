@@ -1,10 +1,10 @@
 # Evaluation entry points
 
-Основной вход в повторяемую локальную диагностику — `pnpm eval:diagnostic`; для произвольного доверенного host-модуля сохраняется `pnpm eval:external`. Импорт, вызов без аргументов и `--help` обеих команд не загружают драйвер и не запускают процесс или модель. Обычный `pnpm test` остаётся офлайн. Стенд и его материалы исключаются из обоих устанавливаемых скиллов.
+The main entry for repeatable local diagnostics is `pnpm eval:diagnostic`; `pnpm eval:external` remains available for an arbitrary trusted host module. Import, invocation without arguments and `--help` for either command do not load the driver or launch a process or model. Ordinary `pnpm test` remains offline. The harness and its materials are excluded from both installable skills.
 
 ## Repeatable local diagnostics
 
-Для повторяемой диагностики не нужно писать host-модуль: [diagnostic.ts](../../scripts/evals/diagnostic.ts) выбирает ограниченный встроенный [драйвер](../../scripts/evals/diagnostic-driver.ts). Без аргументов и с `--help` он только показывает справку. При указанном `--output` режим по умолчанию — `dry-run`; ни процессов, ни моделей он не запускает.
+Repeatable diagnostics do not require writing a host module: [diagnostic.ts](../../scripts/evals/diagnostic.ts) selects a bounded built-in [driver](../../scripts/evals/diagnostic-driver.ts). Without arguments or with `--help`, it only displays help. When `--output` is supplied, the default mode is `dry-run`; it launches neither processes nor models.
 
 ```sh
 pnpm eval:diagnostic --help
@@ -12,13 +12,13 @@ pnpm eval:diagnostic --output .evals-private/diagnostic-plan-001
 pnpm eval:diagnostic --mode offline --output .evals-private/diagnostic-offline-001
 ```
 
-Выходной каталог должен быть новым. Он атомарно резервируется с правами 0700 до чтения config и загрузки драйвера; существующий файл, каталог или симлинк отклоняется до исполнения. Гонка двух команд допускает только одного владельца каталога. Файлы записываются через `writeEvalArtifact` с правами 0600 и не заменяются; после сбоя оставшийся каталог сохраняется для разбора, повтор требует нового пути.
+The output directory must be new. It is reserved atomically with mode 0700 before config is read or the driver is loaded; an existing file, directory or symlink is rejected before execution. A race between two commands permits only one directory owner. Files are written through `writeEvalArtifact` with mode 0600 and are not replaced; after a failure, the remaining directory is preserved for investigation, and a retry requires a new path.
 
-`diagnostic.json` — состояние команды, а не вердикт о Tibicen. `blocked` означает, что модель не вызывалась (`modelRequests: 0`); команда успешно сохраняет эту причину с exit 0. `error` означает сбой команды с exit 1. `recorded` означает сохранение парного отчёта, в котором могут быть error/skip/unverified. Неизвестное число запросов native-серии остаётся `null`; её фактические сессии учитываются существующим native runner. Stdout содержит JSONL: последняя строка — состояние команды, перед ней native runner может выводить свои краткие записи прогресса.
+`diagnostic.json` is command state, not a verdict on Tibicen. `blocked` means the model was not called (`modelRequests: 0`); the command successfully saves that reason with exit 0. `error` means a command failure with exit 1. `recorded` means a paired report was saved and may contain error/skip/unverified. An unknown native-series request count remains `null`; actual sessions are counted by the existing native runner. Stdout is JSONL: the final line is command state, preceded by any brief progress records from the native runner.
 
-Offline-пример запускает только [фиксированный fake-процесс](../../scripts/evals/diagnostic-fake.mjs) через `ProcessProfile`, с пустым env и `auth: none`. У него один синтетический случай `offline-protocol`, два варианта, один повтор, лимиты launch/setup/task по 1000 ms и нулевой модельный бюджет. Маршрут `profile: fake`, `provider/model/auth: none`, все лимиты и синтетический нулевой source SHA видны в `diagnostic.json`; `paired-report.json` помечен `calibration`. Проверяется обмен сообщениями runner, без установки инфраструктуры, проверки ОС-изоляции или оценки поведения живого агента. На неподдержанной платформе сохраняются соответствующие skip. Пример не требует CLI агента, сети или credentials.
+The offline example launches only a [fixed fake process](../../scripts/evals/diagnostic-fake.mjs) through `ProcessProfile`, with empty env and `auth: none`. It has one synthetic `offline-protocol` case, two variants, one repeat, launch/setup/task limits of 1000 ms each and zero model budget. The `profile: fake` route, `provider/model/auth: none`, all limits and the synthetic zero source SHA are visible in `diagnostic.json`; `paired-report.json` is marked `calibration`. This checks runner message exchange, without installing infrastructure, checking OS isolation or assessing live-agent behavior. The corresponding skip outcomes are recorded on unsupported platforms. The example requires no agent CLI, network or credentials.
 
-Для проверки конкретного native-запроса передаётся JSON с явными условиями:
+To check a specific native request, supply JSON with explicit conditions:
 
 ```json
 {
@@ -41,15 +41,15 @@ Offline-пример запускает только [фиксированный
 }
 ```
 
-Заменить placeholder source SHA на полный проверяемый SHA, а preflightPath — на явный абсолютный путь к сохранённому preflight. Config содержит только перечисленные метаданные, без ключей, env, произвольных argv, дополнительных полей и значений авторизации. Native-preflight сам по себе этим входом не создаётся: проверяются сохранённые условия и hash бинарника через действующий профиль, без его исполнения и чтения credentials. Отсутствующие/неверные поля, неподтверждённый preflight или неподдержанный маршрут дают сохранённый `blocked`, без перехода к другому профилю, модели или API. Пути config/preflight, сырые ошибки и неизвестные значения не отражаются в stdout или диагностическом артефакте.
+Replace the source SHA placeholder with the full reviewed SHA, and preflightPath with an explicit absolute path to the saved preflight. Config contains only the listed metadata, without keys, env, arbitrary argv, extra fields or authorization values. This entry does not create a native preflight: it checks saved conditions and the binary hash through the existing profile, without executing it or reading credentials. Missing/invalid fields, an unconfirmed preflight or an unsupported route produce a saved `blocked`, without switching profile, model or API. Config/preflight paths, raw errors and unknown values are not reflected in stdout or the diagnostic artifact.
 
 ```sh
 pnpm eval:diagnostic --config /absolute/private/request.json --output .evals-private/diagnostic-plan-002
 ```
 
-Даже полный допустимый dry-run остаётся `blocked` с причиной `diagnostic-dry-run` и нулём модельных запросов. Реальная серия требует отдельного явного `--mode native` с тем же config и новым output. Этот режим передаёт управление существующему `runCodexDiagnostics`: только Codex CLI 0.157.0 / gpt-6-sol / существующая подписка и приведённый фиксированный бюджет. Его `native/` содержит прежние frozen conditions/сессии, а `paired-report.json` остаётся `observed`. Загрузка и польза продукта принимаются независимо от успешного завершения команды. API-профиль, новый денежный бюджет и другие модели не реализованы; они остаются задачей 3.7 стенда. Claude/ZCode по-прежнему имеют только discovery/blocked-профили.
+Even a complete valid dry-run remains `blocked` with reason `diagnostic-dry-run` and zero model requests. A real series requires a separate explicit `--mode native` with the same config and a new output. This mode delegates to the existing `runCodexDiagnostics`: only Codex CLI 0.157.0 / gpt-6-sol / an existing subscription and the fixed budget above. Its `native/` contains the existing frozen conditions/sessions, while `paired-report.json` remains `observed`. Product loading and usefulness are accepted independently of successful command completion. An API profile, a new monetary budget and other models are not implemented; they remain harness task 3.7. Claude/ZCode still have only discovery/blocked profiles.
 
-[Офлайн-тесты входа](../../tests/evals/diagnostic-entry.test.ts) проверяют default/help/import без процессов, fake calibration, blocked без fallback, конфигурацию/ошибки без утечки синтетических секретов и отказ перезаписи до исполнения. Поддержанный native-путь проверяется только fake CLI, с отдельным пустым HOME; это не новая native-приёмка.
+[Offline entry tests](../../tests/evals/diagnostic-entry.test.ts) check default/help/import without processes, fake calibration, blocked without fallback, config/errors without synthetic-secret leaks, and refusal to overwrite before execution. The supported native route is checked only with a fake CLI and a separate empty HOME; this is not new native acceptance.
 
 ## Invocation
 
@@ -58,9 +58,9 @@ pnpm eval:external --help
 pnpm eval:external run /absolute/path/to/trusted-host-driver.mjs /absolute/path/to/new-report.json
 ```
 
-`run` — явное разрешение исполнить выбранный локальный host-модуль. Это доверенный код ведущего эксперимента, а не скачанный скилл, проектный скрипт или вход исполнителя. Он может обращаться к авторизации и моделям; перед вызовом его читают и проверяют как любой исполняемый host-код. Встроенного драйвера/профиля по умолчанию нет. Эта точка входа не создаёт sandbox и не подтверждает preflight сама по себе.
+`run` explicitly authorizes execution of the selected local host module. This is trusted code owned by the experiment operator, not a downloaded skill, project script or executor input. It may access authorization and models; read and review it before invocation as with any executable host code. There is no default built-in driver/profile. This entry point does not create a sandbox or confirm a preflight itself.
 
-Модуль экспортирует `async function run()`, возвращающую:
+The module exports `async function run()`, returning:
 
 ```ts
 {
@@ -69,30 +69,30 @@ pnpm eval:external run /absolute/path/to/trusted-host-driver.mjs /absolute/path/
 }
 ```
 
-Типы `ExternalDriver`/`ExternalRun` — в [external.ts](../../scripts/evals/external.ts), `ReportExperiment` — в [report.ts](../../scripts/evals/report.ts). Передаётся хотя бы один замороженный эксперимент со всеми запланированными слотами; фактические записи и пробелы покрытия сохраняются по [правилам парного отчёта](QUALITY_AND_REPORTS.md). Режим `calibration` не меняют на `observed`, чтобы выдать записанные данные за живой прогон.
+Types `ExternalDriver`/`ExternalRun` are in [external.ts](../../scripts/evals/external.ts); `ReportExperiment` is in [report.ts](../../scripts/evals/report.ts). Supply at least one frozen experiment with all planned slots; actual records and coverage gaps are retained under the [paired-report rules](QUALITY_AND_REPORTS.md). Do not change `calibration` mode to `observed` to present recorded data as a live run.
 
-Host-драйвер отвечает за выбор подтверждённого профиля, preflight, замороженные SHA/условия/бюджет/порядок/повторы, независимые деревья и setup/task-сессии, точное staged-согласие, лимиты/остановку потомков и сбор независимых оценок. Он использует [контракты](CONTRACTS.md), [runner](RUNNER.md) и [механические оценщики/хранилище](OBSERVATIONS_AND_GRADERS.md). Oracle и будущие ответы не передаются исполнителю. Само наличие функции run и имён полей не доказывает исполнение этих обязанностей; фактический native-профиль подтверждается отдельно.
+The host driver is responsible for choosing a confirmed profile, preflight, frozen SHA/conditions/budget/order/repeats, independent trees and setup/task sessions, exact staged consent, limits/descendant stopping and collection of independent assessments. It uses the [contracts](CONTRACTS.md), [runner](RUNNER.md) and [mechanical graders/storage](OBSERVATIONS_AND_GRADERS.md). The executor receives neither the oracle nor future replies. A run function and field names alone do not prove these responsibilities are fulfilled; the actual native profile is confirmed separately.
 
-Значения credentials не записываются в драйвер, argv, stdout/stderr или возвращаемые эксперименты. `sensitiveValues` хранится только у host и используется для отказа перед публикацией; в отчёт список не копируется. Драйвер не печатает сырые ответы/ошибки. CLI не отражает текст исключений драйвера: ошибка даёт exit 1 и фиксированный `external-experiment-failed`, без отчёта.
+Credential values are not written into the driver, argv, stdout/stderr or returned experiments. `sensitiveValues` remains host-only and is used for rejection before publication; the list is not copied into the report. The driver does not print raw responses/errors. The CLI does not reflect driver exception text: an error gives exit 1 and fixed `external-experiment-failed`, without a report.
 
 ## Report
 
-После завершения драйвера CLI повторно валидирует эксперименты, связанные записи и оценки через `buildPairedReport`. Сохраняется только выбранная проекция отчёта; полный сценарий/oracle, отрывки запроса судье, сырые логи и sensitiveValues туда не копируются.
+After the driver finishes, the CLI revalidates experiments, linked records and grades through `buildPairedReport`. Only the selected report projection is saved; the complete scenario/oracle, judge-request excerpts, raw logs and sensitiveValues are not copied into it.
 
-Назначение указывается явно. Уже существующий файл или симлинк отклоняется **до загрузки драйвера**, чтобы повторный вызов не запускал эксперимент ради перезаписи. Публикация атомарная, без замены существующего пути даже при гонке: временный файл 0600, новый каталог 0700, hard link и удаление временного файла. Разные осознанные вызовы не дедуплицируются и не получают автоматического повтора. Старые результаты сохраняются; для новой серии нужны новые id и новый путь отчёта.
+The destination must be explicit. An existing file or symlink is rejected **before the driver is loaded**, so another invocation does not run an experiment merely to overwrite its output. Publication is atomic and never replaces an existing path, even under a race: a temporary file with mode 0600, a new directory with mode 0700, a hard link and removal of the temporary file. Separate intentional invocations are not deduplicated and receive no automatic retry. Old results are retained; a new series requires new ids and a new report path.
 
-Успешное завершение команды означает сохранение проверенного отчёта, а не успешность Tibicen или релизную приёмку. Ошибки/skip/unverified в данных сохраняются. Подтверждаются только фактически наблюдаемые сценарии и профили.
+Successful command completion means a validated report was saved, not that Tibicen passed or release acceptance is complete. Error/skip/unverified data is preserved. Only actually observed scenarios and profiles are confirmed.
 
 ## Offline verification
 
-Рабочий контроль команды без моделей:
+A working command control without models:
 
 ```sh
 pnpm eval:external run tests/evals/helpers/external-driver.mjs /tmp/tibicen-calibration-example.json
 ```
 
-Указанный модуль принадлежит тестам и возвращает только recorded-контроль в режиме calibration. Путь отчёта должен быть новым; существующий пример не перезаписывается. Это проверка точки входа, а не испытание Codex.
+The specified module belongs to the tests and returns only a recorded control in calibration mode. The report path must be new; an existing example is not overwritten. This checks the entry point, not Codex.
 
-[Тесты команды](../../tests/evals/external.test.ts) проверяют отсутствие загрузки драйвера без run, правильный отчёт/права, сохранение старого файла без повторного исполнения, некорректный драйвер и отказ на синтетический секрет/исключение без утечки. [Тесты сборки](../../tests/skills/build.test.ts) проверяют исключение evals/tests/docs/OpenSpec/dev-скиллов/сайта/node_modules из обеих поставок. Регрессии хранения проверяют одновременную запись и отделение данных до await.
+[Command tests](../../tests/evals/external.test.ts) check no driver loading without run, correct report/permissions, retention of the old file without repeated execution, an invalid driver, and rejection of a synthetic secret/exception without leakage. [Build tests](../../tests/skills/build.test.ts) check that evals/tests/docs/OpenSpec/dev skills/site/node_modules are excluded from both distributions. Storage regressions check concurrent writing and data separation before await.
 
-Сама задача 2.6 не добавляет native-профиль. Последующие задачи 3.1–3.2 реализованы отдельными [Codex preflight и диагностическим host-драйвером](CODEX_DIAGNOSTIC.md); их явный вызов и свидетельства не меняют обычный офлайн-маршрут. [Общий native runner](NATIVE_RUNS.md) продолжает SKILL/PREF/PROC с отдельными каталогами первой тройки профилей. Claude/ZCode пока имеют discovery/blocked-профили; живой запуск требует подтверждения. Существующий ProcessProfile остаётся протоколом доверенных offline/auth:none процессов.
+Task 2.6 itself does not add a native profile. Subsequent tasks 3.1–3.2 were implemented separately as the [Codex preflight and diagnostic host driver](CODEX_DIAGNOSTIC.md); their explicit invocation and evidence do not change the normal offline route. The [shared native runner](NATIVE_RUNS.md) continues SKILL/PREF/PROC with separate directories for the first three profiles. Claude/ZCode currently have discovery/blocked profiles; live execution requires confirmation. Existing ProcessProfile remains a protocol for trusted offline/auth:none processes.

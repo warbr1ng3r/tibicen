@@ -1,9 +1,10 @@
 # Contributing to Tibicen
 
-Tibicen is preparing its first limited alpha prerelease. The repository is
-[warbr1ng3r/tibicen](https://github.com/warbr1ng3r/tibicen). The public
-installation URL, security contact and maintainer are still pending. See
-[release preparation](docs/RELEASING.md) before publishing or inviting a pilot.
+Tibicen has published its first limited [alpha prerelease](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1). The repository is [warbr1ng3r/tibicen](https://github.com/warbr1ng3r/tibicen). Full MVP acceptance, a responsible maintainer and private security/conduct contacts remain open. See [release details](docs/RELEASING.md) before preparing another release or inviting a pilot.
+
+## Documentation language
+
+Write the canonical project documentation in English. Keep a Russian translation beside each guide as `NAME_ru.md` and update both versions together. Links and instruction pointers target the English canonical files in both languages. This convention covers project guides; installed skill instructions and versioned runtime references have a separate release scope.
 
 ## Set up and check a change
 

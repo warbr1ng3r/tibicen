@@ -8,3 +8,4 @@
 - Do not create commits or rewrite history unless the user explicitly requests it.
 - OpenSpec and its generated development skills must not become dependencies of the distributed Tibicen skills.
 - For ticket selection, parallel work, and integration, read docs/agents/issue-tracker.md and the current effort it links.
+- For project documentation changes, follow the language and translation convention in CONTRIBUTING.md.

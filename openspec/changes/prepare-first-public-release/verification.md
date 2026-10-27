@@ -1,14 +1,12 @@
 # Verification
 
-> Public source snapshot: detailed local development records are omitted. Historical verification summaries below retain their original limits.
-
 ## Local candidate and existing CI — 27.10.2026
 
 После ponytail-review/fixes создан source commit `3fb29efb1087a616aeb69a3b22f400972bfb8a3e`. Общий gate667/667, build и 86 сумм passed. Обе распакованные CLI вне checkout с пустым PATH вернули self-test passed/version0.1.0. Eval/dev resources, внешний OpenSpec CLI и сгенерированные development skills отсутствуют; собственные `scripts/process/index.ts` и `references/process-openspec.md` присутствуют в обеих поставках с проверенными суммами.
 
 Офлайн-CI уже находится в `.github/workflows/ci.yml`: SHA-pinned Actions, pnpm11.21.0, contents:read, persist-credentials:false, test/build/unpacked checks без model secrets или live eval. Команды прошли локально. Git remote отсутствует; первый Ubuntu/GitHub Actions run не заявляется выполненным. Прежняя формулировка design «CI нет» исправлена по фактическому коду.
 
-Локальная поставка заморожена в `.evals-private/mvp-candidate-3fb29ef/`: version0.1.0, source SHA, 86files, SHA256SUMS hash `6ecd6b77d28e7adf3e9921b20078c80b2091a0109c8b5b6bfabaa9a201b4de23`, log hash и unpacked proofs в candidate.json. Это ограниченный local alpha candidate, не публичный релиз. Новых тегов, remote/model/auth/API вызовов или публикаций нет.
+Локальная поставка заморожена в maintainer-local record; omitted from public source: version0.1.0, source SHA, 86files, SHA256SUMS hash `6ecd6b77d28e7adf3e9921b20078c80b2091a0109c8b5b6bfabaa9a201b4de23`, log hash и unpacked proofs в candidate.json. Это ограниченный local alpha candidate, не публичный релиз. Новых тегов, remote/model/auth/API вызовов или публикаций нет.
 
 Задачи 2.1/2.2 приняты локально; прогресс3/14. Публичная доставка, update/remove установленной версии, приёмка заявленных L1/SKILL/PROC/PREF, human review, начальный пилот, контакты и release draft остаются открытыми. Исторические результаты ниже сохранены с их исходной датой и областью.
 
@@ -56,7 +54,7 @@ Release tasks1.2–1.3: добавлены CONTRIBUTING, CHANGELOG (Unreleased, 
 
 ## Installed candidate lifecycle and delivery — 27.10.2026
 
-На неизменном source3fb29ef/0.1.0 выполнены 8 ограниченных L1 случаев и локальная доставка. Root независимо пересверил 24 файла L1 и 6 внешних delivery-файлов, историю resume и удаление каталогов. 86 файлов поставки совпали при установке/повторе/reinstall; 8 CLI-команд прошли без Git вне checkout. Подробные ограничения каждого прогона сохранены.
+На неизменном source3fb29ef/0.1.0 выполнены [8 ограниченных L1 случаев](../../../docs/evals/results/2026-10-27-candidate-lifecycle/README.md) и [локальная доставка](../../../docs/evals/results/2026-10-27-candidate-delivery/README.md). Root независимо пересверил 24 файла L1 и 6 внешних delivery-файлов, историю resume и удаление каталогов. 86 файлов поставки совпали при установке/повторе/reinstall; 8 CLI-команд прошли без Git вне checkout. Подробные ограничения каждого прогона сохранены.
 
 Task2.5 принята для проверенного macOS/Codex user-scope: remove удаляет оба каталога скиллов вместе с добавленными внутрь файлами, сохраняет внешние проектные файлы/пресеты/настройки; остаются пустые parent directories и lock. README предупреждает о замене локальных правок при повторном add --copy и требует сначала сохранить их вне installation. Backup проверен, отдельное восстановление не проверялось. Public Git/Ubuntu и переход между двумя разными версиями с resume не подтверждены:2.3/2.4 открыты.
 
@@ -66,6 +64,12 @@ Task2.5 принята для проверенного macOS/Codex user-scope: r
 
 ## Installed components and fresh app contexts — 27.10.2026
 
-Положительные наблюдения кандидата: pinned Ponytail/SKILL+LICENSE установлен через CLI, явно прочитан и применён отдельным app subagent (2/2 теста). Optional OpenSpec1.14.3 init/adopt complete, затем один новый app subagent на adopt-копии выполнил planning→review→implementation→checks (5/5, strict validation, 3/3 native tasks). Root независимо сверил область изменений, защищённые файлы и по12 функциональных утверждений на каждый task. Источники/SHA/версии и все первоначальные отклонённые планы сохранены; template/keep-double/localinstructions не изменены.
+[Положительные наблюдения кандидата](../../../docs/evals/results/2026-10-27-candidate-components/README.md): pinned Ponytail/SKILL+LICENSE установлен через CLI, явно прочитан и применён отдельным app subagent (2/2 теста). Optional OpenSpec1.14.3 init/adopt complete, затем один новый app subagent на adopt-копии выполнил planning→review→implementation→checks (5/5, strict validation, 3/3 native tasks). Root независимо сверил область изменений, защищённые файлы и по12 функциональных утверждений на каждый task. Источники/SHA/версии и все первоначальные отклонённые планы сохранены; template/keep-double/localinstructions не изменены.
 
 Это отдельные наблюдения в новых контекстах текущего Codex app; версия app не измерена, native startup/discovery и human sample не проверены. Отдельный init downstream и все update/negative варианты не выполнены; builtin setup reports не переписаны внешними успехами. Tasks4.1 и extend3.4 открыты. Общий продуктовый код и86 файлов frozen candidate неизменны; новых SDK/API/auth/modelCLI/commit/tag/публикаций нет.
+
+## Published limited alpha — 27 October 2026
+
+Group5 is complete5/5. [Public evidence](../../../docs/evals/results/2026-10-27-alpha-release/README.md) binds source e0f59a5, distribution/tag db03ebc,668/668 clean local checks, independent review, actual SHA/tag installations and downloaded assets. Ubuntu main CI40437643480 and Pages40438226284 passed. The old local0.1.0→alpha transition preserved session history and completed the same session; unknown schemas refused without writes and removal preserved16 external files.
+
+Groups1–4 remain6/14: full component coverage, native loading/human/pilot and support ownership/contact requirements are not closed by alpha publication. No model/API acceptance is inferred from offline CI.

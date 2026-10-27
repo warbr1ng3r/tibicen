@@ -21,3 +21,7 @@ Private evidence: .evals-private/pages-20261027-r1/ (path-regression-before.log,
 ## Final local gate
 
 pnpm test прошёл:667/667, fail/cancel/skip0; lint/format/core+site types/root site build и strict specs прошли. Root-сборка восстановлена. Новых commits/tags/push/deployment нет. Все86 файлов frozen candidate3fb29ef сохранили хэши.
+
+## Actual deployment — 27 October 2026
+
+The owner authorized commit/push/publication and completed GitHub sign-in. Pages Source is GitHub Actions. [Run40438226284](https://github.com/warbr1ng3r/tibicen/actions/runs/40438226284) passed for source e0f59a55c7ce7581e402c3e270aa162fa1e0dc52. [Published site](https://warbr1ng3r.github.io/tibicen/) returned200; logos/favicon/license/CSS/JS loaded under /tibicen/. In-app-browser smoke confirmed the tagged command, pnpm selection and local schema1 preset download. The referenced alpha tag exists and its installation was checked.

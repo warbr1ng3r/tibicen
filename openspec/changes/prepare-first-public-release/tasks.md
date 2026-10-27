@@ -1,6 +1,6 @@
 # Tasks
 
-Полная MVP-программа1–4 на 27.10.2026: выполнены 1.1–1.3, 2.1, 2.2 и 2.5, 6/14; публичный выпуск не начат. Код офлайн-CI уже есть и проверен локально; первый удалённый Ubuntu run не подтверждён. Локальная поставка 0.1.0/source3fb29ef заморожена для ограниченной macOS/Codex alpha, без объявления полной публичной приёмки. Свидетельства — в verification.md; критический путь — docs/DEVELOPMENT_PLAN.md. Доставка из Git, обновление/удаление, продуктовая приёмка кандидата, пилот и решения владельца остаются открытыми.
+Полная MVP-программа1–4 на 27.10.2026: выполнены 1.1–1.3, 2.1, 2.2 и 2.5, 6/14 для полного MVP; отдельная ограниченная alpha опубликована, группа5 выполнена5/5. Код офлайн-CI уже есть и проверен локально; первый удалённый Ubuntu run не подтверждён. Локальная поставка 0.1.0/source3fb29ef заморожена для ограниченной macOS/Codex alpha, без объявления полной публичной приёмки. Свидетельства — в verification.md; критический путь — docs/DEVELOPMENT_PLAN.md. Доставка из Git, обновление/удаление, продуктовая приёмка кандидата, пилот и решения владельца остаются открытыми.
 
 ## 1. Versioning and contribution
 
@@ -30,11 +30,11 @@
 
 ## 5. Approved limited alpha0.1.0-alpha.1
 
-- [ ] 5.1 Зафиксировать одобренный alpha scope/версию/ограничения, исправить замечания финального ponytail-review, проверить публичный source snapshot без приватной истории и пройти full local gate.
-- [ ] 5.2 Создать разрешённые source commits, отправить проверенный snapshot в public main и получить первый remote CI; сохранить public source SHA и соответствие локальному исходнику.
-- [ ] 5.3 Собрать standalone alpha из public source, проверить суммы/версии/self-tests и опубликовать immutable distribution SHA; реально установить его pinned skills1.7.4 с explicit init/adopt filter в отдельном HOME.
-- [ ] 5.4 Проверить переход frozen0.1.0→alpha с backup локальных правок, сохранностью preset/manifest/state, same-session resume, отказом неизвестной схеме и remove без потери внешних файлов.
-- [ ] 5.5 Подготовить и опубликовать prerelease tag/assets/суммы/release notes и Pages; подтвердить фактические GitHub URL/хэши и указать оставшиеся ограничения.
+- [x] 5.1 Зафиксировать одобренный alpha scope/версию/ограничения, исправить замечания финального ponytail-review, проверить публичный source snapshot без приватной истории и пройти full local gate.
+- [x] 5.2 Создать разрешённые source commits, отправить проверенный snapshot в public main и получить первый remote CI; сохранить public source SHA и соответствие локальному исходнику.
+- [x] 5.3 Собрать standalone alpha из public source, проверить суммы/версии/self-tests и опубликовать immutable distribution SHA; реально установить его pinned skills1.7.4 с explicit init/adopt filter в отдельном HOME.
+- [x] 5.4 Проверить переход frozen0.1.0→alpha с backup локальных правок, сохранностью preset/manifest/state, same-session resume, отказом неизвестной схеме и remove без потери внешних файлов.
+- [x] 5.5 Подготовить и опубликовать prerelease tag/assets/суммы/release notes и Pages; подтвердить фактические GitHub URL/хэши и указать оставшиеся ограничения.
 
 ## Workflow follow-up
 
