@@ -1,1 +1,3 @@
-IyBUaWJpY2VuCgpUaGUgZmlyc3QgbGltaXRlZCBhbHBoYSBpcyBiZWluZyBwcmVwYXJlZC4gU291cmNlLCBza2lsbCBkaXN0cmlidXRpb24gYW5kIHJlbGVhc2UgaW5zdHJ1Y3Rpb25zIHdpbGwgYmUgcHVibGlzaGVkIGFmdGVyIHRoZWlyIGNoZWNrcyBjb21wbGV0ZS4K
+# Tibicen
+
+The first limited alpha is being prepared. Source, skill distribution and release instructions will be published after their checks complete.
