@@ -2,8 +2,13 @@ name: Offline checks
 
 on:
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -35,9 +40,6 @@ jobs:
 
       - name: Run full offline gate
         run: pnpm test
-
-      - name: Build standalone skills
-        run: pnpm build
 
       - name: Check unpacked distribution outside the checkout
         shell: bash

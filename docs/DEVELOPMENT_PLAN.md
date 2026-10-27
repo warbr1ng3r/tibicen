@@ -12,11 +12,11 @@ The limited [0.1.0-alpha.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v
 
 | Next stage | Required work | Canonical tasks |
 |---|---|---|
-| Development speed | Remove duplicate push/PR runs and repeated CI builds; separate heavy harness integration according to verified dependencies. Remove concrete duplication while preserving checks of risky operations | CI speed analysis; optimizations are not yet implemented |
+| CI rollout | Publish the locally verified trigger/build deduplication and inspect actual PR/main runs; consider further fixture optimizations only after measurement | [CI deduplication](../openspec/changes/deduplicate-offline-ci/tasks.md) |
 | Full MVP acceptance | Complete L1/PREF/SKILL/PROC and fresh native loading/human checks; OpenSpec criteria apply to requests selecting that component | [Core contracts](../openspec/changes/extend-infrastructure-contracts/tasks.md), [agent acceptance](../openspec/changes/build-agent-evaluation-harness/tasks.md) |
 | Pilot and maintenance | Owner, private contacts/advisory channel, voluntary projects and benefit measurements | [Release groups 3–4](../openspec/changes/prepare-first-public-release/tasks.md) |
 
-CI speed analysis: the same source SHA passed a branch push in 158s and a PR in 157s, including 121s for the full offline gate and 13s for a repeated build. Of 668 checks, 381 belong to the eval harness; 28 protocol modes repeatedly copy/build a fixture. Remove repeated work first, then decide the composition of separate gates. This is a proposal, not an implemented optimization.
+CI deduplication is implemented and verified locally: feature PRs use one automatic event, obsolete runs share a cancellation group, and the redundant build after pnpm test is removed. All 668 tests remain; the final gate, 86 distribution checksums, both unpacked self-tests and independent review passed. An existing timeout fixture now uses its normal startup allowance while retaining the tested stage deadline. [Evidence and initial failure](../openspec/changes/deduplicate-offline-ci/verification.md). Publication and remote timing validation remain open. The earlier audit measured push158s/PR157s and a repeated build13s; these are not new-workflow speed measurements. Heavy-fixture caching and selective gates remain separate possible follow-ups.
 
 ZCode/Codex SDK/OAuth research and paid API work do not block the published alpha. The full pilot and its 50-session/8-week checkpoint remain a separate program; missing data is not success.
 

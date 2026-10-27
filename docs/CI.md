@@ -1,12 +1,13 @@
 # Offline CI
 
-The [workflow](../.github/workflows/ci.yml) runs on push, pull request and manual dispatch using Ubuntu 24.04, Node 24.15.0 and pnpm 11.21.0 from package.json. Actions are pinned to full SHAs; check the corresponding official action.yml and local commands when updating them. Permissions are limited to `contents: read`, and checkout does not persist credentials.
+The [workflow](../.github/workflows/ci.yml) runs on pull requests, pushes to main and manual dispatch using Ubuntu 24.04, Node 24.15.0 and pnpm 11.21.0 from package.json. Feature branches without a PR use local checks or manual dispatch. Actions are pinned to full SHAs; check the corresponding official action.yml and local commands when updating them. Permissions are limited to `contents: read`, and checkout does not persist credentials.
+
+The push [branch filter](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#onpushbranchestagsbranches-ignoretags-ignore) avoids a second run for a feature-branch PR update; the merged main tree still receives its own check. A [concurrency group](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency) cancels outdated runs of the same workflow and ref. Different PRs and the Pages workflow remain independent.
 
 After `pnpm install --frozen-lockfile`, it runs:
 
 1. `pnpm test`: lint, formatting, all type checks, the site build, strict OpenSpec validation, standalone resources and all Node tests.
-2. `pnpm build`: type checks, the site build and both standalone skill distributions.
-3. Unpacking both distributions into a temporary directory outside the checkout, verifying SHA256SUMS and running each CLI self-test with an empty PATH.
+2. Unpacking both distributions into a temporary directory outside the checkout, verifying SHA256SUMS and running each CLI self-test with an empty PATH.
 
 The harness uses offline fixtures and fake drivers. The workflow supplies no secrets, calls no models and does not run `eval:external`. Installing dependencies still requires access to the package registry and Actions/Node/pnpm downloads; “offline” describes the product checks and model execution.
 
@@ -16,4 +17,4 @@ On 27 October 2026, source snapshot [`e0f59a5`](https://github.com/warbr1ng3r/ti
 
 Both `pnpm test` and `pnpm test:evals` build standalone resources before Node tests, so a previous ignored `dist/` is unnecessary. The pinned OpenSpec development package fingerprint excludes only generated package-manager launchers in `node_modules/.bin`, retaining checks for all other files and observed effects.
 
-The current workflow can run twice for a change in an open PR: once for push and once for pull request. Within one run, `pnpm test` and `pnpm build` repeat type checks and the site build. Those repetitions remain in the current gate.
+The workflow reuses the site and standalone builds produced by `pnpm test`; a second `pnpm build` is unnecessary. All existing Node tests remain in the gate. Changes to package.json must preserve those build prerequisites. A measured GitHub duration improvement requires a run after publication of this workflow.

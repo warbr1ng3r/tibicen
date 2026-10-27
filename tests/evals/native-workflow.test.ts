@@ -229,7 +229,8 @@ test(
       artifactDirectory,
       scenarioIds: ['skill-02'],
       maxModelSessions: 2,
-      limits: { launchMs: 600, setupMs: 800, taskMs: 800, maxCostUsd: null },
+      // Keep the fixture startup budget; only the stage deadline is under test.
+      limits: { ...control.options.limits, setupMs: 800, taskMs: 800 },
     });
     for (const { run } of result.experiments[0].runs) {
       assert.equal(run.result.setup.status, 'error');

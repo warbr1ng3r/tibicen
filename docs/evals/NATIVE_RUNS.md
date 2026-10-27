@@ -29,6 +29,12 @@ Claude Code supports an API-key route; a subscription is not a prerequisite for 
 
 The 26.10.2026 control (maintainer-local record; omitted from public source) retained the first Codex SKILL pair with two setup errors and a blocked ZCode pair. Protocol fixes were made after the series; no new live pass is claimed. ZCode details are in the installed-build investigation (maintainer-local record; omitted from public source).
 
+## Interpreting hybrid runs
+
+1. **Separate native compatibility from model portability.** Native compatibility requires observing skill discovery/loading and tool use through the actual agent. Sending skill text to a model through a shared API loop checks instruction portability; it does not establish native-agent compatibility.
+2. **Freeze the execution configuration.** Record the agent/CLI/SDK version, model, backend/provider, authorization class without secrets, tools/permissions, global instructions, skill/fixture hashes and limits. A result applies to that configuration; changing the backend creates a separate configuration.
+3. **Compare Tibicen with a baseline within each configuration.** Use the same tasks, clean starting state, tools and limits, with Tibicen as the difference between variants. Report the change in outcomes and all errors/skips; comparing different agent configurations does not establish which model is better.
+
 ## Explicit invocation
 
 Complete local runs/transcripts, source mirrors, judge packets and host drivers are saved outside the repository or in ignored `.evals-private/`. This is a storage-location convention: an arbitrary other path does not become private automatically. `docs/evals/results/` contains only separately selected and reviewed public projections; personal auth/config and complete logs are not copied there.
