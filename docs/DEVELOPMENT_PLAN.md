@@ -13,7 +13,7 @@ The limited [0.1.0-alpha.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v
 | Next stage | Required work | Canonical tasks |
 |---|---|---|
 | CI follow-up | Main checks passed after publication; observe the next PR update/cancellation and consider further fixture optimizations only after measurement | [CI verification](../openspec/changes/deduplicate-offline-ci/verification.md) |
-| Landing delivery | English-default/Russian first-use iteration implemented and reviewed locally; full 688-test gate, browser/project-base checks passed. At the local verification stage, commit/publication was pending; public rollout is recorded separately | [Landing verification](../openspec/changes/localize-and-simplify-landing/verification.md) |
+| Landing delivery | English-default/Russian first use published on 28 October 2026 from [`31694d4`](https://github.com/warbr1ng3r/tibicen/commit/31694d4b234efc82064b8a1799f7a179a6541041); full CI and Pages passed, live EN/RU, assets, presets/commands and no-JavaScript switching checked | [Landing verification](../openspec/changes/localize-and-simplify-landing/verification.md) |
 | Full MVP acceptance | Complete L1/PREF/SKILL/PROC and fresh native loading/human checks; OpenSpec criteria apply to requests selecting that component | [Core contracts](../openspec/changes/extend-infrastructure-contracts/tasks.md), [agent acceptance](../openspec/changes/build-agent-evaluation-harness/tasks.md) |
 | Pilot and maintenance | Select voluntary projects/cohort and agree measurements; assign maintenance and private contacts/advisory channel | [Pilot protocol draft](PILOT.md), [release groups 3–4](../openspec/changes/prepare-first-public-release/tasks.md) |
 
@@ -84,7 +84,7 @@ The first milestone is a verified first release with core refinements, the first
 
 | Queue | Result | Dependencies and transition criterion |
 |---|---|---|
-| 0. Landing page | First version public; bilingual first-use iteration implemented locally | [Verification](../openspec/changes/localize-and-simplify-landing/verification.md) passed; public rollout is recorded separately |
+| 0. Landing page | Bilingual first use published on 28 October 2026 | [Implementation, CI, Pages and live acceptance](../openspec/changes/localize-and-simplify-landing/verification.md) passed; physical-device checks remain separate |
 | 1. Core refinements | Preservation, updates, recovery, shared rule editions across tools and justified preference-based selection | Based on П0–П8; fix-audit-safety-and-verification checked mechanically; acceptance of §§1–3, 7 and transfer of §9 assumptions remains required; semantic §9 scenarios belong to queues 2–3 |
 | 1а. First process adapter | Optional OpenSpec init/adopt with exact effects and preservation of the user's process | After queue 1's mechanical guarantees; development runs alongside the harness, final acceptance is in queue 3; core change tasks 3.3–3.4 |
 | 2. Harness and metrics | Verifiable scenarios, graders, execution and reporting | Runs alongside queue 1 after format agreement; the harness itself is checked on known successful/unsuccessful outcomes |
