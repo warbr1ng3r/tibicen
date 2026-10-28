@@ -312,7 +312,7 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
     );
     const sourceUnchanged = await profile.validate().then(
       () => true,
-      () => false,
+      () => null,
     );
     const codeModeUnchanged =
       (await codeMode?.validate().then(
@@ -332,7 +332,7 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
       receipt.stopped &&
       receipt.removed &&
       configUnchanged &&
-      sourceUnchanged &&
+      sourceUnchanged === true &&
       codeModeUnchanged &&
       ['completed', 'host-finished', 'owner-end'].includes(receipt.reason);
     return {

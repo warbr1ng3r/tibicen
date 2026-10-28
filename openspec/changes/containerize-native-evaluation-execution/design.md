@@ -22,6 +22,8 @@
 
 ## Risks / Trade-offs
 
+Offline diagnostics follow-up (2026-10-28): retain `toolFailure` in the existing receipt, as null or `{kind: 'rpc-error', code: number|null}` / `{kind: 'process-exit', exitCode: number|null}`. Capture only when no stop has begun; the existing failure predicate (including ignored -32004) remains authoritative. This does not retain raw protocol content or expand failure collection. Rejected post-run profile validation produces `sourceUnchanged: null`; success still requires true. The original native failure lacks the triggering event and remains unknown. No live replay belongs to this follow-up.
+
 - [Exec-server и host CLI версии расходятся] → pin0.157.0 и настоящий handshake до готовности.
 - [Owner/launcher погибает] → защищённый PID1 deadline плюс lease EOF; проверка SIGKILL и late marker за горизонтом.
 - [Host config влияет на native tools] → полностью generated home/config, без local fallback; host sentinel в offline harness gate.

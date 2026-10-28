@@ -18,3 +18,8 @@
 
 - [x] 4.1 Провести независимый review, необходимые repo checks и полный offline gate; записать evidence/ограничения и обновить tracker/roadmap, не выдавая partial evidence за production или live readiness.
 - [x] 4.2 Исправить найденный ponytail-review пропуск удаления CID после wait/state error; regression cases подтверждают удаление и сохранение ошибки, не скрывают failed removal.
+
+## 5. First failure diagnostics
+
+- [x] 5.1 Preserve the first stopping tool error as a bounded numeric projection in the container receipt; regressions cover chunked input, competing failures, ignored protocol codes and secret exclusion without changing stop or collection behavior.
+- [x] 5.2 Mark rejected post-run source validation as unverified rather than evidence of mutation; verify offline, independently review, run the full repository gate and record the remaining historical unknown without a live replay. See diagnostics-verification.md.

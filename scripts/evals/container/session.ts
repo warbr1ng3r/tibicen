@@ -57,6 +57,10 @@ export interface ContainerInput {
   deadlineMs: number;
 }
 
+type ToolFailure =
+  | { kind: 'rpc-error'; code: number | null }
+  | { kind: 'process-exit'; exitCode: number | null };
+
 export function validateContainerInput(input: ContainerInput) {
   assert(
     /^sha256:[a-f0-9]{64}$/.test(input.imageId),
@@ -98,6 +102,7 @@ export async function startContainerSession(input: ContainerInput) {
     timer: ReturnType<typeof setTimeout> | undefined;
   let attached: ReturnType<typeof spawn> | undefined;
   let attachedDone = Promise.resolve();
+  let toolFailure: ToolFailure | null = null;
   let stopPromise:
     | Promise<{
         cid: string;
@@ -106,6 +111,7 @@ export async function startContainerSession(input: ContainerInput) {
         removed: boolean;
         files: Record<string, Buffer>;
         modes: Record<string, number>;
+        toolFailure: ToolFailure | null;
       }>
     | undefined;
   let complete: (value: Awaited<ReturnType<typeof stop>>) => void,
@@ -185,7 +191,15 @@ export async function startContainerSession(input: ContainerInput) {
           'container-removal-unverified',
         );
       }
-      return { cid: id, reason, stopped: true, removed: true, files, modes };
+      return {
+        cid: id,
+        reason,
+        stopped: true,
+        removed: true,
+        files,
+        modes,
+        toolFailure,
+      };
     })().finally(async () => {
       if (attached) {
         attached.stdin?.destroy();
@@ -295,8 +309,24 @@ export async function startContainerSession(input: ContainerInput) {
           if (
             (event.error && event.error.code !== -32004) ||
             (event.method === 'process/exited' && event.params?.exitCode !== 0)
-          )
+          ) {
+            if (!stopPromise)
+              toolFailure =
+                event.error && event.error.code !== -32004
+                  ? {
+                      kind: 'rpc-error',
+                      code: Number.isSafeInteger(event.error.code)
+                        ? event.error.code
+                        : null,
+                    }
+                  : {
+                      kind: 'process-exit',
+                      exitCode: Number.isSafeInteger(event.params?.exitCode)
+                        ? event.params.exitCode
+                        : null,
+                    };
             void stop([], 'tool-failure').catch(() => {});
+          }
         } catch {
           void stop([], 'invalid-protocol').catch(() => {});
         }

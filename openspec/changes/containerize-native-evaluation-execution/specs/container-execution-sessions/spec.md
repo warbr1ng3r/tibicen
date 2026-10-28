@@ -6,6 +6,28 @@
 
 ## ADDED Requirements
 
+### Requirement: First stopping tool failure is retained safely
+
+The session SHALL retain the first structured tool failure that initiates stopping in its receipt. The projection SHALL contain only a fixed kind and a safe integer error code or process exit code, or null when that number is unavailable. Arbitrary method names, IDs, command arguments, messages, output and nested data SHALL be excluded. Later events SHALL NOT overwrite the initiating failure or change the existing stop reason, cleanup or fail-closed collection policy.
+
+#### Scenario: Two failures arrive in one protocol chunk
+- **WHEN** a JSON-RPC error initiates stopping and a process exit follows
+- **THEN** the receipt retains only the first error kind and numeric code
+- **AND** stopping, container removal and empty failure collection remain unchanged
+
+#### Scenario: An ignored protocol error precedes a failed process
+- **WHEN** error code -32004 is followed by process/exited with a nonzero exit code
+- **THEN** only the process exit initiates stopping and its safe numeric exit code is retained
+
+### Requirement: Rejected post-run validation remains unverified
+
+The contained caller SHALL return null for sourceUnchanged when post-run profile validation rejects, including cancellation or unavailable metadata. Only a completed successful validation SHALL return true. Unverified validation SHALL NOT permit a passing run or claim observed source mutation. Historical failed records SHALL remain unchanged.
+
+#### Scenario: Tool failure cancels profile metadata validation
+- **WHEN** stopping cancels the caller and the post-run profile validation rejects
+- **THEN** sourceUnchanged is null and the run remains failed
+- **AND** no retry, new auth or model call is made
+
 ### Requirement: Executor inputs are fixed and isolated
 Сессия SHALL использовать закреплённый image ID, фиксированные инструменты, сеть none, private PID namespace и ограниченные ресурсы. Инструменты SHALL работать с непривилегированным UID без host mounts, auth, Docker socket или возможности сигналить доверенному watchdog.
 

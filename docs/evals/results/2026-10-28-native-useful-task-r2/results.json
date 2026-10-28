@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "date": "2026-10-28",
+  "caseId": "native-useful-task-20261028-r2",
+  "status": "incomplete",
+  "environment": {
+    "agent": "Codex CLI",
+    "version": "0.157.0",
+    "model": "gpt-6-astra",
+    "route": "existing ChatGPT subscription through owned container",
+    "setup": "copied exact prior published-alpha post-setup inputs; not rerun"
+  },
+  "scope": {
+    "hostSessions": 1,
+    "deadlineMs": 120000,
+    "automaticRepeats": 0,
+    "paidApiBudget": 0,
+    "httpRequestCount": "unverified",
+    "usage": {
+      "inputTokens": null,
+      "outputTokens": null
+    },
+    "inputFiles": 9,
+    "protectedFiles": 7,
+    "allowedChanges": [
+      "src/numbers.js",
+      "tests/numbers.test.js"
+    ],
+    "hostWriteback": false
+  },
+  "observations": {
+    "nativeTurnStarted": true,
+    "nativeTurnCompleted": false,
+    "implicitSkillSelection": true,
+    "skillBodySHA256": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509",
+    "skillBodyBytes": 3496,
+    "nativeUsefulTask": "incomplete",
+    "nativeFinalReport": "not produced",
+    "firstStoppingEvent": {
+      "kind": "process-exit",
+      "exitCode": 1
+    },
+    "underlyingFailedCommand": "unknown",
+    "underlyingCause": "unknown",
+    "nativeDurationMs": 18805.463582999997,
+    "totalDurationMs": 20825.088541999998,
+    "collectedContainerFiles": 0,
+    "containerWriteSet": "unverified",
+    "sourceUnchanged": null,
+    "independentSourceHashesMatched": 20,
+    "hostFilesAndModesMatched": 9,
+    "unlistedHostFiles": 0,
+    "priorFrozenFilesMatched": 284,
+    "stopped": true,
+    "removed": true,
+    "candidateGrading": "not run: no successful collection"
+  },
+  "offlineChecks": {
+    "currentRuntimeFocusedTests": {
+      "passed": 17,
+      "failed": 0
+    },
+    "correctedBaselineOriginalSuite": {
+      "passed": 2,
+      "failed": 0
+    },
+    "heldoutCalibration": "expected-red: missing clamp export",
+    "firstBaseline": "startup race retained and corrected before live",
+    "prelaunchReview": "Ship",
+    "independentArtifactReview": "Ship for accurate failed/partial reporting only"
+  },
+  "productSourceChanged": false,
+  "distributionChanged": false,
+  "commitCreated": false,
+  "published": false,
+  "fullMvpAcceptance": "open"
+}

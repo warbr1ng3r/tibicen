@@ -1,0 +1,335 @@
+{
+  "date": "2026-10-28",
+  "stage": "root-verified; independent-review-Ship",
+  "distribution": {
+    "tag": "v0.1.0-alpha.1",
+    "commit": "db03ebc988af1e38ea9f62c02027945ba40660fc",
+    "installedFilesMatched": 86,
+    "releaseAssetsChanged": false
+  },
+  "profile": {
+    "nativeAgent": "Codex CLI",
+    "nativeVersion": "0.157.0",
+    "model": "gpt-6-astra",
+    "route": "subscription",
+    "paidApiUsed": false,
+    "scope": "generated disposable projects; bounded recorded execution profiles"
+  },
+  "discovery": {
+    "modelFreeInitialContext": {
+      "metadataDiscovered": [
+        {
+          "name": "tibicen-init",
+          "bodySHA256": "9d0c81dfb488f64e27f97250d15722f5588a730c915a8852041707b0c26e692a",
+          "exactDescription": true,
+          "aliasedProjectPathResolved": true
+        },
+        {
+          "name": "tibicen-adopt",
+          "bodySHA256": "a8623e532e9f08b96178572ee81f12fc49d7ec66efcaf179b8482ea4c569c890",
+          "exactDescription": true,
+          "aliasedProjectPathResolved": true
+        }
+      ],
+      "bodyLoadingTested": false,
+      "sameConfigurationAsLive": false
+    },
+    "attemptR1": {
+      "result": "collection-error",
+      "error": "unexpected-container-directory",
+      "earlierModelStartup": "unknown",
+      "attemptRetained": true
+    },
+    "attemptR2": {
+      "result": "passed",
+      "durationSeconds": 55.32,
+      "nativeCommands": 7,
+      "implicitInitBodyReadSHA256": "9d0c81dfb488f64e27f97250d15722f5588a730c915a8852041707b0c26e692a",
+      "hostFilesUnchanged": 91,
+      "containerFilesByteMatched": 91,
+      "containerStopped": true,
+      "containerRemoved": true,
+      "scope": "read-only inspection and setup proposal",
+      "apply": false,
+      "fullSetupOrDownstream": false,
+      "AGENTSAutomaticInjection": "not checked: project had no AGENTS.md",
+      "adoptBodyLoading": "not checked",
+      "approvedAmendedDiscoveryRepeat": 1,
+      "furtherDiscoveryRepeats": 0
+    }
+  },
+  "componentSetup": {
+    "skill-task": {
+      "digest": "77947bdaaf744732d8252146fa8ef5a5c4d33f6f5b5d813e7447e32dfa738625",
+      "flowExitCodes": {
+        "apply": 0,
+        "verify": 0,
+        "status": 0,
+        "report": 0
+      },
+      "status": "complete",
+      "infrastructureAdds": 3,
+      "protectedOriginalFiles": 5,
+      "infrastructure": {
+        "status": "passed",
+        "scope": "structure-only"
+      },
+      "builtinProjectVerification": {
+        "kind": "verify",
+        "status": "unverified",
+        "reason": "no-project-checks",
+        "newRegressions": []
+      },
+      "builtinTask": {
+        "kind": "task",
+        "status": "unverified",
+        "reason": "not-requested"
+      },
+      "builtinQuiz": {
+        "kind": "quiz",
+        "status": "unverified",
+        "reason": "not-requested"
+      },
+      "compatibility": {
+        "enabled": true,
+        "pairs": [
+          {
+            "skill": ".agents/skills/ponytail",
+            "ref": "09c434ab73ca43761c5d8b0c5d341926c2fba710",
+            "agent": "codex",
+            "loading": "unverified",
+            "reason": "trust-required"
+          }
+        ]
+      }
+    },
+    "process-init-task": {
+      "digest": "a98a54c083f7ad13705e6e78c2d687f2ff14b8fb0c271fc99d0de67d32f41f6f",
+      "flowExitCodes": {
+        "apply": 0,
+        "verify": 0,
+        "status": 0,
+        "report": 0
+      },
+      "status": "complete",
+      "infrastructureAdds": 5,
+      "protectedOriginalFiles": 5,
+      "infrastructure": {
+        "status": "passed",
+        "scope": "structure-only"
+      },
+      "builtinProjectVerification": {
+        "kind": "verify",
+        "status": "unverified",
+        "reason": "no-project-checks",
+        "newRegressions": []
+      },
+      "builtinTask": {
+        "kind": "task",
+        "status": "unverified",
+        "reason": "not-requested"
+      },
+      "builtinQuiz": {
+        "kind": "quiz",
+        "status": "unverified",
+        "reason": "not-requested"
+      },
+      "compatibility": {
+        "enabled": true,
+        "pairs": []
+      },
+      "processVerification": {
+        "status": "passed",
+        "scope": "structure-and-package-resources",
+        "loading": "unverified",
+        "task": "unverified",
+        "cliExecution": "unverified",
+        "issues": []
+      }
+    }
+  },
+  "components": {
+    "ponytail": {
+      "source": "DietrichGebert/ponytail",
+      "commit": "09c434ab73ca43761c5d8b0c5d341926c2fba710",
+      "license": "MIT",
+      "files": [
+        "SKILL.md",
+        "LICENSE"
+      ],
+      "syntheticReplacement": false
+    },
+    "openspec": {
+      "version": "1.14.3",
+      "license": "MIT",
+      "explicitlyRequested": true,
+      "runtimePackages": 57,
+      "runtimeRegularFiles": 2093,
+      "packageResources": 431,
+      "packageResourceHash": "0a812545d00615244b51d1ac9cfd3f04527a91c421843a89824033064da24692",
+      "lockedIntegrity": "sha512-ALFW1d5bSm6t27Kmcle93SDFuqUc8fLwy5ZdBfIiNffo0Yk9AEOJxw6xDqBv38eMM7l7TeOZBB/7C08luxYGfg==",
+      "isolatedVersionSmoke": "passed 1.14.3; empty fresh HOME/XDG after command",
+      "nativeInitUpdateUsedForSetup": false,
+      "distributedWithTibicen": false
+    }
+  },
+  "downstream": {
+    "ponytailNative": {
+      "stage": "root-verified-stopped-not-completed",
+      "task": "clamp(value,min,max)",
+      "profile": "Codex0.157.0 / gpt-6-astra native subscription",
+      "discovery": {
+        "implicitSelection": true
+      },
+      "loading": {
+        "confirmed": true,
+        "exactWholeBodySHA256": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509"
+      },
+      "taskResult": "not completed",
+      "modelStarted": true,
+      "modelCompleted": false,
+      "durationSeconds": 18.305,
+      "stopReason": "tool-failure",
+      "specificFailureCause": "unknown: unavailable in retained trajectory",
+      "containerStopped": true,
+      "containerRemoved": true,
+      "collectedContainerFiles": 0,
+      "containerWriteSet": "unverified: stopped fail-closed with empty collection allowlist",
+      "hostBeforeSeparateAppTask": "9 files bytes/modes unchanged",
+      "sourceGuardFlag": false,
+      "independentFreezeSourceHashesMatched": 20,
+      "sourceMutationInferredFromGuardFlag": false,
+      "repeats": 0,
+      "separateAppTaskDoesNotUpgradeNativeResult": true,
+      "modelFreeInitialContext": {
+        "result": "pass",
+        "sameConfigurationAsLive": false,
+        "configuration": "separate isolated native debug renderer",
+        "AGENTS": {
+          "sha256": "a8ef92715b146df94821b37e1f3874668cb3df0552267e265e757a2695cbd833",
+          "matchesSetupSnapshot": true,
+          "exactBytesInNativeContext": true,
+          "mode": "0o600"
+        },
+        "Ponytail": {
+          "sha256": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509",
+          "matchesSetupSnapshot": true,
+          "nameInNativeContext": true,
+          "exactDescriptionInNativeContext": true,
+          "aliasReference": "r1/ponytail/SKILL.md",
+          "resolvedPathInNativeContext": true,
+          "fullBodyLoaded": false
+        },
+        "modelCalls": 0,
+        "hostUnchanged": true
+      }
+    },
+    "openspecInitApp": {
+      "stage": "root-verified-passed",
+      "profile": "fresh app context, explicit installed adapter reads, synthetic operator approvals",
+      "task": "mean(values)",
+      "nativeAutomaticDiscoveryClaimed": false,
+      "nativeModelProcessWorkflow": "not tested",
+      "planningFilesAdded": 5,
+      "preexistingFilesPreservedAtPlanning": 11,
+      "planningStrictValidation": "passed",
+      "planningConsent": "separate synthetic operator consent for exact5paths",
+      "implementationConsent": "separate synthetic operator consent after plan review",
+      "changedPaths": [
+        "openspec/changes/add-mean/tasks.md",
+        "src/statistics.js",
+        "tests/statistics.test.js"
+      ],
+      "protectedFilesUnchanged": 13,
+      "expectedFiles": 16,
+      "unlistedAddedOrRemoved": 0,
+      "initial11FileModesPreserved": true,
+      "initialObservedNode": "25.8.0",
+      "initialNode25ObservationPreserved": true,
+      "planningImplementationAndRootNode": "v24.15.0",
+      "tests": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "skipped": 0
+      },
+      "independentHeldout": {
+        "exitCode": 0
+      },
+      "strictValidationExitCode": 0,
+      "finalCliApply": {
+        "exitCode": 0,
+        "state": "all_done",
+        "progress": {
+          "total": 4,
+          "complete": 4,
+          "remaining": 0
+        }
+      }
+    },
+    "ponytailAppContext": {
+      "stage": "root-verified-passed",
+      "profile": "fresh app subagent; explicit project instructions read, not native automaticdiscovery",
+      "task": "clamp(value,min,max)",
+      "applicationChanges": [
+        "src/numbers.js",
+        "tests/numbers.test.js"
+      ],
+      "consent": "new separately scoped synthetic operator approval",
+      "node": "v24.15.0",
+      "tests": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0
+      },
+      "independentHeldout": {
+        "exitCode": 0,
+        "scope": "clamp normal/edge/type/reversed-bound behavior and original double preserved"
+      },
+      "protectedPathsUnchanged": 7,
+      "modesUnchanged": 9,
+      "unlistedFilesAdded": 0,
+      "nativeTaskResultUpgraded": false
+    }
+  },
+  "controls": {
+    "consent": "exact proposals reviewed and separately approved by root synthetic operator, not direct human digest approval",
+    "baselineNode": "24.15.0",
+    "baselineTests": {
+      "skill-task": "2/2",
+      "process-init-task": "2/2"
+    },
+    "originalFilesPreservedDuringSetup": 10,
+    "builtinReportsPreserved": true,
+    "externalObservationsUpgradeSavedReports": false,
+    "failedCollectionRetained": true,
+    "preparationCheckCorrectionsRetained": 2
+  },
+  "limits": [
+    "Ponytail native task stopped on tool-failure: exact cause/container write set unknown; loading confirmed and separate app usefulness passed without upgrading native completion",
+    "complete OpenSpec workflow in a native model startup remains untested; current success is explicit-read fresh app context",
+    "ZCode native discovery/new useful task untested in this cohort",
+    "full SKILL/PROC matrix and cross-platform acceptance remain open",
+    "no human sample or measured benefit/time/cost saving/causal advantage",
+    "full MVP remains open"
+  ],
+  "evidence": "Full source/proposal/approval/execution/collection receipts and transcripts remain maintainer-local; public report contains no personal paths or credentials.",
+  "acceptanceTotals": {
+    "finalAppTests": 14,
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "independentHeldoutChecks": 2,
+    "independentHeldoutPassed": 2,
+    "scope": "two separate fresh app-context tasks, not native task completion"
+  },
+  "review": "Independent ponytail-review Ship for bounded evidence and application changes; canonical assembly preserves reviewed scope",
+  "productOutcome": {
+    "confirmedTibicenProductDefect": false,
+    "productCodeFix": false,
+    "distributedSkillsChanged": false,
+    "releaseAssetsChanged": false,
+    "newProductReleaseJustifiedByThisCohort": false
+  }
+}
