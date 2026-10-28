@@ -16,6 +16,15 @@ The home page uses a flat graph with moving vertices. Alternative geometry is av
 
 The local address is http://127.0.0.1:8371/. Stop the development server on that port before using preview. Build output goes to `landing/dist/`.
 
+
+## Languages and first use
+
+The current source serves English at the configured base route (`/` locally) and Russian at `ru/` (`/ru/` locally). The EN/RU links remain visible on mobile and work without JavaScript. Switching languages navigates to another static page and resets unsaved preset answers; it does not change the project's programming-language hint.
+
+Both pages share one layout and components. Installation and both first prompts are together after the hero, followed by a compact workflow and a clearly illustrative before/after report. Source, release and installation/update/removal links target the canonical English project guides. The optional preset starts collapsed; inferable stack/type/agent hints are in advanced settings. Commands and serialized preset values remain identical between languages. No translation service or new dependency is used.
+
+This iteration is a local source change until separately published. The published URL and historical Pages receipt below describe the earlier deployment.
+
 ## GitHub Pages
 
 The [manual workflow](../.github/workflows/pages.yml) deploys the landing page separately. Skill publication, pilot results and support contacts are not prerequisites for hosting the page.
@@ -33,6 +42,7 @@ Equivalent local project-path checks from the repository root:
 ```sh
 pnpm --filter @tibicen/landing build --site https://tibicen.invalid --base /repo/
 TIBICEN_SITE_BASE=/repo/ node --test tests/site/*.test.ts
+TIBICEN_SITE_BASE=/repo/ pnpm exec playwright test --config landing/playwright.config.ts --project chromium --grep "without JavaScript|Russian layout|equivalent English"
 ```
 
 `tibicen.invalid` is an example origin for local checking, without publication or requests to it. Restore the ordinary build afterward with `pnpm build:site`. To inspect a project-path build, use preview with the same `--base /repo/` and visit `/repo/`.

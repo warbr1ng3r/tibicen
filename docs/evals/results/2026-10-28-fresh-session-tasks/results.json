@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-28",
+  "status": "both tasks passed independent functional acceptance",
+  "executor": "two fresh-context Codex subagents using project instructions installed in completed ZCode setup",
+  "project_origin": "generated synthetic fixtures",
+  "cases": [
+    {
+      "case": "task-cli",
+      "feature": "list --open",
+      "fresh_context": "fork_turns=none; no parent conversation",
+      "instructions": "project-local AGENTS.md discovered/read after explicit instruction-discovery request; content not pasted into task",
+      "instructions_hash": "5eba86c610fb45dbe20523ca894a2196bfe6ca244b3163d2fff0b2c1ff3e924c",
+      "changed_files": [
+        "src/cli.js",
+        "tests/cli.test.js"
+      ],
+      "protected_files_unchanged": 5,
+      "original_source_files_unchanged": 7,
+      "baseline_tests_reported": 6,
+      "final_tests_reported": 9,
+      "root_node": "v24.15.0",
+      "root_project_tests": {
+        "passed": 9,
+        "failed": 0
+      },
+      "independent_acceptance": {
+        "status": "passed",
+        "contract": "open-only listing, both flag orders, unchanged list/add/done, strict flags, read-only storage, empty/missing data"
+      },
+      "implementation_attempts_reported": 1,
+      "root_implementation_repairs": 0,
+      "agent_node": "v25.8.0",
+      "agent_limitations": [
+        "Project instructions require Node 24; tests ran with the available Node v25.8.0."
+      ]
+    },
+    {
+      "case": "notes-api",
+      "feature": "GET /notes?q=term",
+      "fresh_context": "fork_turns=none; no parent conversation",
+      "instructions": "project-local AGENTS.md discovered/read after explicit instruction-discovery request; content not pasted into task",
+      "instructions_hash": "4f8d48681574c8a10b92504d86304e06fc5b63dbf659e5764c9590d47321c0cf",
+      "changed_files": [
+        "src/server.js",
+        "tests/notes.test.js"
+      ],
+      "protected_files_unchanged": 6,
+      "original_source_files_unchanged": 8,
+      "baseline_tests_reported": 6,
+      "final_tests_reported": 9,
+      "root_node": "v24.15.0",
+      "root_project_tests": {
+        "passed": 9,
+        "failed": 0
+      },
+      "independent_acceptance": {
+        "status": "passed",
+        "contract": "case-insensitive substring, encoded term, absent/empty/no matches, stable order, strict query shape, existing create/list/delete"
+      },
+      "implementation_attempts_reported": 1,
+      "root_implementation_repairs": 0,
+      "agent_node": "unknown",
+      "agent_limitations": [
+        "Only local project tests run; no held-out tests inspected.",
+        "No external network/model/API calls, installations, Tibicen CLI operations, commits, or protected-file changes."
+      ]
+    }
+  ],
+  "host_checks": {
+    "before_agent_work": "both expected-red: features absent",
+    "amendment": "API success-status assertions strengthened after design review, original freeze/script retained; before first green run",
+    "root_node": "v24.15.0",
+    "automatic_native_discovery": "not tested",
+    "fresh_zcode_task_run": "not performed",
+    "timing_cost_comparison": "not measured",
+    "human_pilot_observations": 0
+  },
+  "source_product_changed": false,
+  "old_zcode_cases_reset_or_applied": false,
+  "original_files_preserved": 15,
+  "commits_created": false,
+  "publication": false,
+  "root_verification_sha256": "96c759c982300b8ff4c6b1a412444149208da2162f137d77dcd3eaf151ae91a2",
+  "independent_review": "Ship; no actionable implementation findings; acceptance status-assertion gap corrected and preserved as a freeze amendment",
+  "record_scope": "Observed acceptance exercise; later repository review, validation and documentation commits are separate."
+}

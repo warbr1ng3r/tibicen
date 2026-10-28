@@ -17,7 +17,7 @@ const source = ts
       },
     },
   )
-  .outputText.replace(/^import .*;\n/, '');
+  .outputText.replace(/^import[\s\S]*?;\s*/gm, '');
 
 function page({
   clipboard,
@@ -48,6 +48,7 @@ function page({
   };
   let copied: string | undefined;
   const document = {
+    documentElement: { lang: 'ru' },
     activeElement: focused as unknown,
     querySelector(selector: string) {
       return selector === '#preset-form'
@@ -85,6 +86,8 @@ function page({
     },
   };
   runInNewContext(source, {
+    localize: (locale: string, en: string, ru: string) =>
+      locale === 'ru' ? ru : en,
     document,
     navigator: { clipboard },
     setTimeout(callback: () => void) {

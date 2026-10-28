@@ -1,3 +1,13 @@
+---
+import { localize, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = 'en' } = Astro.props;
+const t = (en: string, ru: string) => localize(locale, en, ru);
+---
+
 <figure class="setup-preview" id="example" aria-labelledby="example-caption">
   <div class="repo-stage">
     <div class="repo-window">
@@ -9,12 +19,20 @@
         <span class="status-dot" aria-hidden="true"></span>
       </div>
       <div class="repo-content">
-        <ul class="repo-tree" aria-label="Что помогает организовать Tibicen">
+        <ul
+          class="repo-tree"
+          aria-label={t(
+            'What Tibicen helps organize',
+            'Что помогает организовать Tibicen',
+          )}
+        >
           <li class="proposed-file">
             <div class="tree-row">
               <span class="tree-file" aria-hidden="true"></span>
               <span class="tree-name">AGENTS.md</span>
-              <span class="tree-annotation">ясные правила</span>
+              <span class="tree-annotation">
+                {t('clear instructions', 'ясные правила')}
+              </span>
             </div>
           </li>
           <li>
@@ -25,7 +43,9 @@
                 <wbr />
                 skills/
               </span>
-              <span class="tree-annotation">только нужное</span>
+              <span class="tree-annotation">
+                {t('only what you need', 'только нужное')}
+              </span>
             </div>
           </li>
           <li>
@@ -46,7 +66,7 @@
               </svg>
               <span class="tree-name">MCP</span>
               <span class="tree-annotation annotation-optional">
-                если нужно
+                {t('if needed', 'если нужно')}
               </span>
             </div>
           </li>
@@ -55,10 +75,12 @@
               <span class="tree-folder" aria-hidden="true"></span>
               <span class="tree-name">your-work/</span>
               <span class="tree-annotation annotation-muted">
-                без изменений
+                {t('unchanged', 'без изменений')}
               </span>
             </div>
-            <p class="work-contents">src/ · tests/ · ваши данные</p>
+            <p class="work-contents">
+              src/ · tests/ · {t('your data', 'ваши данные')}
+            </p>
           </li>
         </ul>
       </div>
@@ -73,25 +95,15 @@
             stroke-linejoin="round"
           />
         </svg>
-        <span>Можно заняться самой идеей.</span>
-      </div>
-    </div>
-    <div class="proposal-card">
-      <span class="proposal-icon" aria-hidden="true">
-        ↳
-      </span>
-      <div>
-        <strong>Настройка под задачу</strong>
-        <p>
-          Скиллы и подключения — по необходимости.
-          <br />
-          Сначала план и ваше согласие.
-        </p>
+        <span>{t('Focus on your idea.', 'Можно заняться самой идеей.')}</span>
       </div>
     </div>
   </div>
   <figcaption id="example-caption">
-    Иллюстрация возможностей. Пути и состав настройки зависят от проекта и
-    агента.
+    <strong>{t('Example setup.', 'Пример настройки.')}</strong>{' '}
+    {t(
+      'Paths and tools depend on the project and agent.',
+      'Пути и состав настройки зависят от проекта и агента.',
+    )}
   </figcaption>
 </figure>

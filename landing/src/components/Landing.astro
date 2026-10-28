@@ -1,0 +1,476 @@
+---
+import ProjectPreview from './ProjectPreview.astro';
+import Installation from './Installation.astro';
+import PresetForm from './PresetForm.astro';
+import Features from './astrowind/Features.astro';
+import Steps from './astrowind/Steps.astro';
+import FAQs from './astrowind/FAQs.astro';
+import { localize, type Locale } from '../i18n';
+import '../styles/global.css';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = (en: string, ru: string) => localize(locale, en, ru);
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const repository = 'https://github.com/warbr1ng3r/tibicen';
+const guide = `${repository}/blob/main/README.md`;
+const release = `${repository}/releases/tag/v0.1.0-alpha.1`;
+const scenarios = [
+  {
+    label: 'tibicen-init',
+    title: t('Set up for the first time', 'Настроить впервые'),
+    description: t(
+      'For an empty folder or an application without agent instructions. Describe your task and let Tibicen inspect the project.',
+      'Для пустой папки или приложения без агентских инструкций. Опишите задачу — Tibicen изучит проект.',
+    ),
+    prompt: t(
+      'Use tibicen-init. Set up agent infrastructure for this project.',
+      'Используй tibicen-init. Настрой агентскую инфраструктуру этого проекта.',
+    ),
+  },
+  {
+    label: 'tibicen-adopt',
+    title: t('Improve an existing setup', 'Исправить и обновить'),
+    description: t(
+      'For existing instructions and tools. Review conflicts and outdated rules while preserving useful decisions.',
+      'Для существующих инструкций и инструментов. Найдите конфликты и устаревшие правила, сохранив полезные решения.',
+    ),
+    prompt: t(
+      'Use tibicen-adopt. Review and update agent infrastructure for this project.',
+      'Используй tibicen-adopt. Проверь и обнови агентскую инфраструктуру проекта.',
+    ),
+  },
+];
+const steps = [
+  {
+    title: t('Inspect the project', 'Изучить проект'),
+    description: t(
+      'Read the structure, commands, existing instructions and your constraints. Select tools only when they solve a project need.',
+      'Изучить структуру, команды, инструкции и ограничения. Подобрать инструменты, только если они решают задачу проекта.',
+    ),
+  },
+  {
+    title: t('Review the exact plan', 'Согласовать точный план'),
+    description: t(
+      'See the file changes, installations, commands and manual steps before approving them.',
+      'Увидеть изменения файлов, установки, команды и ручные шаги до согласия.',
+    ),
+  },
+  {
+    title: t('Apply and check', 'Применить и проверить'),
+    description: t(
+      'Receive the approved changes and a final report showing what passed, failed or remains unverified.',
+      'Получить согласованные изменения и итоговый отчёт: что проверено, где ошибки и что осталось непроверенным.',
+    ),
+  },
+];
+const questions = [
+  {
+    title: t(
+      'Which agents and platforms are verified?',
+      'Какие агенты и платформы проверены?',
+    ),
+    description: t(
+      'Release installation is verified on macOS, Node 24 and Codex. Claude Code and Cursor installation targets are experimental. Bounded Codex and copied-skill ZCode exercises do not prove automatic discovery or support for every environment. Project build/test/lint checks currently use the web profile.',
+      'Установка релиза проверена на macOS, Node 24 и Codex. Цели Claude Code и Cursor экспериментальные. Ограниченные упражнения Codex и скопированный скилл в ZCode не доказывают автоматическое обнаружение или поддержку всех сред. Проектные build/test/lint-проверки пока используют web-профиль.',
+    ),
+  },
+  {
+    title: t(
+      'Do I need another account or API key?',
+      'Нужен отдельный аккаунт или API-ключ?',
+    ),
+    description: t(
+      'Tibicen runs inside your usual coding agent and needs no separate account or API key. Your agent and any selected external services keep their own authentication and costs.',
+      'Tibicen работает внутри привычного агента, отдельный аккаунт или API-ключ не нужен. У агента и выбранных внешних сервисов остаются собственные авторизация и стоимость.',
+    ),
+  },
+  {
+    title: t(
+      'What happens to existing project files?',
+      'Что произойдёт с существующими файлами?',
+    ),
+    description: t(
+      'Only approved agent infrastructure changes. Application source, data, existing package manifests and CI are preserved. Installations and project commands require approval. No commits or persistent Tibicen process are created.',
+      'Меняется только согласованная агентская инфраструктура. Код приложения, данные, существующие package-файлы и CI сохраняются. Установка и проектные команды требуют согласия. Коммиты и постоянный процесс Tibicen не создаются.',
+    ),
+  },
+  {
+    title: t('Where does my data go?', 'Куда отправляются данные?'),
+    description: t(
+      'The optional preset is generated in your browser without sending answers. Project work follows your agent provider’s data rules. Component research uses external sources; keep secrets out of presets.',
+      'Необязательный пресет создаётся в браузере без отправки ответов. Для работы с проектом действуют правила обработки данных вашего агента. Поиск компонентов использует внешние источники; секреты в пресет не добавляйте.',
+    ),
+  },
+  {
+    title: t(
+      'How do updates and removal work?',
+      'Как работают обновление и удаление?',
+    ),
+    description: t(
+      'Updates are explicit; there is no background updater. Back up local skill edits before reinstalling a pinned release. Removing the skills does not undo approved project changes. The linked guide covers both operations.',
+      'Обновления запускаются явно, фонового обновления нет. Перед переустановкой закреплённого релиза сохраните локальные правки скиллов. Удаление скиллов не отменяет согласованные изменения проекта. Обе операции описаны в инструкции по ссылке.',
+    ),
+  },
+];
+const geometry = [
+  ['waves', t('Contour wave', 'Контурная волна')],
+  ['cubes', t('Wireframe cubes', 'Каркасные кубы')],
+  ['scaffold', t('Scaffolding', 'Строительные леса')],
+  ['truss', t('Flat graph', 'Плоский граф')],
+  ['lattice', t('Modular lattice', 'Модульная решётка')],
+  ['clusters', t('Cluster network', 'Сеть центров')],
+  ['dag', t('Branching graph', 'Граф с ветвлениями')],
+];
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#1c1c1c" />
+    <meta
+      name="description"
+      content={t(
+        'Set up project instructions and only the tools your coding agent needs. Review the exact plan before changes and receive a clear verification report.',
+        'Настройте инструкции проекта и только нужные агенту инструменты. Сначала согласуйте точный план, затем получите изменения и понятный отчёт о проверках.',
+      )}
+    />
+    <title>{t('Tibicen — set up your project for AI coding', 'Tibicen — подготовьте проект к работе с агентом')}</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href={`${basePath}/assets/favicon.svg`}
+    />
+    <script src="../scripts/app.ts"></script>
+    <script src="../scripts/background.ts"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      {t('Skip to content', 'К содержимому')}
+    </a>
+    <header class="header page-width">
+      <a
+        class="wordmark"
+        href="#"
+        aria-label={t('Tibicen — back to top', 'Tibicen — в начало')}
+      >
+        <img
+          class="brand-mark"
+          src={`${basePath}/assets/logo.svg`}
+          width="36"
+          height="36"
+          alt=""
+        />
+        tibicen
+      </a>
+      <nav aria-label={t('Main navigation', 'Основная навигация')}>
+        <a href="#start">{t('Get started', 'Начать')}</a>
+        <a href="#result">{t('Example', 'Пример')}</a>
+        <a href="#faq">{t('Questions', 'Вопросы')}</a>
+      </nav>
+      <div
+        class="language-switch"
+        role="group"
+        aria-label={t('Page language', 'Язык страницы')}
+      >
+        <a
+          href={`${basePath}/`}
+          hreflang="en"
+          lang="en"
+          aria-label="English"
+          aria-current={locale === 'en' ? 'page' : undefined}
+        >
+          EN
+        </a>
+        <a
+          href={`${basePath}/ru/`}
+          hreflang="ru"
+          lang="ru"
+          aria-label="Русский"
+          aria-current={locale === 'ru' ? 'page' : undefined}
+        >
+          RU
+        </a>
+      </div>
+      <a class="header-start" href="#start">
+        {t('Install', 'Установить')} <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+    <nav
+      class="geometry-preview page-width"
+      aria-label={t('Compare background options', 'Сравнение вариантов фона')}
+      hidden
+    >
+      <span>{t('Background options', 'Варианты фона')}</span>
+      {geometry.map(([value, label]) => (
+        <a href={`?preview=geometry&geometry=${value}`} data-geometry={value}>
+          {label}
+        </a>
+      ))}
+    </nav>
+    <main id="main">
+      <div class="hero-surface" data-geometry="truss">
+        <section class="hero page-width" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span class="eyebrow-line" aria-hidden="true"></span>
+              {t(
+                'Project setup for coding agents',
+                'Настройка проекта для агентов',
+              )}
+            </p>
+            <h1 id="hero-title">
+              {t('Set up your project for ', 'Подготовьте проект к работе ')}
+              <span>{t('AI coding.', 'с агентом.')}</span>
+            </h1>
+            <p class="hero-description">
+              {t(
+                'Get project instructions and only the tools you need. Review the plan before anything changes.',
+                'Получите инструкции проекта и только нужные инструменты. Согласуйте план до любых изменений.',
+              )}
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#start">
+                {t('Install alpha', 'Установить alpha')}{' '}
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a class="text-link" href={repository}>
+                {t('View on GitHub', 'Открыть GitHub')}{' '}
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <p class="hero-note">
+              <span class="status-dot" aria-hidden="true"></span>
+              {t('Limited alpha', 'Ограниченная alpha')} · 0.1.0-alpha.1 · MIT
+            </p>
+          </div>
+          <ProjectPreview {locale} />
+        </section>
+      </div>
+      <section class="start-section" id="start" aria-labelledby="start-title">
+        <div class="page-width start-grid start-install">
+          <div class="start-copy">
+            <p class="eyebrow">
+              <span class="eyebrow-line" aria-hidden="true"></span>
+              {t('Two skills, one install', 'Два скилла, одна установка')}
+            </p>
+            <h2 id="start-title">{t('Get started', 'Начните работу')}</h2>
+            <p>
+              {t(
+                'Install the ready-to-use skills, open your project in your agent and choose a prompt below. A preset is optional.',
+                'Установите готовые скиллы, откройте проект в агенте и выберите запрос ниже. Пресет необязателен.',
+              )}
+            </p>
+            <div class="requirements">
+              <span>Node ≥22.20</span>
+              <span>Git</span>
+              <span>{t('Your coding agent', 'Ваш агент')}</span>
+            </div>
+            <p class="support-note">
+              {t(
+                'Verified delivery: macOS · Node 24 · Codex. Claude Code and Cursor targets are experimental. Windows command execution is unavailable; read-only operations remain available.',
+                'Проверенная доставка: macOS · Node 24 · Codex. Цели Claude Code и Cursor экспериментальные. На Windows исполнение команд недоступно; чтение остаётся доступным.',
+              )}
+            </p>
+            <div class="project-links">
+              <a href={`${guide}#install-the-limited-alpha`}>
+                {t('Installation guide', 'Инструкция установки')}
+              </a>
+              <a href={release}>{t('Release notes', 'Описание релиза')}</a>
+              <a href={`${guide}#update-or-remove-an-installation`}>
+                {t('Update or remove', 'Обновить или удалить')}
+              </a>
+              <a href={repository}>GitHub</a>
+            </div>
+          </div>
+          <Installation {locale} />
+        </div>
+        <Features
+          id="scenarios"
+          {locale}
+          tagline={t('After installation', 'После установки')}
+          title={t(
+            'Open your project. Pick your task.',
+            'Откройте проект. Выберите задачу.',
+          )}
+          items={scenarios}
+        />
+      </section>
+      <Steps
+        id="workflow"
+        tagline={t('How it works', 'Как это работает')}
+        title={t('A plan you control', 'План под вашим контролем')}
+        items={steps}
+      />
+      <section
+        id="result"
+        class="result-section section-space page-width"
+        aria-labelledby="result-title"
+      >
+        <p class="eyebrow">{t('Illustrative example', 'Пример результата')}</p>
+        <h2 id="result-title">
+          {t(
+            'Less conflicting context. A clear handoff.',
+            'Меньше противоречий. Понятный итог.',
+          )}
+        </h2>
+        <div class="result-grid">
+          <article class="result-card">
+            <h3>{t('Before', 'До')}</h3>
+            <p>
+              {t(
+                'AGENTS.md contains an obsolete command and useful user decisions.',
+                'В AGENTS.md есть устаревшая команда и полезные решения пользователя.',
+              )}
+            </p>
+            <h3>{t('After approval', 'После согласия')}</h3>
+            <p>
+              {t(
+                'The obsolete instruction is removed. Useful decisions and application files are preserved. No extra tool is needed.',
+                'Устаревшая инструкция удалена. Полезные решения и файлы приложения сохранены. Дополнительные инструменты не нужны.',
+              )}
+            </p>
+          </article>
+          <article
+            class="result-card report-example"
+            aria-label={t(
+              'Illustrative final report',
+              'Пример итогового отчёта',
+            )}
+          >
+            <h3>{t('Final report', 'Итоговый отчёт')}</h3>
+            <dl>
+              <div>
+                <dt>{t('Applied', 'Применено')}</dt>
+                <dd>
+                  {t(
+                    'AGENTS.md: obsolete instruction removed',
+                    'AGENTS.md: устаревшая инструкция удалена',
+                  )}
+                </dd>
+              </div>
+              <div>
+                <dt>{t('Preserved', 'Сохранено')}</dt>
+                <dd>
+                  {t(
+                    'Application files and user decisions',
+                    'Файлы приложения и решения пользователя',
+                  )}
+                </dd>
+              </div>
+              <div>
+                <dt>{t('Checked', 'Проверено')}</dt>
+                <dd>
+                  {t(
+                    'Approved file contents and structure',
+                    'Согласованное содержимое и структура файлов',
+                  )}
+                </dd>
+              </div>
+              <div>
+                <dt>{t('Unverified', 'Не проверено')}</dt>
+                <dd>
+                  {t(
+                    'Behavior in the next agent session',
+                    'Поведение в следующей сессии агента',
+                  )}
+                </dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+        <p class="result-note">
+          {t(
+            'An illustration, not a guaranteed outcome. Your report reflects the actual changes and available checks. ',
+            'Иллюстрация, а не гарантированный исход. Ваш отчёт отражает фактические изменения и доступные проверки. ',
+          )}
+          <code>.tibicen/manifest.yml</code>
+          {t(
+            ' retains the setup record for future runs.',
+            ' сохраняет запись о настройке для следующих запусков.',
+          )}
+        </p>
+      </section>
+      <FAQs
+        id="faq"
+        tagline={t('Before your first run', 'Перед первым запуском')}
+        title={t('What to know', 'Что нужно знать')}
+        items={questions}
+      />
+      <section
+        class="preset-section section-space page-width"
+        id="preset"
+        aria-labelledby="preset-title"
+      >
+        <div class="preset-intro">
+          <p class="eyebrow">{t('Optional', 'Необязательно')}</p>
+          <h2 id="preset-title">
+            {t('Save your preferences', 'Сохраните предпочтения')}
+          </h2>
+          <p>
+            {t(
+              'Reuse your preferred workflow and constraints in similar projects. Pass preset.yaml to your agent; it will inspect each project again.',
+              'Сохраните привычный процесс и ограничения для похожих проектов. Передайте preset.yaml агенту — каждый проект он изучит заново.',
+            )}
+          </p>
+          <p class="privacy-note">
+            {t(
+              'Generated in your browser. No answers are sent.',
+              'Создаётся в вашем браузере. Ответы никуда не отправляются.',
+            )}
+          </p>
+        </div>
+        <PresetForm {locale} />
+      </section>
+    </main>
+    <footer class="footer page-width">
+      <a
+        class="wordmark"
+        href="#"
+        aria-label={t('Tibicen — back to top', 'Tibicen — в начало')}
+      >
+        <img
+          class="brand-mark"
+          src={`${basePath}/assets/logo.svg`}
+          width="28"
+          height="28"
+          alt=""
+        />
+        tibicen
+      </a>
+      <div class="project-links">
+        <a href={repository}>GitHub</a>
+        <a href={guide}>{t('Documentation', 'Документация')}</a>
+        <a href={release}>{t('Release notes', 'Описание релиза')}</a>
+        <a href={`${guide}#update-or-remove-an-installation`}>
+          {t('Update or remove', 'Обновить или удалить')}
+        </a>
+        <a href={`${repository}/blob/main/LICENSE`}>MIT</a>
+      </div>
+      <span>
+        {t('Sections adapted from', 'Секции на основе')} AstroWind ·{' '}
+        <a href={`${basePath}/licenses/astrowind.txt`}>AstroWind MIT</a> ·{' '}
+        <a href={`${basePath}/licenses/starwind.txt`}>Starwind MIT</a>
+      </span>
+    </footer>
+    <p
+      id="copy-status"
+      class="copy-status"
+      role="status"
+      aria-live="polite"
+    ></p>
+    <noscript>
+      <p class="noscript-note">
+        {t(
+          'Installation commands, prompts and language links work without JavaScript. Enable JavaScript to copy text or download a preset.',
+          'Команды установки, запросы и ссылки языка работают без JavaScript. Для копирования и скачивания пресета включите JavaScript.',
+        )}
+      </p>
+    </noscript>
+  </body>
+</html>

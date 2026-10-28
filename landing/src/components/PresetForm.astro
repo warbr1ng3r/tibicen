@@ -1,28 +1,40 @@
 ---
 import Field from './ui/Field.astro';
 import Select from './ui/Select.astro';
+import { localize, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = 'en' } = Astro.props;
+const t = (en: string, ru: string) => localize(locale, en, ru);
 
 const languages = [
-  { value: '', label: 'Определить в проекте' },
+  { value: '', label: t('Detect in project', 'Определить в проекте') },
   ...['TypeScript', 'JavaScript', 'Python', 'Go', 'Rust', 'Java'].map(
     (label) => ({ value: label.toLowerCase(), label }),
   ),
   { value: 'csharp', label: 'C#' },
 ];
 const kinds = [
-  { value: '', label: 'Разные проекты' },
-  { value: 'application', label: 'Приложения' },
-  { value: 'service', label: 'Сервисы' },
-  { value: 'library', label: 'Библиотеки' },
-  { value: 'experiment', label: 'Эксперименты' },
+  { value: '', label: t('Various projects', 'Разные проекты') },
+  { value: 'application', label: t('Applications', 'Приложения') },
+  { value: 'service', label: t('Services', 'Сервисы') },
+  { value: 'library', label: t('Libraries', 'Библиотеки') },
+  { value: 'experiment', label: t('Experiments', 'Эксперименты') },
 ];
 ---
 
 <details class="preset-details">
   <summary>
     <span>
-      <strong>Собрать свой пресет</strong>
-      <small>Параметры работы для следующих проектов</small>
+      <strong>{t('Build your preset', 'Собрать свой пресет')}</strong>
+      <small>
+        {t(
+          'Preferences for your next projects',
+          'Параметры работы для следующих проектов',
+        )}
+      </small>
     </span>
     <span class="details-toggle" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none">
@@ -39,13 +51,16 @@ const kinds = [
     <fieldset
       id="preset-controls"
       class="preset-controls"
-      aria-label="Параметры пресета"
+      aria-label={t('Preset options', 'Параметры пресета')}
       disabled
     >
       <Field
         id="name"
-        label="Имя пресета"
-        hint="Латинские буквы, цифры и дефисы. Например, hackathon."
+        label={t('Preset name', 'Имя пресета')}
+        hint={t(
+          'Lowercase Latin letters, numbers and hyphens. For example, hackathon.',
+          'Латинские буквы, цифры и дефисы. Например, hackathon.',
+        )}
       >
         <input
           id="name"
@@ -57,30 +72,10 @@ const kinds = [
           required
         />
       </Field>
-      <div class="field-row">
-        <Field id="language" label="Основной язык">
-          <Select
-            id="language"
-            name="language"
-            label="Основной язык"
-            value=""
-            options={languages}
-            describedBy="language-error"
-          />
-        </Field>
-        <Field id="kind" label="Тип проектов">
-          <Select
-            id="kind"
-            name="kind"
-            label="Тип проектов"
-            value=""
-            options={kinds}
-            describedBy="kind-error"
-          />
-        </Field>
-      </div>
       <fieldset data-field="process">
-        <legend>Сколько процесса вам нужно?</legend>
+        <legend>
+          {t('How much process do you need?', 'Сколько процесса вам нужно?')}
+        </legend>
         <div class="choice-grid">
           <label class="choice">
             <input
@@ -90,8 +85,8 @@ const kinds = [
               aria-describedby="process-error"
             />
             <span>
-              <strong>Минимум</strong>
-              <small>Без лишних шагов</small>
+              <strong>{t('Minimal', 'Минимум')}</strong>
+              <small>{t('Only essential steps', 'Без лишних шагов')}</small>
             </span>
           </label>
           <label class="choice">
@@ -103,8 +98,8 @@ const kinds = [
               checked
             />
             <span>
-              <strong>Баланс</strong>
-              <small>Разумная структура</small>
+              <strong>{t('Balanced', 'Баланс')}</strong>
+              <small>{t('A practical structure', 'Разумная структура')}</small>
             </span>
           </label>
           <label class="choice">
@@ -115,8 +110,8 @@ const kinds = [
               aria-describedby="process-error"
             />
             <span>
-              <strong>Подробнее</strong>
-              <small>Больше этапов</small>
+              <strong>{t('Structured', 'Структурно')}</strong>
+              <small>{t('More stages', 'Больше этапов')}</small>
             </span>
           </label>
         </div>
@@ -128,68 +123,110 @@ const kinds = [
           hidden
         ></p>
       </fieldset>
-      <Field id="style" label="Ответы агента">
+      <Field id="style" label={t('Agent responses', 'Ответы агента')}>
         <Select
           id="style"
           name="style"
-          label="Ответы агента"
+          label={t('Agent responses', 'Ответы агента')}
           value="concise"
           describedBy="style-error"
           options={[
-            { value: 'concise', label: 'Коротко и по делу' },
-            { value: 'detailed', label: 'С подробным объяснением' },
+            { value: 'concise', label: t('Concise', 'Коротко и по делу') },
+            {
+              value: 'detailed',
+              label: t('Detailed', 'С подробным объяснением'),
+            },
           ]}
         />
       </Field>
-      <fieldset data-field="agents">
-        <legend>Какими агентами пользуетесь?</legend>
-        <div class="agent-choices">
-          <label>
-            <input
-              type="checkbox"
-              name="agents"
-              value="claude-code"
-              aria-describedby="agents-hint agents-error"
-            />{' '}
-            Claude Code
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="agents"
-              value="codex"
-              aria-describedby="agents-hint agents-error"
-            />{' '}
-            Codex
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="agents"
-              value="cursor"
-              aria-describedby="agents-hint agents-error"
-            />{' '}
-            Cursor
-          </label>
-        </div>
-        <small id="agents-hint">
-          Можно оставить пустым — агент уточнит окружение.
-        </small>
-        <p
-          id="agents-error"
-          class="field-error"
-          data-field-error
-          role="alert"
-          hidden
-        ></p>
-      </fieldset>
       <details class="advanced">
-        <summary>Пути, которые нельзя трогать</summary>
+        <summary>
+          {t(
+            'Optional project hints and protected paths',
+            'Необязательные подсказки и защищённые пути',
+          )}
+        </summary>
+        <div class="field-row">
+          <Field
+            id="language"
+            label={t('Programming language', 'Язык программирования')}
+          >
+            <Select
+              id="language"
+              name="language"
+              label={t('Programming language', 'Язык программирования')}
+              value=""
+              options={languages}
+              describedBy="language-error"
+            />
+          </Field>
+          <Field id="kind" label={t('Project type', 'Тип проектов')}>
+            <Select
+              id="kind"
+              name="kind"
+              label={t('Project type', 'Тип проектов')}
+              value=""
+              options={kinds}
+              describedBy="kind-error"
+            />
+          </Field>
+        </div>
+        <fieldset data-field="agents">
+          <legend>{t('Agent hints', 'Какими агентами пользуетесь?')}</legend>
+          <div class="agent-choices">
+            <label>
+              <input
+                type="checkbox"
+                name="agents"
+                value="claude-code"
+                aria-describedby="agents-hint agents-error"
+              />{' '}
+              Claude Code
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="agents"
+                value="codex"
+                aria-describedby="agents-hint agents-error"
+              />{' '}
+              Codex
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="agents"
+                value="cursor"
+                aria-describedby="agents-hint agents-error"
+              />{' '}
+              Cursor
+            </label>
+          </div>
+          <small id="agents-hint">
+            {t(
+              'Leave empty to let the agent check your environment.',
+              'Можно оставить пустым — агент уточнит окружение.',
+            )}
+          </small>
+          <p
+            id="agents-error"
+            class="field-error"
+            data-field-error
+            role="alert"
+            hidden
+          ></p>
+        </fieldset>
         <Field
           id="forbidden-paths"
           name="forbiddenPaths"
-          label="По одному относительному пути на строку"
-          hint="Только названия путей, без содержимого файлов и секретов."
+          label={t(
+            'Protected paths: one relative path per line',
+            'По одному относительному пути на строку',
+          )}
+          hint={t(
+            'Path names only, without file contents or secrets.',
+            'Только названия путей, без содержимого файлов и секретов.',
+          )}
         >
           <textarea
             id="forbidden-paths"
@@ -207,12 +244,15 @@ const kinds = [
         type="submit"
         disabled
       >
-        Скачать preset.yaml <span aria-hidden="true">↓</span>
+        {t('Download preset.yaml', 'Скачать preset.yaml')}{' '}
+        <span aria-hidden="true">↓</span>
       </button>
     </fieldset>
     <p class="form-footnote">
-      Пресет сохраняет предпочтения. План изменений согласуется отдельно в
-      каждом проекте.
+      {t(
+        'The preset saves preferences. Review and approve a separate change plan in each project.',
+        'Пресет сохраняет предпочтения. План изменений согласуется отдельно в каждом проекте.',
+      )}
     </p>
     <p
       id="download-status"

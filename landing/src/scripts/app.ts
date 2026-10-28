@@ -3,6 +3,10 @@ import {
   serializePreset,
   PresetValidationError,
 } from './preset.ts';
+import { localize, type Locale } from '../i18n.ts';
+
+const locale: Locale = document.documentElement.lang === 'ru' ? 'ru' : 'en';
+const t = (en: string, ru: string) => localize(locale, en, ru);
 
 const form = document.querySelector<HTMLFormElement>('#preset-form')!;
 const error = document.querySelector<HTMLElement>('#form-error')!;
@@ -48,15 +52,18 @@ for (const button of document.querySelectorAll<HTMLButtonElement>(
     const request = ++latestCopy;
     clearTimeout(resetTimer);
     if (label) label.textContent = originalLabel ?? null;
-    copyStatus.textContent = 'Копирование…';
+    copyStatus.textContent = t('Copying…', 'Копирование…');
     try {
       const target = document.getElementById(button.dataset.copyTarget!);
       if (!target) throw new Error('Copy target absent');
       await copyText(target.textContent ?? '', request);
       if (request !== latestCopy) return;
-      copyStatus.textContent = 'Скопировано в буфер обмена.';
+      copyStatus.textContent = t(
+        'Copied to clipboard.',
+        'Скопировано в буфер обмена.',
+      );
       if (label) {
-        label.textContent = 'Скопировано';
+        label.textContent = t('Copied', 'Скопировано');
         resetTimer = setTimeout(() => {
           label.textContent = originalLabel ?? null;
           if (request === latestCopy) copyStatus.textContent = '';
@@ -64,8 +71,10 @@ for (const button of document.querySelectorAll<HTMLButtonElement>(
       }
     } catch {
       if (request === latestCopy)
-        copyStatus.textContent =
-          'Не удалось скопировать. Выделите текст и скопируйте его вручную.';
+        copyStatus.textContent = t(
+          'Could not copy. Select the text and copy it manually.',
+          'Не удалось скопировать. Выделите текст и скопируйте его вручную.',
+        );
     }
   });
 }
@@ -97,15 +106,18 @@ form.addEventListener('submit', (event) => {
   status.textContent = '';
   try {
     const data = new FormData(form);
-    const preset = buildPreset({
-      name: data.get('name'),
-      language: data.get('language'),
-      kind: data.get('kind'),
-      process: data.get('process'),
-      style: data.get('style'),
-      agents: data.getAll('agents'),
-      forbiddenPaths: data.get('forbiddenPaths'),
-    });
+    const preset = buildPreset(
+      {
+        name: data.get('name'),
+        language: data.get('language'),
+        kind: data.get('kind'),
+        process: data.get('process'),
+        style: data.get('style'),
+        agents: data.getAll('agents'),
+        forbiddenPaths: data.get('forbiddenPaths'),
+      },
+      locale,
+    );
     const blob = new Blob([serializePreset(preset)], {
       type: 'application/yaml;charset=utf-8',
     });
@@ -117,8 +129,10 @@ form.addEventListener('submit', (event) => {
     link.click();
     link.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
-    status.textContent =
-      'Файл подготовлен к скачиванию. Передайте его агенту в нужном проекте.';
+    status.textContent = t(
+      'File prepared for download. Give it to your agent in the target project.',
+      'Файл подготовлен к скачиванию. Передайте его агенту в нужном проекте.',
+    );
   } catch (cause) {
     if (cause instanceof PresetValidationError) {
       const field = form.querySelector(`[data-field="${cause.field}"]`);
@@ -136,7 +150,13 @@ form.addEventListener('submit', (event) => {
         return;
       }
     }
-    error.textContent = cause instanceof Error ? cause.message : String(cause);
+    error.textContent =
+      cause instanceof PresetValidationError
+        ? cause.message
+        : t(
+            'Could not prepare the file. Try downloading it again.',
+            'Не удалось подготовить файл. Попробуйте скачать его ещё раз.',
+          );
     error.hidden = false;
   }
 });

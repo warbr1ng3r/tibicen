@@ -1,6 +1,13 @@
 ---
 import { agents, managers, installationCommand } from '../scripts/install';
 import Select from './ui/Select.astro';
+import { localize, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = 'en' } = Astro.props;
+const t = (en: string, ru: string) => localize(locale, en, ru);
 ---
 
 <div class="installation">
@@ -10,7 +17,10 @@ import Select from './ui/Select.astro';
       class="copy-button"
       type="button"
       data-copy-target="install-command"
-      aria-label="Скопировать команду установки"
+      aria-label={t(
+        'Copy installation command',
+        'Скопировать команду установки',
+      )}
     >
       <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
         <rect
@@ -23,20 +33,22 @@ import Select from './ui/Select.astro';
         />
         <path d="M12 7V3H3v10h4" stroke="currentColor" />
       </svg>
-      <span data-copy-label>Копировать</span>
+      <span data-copy-label>{t('Copy', 'Копировать')}</span>
     </button>
   </div>
   <fieldset
     id="install-controls"
     class="install-options"
-    aria-label="Настройки установки"
+    aria-label={t('Installation options', 'Настройки установки')}
     disabled
   >
     <div>
-      <label for="install-agent">Ваш агент</label>
+      <label for="install-agent">
+        {t('Installation target', 'Цель установки')}
+      </label>
       <Select
         id="install-agent"
-        label="Ваш агент"
+        label={t('Installation target', 'Цель установки')}
         value="codex"
         options={Object.entries(agents).map(([value, label]) => ({
           value,
@@ -45,10 +57,10 @@ import Select from './ui/Select.astro';
       />
     </div>
     <div>
-      <label for="install-manager">Запустить через</label>
+      <label for="install-manager">{t('Run with', 'Запустить через')}</label>
       <Select
         id="install-manager"
-        label="Запустить через"
+        label={t('Run with', 'Запустить через')}
         value="npm"
         options={Object.keys(managers).map((value) => ({
           value,
@@ -59,15 +71,23 @@ import Select from './ui/Select.astro';
   </fieldset>
   <pre><code id="install-command">{installationCommand('npm', 'codex')}</code></pre>
   <p>
-    Установщик добавит два скилла в окружение вашего агента. Менеджер пакетов и
-    зависимости целевого проекта не меняются.
+    {t(
+      'The installer adds two skills to your agent environment. Your project’s package manager and dependencies stay unchanged.',
+      'Установщик добавит два скилла в окружение вашего агента. Менеджер пакетов и зависимости целевого проекта не меняются.',
+    )}
   </p>
   <noscript>
     <p>
-      Без JavaScript показана команда для npm и Codex. Для pnpm используйте{' '}
-      <code>pnpm dlx</code>, для Yarn 2+ — <code>yarn dlx</code> вместо{' '}
-      <code>npx</code>. Значение <code>--agent</code>: <code>codex</code>,{' '}
-      <code>claude-code</code> или <code>cursor</code>.
+      {t(
+        'Without JavaScript, the command uses npm and Codex. For pnpm use',
+        'Без JavaScript показана команда для npm и Codex. Для pnpm используйте',
+      )}{' '}
+      <code>pnpm dlx</code>
+      {t(', for Yarn 2+ use', ', для Yarn 2+ —')} <code>yarn dlx</code>{' '}
+      {t('instead of', 'вместо')} <code>npx</code>. {t('The', 'Значение')}{' '}
+      <code>--agent</code>
+      {t(' value is', ':')} <code>codex</code>, <code>claude-code</code>{' '}
+      {t('or', 'или')} <code>cursor</code>.
     </p>
   </noscript>
 </div>

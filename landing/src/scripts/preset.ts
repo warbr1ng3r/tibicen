@@ -1,3 +1,5 @@
+import { localize, type Locale } from '../i18n.ts';
+
 const AGENTS = ['claude-code', 'codex', 'cursor'];
 const PROCESSES = ['minimal', 'balanced', 'structured'];
 const STYLES = ['concise', 'detailed'];
@@ -21,30 +23,43 @@ export class PresetValidationError extends Error {
   }
 }
 
-export function buildPreset({
-  name,
-  language = '',
-  kind = '',
-  process = 'balanced',
-  style = 'concise',
-  agents = [],
-  forbiddenPaths = '',
-}: PresetInput) {
+export function buildPreset(
+  {
+    name,
+    language = '',
+    kind = '',
+    process = 'balanced',
+    style = 'concise',
+    agents = [],
+    forbiddenPaths = '',
+  }: PresetInput,
+  locale: Locale = 'en',
+) {
+  const t = (en: string, ru: string) => localize(locale, en, ru);
   const presetName = String(name ?? '').trim();
   if (!/^[a-z0-9][a-z0-9-]{0,63}$/.test(presetName))
     throw new PresetValidationError(
       'name',
-      'Имя: до 64 латинских букв, цифр и дефисов. Например, hackathon.',
+      t(
+        'Name: up to 64 lowercase Latin letters, numbers and hyphens. For example, hackathon.',
+        'Имя: до 64 латинских букв, цифр и дефисов. Например, hackathon.',
+      ),
     );
   if (typeof process !== 'string' || !PROCESSES.includes(process))
     throw new PresetValidationError(
       'process',
-      'Выберите предложенный процесс.',
+      t(
+        'Choose one of the available processes.',
+        'Выберите предложенный процесс.',
+      ),
     );
   if (typeof style !== 'string' || !STYLES.includes(style))
     throw new PresetValidationError(
       'style',
-      'Выберите предложенную подробность ответов.',
+      t(
+        'Choose one of the available response styles.',
+        'Выберите предложенную подробность ответов.',
+      ),
     );
   if (
     !Array.isArray(agents) ||
@@ -52,7 +67,10 @@ export function buildPreset({
       (agent) => typeof agent === 'string' && AGENTS.includes(agent),
     )
   )
-    throw new PresetValidationError('agents', 'Выберите поддержанного агента.');
+    throw new PresetValidationError(
+      'agents',
+      t('Choose a supported agent.', 'Выберите поддержанного агента.'),
+    );
   const stack_hint: Record<string, string> = {};
   for (const [key, input] of Object.entries({ language, kind })) {
     const value = String(input).trim();
@@ -60,7 +78,10 @@ export function buildPreset({
     if (!/^[a-z0-9+#.-]{1,40}$/i.test(value))
       throw new PresetValidationError(
         key as 'language' | 'kind',
-        'Стек и тип проекта задаются короткими названиями.',
+        t(
+          'Use short names for programming language and project type.',
+          'Стек и тип проекта задаются короткими названиями.',
+        ),
       );
     stack_hint[key] = value;
   }
@@ -80,7 +101,10 @@ export function buildPreset({
   ) {
     throw new PresetValidationError(
       'forbiddenPaths',
-      'Запретные пути задаются относительно проекта, без .., обратных слешей и абсолютных путей.',
+      t(
+        'Protected paths must be relative to the project, without .., backslashes or absolute paths.',
+        'Запретные пути задаются относительно проекта, без .., обратных слешей и абсолютных путей.',
+      ),
     );
   }
   return {

@@ -63,7 +63,7 @@ version. There is no background update of installed Tibicen or project setup.
 
 - Responsible maintainer and private security/conduct contacts.
 - Independent channel for advisories and distribution checksums.
-- Voluntary pilot participants and agreed measurements; actual human/pilot results.
+- Voluntary pilot participants and agreed measurements using the [draft pilot protocol](PILOT.md); actual human/pilot results remain required.
 - Full component coverage and acceptance for additional agents and platforms.
 
 These inputs remain open after the limited alpha. Maintenance is monthly and

@@ -60,7 +60,7 @@ async function expectPageToFit(page: Page) {
 }
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/');
+  await page.goto('./');
   await expect(page.locator('#language')).toHaveAttribute(
     'aria-controls',
     /.+/,
@@ -92,6 +92,7 @@ for (const [width, height] of [
   }) => {
     await page.setViewportSize({ width, height });
     await page.locator('.preset-details > summary').click();
+    await page.locator('.advanced > summary').click();
     for (const id of [
       'install-agent',
       'install-manager',
@@ -106,6 +107,13 @@ for (const [width, height] of [
       await page.keyboard.press('End');
       const last = popup.getByRole('option').last();
       await expect(last).toBeFocused();
+      await expect
+        .poll(async () => {
+          const box = (await popup.boundingBox())!;
+          const item = (await last.boundingBox())!;
+          return item.y + item.height - box.y - box.height;
+        })
+        .toBeLessThanOrEqual(1);
       const box = (await popup.boundingBox())!;
       const item = (await last.boundingBox())!;
       expect(box.x).toBeGreaterThanOrEqual(0);
@@ -124,14 +132,16 @@ for (const [width, height] of [
 for (const scale of [2, 4]) {
   test(`page reflows at the CSS viewport equivalent of ${scale * 100}% desktop zoom`, async ({
     browser,
+    baseURL,
   }) => {
     const context = await browser.newContext({
+      baseURL,
       viewport: { width: 1280 / scale, height: 900 / scale },
       deviceScaleFactor: scale,
       reducedMotion: 'reduce',
     });
     const page = await context.newPage();
-    await page.goto('http://127.0.0.1:8372/');
+    await page.goto('./');
     await expect(page.locator('#download-preset')).toBeEnabled();
     await page.locator('.preset-details > summary').click();
     await page.locator('.advanced > summary').click();
@@ -199,4 +209,26 @@ test('graph animates, resizes and stops for reduced motion', async ({
       ),
     )
     .toBe(true);
+});
+
+test('Russian layout and mobile language switch fit phone and desktop', async ({
+  page,
+}) => {
+  await page.goto('ru/');
+  await expect(page.locator('#download-preset')).toBeEnabled();
+  await page.locator('.preset-details > summary').click();
+  await page.locator('.advanced > summary').click();
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await expect(page.locator('header a[hreflang="en"]')).toBeInViewport();
+    await expect(page.locator('header a[hreflang="en"]')).toBeVisible();
+    await expectPageToFit(page);
+    for (const question of await page.locator('#faq details').all()) {
+      if (!(await question.evaluate((el: HTMLDetailsElement) => el.open)))
+        await question.locator('summary').click();
+      await expect(question.locator('p')).toBeVisible();
+      await expectPageToFit(page);
+    }
+  }
 });

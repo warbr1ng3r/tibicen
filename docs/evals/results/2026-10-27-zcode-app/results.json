@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "event_date": "2026-10-27",
+  "root_review_date": "2026-10-28",
+  "source_sha": "b5b1c5ea08218fb2e25c9ea7d55c8b2299b22e25",
+  "source_branch_provenance": "codex/zcode-product-pass",
+  "version": "0.1.0-alpha.1",
+  "git_checkout": false,
+  "execution": "ZCode app with explicit installed skill/CLI invocation",
+  "distribution_files_verified": 86,
+  "inventory_sha256": "35f743a56b47e4f25743da5d6b6a1e606fb719b3382372384124094711e1b2dc",
+  "cases": [
+    {
+      "case": "init",
+      "status": "complete",
+      "applied_digest": "559fc46b403dea5557f1bc8a60fdd57f12c96733b8c6cf489d0de07c2929d8f4",
+      "infrastructure": "passed/structure-only",
+      "built_in_application": "unverified/no-project-checks",
+      "protected_files_verified": 5,
+      "agents_hash": "5eba86c610fb45dbe20523ca894a2196bfe6ca244b3163d2fff0b2c1ff3e924c",
+      "agents_mode": "0o600",
+      "current_status_report": "complete",
+      "external_tests_before": {
+        "passed": 6,
+        "failed": 0
+      },
+      "external_tests_after": {
+        "passed": 6,
+        "failed": 0
+      }
+    },
+    {
+      "case": "adopt",
+      "status": "complete",
+      "applied_digest": "6924a75de0dccee9a268229c2fbc8f1ab883906d65a65a3ed9bfae996975c2a5",
+      "infrastructure": "passed/structure-only",
+      "built_in_application": "unverified/no-project-checks",
+      "protected_files_verified": 6,
+      "agents_hash": "4f8d48681574c8a10b92504d86304e06fc5b63dbf659e5764c9590d47321c0cf",
+      "agents_mode": "0o644",
+      "current_status_report": "complete",
+      "external_tests_before": {
+        "passed": 6,
+        "failed": 0
+      },
+      "external_tests_after": {
+        "passed": 6,
+        "failed": 0
+      }
+    }
+  ],
+  "history": {
+    "original_init_digest": "f470913fbdf24659d52caf656dbd4484743fa89b4142e2ee3ebf7c086ca9c6d2",
+    "original_init_applied": "not applied, according to executor receipts; preserved",
+    "init_correction_actor": "root/Codex",
+    "init_correction": "Removed a permanent source/test preservation clause copied from the temporary run scope and a stale test-count cache; recompiled by actual CLI before apply",
+    "adopt_correction": null,
+    "runtime_failures_reported": 0
+  },
+  "approval_provenance": "Operator approval recorded by ZCode in its receipts; original chat approval was not independently captured by root. Forwarded executor messages are not new operator consent.",
+  "root_review": {
+    "read_only_status_report": "complete for both",
+    "apply_resume_reset_repeated": false,
+    "tests_repeated": false,
+    "independent_artifact_review": "Ship; public wording/location corrections incorporated",
+    "raw_evidence_public": false,
+    "verification_record_sha256": "487ac6ee2f459c3f1e78e5a38fbc5dbf861ce209e66c50fb4d43289cb5f16662"
+  },
+  "limits": [
+    "synthetic generated projects",
+    "native automatic discovery not observed",
+    "fresh-session task/quiz not run",
+    "no human-benefit measurements",
+    "not full agent/platform coverage",
+    "built-in application check unverified/no-project-checks; external node --test results remain separate",
+    "full product test suite not rerun; no product source changed"
+  ],
+  "record_scope": "Observed acceptance exercise; later repository review, validation and documentation commits are separate."
+}

@@ -1,6 +1,6 @@
 # Tibicen development plan
 
-**Revision: 2026-10-27.** This plan is based on the [main product vision](PRODUCT_VISION.md) and the [2026-10-22 addendum](PRODUCT_VISION_ADDENDUM.md). Addendum §§1–3, 7 and 9 clarify the first release obligations. The immediate scope explicitly includes the first OpenSpec process adapter from §6 and end-to-end acceptance of installing/using an additional skill. Sections 4–5 and 8, Spec Kit and the remaining process adapters remain future development.
+**Revision: 2026-10-28.** This plan is based on the [main product vision](PRODUCT_VISION.md) and the [2026-10-22 addendum](PRODUCT_VISION_ADDENDUM.md). Addendum §§1–3, 7 and 9 clarify the first release obligations. The immediate scope explicitly includes the first OpenSpec process adapter from §6 and end-to-end acceptance of installing/using an additional skill. Sections 4–5 and 8, Spec Kit and the remaining process adapters remain future development.
 
 Product documents define expected behavior. This plan defines order, dependencies, responsibility and transition criteria. Detailed requirements, scenarios and tasks live in OpenSpec; a specification link does not establish implementation readiness. Unresolved differences between documents are recorded explicitly, not turned into a new feature by inference.
 
@@ -13,10 +13,15 @@ The limited [0.1.0-alpha.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v
 | Next stage | Required work | Canonical tasks |
 |---|---|---|
 | CI follow-up | Main checks passed after publication; observe the next PR update/cancellation and consider further fixture optimizations only after measurement | [CI verification](../openspec/changes/deduplicate-offline-ci/verification.md) |
+| Landing delivery | English-default/Russian first-use iteration implemented and reviewed locally; full 688-test gate, browser/project-base checks passed. At the local verification stage, commit/publication was pending; public rollout is recorded separately | [Landing verification](../openspec/changes/localize-and-simplify-landing/verification.md) |
 | Full MVP acceptance | Complete L1/PREF/SKILL/PROC and fresh native loading/human checks; OpenSpec criteria apply to requests selecting that component | [Core contracts](../openspec/changes/extend-infrastructure-contracts/tasks.md), [agent acceptance](../openspec/changes/build-agent-evaluation-harness/tasks.md) |
-| Pilot and maintenance | Owner, private contacts/advisory channel, voluntary projects and benefit measurements | [Release groups 3–4](../openspec/changes/prepare-first-public-release/tasks.md) |
+| Pilot and maintenance | Select voluntary projects/cohort and agree measurements; assign maintenance and private contacts/advisory channel | [Pilot protocol draft](PILOT.md), [release groups 3–4](../openspec/changes/prepare-first-public-release/tasks.md) |
 
 CI deduplication is published in `63b5f36`: feature PRs use one automatic event, obsolete runs share a cancellation group, and the redundant build after pnpm test is removed. All 668 tests remain; the local gate, 86 distribution checksums, both unpacked self-tests and independent review passed. An existing timeout fixture now uses its normal startup allowance while retaining the tested stage deadline. The [new Ubuntu main run](https://github.com/warbr1ng3r/tibicen/actions/runs/40502875998) passed its full offline gate and distribution smoke check. [Evidence and initial failure](../openspec/changes/deduplicate-offline-ci/verification.md). PR delivery/cancellation and stable speed comparisons remain unverified; the prior push158s/PR157s and repeated build13s are historical measurements. Heavy-fixture caching and selective gates remain separate possible follow-ups.
+
+[Direct ZCode app acceptance](evals/results/2026-10-27-zcode-app/README.md) completed on generated task-CLI/init and notes-API/adopt projects: both complete, structure-only infrastructure passed, external 6/6 tests before/after each, protected files and distribution unchanged. Root verified the actual artifacts/current state on 2026-10-28 without repeating apply or tests; independent artifact review accepted the result. Init required a root/Codex instruction correction before approval, preserved in the report. Automatic native discovery and fresh task execution in ZCode itself remain unverified. The [human pilot protocol](PILOT.md) remains a draft; human observations are 0 and release tasks 3.3–3.4 remain open.
+
+[Fresh Codex task sessions](evals/results/2026-10-28-fresh-session-tasks/README.md) now confirm explicit reads of the ZCode-installed instructions and useful CLI/API changes on separate copies. Both independent acceptance checks and Node 24.15.0 project suites passed (18/18); protected files/original acceptance stayed unchanged and independent review accepted the result. The CLI agent's Node 25 run is recorded separately. These generated tasks do not prove automatic instruction discovery or measured human benefit.
 
 ZCode/Codex SDK/OAuth research and paid API work do not block the published alpha. The full pilot and its 50-session/8-week checkpoint remain a separate program; missing data is not success.
 
@@ -79,7 +84,7 @@ The first milestone is a verified first release with core refinements, the first
 
 | Queue | Result | Dependencies and transition criterion |
 |---|---|---|
-| 0. Landing page | Already implemented and checked introduction/installation path | Closed locally; revisit for a defect or a change in actual delivery |
+| 0. Landing page | First version public; bilingual first-use iteration implemented locally | [Verification](../openspec/changes/localize-and-simplify-landing/verification.md) passed; public rollout is recorded separately |
 | 1. Core refinements | Preservation, updates, recovery, shared rule editions across tools and justified preference-based selection | Based on П0–П8; fix-audit-safety-and-verification checked mechanically; acceptance of §§1–3, 7 and transfer of §9 assumptions remains required; semantic §9 scenarios belong to queues 2–3 |
 | 1а. First process adapter | Optional OpenSpec init/adopt with exact effects and preservation of the user's process | After queue 1's mechanical guarantees; development runs alongside the harness, final acceptance is in queue 3; core change tasks 3.3–3.4 |
 | 2. Harness and metrics | Verifiable scenarios, graders, execution and reporting | Runs alongside queue 1 after format agreement; the harness itself is checked on known successful/unsuccessful outcomes |
@@ -135,7 +140,7 @@ An API key is the primary planned authorization route for each target native pro
 
 The first diagnostic stage is two paired Codex scenarios: an application without infrastructure and a project with conflicting instructions. Each has variants with and without Tibicen, followed by a useful task in a separate fresh session. This is four scenario runs with two stages each; loading probes/judges are counted additionally. Repeats, variant order and budget are fixed before the series. Diagnostics check the harness, not Tibicen's advantage.
 
-After harness verification, connect Claude Code through an API key and ZCode. The optional Claude Code + DeepSeek API profile stays disabled without explicit enablement and budget. Each profile verifies its exact version, authorization, startup, permissions and observed loading. An unverified profile receives a reason while work on the others continues. Detailed limits and authorization protection are in §6.1.
+After harness verification, connect Claude Code through an API key and ZCode; the user clarified that there is currently no Claude Pro subscription. The optional Claude Code + DeepSeek API profile stays disabled without explicit enablement and budget. Each profile verifies its exact version, authorization, startup, permissions and observed loading. An unverified profile receives a reason while work on the others continues. Detailed limits and authorization protection are in §6.1.
 
 After the first two Codex diagnostic scenarios, run SKILL/PROC as the adapter becomes ready; these are mandatory first-release acceptance. Pin the skill's specific source/full SHA/license before the series; assess loading and use separately. An unavailable source or profile is a coverage gap and does not complete its release criterion.
 

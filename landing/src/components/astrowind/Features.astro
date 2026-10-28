@@ -3,7 +3,8 @@
 import Headline from './Headline.astro';
 import WidgetWrapper from './WidgetWrapper.astro';
 import type { Features as Props } from './types';
-const { id, title, subtitle, tagline, items } = Astro.props;
+import { localize } from '../../i18n';
+const { id, title, subtitle, tagline, items, locale = 'en' } = Astro.props;
 ---
 
 <WidgetWrapper id={id}>
@@ -26,7 +27,7 @@ const { id, title, subtitle, tagline, items } = Astro.props;
               class="copy-icon"
               type="button"
               data-copy-target={`prompt-${id}-${index}`}
-              aria-label={`Скопировать запрос: ${itemTitle}`}
+              aria-label={`${localize(locale, 'Copy prompt', 'Скопировать запрос')}: ${itemTitle}`}
             >
               <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
                 <rect
@@ -40,7 +41,7 @@ const { id, title, subtitle, tagline, items } = Astro.props;
                 <path d="M12 7V3H3v10h4" stroke="currentColor" />
               </svg>
               <span class="sr-only" data-copy-label>
-                Копировать
+                {localize(locale, 'Copy', 'Копировать')}
               </span>
             </button>
           </div>

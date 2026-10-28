@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const basePath = (process.env.TIBICEN_SITE_BASE ?? '/').replace(/\/?$/, '/');
+const baseURL = new URL(basePath, 'http://127.0.0.1:8372').href;
+
 export default defineConfig({
   testDir: './e2e',
   fullyParallel: true,
@@ -7,7 +10,7 @@ export default defineConfig({
   outputDir: '../test-results/landing',
   reporter: 'list',
   use: {
-    baseURL: 'http://127.0.0.1:8372',
+    baseURL,
     reducedMotion: 'reduce',
     viewport: { width: 1440, height: 1000 },
     trace: 'retain-on-failure',
@@ -19,9 +22,10 @@ export default defineConfig({
     { name: 'webkit', use: { ...devices['Desktop Safari'] } },
   ],
   webServer: {
-    command: 'pnpm exec astro preview --host 127.0.0.1 --port 8372',
+    command:
+      'pnpm exec astro preview --host 127.0.0.1 --port 8372 --ignore-lock',
     cwd: import.meta.dirname,
-    url: 'http://127.0.0.1:8372',
+    url: baseURL,
     reuseExistingServer: !process.env.CI,
   },
 });

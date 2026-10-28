@@ -173,6 +173,7 @@ English is canonical for project documentation. Russian translations live beside
 
 - [Product vision](docs/PRODUCT_VISION.md).
 - [Development plan and work allocation](docs/DEVELOPMENT_PLAN.md).
+- [Initial voluntary pilot protocol (draft)](docs/PILOT.md).
 - [Security boundaries and vulnerability reporting](SECURITY.md).
 
 Before the full MVP, define an independent channel for advisories and checksums, the person responsible for reviewing rules, support contacts, and the voluntary pilot parameters. The core and adapters are reviewed at least monthly and when supported tools change significantly. Updating an installed Tibicen is an explicit user action; there is no background self-update.

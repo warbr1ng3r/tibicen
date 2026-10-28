@@ -1,3 +1,5 @@
+import type { Locale } from '../../i18n';
+
 export interface Headline {
   title: string;
   subtitle?: string;
@@ -13,6 +15,7 @@ export interface Item {
   prompt?: string;
 }
 export interface Features extends Widget {
+  locale?: Locale;
   items: Item[];
 }
 export interface Faqs extends Widget {
