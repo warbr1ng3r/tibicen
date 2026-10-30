@@ -37,7 +37,7 @@
 
 - [x] 5.3 Preserve the recorded command journal when an explicitly approved resume continues a manual session after state cleanup; append new command outcomes without replaying old work or copying another session's journal into an ordinary apply. Clarify that forbiddenPaths covers project-resource operations, while required internal state/passport operations are separately disclosed.
 
-- [ ] 5.4 Make new own-text permissions explicit and observable on Windows; retain POSIX defaults and existing modes. Reject unsupported exact result modes before proposal/apply writes and direct snapshot writes. Preserve repeated snapshot identity and disclose Windows mode/ACL limits; verify actual Windows init/adopt plus regressions.
+- [x] 5.4 Make new own-text permissions explicit and observable on Windows; retain POSIX defaults and existing modes. Reject unsupported exact result modes before proposal/apply writes and direct snapshot writes. Preserve repeated snapshot identity and disclose Windows mode/ACL limits; verify actual Windows init/adopt plus regressions.
 
 ## Workflow follow-up
 
