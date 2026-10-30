@@ -10,6 +10,7 @@ import {
   rm,
   writeFile,
   stat,
+  chmod,
 } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -308,6 +309,116 @@ for (const resolution of ['merge', 'replace'] as const) {
       await readFile(path.join(root, target, 'SKILL.md'), 'utf8'),
       content,
     );
+  });
+}
+
+test('a freshly repeated approved merge compiles without rewriting its file', async (t) => {
+  const { root, home, discovery } = await fixture(t);
+  await writeFile(path.join(root, target, 'SKILL.md'), local);
+  const input = update('merge');
+  input.componentUpdates[0].decisions[2].resolution = 'preserve';
+  input.changes = input.changes.filter((change) => change.action !== 'delete');
+  input.changes.push({
+    path: target + 'SKILL.md',
+    content: newFiles['SKILL.md'] + 'Local project constraint.\n',
+    reason: 'Merge the pinned instructions and the local project constraint.',
+  });
+  const first = await createProposal(root, input, { home });
+  await applyPlan(root, first, {
+    home,
+    discovery,
+    approvedDigest: first.digest,
+  });
+  const filename = path.join(root, target, 'SKILL.md');
+  const before = await stat(filename);
+  const passport = await readFile(path.join(root, '.tibicen/manifest.yml'));
+  const repeated = await createProposal(root, input, { home });
+  assert.deepEqual(repeated.proposal.changes, []);
+  const recorded = repeated.proposal.components!.files.find((file) =>
+    file.path.endsWith('SKILL.md'),
+  )!;
+  assert.equal(recorded.previous!.installedHash, recorded.next!.installedHash);
+  assert.equal(recorded.next!.sha, newSha);
+  assert.equal(recorded.resolution, 'merge');
+  assert.equal((await stat(filename)).mtimeMs, before.mtimeMs);
+  assert.equal((await stat(filename)).mode, before.mode);
+  assert.deepEqual(
+    await readFile(path.join(root, '.tibicen/manifest.yml')),
+    passport,
+  );
+});
+
+for (const variant of [
+  'known-source-mode',
+  'new-revision',
+  'new-source-path',
+  'new-source-content',
+  'local-drift',
+  'unrecorded-hash',
+  'unknown-mode',
+  'changed-installed-mode',
+  'changed-source-mode',
+]) {
+  test(`an unchanged merge checks its recorded state: ${variant}`, async (t) => {
+    const { root, home, passport, manifest } = await fixture(t);
+    const installed = source(newSha, newFiles);
+    for (const file of installed.files!) {
+      file.installedHash = file.contentHash;
+      file.fileMode = file.installedMode = 0o644;
+    }
+    const recorded = installed.files![0];
+    const merged = newFiles['SKILL.md'] + 'Local project constraint.\n';
+    recorded.installedHash = hashContent(merged);
+    manifest.installed[0].files = manifest.installed[0].files!.filter(
+      (file) => !file.path.endsWith('SKILL.md'),
+    );
+    manifest.installed.push(installed);
+    const input = {
+      ...update('merge'),
+      changes: [],
+      migrateManifest: variant === 'unrecorded-hash',
+    };
+    input.componentUpdates[0].decisions[2].resolution = 'preserve';
+    for (const file of input.componentUpdates[0].source.files!)
+      file.fileMode = 0o644;
+    const selected = input.componentUpdates[0].source.files![0];
+    if (variant === 'new-revision')
+      input.componentUpdates[0].source.sha = 'c'.repeat(40);
+    if (variant === 'new-source-path') selected.sourcePath = 'other/SKILL.md';
+    if (variant === 'new-source-content')
+      selected.contentHash = hashContent('Different upstream instructions.\n');
+    if (variant === 'unrecorded-hash') {
+      manifest.schema = 1;
+      delete recorded.installedHash;
+    }
+    if (['known-source-mode', 'unknown-mode'].includes(variant))
+      delete recorded.installedMode;
+    if (variant === 'unknown-mode') {
+      delete recorded.fileMode;
+      delete selected.fileMode;
+    }
+    if (variant === 'changed-source-mode') selected.fileMode = 0o755;
+    const filename = path.join(root, target, 'SKILL.md');
+    const actual =
+      variant === 'local-drift' ? merged + 'Unreviewed edit.\n' : merged;
+    await writeFile(filename, actual);
+    await chmod(filename, variant === 'changed-installed-mode' ? 0o755 : 0o644);
+    await writeFile(path.join(root, target, 'fresh.md'), newFiles['fresh.md']);
+    await writeFile(passport, JSON.stringify(manifest));
+    const before = await stat(filename);
+    const passportBefore = await readFile(passport);
+    if (variant === 'known-source-mode') {
+      const repeated = await createProposal(root, input, { home });
+      assert.deepEqual(repeated.proposal.changes, []);
+    } else
+      await assert.rejects(createProposal(root, input, { home }), {
+        code: 'component-content-required',
+      });
+    assert.equal(await readFile(filename, 'utf8'), actual);
+    assert.equal((await stat(filename)).mode, before.mode);
+    assert.equal((await stat(filename)).mtimeMs, before.mtimeMs);
+    assert.deepEqual(await readFile(passport), passportBefore);
+    assert.deepEqual(await readdir(home), []);
   });
 }
 

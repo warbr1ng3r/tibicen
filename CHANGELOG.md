@@ -3,6 +3,20 @@
 The first limited alpha is public. See [release details](docs/RELEASING.md) for
 immutable source/distribution references, checks and remaining acceptance.
 
+## Unreleased
+
+- Repeating an already-applied component merge produces a read-only empty plan
+  when source identity, installed bytes and permissions still match. New
+  revisions, drift and unknown records retain explicit merge checks.
+- Add an opt-in standalone lifecycle test and manual platform workflow without
+  adding runtime-matrix work to ordinary PR checks.
+- Clarify how to finish a pending manual step through a newly approved `resume`
+  plan while retaining the original integration session.
+- Preserve recorded command outcomes when an approved manual-session resume
+  continues without state; append new checks while ordinary apply stays separate.
+- Clarify that `forbiddenPaths` covers project-resource operations, while internal
+  state/passport writes are disclosed separately; explicit user bans remain binding.
+
 ## [0.1.0-alpha.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1) — 2026-10-27
 
 - Two entry points: initial agent setup and review/update of existing setup.

@@ -374,12 +374,23 @@ export async function planComponents(
           'component-mode-required',
           `Show the exact upstream permissions in changes: ${relative}.`,
         );
-      if (resolution === 'merge')
+      if (resolution === 'merge') {
+        const installedMode = old?.file.installedMode ?? old?.file.fileMode;
         assert(
-          change && change.action !== 'delete' && afterHash,
+          (change && change.action !== 'delete' && afterHash) ||
+            (!change &&
+              old &&
+              revisionKey(old.source) === revisionKey(next.source) &&
+              old.file.sourcePath === next.file.sourcePath &&
+              old.file.contentHash === next.file.contentHash &&
+              old.file.installedHash === actual.hash &&
+              installedMode !== undefined &&
+              installedMode === actual.mode &&
+              old.file.fileMode === next.file.fileMode),
           'component-content-required',
           `Show the merged content and diff: ${relative}.`,
         );
+      }
       desired = afterHash
         ? state(next.source, next.file, afterHash, afterMode ?? undefined)
         : null;

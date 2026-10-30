@@ -39,6 +39,11 @@
 - **THEN** до записи проверяется совместимость, выполняется явный отказ либо согласуется точное преобразование
 - **AND** прежняя запись не объявляется соответствующей новым гарантиям без проверки и история не теряется
 
+#### Scenario: The approved merged revision is already current
+- **WHEN** a fresh proposal repeats an explicit merge request and the recorded upstream identity, installed bytes and permissions still match the current file
+- **THEN** compilation reports no unnecessary file change and does not require rewriting the already approved merged content
+- **AND** a new upstream identity, local drift, unrecorded transformation or changed permissions still requires an explicit reconciliation decision and content/diff where applicable
+
 ### Requirement: Resume reconciles interrupted writes without inferring command execution
 После прерывания state SHALL позволять сравнить исходное, согласованное итоговое и фактическое состояние, включая отсутствие файла. Исходное требует записи, итоговое не требует повторной записи, иное требует разбора. Совпадение файла SHALL не доказывать автора записи или исход команды; повтор команды с неизвестным исходом отдельно обосновывается в оставшемся плане с новым согласием.
 
@@ -60,6 +65,11 @@
 - **WHEN** процесс прерван после запуска команды до сохранения её исхода
 - **THEN** существующий ожидаемый файл не подтверждает исполнение; неизвестный setup блокирует продолжение, проверка без повтора остаётся unverified
 - **AND** повтор возможен по точной команде с отдельным обоснованием в новом плане и новым согласием
+
+#### Scenario: A manual session resumes after state cleanup
+- **WHEN** a session has recorded command outcomes, finishes its automatic part with a pending manual action, and later resumes with a newly approved plan after its state was removed
+- **THEN** the original session identifier, integration attempts and command journal remain, and any new command outcomes are appended
+- **AND** an ordinary apply starts a separate integration without copying the previous session's command journal
 
 #### Scenario: A passport replacement was interrupted
 - **WHEN** сохранено точное намерение записи паспорта и процесс прерван до либо после замены

@@ -33,6 +33,10 @@
 
 - [x] 5.1 Закрыть регрессии ревью: запретить удаление/закрытие обязательного шага отсутствующего CLI в сыром плане и смену CLI binding при устаревшей сохранённой инструкции; проверить отказ до записи, явную замену и сохранение исправленных локальных правил.
 
+- [x] 5.2 Make a repeated explicit merge request compile as a read-only no-op when the same upstream identity, recorded installed bytes and permissions are already present. Keep fresh-revision, local-drift, unknown-record and changed-mode merges gated on explicit content/diff; add regression coverage and verify the standalone reproduction without changing old evidence.
+
+- [x] 5.3 Preserve the recorded command journal when an explicitly approved resume continues a manual session after state cleanup; append new command outcomes without replaying old work or copying another session's journal into an ordinary apply. Clarify that forbiddenPaths covers project-resource operations, while required internal state/passport operations are separately disclosed.
+
 ## Workflow follow-up
 
 - После реализации и приёмки синхронизировать соответствующие дельты и архивировать change; перед отдельным завершением ядра вынести будущие требования/задачи в самостоятельные changes без потери покрытия.

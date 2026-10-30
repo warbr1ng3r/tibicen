@@ -644,7 +644,13 @@ export async function applyPlan(
     },
     baseline: oldState?.baseline ?? null,
     completedCommands: oldState?.completedCommands ?? [],
-    commandAttempts: (oldState?.commandAttempts ?? []).map((attempt) => ({
+    commandAttempts: (
+      oldState?.commandAttempts ??
+      (options.resume
+        ? previous.manifest?.sessions?.at(-1)?.commandAttempts
+        : null) ??
+      []
+    ).map((attempt) => ({
       ...attempt,
       status: attempt.status === 'running' ? 'unknown' : attempt.status,
     })),

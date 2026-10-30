@@ -1,7 +1,8 @@
 schema: spec-driven
 
 context: |
-  Language: Russian. Keep structural headings and SHALL/MUST keywords in English.
+  Follow CONTRIBUTING.md for project documentation language and translations.
+  Keep structural headings and SHALL/MUST keywords in English.
   Tibicen provides tibicen-init and tibicen-adopt for agent infrastructure.
   docs/PRODUCT_VISION.md owns product intent and MVP boundaries.
   docs/PRODUCT_VISION_ADDENDUM.md sections 1-3, 7 and 9 clarify MVP guarantees;

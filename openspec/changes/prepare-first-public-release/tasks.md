@@ -16,6 +16,8 @@
 - [ ] 2.4 Проверить обновление ранее установленной версии с пресетами, паспортом, локальными правками и незавершённой сессией; подтвердить гарантии группы 2 `extend-infrastructure-contracts`, отказ/миграцию неизвестной схемы и сохранение истории, описать ограничения.
 - [x] 2.5 Проверить удаление выбранным установщиком в тестовом user-scope; документировать сохранность пользовательских данных, оставшиеся настройки и необходимые ручные действия.
 
+- [x] 2.6 Prepare a manual-only standalone platform smoke workflow and a small portable CLI integration check for the declared runtime/OS cells; run local available cells and leave actual remote cells unverified until dispatch. Keep the default PR gate unchanged and retain Windows execution refusal where required.
+
 ## 3. Maintenance and pilot
 
 - [ ] 3.1 Назначить ответственного за ядро/адаптеры и описать ежемесячный/событийный пересмотр; проверить наличие источника, даты, области и фактических свидетельств в матрице, повторить init/adopt для изменившихся рекомендаций.

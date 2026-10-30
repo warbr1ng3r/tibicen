@@ -765,6 +765,109 @@ test('recovery of an owned component uses current-plan originals and retains its
   );
 });
 
+for (const resume of [true, false])
+  test(`a no-state ${resume ? 'resume retains' : 'apply separates'} the command journal`, async (t) => {
+    const { root, home } = await fixture(t, true);
+    let executions = 0;
+    const initial = await createProposal(
+      root,
+      {
+        mode: 'init',
+        changes: [
+          {
+            path: 'AGENTS.md',
+            content: desired,
+            reason: 'Initial instructions.',
+          },
+        ],
+        commands: [
+          {
+            id: 'original-check',
+            kind: 'test',
+            executable: process.execPath,
+            argv: ['--version'],
+            trusted: true,
+          },
+        ],
+        manualActions: [
+          {
+            id: 'owner-step',
+            status: 'pending',
+            required: true,
+            description: 'Finish the separately reviewed manual step.',
+          },
+        ],
+        compat: { enabled: false },
+      },
+      { home },
+    );
+    const first = await applyPlan(root, initial, {
+      home,
+      approvedDigest: initial.digest,
+      async verify(_proposal, _session, execution) {
+        executions++;
+        const result = await execution!.runner(initial.proposal.commands[0], {
+          root,
+          approvedDigest: initial.digest,
+        });
+        assert.equal(result.exitCode, 0);
+        return { infrastructure: { kind: 'infrastructure', status: 'passed' } };
+      },
+    });
+    assert.equal(first.status, 'manual-action-required');
+    const before = await getStatus(root);
+    assert.equal(before.state, null);
+    const journal = before.manifest!.sessions[0].commandAttempts!;
+    assert.equal(journal.length, 1);
+    assert.equal(journal[0].status, 'completed');
+    assert.equal(executions, 1);
+
+    const plan = await createProposal(
+      root,
+      {
+        mode: 'improve',
+        commands: [
+          {
+            id: 'new-check',
+            kind: 'test',
+            executable: process.execPath,
+            argv: ['--version'],
+            trusted: true,
+          },
+        ],
+        compat: { enabled: false },
+      },
+      { home },
+    );
+    const result = await applyPlan(root, plan, {
+      home,
+      resume,
+      approvedDigest: plan.digest,
+      async verify(_proposal, _session, execution) {
+        executions++;
+        const result = await execution!.runner(plan.proposal.commands[0], {
+          root,
+          approvedDigest: plan.digest,
+        });
+        assert.equal(result.exitCode, 0);
+        return { infrastructure: { kind: 'infrastructure', status: 'passed' } };
+      },
+    });
+    assert.equal(result.status, 'complete');
+    assert.equal(result.id === first.id, resume);
+    const sessions = (await getStatus(root)).manifest!.sessions;
+    assert.equal(sessions.length, resume ? 1 : 2);
+    const current = sessions.at(-1)!;
+    if (resume) assert.deepEqual(current.commandAttempts!.slice(0, 1), journal);
+    else assert.deepEqual(sessions[0].commandAttempts, journal);
+    assert.deepEqual(
+      current.commandAttempts!.map((attempt) => attempt.id),
+      resume ? ['original-check', 'new-check'] : ['new-check'],
+    );
+    assert.equal(current.commandAttempts!.at(-1)!.status, 'completed');
+    assert.equal(executions, 2);
+  });
+
 test('a known completed setup command is not executed again after a passport interruption', async (t) => {
   const { root, home, execute } = await fixture(t, true);
   const command = {
