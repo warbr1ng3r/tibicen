@@ -5,6 +5,10 @@ immutable source/distribution references, checks and remaining acceptance.
 
 ## Unreleased
 
+- Use observable writable permissions for new first-party Windows text files;
+  reject unsupported exact modes before writes and preserve repeated snapshots.
+  POSIX mode bits do not establish Windows ACL privacy.
+
 - Repeating an already-applied component merge produces a read-only empty plan
   when source identity, installed bytes and permissions still match. New
   revisions, drift and unknown records retain explicit merge checks.

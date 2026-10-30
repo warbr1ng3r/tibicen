@@ -176,6 +176,21 @@ test(
           checks: { profile: 'web', environmentReady: true },
           compat: { enabled: false },
         });
+        if (process.platform === 'win32') {
+          assert.equal(proposal.proposal.changes[0].fileMode, 0o666);
+          assert.equal(
+            cli(
+              ['proposal', '--input', '-'],
+              {
+                mode: skill === 'tibicen-init' ? 'init' : 'improve',
+                changes: [{ ...change, fileMode: 0o600 }],
+                compat: { enabled: false },
+              },
+              1,
+            ).error.code,
+            'unsupported-file-mode',
+          );
+        }
         assert.deepEqual(await snapshot(project), protectedFiles);
         assert.deepEqual(await snapshot(home), homeBefore);
         assert.equal(

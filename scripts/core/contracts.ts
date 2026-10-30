@@ -51,6 +51,18 @@ export function validateFileMode(value: unknown): number {
   return value;
 }
 
+export function validateTargetFileMode(
+  value: unknown = process.platform === 'win32' ? 0o666 : 0o600,
+): number {
+  const mode = validateFileMode(value);
+  assert(
+    process.platform !== 'win32' || mode === 0o666,
+    'unsupported-file-mode',
+    'Windows writes support ordinary writable mode 0666, not exact POSIX permissions or ACL guarantees.',
+  );
+  return mode;
+}
+
 export function stableStringify(value: unknown): string {
   if (Array.isArray(value)) return `[${value.map(stableStringify).join(',')}]`;
   if (value && typeof value === 'object') {

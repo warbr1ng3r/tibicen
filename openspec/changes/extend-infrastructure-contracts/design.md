@@ -78,3 +78,12 @@ Proposal показывает состояние копий после изме�
 В группе 3 задачи 3.3–3.4 первого адаптера OpenSpec относятся к ближайшей очереди 1а и обязательной приёмке выпуска. Задачи 3.1–3.2/3.5–3.6 и следующие адаптеры остаются очередями 6–9 после первого MVP. Первый ограниченный адаптер проверяет собственные источники/материалы без ожидания общего формата составной поставки. Весь change не закрывается после одной готовой части; перед частичной синхронизацией будущий объём выделяется без потери требований.
 
 [Стенд](../build-agent-evaluation-harness/design.md) готовится параллельно группе 2, итоговые прогоны ждут её приёмки. [Подготовка выпуска](../prepare-first-public-release/design.md) владеет версией продукта/CI/доставкой, этот change — поведением блоков/компонентов/сессии. Готовность planning artifacts не является выполнением задач или доказательством поведения.
+
+
+## Windows file-mode correction — task 5.4
+
+Actual standalone init on Windows22.20/24.15 failed after an approved add: new text defaulted to0600, while Windows observed0666; copying the final snapshot then raised baseline-changed. Adopt retained its existing observed0666 and passed. Merely dropping a comparison or recording the actual snapshot mode would leave the approved result and manifest claiming the wrong permissions.
+
+Use one target-mode validator at compilation, raw apply preflight and direct snapshot entry. New own-text defaults are0666 on Windows and0600 on POSIX; existing modes stay explicit. The bounded Windows write contract accepts ordinary writable0666 only. Unsupported exact modes (including upstream0644/0755, explicit0600 and unverified readonly444) refuse before target/state writes; they are not silently mapped. Saved/source mode parsing remains platform-independent. Internal service chmod requests do not prove Windows ACL privacy. Exact byte/mode comparisons and process-tree-unavailable execution refusal remain unchanged.
+
+Regressions cover proposal/manifest/observed agreement, raw-plan refusal without project/HOME writes, and baseline→final(add)→execution-copy identity. Local policy tests emulate the platform selector, not NTFS; the actual six-cell workflow is the platform acceptance. Preserve its first failures separately from the fixed run. See Node's [file-mode caveat](https://nodejs.org/download/release/v24.15.0/docs/api/fs.html#file-modes).

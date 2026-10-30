@@ -10,6 +10,7 @@ import {
   rm,
   readdir,
   symlink,
+  stat,
 } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -451,4 +452,51 @@ test('a changed npm script cannot inherit trust merely because its launch argv s
   );
   assert.equal(result.reason, 'command-source-changed');
   assert.deepEqual(result.runs, []);
+});
+
+test('Windows final snapshots retain observable default modes when copied again', async (t) => {
+  const root = await fixture(t);
+  const platform = Object.getOwnPropertyDescriptor(process, 'platform')!;
+  Object.defineProperty(process, 'platform', { value: 'win32' });
+  t.after(() => Object.defineProperty(process, 'platform', platform));
+  const baseline = await createSnapshot(root, { approvedDigest });
+  t.after(() => cleanupSnapshot(baseline));
+  const final = await prepareFinalSnapshot(
+    baseline,
+    [
+      {
+        path: 'AGENTS.md',
+        action: 'add',
+        beforeHash: null,
+        content: '# Instructions\n',
+      },
+    ],
+    { approvedDigest },
+  );
+  t.after(() => cleanupSnapshot(final));
+  assert.equal(final.files[0].mode, 0o666);
+  assert.equal(
+    (await stat(path.join(final.root, 'AGENTS.md'))).mode & 0o777,
+    final.files[0].mode,
+  );
+  const execution = await prepareFinalSnapshot(final, [], { approvedDigest });
+  t.after(() => cleanupSnapshot(execution));
+  assert.deepEqual(execution.files, final.files);
+  await assert.rejects(
+    prepareFinalSnapshot(
+      baseline,
+      [
+        {
+          path: 'AGENTS.md',
+          action: 'add',
+          beforeHash: null,
+          content: '# Instructions\n',
+          fileMode: 0o600,
+        },
+      ],
+      { approvedDigest },
+    ),
+    { code: 'unsupported-file-mode' },
+  );
+  assert.deepEqual(await readdir(root), []);
 });

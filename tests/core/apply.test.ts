@@ -368,3 +368,66 @@ test('an input below eight MiB cannot begin writing an unreadable combined state
   });
   assert.deepEqual(await readdir(home), []);
 });
+
+test('Windows proposals approve observable new-file modes and retain them after apply', async (t) => {
+  const { root, home } = await fixture(t);
+  const platform = Object.getOwnPropertyDescriptor(process, 'platform')!;
+  Object.defineProperty(process, 'platform', { value: 'win32' });
+  t.after(() => Object.defineProperty(process, 'platform', platform));
+  const plan = await createProposal(
+    root,
+    { ...input, compat: { enabled: false } },
+    { home },
+  );
+  assert.equal(plan.proposal.changes[0].fileMode, 0o666);
+  const result = await applyPlan(root, plan, {
+    home,
+    approvedDigest: plan.digest,
+    verify: check,
+  });
+  assert.equal(result.status, 'complete');
+  assert.equal((await getStatus(root)).manifest!.changes[0].afterMode, 0o666);
+  assert.equal((await stat(path.join(root, 'AGENTS.md'))).mode & 0o777, 0o666);
+});
+
+test('unsupported Windows modes refuse in proposals and raw apply before state or files', async (t) => {
+  const { root, home } = await fixture(t);
+  const platform = Object.getOwnPropertyDescriptor(process, 'platform')!;
+  Object.defineProperty(process, 'platform', { value: 'win32' });
+  t.after(() => Object.defineProperty(process, 'platform', platform));
+  const plan = await createProposal(
+    root,
+    {
+      ...input,
+      changes: [{ ...input.changes[0], fileMode: 0o666 }],
+      compat: { enabled: false },
+    },
+    { home },
+  );
+  for (const fileMode of [0o600, 0o644, 0o755, 0o444]) {
+    await assert.rejects(
+      createProposal(
+        root,
+        {
+          ...input,
+          changes: [{ ...input.changes[0], fileMode }],
+          compat: { enabled: false },
+        },
+        { home },
+      ),
+      { code: 'unsupported-file-mode' },
+    );
+    const raw = structuredClone(plan.proposal);
+    raw.changes[0].fileMode = fileMode;
+    await assert.rejects(
+      applyPlan(
+        root,
+        { proposal: raw, digest: digest(raw) },
+        { home, approvedDigest: digest(raw) },
+      ),
+      { code: 'unsupported-file-mode' },
+    );
+    assert.deepEqual(await readdir(root), []);
+    assert.deepEqual(await readdir(home), []);
+  }
+});

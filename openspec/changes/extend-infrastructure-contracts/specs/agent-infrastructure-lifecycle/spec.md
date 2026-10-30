@@ -96,3 +96,15 @@
 #### Scenario: A shared target is unsupported or silently omitted
 - **WHEN** версия/точка входа отсутствует в проверенном контракте адаптера либо готовый план молча исключает зарегистрированную копию
 - **THEN** применение отклоняется до записи вместо выдумывания совместимости или потери связи
+
+### Requirement: File-mode plans reflect the target platform
+File modes SHALL reflect observed platform behavior. New first-party text defaults SHALL be 0666 on Windows and 0600 on POSIX; existing modes remain unless approved otherwise. Unsupported exact Windows modes SHALL refuse before target/state writes in compilation, raw apply and direct snapshots. Source parsing and exact hash/mode checks SHALL remain intact. POSIX bits SHALL NOT imply verified Windows ACL privacy.
+
+#### Scenario: A new Windows instruction file passes through repeated snapshots
+- **WHEN** an approved Windows init adds a first-party instruction file without explicit permissions and its final snapshot is copied for verification
+- **THEN** approved, recorded and observed writable mode agree and the unchanged snapshot is not reported as baseline-changed
+- **AND** existing project files and their modes remain unchanged, while Windows command execution remains explicitly unavailable
+
+#### Scenario: Exact Windows permissions cannot be represented
+- **WHEN** a proposal, raw approved plan or direct snapshot write requests an unsupported result mode, including upstream 0644 or explicit 0600
+- **THEN** it refuses with unsupported-file-mode before target/state writes rather than silently mapping the requested permissions or recording them as installed

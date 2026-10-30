@@ -19,6 +19,7 @@ import {
   parseData,
   serializeData,
   validateFileMode,
+  validateTargetFileMode,
 } from './contracts.ts';
 import { safePath, isInfrastructurePath } from './paths.ts';
 import {
@@ -500,6 +501,8 @@ export async function applyPlan(
       'secret-content',
       'Inline secrets are excluded.',
     );
+    if (change.action !== 'delete')
+      validateTargetFileMode(change.fileMode ?? current.mode ?? undefined);
     if (change.action !== 'delete' && supportsManagedBlocks(change.path))
       parseManagedBlock(change.content!, change.path);
   }
@@ -776,7 +779,9 @@ export async function applyPlan(
         await atomicWrite(root, change.path, change.content!, {
           expectedHash: change.beforeHash,
           expectedMode: change.beforeMode,
-          fileMode: change.fileMode ?? actual.mode ?? 0o600,
+          fileMode: validateTargetFileMode(
+            change.fileMode ?? actual.mode ?? undefined,
+          ),
         });
       }
       await options.checkpoint?.('after-file-write', session, change);

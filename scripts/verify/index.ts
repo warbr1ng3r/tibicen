@@ -32,6 +32,7 @@ import {
   digest,
   hashContent,
   validateCheckResult,
+  validateTargetFileMode,
 } from '../core/contracts.ts';
 import { safePath, validateRelativePath } from '../core/paths.ts';
 import {
@@ -224,13 +225,16 @@ export async function prepareFinalSnapshot(
     'unknown-snapshot',
     'Baseline must be a retained snapshot.',
   );
+  const records = new Map(
+    baseline.files.map((file) => [file.path, { ...file }]),
+  );
+  for (const change of changes)
+    if (change.action !== 'delete')
+      validateTargetFileMode(change.fileMode ?? records.get(change.path)?.mode);
   const final = await allocate(baseline.sourceRoot, options);
   final.excluded = baseline.excluded.map((item) => ({ ...item }));
   final.gaps = baseline.gaps.map((item) => ({ ...item }));
   final.baselineId = baseline.id;
-  const records = new Map(
-    baseline.files.map((file) => [file.path, { ...file }]),
-  );
   const seen = new Set();
   try {
     for (const file of baseline.files) {
@@ -298,7 +302,7 @@ export async function prepareFinalSnapshot(
         'Snapshot changes cannot introduce literal credentials.',
       );
       await mkdir(path.dirname(destination), { recursive: true });
-      const mode = change.fileMode ?? before?.mode ?? 0o600;
+      const mode = validateTargetFileMode(change.fileMode ?? before?.mode);
       await writeFile(destination, change.content, { mode });
       await chmod(destination, mode);
       records.set(change.path, {

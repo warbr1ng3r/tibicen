@@ -15,7 +15,7 @@ import {
   assert,
   digest,
   hashContent,
-  validateFileMode,
+  validateTargetFileMode,
   validateProposal,
 } from './contracts.ts';
 import { safePath, isInfrastructurePath } from './paths.ts';
@@ -298,11 +298,11 @@ export async function createProposal(
     const fileMode =
       action === 'delete'
         ? undefined
-        : validateFileMode(
+        : validateTargetFileMode(
             change.fileMode ??
               (upstream
                 ? (upstream.fileMode ?? 0o644)
-                : (before.mode ?? 0o600)),
+                : (before.mode ?? undefined)),
           );
     const previous = registered.get(change.path);
     const expectedHash = previous?.hash ?? previous?.afterHash;
