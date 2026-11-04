@@ -1,0 +1,296 @@
+{
+  "schema": 1,
+  "observedAt": "2026-10-25T22:24:15.319Z",
+  "experimentId": "codex-control-cycle2-skill-01-2026-10-26",
+  "conditionsHash": "51bb5480302baeffb9ee06b1373c0177b6f9a2ce2e4f9369f1622b2ddfc4a9c4",
+  "source": {
+    "sha": "bdd889d9f4f626daec1bf10057fa1003d2e2a252",
+    "dirty": true,
+    "treeHash": "c0c5a55e8dfef38bf5ab0de3f17fab0346772a6a64c91a7ab5f0fef19a9300a9",
+    "files": 156
+  },
+  "profiles": [
+    {
+      "id": "codex-0.157.0-gpt-6-sol",
+      "agent": "codex",
+      "version": "0.157.0",
+      "model": "gpt-6-sol",
+      "auth": "subscription",
+      "paid": false,
+      "startupHash": "1527ec980610e3e2add7341877bd4236a0f4560711258e04cee6ba45c633fb39",
+      "permissionsHash": "68525d2627661be521a8e708fa8d0fc3b5405f4bd55c635e60015442d407a9de"
+    }
+  ],
+  "runtimeProbe": {
+    "policyHash": "c5e12ddeb21d7a96a64c477513757989216e88f59d173f64022cfea53a2d7498",
+    "scriptHash": "74720c0cdde2fddc496e03ec82301c95aa3cf8970326be29dbbc3b5c214bf774",
+    "exitCode": 0,
+    "timedOut": false,
+    "facts": {
+      "denied": true,
+      "resourcesReadable": true
+    },
+    "verified": true
+  },
+  "startupModelRequests": 1,
+  "executorSessions": 5,
+  "runs": [
+    {
+      "result": {
+        "schema": 1,
+        "id": "skill-01-tibicen-1",
+        "scenarioId": "skill-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 2116.95525
+        },
+        "setup": {
+          "status": "error",
+          "durationMs": 149340.08025,
+          "reason": "native-proposal-rejected"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "setup-not-passed"
+        }
+      },
+      "sessions": [
+        {
+          "phase": "setup-proposal",
+          "hash": "9bcebf043e42e2641a7e0635481eb449e6926170cfaa551a79f955bd28b6e418",
+          "exitCode": 0,
+          "timedOut": false,
+          "usage": {
+            "inputTokens": 833302,
+            "outputTokens": 12814
+          }
+        }
+      ]
+    },
+    {
+      "result": {
+        "schema": 1,
+        "id": "skill-01-baseline-1",
+        "scenarioId": "skill-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1375.5637920000008
+        },
+        "setup": {
+          "status": "pass",
+          "durationMs": 72678.23462499998
+        },
+        "task": {
+          "status": "pass",
+          "durationMs": 41426.342000000004
+        }
+      },
+      "sessions": [
+        {
+          "phase": "setup-proposal",
+          "hash": "6246c55efc8edb442e4e766ea752936b0ae102d0138f21a2c264dbd607830288",
+          "exitCode": 0,
+          "timedOut": false,
+          "usage": {
+            "inputTokens": 84746,
+            "outputTokens": 3486
+          }
+        },
+        {
+          "phase": "setup-apply",
+          "hash": "7d864f2e9567f3cbbebee027f2c0ea8e617b9f99fcbe80d586cdb4f00baf97ad",
+          "exitCode": 0,
+          "timedOut": false,
+          "usage": {
+            "inputTokens": 39417,
+            "outputTokens": 1732
+          }
+        },
+        {
+          "phase": "task-proposal",
+          "hash": "d31ba29439d79bb446d92f83351af9e47e864b2f49393257c55b2a0d933b3d87",
+          "exitCode": 0,
+          "timedOut": false,
+          "usage": {
+            "inputTokens": 63197,
+            "outputTokens": 1099
+          }
+        },
+        {
+          "phase": "task-apply",
+          "hash": "ec9a404673db82df7c1a266e46d6108e3a15676ab21f1f2e7713d19022a9721e",
+          "exitCode": 0,
+          "timedOut": false,
+          "usage": {
+            "inputTokens": 46742,
+            "outputTokens": 837
+          }
+        }
+      ]
+    }
+  ],
+  "quality": {
+    "modelRequests": 2,
+    "humanReviews": 0,
+    "summary": [
+      {
+        "attemptId": "skill-01-tibicen-1",
+        "status": "reviewed",
+        "humanRequired": true,
+        "judgements": [
+          {
+            "stage": "setup",
+            "criterion": "grounding",
+            "verdict": "pass",
+            "reason": "claims_supported_by_observed_reads",
+            "evidence": [
+              "native-0",
+              "native-5",
+              "native-10",
+              "native-14",
+              "native-36",
+              "native-41",
+              "native-45"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "fit",
+            "verdict": "pass",
+            "reason": "minimal_plan_matches_request",
+            "evidence": [
+              "native-0",
+              "native-14",
+              "native-44",
+              "native-45"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "sufficiency",
+            "verdict": "pass",
+            "reason": "skill_rules_cover_requested_work",
+            "evidence": [
+              "native-0",
+              "native-14",
+              "native-32",
+              "native-45"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "consistency",
+            "verdict": "pass",
+            "reason": "plan_preserves_project_constraint",
+            "evidence": [
+              "native-0",
+              "native-10",
+              "native-22",
+              "native-41",
+              "native-45"
+            ]
+          },
+          {
+            "stage": "task",
+            "criterion": "application",
+            "verdict": "unverified",
+            "reason": "no_task_observations",
+            "evidence": []
+          },
+          {
+            "stage": "task",
+            "criterion": "loading",
+            "verdict": "unverified",
+            "reason": "no_new_session_observations",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "attemptId": "skill-01-baseline-1",
+        "status": "reviewed",
+        "humanRequired": true,
+        "judgements": [
+          {
+            "stage": "setup",
+            "criterion": "grounding",
+            "verdict": "pass",
+            "reason": "source_and_hash_verified",
+            "evidence": [
+              "native-1",
+              "native-8",
+              "native-12",
+              "native-16"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "fit",
+            "verdict": "pass",
+            "reason": "minimal_project_skill",
+            "evidence": [
+              "native-0",
+              "native-4",
+              "native-16",
+              "native-20"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "sufficiency",
+            "verdict": "pass",
+            "reason": "complete_skill_and_license",
+            "evidence": [
+              "native-8",
+              "native-20"
+            ]
+          },
+          {
+            "stage": "setup",
+            "criterion": "consistency",
+            "verdict": "pass",
+            "reason": "proposal_matches_files",
+            "evidence": [
+              "native-16",
+              "native-17",
+              "native-20"
+            ]
+          },
+          {
+            "stage": "task",
+            "criterion": "application",
+            "verdict": "pass",
+            "reason": "scope_checked_and_minimal_change_verified",
+            "evidence": [
+              "native-26",
+              "native-28",
+              "native-31",
+              "native-34",
+              "native-44",
+              "native-47"
+            ]
+          },
+          {
+            "stage": "task",
+            "criterion": "loading",
+            "verdict": "pass",
+            "reason": "skill_content_read_in_new_session",
+            "evidence": [
+              "native-27"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "costUsd": null,
+  "expansion": "PREF/PROC not run after Tibicen setup error",
+  "note": "Historical cohort before observed-reference transport; model verdicts do not replace required human review."
+}

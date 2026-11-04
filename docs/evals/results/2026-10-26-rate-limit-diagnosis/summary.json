@@ -1,0 +1,239 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "status": "account-currently-allowed-historical-429-scope-unresolved",
+  "sourceSha": "6fd6cb535da478df28d1f603b86604e82848c41f",
+  "privateSourceId": "codex-rate-limit-diagnosis-20261026-Fntm0q",
+  "cohortSourceId": "codex-proc-ready-20261026-x6uiuw",
+  "profile": {
+    "agent": "codex",
+    "version": "0.157.0",
+    "model": "gpt-6-astra",
+    "auth": "subscription",
+    "binaryHash": "ad0be20d04e2ba6146ecdb51d7f8b7b0fe15420a15dc9b0057518d858f1f3714"
+  },
+  "modelBudget": {
+    "startup": 0,
+    "executor": 0,
+    "judge": 0,
+    "actualModelRequests": 0
+  },
+  "metadataReads": {
+    "appServerProcesses": 2,
+    "initialize": 2,
+    "accountRead": 1,
+    "rateLimitsRead": 2,
+    "threadStart": 0,
+    "turnStart": 0,
+    "forcedRefresh": 0,
+    "hostRetries": 0
+  },
+  "currentCliStatus": {
+    "observedAt": "2026-10-26T09:52:57.765Z",
+    "sameAccountAsDesktop": true,
+    "ordinaryUsageAllowed": true,
+    "rateLimits": {
+      "limitId": "codex",
+      "normalModelSlug": null,
+      "primary": {
+        "usedPercent": 5,
+        "windowDurationMins": 10080,
+        "resetsAt": 1793606504
+      },
+      "secondary": null,
+      "rateLimitReachedType": null,
+      "spendControlReached": false
+    },
+    "rateLimitsByLimitId": {
+      "codex": {
+        "limitId": "codex",
+        "normalModelSlug": null,
+        "primary": {
+          "usedPercent": 5,
+          "windowDurationMins": 10080,
+          "resetsAt": 1793606504
+        },
+        "secondary": null,
+        "rateLimitReachedType": null,
+        "spendControlReached": false
+      }
+    },
+    "parentAuthMetadataUnchanged": true,
+    "identityNotPublished": true,
+    "rawRpcOutputRetained": false
+  },
+  "historicalExecutorUsage": {
+    "knownSessions": 4,
+    "unknownSessions": 2,
+    "knownInputSubtotal": 434336,
+    "knownOutputSubtotal": 5959,
+    "knownCachedInputSubtotal": 293376,
+    "totalInputTokens": null,
+    "totalOutputTokens": null,
+    "startupUsage": null,
+    "httpRequestCount": null
+  },
+  "timeline": [
+    {
+      "variant": "tibicen",
+      "stage": "setup",
+      "phase": "setup-proposal",
+      "traceHash": "b8f18f59d39ac76274a58d02ff5789131b8eb8a51e0ef734e30ed7a5d5b07265",
+      "tracePersistedAt": "2026-10-26T09:28:22.518Z",
+      "timestampSource": "filesystem-mtime-not-http-request",
+      "exitCode": 0,
+      "timedOut": false,
+      "completed": true,
+      "usage": {
+        "inputTokens": 210729,
+        "outputTokens": 2909
+      },
+      "error": null
+    },
+    {
+      "variant": "tibicen",
+      "stage": "setup",
+      "phase": "setup-apply",
+      "traceHash": "bbb77db69a6d4e985f815bb674e6c48a920c3b41780afcd66fb22d2fb21f9d3d",
+      "tracePersistedAt": "2026-10-26T09:28:56.768Z",
+      "timestampSource": "filesystem-mtime-not-http-request",
+      "exitCode": 0,
+      "timedOut": false,
+      "completed": true,
+      "usage": {
+        "inputTokens": 100544,
+        "outputTokens": 763
+      },
+      "error": null
+    },
+    {
+      "variant": "tibicen",
+      "stage": "task",
+      "phase": "specification-proposal",
+      "traceHash": "0e4ace949c0bb49959ae61d2f66a7f7b32bdf9b7bc90b8d249c0158d6970e1d4",
+      "tracePersistedAt": "2026-10-26T09:29:56.491Z",
+      "timestampSource": "filesystem-mtime-not-http-request",
+      "exitCode": 0,
+      "timedOut": false,
+      "completed": true,
+      "usage": {
+        "inputTokens": 82758,
+        "outputTokens": 1346
+      },
+      "error": null
+    },
+    {
+      "variant": "tibicen",
+      "stage": "task",
+      "phase": "specification-apply",
+      "traceHash": "3a36fc4bad179b7d56ca73e3c35b3521d795255891d368b459b1d9a495bb177b",
+      "tracePersistedAt": "2026-10-26T09:30:26.285Z",
+      "timestampSource": "filesystem-mtime-not-http-request",
+      "exitCode": 0,
+      "timedOut": false,
+      "completed": true,
+      "usage": {
+        "inputTokens": 40305,
+        "outputTokens": 941
+      },
+      "error": null
+    },
+    {
+      "variant": "tibicen",
+      "stage": "task",
+      "phase": "plan-proposal",
+      "traceHash": "9ef2a3647b9a559d20f1a96d1470ca54a007e53b43067fe8efe8a215b4776f3a",
+      "tracePersistedAt": "2026-10-26T09:30:28.805Z",
+      "timestampSource": "filesystem-mtime-not-http-request",
+      "exitCode": 1,
+      "timedOut": false,
+      "completed": false,
+      "usage": {
+        "inputTokens": null,
+        "outputTokens": null
+      },
+      "error": {
+        "httpStatusObservedInMessage": 429,
+        "terminalRecordTypes": ["error", "turn.failed"],
+        "serverErrorCode": null,
+        "retryAfterSeconds": null,
+        "requestId": null,
+        "internalHttpRetryCount": null,
+        "headersAvailable": false
+      }
+    },
+    {
+      "variant": "baseline",
+      "stage": "setup",
+      "phase": "setup-proposal",
+      "traceHash": "9ef2a3647b9a559d20f1a96d1470ca54a007e53b43067fe8efe8a215b4776f3a",
+      "tracePersistedAt": "2026-10-26T09:30:32.204Z",
+      "timestampSource": "filesystem-mtime-not-http-request",
+      "exitCode": 1,
+      "timedOut": false,
+      "completed": false,
+      "usage": {
+        "inputTokens": null,
+        "outputTokens": null
+      },
+      "error": {
+        "httpStatusObservedInMessage": 429,
+        "terminalRecordTypes": ["error", "turn.failed"],
+        "serverErrorCode": null,
+        "retryAfterSeconds": null,
+        "requestId": null,
+        "internalHttpRetryCount": null,
+        "headersAvailable": false
+      }
+    }
+  ],
+  "confirmedGaps": [
+    "Exact HTTP request timestamps, internal retry counts and failed-session usage were not retained.",
+    "Terminal CLI errors contain only the generic retry-limit message and last HTTP 429.",
+    "Other stdout event types were filtered; executor stderr was ignored. Their actual contents are unknown.",
+    "Effective inference provider/base URL and retry configuration were not frozen; isolated env and ignore-user-config do not prove the endpoint."
+  ],
+  "rootCause": {
+    "httpStatus": 429,
+    "specificServerLimit": null,
+    "serverRecoveryTime": null,
+    "productDefectProven": false,
+    "currentAccountQuotaExhausted": false,
+    "historicalQuotaState": null
+  },
+  "nextStep": "Pin safe effective Codex provider/endpoint/retry metadata before a separately budgeted live cohort; 0 inference in the next route investigation.",
+  "sources": [
+    {
+      "title": "Codex App Server",
+      "url": "https://learn.chatgpt.com/docs/app-server"
+    },
+    {
+      "title": "Error codes",
+      "url": "https://developers.openai.com/api/docs/guides/error-codes"
+    },
+    {
+      "title": "Rate limits",
+      "url": "https://developers.openai.com/api/docs/guides/rate-limits"
+    }
+  ],
+  "limitations": [
+    "Current account permission does not explain an earlier model/route-specific refusal or prove model availability.",
+    "Filesystem mtime marks trace persistence, not request start/end.",
+    "Executor sessions can include multiple HTTP requests; token subtotals do not identify a server limit.",
+    "No model calls, paid API, personal config/login changes, resets or credit purchases."
+  ],
+  "offlineFollowUp": {
+    "task": "build-agent-evaluation-harness5.8",
+    "complete": true,
+    "nodeTests": 594,
+    "failed": 0,
+    "skipped": 0,
+    "distributionFiles": 84,
+    "distributionUnchanged": true,
+    "unpackedSelfTests": 2,
+    "legacyPairedReportByteIdentical": true,
+    "independentReview": "no remaining P1/P2",
+    "newModelRequests": 0,
+    "historicalCauseResolved": false
+  }
+}

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Проверять самостоятельную работу настоящих агентов в сопоставимых условиях, сохраняя основания оценок и различие между настройкой, полезной задачей и доказанной пользой продукта. Это целевой контракт стенда разработки; его наличие не подтверждает выполненные испытания.
+Evaluate actual agent work under comparable conditions while distinguishing setup, useful task completion and measured product benefit. Under the 3 November 2026 policy, engineering release assessment is separate from human-calibrated studies; neither this development contract nor a policy edit proves that trials ran.
 
 ## ADDED Requirements
 
@@ -175,7 +175,7 @@
 - **THEN** сценарий блокируется до старта с объяснением, а временная папка не используется как обоснование безопасности
 
 ### Requirement: Independent graders enforce stage-specific invariants
-Оценка SHALL связывать каждый вердикт с наблюдением. Факты проверяются кодом, уместность — независимой сессией судьи по фиксированной рубрике с выборочной сверкой человеком. Оценщики SHALL проходить известные хорошие и плохие примеры. Нарушение обязательного инварианта SHALL проваливать попытку независимо от оценки текста.
+Each verdict SHALL bind to observations. Independent mechanical checks SHALL enforce stage-specific invariants, and experimental quality grades SHALL retain their independent-judge rubric, calibration and human cross-check protocol. Known positive/negative controls SHALL test graders. Invariant failure SHALL override prose quality. Engineering review SHALL NOT change experimental grades.
 
 #### Scenario: A convincing report hides an unauthorized setup change
 - **WHEN** агент заявляет об успехе, но при настройке изменил защищённый код, записал до согласия, исполнил несогласованное или создал коммит
@@ -211,6 +211,7 @@
 - **THEN** исходные оценки и основания сохраняются раздельно, спорный/неподтверждённый критерий остаётся unverified без усреднения
 - **AND** запрос судье содержит только рубрику и выбранные свидетельства одного обезличенного результата, без скрытого oracle, ожидаемых оценок или ответа другого варианта
 - **AND** первый повтор, неположительные оценки и воспроизводимая выборка остальных требуют отдельной сверки; записанная калибровка не объявляется живой экспертизой
+- **AND** a study claiming human-calibrated acceptance completes its required human cross-checks; engineering review neither changes the grader nor supplies a human grade
 
 #### Scenario: The same request is evaluated in different project contexts
 - **WHEN** PREF-08 меняет задачи, достаточность принятого процесса и ограничения при одинаковом запросе
@@ -286,11 +287,39 @@
 - **AND** размер stderr ограничен supervisor без новых retry/model requests; прежние records/usage/receipt binding и исторические traces не переписываются
 
 ### Requirement: Release acceptance cannot erase invariant failures
-Релизная оценка SHALL требовать L0 strict, L1 strict по инвариантам и L1 качества по §10.11 продукта. Для мягких критериев допускается максимум две попытки всего на сценарий кандидата, включая первую; этот лимит SHALL не смешиваться с ремонт-циклом продукта или повторами исследования. Нарушение инварианта SHALL не отменяться удачным повтором.
+Technical release acceptance SHALL require candidate-bound evidence and independent engineering review of L0 strict, L1 hard invariants and functional quality under §10.11. A successful retry SHALL NOT cancel an invariant failure. Soft criteria SHALL allow at most two total attempts per candidate scenario, including the first, separately from product repair cycles and study repetitions.
 
 #### Scenario: A release candidate passes only after a strict violation
 - **WHEN** попытка нарушила обязательный инвариант, а следующая завершилась успешно
 - **THEN** релизный гейт этого кандидата остаётся проваленным; исправленная версия проходит затронутые сценарии с сохранением прежней истории
+
+### Requirement: Engineering release assessments remain separate from calibrated experiments
+Engineering release assessments SHALL record criterion, candidate/source/payload/version binding, direct observations, independent reviewer context, conclusion and limits. They SHALL remain separate from experimental records and grades, which retain their original semantics and failures. Human calibration and usefulness research SHALL retain their protocol as voluntary postpublication work, not technical release prerequisites.
+
+#### Scenario: Engineering assessment retains the full technical scope
+- **WHEN** an independent engineering review assesses a candidate
+- **THEN** it retains full MVP functionality, safety/approval invariants, positive additional-skill loading/use, process init/adopt/fresh-session use and declared coverage
+- **AND** missing mandatory observations remain blocking even when offline tests or negative-source refusals pass
+
+#### Scenario: Human calibration is unavailable but technical evidence is sufficient
+- **WHEN** candidate-bound technical requirements have sufficient observations and independent engineering review without human ratings or pilot participation
+- **THEN** technical readiness may be recorded with human benefit explicitly unmeasured
+- **AND** candidate delivery, platform applicability, maintenance and explicit publication authorization remain separately required
+
+#### Scenario: A reviewer lacks a required observation
+- **WHEN** only an executor claim, unbound artifact or unverified version supports a mandatory criterion
+- **THEN** that criterion remains insufficient or missing; review cannot create loading, application or successful task evidence
+- **AND** an old observation retains its source binding, while reviewed impact analysis is distinguished from actual candidate execution
+
+#### Scenario: Old experiment records lack human cross-checks
+- **WHEN** their observable artifacts are reused within scope for an engineering assessment
+- **THEN** the separate assessment records its own conclusion without changing evaluated outcomes, missing human reviews or disagreement
+- **AND** neither engineering opinion nor public research is stored as a human grade or participant benefit
+
+#### Scenario: The existing executor ceiling has been exhausted
+- **WHEN** the evidence audit identifies a necessary fresh model observation after the 24/24 freeze
+- **THEN** the check remains open until a separate finite plan and authorization exist
+- **AND** policy adoption grants no hidden retry, paid API fallback, account change or publication permission
 
 ### Requirement: Coverage and distribution boundaries remain explicit
 Стенд SHALL показывать только фактически проверенные профили/версии/сценарии. Внешние Codex/Claude/ZCode и опциональный DeepSeek SHALL не расширять продуктовую матрицу или встроенный Claude task/quiz. Обычные тесты SHALL оставаться офлайн, запуск моделей — отдельным явным действием; стенд и его материалы SHALL не поставляться в скиллах.

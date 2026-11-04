@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import type { McpOptions } from '../../scripts/core/types.ts';
 import {
   planMcpChanges,
   validateMcpConfig,
@@ -145,6 +146,142 @@ test('env availability is specific to the target launch context', () => {
   );
 });
 
+for (const [agent, commandReference, argumentReference] of [
+  ['claude-code', '${MCP_BIN}', '--token=${SERVICE_TOKEN}'],
+  ['cursor', '${env:MCP_BIN}', '--token=${env:SERVICE_TOKEN}'],
+]) {
+  for (const [location, launch, expectedNames] of [
+    ['command', { command: commandReference, args: [] }, ['MCP_BIN']],
+    [
+      'arguments',
+      { command: 'node', args: ['server.js', argumentReference] },
+      ['SERVICE_TOKEN'],
+    ],
+  ] as const) {
+    test(`${agent} tracks ${location} environment references in planning and verification`, () => {
+      const contexts: { options: McpOptions; expectedStatus: string }[] = [
+        { options: {}, expectedStatus: 'env-context-unverified' },
+        {
+          options: { targetContextKnown: true, availableEnvNames: [] },
+          expectedStatus: 'no-key',
+        },
+        {
+          options: {
+            targetContextKnown: true,
+            availableEnvNames: [...expectedNames],
+          },
+          expectedStatus: 'configured-unverified',
+        },
+      ];
+      for (const { options, expectedStatus } of contexts) {
+        const planned = planMcpChanges(
+          agent,
+          null,
+          [
+            {
+              name: 'example',
+              action: 'upsert',
+              server: { ...launch, args: [...launch.args] },
+            },
+          ],
+          options,
+        );
+        const content = planned.changes[0].content!;
+        assert.deepEqual(JSON.parse(content).mcpServers.example, {
+          type: 'stdio',
+          ...launch,
+        });
+        for (const result of [
+          planned.results![0],
+          validateMcpConfig(agent, content, options).servers![0],
+        ]) {
+          assert.equal(result.status, expectedStatus);
+          assert.deepEqual(result.envNames, expectedNames);
+        }
+      }
+    });
+  }
+
+  test(`${agent} combines mapped and inline environment dependencies without duplicates`, () => {
+    const planned = planMcpChanges(
+      agent,
+      null,
+      [
+        {
+          name: 'example',
+          action: 'upsert',
+          server: {
+            command: commandReference,
+            args: [argumentReference, argumentReference],
+            envNames: ['SERVICE_TOKEN', 'EXTRA_TOKEN'],
+          },
+        },
+      ],
+      {
+        targetContextKnown: true,
+        availableEnvNames: ['SERVICE_TOKEN', 'EXTRA_TOKEN'],
+      },
+    );
+    const content = planned.changes[0].content!;
+    assert.deepEqual(Object.keys(JSON.parse(content).mcpServers.example.env), [
+      'SERVICE_TOKEN',
+      'EXTRA_TOKEN',
+    ]);
+    for (const result of [
+      planned.results![0],
+      validateMcpConfig(agent, content, {
+        targetContextKnown: true,
+        availableEnvNames: ['SERVICE_TOKEN', 'EXTRA_TOKEN'],
+      }).servers![0],
+    ]) {
+      assert.equal(result.status, 'no-key');
+      assert.deepEqual(result.envNames?.toSorted(), [
+        'EXTRA_TOKEN',
+        'MCP_BIN',
+        'SERVICE_TOKEN',
+      ]);
+    }
+  });
+}
+
+test('Cursor built-in placeholders do not require environment variables', () => {
+  const args = [
+    '${userHome}',
+    '${workspaceFolder}',
+    '${workspaceFolderBasename}',
+    '${pathSeparator}',
+    '${/}',
+  ];
+  const planned = planMcpChanges('cursor', null, [
+    {
+      name: 'example',
+      action: 'upsert',
+      server: { command: 'node', args },
+    },
+  ]);
+  for (const result of [
+    planned.results![0],
+    validateMcpConfig('cursor', planned.changes[0].content!).servers![0],
+  ]) {
+    assert.equal(result.status, 'configured-unverified');
+    assert.deepEqual(result.envNames, []);
+  }
+});
+
+for (const agent of ['claude-code', 'cursor']) {
+  test(`${agent} treats a raw null environment list like an omitted list`, () => {
+    const withNull = JSON.parse(
+      '{"command":"node","args":["server.js"],"envNames":null}',
+    );
+    const omitted = JSON.parse('{"command":"node","args":["server.js"]}');
+    const plan = (server: typeof withNull) =>
+      planMcpChanges(agent, null, [
+        { name: 'example', action: 'upsert', server },
+      ]);
+    assert.deepEqual(plan(withNull), plan(omitted));
+  });
+}
+
 test('Codex gets a manual env_vars block and can verify its subsequent application', () => {
   const result = prepareCodexMcpBlock(server);
   assert.equal(result.status, 'manual-action-required');
@@ -163,6 +300,28 @@ test('Codex gets a manual env_vars block and can verify its subsequent applicati
   assert.equal(
     verifyCodexMcpBlock(result.block + result.block, server).status,
     'manual-action-required',
+  );
+});
+
+test('Codex distinguishes a quoted dotted server name from a nested table', () => {
+  const dotted = { name: 'team.docs', command: 'node', args: ['server.js'] };
+  const block = prepareCodexMcpBlock(dotted).block;
+  assert.equal(
+    verifyCodexMcpBlock(block, dotted).status,
+    'configured-unverified',
+  );
+  const nested = verifyCodexMcpBlock(
+    '[mcp_servers.team.docs]\ncommand = "node"\nargs = ["server.js"]\nenv_vars = []\n',
+    dotted,
+  );
+  assert.equal(nested.status, 'manual-action-required');
+  assert.equal(nested.reason, 'manual-block-not-applied');
+  assert.equal(
+    verifyCodexMcpBlock(
+      '[mcp_servers.team_docs-1]\ncommand = "node"\nargs = ["server.js"]\nenv_vars = []\n',
+      { ...dotted, name: 'team_docs-1' },
+    ).status,
+    'configured-unverified',
   );
 });
 

@@ -102,6 +102,15 @@ async function fixture(t: { after(fn: () => Promise<void>): void }) {
       Config: {
         User: '0:0',
         Entrypoint: ['/usr/local/bin/node', '/opt/tibicen/watchdog.mjs'],
+        Env: ['HOME=/home/runner', 'TMPDIR=/tmp'],
+        Labels: { second: '2', first: '1' },
+      },
+      RootFS: {
+        Type: 'layers',
+        Layers: [
+          'sha256:3bfd0b5a99a1f25a488230217defd5c2781ad861f692f5df22d9734bbddfc53d',
+          'sha256:2e5e7ab91620df7fcf97edd65e7b2e8e12828af60a991dcc46d5eb53c15ab3e0',
+        ],
       },
     },
   };
@@ -126,6 +135,118 @@ async function fixture(t: { after(fn: () => Promise<void>): void }) {
   };
   return { scope, repository, module, input, observed, facts, command };
 }
+
+test('equivalent Docker inspect envelopes preserve the pinned image', async (t) => {
+  const f = await fixture(t);
+  // Captured envelopes differ in GraphDriver versus Descriptor/Identity only.
+  const image = f.facts.image;
+  f.facts.image = Object.assign({}, image, {
+    GraphDriver: { Data: null, Name: 'overlayfs' },
+  });
+  const profile = await f.module.inspectTrustedContainedCodexFixture(
+    f.input,
+    f.command,
+  );
+  f.facts.image = Object.assign({}, image, {
+    Descriptor: {
+      mediaType: 'application/vnd.docker.distribution.manifest.v2+json',
+      digest: containedCodexImage,
+      size: 2270,
+      annotations: {
+        'config.digest':
+          'sha256:636e11d430438e0a2bd7d8947e981aecf7d53b1ba47b3e75618de8b6e88dab3b',
+      },
+    },
+    Identity: {
+      Build: [
+        {
+          Ref: '3cupbwvhvrjoaq9cu0fxy3p2e',
+          CreatedAt: '2026-10-26T16:46:18.793971637Z',
+        },
+      ],
+    },
+  });
+  await profile.validate();
+});
+
+test('image identity ignores object key order and an absent versus null variant', async (t) => {
+  const f = await fixture(t);
+  const profile = await f.module.inspectTrustedContainedCodexFixture(
+    f.input,
+    f.command,
+  );
+  const image = f.facts.image;
+  f.facts.image = Object.assign(
+    {
+      RootFS: { Layers: image.RootFS.Layers, Type: image.RootFS.Type },
+      Config: {
+        Labels: { first: '1', second: '2' },
+        Env: image.Config.Env,
+        Entrypoint: image.Config.Entrypoint,
+        User: image.Config.User,
+      },
+      Architecture: image.Architecture,
+      Os: image.Os,
+      Id: image.Id,
+    },
+    { Variant: null },
+  );
+  await profile.validate();
+});
+
+test('image validation rejects full configuration, layer and array order changes', async (t) => {
+  const f = await fixture(t);
+  const profile = await f.module.inspectTrustedContainedCodexFixture(
+    f.input,
+    f.command,
+  );
+  const image = f.facts.image;
+  for (const change of [
+    { Config: { ...image.Config, Env: ['HOME=/changed', 'TMPDIR=/tmp'] } },
+    { Config: { ...image.Config, Env: [...image.Config.Env].reverse() } },
+    { Config: { ...image.Config, Cmd: ['unapproved'] } },
+    { Config: { ...image.Config, Labels: { first: 'changed', second: '2' } } },
+    {
+      RootFS: {
+        ...image.RootFS,
+        Layers: ['sha256:' + 'a'.repeat(64), image.RootFS.Layers[1]],
+      },
+    },
+    { RootFS: { ...image.RootFS, Layers: [...image.RootFS.Layers].reverse() } },
+    { RootFS: { ...image.RootFS, extra: 'changed' } },
+    { Variant: 'v8' },
+  ]) {
+    f.facts.image = Object.assign({}, image, change);
+    await assert.rejects(profile.validate(), /contained-codex-image-changed/);
+  }
+  f.facts.image = image;
+  await profile.validate();
+});
+
+test('missing or malformed image identity is refused before a profile is frozen', async (t) => {
+  const f = await fixture(t);
+  const image = f.facts.image;
+  const malformed: unknown[] = [
+    { ...image, RootFS: undefined },
+    { ...image, RootFS: null },
+    { ...image, RootFS: [] },
+    { ...image, RootFS: {} },
+    { ...image, RootFS: { Type: 'other', Layers: image.RootFS.Layers } },
+    ...[undefined, null, [], 'layers', [null], ['sha256:invalid']].map(
+      (Layers) => ({ ...image, RootFS: { Type: 'layers', Layers } }),
+    ),
+    ...[undefined, null, [], 'config'].map((Config) => ({ ...image, Config })),
+    { ...image, Variant: 8 },
+    null,
+  ];
+  for (const value of malformed) {
+    f.facts.image = value as typeof image;
+    await assert.rejects(
+      f.module.inspectTrustedContainedCodexFixture(f.input, f.command),
+      /unsupported-contained-codex-image/,
+    );
+  }
+});
 
 test('contained profile rejects unsupported inputs before any metadata executable', async () => {
   const input: ContainedCodexProfileInput = {

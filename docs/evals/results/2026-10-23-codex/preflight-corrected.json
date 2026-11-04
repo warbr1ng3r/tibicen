@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "observedAt": "2026-10-23T04:14:31.101Z",
+  "cli": {
+    "path": "/opt/homebrew/bin/codex",
+    "version": "codex-cli 0.157.0",
+    "binaryHash": "ad0be20d04e2ba6146ecdb51d7f8b7b0fe15420a15dc9b0057518d858f1f3714"
+  },
+  "candidateModel": "gpt-6-sol",
+  "authRoute": "existing-chatgpt-subscription",
+  "modelRequests": 1,
+  "startup": {
+    "auth": "observed-chatgpt-subscription",
+    "availableModels": [
+      {
+        "id": "gpt-6-astra",
+        "model": "gpt-6-astra",
+        "isDefault": true
+      },
+      {
+        "id": "gpt-6-sol",
+        "model": "gpt-6-sol",
+        "isDefault": false
+      },
+      {
+        "id": "gpt-6-luna",
+        "model": "gpt-6-luna",
+        "isDefault": false
+      },
+      {
+        "id": "gpt-5.6-sol",
+        "model": "gpt-5.6-sol",
+        "isDefault": false
+      },
+      {
+        "id": "gpt-5.6-terra",
+        "model": "gpt-5.6-terra",
+        "isDefault": false
+      },
+      {
+        "id": "gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "isDefault": false
+      }
+    ],
+    "exitCode": 0,
+    "timedOut": false,
+    "jsonlValid": true,
+    "eventTypes": [
+      "thread.started",
+      "turn.started",
+      "item.completed",
+      "item.started",
+      "item.completed",
+      "item.completed",
+      "turn.completed"
+    ],
+    "observedRead": true,
+    "instructionHash": "6247c19cfba2f5a03ebb0b9696bb69df9841d4a04c6a18e0d89e762506aa0944",
+    "completed": true,
+    "errors": [],
+    "stderrDiagnostic": "WARNING: proceeding, even though we could not create PATH aliases: Refusing to create helper binaries under temporary dir \"[scope]\" (codex_home: AbsolutePathBuf(\"[scope]/home/.codex\"))\n",
+    "configHash": "2c58a80678a974d665087629b134aa33c0cbe7907b54f9cbce8f2217ef9aebe0",
+    "modelRequests": 1
+  },
+  "preflight": {
+    "status": "ready",
+    "startupControlled": true,
+    "authProtected": true,
+    "processTreeControlled": true,
+    "isolation": "controlled"
+  },
+  "synthetic": {
+    "exitCode": 0,
+    "timedOut": false,
+    "facts": {
+      "readable": false,
+      "outsideWrite": false,
+      "workspaceWrite": true,
+      "skillWrite": true,
+      "descendantDenied": true
+    },
+    "diagnostic": "WARNING: proceeding, even though we could not create PATH aliases: Refusing to create helper binaries under temporary dir \"[scope]\" (codex_home: AbsolutePathBuf(\"[scope]/home/.codex\"))\n",
+    "diagnosticHash": "751143310a9aa0dd3a8684543d2f87d35a12bed94bfa25b7e1cd02c4db343464",
+    "sandboxUnavailable": false
+  },
+  "startupHash": "78762fd1c7e364d2ffb319814a1c04e375c72e5617eaf275181b236a0e4e69ca",
+  "permissionsHash": "4c73b7d56861e67882a530371e185c86147aa864b26110e5d6f0dcb05ac9b8e4",
+  "loading": "observed",
+  "limits": {
+    "launchMs": 10000,
+    "startupMs": 45000
+  },
+  "note": "Only synthetic credentials were present. Existing CLI login status was inspected separately; no auth file contents were read by this probe. Native raw output is discarded. A ready result additionally needs startup, process cleanup and loading observations."
+}

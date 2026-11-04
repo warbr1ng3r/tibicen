@@ -1,0 +1,147 @@
+{
+  "schema": 1,
+  "experimentHash": "39a4cfe762b5cdd19c330c549d21d362c7e1566ddd330d42b15830ab6cca77f9",
+  "processorHash": "02bd5bf03b1e7480a6175557341610795bd2754aae5012054b7f41d6db65d0da",
+  "usageProcessorHash": "8cc5f0c029ce936a3ea2791867c2be53f5ad99087167a8765eeee3cbe2f1f81f",
+  "timingCorrection": {
+    "driverHash": "68a6d6081fefbe2aa667779a630153e9558ccd7fdda87afcf77b66afc0bd8dcd",
+    "method": "Retained setup-finished → task-finished host boundaries; includes fresh task startup. Raw durations/outcomes preserved in original artifacts."
+  },
+  "sessions": [
+    {
+      "attemptId": "bare-tibicen",
+      "stage": "setup",
+      "phase": "proposal",
+      "sourceHash": "a3c73f4e2af7400f679ca1478e1e0b796799abfa2bef04b4f8342af53700da07",
+      "exitCode": 0,
+      "timedOut": false,
+      "usage": {
+        "input_tokens": 173057,
+        "output_tokens": 4944,
+        "cached_input_tokens": 142080,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 997
+      }
+    },
+    {
+      "attemptId": "bare-baseline",
+      "stage": "setup",
+      "phase": "proposal",
+      "sourceHash": "39440f8096e21c51d292fe456fe76fa399eb8e782a940bac1198d89bd137349b",
+      "exitCode": 0,
+      "timedOut": false,
+      "usage": {
+        "input_tokens": 45416,
+        "output_tokens": 1021,
+        "cached_input_tokens": 32896,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 357
+      }
+    },
+    {
+      "attemptId": "bare-baseline",
+      "stage": "setup",
+      "phase": "apply",
+      "sourceHash": "9f01239c4199ed683cc4bef2e05dfaaaa750348a611b19f79f203ffb05982dcd",
+      "exitCode": 0,
+      "timedOut": false,
+      "usage": {
+        "input_tokens": 57577,
+        "output_tokens": 804,
+        "cached_input_tokens": 44800,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 176
+      }
+    },
+    {
+      "attemptId": "bare-baseline",
+      "stage": "task",
+      "phase": "proposal",
+      "sourceHash": "fa564e5aa9c9b88ed8e4463fc428e4fbb1c118c56cba885fedc1dc531efdaa7d",
+      "exitCode": 0,
+      "timedOut": false,
+      "usage": {
+        "input_tokens": 45173,
+        "output_tokens": 914,
+        "cached_input_tokens": 32768,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 122
+      }
+    },
+    {
+      "attemptId": "bare-baseline",
+      "stage": "task",
+      "phase": "apply",
+      "sourceHash": "bb2c6537eee443d8aaad52b7da4f82a339859bafca48a4c0fef09277e2c6e0c2",
+      "exitCode": 0,
+      "timedOut": false,
+      "usage": {
+        "input_tokens": 46375,
+        "output_tokens": 461,
+        "cached_input_tokens": 30848,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 60
+      }
+    },
+    {
+      "attemptId": "conflicts-baseline",
+      "stage": "setup",
+      "phase": "proposal",
+      "sourceHash": "f7202c2c51c9d1d76b0efb707f1f1f25f5b246b834daf933189a0846545d2fc5",
+      "exitCode": 0,
+      "timedOut": false,
+      "usage": {
+        "input_tokens": 48763,
+        "output_tokens": 1317,
+        "cached_input_tokens": 42624,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 577
+      }
+    },
+    {
+      "attemptId": "conflicts-baseline",
+      "stage": "setup",
+      "phase": "apply",
+      "sourceHash": "7dd405441f53bdd631f176abf1cc6d77576eeda1def8fd0e09f7ef9e2c67de00",
+      "exitCode": 0,
+      "timedOut": false,
+      "usage": {
+        "input_tokens": 133132,
+        "output_tokens": 2225,
+        "cached_input_tokens": 124160,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 700
+      }
+    },
+    {
+      "attemptId": "conflicts-tibicen",
+      "stage": "setup",
+      "phase": "proposal",
+      "sourceHash": "a068d734d6f39058b66e978e2c5eb608412ed824805866decb3274a50a318013",
+      "exitCode": 0,
+      "timedOut": false,
+      "usage": {
+        "input_tokens": 189599,
+        "output_tokens": 3387,
+        "cached_input_tokens": 160384,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1693
+      }
+    },
+    {
+      "attemptId": "conflicts-tibicen",
+      "stage": "setup",
+      "phase": "apply",
+      "sourceHash": "203807ea8bdc7930dc9e86c16ee5c6838cd2a827859ee57c47f96115257dd9e9",
+      "exitCode": 0,
+      "timedOut": false,
+      "usage": {
+        "input_tokens": 133380,
+        "output_tokens": 2134,
+        "cached_input_tokens": 116480,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 565
+      }
+    }
+  ]
+}

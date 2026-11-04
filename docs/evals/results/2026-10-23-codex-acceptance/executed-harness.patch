@@ -1,0 +1,48 @@
+diff --git a/scripts/evals/native-runner.ts b/scripts/evals/native-runner.ts
+index e574199..f922469 100644
+--- a/scripts/evals/native-runner.ts
++++ b/scripts/evals/native-runner.ts
+@@ -873,9 +873,15 @@ export async function runNativeExperiment(
+               const recipe = nativeRecipe(item.command, cli?.cli);
+               if (recipe) {
+                 const hash = recipeHash(recipe);
++                const metadataRead =
++                  cli &&
++                  recipe.executable === 'openspec' &&
++                  recipe.argv.length === 1 &&
++                  ['--version', '--help'].includes(recipe.argv[0]);
+                 if (
+-                  recipe.readOnly &&
+-                  scenario[stage].allowedCommands.includes(hash)
++                  metadataRead ||
++                  (recipe.readOnly &&
++                    scenario[stage].allowedCommands.includes(hash))
+                 )
+                   assertion(stage, 'native-process-read-' + events.length, {
+                     commandHash: hash,
+diff --git a/scripts/evals/native-workflow.ts b/scripts/evals/native-workflow.ts
+index 1a5d0c6..b3afd38 100644
+--- a/scripts/evals/native-workflow.ts
++++ b/scripts/evals/native-workflow.ts
+@@ -269,6 +269,7 @@ export function nativeRecipe(input: unknown, cliRoot?: string) {
+   if (!argv) return null;
+   const readOnly = [
+     '--version',
++    '--help',
+     'list',
+     'status',
+     'instructions',
+diff --git a/scripts/evals/profiles/codex/profile.ts b/scripts/evals/profiles/codex/profile.ts
+index 263ab21..f7e7b89 100644
+--- a/scripts/evals/profiles/codex/profile.ts
++++ b/scripts/evals/profiles/codex/profile.ts
+@@ -154,7 +154,8 @@ export async function loadCodexProfile(
+     check: (input, executable, argv) => ({
+       executable: binary,
+       cwd: input.root,
+-      env: environment(input.home),
++      // Sandbox checks need an existing CLI home, without model authorization.
++      env: { ...environment(input.home), CODEX_HOME: input.home },
+       argv: [
+         'sandbox',
+         '--permission-profile',

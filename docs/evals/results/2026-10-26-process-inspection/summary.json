@@ -1,0 +1,1005 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "timezone": "Europe/Moscow",
+  "draft": false,
+  "status": "executor-and-independent-model-observations-complete-human-review-open",
+  "privateSourceId": "codex-proc-inspection-20261026-Wb40B7",
+  "experimentId": "codex-proc-inspection-2026-10-26",
+  "cohortId": "505c40fa726602cef9d264ea2ea32dd5c1dc47c9e7be163e004093f504081bc9",
+  "experimentHash": "dce8a47a0d12f238f852a200bb5ec9bcd804d50bcfe3e5ec3462ab66d182a7e7",
+  "conditionsHash": "d436b934466c71a2b6d482a310d41170afee8f38f7b275723f42e56315007c88",
+  "scenarioId": "proc-01",
+  "scenarioHash": "2e7e51090b10fed01681993d3233a1b043b5215eeba8bdffdb681eaeaf2719cf",
+  "profileHash": "712a8f27a39ef34e88a61994a76f3e6a9e475b2ee04efa58d9ec482c7e59ded0",
+  "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+  "observedReportHash": "32adb70c4a7237a55b4eedee4dce3ce3e4cdd0600958d7882044152cd82e54d3",
+  "modelReviewedReportHash": "16e31b48782da016f617ee8b73f98dd698b30f4a680bc5cbb4f717ba917ea321",
+  "source": {
+    "sha": "bdd889d9f4f626daec1bf10057fa1003d2e2a252",
+    "dirty": true,
+    "treeHash": "c463cf2cca28a7c9cde50a407d0e20c6d803c28aaa188116fdd3e44bce666c32",
+    "files": 156,
+    "observedAt": "2026-10-25T23:23:14.533Z",
+    "postRunVerification": {
+      "schema": 1,
+      "observedAt": "2026-10-25T23:31:19.056Z",
+      "files": 156,
+      "treeHash": "c463cf2cca28a7c9cde50a407d0e20c6d803c28aaa188116fdd3e44bce666c32",
+      "allBytesAndModesMatch": true
+    }
+  },
+  "profile": {
+    "id": "codex-0.157.0-gpt-6-sol",
+    "agent": "codex",
+    "version": "0.157.0",
+    "model": "gpt-6-sol",
+    "auth": "subscription",
+    "paid": false,
+    "startupHash": "0ddff3216664406d356c5c47fc94e8c40c7a43ddfcdbed7a00131e1ee233295c",
+    "permissionsHash": "e3097066ee067267db7e9e64e731e5ba42ef80a3b2c1dcc47f8b212f7509fb8d"
+  },
+  "nativeProtocol": 2,
+  "qualityPlan": {
+    "setup": ["grounding", "fit", "sufficiency", "consistency"],
+    "task": ["application", "loading", "process"]
+  },
+  "limits": {
+    "launchMs": 45000,
+    "setupMs": 180000,
+    "taskMs": 360000,
+    "maxCostUsd": null
+  },
+  "repeats": 1,
+  "order": ["tibicen", "baseline"],
+  "budget": {
+    "executorCap": 16,
+    "executorSessions": 14,
+    "previousCohortExecutorSessions": 6,
+    "aggregateExecutorUsed": 20,
+    "aggregateExecutorCap": 32,
+    "qualityJudgeCap": 2,
+    "startupModelRequests": 0,
+    "qualityJudgeSessions": 2,
+    "aggregateQualityJudgeUsed": 2,
+    "aggregateQualityJudgeCap": 2
+  },
+  "counts": {
+    "plannedAttempts": 2,
+    "recordedAttempts": 2,
+    "startedAttempts": 2,
+    "observedLaunchPass": 2,
+    "observedSetupPass": 2,
+    "observedTaskPass": 1,
+    "observedTaskError": 1,
+    "evaluatedSetupPass": 0,
+    "evaluatedTaskPass": 0
+  },
+  "quality": {
+    "modelRequests": 2,
+    "observedModelSessions": 2,
+    "humanReviews": 0,
+    "humanRequiredForBoth": true,
+    "status": "independent-model-reviews-complete-human-review-required",
+    "fullAcceptance": false,
+    "judgeSummaryHash": "f38b7854f279e758efc72cfadd4668a5f89a101348fbe95d19d7e02a34052f53",
+    "judgePlanHash": "36dc18cd48ed81e5ee49ed1b0f222203ed17c861d372e579e3f50f5d7cf4a21c",
+    "judgeScriptHash": "5fcfdd9dd575fd74ea6f73afffd5f7b2a05d69ca9c9587334b87b1f281d608b1",
+    "maxModelSessions": 2,
+    "sessionMs": 60000,
+    "concurrency": 1,
+    "retries": 0,
+    "input": "Only current packet.request; no wrapper, run, variant, oracle or other attempt.",
+    "profile": {
+      "id": "codex-0.157.0-gpt-6-sol",
+      "agent": "codex",
+      "version": "0.157.0",
+      "model": "gpt-6-sol",
+      "auth": "subscription",
+      "paid": false,
+      "startupHash": "72a76b0a880780f15f94dba71afb7d5d72728a2b8fd9cec59824aa692b27eaaa",
+      "permissionsHash": "9bf531ebc071e737487bf51fc4cce82265b57a1baafa7331e389d3be6319b4cf"
+    }
+  },
+  "apiCallsAllowed": false,
+  "costUsd": null,
+  "distributionHash": "50f24a389a86cbfecedc36646d6362894062a7b8db44f22f639d80dff610a7c9",
+  "harnessHash": "937a92cb5fc1082c32f9932b91630f4bea971f627728ee12c71980953d12fa75",
+  "fixturesHash": "92d406fd2de2a7a653744c581ba17a51f1f5206c4bbab43006f5542282e49bf1",
+  "sourceMirrorHash": "294ec49e6fa10eb810feeb15100b20e1843c59f54a83b2f7276ddc791ba7ad79",
+  "reusedPreflightHash": "bc8e5fed874739569ab42ceeba4e08d95411ebc8b25c745a64f75c6ed57999f7",
+  "runtimeProbe": {
+    "policyHash": "6f48968eff8df509542372714549b8bd8f20b6ebbdf903445ef0d62a27d3178f",
+    "scriptHash": "82a45e2cc98f2dc0b3978296dfac40b9f4f4b8e1a202957d86986ecf7036de46",
+    "exitCode": 0,
+    "timedOut": false,
+    "facts": {
+      "denied": true,
+      "resourcesReadable": true,
+      "runtimeWriteDenied": true
+    },
+    "verified": true
+  },
+  "invariantFailures": [],
+  "attempts": [
+    {
+      "observed": {
+        "schema": 1,
+        "id": "proc-01-tibicen-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1269.578834
+        },
+        "setup": {
+          "status": "pass",
+          "durationMs": 95357.71187500001
+        },
+        "task": {
+          "status": "pass",
+          "durationMs": 157727.820042
+        }
+      },
+      "evaluated": {
+        "schema": 1,
+        "id": "proc-01-tibicen-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1269.578834
+        },
+        "setup": {
+          "status": "error",
+          "durationMs": 95357.71187500001,
+          "reason": "independent-check-unverified"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "evaluated-setup-not-passed"
+        }
+      },
+      "quality": {
+        "linkedRunHash": "8f581cfeea201ee69d4138af199a3a99e89c2b6332a0aa051120be198d200c42",
+        "bindingHash": "8f581cfeea201ee69d4138af199a3a99e89c2b6332a0aa051120be198d200c42",
+        "packetHash": "4c712a45aeaf659560384ffa097795638301de9096764c3a8905a9b00be1fc35",
+        "evidenceEventReferences": "collector-enriched-linked-run",
+        "modelJudge": {
+          "id": "independent-model-proc-dce8a47a0d12-1",
+          "kind": "model",
+          "version": "codex-0.157.0-gpt-6-sol",
+          "bindingHash": "8f581cfeea201ee69d4138af199a3a99e89c2b6332a0aa051120be198d200c42",
+          "packetHash": "4c712a45aeaf659560384ffa097795638301de9096764c3a8905a9b00be1fc35",
+          "judgements": [
+            {
+              "stage": "setup",
+              "criterion": "grounding",
+              "verdict": "pass",
+              "reason": "claims_match_observed_project",
+              "evidence": [
+                "native-0",
+                "native-2",
+                "native-7",
+                "native-8",
+                "native-23"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "fit",
+              "verdict": "pass",
+              "reason": "bounded_setup_matches_request",
+              "evidence": [
+                "native-0",
+                "native-1",
+                "native-21",
+                "native-37",
+                "native-51"
+              ]
+            },
+            {
+              "stage": "setup",
+              "criterion": "sufficiency",
+              "verdict": "pass",
+              "reason": "usable_process_rules_added",
+              "evidence": ["native-0", "native-21", "native-37", "native-40"]
+            },
+            {
+              "stage": "setup",
+              "criterion": "consistency",
+              "verdict": "pass",
+              "reason": "project_constraints_preserved",
+              "evidence": [
+                "native-2",
+                "native-21",
+                "native-38",
+                "native-39",
+                "native-51"
+              ]
+            },
+            {
+              "stage": "task",
+              "criterion": "application",
+              "verdict": "pass",
+              "reason": "rules_reflected_in_actions",
+              "evidence": [
+                "native-53",
+                "native-59",
+                "native-61",
+                "native-86",
+                "native-115",
+                "native-117",
+                "native-144"
+              ]
+            },
+            {
+              "stage": "task",
+              "criterion": "loading",
+              "verdict": "pass",
+              "reason": "exact_instruction_contents_read",
+              "evidence": ["native-59", "native-61"]
+            },
+            {
+              "stage": "task",
+              "criterion": "process",
+              "verdict": "pass",
+              "reason": "ordered_stages_with_separate_consent",
+              "evidence": [
+                "native-53",
+                "native-86",
+                "native-87",
+                "native-115",
+                "native-116",
+                "native-117",
+                "native-144",
+                "native-145",
+                "native-146",
+                "native-147"
+              ]
+            }
+          ]
+        },
+        "modelVerdicts": {
+          "pass": 7,
+          "fail": 0,
+          "unverified": 0
+        },
+        "humanRequired": true,
+        "human": null,
+        "grades": [
+          {
+            "id": "quality-setup-grounding",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidenceEventCount": 3
+          },
+          {
+            "id": "quality-setup-fit",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidenceEventCount": 4
+          },
+          {
+            "id": "quality-setup-sufficiency",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidenceEventCount": 3
+          },
+          {
+            "id": "quality-setup-consistency",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidenceEventCount": 5
+          },
+          {
+            "id": "quality-task-application",
+            "stage": "task",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidenceEventCount": 9
+          },
+          {
+            "id": "quality-task-loading",
+            "stage": "task",
+            "scope": "loading",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidenceEventCount": 2
+          },
+          {
+            "id": "quality-task-process",
+            "stage": "task",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidenceEventCount": 11
+          }
+        ],
+        "session": {
+          "artifactSha256": "6379aeab58e47ea0da087471e439b18651373529eface5b25bf54b690391cdc7",
+          "recordedStdoutHash": "83d5cca3335d52cddaeed58dc6914978a698eaeb006a1350a29a74e51331f362",
+          "packetHash": "4c712a45aeaf659560384ffa097795638301de9096764c3a8905a9b00be1fc35",
+          "exitCode": 0,
+          "timedOut": false,
+          "started": true,
+          "completed": true,
+          "toolUseObserved": false
+        }
+      },
+      "mechanicalGrades": [
+        {
+          "id": "setup-invariants",
+          "stage": "setup",
+          "scope": "invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved",
+          "evidenceEventCount": 64
+        },
+        {
+          "id": "task-result",
+          "stage": "task",
+          "scope": "task",
+          "verdict": "pass",
+          "reason": "independent-exports-passed",
+          "evidenceEventCount": 1
+        },
+        {
+          "id": "task-invariants",
+          "stage": "task",
+          "scope": "invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved",
+          "evidenceEventCount": 122
+        }
+      ],
+      "runHash": "f1497148cc6d6a47ce67a07de27dfe8c1ecfc15b3adfce4ebe09f6eb2f9eeab2",
+      "assertionHashes": 140,
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "hash": "58e209cd9f66a3d39a8a05f6a60728056e104ff73da3f659c692b421a0f37840",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "setup",
+          "phase": "setup-apply",
+          "hash": "98e33486f57d61fa1d7186d370c6ec9caa65a3889fa903f4ce7a76eb16acd333",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "task",
+          "phase": "specification-proposal",
+          "hash": "677605e34150298313703aa6c614d1d96187729ba3ee52141a1661245d0c2c0e",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "task",
+          "phase": "specification-apply",
+          "hash": "4819f4de4138cddf515b2c1419fae2ef857f39898a034f3bd4b10f27fa793197",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "task",
+          "phase": "plan-proposal",
+          "hash": "97bd99057d4ede898189cdae364bd1b7d252adb6e388155c3f233ccdfcc4b3cc",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "task",
+          "phase": "plan-apply",
+          "hash": "7b3a23caf3e916bfd27a0780567e844b134ce3a8903ab629e67a47858de00388",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "task",
+          "phase": "implementation-proposal",
+          "hash": "f0fd6a9dad704ee0252fe7c088e755d4108265691605ecd2b653447eec0be13b",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "task",
+          "phase": "implementation-apply",
+          "hash": "179cd7e5ae800a82331ade7986e6f491b5faf52906c6730a8a37155def004fa4",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        }
+      ],
+      "workflow": {
+        "taskApprovals": [
+          {
+            "phase": "specification",
+            "seq": 97,
+            "planHash": "1c776d4708ad0a579dbe5cfd7d929120f7b9d10616dade86c8be4618e921ccab",
+            "changes": [
+              {
+                "path": "openspec/changes/add-triple/.openspec.yaml",
+                "beforeHash": null,
+                "afterHash": "85b53dd24fbe7d19c8b0f0ddccf5e82600c5c372c76b57a2a89dc34dfb0fc5b9"
+              },
+              {
+                "path": "openspec/changes/add-triple/proposal.md",
+                "beforeHash": null,
+                "afterHash": "1477a43d634656ae1a1ff696f9f57cd5923aba0ddf5bd026443fa473c9a61941"
+              },
+              {
+                "path": "openspec/changes/add-triple/specs/triple/spec.md",
+                "beforeHash": null,
+                "afterHash": "ffa1436011f3a63434beca557c1a7e319e2a85fc7bc65edc0c0e8f36c8c4f183"
+              }
+            ],
+            "commandHashes": []
+          },
+          {
+            "phase": "plan",
+            "seq": 130,
+            "planHash": "f8e1e3cb51565179f54dfd87f1ede9cc970bebf8b30a9ef8dbe77910b2a0c60c",
+            "changes": [
+              {
+                "path": "openspec/changes/add-triple/design.md",
+                "beforeHash": null,
+                "afterHash": "86aea12306f054ce9279d2f8fda6f5263dc61cc28a99718ae71fe813740e25e2"
+              },
+              {
+                "path": "openspec/changes/add-triple/tasks.md",
+                "beforeHash": null,
+                "afterHash": "370a423949cbc98c59c57a431da30491c65c676a73103fbd8354b36978699006"
+              }
+            ],
+            "commandHashes": []
+          },
+          {
+            "phase": "implementation",
+            "seq": 163,
+            "planHash": "9a0c0ea55039b8e21fb062fbbca1ff31bc71cc2bba8e49b205b3385bb4df4614",
+            "changes": [
+              {
+                "path": "src/math.js",
+                "beforeHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "afterHash": "9bb7e826d7b36a7ae750de37ef710704184949a7ceda7a43daa7a7165f6238c6"
+              },
+              {
+                "path": "tests/math.test.js",
+                "beforeHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "afterHash": "e8581401f9a2274890e6a3210d6037c8091a39e53b8c8e83619e31bd58267925"
+              },
+              {
+                "path": "openspec/changes/add-triple/tasks.md",
+                "beforeHash": "370a423949cbc98c59c57a431da30491c65c676a73103fbd8354b36978699006",
+                "afterHash": "7bd542c83121e02f1ba8c1cf8c369ede7dff6c2baf43c451f42ea0cd00630c2f"
+              }
+            ],
+            "commandHashes": [
+              "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+              "2bc604988f07f11fa80b07caa439da31730d4de84b45a5e40b26040d4f5e32c7"
+            ]
+          }
+        ],
+        "readOnlyProposalBoundaries": [
+          {
+            "phase": "specification",
+            "previousCheckpointSeq": 68,
+            "approvalCheckpointSeq": 96,
+            "filesHash": "92d0f30b367ffd6bb84c216fd116d22ee4b1c694acededadcf7d96cbbb25cbcc",
+            "files": 13,
+            "identical": true
+          },
+          {
+            "phase": "plan",
+            "previousCheckpointSeq": 101,
+            "approvalCheckpointSeq": 129,
+            "filesHash": "1b4110f31285603b8100b6897231467d146059d39604473027ccb8dd5702a0d0",
+            "files": 16,
+            "identical": true
+          },
+          {
+            "phase": "implementation",
+            "previousCheckpointSeq": 140,
+            "approvalCheckpointSeq": 162,
+            "filesHash": "4278ee8e432dae5dcca7ec69fb326a30e13196d915719fdf08c934d41558b33d",
+            "files": 18,
+            "identical": true
+          }
+        ],
+        "planningReviewed": {
+          "seq": 142,
+          "id": "native-planning-reviewed",
+          "expectedHash": "db23a3d2868586915e20b84b93cb6209b9c1301fd568b7b209c840446d6013ee",
+          "actualHash": "db23a3d2868586915e20b84b93cb6209b9c1301fd568b7b209c840446d6013ee"
+        },
+        "processEvidence": [
+          {
+            "id": "native-87",
+            "step": "specification",
+            "events": [102],
+            "criteria": ["process"],
+            "origin": "host-check"
+          },
+          {
+            "id": "native-116",
+            "step": "plan",
+            "events": [141],
+            "criteria": ["process"],
+            "origin": "host-check"
+          },
+          {
+            "id": "native-145",
+            "step": "implementation",
+            "events": [186],
+            "criteria": ["process"],
+            "origin": "host-check"
+          },
+          {
+            "id": "native-146",
+            "step": "verification",
+            "events": [187],
+            "criteria": ["process"],
+            "origin": "host-check"
+          },
+          {
+            "id": "native-147",
+            "step": "verification",
+            "events": [188],
+            "criteria": ["process"],
+            "origin": "host-check"
+          }
+        ],
+        "firstTaskSkillLoad": {
+          "seq": 72,
+          "path": ".agents/skills/tibicen-openspec/SKILL.md",
+          "contentHash": "30f812216ba1d4124dbf7472df288f4a08c857f5138012aab351f66a8fc662dc",
+          "toolUseId": "item_4",
+          "sessionHash": "677605e34150298313703aa6c614d1d96187729ba3ee52141a1661245d0c2c0e",
+          "redacted": true,
+          "readContentVerified": true
+        },
+        "actualTaskChecks": [
+          {
+            "seq": 176,
+            "command": "node --test",
+            "id": "native-command-176",
+            "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+            "exitCode": 0,
+            "toolUseId": "item_11",
+            "sessionHash": "179cd7e5ae800a82331ade7986e6f491b5faf52906c6730a8a37155def004fa4"
+          },
+          {
+            "seq": 178,
+            "command": "openspec validate add-triple --strict",
+            "id": "native-command-178",
+            "commandHash": "2bc604988f07f11fa80b07caa439da31730d4de84b45a5e40b26040d4f5e32c7",
+            "exitCode": 0,
+            "toolUseId": "item_12",
+            "sessionHash": "179cd7e5ae800a82331ade7986e6f491b5faf52906c6730a8a37155def004fa4"
+          }
+        ],
+        "independentTaskChecks": [
+          {
+            "seq": 187,
+            "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+            "exitCode": 0
+          },
+          {
+            "seq": 188,
+            "commandHash": "2bc604988f07f11fa80b07caa439da31730d4de84b45a5e40b26040d4f5e32c7",
+            "exitCode": 0
+          }
+        ],
+        "missingPlanningArtifacts": [],
+        "applicationFilesPreserved": null
+      }
+    },
+    {
+      "observed": {
+        "schema": 1,
+        "id": "proc-01-baseline-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1210.0425830000022
+        },
+        "setup": {
+          "status": "pass",
+          "durationMs": 60496.359958000015
+        },
+        "task": {
+          "status": "error",
+          "durationMs": 93439.91045899998,
+          "reason": "native-process-artifacts-missing"
+        }
+      },
+      "evaluated": {
+        "schema": 1,
+        "id": "proc-01-baseline-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1210.0425830000022
+        },
+        "setup": {
+          "status": "error",
+          "durationMs": 60496.359958000015,
+          "reason": "independent-check-unverified"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "evaluated-setup-not-passed"
+        }
+      },
+      "quality": {
+        "linkedRunHash": "3ab9a073971fa7f039e599d10f240ecda656d37ac21850f706de514ff9c60d6b",
+        "bindingHash": "3ab9a073971fa7f039e599d10f240ecda656d37ac21850f706de514ff9c60d6b",
+        "packetHash": "4d2ef8f0c69aa9e6f57bb09691d10d50c8dc189085d1c7b5221fb90aef987e5b",
+        "evidenceEventReferences": "collector-enriched-linked-run",
+        "modelJudge": {
+          "id": "independent-model-proc-dce8a47a0d12-2",
+          "kind": "model",
+          "version": "codex-0.157.0-gpt-6-sol",
+          "bindingHash": "3ab9a073971fa7f039e599d10f240ecda656d37ac21850f706de514ff9c60d6b",
+          "packetHash": "4d2ef8f0c69aa9e6f57bb09691d10d50c8dc189085d1c7b5221fb90aef987e5b",
+          "judgements": [
+            {
+              "stage": "setup",
+              "criterion": "grounding",
+              "verdict": "pass",
+              "reason": "claims-supported",
+              "evidence": ["native-0", "native-5", "native-7", "native-38"]
+            },
+            {
+              "stage": "setup",
+              "criterion": "fit",
+              "verdict": "pass",
+              "reason": "fits-project-constraints",
+              "evidence": ["native-0", "native-14", "native-15", "native-38"]
+            },
+            {
+              "stage": "setup",
+              "criterion": "sufficiency",
+              "verdict": "pass",
+              "reason": "workflow-rules-present",
+              "evidence": ["native-0", "native-38"]
+            },
+            {
+              "stage": "setup",
+              "criterion": "consistency",
+              "verdict": "pass",
+              "reason": "constraints-preserved",
+              "evidence": ["native-15", "native-34", "native-38"]
+            },
+            {
+              "stage": "task",
+              "criterion": "application",
+              "verdict": "pass",
+              "reason": "rules-observed-in-actions",
+              "evidence": ["native-45", "native-49", "native-77", "native-91"]
+            },
+            {
+              "stage": "task",
+              "criterion": "loading",
+              "verdict": "pass",
+              "reason": "exact-content-read",
+              "evidence": ["native-45", "native-46", "native-49"]
+            },
+            {
+              "stage": "task",
+              "criterion": "process",
+              "verdict": "fail",
+              "reason": "implementation-verification-absent",
+              "evidence": ["native-40", "native-74", "native-91", "native-92"]
+            }
+          ]
+        },
+        "modelVerdicts": {
+          "pass": 6,
+          "fail": 1,
+          "unverified": 0
+        },
+        "humanRequired": true,
+        "human": null,
+        "grades": [
+          {
+            "id": "quality-setup-grounding",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidenceEventCount": 4
+          },
+          {
+            "id": "quality-setup-fit",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidenceEventCount": 3
+          },
+          {
+            "id": "quality-setup-sufficiency",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidenceEventCount": 2
+          },
+          {
+            "id": "quality-setup-consistency",
+            "stage": "setup",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidenceEventCount": 4
+          },
+          {
+            "id": "quality-task-application",
+            "stage": "task",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidenceEventCount": 5
+          },
+          {
+            "id": "quality-task-loading",
+            "stage": "task",
+            "scope": "loading",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidenceEventCount": 3
+          },
+          {
+            "id": "quality-task-process",
+            "stage": "task",
+            "scope": "quality",
+            "verdict": "unverified",
+            "reason": "human-review-required",
+            "evidenceEventCount": 4
+          }
+        ],
+        "session": {
+          "artifactSha256": "a3a03b885c930f94d45997486be0b13d151b2834b0e3d7164f770ae5dc7a5d03",
+          "recordedStdoutHash": "07c56f041b155ab193c091252c0346ec127c6b92ccc04af04e3debef9617247d",
+          "packetHash": "4d2ef8f0c69aa9e6f57bb09691d10d50c8dc189085d1c7b5221fb90aef987e5b",
+          "exitCode": 0,
+          "timedOut": false,
+          "started": true,
+          "completed": true,
+          "toolUseObserved": false
+        }
+      },
+      "mechanicalGrades": [
+        {
+          "id": "setup-invariants",
+          "stage": "setup",
+          "scope": "invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved",
+          "evidenceEventCount": 48
+        },
+        {
+          "id": "task-invariants",
+          "stage": "task",
+          "scope": "invariants",
+          "verdict": "unverified",
+          "reason": "native-reviewed-effects-preserved",
+          "evidenceEventCount": 63
+        }
+      ],
+      "runHash": "cf37a44ca225f926a1eb3b92d889029e1a17e55b008e29665cbca6c2c9478af9",
+      "assertionHashes": 81,
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "hash": "fb633778594b49efec96df23dae2e308f24e76f15c1d9b75d17701a104cdf790",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "setup",
+          "phase": "setup-apply",
+          "hash": "fd5dd2ae7482f17b74e46ab0177b49b98a6c5f3c70d73031ccee1b754db38f04",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "task",
+          "phase": "specification-proposal",
+          "hash": "cc61b1a15fe0b5c08f4912d15b28731c8cccae2dbb4d94cabd0ab63a693ac2ac",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "task",
+          "phase": "specification-apply",
+          "hash": "69172959a6171098b3fa58c5b03bb47d8a3e4c12ea1a665bdc59f613594126ff",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "task",
+          "phase": "plan-proposal",
+          "hash": "897b4001cbe6d7d63b14ee82925775b07ceb883c387bfc0a13fd22ff92fb8bae",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "task",
+          "phase": "plan-apply",
+          "hash": "8e19d8ed90142e8feda00b4928b5b820583003415dc853e50a58032489c4292b",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        }
+      ],
+      "workflow": {
+        "taskApprovals": [
+          {
+            "phase": "specification",
+            "seq": 80,
+            "planHash": "a888e7d406cff39592d3d830bfa6bfdb03639857102880a8c86dd8a01358c5a5",
+            "changes": [
+              {
+                "path": "openspec/changes/add-triple/.openspec.yaml",
+                "beforeHash": null,
+                "afterHash": "85b53dd24fbe7d19c8b0f0ddccf5e82600c5c372c76b57a2a89dc34dfb0fc5b9"
+              },
+              {
+                "path": "openspec/changes/add-triple/proposal.md",
+                "beforeHash": null,
+                "afterHash": "86c58fa93f57d38e46a77b7ba35f6b4aba41f6a5a6a292fbec59cb909c0a5941"
+              },
+              {
+                "path": "openspec/changes/add-triple/specs/triple/spec.md",
+                "beforeHash": null,
+                "afterHash": "aa7594bedbffbeafa9f0d52d06ac46bf70fafb23d32aaadcb2dd3c798275048d"
+              }
+            ],
+            "commandHashes": []
+          },
+          {
+            "phase": "plan",
+            "seq": 105,
+            "planHash": "6dd0054fa1fdc91da31aa60831af84766cfb2591af83e8705c4eeba116c6405d",
+            "changes": [
+              {
+                "path": "openspec/changes/add-triple/tasks.md",
+                "beforeHash": null,
+                "afterHash": "4488abe56b08c0e0a2eda88fc817fd7c198de0f5a999a1045ff63a188ba60706"
+              }
+            ],
+            "commandHashes": []
+          }
+        ],
+        "readOnlyProposalBoundaries": [
+          {
+            "phase": "specification",
+            "previousCheckpointSeq": 52,
+            "approvalCheckpointSeq": 79,
+            "filesHash": "82a05eb2af9c833f6b9464466598b6b15f1e5626fa925f674f3b5d758f329286",
+            "files": 12,
+            "identical": true
+          },
+          {
+            "phase": "plan",
+            "previousCheckpointSeq": 87,
+            "approvalCheckpointSeq": 104,
+            "filesHash": "0b6878a75df42df7c6c41f9d897b0534ef97feda39536486bfe2ed205111a152",
+            "files": 15,
+            "identical": true
+          }
+        ],
+        "planningReviewed": null,
+        "processEvidence": [
+          {
+            "id": "native-74",
+            "step": "specification",
+            "events": [88],
+            "criteria": ["process"],
+            "origin": "host-check"
+          }
+        ],
+        "firstTaskSkillLoad": {
+          "seq": 55,
+          "path": ".agents/skills/tibicen-openspec/SKILL.md",
+          "contentHash": "c114434fddca74b4bb36e5c782d1e4048595735fb76dc0d1184e1bb415c0ce6c",
+          "toolUseId": "item_2",
+          "sessionHash": "cc61b1a15fe0b5c08f4912d15b28731c8cccae2dbb4d94cabd0ab63a693ac2ac",
+          "redacted": false,
+          "readContentVerified": true
+        },
+        "actualTaskChecks": [],
+        "independentTaskChecks": [],
+        "missingPlanningArtifacts": ["openspec/changes/add-triple/design.md"],
+        "applicationFilesPreserved": true
+      }
+    }
+  ],
+  "verification": {
+    "sourceInventoryHashAndHistoricalPostRunVerificationChecked": true,
+    "frozenConditionExperimentScenarioProfileBindingsChecked": true,
+    "sessionFileHashesAndRunReceiptsVerified": 14,
+    "assertionHashMatches": 221,
+    "taskProposalReadOnlyBoundariesVerified": 5,
+    "approvedTaskEffectSetsVerified": 5,
+    "firstTaskSkillReadContentAndSessionLinksVerified": 2,
+    "actualTibicenPostConsentChecksVerified": 2,
+    "independentTibicenTaskChecksVerified": 2,
+    "baselineApplicationBytesAndModesPreserved": true,
+    "currentRuntimeCompared": false,
+    "observedReportUnchangedAfterJudges": true,
+    "collectedPacketAndReviewBindingsVerified": 2,
+    "judgeResponseToRetainedSessionBindingsVerified": 2,
+    "judgeToolUseObserved": false
+  },
+  "limitations": [
+    "Один повтор, порядок Tibicen → baseline. T завершил полный наблюдённый процесс; B остановлен из-за отсутствующего design.md. Это не доказывает причинное преимущество или устойчивую разницу скорости.",
+    "Baseline task ERROR native-process-artifacts-missing и task-invariants UNVERIFIED сохранены; design.md не дописывался наблюдателем. У этой когорты invariantFailures пуст, что не означает успешный baseline task.",
+    "Человеческих оценок 0; полная смысловая/человеческая приёмка и задача 3.6 остаются открытыми даже после модельного review.",
+    "Предыдущая failed-когорта 6 executor / 0 judge сохранена отдельно без ретроспективного пересчёта и переноса оценок.",
+    "Профиль подписочный, paid:false; платный API-маршрут и fallback не использовались. Стоимость неизвестна (null).",
+    "Описаны frozen/historical artifacts; текущий runtime не сравнивался. Runtime probe подтверждает конкретные canary-проверки, а не все возможные обходы изоляции.",
+    "Публичная проекция исключает полные traces, содержимое ответов, авторизационные данные и личные пути.",
+    "Model application pass оценивает применение правил в наблюдённых действиях, а не завершение функциональной задачи. Baseline observed task ERROR сохраняется при application pass.",
+    "Отдельные CLI-пробы точных baseline planning/config байтов без design.md дали native apply ready и strict-valid при planningComplete=false. Ошибка относительно более строгого frozen host-контракта не доказывает объективного преимущества Tibicen и сохранена без пересчёта."
+  ],
+  "planningContractAudit": {
+    "report": "../../../../.scratch/codex-zcode-acceptance/proc-planning-contract.md",
+    "processVersion": "OpenSpec 1.14.3",
+    "pinnedResourceHash": "27f07484ad1c5843d930395fa6381b8a0d472d7fbf1ddb61c89900b017bd095b",
+    "designInstruction": "conditional",
+    "tasksArtifactGraph": "requires design",
+    "exactBaselineWithoutDesign": {
+      "isPlanningComplete": false,
+      "applyState": "ready",
+      "strictValidation": {
+        "valid": true,
+        "issues": []
+      }
+    },
+    "diagnosticCliCalls": 9,
+    "modelRequests": 0,
+    "applicationExecuted": false,
+    "historicalOutcomeRegraded": false
+  }
+}

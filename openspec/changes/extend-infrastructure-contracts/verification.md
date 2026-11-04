@@ -1,5 +1,17 @@
 # Verification
 
+## Integration status corrections — 31 October 2026
+
+Tasks6.1–6.3 follow two source audits and root reproductions of three existing first-release defects: loss of a required pending manual action on same-session resume, omitted MCP command/argument environment dependencies, and a Codex dotted-table identity mismatch. Exact original source snapshots, failed behavior and root fixture approvals remain in .evals-private/mvp-engineering-audit-20261031/; no model/evaluation context or human grade was used.
+
+The resume guard refuses omitted required pending IDs before writes, reading saved state or the last manual session. Tests include a real hard exit before a manifest exists, a no-state manual session, no-write refusal, explicit done/pending/optional actions and independent fresh apply. MCP results collect supported launch dependencies without reading values or changing config/trust. Codex only accepts the bare heading alias for one bare key. The existing schemas and optional-action semantics remain.
+
+Recovery regression-first:3pass/2fail; final36/36. MCP regression-first:9pass/7fail; final18/18 after independent review exposed a null envNames compatibility regression, fixed with the nullish fallback and two raw-JSON controls. Separate cross-path CLI/integration/process38/38 passed before that last narrow correction. Core review and final MCP rereview: Ship; original finding remains.
+
+The final pinned Node24.15.0/pnpm11.21.0 gate passes728/0fail/1intentional portable skip in76.364seconds. All768frozen source inputs remain unchanged during the gate. Both copied standalone resource self-tests pass outside checkout with Git absent from PATH. Current86file inventory36da6c7637bd101fc1c4e0087d2bec9cb98afbb16cf8820665c7b89a828ea547 differs from preceding working inventory79002226def0ff0b1695cfc8fa854003c03ba7a655c2e29cfdae5c4f507cbd40 only in four runtime copies, the two apply.ts and two mcp/index.ts files. Owned HOME/package configs and the diagnosed pnpm pre-run auto-install override were used; procedural offline scope, no extra outer sandbox, installs or personal config/auth reads.
+
+[Canonical bilingual report](../../../docs/evals/results/2026-10-31-integration-status-fixes/README.md); receipts/freezes/review bindings under .evals-private/integration-status-fix-20261031/. Published alpha, earlier private rc.1/rc.2 and old evidence remain intact; neither preview contains these later corrections. Version stays unreleased0.1.0-alpha.1. No current platform/native-agent/human/pilot/public-candidate acceptance or full-change completion is inferred; executor usage remains24/24. No commit or publication.
+
 ## Review fixes — 23.10.2026
 
 Закрыты два подтверждённых дефекта адаптера. Общий validateProposal не позволяет удалить, закрыть или сделать необязательным pending openspec-cli без зарегистрированного CLI, включая сырой план с заново согласованным digest. При смене команды вызова подготовка и pre-apply inspect проверяют одну актуальную строку CLI invocation относительно прежнего process. Устаревший или дублирующий текст отклоняется до записи; инструкция не перезаписывается автоматически. Явный replace показывает новый дифф, а ручное исправление только команды сохраняет полезное расширение владельца. Смена instructionMode в сыром плане не обходит проверку.

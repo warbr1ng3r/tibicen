@@ -1,0 +1,538 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "draft": false,
+  "status": "subscription-environments-exercised-core-handoff-priority",
+  "purpose": "Actual subscription environment execution requested by the owner",
+  "api": {
+    "compatibility": "OpenRouter-like; exact endpoint not selected",
+    "status": "deferred-by-owner-until-codex-and-zcode",
+    "modelSessions": 0,
+    "costUsd": 0
+  },
+  "codex": {
+    "operational": {
+      "privateSourceId": "codex-subscription-smoke-20261026-phbx8l9q",
+      "status": "pass",
+      "profile": {
+        "id": "codex-0.157.0-gpt-6-astra",
+        "agent": "codex",
+        "version": "0.157.0",
+        "model": "gpt-6-astra",
+        "auth": "subscription",
+        "paid": false,
+        "startupHash": "1743e736ab2ce8ce9ac49376abd7ec52ee23d41cdaf46faa42feb8b4a914e7b3",
+        "permissionsHash": "13fcb18f056b9d43d5d81998d8ac5f588ebfe698d1f4afc48931fe5160b257a0"
+      },
+      "sourceSha": "6fd6cb535da478df28d1f603b86604e82848c41f",
+      "sourceTreeHash": "e0fb63ec9dad4f229d57f2138f8ea7628613e4b47b6a49dd519c00243627b4e5",
+      "frozenHash": "ee1fd1651fc193b5dff9b0a6b92ab213cc0d7b02f972bb89530e80116f717a90",
+      "sessionHash": "801d3fd1932d7710239717164f26948ee83660fb6e95c08823c0ee68a48b09de",
+      "modelSessions": 1,
+      "authRoute": "existing-chatgpt-subscription",
+      "timing": {
+        "startedAt": "2026-10-26T10:45:37.641Z",
+        "endedAt": "2026-10-26T10:45:58.096Z",
+        "durationMs": 20454.187417,
+        "launchMs": 1745.705167
+      },
+      "observedRead": true,
+      "outerTests": [
+        {
+          "exitCode": 0,
+          "toolUseId": "item_4"
+        }
+      ],
+      "independent": {
+        "exitCode": 0,
+        "timedOut": false,
+        "stdoutHash": "5171d25d50c2e572545d660e14812339bea2725a411ee4609ab8aa2b50a86e84"
+      },
+      "allowedEffects": true,
+      "changedPaths": [
+        "src/math.js",
+        "tests/math.test.js"
+      ],
+      "deletedPaths": [],
+      "fixtureAfterHash": "4b9ad765512bff57677409cb2ddd689dc7b785c54cb36f57145fdfa612345395",
+      "usage": {
+        "inputTokens": 34249,
+        "outputTokens": 372
+      },
+      "sourceStable": true,
+      "protectedBoundaryVerified": true,
+      "externalAction": null
+    },
+    "skill01": {
+      "status": "observed-setup-task-pass-both-variants",
+      "privateSourceId": "codex-skill-expansion-20261026-ehpnaseu",
+      "executorCap": 8,
+      "judgeCap": 0,
+      "newStartupRequests": 0,
+      "repeats": 1,
+      "limits": {
+        "launchMs": 45000,
+        "setupMs": 180000,
+        "taskMs": 180000
+      },
+      "profile": {
+        "id": "codex-0.157.0-gpt-6-astra",
+        "agent": "codex",
+        "version": "0.157.0",
+        "model": "gpt-6-astra",
+        "auth": "subscription",
+        "paid": false,
+        "startupHash": "1743e736ab2ce8ce9ac49376abd7ec52ee23d41cdaf46faa42feb8b4a914e7b3",
+        "permissionsHash": "13fcb18f056b9d43d5d81998d8ac5f588ebfe698d1f4afc48931fe5160b257a0"
+      },
+      "sourceSha": "6fd6cb535da478df28d1f603b86604e82848c41f",
+      "sourceTreeHash": "80c0270fb54c6a1e541028b2628d0543c5dc4b498a251e8d6cc0df0fafd9811d",
+      "sourceFiles": 191,
+      "checkedDistributionFiles": 84,
+      "sourceStable": true,
+      "experimentHash": "61b13f7bc8be17c6ae52310c7b7aa49f51a2b00b67bde590c09627fdfe1203dc",
+      "conditionsHash": "145375a93be816b7fa83b9ab6e6c5f6e6556dde47e2abf311d95c17284f268da",
+      "frozenHash": "d2e010b91f0d0b843686e20f6bcb20295e71e281d4afbd7f61d75d09f7e36dd7",
+      "reportHash": "6459cdf5a5bd680bad9e616723f63f50d4b30d8c48151a5ff5449c95daee6c1f",
+      "newExecutorSessions": 8,
+      "newJudgeRequests": 0,
+      "hostRetries": 0,
+      "collector": {
+        "schema": 1,
+        "attempts": 2,
+        "sessions": 8,
+        "cohorts": 1
+      },
+      "matchedAssertions": 73,
+      "selectedEvidenceCount": 95,
+      "usage": {
+        "inputTokens": 719458,
+        "outputTokens": 9003,
+        "costUsd": null,
+        "cachedInputTokens": 581760,
+        "cachedInputAttribution": "summed raw turn.completed usage; normalized collector omits cached breakdown"
+      },
+      "variants": [
+        {
+          "variant": "tibicen",
+          "observed": {
+            "schema": 1,
+            "id": "skill-01-tibicen-1",
+            "scenarioId": "skill-01",
+            "profileId": "codex-0.157.0-gpt-6-astra",
+            "variant": "tibicen",
+            "started": true,
+            "launch": {
+              "status": "pass",
+              "durationMs": 1463.499958
+            },
+            "setup": {
+              "status": "pass",
+              "durationMs": 129830.77408399999
+            },
+            "task": {
+              "status": "pass",
+              "durationMs": 40149.626667000004
+            }
+          },
+          "executorSessions": 4,
+          "independentChecksPassed": true,
+          "outerTestsPassed": true,
+          "loading": [
+            {
+              "stage": "task",
+              "path": ".agents/skills/ponytail/SKILL.md",
+              "contentHash": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509"
+            },
+            {
+              "stage": "task",
+              "path": "AGENTS.md",
+              "contentHash": "88f01295fb3c4e16d174521a25cf4a4d326e1c0104c72e58544dc7dbce578590"
+            },
+            {
+              "stage": "task",
+              "path": ".agents/skills/ponytail/SKILL.md",
+              "contentHash": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509"
+            },
+            {
+              "stage": "task",
+              "path": "AGENTS.md",
+              "contentHash": "88f01295fb3c4e16d174521a25cf4a4d326e1c0104c72e58544dc7dbce578590"
+            }
+          ],
+          "rawRunHash": "96911c2d42dfa347cee43560deb77274657d185ff8748d2895826d4b92c4ba1f",
+          "linkedRunHash": "4d4c4d000ba5d80d4dc91bf3828cd3da842f7b989940dc429c7025d26aaaee42",
+          "judgePacketHash": "49cecfaec08d49035749179e055bc4b6e4b82eb71bdeec62576e8919ddee3888"
+        },
+        {
+          "variant": "baseline",
+          "observed": {
+            "schema": 1,
+            "id": "skill-01-baseline-1",
+            "scenarioId": "skill-01",
+            "profileId": "codex-0.157.0-gpt-6-astra",
+            "variant": "baseline",
+            "started": true,
+            "launch": {
+              "status": "pass",
+              "durationMs": 1211.190666999988
+            },
+            "setup": {
+              "status": "pass",
+              "durationMs": 101642.76304199998
+            },
+            "task": {
+              "status": "pass",
+              "durationMs": 45380.83462500002
+            }
+          },
+          "executorSessions": 4,
+          "independentChecksPassed": true,
+          "outerTestsPassed": true,
+          "loading": [
+            {
+              "stage": "task",
+              "path": ".agents/skills/ponytail/SKILL.md",
+              "contentHash": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509"
+            }
+          ],
+          "rawRunHash": "717e872a9f1ce00e4ea9c1e841a8ff4df0a922d9c43a7504f3382684469238e6",
+          "linkedRunHash": "3dc7294e33fbebb8c7a0697505b63d16cf1b511480b694499c8b74516571e5c3",
+          "judgePacketHash": "5d7dd2d1a881972558ee8dd4f8b12b63510746a773834cd10f063acc2ea9e1e6"
+        }
+      ],
+      "evaluated": [
+        {
+          "tibicen": {
+            "schema": 1,
+            "id": "skill-01-tibicen-1",
+            "scenarioId": "skill-01",
+            "profileId": "codex-0.157.0-gpt-6-astra",
+            "variant": "tibicen",
+            "started": true,
+            "launch": {
+              "status": "pass",
+              "durationMs": 1463.499958
+            },
+            "setup": {
+              "status": "error",
+              "durationMs": 129830.77408399999,
+              "reason": "missing-quality-review"
+            },
+            "task": {
+              "status": "skip",
+              "durationMs": 0,
+              "reason": "evaluated-setup-not-passed"
+            }
+          },
+          "baseline": {
+            "schema": 1,
+            "id": "skill-01-baseline-1",
+            "scenarioId": "skill-01",
+            "profileId": "codex-0.157.0-gpt-6-astra",
+            "variant": "baseline",
+            "started": true,
+            "launch": {
+              "status": "pass",
+              "durationMs": 1211.190666999988
+            },
+            "setup": {
+              "status": "error",
+              "durationMs": 101642.76304199998,
+              "reason": "missing-quality-review"
+            },
+            "task": {
+              "status": "skip",
+              "durationMs": 0,
+              "reason": "evaluated-setup-not-passed"
+            }
+          }
+        }
+      ],
+      "scope": "Observed installation/loading/application only; no new quality or human assessment.",
+      "rootVerificationHash": "624f0bc11dbf1bc028c312c7cb5ef4c93bac1ae43364817cf4ec26c4fe52ba04"
+    },
+    "proc01": {
+      "privateSourceId": "codex-proc-working-20261026-h87_q8zx",
+      "profile": {
+        "id": "codex-0.157.0-gpt-6-astra",
+        "agent": "codex",
+        "version": "0.157.0",
+        "model": "gpt-6-astra",
+        "auth": "subscription",
+        "paid": false,
+        "startupHash": "1743e736ab2ce8ce9ac49376abd7ec52ee23d41cdaf46faa42feb8b4a914e7b3",
+        "permissionsHash": "13fcb18f056b9d43d5d81998d8ac5f588ebfe698d1f4afc48931fe5160b257a0"
+      },
+      "sourceSha": "6fd6cb535da478df28d1f603b86604e82848c41f",
+      "sourceTreeHash": "80c0270fb54c6a1e541028b2628d0543c5dc4b498a251e8d6cc0df0fafd9811d",
+      "sourceStable": true,
+      "toolingStable": true,
+      "experimentHash": "588fcc457f68926b035a65c3ab671e5dfb108e905c9edb7cd871c5642b037765",
+      "frozenHash": "7d4cdb617cb3fa3abcadc562f27776eaedd0c252a26eef426e0a6206bbc2944d",
+      "reportHash": "b7489c2599211aae3f0ad5d4dba25909ef2b229d8a76288b771c6aea14f327c5",
+      "newExecutorSessions": 16,
+      "newStartupRequests": 0,
+      "newJudgeRequests": 0,
+      "hostRetries": 0,
+      "collector": {
+        "schema": 1,
+        "attempts": 2,
+        "sessions": 16,
+        "cohorts": 1
+      },
+      "matchedAssertions": 158,
+      "variants": [
+        {
+          "id": "proc-01-tibicen-1",
+          "variant": "tibicen",
+          "observed": {
+            "schema": 1,
+            "id": "proc-01-tibicen-1",
+            "scenarioId": "proc-01",
+            "profileId": "codex-0.157.0-gpt-6-astra",
+            "variant": "tibicen",
+            "started": true,
+            "launch": {
+              "status": "pass",
+              "durationMs": 1440.937583
+            },
+            "setup": {
+              "status": "pass",
+              "durationMs": 121065.223417
+            },
+            "task": {
+              "status": "fail",
+              "durationMs": 258538.523459,
+              "reason": "native-plan-mismatch"
+            }
+          },
+          "rawRunHash": "610409e9c9f1324e0fb0c3a21a1afd9cf92dd05aff8cb13627e9943f19a345a4"
+        },
+        {
+          "id": "proc-01-baseline-1",
+          "variant": "baseline",
+          "observed": {
+            "schema": 1,
+            "id": "proc-01-baseline-1",
+            "scenarioId": "proc-01",
+            "profileId": "codex-0.157.0-gpt-6-astra",
+            "variant": "baseline",
+            "started": true,
+            "launch": {
+              "status": "pass",
+              "durationMs": 1488.9090420000139
+            },
+            "setup": {
+              "status": "pass",
+              "durationMs": 131063.65429199999
+            },
+            "task": {
+              "status": "fail",
+              "durationMs": 300443.03154199995,
+              "reason": "native-plan-mismatch"
+            }
+          },
+          "rawRunHash": "7edff3e203e9cd7b53276f25f27ab4f0061de278fa7d986d49cc62631526423c"
+        }
+      ],
+      "tibicenFailure": "No-op refusal: frozen inspection read was permitted but absent from fresh apply disclosure",
+      "baselineFailure": "Approved code bytes applied but tasks.md changed without approval",
+      "scope": "Optional downstream OpenSpec workflow; not core Tibicen handoff/report gate"
+    }
+  },
+  "zcode": {
+    "status": "subscription-connectivity-and-host-applied-code-task-pass",
+    "privateSourceId": "zcode-subscription-smoke-20261026-p6IBIZ",
+    "connectivityCap": 1,
+    "conditionalTaskCap": 1,
+    "agentWorkflowAccepted": false,
+    "installedVersion": "0.16.9",
+    "bootstrapSourceVersion": "0.17.0",
+    "bootstrapSourceCommit": "3c5b227649371507ddc4eb46ac5133afe6db1cab",
+    "initialAttempt": {
+      "hostAttempts": 1,
+      "publishedConnectivityCalls": 0,
+      "modelSessions": 0,
+      "taskSessions": 0,
+      "elapsedMs": 2062,
+      "stage": "registry",
+      "outcome": "blocked",
+      "reason": "No entitled individual-coding-plan route from official standalone OAuth store",
+      "accountErrors": [],
+      "internalHttpRetryCount": null,
+      "credentialCopyAbsent": true,
+      "offlineBoundaryScope": "four injected deny-port canaries; app creation, native tools and skills not reached"
+    },
+    "continuation": {
+      "status": "pass",
+      "officialOAuthAuthorizedByOwner": true,
+      "isolatedProfile": true,
+      "originalLoginOutcome": "config_update_failed-after-browser-authorization",
+      "configurationRecovery": "pass-without-another-login",
+      "connectivity": {
+        "schemaVersion": 1,
+        "mode": "connectivity",
+        "sourceCommit": "3c5b227649371507ddc4eb46ac5133afe6db1cab",
+        "sourceVersion": "0.17.0",
+        "installedVersion": "0.16.9",
+        "route": "official-subscription-oauth-only",
+        "modelCalls": 1,
+        "internalHttpRetryCount": null,
+        "modelFallback": false,
+        "outcome": "pass",
+        "selection": {
+          "providerId": "account:zai-individual-coding-plan",
+          "modelId": "GLM-5.3",
+          "options": {
+            "reasoningLevel": "low"
+          }
+        },
+        "stage": "connectivity",
+        "offlineCalls": 0,
+        "deniedRuntimeCalls": [],
+        "elapsedMs": 7927
+      },
+      "codeGeneration": {
+        "schemaVersion": 1,
+        "mode": "task",
+        "sourceCommit": "3c5b227649371507ddc4eb46ac5133afe6db1cab",
+        "sourceVersion": "0.17.0",
+        "installedVersion": "0.16.9",
+        "route": "official-subscription-oauth-only",
+        "modelCalls": 1,
+        "internalHttpRetryCount": null,
+        "modelFallback": false,
+        "outcome": "pass",
+        "selection": {
+          "providerId": "account:zai-individual-coding-plan",
+          "modelId": "GLM-5.3",
+          "options": {
+            "reasoningLevel": "low"
+          }
+        },
+        "finishReason": "stop",
+        "usage": {
+          "inputTokens": 245,
+          "outputTokens": 263,
+          "totalTokens": 508,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        },
+        "responseHash": "f560b2b9c1790beadff24b1f2f1f720c1c648f83d4aa961400d8dd25166be149",
+        "responseBytes": 818,
+        "toolCalls": 0,
+        "appliedFiles": [
+          {
+            "path": "src/math.js",
+            "bytes": 109,
+            "hash": "8454fa0a5445e7feca0ad8aa8afda4b169e15baaee2d963b6082d52079bf1762"
+          },
+          {
+            "path": "tests/math.test.js",
+            "bytes": 587,
+            "hash": "766d03950fc052da22d693982467b2f12fd9b3c39110d297bf62ecc9a93aefbb"
+          }
+        ],
+        "workflow": "model-generated-host-applied",
+        "independentValidation": "pending",
+        "stage": "task",
+        "offlineCalls": 0,
+        "deniedRuntimeCalls": [],
+        "elapsedMs": 9338
+      },
+      "independentValidation": {
+        "schemaVersion": 1,
+        "outcome": "pass",
+        "workflow": "model-generated-host-applied",
+        "nativeToolExecution": false,
+        "modelCalls": 0,
+        "sandbox": "existing-native-driver.check; no prepare, auth link, invocation or model",
+        "nodeVersion": "v24.15.0",
+        "boundary": {
+          "exitCode": 0,
+          "timedOut": false,
+          "spawnError": false,
+          "facts": {
+            "denied": true,
+            "outsideWriteDenied": true,
+            "workspaceWrite": true,
+            "descendantDenied": true,
+            "networkDenied": true
+          },
+          "passed": true,
+          "stdoutHash": "e0c2b3752ba953ecf23bf2208921c1ffda27d7864d388936ec35db492905c32c",
+          "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "scriptHash": "0b5328cfb5faff7cc72d93e0fbb2488bcccb286ef209efa75becc42478c75757",
+          "policyHash": "f527171d2ca38c1e5cea731ee49594ce961d87ecb5656dac1d3afcbaae3ab1e9"
+        },
+        "tests": {
+          "exitCode": 0,
+          "timedOut": false,
+          "spawnError": false,
+          "tests": 6,
+          "passed": 6,
+          "failed": 0,
+          "stdoutHash": "c8982d28b077793ef4d6cccbae327665692dbe01a9eddc27189e5ad6c3e0e792",
+          "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "files": [
+          {
+            "path": "src/math.js",
+            "hash": "8454fa0a5445e7feca0ad8aa8afda4b169e15baaee2d963b6082d52079bf1762"
+          },
+          {
+            "path": "tests/math.test.js",
+            "hash": "766d03950fc052da22d693982467b2f12fd9b3c39110d297bf62ecc9a93aefbb"
+          }
+        ],
+        "hostHash": "71d6efb05c736be7a0278976509fa9dd513c1ada555d74552a024fa9a40f943d"
+      },
+      "rootVerificationHash": "ad1b8832a22fcaffde458feed19dcce469e1abb1df4c3dafb26e44554d76b071",
+      "manifests": [
+        {
+          "mode": "connectivity",
+          "manifestHash": "4c9cc6fd6d8485f6f5809e90dbdc17dc461949af088dd847e2b9b975f66b328e",
+          "callHash": "9a39efa88dc3708e8ec416c61118e669be6bfa7f1316c6f47a5e76e6a5593065",
+          "hostHash": "0ccc38bfc635286879d38dbffc13ff6edebb0a7892c0a53ad11435e1aedbcf57"
+        },
+        {
+          "mode": "task",
+          "manifestHash": "874510c50825758e3ecc926d252ee37a092c1eefab31c6452af84fa549b234ba",
+          "callHash": "0481bef064e52f6ae1dc3b6e11ab0454396b02246c0cc4a277851499c909b7f5",
+          "hostHash": "0ccc38bfc635286879d38dbffc13ff6edebb0a7892c0a53ad11435e1aedbcf57"
+        }
+      ],
+      "hostRetries": 0,
+      "apiFallback": false
+    },
+    "totalPublishedModelCalls": 4,
+    "nativeToolsAccepted": false,
+    "scope": "Official subscription model access and model-generated/host-applied code task only; no native tools, skill loading or Tibicen acceptance",
+    "skillQuality": {
+      "privateSourceId": "zcode-skill-judge-20261026-aRaJcv",
+      "modelHostCalls": 2,
+      "acceptedReviews": 0,
+      "humanReviews": 0,
+      "status": "two-strict-invalid-quality-review-responses",
+      "reason": "Both returned bare judgement arrays instead of required JSON envelope",
+      "usage": {
+        "inputTokens": 52396,
+        "outputTokens": 726
+      },
+      "summaryBytesHash": "cf069c45d069840de8fe3186e8e8a93fcd10ea6bdc057f0ada79997315677a52",
+      "reportBytesHash": "581eeb69e4309cd939eaf0b59ee7ccf80c968b48becd79d62328cab8939dee5f",
+      "hostRetries": 0,
+      "internalHttpRetryCount": null,
+      "previousInputsUnchanged": true
+    }
+  },
+  "historicalOutcomesUnchanged": true,
+  "quality": {
+    "independentModelJudges": 2,
+    "humanReviews": 0,
+    "fullAcceptance": false,
+    "acceptedReviews": 0
+  },
+  "currentPriority": "Standalone Tibicen init/adopt to final handoff/report, independent of optional OpenSpec"
+}

@@ -1,0 +1,132 @@
+{
+  "pass": true,
+  "kind": "Codex app agent direct Tibicen product use",
+  "cases": [
+    {
+      "mode": "init",
+      "applications": 2,
+      "firstProposalDigest": "095d452edeea07ec0a811e7c0e4fe2d1add44f7689e12a5ec22314d638ec8f97",
+      "correctionDigest": "f306d7e8b3fa66dbacff0c9f622697b48367d9fb3be2990cd5d3b6b5a9b9143f",
+      "status": "complete",
+      "reportStatus": "complete",
+      "structuralVerify": "passed",
+      "externalNodeTests": {
+        "baseline": {
+          "passed": 4,
+          "failed": 0
+        },
+        "after": {
+          "passed": 4,
+          "failed": 0
+        }
+      },
+      "builtinProjectVerify": {
+        "status": "unverified",
+        "reason": "no-project-checks"
+      },
+      "protectedFileHashesUnchanged": true,
+      "finalFiles": {
+        ".github/workflows/test.yml": {
+          "hash": "edf98771d4516caca5a190bc7ac841be31ae694e16d92a5ff9078c812ded2b8f",
+          "mode": 420
+        },
+        ".tibicen/manifest.yml": {
+          "hash": "8fc27ceb8d2f7a564bb3afbf5358adbf5e5acbf6b7e760d5a3160b8cddd3d12e",
+          "mode": 384
+        },
+        "AGENTS.md": {
+          "hash": "ef25ad75a1ec72bb86e43d40425d5e1567ed1661d275533385bc8dfbc7ce1708",
+          "mode": 420
+        },
+        "README.md": {
+          "hash": "fdfa0998bba763c13e97c6d0d9b9b0f3b17290cfff2718c3874d169e177d3762",
+          "mode": 420
+        },
+        "package.json": {
+          "hash": "0c530782592ef7abe26ad08d8f296b96c03df91bbd97848db1cdb2d26af998b6",
+          "mode": 420
+        },
+        "src/subtotal.js": {
+          "hash": "5d9e33c1ed9609bc0dfb09cda91c5d2a190e3009e87508ad3223f2b509519636",
+          "mode": 420
+        },
+        "test/subtotal.test.js": {
+          "hash": "0a2faea6448036f3e0d98caa76fd49a8f94e34934fe3fddbc638f019256e472f",
+          "mode": 420
+        }
+      },
+      "adoptUserSectionPreserved": null,
+      "staleRuleRemoved": null
+    },
+    {
+      "mode": "adopt",
+      "applications": 2,
+      "firstProposalDigest": "00c58d9490fd1943516fc5f5b58ad3d0dc152c424312c053094d2ae2f38a3aa3",
+      "correctionDigest": "aeb0904df8e0a51b67ce2d4f6b0bc20d0897273c064fa9bcfc90abbdbcf853b0",
+      "status": "complete",
+      "reportStatus": "complete",
+      "structuralVerify": "passed",
+      "externalNodeTests": {
+        "baseline": {
+          "passed": 4,
+          "failed": 0
+        },
+        "after": {
+          "passed": 4,
+          "failed": 0
+        }
+      },
+      "builtinProjectVerify": {
+        "status": "unverified",
+        "reason": "no-project-checks"
+      },
+      "protectedFileHashesUnchanged": true,
+      "finalFiles": {
+        ".github/workflows/test.yml": {
+          "hash": "edf98771d4516caca5a190bc7ac841be31ae694e16d92a5ff9078c812ded2b8f",
+          "mode": 420
+        },
+        ".tibicen/manifest.yml": {
+          "hash": "6e109a861d72cee66f8ad3f675d0f87b217f6937bdcde2f820893e51e4759b4d",
+          "mode": 384
+        },
+        "AGENTS.md": {
+          "hash": "da5c8b42f800d90413db8e65398be5af7fc78b547c4baf4a1642d5852de91c95",
+          "mode": 420
+        },
+        "README.md": {
+          "hash": "fdfa0998bba763c13e97c6d0d9b9b0f3b17290cfff2718c3874d169e177d3762",
+          "mode": 420
+        },
+        "package.json": {
+          "hash": "0c530782592ef7abe26ad08d8f296b96c03df91bbd97848db1cdb2d26af998b6",
+          "mode": 420
+        },
+        "src/subtotal.js": {
+          "hash": "5d9e33c1ed9609bc0dfb09cda91c5d2a190e3009e87508ad3223f2b509519636",
+          "mode": 420
+        },
+        "test/subtotal.test.js": {
+          "hash": "0a2faea6448036f3e0d98caa76fd49a8f94e34934fe3fddbc638f019256e472f",
+          "mode": 420
+        }
+      },
+      "adoptUserSectionPreserved": true,
+      "staleRuleRemoved": true
+    }
+  ],
+  "productBugsConfirmed": [],
+  "sharedRepositoryFilesChanged": [],
+  "correction": "One extra reviewed AGENTS-only apply per case after external pnpm test created empty dependency metadata. Generated files preserved outside projects; direct node --test used in final instructions and after checks.",
+  "childAgentCliCalls": 0,
+  "sdkHosts": 0,
+  "authReads": 0,
+  "providerApiCalls": 0,
+  "limitations": [
+    "Builtin project verification remains unverified/no-project-checks; the 4 baseline and 4 after Node tests per case were executed externally.",
+    "No independent new-agent task, quiz, compat or MCP checks were requested.",
+    "These are owned temporary controls in this existing Codex app agent session, not headless sessions or a fresh app startup."
+  ],
+  "separateModelSessionsStarted": 0,
+  "modelAccounting": "Current Codex app subagent session; no additional provider SDK/API/CLI model sessions launched. Internal app inference is not counted here."
+}

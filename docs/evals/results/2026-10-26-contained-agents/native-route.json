@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-26",
+  "image": "sha256:f97baa533a26513c453a362be331a43eb60214302f449c16571b23cea141dce4 linux/amd64",
+  "cases": [
+    {
+      "mode": "positive-control",
+      "worker": {
+        "pid": 8,
+        "ppid": 1,
+        "pgid": 8,
+        "sid": 8
+      },
+      "ready_after_seconds": 0.665,
+      "exit_code": 137,
+      "running": false,
+      "container_pid": 0,
+      "late_marker": "present-as-required"
+    },
+    {
+      "mode": "exit",
+      "worker": {
+        "pid": 8,
+        "ppid": 1,
+        "pgid": 8,
+        "sid": 8
+      },
+      "ready_after_seconds": 0.459,
+      "exit_code": 0,
+      "running": false,
+      "container_pid": 0,
+      "late_marker": "absent-after-worker-horizon"
+    },
+    {
+      "mode": "timeout",
+      "worker": {
+        "pid": 9,
+        "ppid": 1,
+        "pgid": 9,
+        "sid": 9
+      },
+      "ready_after_seconds": 0.514,
+      "exit_code": 137,
+      "running": false,
+      "container_pid": 0,
+      "late_marker": "absent-after-worker-horizon"
+    },
+    {
+      "mode": "cancel",
+      "worker": {
+        "pid": 8,
+        "ppid": 1,
+        "pgid": 8,
+        "sid": 8
+      },
+      "ready_after_seconds": 0.439,
+      "exit_code": 137,
+      "running": false,
+      "container_pid": 0,
+      "late_marker": "absent-after-worker-horizon"
+    }
+  ],
+  "cleanup_equal": true,
+  "existing_container_count": 9,
+  "existing_image_count": 6,
+  "recommendation": "Existing Docker Desktop; disposable Linux Codex exec-server over stdio; host auth; include_local=false",
+  "productionReady": false,
+  "liveSessions": 0,
+  "paidApiCalls": 0
+}

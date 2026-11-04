@@ -1,17 +1,32 @@
 # Issue tracker
 
-Public bug reports and proposals belong in [GitHub Issues](https://github.com/warbr1ng3r/tibicen/issues). Follow [CONTRIBUTING.md](../../CONTRIBUTING.md) when preparing a change.
+Development in this repository uses Local Markdown. Git remote origin points to the public warbr1ng3r/tibicen repository; no external tracker is configured. The canonical tracker is in `.scratch/`; this directory is not excluded from Git. This setup is not part of the Tibicen distribution.
 
-For implementation order and current scope, read [the development plan](../DEVELOPMENT_PLAN.md). Requirements, scenarios and detailed implementation tasks live in the corresponding [OpenSpec change](../../openspec/changes/). Select work with ready inputs and keep concurrent assignments in separate paths.
+## Wayfinding operations
+
+- Effort map: `.scratch/<effort>/map.md`; label `wayfinder:map`.
+- Child ticket: `.scratch/<effort>/issues/NN-<slug>.md`. Its path is its identifier. Link text uses the ticket title.
+- Fields: `Type: grilling|prototype|research|task`, `Labels: wayfinder:<type>`, `Status: open|claimed|resolved`, `Assignee: none|<session>`, `Blocked by: none|NN, NN`. A map may use only `wayfinder:map`; tickets may use only `wayfinder:<type>`.
+- Before starting, set `Status: claimed` and `Assignee`. Allowed paths and checks come from the ticket contract and linked OpenSpec tasks.
+- A dependency is complete only when its ticket has `Status: resolved`. The frontier consists of open, unassigned, unblocked tickets, ordered by number. Run different batches sequentially; within a batch, run only tasks with ready inputs and non-overlapping allowed paths.
+- On completion, add the result and evidence to `## Answer`, set `Status: resolved`, clear the assignee and add one link with a short result to the map's `Decisions so far`. A human decision requires the owner's response.
+- Substantial change details and implementation checkboxes live in OpenSpec. A ticket holds the question/result, responsibility boundaries and a link to the exact task group. The roadmap holds stage order.
+- `dashboard.md` is a view of the tickets, updated after status/dependency changes. A visual in chat is a snapshot, not a second tracker.
 
 ## Current effort
 
-Published-alpha observations confirmed implicit loading of Tibicen init and the pinned Ponytail body; separate fresh app tasks passed 14/14 tests and the explicitly selected OpenSpec init workflow. Built-in unverified reports remain unchanged. [Evidence and limits](../evals/results/2026-10-28-published-alpha-native/README.md).
+The destination is the **full original MVP →1.0**. For technical release work, read the [engineering assessment](../evals/ENGINEERING_ACCEPTANCE.md) for missing observations and source/version/candidate bindings, and the [readiness ledger](../evals/V1_READINESS.md) for remaining technical and support gates. Use the map (`../../.scratch/codex-zcode-acceptance/map.md`; private development record; excluded from public source) for decisions and the dashboard (`../../.scratch/codex-zcode-acceptance/dashboard.md`; private development record; excluded from public source) for the active work view. Detailed behavior tasks stay in OpenSpec; milestone order stays in [the roadmap](../DEVELOPMENT_PLAN.md).
 
-Safe first-error diagnostics and unverified post-run source validation passed independent review and the 700/700 offline gate. [Verification](../../openspec/changes/containerize-native-evaluation-execution/diagnostics-verification.md). A separately authorized native useful-task attempt loaded the full skill, then stopped on a later process-exit1; task/report incomplete, no collection or repeat, preserved host/source/history and verified cleanup. [Fresh attempt](../evals/results/2026-10-28-native-useful-task-r2/README.md). Next: offline executor request correlation; no new live budget. Full MVP, native useful-task, ZCode and human gates remain open.
+Under the 2026-11-03 policy, technical acceptance requires independent engineering review and observable positive SKILL/PROC loading/use on the applicable versions and candidate. Human usefulness observations and rubric calibration are voluntary postpublication work; measured benefit remains unknown. Continue technical evidence and support work without scheduling an owner questionnaire.
 
-The limited `0.1.0-alpha.1` and [landing page](https://warbr1ng3r.github.io/tibicen/) were published on 27 October 2026. Current acceptance and remaining full MVP, human/pilot and support limits are recorded in [release details](../RELEASING.md).
+The owner requested autonomous work without routine approval pauses. Continue ready work in separate owned scopes, integrate results and obtain independent review. Root may approve concrete synthetic fixture proposals; no human rating or pilot result may be inferred from that approval. Current execution details and finite limits belong to the claimed ticket. Paid API, personal auth changes, commits and publication require their own explicit authorization; old stage-specific approvals do not grant it now.
 
-The bilingual landing was published on 28 October 2026 from [`31694d4`](https://github.com/warbr1ng3r/tibicen/commit/31694d4b234efc82064b8a1799f7a179a6541041): English by default, Russian at `ru/`. All 11 tasks, independent ponytail-review Ship, the full 688/688 gate and local browser checks are now supplemented by successful CI, Pages and live acceptance of EN/RU, equivalent commands/presets and no-JavaScript switching. [Implementation and publication evidence](../../openspec/changes/localize-and-simplify-landing/verification.md); the existing skill release is unchanged.
+The owner's new delegation is tracked in 139 (`../../.scratch/codex-zcode-acceptance/issues/139-complete-delegated-release-acceptance.md`; private development record; excluded from public source). Its named finite scopes govern new technical observations; current results, failures and attempt accounting are in the dashboard. Historical24/24stays closed. No paid API, personal auth change, commit or publication follows from this delegation.
 
-Project documentation uses canonical English files with adjacent Russian copies; links target the English documents. Detailed development tickets and private run records are maintainer-local records and are not included in this public source snapshot. Historical verification summaries retain their original scope and limits.
+Root retains full product acceptance (`../../.scratch/codex-zcode-acceptance/issues/96-complete-full-mvp-product-acceptance.md`; private development record; excluded from public source). The latest [integration status corrections](../evals/results/2026-10-31-integration-status-fixes/README.md) are complete and independently reviewed. [Earlier preference observations](../evals/results/2026-10-31-preference-decisions/README.md) retain their original failures and limits. Executor usage is 24/24; no further executor work under this freeze.
+
+The [preview report](../evals/results/2026-10-31-private-rc-preview/README.md) keeps rc.1 lifecycle/source-gate evidence separate from rc.2 archive/local-replacement checks. Both previews predate the latest runtime corrections. Their outcomes remain historical; mandatory technical evidence, support decisions and final immutable public-candidate checks remain open.
+
+A [conditional local 1.0 draft](../evals/results/2026-10-31-private-rc-preview/README.md#conditional-10-candidate) packages the latest corrections with checked local delivery. It is preparation, not accepted/public 1.0. Its prepared human-assessment page is an optional resource for voluntary postpublication research; missing human answers retain their meaning and do not block technical release work.
+
+Read [historical effort notes](issue-tracker-history.md) only when tracing an older result or permission. Historical "next" and "current" wording describes its recorded stage.

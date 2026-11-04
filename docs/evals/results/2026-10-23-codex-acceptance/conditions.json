@@ -1,0 +1,1486 @@
+{
+  "schema": 1,
+  "kind": "selected-public-projection",
+  "experiment": {
+    "schema": 1,
+    "id": "codex-skill-pref-proc-2026-10-23-03",
+    "sourceSha": "0a4c7f707d309eaed907ce085e326f1bb85d68d2",
+    "conditionsHash": "9f0c845bb500df990d9557034aa199323d5bd65d7f8c33f29e61545d6f51d63c",
+    "scenarios": [
+      {
+        "id": "skill-01",
+        "hash": "ece118f502adc16ab0c0dcc26d3303fadd315eb5c1487c4145a44ab05ddeb136"
+      },
+      {
+        "id": "skill-01-refusal",
+        "hash": "5d02f5fc91da650a88cb343dfda32c4b95cf67aaef29f6433b291eb5e1d7f607"
+      },
+      {
+        "id": "skill-02",
+        "hash": "c2ef9eae259b24e85d309c38a72621c1a91f4b3db949f6a6d3115c9e0a992bcc"
+      },
+      {
+        "id": "skill-03",
+        "hash": "fbbadcd8bd1c4bf486d023fb485c93a39d79871d64fae7910688722702a567e4"
+      },
+      {
+        "id": "skill-04",
+        "hash": "95b3decf391698bc2e2812e5ec940509244c64ee3e341988cc8d6950e00ff72e"
+      },
+      {
+        "id": "skill-04-license",
+        "hash": "ef9b21750e872447200aca41a956e6cbe2d5d5a7992b8582e9caf6b1f0a594d0"
+      },
+      {
+        "id": "skill-04-changed-bytes",
+        "hash": "1e3dd7c05edaa51f0e82d00e49da7bb7f54d8ee0f9960e407816bda516db0586"
+      },
+      {
+        "id": "skill-04-missing-resource",
+        "hash": "1b85b4e45ae2907f6aa2cda6eadf72ca8595ea6e140f98c3cf15e469d89eeea1"
+      },
+      {
+        "id": "skill-04-foreign-path",
+        "hash": "bdc9f92e7d6f46eddfe4ea22701ffa25e327e7ac03f4f31967da057e9bf4fe9b"
+      },
+      {
+        "id": "pref-01",
+        "hash": "dee7346d7c3a702e4c64aaa9eb726b8bf23c4b7a97dc934a617fd1d29b556204"
+      },
+      {
+        "id": "pref-02",
+        "hash": "3509eca3dac3af425e98136b3e6352d175b27c0da900f27621f6cf0c8c90a5af"
+      },
+      {
+        "id": "pref-03",
+        "hash": "05a9e0a3efd5b0d247764fb3935e833830d2d33294f14c79a8cce9d2a9286ee0"
+      },
+      {
+        "id": "pref-04",
+        "hash": "2f631ef96683ce251bdeeb3ddcd0db6303961d316871fd3268309219e3a436ab"
+      },
+      {
+        "id": "pref-05",
+        "hash": "a0688828ba1cf16d97f92377b99b71f5ca377cd0078a455f9819ed41b75db1d0"
+      },
+      {
+        "id": "pref-06",
+        "hash": "3c41bea8eb9e39b5757996e418a5f5554af0fb1435a37f20eeff7b7fc5f6d9c5"
+      },
+      {
+        "id": "pref-06-no-questions",
+        "hash": "d71c399cf3b174c5c5c2916ce7f0a86580c87cb7ea110e2bb47282053c9f035f"
+      },
+      {
+        "id": "pref-07",
+        "hash": "57b6bff8b77b7badea0ea57a59d43910b3d6c9faf0eabc7f8e63cd8c0f74b862"
+      },
+      {
+        "id": "pref-08a",
+        "hash": "4f2caf32b4cb117937aea9f7281a6ce2093156d2df0379ff974cd0a828740c67"
+      },
+      {
+        "id": "pref-08b",
+        "hash": "fe9a86e1fc5de3c7bb878455f6629056674487062208ca8e274139a9e03f4729"
+      },
+      {
+        "id": "pref-08c",
+        "hash": "caac7b37bd4e901509ce745af81ec3fa6024c552877cd922cadcd8cbd957e351"
+      },
+      {
+        "id": "pref-08d",
+        "hash": "c73a2b22dcaa8aa50a92a0e4bc6c247cec4f85dc24b66a75c16b4262136e1ee9"
+      },
+      {
+        "id": "proc-01",
+        "hash": "2e7e51090b10fed01681993d3233a1b043b5215eeba8bdffdb681eaeaf2719cf"
+      },
+      {
+        "id": "proc-02-adopt",
+        "hash": "888f5202bf150bc61510fc2684b9120f4bc759a3e6ce25e3ef9172ae729f46ec"
+      },
+      {
+        "id": "proc-02-update",
+        "hash": "3f53443504dafc2f994f9babb9e0753f9dfd0e559744bedb534518b6dd21a3a7"
+      },
+      {
+        "id": "proc-03-unknown-version",
+        "hash": "80b50c4292f63af642aeb368ae906fb053fefe325bf02752a14e9cab0ddae161"
+      },
+      {
+        "id": "proc-03-path-conflict",
+        "hash": "75f42b7033ce24e08fce4937d246e7d52cad2947edd3a19e2bea6353f7a7c742"
+      },
+      {
+        "id": "proc-03-unsafe-init",
+        "hash": "3fdb7f65eb7acd2368fa609fbbc1e448988eb6f20d7eca7c9ca63b7a8ff9c30f"
+      },
+      {
+        "id": "proc-03-interrupted",
+        "hash": "499969d6373ef8a349cc302f1e7d412f58661b26968c193fda416259af52c8f4"
+      },
+      {
+        "id": "proc-04-team",
+        "hash": "aa95e3628019fb080d46161bfb5af7036ef7f85ed5aa6250f2294f3cf7821f55"
+      },
+      {
+        "id": "proc-04-openspec",
+        "hash": "d42bcc5302198cbe58829799b9a1be35d57c62e4ee8969235cf10b5e5d78fad2"
+      }
+    ],
+    "profiles": [
+      {
+        "id": "codex-0.157.0-gpt-6-sol",
+        "agent": "codex",
+        "version": "0.157.0",
+        "model": "gpt-6-sol",
+        "auth": "subscription",
+        "paid": false,
+        "startupHash": "18a7b00127e6ae750b4fefacf203a78438b0244425139878246501a3c53266da",
+        "permissionsHash": "99d9de8df1bbf54bbc8df9aba8fd1ae4ec9e45aad600c4e765a381f35ce7d07c"
+      }
+    ],
+    "repeats": 1,
+    "limits": {
+      "launchMs": 45000,
+      "setupMs": 180000,
+      "taskMs": 240000,
+      "maxCostUsd": null
+    },
+    "order": [
+      {
+        "id": "skill-01-tibicen-1",
+        "scenarioId": "skill-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-01-baseline-1",
+        "scenarioId": "skill-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-01-refusal-baseline-1",
+        "scenarioId": "skill-01-refusal",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-01-refusal-tibicen-1",
+        "scenarioId": "skill-01-refusal",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-02-tibicen-1",
+        "scenarioId": "skill-02",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-02-baseline-1",
+        "scenarioId": "skill-02",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-03-baseline-1",
+        "scenarioId": "skill-03",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-03-tibicen-1",
+        "scenarioId": "skill-03",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-tibicen-1",
+        "scenarioId": "skill-04",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-baseline-1",
+        "scenarioId": "skill-04",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-license-baseline-1",
+        "scenarioId": "skill-04-license",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-license-tibicen-1",
+        "scenarioId": "skill-04-license",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-changed-bytes-tibicen-1",
+        "scenarioId": "skill-04-changed-bytes",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-changed-bytes-baseline-1",
+        "scenarioId": "skill-04-changed-bytes",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-missing-resource-baseline-1",
+        "scenarioId": "skill-04-missing-resource",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-missing-resource-tibicen-1",
+        "scenarioId": "skill-04-missing-resource",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-foreign-path-tibicen-1",
+        "scenarioId": "skill-04-foreign-path",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-foreign-path-baseline-1",
+        "scenarioId": "skill-04-foreign-path",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-01-baseline-1",
+        "scenarioId": "pref-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-01-tibicen-1",
+        "scenarioId": "pref-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-02-tibicen-1",
+        "scenarioId": "pref-02",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-02-baseline-1",
+        "scenarioId": "pref-02",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-03-baseline-1",
+        "scenarioId": "pref-03",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-03-tibicen-1",
+        "scenarioId": "pref-03",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-04-tibicen-1",
+        "scenarioId": "pref-04",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-04-baseline-1",
+        "scenarioId": "pref-04",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-05-baseline-1",
+        "scenarioId": "pref-05",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-05-tibicen-1",
+        "scenarioId": "pref-05",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-06-tibicen-1",
+        "scenarioId": "pref-06",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-06-baseline-1",
+        "scenarioId": "pref-06",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-06-no-questions-baseline-1",
+        "scenarioId": "pref-06-no-questions",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-06-no-questions-tibicen-1",
+        "scenarioId": "pref-06-no-questions",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-07-tibicen-1",
+        "scenarioId": "pref-07",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-07-baseline-1",
+        "scenarioId": "pref-07",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08a-baseline-1",
+        "scenarioId": "pref-08a",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08a-tibicen-1",
+        "scenarioId": "pref-08a",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08b-tibicen-1",
+        "scenarioId": "pref-08b",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08b-baseline-1",
+        "scenarioId": "pref-08b",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08c-baseline-1",
+        "scenarioId": "pref-08c",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08c-tibicen-1",
+        "scenarioId": "pref-08c",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08d-tibicen-1",
+        "scenarioId": "pref-08d",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08d-baseline-1",
+        "scenarioId": "pref-08d",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-01-baseline-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-01-tibicen-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-02-adopt-tibicen-1",
+        "scenarioId": "proc-02-adopt",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-02-adopt-baseline-1",
+        "scenarioId": "proc-02-adopt",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-02-update-baseline-1",
+        "scenarioId": "proc-02-update",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-02-update-tibicen-1",
+        "scenarioId": "proc-02-update",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-unknown-version-tibicen-1",
+        "scenarioId": "proc-03-unknown-version",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-unknown-version-baseline-1",
+        "scenarioId": "proc-03-unknown-version",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-path-conflict-baseline-1",
+        "scenarioId": "proc-03-path-conflict",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-path-conflict-tibicen-1",
+        "scenarioId": "proc-03-path-conflict",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-unsafe-init-tibicen-1",
+        "scenarioId": "proc-03-unsafe-init",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-unsafe-init-baseline-1",
+        "scenarioId": "proc-03-unsafe-init",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-interrupted-baseline-1",
+        "scenarioId": "proc-03-interrupted",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-interrupted-tibicen-1",
+        "scenarioId": "proc-03-interrupted",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-04-team-tibicen-1",
+        "scenarioId": "proc-04-team",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-04-team-baseline-1",
+        "scenarioId": "proc-04-team",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-04-openspec-baseline-1",
+        "scenarioId": "proc-04-openspec",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-04-openspec-tibicen-1",
+        "scenarioId": "proc-04-openspec",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      }
+    ]
+  },
+  "originalConditionsHash": "9f0c845bb500df990d9557034aa199323d5bd65d7f8c33f29e61545d6f51d63c",
+  "omitted": [
+    "process.packageRoot"
+  ],
+  "conditions": {
+    "schema": 1,
+    "nativeProtocol": 2,
+    "sourceSha": "0a4c7f707d309eaed907ce085e326f1bb85d68d2",
+    "distributionHash": "4b3c985f50f3f5c285b571a5aac0dfb3e64583c774353533b47fc3b29a5c88c5",
+    "preflightHash": "572931f32478b78f9e319b725ceb65520abd78c32fac19d9941b80feb36a9cf4",
+    "runtimeProbe": {
+      "policyHash": "fcc385731e31380cf80fb673fdcfa80be4ff87ec9998461c4436b1c94dda56e0",
+      "scriptHash": "b9d319d48ce9c3acac887927e840b00aec0d442e1f9d3b6b9f8b8817f7f7467e",
+      "exitCode": 0,
+      "timedOut": false,
+      "facts": {
+        "denied": true,
+        "resourcesReadable": true
+      },
+      "verified": true
+    },
+    "model": "gpt-6-sol",
+    "repeats": 1,
+    "maxModelSessions": 274,
+    "apiCallsAllowed": false,
+    "order": [
+      {
+        "id": "skill-01-tibicen-1",
+        "scenarioId": "skill-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-01-baseline-1",
+        "scenarioId": "skill-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-01-refusal-baseline-1",
+        "scenarioId": "skill-01-refusal",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-01-refusal-tibicen-1",
+        "scenarioId": "skill-01-refusal",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-02-tibicen-1",
+        "scenarioId": "skill-02",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-02-baseline-1",
+        "scenarioId": "skill-02",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-03-baseline-1",
+        "scenarioId": "skill-03",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-03-tibicen-1",
+        "scenarioId": "skill-03",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-tibicen-1",
+        "scenarioId": "skill-04",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-baseline-1",
+        "scenarioId": "skill-04",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-license-baseline-1",
+        "scenarioId": "skill-04-license",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-license-tibicen-1",
+        "scenarioId": "skill-04-license",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-changed-bytes-tibicen-1",
+        "scenarioId": "skill-04-changed-bytes",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-changed-bytes-baseline-1",
+        "scenarioId": "skill-04-changed-bytes",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-missing-resource-baseline-1",
+        "scenarioId": "skill-04-missing-resource",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-missing-resource-tibicen-1",
+        "scenarioId": "skill-04-missing-resource",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-foreign-path-tibicen-1",
+        "scenarioId": "skill-04-foreign-path",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "skill-04-foreign-path-baseline-1",
+        "scenarioId": "skill-04-foreign-path",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-01-baseline-1",
+        "scenarioId": "pref-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-01-tibicen-1",
+        "scenarioId": "pref-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-02-tibicen-1",
+        "scenarioId": "pref-02",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-02-baseline-1",
+        "scenarioId": "pref-02",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-03-baseline-1",
+        "scenarioId": "pref-03",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-03-tibicen-1",
+        "scenarioId": "pref-03",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-04-tibicen-1",
+        "scenarioId": "pref-04",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-04-baseline-1",
+        "scenarioId": "pref-04",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-05-baseline-1",
+        "scenarioId": "pref-05",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-05-tibicen-1",
+        "scenarioId": "pref-05",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-06-tibicen-1",
+        "scenarioId": "pref-06",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-06-baseline-1",
+        "scenarioId": "pref-06",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-06-no-questions-baseline-1",
+        "scenarioId": "pref-06-no-questions",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-06-no-questions-tibicen-1",
+        "scenarioId": "pref-06-no-questions",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-07-tibicen-1",
+        "scenarioId": "pref-07",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-07-baseline-1",
+        "scenarioId": "pref-07",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08a-baseline-1",
+        "scenarioId": "pref-08a",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08a-tibicen-1",
+        "scenarioId": "pref-08a",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08b-tibicen-1",
+        "scenarioId": "pref-08b",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08b-baseline-1",
+        "scenarioId": "pref-08b",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08c-baseline-1",
+        "scenarioId": "pref-08c",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08c-tibicen-1",
+        "scenarioId": "pref-08c",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08d-tibicen-1",
+        "scenarioId": "pref-08d",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "pref-08d-baseline-1",
+        "scenarioId": "pref-08d",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-01-baseline-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-01-tibicen-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-02-adopt-tibicen-1",
+        "scenarioId": "proc-02-adopt",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-02-adopt-baseline-1",
+        "scenarioId": "proc-02-adopt",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-02-update-baseline-1",
+        "scenarioId": "proc-02-update",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-02-update-tibicen-1",
+        "scenarioId": "proc-02-update",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-unknown-version-tibicen-1",
+        "scenarioId": "proc-03-unknown-version",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-unknown-version-baseline-1",
+        "scenarioId": "proc-03-unknown-version",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-path-conflict-baseline-1",
+        "scenarioId": "proc-03-path-conflict",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-path-conflict-tibicen-1",
+        "scenarioId": "proc-03-path-conflict",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-unsafe-init-tibicen-1",
+        "scenarioId": "proc-03-unsafe-init",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-unsafe-init-baseline-1",
+        "scenarioId": "proc-03-unsafe-init",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-interrupted-baseline-1",
+        "scenarioId": "proc-03-interrupted",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-03-interrupted-tibicen-1",
+        "scenarioId": "proc-03-interrupted",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-04-team-tibicen-1",
+        "scenarioId": "proc-04-team",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "proc-04-team-baseline-1",
+        "scenarioId": "proc-04-team",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-04-openspec-baseline-1",
+        "scenarioId": "proc-04-openspec",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "proc-04-openspec-tibicen-1",
+        "scenarioId": "proc-04-openspec",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      }
+    ],
+    "limits": {
+      "launchMs": 45000,
+      "setupMs": 180000,
+      "taskMs": 240000,
+      "maxCostUsd": null
+    },
+    "plans": {
+      "skill-01": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application",
+          "loading"
+        ]
+      },
+      "skill-01-refusal": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application",
+          "loading"
+        ]
+      },
+      "skill-02": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "skill-03": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "skill-04": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application",
+          "loading"
+        ]
+      },
+      "skill-04-license": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "skill-04-changed-bytes": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "skill-04-missing-resource": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "skill-04-foreign-path": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "pref-01": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "pref-02": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "pref-03": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "pref-04": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "pref-05": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "pref-06": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "pref-06-no-questions": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "pref-07": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "pref-08a": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "pref-08b": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "pref-08c": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "pref-08d": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "proc-01": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application",
+          "loading",
+          "process"
+        ]
+      },
+      "proc-02-adopt": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application",
+          "loading",
+          "process"
+        ]
+      },
+      "proc-02-update": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application",
+          "loading",
+          "process"
+        ]
+      },
+      "proc-03-unknown-version": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "proc-03-path-conflict": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "proc-03-unsafe-init": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "proc-03-interrupted": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "proc-04-team": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      },
+      "proc-04-openspec": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application"
+        ]
+      }
+    },
+    "fixturesHash": "01807fff801c07a4ba16d32439d9db5b5e9f0bae73cd6231739f9bc674f3f538",
+    "harnessFiles": [
+      {
+        "path": "native.ts",
+        "hash": "583cc27de9062dea9103d22b610be938e42af0317dafb28d64484da0c20b95c8"
+      },
+      {
+        "path": "native-runner.ts",
+        "hash": "5da4a2d023f61d5b12e925a949d37a1cc5f4f25afd1e81eabb2906a0a60b0efb"
+      },
+      {
+        "path": "profiles/index.ts",
+        "hash": "adc33c706fe567c12fb20c0e890044b97cb8c4609130255a307b3944ad53c50c"
+      },
+      {
+        "path": "profiles/contracts.ts",
+        "hash": "7485b54e6f1719abf89b3e3595a39a7dd348debf3c2988367c6ab7721b9c4cff"
+      },
+      {
+        "path": "profiles/probe-cli.ts",
+        "hash": "a251a0553c0c376dcd9fff9494a19b18b6189ffd06f67473fad9318f158d1b60"
+      },
+      {
+        "path": "profiles/codex/profile.ts",
+        "hash": "2c4b8c92e633454c8d22e48038b5802d82fb8f9a315fad1ce05475888bf1fbbd"
+      },
+      {
+        "path": "profiles/codex/preflight.ts",
+        "hash": "86aa3906a8762519b10ecfa32398b3579d4580a11acbd171be3f061899fa5b1a"
+      },
+      {
+        "path": "profiles/zcode/preflight.ts",
+        "hash": "9749aca37dce1ffb051a4084dc8c287654e09960958978677080f9c0008d33d6"
+      },
+      {
+        "path": "profiles/claude/preflight.ts",
+        "hash": "5eb5e9c78b41cb2f0764c12b19362410d3dce3b75994ad6ffd85dc5a009a88e3"
+      },
+      {
+        "path": "native-workflow.ts",
+        "hash": "a312f7337f562c2c0d1bb153ea03ed144c1c42d6abd94f3079ffb840187265d9"
+      },
+      {
+        "path": "native-sources.ts",
+        "hash": "709734a3797ebaaca1f496e080225a3a4b999efe33b98efbce5f2489aae9bbbd"
+      },
+      {
+        "path": "openspec-source.ts",
+        "hash": "a6da4ac31ccabe53e9fa995973d4bc98458d893834a16ad46cbde42361d61121"
+      },
+      {
+        "path": "matrix.ts",
+        "hash": "134010f2878905e9b0d77c0d013bdc164c71fac8b786c8e9ed2ea2365216ab76"
+      },
+      {
+        "path": "contracts.ts",
+        "hash": "1af417c34109289b1bd60273dbb04a9d30d558e38552ef170ad2550da3add0e6"
+      },
+      {
+        "path": "fixtures.ts",
+        "hash": "997be0c266aaf94b1d9d07611fc0c7a43b7dd9f2a16439234649f4be7807d1b8"
+      },
+      {
+        "path": "mechanical.ts",
+        "hash": "96712ea359a1783a8917c0176d4615232dca2e13d34d06049a1552b8d410e540"
+      },
+      {
+        "path": "runner.ts",
+        "hash": "d58640d6a6de4b1f011f23d6bde6b5439e804ab7dcffc503d438f308e7032a44"
+      },
+      {
+        "path": "observations.ts",
+        "hash": "cbf968f74f0296b13191cfa0a4a5f1789fbeacf3233a75d4bcd06f5601b501f1"
+      },
+      {
+        "path": "report.ts",
+        "hash": "fb18f29138e0fc63193e302787e9296afcf36226c490a13eb9e2fd4453cc019d"
+      },
+      {
+        "path": "results.ts",
+        "hash": "18c84d19d35975e995e5eb02319d9139d34e3eae55702f088b32720846f376d7"
+      },
+      {
+        "path": "quality.ts",
+        "hash": "05b993e0693a0e30fbb72a55e39ce45db24f91450faa655f86e72f2f46864a71"
+      }
+    ],
+    "harnessHash": "36483c95af8401d9c5a8ff35c33aaf730feb331063e51ed6ac1fc6ece8614c65",
+    "sourceMirrorHash": "294ec49e6fa10eb810feeb15100b20e1843c59f54a83b2f7276ddc791ba7ad79",
+    "process": {
+      "resourceHash": "27f07484ad1c5843d930395fa6381b8a0d472d7fbf1ddb61c89900b017bd095b",
+      "lockHash": "8d0564b4623c70acfd3888d26581287a8d2d24c998cae4bd0bd3cece84c97f6b"
+    },
+    "consent": "Exact per-phase files/commands; specification, plan and implementation have separate approvals. Kernel service intent is separately bound."
+  },
+  "preflight": {
+    "observedAt": "2026-10-23T14:58:24.650Z",
+    "currentJudgeAvailabilityObservedOn": "2026-10-25",
+    "sameCliBinaryVerified": true
+  },
+  "budgets": {
+    "preflightSessions": 1,
+    "allExecutorSessions": 280,
+    "allJudgeSessions": 60,
+    "currentAuth": "existing-chatgpt-subscription",
+    "apiCallsAllowed": false
+  },
+  "provenance": {
+    "kernelSourceSha": "0a4c7f707d309eaed907ce085e326f1bb85d68d2",
+    "executedHarnessHash": "36483c95af8401d9c5a8ff35c33aaf730feb331063e51ed6ac1fc6ece8614c65",
+    "executedHarnessPatch": "executed-harness.patch",
+    "futureFixesAreNotPartOfThisSeries": true
+  },
+  "collection": {
+    "experimentHash": "8275ce5d090102c71f5e3c483845a32f2ce7b9c081e3a5fbb457ad6a4a324261",
+    "processorHash": "906cf79f665a2f08867e681067ad0a4a644ac912f4353fd303b29cd0978ceff1",
+    "usageProcessorHash": "a0810e06b7359df48af30741d2cb4c646f0143a6db74a9ce09298b7fd2b42345",
+    "timingCorrection": null
+  }
+}

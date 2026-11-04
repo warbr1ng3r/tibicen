@@ -29,3 +29,7 @@
 Стенд и внешние испытания описаны отдельно в [build-agent-evaluation-harness](../build-agent-evaluation-harness/proposal.md), доставка и первый выпуск — в [prepare-first-public-release](../prepare-first-public-release/proposal.md). Первый выпуск зависит от уточнений ядра и приёмки первого адаптера OpenSpec (задачи 3.3–3.4), но не от остальных будущих частей `process-configuration`. Ограниченный адаптер реализован механически; живая агентская приёмка остаётся открытой.
 
 Позднее уточнение §9 дополнения ведётся в [infer-preferences-for-component-selection](../infer-preferences-for-component-selection/proposal.md). Прежний объём этого change и его 8/15 задач не считаются покрытием нового раздела.
+
+## Observed first-release corrections — 31 October 2026
+
+The current audit reproduced loss of required pending manual actions on same-session resume and false MCP configuration results for inline environment references and dotted Codex names. Tasks6.1–6.3 restore the already documented original-session and target-context guarantees. The correction uses existing schemas and supported formats; future extensions, independent/human acceptance and publication criteria remain unchanged. Exact prior failures and preview byte bindings are retained.

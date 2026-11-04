@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "observedAt": "2026-10-23T03:52:01.620Z",
+  "cli": {
+    "path": "/opt/homebrew/bin/codex",
+    "version": "codex-cli 0.157.0",
+    "binaryHash": "ad0be20d04e2ba6146ecdb51d7f8b7b0fe15420a15dc9b0057518d858f1f3714"
+  },
+  "candidateModel": "gpt-6.1-sol",
+  "authRoute": "existing-chatgpt-subscription",
+  "modelRequests": 1,
+  "startup": {
+    "auth": "observed-chatgpt-subscription",
+    "availableModels": [
+      {
+        "id": "gpt-6-astra",
+        "model": "gpt-6-astra",
+        "isDefault": true
+      },
+      {
+        "id": "gpt-6-sol",
+        "model": "gpt-6-sol",
+        "isDefault": false
+      },
+      {
+        "id": "gpt-6-luna",
+        "model": "gpt-6-luna",
+        "isDefault": false
+      },
+      {
+        "id": "gpt-5.6-sol",
+        "model": "gpt-5.6-sol",
+        "isDefault": false
+      },
+      {
+        "id": "gpt-5.6-terra",
+        "model": "gpt-5.6-terra",
+        "isDefault": false
+      },
+      {
+        "id": "gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "isDefault": false
+      }
+    ],
+    "exitCode": 1,
+    "timedOut": false,
+    "jsonlValid": true,
+    "eventTypes": [
+      "thread.started",
+      "item.completed",
+      "turn.started",
+      "error",
+      "turn.failed"
+    ],
+    "observedRead": false,
+    "instructionHash": "aa477942ac6bd244a9d03c66cea649ccf152c89854ffe62b5c9bf51ae9f0dc8a",
+    "completed": false,
+    "errors": [
+      "{\"type\":\"error\",\"message\":\"{\\\"type\\\":\\\"error\\\",\\\"status\\\":400,\\\"error\\\":{\\\"type\\\":\\\"invalid_request_error\\\",\\\"message\\\":\\\"The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.\\\"}}\"}",
+      "{\"type\":\"turn.failed\",\"error\":{\"message\":\"{\\\"type\\\":\\\"error\\\",\\\"status\\\":400,\\\"error\\\":{\\\"type\\\":\\\"invalid_request_error\\\",\\\"message\\\":\\\"The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.\\\"}}\"}}"
+    ],
+    "stderrDiagnostic": "WARNING: proceeding, even though we could not create PATH aliases: Refusing to create helper binaries under temporary dir \"[scope]\" (codex_home: AbsolutePathBuf(\"[scope]/home/.codex\"))\n",
+    "configHash": "ef0d09ec8bc0b87aaae956550ed60e59e7b932faebc83623a7c1fe7674c5b1c1",
+    "modelRequests": 1
+  },
+  "preflight": {
+    "status": "blocked",
+    "startupControlled": false,
+    "authProtected": true,
+    "processTreeControlled": false,
+    "isolation": "controlled",
+    "reason": "native-startup-failed"
+  },
+  "synthetic": {
+    "exitCode": 0,
+    "timedOut": false,
+    "facts": {
+      "readable": false,
+      "outsideWrite": false,
+      "workspaceWrite": true,
+      "descendantDenied": true
+    },
+    "diagnostic": "WARNING: proceeding, even though we could not create PATH aliases: Refusing to create helper binaries under temporary dir \"[scope]\" (codex_home: AbsolutePathBuf(\"[scope]/home/.codex\"))\n",
+    "diagnosticHash": "9afe386f386af3eb1c5430b880724138b50caf307f8865f9009a73d8492b255a",
+    "sandboxUnavailable": false
+  },
+  "startupHash": "09a016704a3790cd3d7af63283c2967204b88c26d93dfdcc1fa1184fa274d988",
+  "permissionsHash": "e87861a204509e43608d3d8a8ae66a6c017101833ddb3ffc63a3afa911132369",
+  "loading": "unverified",
+  "limits": {
+    "launchMs": 10000
+  },
+  "note": "Only synthetic credentials were present. Existing CLI login status was inspected separately; no auth file contents were read by this probe. Native raw output is discarded. A ready result additionally needs startup, process cleanup and loading observations."
+}

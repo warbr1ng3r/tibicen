@@ -1,0 +1,2119 @@
+{
+  "schema": 1,
+  "experimentId": "codex-skill-pref-proc-2026-10-23-03",
+  "sourceSha": "0a4c7f707d309eaed907ce085e326f1bb85d68d2",
+  "conditionsHash": "9f0c845bb500df990d9557034aa199323d5bd65d7f8c33f29e61545d6f51d63c",
+  "collectedOn": "2026-10-25",
+  "interpretation": "Observed mechanical outcomes only; environment and harness failures are retained. No release acceptance or causal benefit claim.",
+  "counts": {
+    "planned": 60,
+    "retained": 62,
+    "completed": 10,
+    "timedOut": 5,
+    "routingFailure": 47
+  },
+  "metrics": {
+    "tibicen": {
+      "schema": 1,
+      "total": 30,
+      "started": 29,
+      "notStarted": {
+        "error": 0,
+        "skip": 1
+      },
+      "outcomes": {
+        "launch": {
+          "pass": 29,
+          "error": 0,
+          "skip": 1
+        },
+        "setup": {
+          "pass": 1,
+          "fail": 0,
+          "error": 27,
+          "skip": 2
+        },
+        "task": {
+          "pass": 1,
+          "fail": 0,
+          "error": 0,
+          "skip": 29
+        }
+      },
+      "setupSuccess": {
+        "numerator": 1,
+        "denominator": 29,
+        "rate": 0.034482758620689655
+      },
+      "taskSuccessGivenSetup": {
+        "numerator": 1,
+        "denominator": 1,
+        "rate": 1
+      },
+      "endToEndSuccess": {
+        "numerator": 1,
+        "denominator": 29,
+        "rate": 0.034482758620689655
+      }
+    },
+    "baseline": {
+      "schema": 1,
+      "total": 30,
+      "started": 29,
+      "notStarted": {
+        "error": 0,
+        "skip": 1
+      },
+      "outcomes": {
+        "launch": {
+          "pass": 29,
+          "error": 0,
+          "skip": 1
+        },
+        "setup": {
+          "pass": 1,
+          "fail": 1,
+          "error": 27,
+          "skip": 1
+        },
+        "task": {
+          "pass": 0,
+          "fail": 0,
+          "error": 1,
+          "skip": 29
+        }
+      },
+      "setupSuccess": {
+        "numerator": 1,
+        "denominator": 29,
+        "rate": 0.034482758620689655
+      },
+      "taskSuccessGivenSetup": {
+        "numerator": 0,
+        "denominator": 1,
+        "rate": 0
+      },
+      "endToEndSuccess": {
+        "numerator": 0,
+        "denominator": 29,
+        "rate": 0
+      }
+    }
+  },
+  "executorUsage": {
+    "inputKnownSubtotal": 1207874,
+    "outputKnownSubtotal": 26244,
+    "completeSessions": 10,
+    "unknownSessions": 52,
+    "total": null
+  },
+  "judge": {
+    "requests": 8,
+    "reviewed": 8,
+    "humanReviews": 0,
+    "remainingBudget": 52
+  },
+  "executionBudget": {
+    "maximum": 280,
+    "previousSeries": 6,
+    "thisSeries": 62,
+    "remaining": 212
+  },
+  "rows": [
+    {
+      "schema": 1,
+      "id": "skill-01-tibicen-1",
+      "scenarioId": "skill-01",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1449.179917
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 178594.515584,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "f7079a689a82d41ec64f2ebdfa61a9a238c00e61b17581bbc978ba0cd993299d",
+          "exitCode": null,
+          "timedOut": true,
+          "completed": false,
+          "routingFailure": false
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-01-baseline-1",
+      "scenarioId": "skill-01",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1388.1905839999963
+      },
+      "setup": {
+        "status": "pass",
+        "durationMs": 94429.079666
+      },
+      "task": {
+        "status": "error",
+        "durationMs": 28247.271707999986,
+        "reason": "native-proposal-rejected"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "9b597a601d230efd4bdfc3cb69de4bfe384c8f0147efa228d59db2a7ded130ab",
+          "exitCode": 0,
+          "timedOut": false,
+          "completed": true,
+          "routingFailure": false
+        },
+        {
+          "stage": "setup",
+          "phase": "setup-apply",
+          "sourceHash": "44224190de51c3a2005464a7ff300f1637d0bc07424e4ffee851a2ca365dcc41",
+          "exitCode": 0,
+          "timedOut": false,
+          "completed": true,
+          "routingFailure": false
+        },
+        {
+          "stage": "task",
+          "phase": "task-proposal",
+          "sourceHash": "40c8bef3c718d82ab8b6796156512d2440107a09f713f8996da5ff0602cc6d74",
+          "exitCode": 0,
+          "timedOut": false,
+          "completed": true,
+          "routingFailure": false
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-01-refusal-baseline-1",
+      "scenarioId": "skill-01-refusal",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1416.0278340000077
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 40862.79116700002,
+        "reason": "native-clarification-unavailable"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "b8abd405d6d88a91e4f487b2bc95553e592977e84b21571a1dfb0d8a58047ebc",
+          "exitCode": 0,
+          "timedOut": false,
+          "completed": true,
+          "routingFailure": false
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-01-refusal-tibicen-1",
+      "scenarioId": "skill-01-refusal",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1456.3815000000177
+      },
+      "setup": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "user-refused"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "bed07fa6a3beb1e753940344f0f7b83e60c6f4fba9f0a950205902bbb65ea0bb",
+          "exitCode": 0,
+          "timedOut": false,
+          "completed": true,
+          "routingFailure": false
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-02-tibicen-1",
+      "scenarioId": "skill-02",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1523.5977089999942
+      },
+      "setup": {
+        "status": "pass",
+        "durationMs": 48061.58370800002
+      },
+      "task": {
+        "status": "pass",
+        "durationMs": 53283.82133399998
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "886005323c25a6020ad2fc38672b633e1626ac9955acf56c753729b9bc74d844",
+          "exitCode": 0,
+          "timedOut": false,
+          "completed": true,
+          "routingFailure": false
+        },
+        {
+          "stage": "task",
+          "phase": "task-proposal",
+          "sourceHash": "6cf04888a6ab9e401c20c2ba5a3dad059b63fe16eef41d1402c21047f98d4ab5",
+          "exitCode": 0,
+          "timedOut": false,
+          "completed": true,
+          "routingFailure": false
+        },
+        {
+          "stage": "task",
+          "phase": "task-apply",
+          "sourceHash": "914646cee52f6d9bc01bbcf129df4037324ad6fce327202de4651271acea2f88",
+          "exitCode": 0,
+          "timedOut": false,
+          "completed": true,
+          "routingFailure": false
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-02-baseline-1",
+      "scenarioId": "skill-02",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1325.875624999986
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 45284.98287499999,
+        "reason": "native-stage-unavailable"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "8295fe897f0937c274b46f33b8163aafaf3e4eca5f9c2630e91a80f5c42dad0c",
+          "exitCode": 0,
+          "timedOut": false,
+          "completed": true,
+          "routingFailure": false
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-03-baseline-1",
+      "scenarioId": "skill-03",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1339.2073330000276
+      },
+      "setup": {
+        "status": "fail",
+        "durationMs": 108639.61237500003,
+        "reason": "native-command-before-approval"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "c9d92028c14829fb1785ccfdc49a54af0fb1f9510962e3a1fd2f5d2e8cd085b5",
+          "exitCode": 0,
+          "timedOut": false,
+          "completed": true,
+          "routingFailure": false
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-03-tibicen-1",
+      "scenarioId": "skill-03",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1495.140791999991
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 7350965.396791999,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "bd8a77a5a09340336d56513e2f5eb67ff332ca045c63a94d28594f101978b2fe",
+          "exitCode": null,
+          "timedOut": true,
+          "completed": false,
+          "routingFailure": false
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-04-tibicen-1",
+      "scenarioId": "skill-04",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 3783.4697079993784
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 12339.335125000216,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-04-baseline-1",
+      "scenarioId": "skill-04",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 3735.5320420004427
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 1075712.2090830002,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "1bb1e24dcfad438a49328067b06b346b870b5f0fb602b8deca389774db709b0b",
+          "exitCode": null,
+          "timedOut": true,
+          "completed": false,
+          "routingFailure": false
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-04-license-baseline-1",
+      "scenarioId": "skill-04-license",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 4013.852540999651
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 1072253.0304579996,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "5a1d3c865b919c8552969316d555467eceb2da191256bde3d59c963dca9c5d23",
+          "exitCode": null,
+          "timedOut": true,
+          "completed": false,
+          "routingFailure": false
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-04-license-tibicen-1",
+      "scenarioId": "skill-04-license",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 3784.9621660001576
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 960290.2247080002,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "5a1d3c865b919c8552969316d555467eceb2da191256bde3d59c963dca9c5d23",
+          "exitCode": null,
+          "timedOut": true,
+          "completed": false,
+          "routingFailure": false
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-04-changed-bytes-tibicen-1",
+      "scenarioId": "skill-04-changed-bytes",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 3835.089958000928
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 66490.1796250008,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-04-changed-bytes-baseline-1",
+      "scenarioId": "skill-04-changed-bytes",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 3666.59491699934
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 12271.713874999434,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-04-missing-resource-baseline-1",
+      "scenarioId": "skill-04-missing-resource",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1831.6248340010643
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 18661.386624999344,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-04-missing-resource-tibicen-1",
+      "scenarioId": "skill-04-missing-resource",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1966.9372920002788
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 15938.983458999544,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-04-foreign-path-tibicen-1",
+      "scenarioId": "skill-04-foreign-path",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 783.7643749993294
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 17068.48399999924,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "skill-04-foreign-path-baseline-1",
+      "scenarioId": "skill-04-foreign-path",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1126.6463750004768
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 17630.109709000215,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-01-baseline-1",
+      "scenarioId": "pref-01",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 890.5151249989867
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 19248.83574999869,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-01-tibicen-1",
+      "scenarioId": "pref-01",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 797.5755000002682
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 15266.367707999423,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-02-tibicen-1",
+      "scenarioId": "pref-02",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 948.3592079989612
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 16194.462209001184,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-02-baseline-1",
+      "scenarioId": "pref-02",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1493.776499999687
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 15566.846083000302,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-03-baseline-1",
+      "scenarioId": "pref-03",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 918.5578339993954
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 18400.607292000204,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-03-tibicen-1",
+      "scenarioId": "pref-03",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1077.3644580002874
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 17254.038166999817,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-04-tibicen-1",
+      "scenarioId": "pref-04",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 801.3152089994401
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 15712.714749999344,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-04-baseline-1",
+      "scenarioId": "pref-04",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 799.1276670005172
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 15246.766750000417,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-05-baseline-1",
+      "scenarioId": "pref-05",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 907.7462079990655
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 18220.48891700059,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-05-tibicen-1",
+      "scenarioId": "pref-05",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 971.9107919987291
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 18331.649834001437,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-06-tibicen-1",
+      "scenarioId": "pref-06",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 841.1527080014348
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 19296.430415999144,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-06-baseline-1",
+      "scenarioId": "pref-06",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 872.2000420000404
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 17128.31325000152,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-06-no-questions-baseline-1",
+      "scenarioId": "pref-06-no-questions",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1263.9934160001576
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 17563.677417000756,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-06-no-questions-tibicen-1",
+      "scenarioId": "pref-06-no-questions",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 915.0507089998573
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 15215.842416999862,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-07-tibicen-1",
+      "scenarioId": "pref-07",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 868.2908750008792
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 15275.366499999538,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-07-baseline-1",
+      "scenarioId": "pref-07",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1131.1333750002086
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 15608.81837500073,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-08a-baseline-1",
+      "scenarioId": "pref-08a",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 948.7757920008153
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14325.199958000332,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-08a-tibicen-1",
+      "scenarioId": "pref-08a",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 795.9455000013113
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 16091.441792000085,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-08b-tibicen-1",
+      "scenarioId": "pref-08b",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 844.6083339992911
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14332.81529100053,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-08b-baseline-1",
+      "scenarioId": "pref-08b",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 738.0536249987781
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14308.889124998823,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-08c-baseline-1",
+      "scenarioId": "pref-08c",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 741.7952089998871
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14135.43674999848,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-08c-tibicen-1",
+      "scenarioId": "pref-08c",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 731.8033329993486
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 16721.23187500052,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-08d-tibicen-1",
+      "scenarioId": "pref-08d",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 779.5143749993294
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 13883.31645799987,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "pref-08d-baseline-1",
+      "scenarioId": "pref-08d",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 713.215915998444
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14499.652042001486,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-01-baseline-1",
+      "scenarioId": "proc-01",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 718.8795410003513
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14303.127458000556,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-01-tibicen-1",
+      "scenarioId": "proc-01",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 905.6490420009941
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14948.566791998222,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-02-adopt-tibicen-1",
+      "scenarioId": "proc-02-adopt",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 834.0555000007153
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14328.564749998972,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-02-adopt-baseline-1",
+      "scenarioId": "proc-02-adopt",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 749.48245799914
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14569.09141600132,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-02-update-baseline-1",
+      "scenarioId": "proc-02-update",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 740.2665420006961
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14888.647625001147,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-02-update-tibicen-1",
+      "scenarioId": "proc-02-update",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 947.3302500005811
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14548.773249998689,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-03-unknown-version-tibicen-1",
+      "scenarioId": "proc-03-unknown-version",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 834.2142919991165
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14589.816291999072,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-03-unknown-version-baseline-1",
+      "scenarioId": "proc-03-unknown-version",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 1052.9007090013474
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 13810.952999999747,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-03-path-conflict-baseline-1",
+      "scenarioId": "proc-03-path-conflict",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 770.8264579996467
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14098.145165998489,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-03-path-conflict-tibicen-1",
+      "scenarioId": "proc-03-path-conflict",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 858.9573330003768
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14206.08487500064,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-03-unsafe-init-tibicen-1",
+      "scenarioId": "proc-03-unsafe-init",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": false,
+      "launch": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "isolation-unavailable"
+      },
+      "setup": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "not-started"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": []
+    },
+    {
+      "schema": 1,
+      "id": "proc-03-unsafe-init-baseline-1",
+      "scenarioId": "proc-03-unsafe-init",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": false,
+      "launch": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "isolation-unavailable"
+      },
+      "setup": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "not-started"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": []
+    },
+    {
+      "schema": 1,
+      "id": "proc-03-interrupted-baseline-1",
+      "scenarioId": "proc-03-interrupted",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 785.53316700086
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14036.154500000179,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-03-interrupted-tibicen-1",
+      "scenarioId": "proc-03-interrupted",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 844.6392090003937
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14374.315417001024,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-04-team-tibicen-1",
+      "scenarioId": "proc-04-team",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 814.2218329999596
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 13954.40537500009,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-04-team-baseline-1",
+      "scenarioId": "proc-04-team",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 812.7070000004023
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14382.213958000764,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-04-openspec-baseline-1",
+      "scenarioId": "proc-04-openspec",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "baseline",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 735.7964590005577
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 13382.255500001833,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "proc-04-openspec-tibicen-1",
+      "scenarioId": "proc-04-openspec",
+      "profileId": "codex-0.157.0-gpt-6-sol",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 787.3155829999596
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 14505.927790999413,
+        "reason": "native-execution-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      },
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "sourceHash": "48bbd2d2e685aaa6238439ecbd06be9c956fa866492387a5f9e4287c4b04e1e1",
+          "exitCode": 1,
+          "timedOut": false,
+          "completed": false,
+          "routingFailure": true
+        }
+      ]
+    }
+  ]
+}

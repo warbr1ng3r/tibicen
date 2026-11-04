@@ -13,11 +13,17 @@ Two entry points:
 - `tibicen-init` — “Set up agent infrastructure.” For an empty directory or an existing application without an agent setup.
 - `tibicen-adopt` — “Review and update agent infrastructure.” For fixing, extending, and updating existing instructions and integrations.
 
-[Version 0.1.0-alpha.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1) was published on 27 October 2026 as a limited prerelease. The [configuration page](https://warbr1ng3r.github.io/tibicen/) is live. Observations cover macOS/Node 24/Codex; full MVP acceptance, broader agent coverage, human/pilot evidence and support contacts remain open. See [CHANGELOG](CHANGELOG.md), [contributing](CONTRIBUTING.md) and [release details](docs/RELEASING.md).
+[Version 0.1.0-alpha.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1) was published on 27 October 2026 as a limited prerelease. The [configuration page](https://warbr1ng3r.github.io/tibicen/) is live. Observations cover macOS/Node 24/Codex; full technical MVP acceptance, broader agent coverage and remaining support arrangements stay open. See [CHANGELOG](CHANGELOG.md), [contributing](CONTRIBUTING.md) and [release details](docs/RELEASING.md).
+
+The **1.0.0 candidate** is prepared with a pinned distribution commit. Its local cached-dependency gate and package/resource checks passed; fresh CI, public installation/download and Pages returned-byte checks are pending. This is not an announcement that 1.0.0 has been published.
+
+Your agent's native initialization or a direct request to audit existing instructions may also be sufficient. Tibicen's comparative effort savings and human usefulness have not been measured.
 
 Application source code, existing package manifests, CI, and data are preserved during setup. Nothing is written or installed, and no project code runs, before approval. Tibicen does not create commits, including in temporary repositories or during checks. Afterward, the project retains instructions and a `.tibicen/manifest.yml` record; no persistent Tibicen process remains.
 
-## Install the limited alpha
+## Install Tibicen
+
+The command below pins the prepared 1.0.0 distribution at its full commit. Public availability and installed bytes must still be checked after the authorized push. The source branch is not an installation target.
 
 The [published alpha](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1) uses a versioned distribution tag, separate
 from the development source tree; release assets include checksums. Installation
@@ -26,19 +32,19 @@ session resume and removal checks passed. These observations cover macOS with
 Node 24 and Codex; other agent options remain experimental.
 
 ```sh
-npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/v0.1.0-alpha.1 -g --agent codex --skill tibicen-init tibicen-adopt --copy
+npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/e8532bba0582564c93e50de1f55174daaa9bbd34 -g --agent codex --skill tibicen-init tibicen-adopt --copy
 ```
 
 Use the full distribution SHA from the release notes when an exact commit is
-required. Install from the versioned distribution: the default source branch contains
-unbuilt skill sources without their bundled resources. Node and Git are required for installation; repository dependencies and
+required. Do not install from the default source branch: it includes development
+skills. Node and Git are required for installation; repository dependencies and
 a site build are not.
 
 ## Build and install from source
 
 Building and using the skills requires Node ≥22.20 and a configured agent. Installing the skills does not require repository dependencies or a site build. The installer requires Git; once installed, Tibicen can work without Git using a temporary project copy.
 
-Command execution controls the process group on POSIX systems and stops descendants on timeout or cancellation, with up to one extra second for forced termination. Windows execution currently returns `process-tree-unavailable` before launching a command; read-only operations remain available. macOS is locally tested; Linux still needs platform acceptance.
+Command execution controls the process group on POSIX systems and stops descendants on timeout or cancellation, with up to one extra second for forced termination. Windows execution currently returns `process-tree-unavailable` before launching a command; read-only operations remain available. Standalone checks passed on [macOS, Ubuntu and Windows for the recorded working-source snapshot](docs/evals/results/2026-10-30-platform-checks/README.md). Those checks do not establish final-candidate or native-agent coverage.
 
 First, build the skills from the Tibicen source directory:
 
@@ -122,7 +128,7 @@ for the exact tested scope.
 
 Tibicen writes its own YAML files as YAML-compatible JSON. Only this strictly validated subset is supported: arbitrary YAML, tags, and executable expressions are not parsed. Ambiguous third-party configurations require a manual step.
 
-Verified versions and execution conditions: [agent matrix](references/agent-matrix.md). Full validation with real agents and a usefulness pilot are still required before the full MVP; local checks do not establish time savings on real projects.
+Verified versions and execution conditions: [agent matrix](references/agent-matrix.md). Technical release acceptance retains the full MVP functionality, strict invariants, functional quality, positive skill/process loading and use, exact-candidate delivery/update/recovery, declared coverage and maintenance readiness. It requires candidate-bound observations and independent engineering review; see the [engineering assessment](docs/evals/ENGINEERING_ACCEPTANCE.md) and [readiness ledger](docs/evals/V1_READINESS.md). Voluntary human usefulness observations and human rubric calibration are separate postpublication work; local checks and engineering review do not establish measured user benefit.
 
 ## Development commands
 
@@ -173,16 +179,16 @@ English is canonical for project documentation. Russian translations live beside
 
 - [Product vision](docs/PRODUCT_VISION.md).
 - [Development plan and work allocation](docs/DEVELOPMENT_PLAN.md).
-- [Initial voluntary pilot protocol (draft)](docs/PILOT.md).
+- [Voluntary postpublication usefulness protocol](docs/PILOT.md).
 - [Security boundaries and vulnerability reporting](SECURITY.md).
 
-Before the full MVP, define an independent channel for advisories and checksums, the person responsible for reviewing rules, support contacts, and the voluntary pilot parameters. The core and adapters are reviewed at least monthly and when supported tools change significantly. Updating an installed Tibicen is an explicit user action; there is no background self-update.
+Core/adapter ownership and the private security route are recorded in [SECURITY](SECURITY.md). The [maintenance procedure](docs/MAINTENANCE.md) now records source review, scope and follow-up; its [latest review](docs/evals/results/2026-11-03-maintenance-review/README.md) covers documentation and CLI metadata. Reporting now follows the scoped [code of conduct](CODE_OF_CONDUCT.md), which replaces the former general private conduct-inbox promise. The separate Pages [checksum index](landing/public/maintenance/index.json) is prepared locally; public deployment/byte verification and remaining candidate-specific behavior evidence stay open. GitHub administration is shared. Voluntary pilot parameters belong to the separate postpublication study. The core and adapters are reviewed at least monthly and when supported tools change significantly. Updating an installed Tibicen is an explicit user action; there is no background self-update.
 
 License: MIT.
 
 ## OpenSpec for development
 
-OpenSpec 1.14.3 is pinned in devDependencies. `pnpm openspec list` lists changes; `pnpm spec:check` validates requirements and completion of archived tasks and is included in `pnpm test`. Generated Codex development skills are omitted from this public snapshot; regenerate them separately when setting up the OpenSpec development workflow. To disable CLI telemetry, set `OPENSPEC_TELEMETRY=0` in the process environment.
+OpenSpec 1.14.3 is pinned in devDependencies. `pnpm openspec list` lists changes; `pnpm spec:check` validates requirements and completion of archived tasks and is included in `pnpm test`. Codex development skills are in `.agents/skills/`. To disable CLI telemetry, set `OPENSPEC_TELEMETRY=0` in the process environment.
 
 The product vision defines purpose and MVP scope, the development plan defines the order of stages, and OpenSpec holds detailed requirements and tasks for individual changes. Substantial new behavior goes through a change; small copy and CSS edits can proceed directly. OpenSpec and its development dependencies are excluded from distributed Tibicen skills.
 

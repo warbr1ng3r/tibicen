@@ -1,0 +1,235 @@
+{
+  "schema": 1,
+  "observedAt": "2026-10-25T21:53:40.676Z",
+  "scope": "bounded-subscription-control-before-protocol-fix",
+  "source": {
+    "sha": "bdd889d9f4f626daec1bf10057fa1003d2e2a252",
+    "dirty": true,
+    "treeHash": "586904a93ab5fc6eba1f57cbefb433f7986178a906403de711a4ebc6e4915491",
+    "scope": [
+      "scripts",
+      "tests",
+      "references",
+      "skills",
+      "package.json",
+      "pnpm-lock.yaml",
+      "tsconfig.json"
+    ],
+    "files": 156
+  },
+  "codex": {
+    "experimentId": "codex-control-skill-01-2026-10-26",
+    "conditionsHash": "73996a2256f439ad6a86da444a459394bca2c7ac49ee6f19b198bb73351775da",
+    "profile": {
+      "id": "codex-0.157.0-gpt-6-sol",
+      "agent": "codex",
+      "version": "0.157.0",
+      "model": "gpt-6-sol",
+      "auth": "subscription",
+      "paid": false,
+      "startupHash": "87989a1a67407dae8f2191a71561f7415605a6fc10ebde863fd31e7a88f0463a",
+      "permissionsHash": "4928b3b96a0030602f1ea6164f4920509e2fd13ae9e7b77e00d59ff2e2627e62"
+    },
+    "runtimeProbe": {
+      "policyHash": "46db20398e27674afb3fbad4418a6f98458baa2e6c3f1fa0164d024792e94e83",
+      "scriptHash": "c4d38820cfa59774c0ea88f4c04696768ed327d9edcf829cc84a51c08d8f4756",
+      "exitCode": 0,
+      "timedOut": false,
+      "facts": {
+        "denied": true,
+        "resourcesReadable": true
+      },
+      "verified": true
+    },
+    "startupProbes": [
+      {
+        "model": "gpt-6.1-sol",
+        "outcome": "blocked",
+        "reason": "model_not_found",
+        "modelRequests": 1
+      },
+      {
+        "model": "gpt-6-sol",
+        "outcome": "ready",
+        "observedRead": true,
+        "completed": true,
+        "modelRequests": 1
+      }
+    ],
+    "executorSessions": 3
+  },
+  "zcode": {
+    "desktopVersion": "3.14.4",
+    "cliVersion": "0.16.9",
+    "runtimeHash": "3200fbd9f7fd4410426dd541e10d1ab829d3472f270d743c7fabd1696c03fe32",
+    "entrypointHash": "fad4c35c4c36ec210d8a06d3fa0e77de23c8545e2eb6ff90aea1eb38d1e6275f",
+    "preflight": {
+      "status": "blocked",
+      "startupControlled": false,
+      "authProtected": false,
+      "processTreeControlled": false,
+      "isolation": "controlled",
+      "reason": "native-startup-auth-isolation-unverified"
+    },
+    "blockedBy": [
+      "zcode-subscription-startup-not-observed",
+      "zcode-auth-read-boundary-unverified",
+      "zcode-filesystem-write-boundary-unverified",
+      "zcode-process-tree-cleanup-unverified"
+    ],
+    "modelRequests": 0
+  },
+  "runs": [
+    {
+      "profile": "codex",
+      "result": {
+        "schema": 1,
+        "id": "skill-01-tibicen-1",
+        "scenarioId": "skill-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1530.2205829999998
+        },
+        "setup": {
+          "status": "error",
+          "durationMs": 106387.149792,
+          "reason": "native-proposal-rejected"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "setup-not-passed"
+        }
+      },
+      "sessions": [
+        {
+          "phase": "setup-proposal",
+          "hash": "300ccf490c39d8ec513edd6bf2fa672114dc678927940be4f499587b9879515a",
+          "exitCode": 0,
+          "timedOut": false,
+          "completed": true,
+          "usage": {
+            "inputTokens": 387174,
+            "outputTokens": 9542
+          }
+        }
+      ]
+    },
+    {
+      "profile": "codex",
+      "result": {
+        "schema": 1,
+        "id": "skill-01-baseline-1",
+        "scenarioId": "skill-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1423.3822920000093
+        },
+        "setup": {
+          "status": "error",
+          "durationMs": 69995.3945,
+          "reason": "native-required-check-not-approved"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "setup-not-passed"
+        }
+      },
+      "sessions": [
+        {
+          "phase": "setup-proposal",
+          "hash": "a8afe4e2f6dd2f6a43176eeaa0ec9881147ec0524070ed0278ac12365916452a",
+          "exitCode": 0,
+          "timedOut": false,
+          "completed": true,
+          "usage": {
+            "inputTokens": 84940,
+            "outputTokens": 3224
+          }
+        },
+        {
+          "phase": "setup-apply",
+          "hash": "6b65d9c00b35f28af6c56f94e01e82e2eecfc0ea8d2302822d53b6b9a3cebc66",
+          "exitCode": 0,
+          "timedOut": false,
+          "completed": true,
+          "usage": {
+            "inputTokens": 38104,
+            "outputTokens": 2048
+          }
+        }
+      ]
+    },
+    {
+      "profile": "zcode",
+      "result": {
+        "schema": 1,
+        "id": "skill-01-tibicen-1",
+        "scenarioId": "skill-01",
+        "profileId": "zcode-blocked",
+        "variant": "tibicen",
+        "started": false,
+        "launch": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "native-startup-auth-isolation-unverified"
+        },
+        "setup": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "not-started"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "setup-not-passed"
+        }
+      },
+      "sessions": []
+    },
+    {
+      "profile": "zcode",
+      "result": {
+        "schema": 1,
+        "id": "skill-01-baseline-1",
+        "scenarioId": "skill-01",
+        "profileId": "zcode-blocked",
+        "variant": "baseline",
+        "started": false,
+        "launch": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "native-startup-auth-isolation-unverified"
+        },
+        "setup": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "not-started"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "setup-not-passed"
+        }
+      },
+      "sessions": []
+    }
+  ],
+  "expansion": {
+    "pref": "not-run-after-skill-errors",
+    "proc": "not-run-after-skill-errors"
+  },
+  "reviews": {
+    "judgeSessions": 0,
+    "humanReviews": 0
+  },
+  "costUsd": null,
+  "note": "The completed native turns did not pass setup. Source and conditions refer to the historical dirty snapshot before the subsequent protocol and ZCode parser fixes. No paid API or automatic fallback."
+}

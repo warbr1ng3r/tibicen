@@ -39,6 +39,12 @@
 
 - [x] 5.4 Make new own-text permissions explicit and observable on Windows; retain POSIX defaults and existing modes. Reject unsupported exact result modes before proposal/apply writes and direct snapshot writes. Preserve repeated snapshot identity and disclose Windows mode/ACL limits; verify actual Windows init/adopt plus regressions.
 
+## 6. Observed first-release integration corrections
+
+- [x] 6.1 Reject a newly approved resume that omits a previously required pending manual action, before any project/HOME write. Cover saved-state and no-state continuation, explicit confirmed completion, unchanged pending actions and an ordinary fresh apply retaining the earlier session separately. Use existing action fields and explicit optional-action semantics; no cancellation schema or hidden action insertion.
+- [x] 6.2 Track supported environment references in MCP command/arguments alongside explicit mapped variable names, without reading values or changing generated configuration. Verify unknown/missing/available target contexts for Claude/Cursor and exclude Cursor non-environment placeholders. Accept unquoted Codex table headings only for a single bare TOML key; distinguish a dotted nested path from the generated quoted server name. Add meaningful regressions and preserve trust/manual/configuration boundaries.
+- [x] 6.3 Independently review both corrections, run their focused checks and the full pinned repository gate, rebuild/check both standalone distributions and record exact before/after behavior and current payload binding. Preserve prior failed/successful evidence and private preview bytes; update bilingual project documentation/readiness without claiming new agent, human, pilot or public-candidate acceptance.
+
 ## Workflow follow-up
 
 - После реализации и приёмки синхронизировать соответствующие дельты и архивировать change; перед отдельным завершением ядра вынести будущие требования/задачи в самостоятельные changes без потери покрытия.

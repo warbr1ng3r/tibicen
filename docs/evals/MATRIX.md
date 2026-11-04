@@ -1,5 +1,7 @@
 # Frozen acceptance matrix
 
+**Release policy, 2026-11-03:** technical acceptance uses the separate [engineering assessment](ENGINEERING_ACCEPTANCE.md) and [evidence rules](QUALITY_AND_REPORTS.md#engineering-release-assessment). All scenario criteria, positive loading/use and hard invariants below remain required. Human sample/calibration clauses below govern studies claiming human-calibrated results; they are voluntary postpublication research rather than a prerelease dependency. Existing graded outcomes are unchanged.
+
 Harness tasks 1.3–1.4: 67 separate cases in [matrix.ts](../../scripts/evals/matrix.ts), with the full digest of input, oracle, rubric and control examples pinned in [matrix-lock.json](../../scripts/evals/fixtures/matrix-lock.json). These are prepared inputs and independent expectations; a matrix row does not mean live acceptance.
 
 For the [shared native runner](NATIVE_RUNS.md), each fixture contains host-only `interaction`: approve/refuse/revise and the presence of a staged process task. Future replies remain hidden from the executor. The current lock also pins separate PROC adopt/update tasks, an allowed metadata change and the required exact LICENSE in SKILL-01; historical frozen series retain their own conditions.

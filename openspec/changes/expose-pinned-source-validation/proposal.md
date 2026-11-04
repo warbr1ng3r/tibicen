@@ -1,7 +1,5 @@
 # Proposal
 
-> Public source snapshot: detailed local development records are omitted. Historical verification summaries below retain their original limits.
-
 ## Why
 
 В успешной живой установке известного закреплённого скилла агент сделал 17 диагностических обращений, прежде чем нашёл внутренний `validateSources()`. Нужная проверка уже реализована; публичный CLI должен давать прямой короткий путь к ней.
@@ -25,4 +23,4 @@
 
 ## Impact
 
-`scripts/tibicen.ts`, `references/stage-agent-arch.md`, CLI/дистрибутивные тесты. Новых зависимостей, транспорта и устойчивого кэша нет. Повторная проверка источников при apply и согласие на точный план сохраняются. Основание: профиль успешной установки; время будущего пути ещё не измерено.
+`scripts/tibicen.ts`, `references/stage-agent-arch.md`, CLI/дистрибутивные тесты. Новых зависимостей, транспорта и устойчивого кэша нет. Повторная проверка источников при apply и согласие на точный план сохраняются. Основание: профиль успешной установки (`../../../.scratch/codex-zcode-acceptance/skill-install-cost.md`; private development record; excluded from public source); время будущего пути ещё не измерено.

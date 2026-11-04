@@ -1,0 +1,2332 @@
+{
+  "schema": 1,
+  "runs": [
+    {
+      "experimentHash": "749802ef1f5a9e5eceb8e3003b866b6456b1e8e4e41f70137cc91e36e061a75f",
+      "scenarioHash": "273bf0ebe5fbb89549f629fda1728bca4949028cd16372cbdb8ba7335d9b921b",
+      "result": {
+        "schema": 1,
+        "id": "bare-tibicen",
+        "scenarioId": "diagnostic-bare",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1460.7880420000001
+        },
+        "setup": {
+          "status": "pass",
+          "durationMs": 177503.362708
+        },
+        "task": {
+          "status": "pass",
+          "durationMs": 41243.582666
+        }
+      },
+      "events": [
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 0,
+          "elapsedMs": 1460.836917,
+          "stage": "launch",
+          "kind": "scenario-started",
+          "data": {}
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 1,
+          "elapsedMs": 1461.010209,
+          "stage": "launch",
+          "kind": "stage-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 1460.7880420000001
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 2,
+          "elapsedMs": 1461.030584,
+          "stage": "setup",
+          "kind": "checkpoint",
+          "data": {
+            "point": "start",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 3,
+          "elapsedMs": 82189.728667,
+          "stage": "setup",
+          "kind": "checkpoint",
+          "data": {
+            "point": "approval",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 4,
+          "elapsedMs": 82189.79283399999,
+          "stage": "setup",
+          "kind": "approval",
+          "data": {
+            "planHash": "3e6f08b04d52098e4edf2cd5fbd1ad2d6ff0b46941992b539ac81339240a91f2",
+            "changes": [
+              {
+                "path": "AGENTS.md",
+                "beforeHash": null,
+                "afterHash": "8be46b27dbf7b9ce2627df22f5c96fc94b396e694566de3dd74cc6aa3f9ce26e"
+              }
+            ],
+            "commandHashes": []
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 5,
+          "elapsedMs": 82189.944917,
+          "stage": "setup",
+          "kind": "assertion",
+          "data": {
+            "id": "reviewed-kernel-service-intent",
+            "expectedHash": "2a7713415a2676b8668c3dcedc0fd90c131e9a88b86975d9d9a4822d0e5f5932",
+            "actualHash": "2a7713415a2676b8668c3dcedc0fd90c131e9a88b86975d9d9a4822d0e5f5932"
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 6,
+          "elapsedMs": 178954.848667,
+          "stage": "setup",
+          "kind": "instructions-loaded",
+          "data": {
+            "path": "AGENTS.md",
+            "contentHash": "8be46b27dbf7b9ce2627df22f5c96fc94b396e694566de3dd74cc6aa3f9ce26e",
+            "toolUseId": "item_21"
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 7,
+          "elapsedMs": 178963.472,
+          "stage": "setup",
+          "kind": "checkpoint",
+          "data": {
+            "point": "end",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": ".tibicen/manifest.yml",
+                "contentHash": "483d9e12eb811009903607829700d0c5cd4c0f01ff3757873dfea33c817194f6",
+                "fileMode": 384
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "8be46b27dbf7b9ce2627df22f5c96fc94b396e694566de3dd74cc6aa3f9ce26e",
+                "fileMode": 384
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 8,
+          "elapsedMs": 178964.08237500003,
+          "stage": "setup",
+          "kind": "assertion",
+          "data": {
+            "id": "kernel-service-receipt",
+            "expectedHash": "31b48a5ed65138a92be5659a583e1018e32b5a944f49120edd9366998c5c35c5",
+            "actualHash": "31b48a5ed65138a92be5659a583e1018e32b5a944f49120edd9366998c5c35c5"
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 9,
+          "elapsedMs": 178964.155459,
+          "stage": "setup",
+          "kind": "driver-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 177503.362708
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 10,
+          "elapsedMs": 178964.168834,
+          "stage": "setup",
+          "kind": "usage",
+          "data": {
+            "costUsd": null,
+            "inputTokens": 581930,
+            "outputTokens": 10730
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 11,
+          "elapsedMs": 178964.168834,
+          "stage": "setup",
+          "kind": "stage-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 177503.362708
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 12,
+          "elapsedMs": 180461.716167,
+          "stage": "task",
+          "kind": "checkpoint",
+          "data": {
+            "point": "start",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": ".tibicen/manifest.yml",
+                "contentHash": "483d9e12eb811009903607829700d0c5cd4c0f01ff3757873dfea33c817194f6",
+                "fileMode": 384
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "8be46b27dbf7b9ce2627df22f5c96fc94b396e694566de3dd74cc6aa3f9ce26e",
+                "fileMode": 384
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 13,
+          "elapsedMs": 200413.41829200002,
+          "stage": "task",
+          "kind": "instructions-loaded",
+          "data": {
+            "path": "AGENTS.md",
+            "contentHash": "8be46b27dbf7b9ce2627df22f5c96fc94b396e694566de3dd74cc6aa3f9ce26e",
+            "toolUseId": "item_2"
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 14,
+          "elapsedMs": 200420.100959,
+          "stage": "task",
+          "kind": "checkpoint",
+          "data": {
+            "point": "approval",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": ".tibicen/manifest.yml",
+                "contentHash": "483d9e12eb811009903607829700d0c5cd4c0f01ff3757873dfea33c817194f6",
+                "fileMode": 384
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "8be46b27dbf7b9ce2627df22f5c96fc94b396e694566de3dd74cc6aa3f9ce26e",
+                "fileMode": 384
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 15,
+          "elapsedMs": 200420.15387500002,
+          "stage": "task",
+          "kind": "approval",
+          "data": {
+            "planHash": "06d8a5942e7da878a1c5580fc7a0e596939f3a23429dfcfbc86910974b237567",
+            "changes": [
+              {
+                "path": "src/math.js",
+                "beforeHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "afterHash": "9bb7e826d7b36a7ae750de37ef710704184949a7ceda7a43daa7a7165f6238c6"
+              },
+              {
+                "path": "tests/math.test.js",
+                "beforeHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "afterHash": "85f8206630f014f2ea7b96294dbe738b8738a202f685bba0cc0c3268502efb02"
+              }
+            ],
+            "commandHashes": [
+              "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4"
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 16,
+          "elapsedMs": 219931.275792,
+          "stage": "task",
+          "kind": "instructions-loaded",
+          "data": {
+            "path": "AGENTS.md",
+            "contentHash": "8be46b27dbf7b9ce2627df22f5c96fc94b396e694566de3dd74cc6aa3f9ce26e",
+            "toolUseId": "item_4"
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 17,
+          "elapsedMs": 219931.319209,
+          "stage": "task",
+          "kind": "command",
+          "data": {
+            "id": "native-node-test",
+            "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+            "exitCode": 0
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 18,
+          "elapsedMs": 219936.16070900002,
+          "stage": "task",
+          "kind": "checkpoint",
+          "data": {
+            "point": "end",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": ".tibicen/manifest.yml",
+                "contentHash": "483d9e12eb811009903607829700d0c5cd4c0f01ff3757873dfea33c817194f6",
+                "fileMode": 384
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "8be46b27dbf7b9ce2627df22f5c96fc94b396e694566de3dd74cc6aa3f9ce26e",
+                "fileMode": 384
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "9bb7e826d7b36a7ae750de37ef710704184949a7ceda7a43daa7a7165f6238c6",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "85f8206630f014f2ea7b96294dbe738b8738a202f685bba0cc0c3268502efb02",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 19,
+          "elapsedMs": 220207.72125,
+          "stage": "task",
+          "kind": "host-command",
+          "data": {
+            "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+            "exitCode": 0
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 20,
+          "elapsedMs": 220207.74758400003,
+          "stage": "task",
+          "kind": "driver-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 41243.582666
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 21,
+          "elapsedMs": 220207.7515,
+          "stage": "task",
+          "kind": "usage",
+          "data": {
+            "costUsd": null,
+            "inputTokens": 107702,
+            "outputTokens": 1454
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-tibicen",
+          "seq": 22,
+          "elapsedMs": 220207.7515,
+          "stage": "task",
+          "kind": "stage-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 41243.582666
+          }
+        }
+      ],
+      "grades": [
+        {
+          "schema": 1,
+          "id": "setup-invariants",
+          "attemptId": "bare-tibicen",
+          "stage": "setup",
+          "scope": "invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved",
+          "evidence": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "schema": 1,
+          "id": "task-invariants",
+          "attemptId": "bare-tibicen",
+          "stage": "task",
+          "scope": "invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved",
+          "evidence": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ]
+        },
+        {
+          "schema": 1,
+          "id": "task-task",
+          "attemptId": "bare-tibicen",
+          "stage": "task",
+          "scope": "task",
+          "verdict": "pass",
+          "reason": "independent-exports-passed",
+          "evidence": [
+            19
+          ]
+        }
+      ]
+    },
+    {
+      "experimentHash": "749802ef1f5a9e5eceb8e3003b866b6456b1e8e4e41f70137cc91e36e061a75f",
+      "scenarioHash": "273bf0ebe5fbb89549f629fda1728bca4949028cd16372cbdb8ba7335d9b921b",
+      "result": {
+        "schema": 1,
+        "id": "bare-baseline",
+        "scenarioId": "diagnostic-bare",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1459.6061249999912
+        },
+        "setup": {
+          "status": "pass",
+          "durationMs": 43246.93091699999
+        },
+        "task": {
+          "status": "pass",
+          "durationMs": 35781.313417
+        }
+      },
+      "events": [
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 0,
+          "elapsedMs": 1459.649624999991,
+          "stage": "launch",
+          "kind": "scenario-started",
+          "data": {}
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 1,
+          "elapsedMs": 1459.7374169999966,
+          "stage": "launch",
+          "kind": "stage-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 1459.6061249999912
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 2,
+          "elapsedMs": 1459.744624999992,
+          "stage": "setup",
+          "kind": "checkpoint",
+          "data": {
+            "point": "start",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 3,
+          "elapsedMs": 29330.674499999994,
+          "stage": "setup",
+          "kind": "checkpoint",
+          "data": {
+            "point": "approval",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 4,
+          "elapsedMs": 29330.75008299999,
+          "stage": "setup",
+          "kind": "approval",
+          "data": {
+            "planHash": "c4845af6eaa9721d94ab18c6188a65706fa51e585f1faf3f9c835f00cf3f7ef7",
+            "changes": [
+              {
+                "path": "AGENTS.md",
+                "beforeHash": null,
+                "afterHash": "8fef4c80d125244d92572f3b3594f08344e812c8e5fcebccfc0ef77ec5307c3f"
+              }
+            ],
+            "commandHashes": []
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 5,
+          "elapsedMs": 44706.374583,
+          "stage": "setup",
+          "kind": "checkpoint",
+          "data": {
+            "point": "end",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "8fef4c80d125244d92572f3b3594f08344e812c8e5fcebccfc0ef77ec5307c3f",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 6,
+          "elapsedMs": 44706.54024999999,
+          "stage": "setup",
+          "kind": "driver-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 43246.93091699999
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 7,
+          "elapsedMs": 44706.55345799998,
+          "stage": "setup",
+          "kind": "usage",
+          "data": {
+            "costUsd": null,
+            "inputTokens": 68176,
+            "outputTokens": 1731
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 8,
+          "elapsedMs": 44706.55345799998,
+          "stage": "setup",
+          "kind": "stage-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 43246.93091699999
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 9,
+          "elapsedMs": 46142.79316699997,
+          "stage": "task",
+          "kind": "checkpoint",
+          "data": {
+            "point": "start",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "8fef4c80d125244d92572f3b3594f08344e812c8e5fcebccfc0ef77ec5307c3f",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 10,
+          "elapsedMs": 63452.134249999974,
+          "stage": "task",
+          "kind": "instructions-loaded",
+          "data": {
+            "path": "AGENTS.md",
+            "contentHash": "8fef4c80d125244d92572f3b3594f08344e812c8e5fcebccfc0ef77ec5307c3f",
+            "toolUseId": "item_2"
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 11,
+          "elapsedMs": 63457.06662500001,
+          "stage": "task",
+          "kind": "checkpoint",
+          "data": {
+            "point": "approval",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "8fef4c80d125244d92572f3b3594f08344e812c8e5fcebccfc0ef77ec5307c3f",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 12,
+          "elapsedMs": 63457.10754199998,
+          "stage": "task",
+          "kind": "approval",
+          "data": {
+            "planHash": "06d8a5942e7da878a1c5580fc7a0e596939f3a23429dfcfbc86910974b237567",
+            "changes": [
+              {
+                "path": "src/math.js",
+                "beforeHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "afterHash": "9bb7e826d7b36a7ae750de37ef710704184949a7ceda7a43daa7a7165f6238c6"
+              },
+              {
+                "path": "tests/math.test.js",
+                "beforeHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "afterHash": "85f8206630f014f2ea7b96294dbe738b8738a202f685bba0cc0c3268502efb02"
+              }
+            ],
+            "commandHashes": [
+              "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4"
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 13,
+          "elapsedMs": 80184.45933299998,
+          "stage": "task",
+          "kind": "command",
+          "data": {
+            "id": "native-node-test",
+            "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+            "exitCode": 0
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 14,
+          "elapsedMs": 80188.692083,
+          "stage": "task",
+          "kind": "checkpoint",
+          "data": {
+            "point": "end",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "8fef4c80d125244d92572f3b3594f08344e812c8e5fcebccfc0ef77ec5307c3f",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "9bb7e826d7b36a7ae750de37ef710704184949a7ceda7a43daa7a7165f6238c6",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "85f8206630f014f2ea7b96294dbe738b8738a202f685bba0cc0c3268502efb02",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 15,
+          "elapsedMs": 80487.84291699997,
+          "stage": "task",
+          "kind": "host-command",
+          "data": {
+            "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+            "exitCode": 0
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 16,
+          "elapsedMs": 80487.863583,
+          "stage": "task",
+          "kind": "driver-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 35781.313417
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 17,
+          "elapsedMs": 80487.86687499998,
+          "stage": "task",
+          "kind": "usage",
+          "data": {
+            "costUsd": null,
+            "inputTokens": 79827,
+            "outputTokens": 1519
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "bare-baseline",
+          "seq": 18,
+          "elapsedMs": 80487.86687499998,
+          "stage": "task",
+          "kind": "stage-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 35781.313417
+          }
+        }
+      ],
+      "grades": [
+        {
+          "schema": 1,
+          "id": "setup-invariants",
+          "attemptId": "bare-baseline",
+          "stage": "setup",
+          "scope": "invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved",
+          "evidence": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "schema": 1,
+          "id": "task-invariants",
+          "attemptId": "bare-baseline",
+          "stage": "task",
+          "scope": "invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved",
+          "evidence": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "schema": 1,
+          "id": "task-task",
+          "attemptId": "bare-baseline",
+          "stage": "task",
+          "scope": "task",
+          "verdict": "pass",
+          "reason": "independent-exports-passed",
+          "evidence": [
+            15
+          ]
+        }
+      ]
+    },
+    {
+      "experimentHash": "749802ef1f5a9e5eceb8e3003b866b6456b1e8e4e41f70137cc91e36e061a75f",
+      "scenarioHash": "d2463dba27f1ca3fcdef5549bf0d37ea91c074a3449c803947163ff103b56f04",
+      "result": {
+        "schema": 1,
+        "id": "conflicts-baseline",
+        "scenarioId": "diagnostic-conflicts",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1711.9797089999774
+        },
+        "setup": {
+          "status": "pass",
+          "durationMs": 58578.71424999996
+        },
+        "task": {
+          "status": "pass",
+          "durationMs": 43230.59279200004
+        }
+      },
+      "events": [
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 0,
+          "elapsedMs": 1711.9817090000142,
+          "stage": "launch",
+          "kind": "scenario-started",
+          "data": {}
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 1,
+          "elapsedMs": 1711.998917000019,
+          "stage": "launch",
+          "kind": "stage-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 1711.9797089999774
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 2,
+          "elapsedMs": 1712.0024170000106,
+          "stage": "setup",
+          "kind": "checkpoint",
+          "data": {
+            "point": "start",
+            "complete": true,
+            "files": [
+              {
+                "path": ".agents/skills/project-workflow/SKILL.md",
+                "contentHash": "2aab70a2b1e7313603d34d0eb2db3a88475b85d76e92f5d13b322298b46bff01",
+                "fileMode": 420
+              },
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "eb3848b8f90cf88429c0bb52e61c782470135662ba5a790c80bfd56310ab7c4a",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 3,
+          "elapsedMs": 36865.57187500002,
+          "stage": "setup",
+          "kind": "checkpoint",
+          "data": {
+            "point": "approval",
+            "complete": true,
+            "files": [
+              {
+                "path": ".agents/skills/project-workflow/SKILL.md",
+                "contentHash": "2aab70a2b1e7313603d34d0eb2db3a88475b85d76e92f5d13b322298b46bff01",
+                "fileMode": 420
+              },
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "eb3848b8f90cf88429c0bb52e61c782470135662ba5a790c80bfd56310ab7c4a",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 4,
+          "elapsedMs": 36865.63883399998,
+          "stage": "setup",
+          "kind": "approval",
+          "data": {
+            "planHash": "6aaea9eee7086e94a0b6559ce5952623d6d9f2251eacb6a4351a1b159847bf0f",
+            "changes": [
+              {
+                "path": "AGENTS.md",
+                "beforeHash": "eb3848b8f90cf88429c0bb52e61c782470135662ba5a790c80bfd56310ab7c4a",
+                "afterHash": "7ef9a67aa046c56025997e2a15ef7a50224f764cea380f5060bf1daf7a3b9094"
+              },
+              {
+                "path": ".agents/skills/project-workflow/SKILL.md",
+                "beforeHash": "2aab70a2b1e7313603d34d0eb2db3a88475b85d76e92f5d13b322298b46bff01",
+                "afterHash": null
+              }
+            ],
+            "commandHashes": [
+              "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4"
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 5,
+          "elapsedMs": 60034.59687499999,
+          "stage": "setup",
+          "kind": "instructions-loaded",
+          "data": {
+            "path": "AGENTS.md",
+            "contentHash": "7ef9a67aa046c56025997e2a15ef7a50224f764cea380f5060bf1daf7a3b9094",
+            "toolUseId": "item_8"
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 6,
+          "elapsedMs": 60034.659166999976,
+          "stage": "setup",
+          "kind": "command",
+          "data": {
+            "id": "native-node-test",
+            "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+            "exitCode": 0
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 7,
+          "elapsedMs": 60039.215749999974,
+          "stage": "setup",
+          "kind": "checkpoint",
+          "data": {
+            "point": "end",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "7ef9a67aa046c56025997e2a15ef7a50224f764cea380f5060bf1daf7a3b9094",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 8,
+          "elapsedMs": 60290.670334000024,
+          "stage": "setup",
+          "kind": "host-command",
+          "data": {
+            "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+            "exitCode": 0
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 9,
+          "elapsedMs": 60290.68991700001,
+          "stage": "setup",
+          "kind": "driver-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 58578.71424999996
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 10,
+          "elapsedMs": 60290.69329199998,
+          "stage": "setup",
+          "kind": "usage",
+          "data": {
+            "costUsd": null,
+            "inputTokens": 82943,
+            "outputTokens": 2422
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 11,
+          "elapsedMs": 60290.69329199998,
+          "stage": "setup",
+          "kind": "stage-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 58578.71424999996
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 12,
+          "elapsedMs": 61623.674667000014,
+          "stage": "task",
+          "kind": "checkpoint",
+          "data": {
+            "point": "start",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "7ef9a67aa046c56025997e2a15ef7a50224f764cea380f5060bf1daf7a3b9094",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 13,
+          "elapsedMs": 79827.04070900002,
+          "stage": "task",
+          "kind": "instructions-loaded",
+          "data": {
+            "path": "AGENTS.md",
+            "contentHash": "7ef9a67aa046c56025997e2a15ef7a50224f764cea380f5060bf1daf7a3b9094",
+            "toolUseId": "item_2"
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 14,
+          "elapsedMs": 79831.98595900001,
+          "stage": "task",
+          "kind": "checkpoint",
+          "data": {
+            "point": "approval",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "7ef9a67aa046c56025997e2a15ef7a50224f764cea380f5060bf1daf7a3b9094",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 15,
+          "elapsedMs": 79832.03212499997,
+          "stage": "task",
+          "kind": "approval",
+          "data": {
+            "planHash": "06d8a5942e7da878a1c5580fc7a0e596939f3a23429dfcfbc86910974b237567",
+            "changes": [
+              {
+                "path": "src/math.js",
+                "beforeHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "afterHash": "9bb7e826d7b36a7ae750de37ef710704184949a7ceda7a43daa7a7165f6238c6"
+              },
+              {
+                "path": "tests/math.test.js",
+                "beforeHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "afterHash": "85f8206630f014f2ea7b96294dbe738b8738a202f685bba0cc0c3268502efb02"
+              }
+            ],
+            "commandHashes": [
+              "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4"
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 16,
+          "elapsedMs": 103254.11387499998,
+          "stage": "task",
+          "kind": "command",
+          "data": {
+            "id": "native-node-test",
+            "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+            "exitCode": 0
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 17,
+          "elapsedMs": 103257.91074999998,
+          "stage": "task",
+          "kind": "checkpoint",
+          "data": {
+            "point": "end",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "7ef9a67aa046c56025997e2a15ef7a50224f764cea380f5060bf1daf7a3b9094",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "9bb7e826d7b36a7ae750de37ef710704184949a7ceda7a43daa7a7165f6238c6",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "85f8206630f014f2ea7b96294dbe738b8738a202f685bba0cc0c3268502efb02",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 18,
+          "elapsedMs": 103521.24462499999,
+          "stage": "task",
+          "kind": "host-command",
+          "data": {
+            "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+            "exitCode": 0
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 19,
+          "elapsedMs": 103521.28166699997,
+          "stage": "task",
+          "kind": "driver-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 43230.59279200004
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 20,
+          "elapsedMs": 103521.28608400002,
+          "stage": "task",
+          "kind": "usage",
+          "data": {
+            "costUsd": null,
+            "inputTokens": 91671,
+            "outputTokens": 1575
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-baseline",
+          "seq": 21,
+          "elapsedMs": 103521.28608400002,
+          "stage": "task",
+          "kind": "stage-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 43230.59279200004
+          }
+        }
+      ],
+      "grades": [
+        {
+          "schema": 1,
+          "id": "setup-invariants",
+          "attemptId": "conflicts-baseline",
+          "stage": "setup",
+          "scope": "invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved",
+          "evidence": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "schema": 1,
+          "id": "task-invariants",
+          "attemptId": "conflicts-baseline",
+          "stage": "task",
+          "scope": "invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved",
+          "evidence": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ]
+        },
+        {
+          "schema": 1,
+          "id": "task-task",
+          "attemptId": "conflicts-baseline",
+          "stage": "task",
+          "scope": "task",
+          "verdict": "pass",
+          "reason": "independent-exports-passed",
+          "evidence": [
+            18
+          ]
+        }
+      ]
+    },
+    {
+      "experimentHash": "749802ef1f5a9e5eceb8e3003b866b6456b1e8e4e41f70137cc91e36e061a75f",
+      "scenarioHash": "d2463dba27f1ca3fcdef5549bf0d37ea91c074a3449c803947163ff103b56f04",
+      "result": {
+        "schema": 1,
+        "id": "conflicts-tibicen",
+        "scenarioId": "diagnostic-conflicts",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1567.9787080000388
+        },
+        "setup": {
+          "status": "pass",
+          "durationMs": 78521.08333299996
+        },
+        "task": {
+          "status": "pass",
+          "durationMs": 37901.70120800001
+        }
+      },
+      "events": [
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 0,
+          "elapsedMs": 1567.9810830000206,
+          "stage": "launch",
+          "kind": "scenario-started",
+          "data": {}
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 1,
+          "elapsedMs": 1567.997458000027,
+          "stage": "launch",
+          "kind": "stage-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 1567.9787080000388
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 2,
+          "elapsedMs": 1568.003625000012,
+          "stage": "setup",
+          "kind": "checkpoint",
+          "data": {
+            "point": "start",
+            "complete": true,
+            "files": [
+              {
+                "path": ".agents/skills/project-workflow/SKILL.md",
+                "contentHash": "2aab70a2b1e7313603d34d0eb2db3a88475b85d76e92f5d13b322298b46bff01",
+                "fileMode": 420
+              },
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "eb3848b8f90cf88429c0bb52e61c782470135662ba5a790c80bfd56310ab7c4a",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 3,
+          "elapsedMs": 51715.28224999999,
+          "stage": "setup",
+          "kind": "instructions-loaded",
+          "data": {
+            "path": "AGENTS.md",
+            "contentHash": "eb3848b8f90cf88429c0bb52e61c782470135662ba5a790c80bfd56310ab7c4a",
+            "toolUseId": "item_8"
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 4,
+          "elapsedMs": 51725.42595800001,
+          "stage": "setup",
+          "kind": "checkpoint",
+          "data": {
+            "point": "approval",
+            "complete": true,
+            "files": [
+              {
+                "path": ".agents/skills/project-workflow/SKILL.md",
+                "contentHash": "2aab70a2b1e7313603d34d0eb2db3a88475b85d76e92f5d13b322298b46bff01",
+                "fileMode": 420
+              },
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "eb3848b8f90cf88429c0bb52e61c782470135662ba5a790c80bfd56310ab7c4a",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 5,
+          "elapsedMs": 51725.46891599998,
+          "stage": "setup",
+          "kind": "approval",
+          "data": {
+            "planHash": "c48c8a11faa6bac883c11e7af8f733fbf72feffc09ca1990fd7c367a2c9c672e",
+            "changes": [
+              {
+                "path": "AGENTS.md",
+                "beforeHash": "eb3848b8f90cf88429c0bb52e61c782470135662ba5a790c80bfd56310ab7c4a",
+                "afterHash": "f056ff70eef8b65498fdafb82f7bc8623bc0effd168f203f45bd5f0d92710115"
+              },
+              {
+                "path": ".agents/skills/project-workflow/SKILL.md",
+                "beforeHash": "2aab70a2b1e7313603d34d0eb2db3a88475b85d76e92f5d13b322298b46bff01",
+                "afterHash": null
+              }
+            ],
+            "commandHashes": [
+              "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4"
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 6,
+          "elapsedMs": 79828.52287500002,
+          "stage": "setup",
+          "kind": "instructions-loaded",
+          "data": {
+            "path": "AGENTS.md",
+            "contentHash": "f056ff70eef8b65498fdafb82f7bc8623bc0effd168f203f45bd5f0d92710115",
+            "toolUseId": "item_7"
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 7,
+          "elapsedMs": 79828.60962500004,
+          "stage": "setup",
+          "kind": "command",
+          "data": {
+            "id": "native-node-test",
+            "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+            "exitCode": 0
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 8,
+          "elapsedMs": 79832.35783300002,
+          "stage": "setup",
+          "kind": "checkpoint",
+          "data": {
+            "point": "end",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "f056ff70eef8b65498fdafb82f7bc8623bc0effd168f203f45bd5f0d92710115",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 9,
+          "elapsedMs": 80089.04258300003,
+          "stage": "setup",
+          "kind": "host-command",
+          "data": {
+            "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+            "exitCode": 0
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 10,
+          "elapsedMs": 80089.06154100003,
+          "stage": "setup",
+          "kind": "driver-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 78521.08333299996
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 11,
+          "elapsedMs": 80089.06737499998,
+          "stage": "setup",
+          "kind": "usage",
+          "data": {
+            "costUsd": null,
+            "inputTokens": 267850,
+            "outputTokens": 4309
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 12,
+          "elapsedMs": 80089.06737499998,
+          "stage": "setup",
+          "kind": "stage-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 78521.08333299996
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 13,
+          "elapsedMs": 81594.33887500002,
+          "stage": "task",
+          "kind": "checkpoint",
+          "data": {
+            "point": "start",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "f056ff70eef8b65498fdafb82f7bc8623bc0effd168f203f45bd5f0d92710115",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 14,
+          "elapsedMs": 98167.72908299998,
+          "stage": "task",
+          "kind": "instructions-loaded",
+          "data": {
+            "path": "AGENTS.md",
+            "contentHash": "f056ff70eef8b65498fdafb82f7bc8623bc0effd168f203f45bd5f0d92710115",
+            "toolUseId": "item_1"
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 15,
+          "elapsedMs": 98173.32437500003,
+          "stage": "task",
+          "kind": "checkpoint",
+          "data": {
+            "point": "approval",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "f056ff70eef8b65498fdafb82f7bc8623bc0effd168f203f45bd5f0d92710115",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 16,
+          "elapsedMs": 98173.364083,
+          "stage": "task",
+          "kind": "approval",
+          "data": {
+            "planHash": "06d8a5942e7da878a1c5580fc7a0e596939f3a23429dfcfbc86910974b237567",
+            "changes": [
+              {
+                "path": "src/math.js",
+                "beforeHash": "0f9a27ab1743e3097fbc06f6379a0d8f1e55c9e27f9eeaafe3f3ea7c915bbe56",
+                "afterHash": "9bb7e826d7b36a7ae750de37ef710704184949a7ceda7a43daa7a7165f6238c6"
+              },
+              {
+                "path": "tests/math.test.js",
+                "beforeHash": "11a4158a995345718c155925de09fe8c399b58fe8058cd941eef969ea3d21c14",
+                "afterHash": "85f8206630f014f2ea7b96294dbe738b8738a202f685bba0cc0c3268502efb02"
+              }
+            ],
+            "commandHashes": [
+              "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4"
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 17,
+          "elapsedMs": 117718.01095800003,
+          "stage": "task",
+          "kind": "command",
+          "data": {
+            "id": "native-node-test",
+            "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+            "exitCode": 0
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 18,
+          "elapsedMs": 117721.23533300002,
+          "stage": "task",
+          "kind": "checkpoint",
+          "data": {
+            "point": "end",
+            "complete": true,
+            "files": [
+              {
+                "path": ".github/workflows/ci.yml",
+                "contentHash": "a1d12f0a9c55c41e16e019a7ceded77ff9d5721cb165beff91b290daf7161b10",
+                "fileMode": 420
+              },
+              {
+                "path": "AGENTS.md",
+                "contentHash": "f056ff70eef8b65498fdafb82f7bc8623bc0effd168f203f45bd5f0d92710115",
+                "fileMode": 420
+              },
+              {
+                "path": "docs/team-note.md",
+                "contentHash": "6b0f606d64dd3dd98b038443371f6da81d18642adf1e25fd2e60810d46d50892",
+                "fileMode": 420
+              },
+              {
+                "path": "package.json",
+                "contentHash": "b2624fd10a5a09feda3326f28a9e7a15cbf75be9d148c302d04c83ee59fb7f6c",
+                "fileMode": 420
+              },
+              {
+                "path": "src/math.js",
+                "contentHash": "9bb7e826d7b36a7ae750de37ef710704184949a7ceda7a43daa7a7165f6238c6",
+                "fileMode": 420
+              },
+              {
+                "path": "tests/math.test.js",
+                "contentHash": "85f8206630f014f2ea7b96294dbe738b8738a202f685bba0cc0c3268502efb02",
+                "fileMode": 420
+              }
+            ]
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 19,
+          "elapsedMs": 117990.7365,
+          "stage": "task",
+          "kind": "host-command",
+          "data": {
+            "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+            "exitCode": 0
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 20,
+          "elapsedMs": 117990.76462500001,
+          "stage": "task",
+          "kind": "driver-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 37901.70120800001
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 21,
+          "elapsedMs": 117990.768583,
+          "stage": "task",
+          "kind": "usage",
+          "data": {
+            "costUsd": null,
+            "inputTokens": 81297,
+            "outputTokens": 1328
+          }
+        },
+        {
+          "schema": 1,
+          "experimentId": "codex-diagnostic-corrected-2026-10-23",
+          "attemptId": "conflicts-tibicen",
+          "seq": 22,
+          "elapsedMs": 117990.768583,
+          "stage": "task",
+          "kind": "stage-finished",
+          "data": {
+            "status": "pass",
+            "durationMs": 37901.70120800001
+          }
+        }
+      ],
+      "grades": [
+        {
+          "schema": 1,
+          "id": "setup-invariants",
+          "attemptId": "conflicts-tibicen",
+          "stage": "setup",
+          "scope": "invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved",
+          "evidence": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "schema": 1,
+          "id": "task-invariants",
+          "attemptId": "conflicts-tibicen",
+          "stage": "task",
+          "scope": "invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved",
+          "evidence": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ]
+        },
+        {
+          "schema": 1,
+          "id": "task-task",
+          "attemptId": "conflicts-tibicen",
+          "stage": "task",
+          "scope": "task",
+          "verdict": "pass",
+          "reason": "independent-exports-passed",
+          "evidence": [
+            19
+          ]
+        }
+      ]
+    }
+  ]
+}

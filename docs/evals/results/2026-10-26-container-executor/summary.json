@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "sourceCommit": "13dcc95deb2cad09687d5ff86a0c1df2bc0acccc",
+  "imageId": "sha256:ba23f5c65d7d77b8aaac15fb53cdda90ecd25acff2738fd6d40fc762519dc6bd",
+  "versions": {
+    "codex": "0.157.0",
+    "node": "24.15.0",
+    "pnpm": "11.21.0"
+  },
+  "imageCanaries": 5,
+  "sessionCanaries": 7,
+  "unitChecks": 10,
+  "hostHarness": {
+    "outcome": "offline-pass",
+    "attempt": 8,
+    "nativeApplyPatch": true,
+    "remoteShellCalls": 2,
+    "syntheticHttpRequests": 4,
+    "sourceAndConfigUnchanged": true,
+    "hostSentinelsUnchanged": true,
+    "containerStoppedAndRemoved": true
+  },
+  "zcodeDiagnosis": {
+    "syntheticCases": 17,
+    "projectionChecks": 8,
+    "historicalCause": "unknown",
+    "sdkSourceFilesUnchanged": 12457,
+    "historicalInputsUnchanged": 9
+  },
+  "realAuthModelApiCalls": 0,
+  "productionReady": false,
+  "commits": 0,
+  "proofHashes": {
+    "image": "208609d9c04ffb8c4da58d6181c7d0ddb60e010e4b01cef9957a2e0cd0d87f00",
+    "session": "a27bf8cf80094d1e7ad2bb7f9f582fa8dea66fed3c6340bb1263b6f677d2a8d7",
+    "hostHarness": "0f3747b2316aa27c063fbad7dbb66e0de3e9599d6f5d809e49ec8a79ccaaa626",
+    "hostInventory": "e7c21a244a599cdf3b5d475e980e1b512278deb2fc53956b601c401add646f2d",
+    "zcode": "db800feb5e0a3a7f134c9f13341c02352c0a23ed062633cafbf4bb80dc6f11b9"
+  },
+  "workingTreeChanges": true,
+  "fullTestSuite": {
+    "command": "pnpm test",
+    "tests": 626,
+    "passed": 626,
+    "failed": 0,
+    "skipped": 0
+  }
+}

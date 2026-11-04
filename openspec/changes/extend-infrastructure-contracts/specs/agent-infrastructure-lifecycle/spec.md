@@ -71,6 +71,11 @@
 - **THEN** the original session identifier, integration attempts and command journal remain, and any new command outcomes are appended
 - **AND** an ordinary apply starts a separate integration without copying the previous session's command journal
 
+#### Scenario: A remaining plan omits an unfinished mandatory manual action
+- **WHEN** a newly approved resume plan omits an action that is still required and pending in the original saved state or last manual session
+- **THEN** resume refuses before writing project files, state, manifest or local usage data; omission is not evidence of completion
+- **AND** an explicitly represented confirmed done action can complete the same session, an unchanged pending action remains visible, and a separate fresh apply preserves the earlier integration independently
+
 #### Scenario: A passport replacement was interrupted
 - **WHEN** сохранено точное намерение записи паспорта и процесс прерван до либо после замены
 - **THEN** прежний или согласованный паспорт распознаётся; паспорт вне обоих состояний не затирается
@@ -108,3 +113,19 @@ File modes SHALL reflect observed platform behavior. New first-party text defaul
 #### Scenario: Exact Windows permissions cannot be represented
 - **WHEN** a proposal, raw approved plan or direct snapshot write requests an unsupported result mode, including upstream 0644 or explicit 0600
 - **THEN** it refuses with unsupported-file-mode before target/state writes rather than silently mapping the requested permissions or recording them as installed
+
+### Requirement: MCP results account for launch environment dependencies
+MCP plan and verification results SHALL track supported variable references in command, arguments and mapped environment values without reading values or launching a server. Unknown availability in the target context SHALL be env-context-unverified; a missing required variable in a known context SHALL be no-key.
+
+#### Scenario: A variable is referenced only by a command or argument
+- **WHEN** a supported Claude or Cursor launch refers to an environment variable without an explicit environment mapping
+- **THEN** both planning and verification report that variable and the unknown/missing/available target-context result
+- **AND** generated configuration bytes and execution trust remain unchanged, while Cursor non-environment placeholders are not treated as credentials
+
+### Requirement: Codex verification checks the requested server table
+Codex manual-block verification SHALL distinguish a single quoted server name from a dotted nested TOML path. A different table SHALL NOT count as the requested block being applied.
+
+#### Scenario: A dotted Codex name is pasted as nested bare keys
+- **WHEN** the requested server name is team.docs but the supplied table is [mcp_servers.team.docs] instead of [mcp_servers."team.docs"]
+- **THEN** verification reports that the manual block was not applied rather than configured-unverified
+- **AND** the generated quoted block and a supported single bare-key name retain their existing verification behavior

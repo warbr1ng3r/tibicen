@@ -1,0 +1,228 @@
+{
+  "schema": 1,
+  "date": "2026-10-27",
+  "kind": "deterministic-installed-cli-lifecycle",
+  "candidate": {
+    "schema": 1,
+    "sourceSha": "3fb29efb1087a616aeb69a3b22f400972bfb8a3e",
+    "version": "0.1.0",
+    "createdAt": "2026-10-26T22:37:15.049Z",
+    "scope": "local macOS/Codex alpha candidate; not public release acceptance",
+    "files": 86,
+    "sha256sumsHash": "6ecd6b77d28e7adf3e9921b20078c80b2091a0109c8b5b6bfabaa9a201b4de23",
+    "node": "v24.15.0",
+    "pnpm": "11.21.0",
+    "repoGate": {
+      "passed": 667,
+      "failed": 0,
+      "skipped": 0,
+      "logHash": "cffc64de694715610f147ad31db34c3c3083c54630e357c4bf950175165d5ec8"
+    },
+    "distributionProof": {
+      "pass": true,
+      "checksums": 86,
+      "forbidden": [],
+      "selfTests": {
+        "tibicen-init": {
+          "schema": 1,
+          "status": "passed",
+          "version": "0.1.0",
+          "resources": "available",
+          "scope": "distribution-resource-check"
+        },
+        "tibicen-adopt": {
+          "schema": 1,
+          "status": "passed",
+          "version": "0.1.0",
+          "resources": "available",
+          "scope": "distribution-resource-check"
+        }
+      },
+      "authReads": 0,
+      "modelCalls": 0
+    },
+    "gitTagsCreated": 0,
+    "remoteCalls": 0,
+    "publications": 0
+  },
+  "claims": {
+    "installedOutsideCheckout": true,
+    "candidateAndInstalledUnchanged": true,
+    "authReads": 0,
+    "modelCalls": 0,
+    "apiCalls": 0,
+    "networkCalls": 0,
+    "commits": 0,
+    "liveAgentSessions": 0
+  },
+  "cases": [
+    {
+      "id": "init",
+      "outcome": "pass",
+      "status": "complete",
+      "applicationCheck": "green firstAttempt true; owned one-test Node fixture only",
+      "receipts": [
+        "001-init-scan",
+        "003-init-proposal",
+        "004-init-apply",
+        "005-init-status",
+        "006-init-verify",
+        "007-init-report"
+      ]
+    },
+    {
+      "id": "adopt",
+      "outcome": "pass",
+      "status": "complete",
+      "preserved": [
+        "owner prefix/suffix bytes",
+        "CRLF",
+        "app.js",
+        "app.test.js",
+        "package.json",
+        "owner CI"
+      ],
+      "receipts": [
+        "009-adopt-scan",
+        "010-adopt-proposal",
+        "011-adopt-apply",
+        "012-adopt-verify",
+        "013-adopt-report"
+      ]
+    },
+    {
+      "id": "repeat-noop",
+      "outcome": "pass",
+      "method": "read-only proposal/scan/status/verify/report; no apply when no requested changes or executions",
+      "changes": 0,
+      "treeHashModesMtimeIdentical": true,
+      "receipts": [
+        "014-repeat-proposal",
+        "015-repeat-scan",
+        "016-repeat-status",
+        "017-repeat-verify",
+        "018-repeat-report"
+      ]
+    },
+    {
+      "id": "refusal",
+      "outcome": "pass",
+      "errors": [
+        "consent-required",
+        "application-protected",
+        "stale-plan"
+      ],
+      "noWrites": true,
+      "receipts": [
+        "019-refusal-proposal",
+        "020-refusal-wrong-digest",
+        "021-refusal-app-write",
+        "022-refusal-stale-hash"
+      ]
+    },
+    {
+      "id": "manual-action",
+      "outcome": "pass",
+      "status": "manual-action-required",
+      "externalAction": "pending generic step and Codex TOML block",
+      "mcpAfterHostManualBlock": "configured-unverified",
+      "serverExecuted": false,
+      "receipts": [
+        "023-manual-proposal",
+        "024-manual-apply",
+        "025-manual-status",
+        "026-manual-report",
+        "046-codex-manual-proposal",
+        "047-codex-manual-apply",
+        "048-codex-manual-report",
+        "049-codex-manual-verify-block"
+      ]
+    },
+    {
+      "id": "incomplete-resume",
+      "outcome": "pass",
+      "method": "deliberately missing registered entrypoint in owned fixture; empty improve; precise repair proposal and approved resume",
+      "initialStatus": "incomplete",
+      "initialExitCode": 1,
+      "cause": "checks.infrastructure.issues missing-file",
+      "finalStatus": "complete",
+      "sameSessionId": true,
+      "sessionId": "d045cbb9-7406-4f6d-9d25-50082699b4a8",
+      "attempts": 2,
+      "earlierSessionHistoryPreserved": true,
+      "stateRemovedOnlyAfterComplete": true,
+      "receipts": [
+        "027-incomplete-setup-proposal",
+        "028-incomplete-setup-apply",
+        "029-incomplete-empty-proposal",
+        "030-incomplete-empty-apply",
+        "031-incomplete-status",
+        "032-incomplete-report",
+        "033-resume-repair-proposal",
+        "034-resume-repair",
+        "035-resume-status",
+        "036-resume-report"
+      ]
+    },
+    {
+      "id": "preset",
+      "outcome": "pass",
+      "savedOnlyWithRequested": true,
+      "strictRoundTrip": true,
+      "newProjectFreshScan": true,
+      "secondProjectStatus": "complete",
+      "noSourceOrApprovalInherited": true,
+      "receipts": [
+        "037-preset-save-without-request",
+        "038-preset-save",
+        "039-preset-load",
+        "040-preset-unknown-schema",
+        "041-preset-instructions-rejected",
+        "042-preset-second-scan",
+        "043-preset-second-proposal",
+        "044-preset-second-apply"
+      ]
+    },
+    {
+      "id": "unknown-manifest-schema",
+      "outcome": "pass",
+      "error": "unsupported-manifest-schema",
+      "noWrites": true,
+      "receipts": [
+        "045-unknown-manifest-proposal"
+      ]
+    }
+  ],
+  "limitations": [
+    "No fresh agent startup/loading/task/quiz/skill compatibility observations; compat pairs empty.",
+    "No source discovery/current practices/network or third-party commands; sources empty.",
+    "No abrupt process kill or unknown-outcome command replay exercised; incomplete was a known missing-file defect.",
+    "No Git installation/update/remove or schema migration accepted by this L1 report; delivery scope separate.",
+    "No empty-folder scaffold case; init target is a freshly owned existing Node project without infrastructure.",
+    "No human/semantic/public release acceptance.",
+    "Manual step remains pending in the saved project report; owned config block was checked read-only and server was not launched.",
+    "Node tiny test is a deterministic fixture, not proof of a full application or new agent session."
+  ],
+  "hostNotes": [
+    "Host initially assumed exit 0 for incomplete apply and status. CLI returned structured incomplete and exit 1 correctly. Receipts retained and commands not repeated; continuation used existing output."
+  ],
+  "confirmedProductBugs": [],
+  "receiptCount": 50,
+  "node": {
+    "version": "v24.15.0",
+    "absoluteExecutableUsed": true
+  },
+  "evidence": ".evals-private/candidate-lifecycle-20261027-r1/result.json",
+  "commands": {
+    "candidateCli": 48,
+    "ownedDirectNodeTests": 2,
+    "receipts": 50
+  },
+  "integrity": {
+    "frozenCandidateUnchanged": true,
+    "installedCopyUnchanged": true,
+    "checksumListedResources": 86,
+    "includingChecksumFile": 87,
+    "manifestSha256": "8c9b52e0b0a91ff639590c937f548d022fbe64e53aebd42968859833da8a5f95"
+  }
+}

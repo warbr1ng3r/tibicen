@@ -1,0 +1,51 @@
+# Process version update and calibration — 31 October 2026
+
+The bounded mechanical transition from a real OpenSpec 1.14.2 setup to 1.14.3 passed. A separate blind model judge completed the prepared calibration controls. A later fresh-session task completed planning but stopped before application edits on an executor request error. Human calibration and full product acceptance remain open in the [readiness ledger](../../V1_READINESS.md).
+
+## Distinct-version process adoption
+
+This is the optional, explicitly selected OpenSpec scenario from [PROC-02](../../COMPONENT_INTEGRATION.md#proc-02--existing-work-survives-adoption-and-update). It adds no dependency to ordinary Tibicen runs and no legacy version to the supported adapter. Both versions came from exact [upstream npm packages](https://www.npmjs.com/package/@fission-ai/openspec?activeTab=versions); archive SRI/SHA256, licenses, package files and separate dependency locks were checked before execution. The [upstream release](https://github.com/Fission-AI/OpenSpec/releases/tag/v1.14.3) supplies the newer CLI. No application dependency or personal installation was changed.
+
+On macOS/Node 24.15.0, the actual 1.14.2 CLI initialized six native skills beside existing team rules, a local template/config, specs and a `keep-double` change. Their generated-version fields confirm the prior condition. There was no prior Tibicen registration.
+
+The 1.14.3 native `update` first ran on an owned preview copy. Root retained and reviewed all changed contents/diffs, then separately approved the exact update on the original test project. Actual bytes/modes matched the preview: six generated skills changed, a profile file appeared only in the owned HOME, and the target marker's timestamp was touched without a content change. The source and target runtimes stayed in separate pinned directories; this was not an in-place global package-manager upgrade.
+
+Tibicen's existing 1.14.3 adapter then proposed one missing empty anchor and its own process instruction. After exact fixture-operator approval, adoption completed with one legitimate session. All 13 pre-existing files, all six upgraded native skills and the local process decisions were preserved. Structural/package-resource checks passed; status/report were complete without pending manual work. Repeating both the proposal and native update wrote nothing. The project test passed1/1 before and after.
+
+All 19 lifecycle calls succeeded within 66 seconds, below the 22-call/15-seconds-per-call/600-seconds-total limits, with no lifecycle retry or timeout. Independent evidence review accepted the result and verified 13 protected files, 87 payload/inventory files, 4,352 runtime hashes and 313 owned links. The standalone payload remains the same 86-file working build as [the platform checks](../2026-10-30-platform-checks/README.md), inventory SHA256 `170fdef9501f0ffb85b7d418bd416364bf6f76fbde046f4c4e9e9bd799669447`; runtime source is `b08252e`, local base `8f962f9`. It is still labeled `0.1.0-alpha.1`, not a new release.
+
+The earlier provisioning preparation stopped before its first installation child: a host review helper used an unavailable direct module import, and the original resolution-stage deadline expired. Those first records remain. After correcting the review import, a separately reviewed first-install stage used the unchanged locks and disabled package scripts/hooks/workspace inheritance. It did not reset the expired protocol or replay an unknown install. This host preparation error is separate from the successful product lifecycle.
+
+Private evidence: `.evals-private/process-distinct-update-20261031/`, including sources/locks, both preparation records, frozen protocol, exact approvals/diffs, 19 command receipts and final result. Hash and scope checks are not an OS sandbox or a global write trace. Root approvals were synthetic operator decisions, not human pilot observations.
+
+This mechanical stage proves update/adoption and preservation of an externally configured process. It does not prove migration of an already registered Tibicen process between versions, fresh-agent loading/use, a completed specification-to-implementation task or full PROC-02 acceptance. The later fresh-session observation is recorded separately below. Built-in CLI execution/loading/task and absent project checks correctly remain `unverified`; separate host command successes do not rewrite those results.
+
+## Fresh-session task after update
+
+One new Codex app context, without conversation history, received an exact separate copy of the completed project/HOME and a task to add `triple(value)` while retaining `double`, team rules and the existing process. It read the installed instructions directly and used the actual 1.14.3 CLI. After separate root fixture approval, native scaffolding and four planning artifacts completed; native apply reported `ready`, with all three tasks pending. The executor then proposed exact contents and before-hashes for only the existing source/test files. Root and an independent reviewer accepted that minimal proposal before implementation permission.
+
+Three host-journal amendments were needed before their respective operations: the initial allowlist omitted native context resolution and three required capability-inspection vectors, and its single completion write conflicted with the installed skill's sequential task updates. The executor surfaced each conflict before attempting a forbidden call. Original helpers, approvals and receipts remain; amendments were reviewed separately without resetting the context, phase clocks or budgets. These are host preparation interventions, not product fixes or evidence of an uninterrupted autonomous workflow.
+
+The first implementation write was rejected before any application effect. The executor reported supplying an extra `beforeHash` field to the journal interface documented to accept only `path` and `content`; the first assertion failure and traceback were retained. It stopped without retry. No application write, project test, strict validation or task-completion mark occurred. The final native state remains the previously observed `ready`, 0/3; no post-error native call was made. Independent math/task checks were not run because implementation never began.
+
+Root verified all 24 original project files and both HOME files unchanged in bytes, modes and timestamps, all 4,352 runtime hashes and 313 links, and all 924 indexed prior-evidence files. The original completed project/HOME also remained intact. Only five approved new planning files exist in the new project. There were 18 successful native commands, 36 journal reads/inventory calls and four planning writes; the failed write is a separate operation, not a successful nineteenth command. Every operation stayed within its dispatched phase limit. No timeout, repeat or root implementation continuation occurred.
+
+Independent ponytail-review accepted the accuracy of the stopped-outcome report, receipt order and preservation checks. This artifact review does not turn the unfinished task into a pass; the invalid payload details remain attributed to the executor's retained report.
+
+The owner's subsequent autonomous instruction led to a separately approved [recovered continuation](../2026-10-31-release-followup/README.md). That later stage completed the same task with root-prepared stdin assistance; the failed first attempt and the evidence above remain unchanged.
+
+Private evidence: `.evals-private/fresh-process-task-20261031/`, including the frozen protocol, original and amended journals, exact approvals, command/read/write receipts, retained first failure, executor reports and root verification. One executor context was consumed. App/model build, implicit native discovery and a full activity trace remain unknown; procedural scope checks are not OS isolation. This is a stopped raw diagnostic with successful planning, not a completed useful task, full PROC-02 pass, human pilot or accepted semantic result. The product source and installed instructions did not change.
+
+## Independent calibration judge
+
+One new Codex app subagent, started without conversation history, received only the 12 unchanged neutral-code requests and a blank schema from [the prepared controls](../2026-10-31-product-acceptance/README.md). It returned 12 complete responses covering 84 judgments. Root froze the originals before validation and added host bindings only in separate copies. The current quality API accepted every response's structure/citations and all 12 bindings. Independent artifact review reproduced these checks in memory; the original human packet and its artifact hashes were unchanged.
+
+The private comparison retains the new answers, synthetic references, earlier recorded controls and every disagreement. No answer was revised to fit an expected outcome or replaced with another judge. Case-specific answers/comparisons are withheld from the human assessment folder. The API's calibration role is named `recorded`; here it labels newly saved model answers, not human grades or reused reference answers.
+
+App/model build is unknown. A complete activity trace was not supplied; fresh-context dispatch and limited task instructions do not establish filesystem isolation or prove assessor access beyond the retained evidence. This is one app calibration observation, not native-profile certification, model-accuracy measurement or completed calibration. **Human assessments remain zero**; mandatory human checks and disputes stay pending. No accepted semantic series was launched. This calibration is also separate from the real-project usefulness pilot.
+
+Private evidence: `.evals-private/calibration-judge-20261031/`, including frozen inputs, original responses/hashes, bound copies, validation and the lead-only comparison. These materials and external runtimes are outside the distributed skills.
+
+## Release impact
+
+No product source, adapter support, dependency manifest, distribution version, release or deployment changed. The existing 715-test gate was not rerun for documentation-only integration. Fresh-agent task completion, human-calibrated semantic acceptance, pilot/support and exact-candidate delivery remain open. This package creates no commit or publication.

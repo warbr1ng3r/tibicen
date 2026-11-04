@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "sourceCommit": "13dcc95deb2cad09687d5ff86a0c1df2bc0acccc",
+  "workingTreeChanges": true,
+  "fullTestSuite": {
+    "tests": 639,
+    "passed": 639,
+    "failed": 0,
+    "skipped": 0
+  },
+  "codex": {
+    "implementation": "narrow native caller; generic whole-workflow loader remains blocked",
+    "version": "0.157.0",
+    "modelCandidate": "gpt-5.5",
+    "imageId": "sha256:ba23f5c65d7d77b8aaac15fb53cdda90ecd25acff2738fd6d40fc762519dc6bd",
+    "synthetic": {
+      "schema": 1,
+      "finalAttempts": [
+        {
+          "attempt": 9,
+          "mode": "success",
+          "proofPass": true,
+          "callerPass": true,
+          "requests": 4,
+          "nativePatch": true,
+          "sourceUnchanged": true,
+          "configUnchanged": true,
+          "removed": true,
+          "sha256": "aeaf0c1544554a17be23b0543f7a697b53669b0f89363698c1bf28b48a4a3316"
+        },
+        {
+          "attempt": 10,
+          "mode": "tool-failure",
+          "proofPass": true,
+          "callerPass": false,
+          "requests": 1,
+          "nativePatch": false,
+          "sourceUnchanged": true,
+          "configUnchanged": true,
+          "removed": true,
+          "sha256": "09e8110dc1d7f1ddb53c866f4ca431690efb22cf0dd25c175aff64a824795e65"
+        },
+        {
+          "attempt": 11,
+          "mode": "patch-failure",
+          "proofPass": true,
+          "callerPass": false,
+          "requests": 1,
+          "nativePatch": false,
+          "sourceUnchanged": true,
+          "configUnchanged": true,
+          "removed": true,
+          "sha256": "176cf0fd5c2c0f2e55ecb80018cc67ad6be9387e996db2f34f1c2125ede400ea"
+        }
+      ],
+      "realModelRequests": 0,
+      "realAuthInputs": 0,
+      "apiRequests": 0,
+      "currentSourceHashesVerified": true
+    },
+    "syntheticProofSha256": "569031b4b72a698c2509cdcda68bb48774299b44a9fb03992d60a383c350095c",
+    "subscription": {
+      "hostSessions": 1,
+      "started": true,
+      "completed": false,
+      "pass": false,
+      "durationMs": 7428.7501250000005,
+      "nativeCommands": 0,
+      "recordTypes": [
+        "error",
+        "turn.failed"
+      ],
+      "httpStatus": null,
+      "httpInferenceAndInternalRetries": "unknown",
+      "rootRetries": 0,
+      "fallbacks": 0,
+      "paidApi": 0,
+      "configUnchanged": true,
+      "sourceUnchanged": true,
+      "hostWorkspaceUnchanged": true,
+      "hostSentinelUnchanged": true,
+      "generatedHomeRemoved": true,
+      "containerStopped": true,
+      "containerRemoved": true,
+      "protocolSha256": "e05b2cbcab1adc07697e0f2e57ececbb74aa2b6c4b0a8cfe07613600816f0337",
+      "resultSha256": "11d117deefc42d43d69a74738692e078aec3cc9ea57ea1cdcc64dfe7fbd7c9b8",
+      "cause": "unknown; raw terminal text was not retained"
+    }
+  },
+  "zcode": {
+    "scope": "new private offline diagnostic host; no live mode",
+    "cases": 12,
+    "projectionAndNetworkChecks": 12,
+    "bundledPinNegativeCheck": "pass",
+    "proofSha256": "a6e1b1745c7f7fb1f1126a8c857459fe5eaa2ffd4cdf690a38071c23c03c17b8",
+    "sourceFilesUnchanged": 12457,
+    "historicalHostFilesUnchanged": 180,
+    "diagnosisFilesUnchanged": 8,
+    "observationFiles": 712,
+    "jsonObservations": 694,
+    "realAuthHttpModelApiRetries": 0,
+    "historicalCause": "unknown"
+  },
+  "review": "five Codex findings and one ZCode bundled-pin finding fixed; independent re-review Ship for stated scopes",
+  "limitations": [
+    "synthetic provider responses are not real model calls",
+    "initial full-suite timeout fixture failure and separate failed synthetic acceptance attempts retained",
+    "generic multi-phase workflow, real model availability, authenticated endpoint and release acceptance remain unverified"
+  ],
+  "commits": 0
+}

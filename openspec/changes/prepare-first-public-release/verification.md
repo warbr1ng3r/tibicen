@@ -6,7 +6,7 @@
 
 Офлайн-CI уже находится в `.github/workflows/ci.yml`: SHA-pinned Actions, pnpm11.21.0, contents:read, persist-credentials:false, test/build/unpacked checks без model secrets или live eval. Команды прошли локально. Git remote отсутствует; первый Ubuntu/GitHub Actions run не заявляется выполненным. Прежняя формулировка design «CI нет» исправлена по фактическому коду.
 
-Локальная поставка заморожена в maintainer-local record; omitted from public source: version0.1.0, source SHA, 86files, SHA256SUMS hash `6ecd6b77d28e7adf3e9921b20078c80b2091a0109c8b5b6bfabaa9a201b4de23`, log hash и unpacked proofs в candidate.json. Это ограниченный local alpha candidate, не публичный релиз. Новых тегов, remote/model/auth/API вызовов или публикаций нет.
+Локальная поставка заморожена в `.evals-private/mvp-candidate-3fb29ef/`: version0.1.0, source SHA, 86files, SHA256SUMS hash `6ecd6b77d28e7adf3e9921b20078c80b2091a0109c8b5b6bfabaa9a201b4de23`, log hash и unpacked proofs в candidate.json. Это ограниченный local alpha candidate, не публичный релиз. Новых тегов, remote/model/auth/API вызовов или публикаций нет.
 
 Задачи 2.1/2.2 приняты локально; прогресс3/14. Публичная доставка, update/remove установленной версии, приёмка заявленных L1/SKILL/PROC/PREF, human review, начальный пилот, контакты и release draft остаются открытыми. Исторические результаты ниже сохранены с их исходной датой и областью.
 

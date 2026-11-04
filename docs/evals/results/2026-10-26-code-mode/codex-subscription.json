@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "outcome": "pass",
+  "profile": {
+    "id": "codex-contained-0.157.0-gpt-6-astra",
+    "agent": "codex",
+    "version": "0.157.0",
+    "model": "gpt-6-astra",
+    "auth": "subscription",
+    "paid": false,
+    "startupHash": "1e4ed643345ac7b82e2ac3236693970640c8cf3c8bf6d921dad2d9538004fb12",
+    "permissionsHash": "52c26279fb4cfabddc453133391c0b599fc11ec5069bc0c578e3484acad0d7f2"
+  },
+  "baseCommit": "13dcc95deb2cad09687d5ff86a0c1df2bc0acccc",
+  "workingTreeChanges": true,
+  "protocolHash": "fe82c2da6c686aba53c6ca6a54633c92e3cdec345a6691d080f9146a6743552a",
+  "resultHash": "9991bebf022ba8192ce52b2bad5f7c00fbd95649a1c367d8582af2d80bcd238f",
+  "freezeHash": "d040adf79d2db9a4af102cc59d4ee1eba5cffc6015e638cf84b23cfaad612577",
+  "durationMs": 24193.78775,
+  "hostSessions": 1,
+  "rootRetries": 0,
+  "fallbacks": 0,
+  "paidApi": 0,
+  "refreshAuthority": false,
+  "requestMaxRetries": 0,
+  "streamMaxRetries": 0,
+  "httpRequestCount": null,
+  "inferenceRequestCount": null,
+  "internalAuthRecoveryCount": null,
+  "nativeCommands": 2,
+  "nativePatch": true,
+  "returnedPaths": [
+    "math.mjs",
+    "math.test.mjs"
+  ],
+  "usage": {
+    "inputTokens": 40913,
+    "outputTokens": 418
+  },
+  "independentExportOracle": true,
+  "independentAgentTests": true,
+  "sourceUnchanged": true,
+  "configUnchanged": true,
+  "codeModeUnchanged": true,
+  "hostWorkspaceUnchanged": true,
+  "hostSentinelUnchanged": true,
+  "generatedHomeRemoved": true,
+  "newStagesRemoved": true,
+  "modelContainerRemoved": true,
+  "oracleContainerRemoved": true,
+  "fullAcceptance": false
+}

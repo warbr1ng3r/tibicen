@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "kind": "subscription-gpt-6-astra-contained-tibicen",
+  "pass": false,
+  "hostAttempts": 1,
+  "completedCollections": 1,
+  "scope": "setup-only AGENTS init/adopt",
+  "runs": [
+    {
+      "schema": 1,
+      "id": "contained-init-tibicen-1",
+      "scenarioId": "contained-init",
+      "profileId": "codex-contained-tibicen-setup",
+      "variant": "tibicen",
+      "started": true,
+      "launch": {
+        "status": "pass",
+        "durationMs": 9101.592708
+      },
+      "setup": {
+        "status": "error",
+        "durationMs": 5571.9802500000005,
+        "reason": "contained-setup-child-failed"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "contained-setup-only"
+      }
+    },
+    {
+      "schema": 1,
+      "id": "contained-adopt-tibicen-1",
+      "scenarioId": "contained-adopt",
+      "profileId": "codex-contained-tibicen-setup",
+      "variant": "tibicen",
+      "started": false,
+      "launch": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "aborted"
+      },
+      "setup": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "not-started"
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "setup-not-passed"
+      }
+    }
+  ],
+  "firstChild": {
+    "containerReason": "tool-failure",
+    "completed": false,
+    "successfulNativeCommands": 1,
+    "lastObservedCommand": "read shipped tibicen-init SKILL.md",
+    "exactFailedCommand": "not retained before owner cancellation",
+    "cause": "unknown"
+  },
+  "independentChecks": 0,
+  "cleanup": {
+    "removedCids": 1,
+    "allKnownCidsAbsent": true,
+    "leftoverTemps": [],
+    "ownerListUnchanged": true,
+    "sentinelUnchanged": true
+  },
+  "sourceUnchanged": true,
+  "rootRetries": 0,
+  "fallbacks": 0,
+  "paidApi": 0,
+  "startupSessions": 0,
+  "judgeSessions": 0,
+  "httpInferenceInternalRetries": "unknown",
+  "protocolHash": "777c9409860352c37d5245ef18a385bdc7095909743840fa077409b3e853e063",
+  "freezeHash": "e266ac1419d98a8d07a5a483dedebe5934c37112580efcba0aacdf81e1b6bcf9",
+  "resultHash": "397e91b8887da05f8ff81952bd886d8eb65f0c042336f5292194f7fc38c23ea4"
+}

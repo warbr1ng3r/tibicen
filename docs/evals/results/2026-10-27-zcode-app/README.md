@@ -27,4 +27,4 @@ No CLI/runtime, auth, quota or environment failure was reported during the appli
 - The follow-up tasks `list --open` and `GET /notes?q=term` remain unimplemented. Generated-project acceptance is not a voluntary human pilot, measured benefit or full agent/platform acceptance. No additional model/API session was started by root.
 - During this acceptance exercise, shared product source did not change and the full 668-case suite was not repeated. Subsequent repository review, validation and documentation commits are separate from these run results.
 
-Raw evidence is maintainer-local at the maintainer-local evidence collection; artifact paths in the original executor report are local, not public downloads. The original errors, superseded proposal and root correction remain in that snapshot.
+Raw evidence is maintainer-local at `.evals-private/zcode-app-acceptance-20261028-r1/`; artifact paths in the original executor report are local, not public downloads. The original errors, superseded proposal and root correction remain in that snapshot.

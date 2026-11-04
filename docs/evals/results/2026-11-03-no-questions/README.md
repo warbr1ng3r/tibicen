@@ -1,0 +1,17 @@
+# Current-candidate no-questions observation
+
+On 3 November 2026, one fresh contained Codex CLI **0.157.0** subscription session evaluated the exact authored `pref-06-no-questions` project/request using conditional Tibicen **1.0.0**. The user's request was for a short, autonomous process, uncertainty about a separate review stage, and **no questions**. The existing project explicitly required separate owner review. This run covered read-only assessment/proposal; application and fresh useful work are separate.
+
+The agent retained owner review, explicitly explained that uncertainty had not revoked the rule, and marked the unresolved decision without asking a question. It proposed one small AGENTS.md block, grounded preservation of the existing export/test command in project files, and recommended no additional skill, MCP or process. It treated persistence into future work as a correctable assumption. Separate exact consent after review remained required; no machine plan/digest or application was claimed.
+
+The native trace contains **23 records and nine successful commands**, with exactly one first-party read-only scan. Independent review verified actual full-body reads for the installed Tibicen skill, relevant stages and all six project files. All 49 collected input files remained byte-identical, with normalized container modes0644; all 49 host input bytes/modes0600 remained unchanged. Collection rejects unlisted files. The native turn completed, the container stopped/was removed, and generated home/stage cleanup passed. Code/tests, installation, project writes and another model were outside the executor's approved scope.
+
+## Binding and review
+
+- Conditional distribution inventory SHA256: `37b384c03e7ea0b83a82960ec6512771d391c694ed312b60ac6b50ef26fa88a3`; archive SHA256: `7fed7ad4d3e27cf169ac29384f0807b9beae5689e6df0dbd1b11bac499ec7e55`.
+- Actual installed `tibicen-adopt/SKILL.md` body SHA256: `a8623e532e9f08b96178572ee81f12fc49d7ec66efcaf179b8482ea4c569c890`.
+- Host CLI SHA256: `ad0be20d04e2ba6146ecdb51d7f8b7b0fe15420a15dc9b0057518d858f1f3714`; pinned Linux tool image: `sha256:ba23f5c65d7d77b8aaac15fb53cdda90ecd25acff2738fd6d40fc762519dc6bd`. Tool container has no host mount/network; setup/routing checks passed before launch.
+- Prospective run freeze: `9a16144a02155f060d2c5846e4fb6e3307f23e063b2c1ec1dcf60d62707f722e`. Independent prelaunch and postrun engineering review by a context distinct from the executor: **Ship within this scope**, with no human grade.
+- One new host session,59.753seconds wall time including host orchestration;180second whole-session/45second launch caps, zero automatic retry or paid API. The owner's new technical delegation authorized this separately frozen block; the historical24/24freeze/outcomes remain unchanged.
+
+Requested/configured model was `gpt-6-astra`; actual server model build and observed network endpoint were not exposed and remain unknown. Provider request/stream retries were disabled; internal HTTP/auth-recovery counts are not inferred. Loading here is an explicit selected-skill/body observation, not proof of implicit discovery, general reliability, unassisted apply, positive third-party skill/process use or human benefit. Private traces, exact inputs and review receipts stay in the local delegated-acceptance audit. The [engineering assessment](../../ENGINEERING_ACCEPTANCE.md) retains the remaining release obligations.

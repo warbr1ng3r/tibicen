@@ -765,6 +765,158 @@ test('recovery of an owned component uses current-plan originals and retains its
   );
 });
 
+for (const savedState of [true, false])
+  test(`a ${savedState ? 'saved-state' : 'no-state'} resume cannot omit a required pending manual action`, async (t) => {
+    const { root, home, execute } = await fixture(t);
+    const action = {
+      id: 'owner-step',
+      status: 'pending',
+      description: 'Finish the separately reviewed manual step.',
+    };
+    const initial = await createProposal(
+      root,
+      {
+        mode: 'improve',
+        changes: [
+          {
+            path: 'AGENTS.md',
+            content: desired,
+            reason: 'Update instructions.',
+          },
+        ],
+        manualActions: [
+          action,
+          { ...action, id: 'optional-step', required: false },
+          { ...action, id: 'completed-step', status: 'done' },
+        ],
+      },
+      { home },
+    );
+    if (savedState) await execute(initial, { point: 'after-file-write' });
+    else
+      await applyPlan(root, initial, { home, approvedDigest: initial.digest });
+    const first = await getStatus(root);
+    assert.equal(
+      first.status,
+      savedState ? 'incomplete' : 'manual-action-required',
+    );
+    assert.equal(Boolean(first.state), savedState);
+    if (savedState) assert.equal(first.manifest, null);
+    const sessionId = first.state?.id ?? first.manifest!.sessions.at(-1)!.id;
+    const omitted = await createProposal(
+      root,
+      {
+        mode: 'improve',
+        changes: [
+          {
+            path: '.cursor/rules/old.mdc',
+            content: 'Separately approved new rule.\n',
+            reason: 'Do not apply this while a required action is omitted.',
+          },
+        ],
+      },
+      { home },
+    );
+    const snapshot = async () =>
+      Promise.all(
+        [root, home].map(async (directory) =>
+          Promise.all(
+            (await readdir(directory, { recursive: true }))
+              .sort()
+              .map(async (relative) => {
+                const filename = path.join(directory, relative);
+                const info = await stat(filename);
+                return [
+                  relative,
+                  info.mode,
+                  info.ino,
+                  info.mtimeMs,
+                  info.isFile() ? await readFile(filename, 'utf8') : null,
+                ];
+              }),
+          ),
+        ),
+      );
+    const before = await snapshot();
+    await assert.rejects(
+      applyPlan(root, omitted, {
+        home,
+        resume: true,
+        approvedDigest: omitted.digest,
+      }),
+      { code: 'manual-action-required' },
+    );
+    assert.deepEqual(await snapshot(), before);
+
+    const pending = await createProposal(
+      root,
+      { mode: 'improve', manualActions: [action] },
+      { home },
+    );
+    const retained = await applyPlan(root, pending, {
+      home,
+      resume: true,
+      approvedDigest: pending.digest,
+    });
+    assert.equal(retained.status, 'manual-action-required');
+    assert.equal(retained.id, sessionId);
+    assert.deepEqual(retained.manifest!.sessions.at(-1)!.manualActions, [
+      action,
+    ]);
+    const completed = await createProposal(
+      root,
+      { mode: 'improve', manualActions: [{ ...action, status: 'done' }] },
+      { home },
+    );
+    const finished = await applyPlan(root, completed, {
+      home,
+      resume: true,
+      approvedDigest: completed.digest,
+    });
+    assert.equal(finished.status, 'complete');
+    assert.equal(finished.id, sessionId);
+    assert.equal(finished.manifest!.sessions.length, 1);
+    assert.equal(
+      finished.manifest!.sessions[0].manualActions[0].status,
+      'done',
+    );
+  });
+
+test('a resume can explicitly make a pending manual action optional', async (t) => {
+  const { root, home } = await fixture(t);
+  const action = {
+    id: 'owner-step',
+    status: 'pending',
+    required: true,
+    description: 'Finish the separately reviewed manual step.',
+  };
+  const initial = await createProposal(
+    root,
+    { mode: 'improve', manualActions: [action] },
+    { home },
+  );
+  const first = await applyPlan(root, initial, {
+    home,
+    approvedDigest: initial.digest,
+  });
+  assert.equal(first.status, 'manual-action-required');
+  const plan = await createProposal(
+    root,
+    { mode: 'improve', manualActions: [{ ...action, required: false }] },
+    { home },
+  );
+  const result = await applyPlan(root, plan, {
+    home,
+    resume: true,
+    approvedDigest: plan.digest,
+  });
+  assert.equal(result.status, 'complete');
+  assert.equal(result.id, first.id);
+  assert.deepEqual(result.manifest!.sessions[0].manualActions, [
+    { ...action, required: false },
+  ]);
+});
+
 for (const resume of [true, false])
   test(`a no-state ${resume ? 'resume retains' : 'apply separates'} the command journal`, async (t) => {
     const { root, home } = await fixture(t, true);
@@ -826,6 +978,12 @@ for (const resume of [true, false])
       root,
       {
         mode: 'improve',
+        manualActions: resume
+          ? initial.proposal.manualActions.map((action) => ({
+              ...action,
+              status: 'done',
+            }))
+          : [],
         commands: [
           {
             id: 'new-check',
@@ -858,8 +1016,17 @@ for (const resume of [true, false])
     const sessions = (await getStatus(root)).manifest!.sessions;
     assert.equal(sessions.length, resume ? 1 : 2);
     const current = sessions.at(-1)!;
-    if (resume) assert.deepEqual(current.commandAttempts!.slice(0, 1), journal);
-    else assert.deepEqual(sessions[0].commandAttempts, journal);
+    if (resume) {
+      assert.deepEqual(current.commandAttempts!.slice(0, 1), journal);
+      assert.equal(current.manualActions[0].status, 'done');
+    } else {
+      assert.deepEqual(sessions[0].commandAttempts, journal);
+      assert.deepEqual(
+        sessions[0].manualActions,
+        initial.proposal.manualActions,
+      );
+      assert.deepEqual(current.manualActions, []);
+    }
     assert.deepEqual(
       current.commandAttempts!.map((attempt) => attempt.id),
       resume ? ['original-check', 'new-check'] : ['new-check'],

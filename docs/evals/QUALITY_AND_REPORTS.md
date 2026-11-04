@@ -2,6 +2,25 @@
 
 This is an offline harness contract. Recorded grades check data flow and disputed cases; they are neither independent-model trials nor human expert review. Native loading of a selected component and process compliance by a real agent are checked through the [SKILL/PROC program](COMPONENT_INTEGRATION.md). The explicit entry was implemented in task 2.6; see the [command contract](EXTERNAL_RUNS.md). The [first Codex diagnostics](CODEX_DIAGNOSTIC.md), 3.1–3.2, contain observations of separate setup/task sessions, but no independent quality grades yet. Other profiles and series remain in change group 3.
 
+## Engineering release assessment
+
+**Policy adopted 2026-11-03:** technical release acceptance uses a separate [engineering assessment](ENGINEERING_ACCEPTANCE.md), without a prerelease human preference grade, initial pilot or human rubric calibration. The full feature scope, L0/L1 hard invariants and functional quality, positive component loading/use, candidate-specific delivery and maintenance remain mandatory. This section does not change the experiment grader or its historical results. The rubric, human cross-check and calibration sections below still govern studies claiming human-calibrated experimental acceptance.
+
+Each engineering assessment records:
+
+| Field | Required content |
+| --- | --- |
+| Criterion | Exact requirement/case/variant and the concrete claim being assessed |
+| Binding | Candidate source/payload hashes, original observed build, relevant agent/tool versions and inputs; unknown values remain unknown |
+| Observation | Direct trace, action, file or executed check with its source; file presence and executor self-report do not prove loading/use |
+| Independent review | Reviewer/context distinct from the executor, inspected evidence, reasoned conclusion and limits |
+| Disposition | `reusable-within-scope`, `insufficient` or `missing`; reusable narrow evidence is not an overall case pass |
+| Limits | Missing versions/traces, support restrictions, assistance, failed attempts and remaining mandatory checks |
+
+Independent engineering review can assess grounding, fit, sufficiency and consistency against the actual task and repository facts. Loading, application and process still need the corresponding observations. Review cannot create a missing observation, turn an unsupported self-report into proof, or establish participant preference, measured savings or human-calibrated quality. A missing mandatory criterion blocks technical readiness; explicitly permitted unsupported checks retain their reasons.
+
+Reused evidence keeps its original source/build and claim scope. A separately reviewed impact analysis can explain applicability to changed files; it is not a newly executed candidate trial. Preserve candidate attempt limits and all known failures. The existing 24/24 executor freeze remains exhausted; this policy grants no new model runs, paid fallback or publication permission. Record actual human observations separately under [PILOT](../PILOT.md), retaining the postpublication checkpoint and privacy rules.
+
 ## Rubric
 
 Version `tibicen-quality-1` and the exact request text are defined in [quality.ts](../../scripts/evals/quality.ts). Applicable criteria are frozen with conditions before an experiment; the basic four are mandatory for setup, and application is mandatory for task. Loading and process are added to task when a scenario requires a new-session observation. For each criterion, the judge returns `pass/fail/unverified`, a reason code and evidence ids.

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "outcome": "error-before-tools",
+  "hostSessions": 1,
+  "sdkModelRequestEvents": 1,
+  "httpRequests": null,
+  "inferenceCalls": null,
+  "internalHttpRetries": null,
+  "hostRetries": 0,
+  "paidApiCalls": 0,
+  "nativePortCalls": 0,
+  "safeFailures": [
+    {
+      "origin": "model_network_status",
+      "reason": "unknown",
+      "code": "model_request_failed",
+      "statusCode": null,
+      "phase": "prepare",
+      "detailHash": "4fb96be6e75a00a8d8a94fc67eebb68d95b665c8db3e3e3a085fbb4c5130e878"
+    }
+  ],
+  "elapsedMs": 9684,
+  "originalProfileFilesUnchanged": 9,
+  "priorArtifactFilesUnchanged": 476,
+  "preLiveManifestFilesUnchanged": 155,
+  "disposableScopeRemoved": true,
+  "sharedRuntimeChanged": false,
+  "fullNativeGate": "blocked",
+  "privateProofSha256": "24f4ad367b71828bec3a3e17791ddd816c7ac451094e9188be6def01d78e1512",
+  "sourceCommit": "3c5b227649371507ddc4eb46ac5133afe6db1cab",
+  "sdkVersion": "0.17.0",
+  "installedCliVersion": "0.16.9",
+  "selection": {
+    "providerId": "account:zai-individual-coding-plan",
+    "modelId": "GLM-5.3",
+    "reasoningLevel": "low"
+  },
+  "preflightCases": 6,
+  "offlineHostProofSha256": "d8f104f06f6de1ae5ec3c0610d07d996ab11ea48a87ea6f2b594a7b55543383c",
+  "acceptance": "native-tool probe failed before tools; no Tibicen installation/loading/semantic/human/release acceptance"
+}

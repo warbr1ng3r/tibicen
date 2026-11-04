@@ -19,11 +19,11 @@ The local address is http://127.0.0.1:8371/. Stop the development server on that
 
 ## Languages and first use
 
-The landing serves English at the configured base route (`/` locally, `/tibicen/` on GitHub Pages) and Russian at `ru/` (`/ru/` locally, `/tibicen/ru/` on GitHub Pages). The EN/RU links remain visible on mobile and work without JavaScript. Switching languages navigates to another static page and resets unsaved preset answers; it does not change the project's programming-language hint.
+The current source serves English at the configured base route (`/` locally) and Russian at `ru/` (`/ru/` locally). The EN/RU links remain visible on mobile and work without JavaScript. Switching languages navigates to another static page and resets unsaved preset answers; it does not change the project's programming-language hint.
 
 Both pages share one layout and components. Installation and both first prompts are together after the hero, followed by a compact workflow and a clearly illustrative before/after report. Source, release and installation/update/removal links target the canonical English project guides. The optional preset starts collapsed; inferable stack/type/agent hints are in advanced settings. Commands and serialized preset values remain identical between languages. No translation service or new dependency is used.
 
-The bilingual iteration was published on 28 October 2026 from reviewed source [`31694d4`](https://github.com/warbr1ng3r/tibicen/commit/31694d4b234efc82064b8a1799f7a179a6541041); [CI](https://github.com/warbr1ng3r/tibicen/actions/runs/40689855224) and [GitHub Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/40690279699) passed. The [English](https://warbr1ng3r.github.io/tibicen/) and [Russian](https://warbr1ng3r.github.io/tibicen/ru/) pages are live. Public route/assets, equivalent commands/presets and no-JavaScript switching checks are recorded in the [publication receipt](../openspec/changes/localize-and-simplify-landing/verification.md#publication-28-october-2026). The existing skill release is unchanged.
+The bilingual iteration was published on 28 October 2026 from [`31694d4`](https://github.com/warbr1ng3r/tibicen/commit/31694d4b234efc82064b8a1799f7a179a6541041). [Ubuntu CI](https://github.com/warbr1ng3r/tibicen/actions/runs/40689855224) and [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/40690279699) passed for that commit. The live English root and Russian `ru/`, eight assets, language switching with/without JavaScript and identical local preset downloads passed; see [verification](../openspec/changes/localize-and-simplify-landing/verification.md#publication). The earlier deployment receipt below is historical.
 
 ## GitHub Pages
 
@@ -47,7 +47,7 @@ TIBICEN_SITE_BASE=/repo/ pnpm exec playwright test --config landing/playwright.c
 
 `tibicen.invalid` is an example origin for local checking, without publication or requests to it. Restore the ordinary build afterward with `pnpm build:site`. To inspect a project-path build, use preview with the same `--base /repo/` and visit `/repo/`.
 
-The [landing page](https://warbr1ng3r.github.io/tibicen/) was initially published on 27 October 2026 from source [`e0f59a5`](https://github.com/warbr1ng3r/tibicen/tree/e0f59a55c7ce7581e402c3e270aa162fa1e0dc52); the [GitHub Pages run](https://github.com/warbr1ng3r/tibicen/actions/runs/40438226284) succeeded. Page publication does not close full MVP acceptance of the skills.
+The [landing page](https://warbr1ng3r.github.io/tibicen/) was published on 27 October 2026 from source [`e0f59a5`](https://github.com/warbr1ng3r/tibicen/tree/e0f59a55c7ce7581e402c3e270aa162fa1e0dc52); the [GitHub Pages run](https://github.com/warbr1ng3r/tibicen/actions/runs/40438226284) succeeded. Page publication does not close full MVP acceptance of the skills.
 
 ## AstroWind
 
@@ -76,6 +76,6 @@ Current references were recorded on macOS. Playwright uses separate references f
 
 ## Product installation and site development
 
-Visitors install two ready-to-use skills from the separate version tag `v0.1.0-alpha.1` through skills 1.7.4 and npm, pnpm or Yarn 2+. Site source and dependencies are unnecessary. The tag and page were published on 27 October 2026 after Git delivery checks: full-SHA and tag installations matched all 86 distribution files, and resume/removal checks passed. Other agent choices remain experimental; alpha observations cover macOS, Node 24 and Codex.
+The visitor command pins the prepared 1.0.0 distribution commit `e8532bba0582564c93e50de1f55174daaa9bbd34` through skills 1.7.4 and npm, pnpm or Yarn 2+. Public delivery checks and Pages returned-byte verification for 1.0.0 remain pending. Site source and dependencies are unnecessary. The historical alpha tag `v0.1.0-alpha.1` and page were published on 27 October 2026 after Git delivery checks: full-SHA and tag installations matched all 86 distribution files, and resume/removal checks passed. Other agent choices remain experimental; alpha observations cover macOS, Node 24 and Codex.
 
 Repository development uses pnpm 11.21.0, `pnpm-workspace.yaml` and one `pnpm-lock.yaml`. The version is pinned in the root `packageManager`. Enable pnpm with `corepack enable pnpm` or install the specified version separately. npm/Yarn examples on the page only select how to run the skill installer.

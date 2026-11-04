@@ -1,0 +1,90 @@
+{
+  "outcome": "pass",
+  "ownApplyStatus": "complete",
+  "ownVerify": {
+    "kind": "verify",
+    "status": "green",
+    "firstAttempt": true,
+    "newRegressions": []
+  },
+  "ownReportStatus": "complete",
+  "baseline": {
+    "complete": true,
+    "runs": [
+      {
+        "id": "astro-build",
+        "commandHash": "8ec28faa85a46596abc620255744db2114a68c764ca30e4d7ee95bbbf6e817cf",
+        "exitCode": 0,
+        "outputHash": "4fd8a8ed95f66ae12313cd33e5e57eb6b110226440370610ab5caf3d43a8149c",
+        "timedOut": false
+      },
+      {
+        "id": "site-unit",
+        "commandHash": "36f836318fe3f732f5ea85a8994012b26504a6ca373b1685cdbe2d6d6de51e92",
+        "exitCode": 0,
+        "outputHash": "58d92641ca864a778fec33a14de014a8066e51a47a67054709583314d65cbacb",
+        "timedOut": false
+      }
+    ],
+    "reason": "comparison-required"
+  },
+  "commands": [
+    {
+      "id": "astro-build",
+      "hash": "8ec28faa85a46596abc620255744db2114a68c764ca30e4d7ee95bbbf6e817cf"
+    },
+    {
+      "id": "site-unit",
+      "hash": "36f836318fe3f732f5ea85a8994012b26504a6ca373b1685cdbe2d6d6de51e92"
+    }
+  ],
+  "originalSourcePreserved": true,
+  "originalDependenciesPreserved": true,
+  "fixtureApplicationPreserved": true,
+  "fixtureDependenciesPreserved": true,
+  "externalRunnerInjected": false,
+  "network": "OS-denied",
+  "externalModelCalls": 0,
+  "paidApiCalls": 0,
+  "limits": [
+    "trusted local package payload",
+    "darwin-arm64 Node v24.15.0",
+    "explicit Node entrypoints; no package installation",
+    "offline product acceptance; no native/model/release acceptance"
+  ],
+  "environment": {
+    "kind": "local-node-modules",
+    "roots": [
+      "landing/node_modules",
+      "node_modules"
+    ],
+    "hash": "4feaa1d6c7c4c3965f75e1057a2317045e65b5ff4eedcc94e5bc65cb62f4e177",
+    "files": 18311,
+    "bytes": 251344980,
+    "platform": "darwin",
+    "arch": "arm64",
+    "nodeVersion": "v24.15.0",
+    "contentIsAgentContext": false
+  },
+  "resultHash": "ce41deda32b65b5cc8d8e7fa4f18dc02b3270df29c9fadae20111b8d8837aacd",
+  "sourceHead": "f8fa46b06786b6842dfc65181e0639b8f35ce81f",
+  "durationsMs": {
+    "proposal": 10545,
+    "apply": 85443,
+    "report": 135,
+    "verify": 146,
+    "status": 126
+  },
+  "priorFixtureFailuresPreserved": 3,
+  "priorPassingRunPreserved": {
+    "resultHash": "9db7178738102ba5a9da26f798234d62b19c16161c4f9a250e26602253058d7c",
+    "applyDurationMs": 178935
+  },
+  "copySimplification": {
+    "beforeApplyMs": 178935,
+    "afterApplyMs": 85443,
+    "ratio": 0.478,
+    "timingScope": "Two local observations, no general benchmark claim",
+    "approvedCopyHashAndRollbackRetained": true
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "schema": 1,
+  "kind": "actual-native-cli-with-synthetic-responses",
+  "realModelRequests": 0,
+  "authReads": 0,
+  "paidApi": 0,
+  "pass": true,
+  "cases": [
+    {
+      "scenario": "contained-init",
+      "setup": {
+        "status": "pass",
+        "durationMs": 14659.894459
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "contained-setup-only"
+      }
+    },
+    {
+      "scenario": "contained-adopt",
+      "setup": {
+        "status": "pass",
+        "durationMs": 15947.079332999994
+      },
+      "task": {
+        "status": "skip",
+        "durationMs": 0,
+        "reason": "contained-setup-only"
+      }
+    }
+  ],
+  "hostSessions": 4,
+  "loopbackResponses": 8,
+  "independentChecks": [
+    {
+      "case": "adopt",
+      "verify": "passed",
+      "status": "complete",
+      "report": {
+        "schema": 1,
+        "status": "complete",
+        "reason": null,
+        "applied": [
+          {
+            "path": "AGENTS.md",
+            "action": "modify"
+          }
+        ],
+        "recovery": null,
+        "assumptions": [],
+        "commandAttempts": [],
+        "checks": {
+          "infrastructure": {
+            "kind": "infrastructure",
+            "status": "passed",
+            "scope": "structure-only",
+            "issues": [],
+            "sharedRules": {
+              "status": "passed",
+              "copies": [],
+              "issues": []
+            }
+          },
+          "verify": {
+            "kind": "verify",
+            "status": "unverified",
+            "reason": "no-project-checks",
+            "newRegressions": []
+          },
+          "task": {
+            "kind": "task",
+            "status": "unverified",
+            "reason": "not-requested"
+          },
+          "quiz": {
+            "kind": "quiz",
+            "status": "unverified",
+            "reason": "not-requested"
+          },
+          "compat": {
+            "enabled": false,
+            "reason": "skipped-by-user",
+            "pairs": []
+          },
+          "mcp": []
+        },
+        "manualActions": [],
+        "manualFragments": []
+      },
+      "captureCounts": {
+        "apply": {
+          "available": 1,
+          "unavailable": 0
+        },
+        "verify": {
+          "available": 1,
+          "unavailable": 0
+        },
+        "status": {
+          "available": 1,
+          "unavailable": 0
+        },
+        "report": {
+          "available": 1,
+          "unavailable": 0
+        }
+      }
+    },
+    {
+      "case": "init",
+      "verify": "passed",
+      "status": "complete",
+      "report": {
+        "schema": 1,
+        "status": "complete",
+        "reason": null,
+        "applied": [
+          {
+            "path": "AGENTS.md",
+            "action": "add"
+          }
+        ],
+        "recovery": null,
+        "assumptions": [],
+        "commandAttempts": [],
+        "checks": {
+          "infrastructure": {
+            "kind": "infrastructure",
+            "status": "passed",
+            "scope": "structure-only",
+            "issues": [],
+            "sharedRules": {
+              "status": "passed",
+              "copies": [],
+              "issues": []
+            }
+          },
+          "verify": {
+            "kind": "verify",
+            "status": "unverified",
+            "reason": "no-project-checks",
+            "newRegressions": []
+          },
+          "task": {
+            "kind": "task",
+            "status": "unverified",
+            "reason": "not-requested"
+          },
+          "quiz": {
+            "kind": "quiz",
+            "status": "unverified",
+            "reason": "not-requested"
+          },
+          "compat": {
+            "enabled": false,
+            "reason": "skipped-by-user",
+            "pairs": []
+          },
+          "mcp": []
+        },
+        "manualActions": [],
+        "manualFragments": []
+      },
+      "captureCounts": {
+        "apply": {
+          "available": 1,
+          "unavailable": 0
+        },
+        "verify": {
+          "available": 0,
+          "unavailable": 1
+        },
+        "status": {
+          "available": 1,
+          "unavailable": 0
+        },
+        "report": {
+          "available": 0,
+          "unavailable": 1
+        }
+      }
+    }
+  ],
+  "cidsRemoved": true,
+  "sourcesUnchanged": true,
+  "firstFailure": {
+    "pass": true,
+    "responses": 1,
+    "hosts": 1,
+    "runs": [
+      {
+        "schema": 1,
+        "id": "contained-init-tibicen-1",
+        "scenarioId": "contained-init",
+        "profileId": "codex-contained-tibicen-setup",
+        "variant": "tibicen",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 9066.478417
+        },
+        "setup": {
+          "status": "error",
+          "durationMs": 1208.331583000001,
+          "reason": "contained-setup-child-failed"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "contained-setup-only"
+        }
+      },
+      {
+        "schema": 1,
+        "id": "contained-adopt-tibicen-1",
+        "scenarioId": "contained-adopt",
+        "profileId": "codex-contained-tibicen-setup",
+        "variant": "tibicen",
+        "started": false,
+        "launch": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "aborted"
+        },
+        "setup": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "not-started"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "setup-not-passed"
+        }
+      }
+    ],
+    "cidsRemoved": true
+  },
+  "privateResultHash": "3172ef3f9c8d5649e2d822e772b15cb5d491f2420dbd3bb266de0171b0386adf",
+  "privateProofHash": "12bd35fa4f889ee30babcc8ae8a82bb3ac61d19c8b51f63a10a8a6b515371ead"
+}

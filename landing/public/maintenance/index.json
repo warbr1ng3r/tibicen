@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "channel": "https://warbr1ng3r.github.io/tibicen/maintenance/index.json",
+  "independence": "Separate committed Pages artifact, publication and HTTP origin from release attachments; shared GitHub administration.",
+  "versions": [
+    {
+      "version": "0.1.0-alpha.1",
+      "publishedAtUtc": "2026-10-27T02:23:50Z",
+      "sourceCommit": "e0f59a55c7ce7581e402c3e270aa162fa1e0dc52",
+      "distributionCommit": "db03ebc988af1e38ea9f62c02027945ba40660fc",
+      "scope": "Limited alpha: macOS arm64, Node 24.15.0 and Codex app/user-scope. Full technical MVP and broader coverage remain open; human benefit is unmeasured.",
+      "payloadManifest": {
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v0.1.0-alpha.1/distribution-SHA256SUMS",
+        "sha256": "35f743a56b47e4f25743da5d6b6a1e606fb719b3382372384124094711e1b2dc"
+      },
+      "archives": [
+        {
+          "name": "tibicen-0.1.0-alpha.1.tar.gz",
+          "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v0.1.0-alpha.1/tibicen-0.1.0-alpha.1.tar.gz",
+          "sha256": "95d62ec9b8a2fdf78a47122a9fd8c16d58bbb8a6d2a2af564db4b3006e6bb606"
+        }
+      ],
+      "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1"
+    }
+  ],
+  "warnings": []
+}

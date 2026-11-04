@@ -1,10 +1,8 @@
 # Design
 
-> Public source snapshot: detailed local development records are omitted. Historical verification summaries below retain their original limits.
-
 ## Context
 
-Основания и воспроизведение — в анализе. CLI и runtime строят разные проверяемые составы из текущего скана; записи исчезнувших файлов могут теряться также при пересчёте компонентов. Eval runner совмещает запуск процессов, сценарии и выбор оснований; сходные ограниченные запуски присутствуют в preflight и probe.
+Основания и воспроизведение — в анализе (`../../../.scratch/tibicen-simplification/analysis.md`; private development record; excluded from public source). CLI и runtime строят разные проверяемые составы из текущего скана; записи исчезнувших файлов могут теряться также при пересчёте компонентов. Eval runner совмещает запуск процессов, сценарии и выбор оснований; сходные ограниченные запуски присутствуют в preflight и probe.
 
 ## Goals / Non-Goals
 

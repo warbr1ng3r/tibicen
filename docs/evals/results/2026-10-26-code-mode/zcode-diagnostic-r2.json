@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "outcome": "error",
+  "sourceCommit": "3c5b227649371507ddc4eb46ac5133afe6db1cab",
+  "sourceVersion": "0.17.0",
+  "installedVersion": "0.16.9",
+  "hostSessions": 1,
+  "hostRetries": 0,
+  "selection": {
+    "providerId": "account:zai-individual-coding-plan",
+    "modelId": "GLM-5.3",
+    "options": {
+      "reasoningLevel": "low",
+      "maxOutputTokens": 4096
+    }
+  },
+  "credentialStoreInitialized": true,
+  "realAuth": 1,
+  "prepareAttribution": "header-refresh-failed",
+  "fetchInvocations": null,
+  "stage": "agent-loop",
+  "elapsedMs": 9215,
+  "observedSdkModelRequestEvents": 1,
+  "httpRequestCount": null,
+  "modelRequestCount": null,
+  "internalHttpRetryCount": null,
+  "nativeToolExecution": false,
+  "observedNativePortCalls": 0,
+  "boundaryPassed": true,
+  "originalProfileUnchanged": true,
+  "safeFailures": [
+    {
+      "origin": "model_network_status",
+      "reason": "unknown",
+      "code": "model_request_failed",
+      "statusCode": null,
+      "phase": "prepare",
+      "detailHash": "936156b8fca3ce09f38f65c71de705d1ee0de74a0232839a9eca2c26609bd697"
+    }
+  ],
+  "prepareDiagnostics": [
+    {
+      "schemaVersion": 1,
+      "stage": "header-refresh",
+      "state": "entered",
+      "attempt": 1
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "header-refresh",
+      "state": "failed",
+      "attempt": 1,
+      "error": [
+        {
+          "name": null,
+          "code": null,
+          "messageId": null,
+          "messageHash": "967b5bc3c7cb955b3678b4e55efccae84cbb881bafc9aaef84670204c0393313"
+        }
+      ]
+    }
+  ],
+  "httpPolicyDiagnostics": [],
+  "preflightDiagnostics": [
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "auth-copy-source-shape",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "auth-copy-source-shape",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "auth-copy-source-shape",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "credential-private-mode",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "auth-copy-source-shape",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "auth-copy-source-shape",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "auth-copy-source-shape",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "auth-copy-source-shape",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "active-builtin-pin",
+      "state": "passed",
+      "expectedHash": "8bd8070d529732900d6bc067a4aa27fef5e06c50b00a32321aa4c3ae6e6b9d20",
+      "observedHash": "8bd8070d529732900d6bc067a4aa27fef5e06c50b00a32321aa4c3ae6e6b9d20"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "active-builtin-revision",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "subscription-route-kind",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "subscription-api-route",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "subscription-model-metadata",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "reasoning-option",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "output-cap",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "oauth-identity-present",
+      "state": "passed"
+    },
+    {
+      "schemaVersion": 1,
+      "stage": "subscription-preflight",
+      "check": "oauth-source",
+      "state": "passed"
+    }
+  ],
+  "resultHash": "d147142e4d5311e51a187012ea174eac38e05334ead9adfd6a165ebb4e191009",
+  "protocolHash": "42216e386757100eabe6d8074e430b951d3313f8fad002a70f93d42bcb3eb7cb",
+  "preparedGateHash": "5f363722c75a73a4909943e38fcbfb96b547335e76e82b8a26ead458c4eaf5dd",
+  "profileFileCount": 9,
+  "profileUnchanged": true,
+  "paidApi": 0,
+  "fallbacks": 0,
+  "repeats": 0,
+  "fullAcceptance": false,
+  "recordedFetchCounter": 0,
+  "fetchCounterMeaning": "The r2 counter hook was only installed in offline mode. Recorded live zero does not measure HTTP or prove no request."
+}

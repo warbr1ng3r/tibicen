@@ -1,5 +1,7 @@
 # Preference selection acceptance
 
+**Release policy, 2026-11-03:** technical acceptance uses the separate [engineering assessment](ENGINEERING_ACCEPTANCE.md) and [evidence rules](QUALITY_AND_REPORTS.md#engineering-release-assessment). All scenario criteria, positive loading/use and hard invariants below remain required. Human sample/calibration clauses below govern studies claiming human-calibrated results; they are voluntary postpublication research rather than a prerelease dependency. Existing graded outcomes are unchanged.
+
 The program for §9 of the [addendum](../PRODUCT_VISION_ADDENDUM.md#9-identifying-preferences-and-selecting-components), change [infer-preferences-for-component-selection](../../openspec/changes/infer-preferences-for-component-selection/proposal.md). These are inputs and independent criteria for future runs, not a record of completed acceptance. The runner, serialized scenario format and profiles belong to the [harness](../../openspec/changes/build-agent-evaluation-harness/tasks.md); no new engine is introduced here.
 
 ## Execution contract

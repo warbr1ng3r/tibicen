@@ -8,7 +8,7 @@ Pinned Ponytail installation and file integration of OpenSpec 1.14.3 were perfor
 | OpenSpec init | complete | passed, structure-and-package-resources | 1/1 before and after |
 | OpenSpec adopt | complete, applied[] | passed, structure-and-package-resources | 1/1 after; original application SHA preserved |
 
-The application is a small Node ES module with double(value). Setup did not change package.json, src/math.js, or tests/math.test.js. Adopt preserved 13 non-service files: the application, AGENTS.md, process configuration, local instructions, a team template, and the user's keep-double change. Data and results are in setup-summary.json (maintainer-local record; omitted from public source). Exact plans, separate root approvals, and actual apply/verify/status/report outputs are retained in private evidence; the public summary contains no personal or temporary absolute paths.
+The application is a small Node ES module with double(value). Setup did not change package.json, src/math.js, or tests/math.test.js. Adopt preserved 13 non-service files: the application, AGENTS.md, process configuration, local instructions, a team template, and the user's keep-double change. Data and results are in [setup-summary.json](setup-summary.json). Exact plans, separate root approvals, and actual apply/verify/status/report outputs are retained in private evidence; the public summary contains no personal or temporary absolute paths.
 
 ## Pinned sources
 
@@ -33,7 +33,7 @@ Two independent Codex app subagents received only the project, connected skill, 
 | Ponytail | Read the installed SKILL.md at its pinned SHA; added triple while preserving double, 2/2 Node tests | Only the two approved files changed, five others were preserved; 12 functional checks passed |
 | OpenSpec | Read project instructions and native templates; five planning files were approved, followed by implementation after a separate review. 5/5 Node tests, strict validation, native progress 3/3 all_done | All 12 protected original files were preserved, and only the five approved planning files were added; 12 functional checks passed |
 
-Sanitized new-session summary (maintainer-local record; omitted from public source). The OpenSpec workflow ran once on a copy of the accepted adopt setup with keep-double; init has setup evidence without a second independent downstream run. Team instructions, the local template, and the existing change were preserved. Saved Tibicen reports remain as originally recorded: external observations do not overwrite unverified in those reports.
+[Sanitized new-session summary](downstream-summary.json). The OpenSpec workflow ran once on a copy of the accepted adopt setup with keep-double; init has setup evidence without a second independent downstream run. Team instructions, the local template, and the existing change were preserved. Saved Tibicen reports remain as originally recorded: external observations do not overwrite unverified in those reports.
 
 These are positive observations for the selected sources and scenarios. The full SKILL/PROC matrix, a separate init workflow, component updates/negative cases, native startup, and human acceptance remain open. There is no human sample.
 

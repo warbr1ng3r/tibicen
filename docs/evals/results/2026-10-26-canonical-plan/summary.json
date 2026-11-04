@@ -1,0 +1,781 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "timezone": "Europe/Moscow",
+  "scope": "canonical-plan-observed-mechanical-control",
+  "privateSourceId": "codex-canonical-plan-20261026-PwLTG0",
+  "source": {
+    "sha": "bdd889d9f4f626daec1bf10057fa1003d2e2a252",
+    "dirty": true,
+    "treeHash": "f74094db9246f807810f2dfd2e5bebd83658257589b185cb36acc99cf4c43d06",
+    "files": 156
+  },
+  "counts": {
+    "scenarios": 2,
+    "pairedRepeats": 2,
+    "attempts": 4,
+    "observedLaunchPass": 4,
+    "observedSetupPass": 4,
+    "observedTaskPass": 4,
+    "evaluatedSetupPass": 0,
+    "evaluatedTaskPass": 0,
+    "startupModelRequests": 0,
+    "executorSessions": 16,
+    "qualityJudgeSessions": 0,
+    "humanReviews": 0
+  },
+  "excludedPriorControl": {
+    "executorSessions": 5,
+    "qualityJudgeSessions": 2,
+    "resultsTransferred": false
+  },
+  "acceptance": {
+    "complete": false,
+    "reason": "missing-quality-review",
+    "quality": null
+  },
+  "experiments": [
+    {
+      "scenarioId": "skill-01",
+      "experimentId": "codex-canonical-plan-skill-01-2026-10-26",
+      "sourceSnapshotObservedAt": "2026-10-25T22:32:21.956Z",
+      "cohortId": "90fff03278cdc33540f0720e50b6f45f02ab5b99002954d62368cd0caa6fcb12",
+      "experimentHash": "eae523de419a6acb33dcb3251d97b4f33e730da6b7f9efc040267115cfe351d4",
+      "conditionsHash": "89362903b2563223aa6bd07087524a172ccb2691cabdac8c37b0c9edaaa9397f",
+      "scenarioHash": "ece118f502adc16ab0c0dcc26d3303fadd315eb5c1487c4145a44ab05ddeb136",
+      "profileHash": "d9d590dd3486b930667f99a47d7b28d62331538f2316002f4cdf9eee98322cf3",
+      "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+      "reportHash": "87cf8b1988a50d419f9a31dae35352aea504b0d8d656b65afad76879d78d3e52",
+      "profile": {
+        "id": "codex-0.157.0-gpt-6-sol",
+        "agent": "codex",
+        "version": "0.157.0",
+        "model": "gpt-6-sol",
+        "auth": "subscription",
+        "paid": false,
+        "startupHash": "2c289d056f3f557a84b377413a7ebcf72a0288bebd82f4dc59e04754a6ce472a",
+        "permissionsHash": "a729b091907a051c70f203873138e8086b44d9c56aa5df4ab130bd25aa63ee2e"
+      },
+      "nativeProtocol": 2,
+      "mode": "observed",
+      "qualityPlan": {
+        "setup": ["grounding", "fit", "sufficiency", "consistency"],
+        "task": ["application", "loading"]
+      },
+      "limits": {
+        "launchMs": 45000,
+        "setupMs": 180000,
+        "taskMs": 120000,
+        "maxCostUsd": null
+      },
+      "repeats": 1,
+      "order": ["tibicen", "baseline"],
+      "executorSessions": 8,
+      "qualityJudgeSessions": 0,
+      "humanReviews": 0,
+      "apiCallsAllowed": false,
+      "distributionHash": "781c641468bbf6776d20e76bb386ce465e11164f90c6fe5f6da15e0588b66d14",
+      "harnessHash": "7b0c4eeb75d8ec6eacf0809ac6fda01fdae6c6f27922fc565020e8ad60b4da90",
+      "fixturesHash": "eb2788e21b9ecb26ab5092124373bd50d20e72ab1a64dffd5b3f14a02c5c79a3",
+      "sourceMirrorHash": "294ec49e6fa10eb810feeb15100b20e1843c59f54a83b2f7276ddc791ba7ad79",
+      "reusedPreflightHash": "bc8e5fed874739569ab42ceeba4e08d95411ebc8b25c745a64f75c6ed57999f7",
+      "runtimeProbe": {
+        "policyHash": "adc879538cdce1b55ee7f4030bf4d6eb5fbdf4590fb1846b5b14366f693cdc77",
+        "scriptHash": "69910102d47a0fcb5511f99f0778034efc9cde812be0463cc427907a33848ee2",
+        "exitCode": 0,
+        "timedOut": false,
+        "facts": {
+          "denied": true,
+          "resourcesReadable": true,
+          "runtimeWriteDenied": true
+        },
+        "verified": true
+      },
+      "invariantFailures": [],
+      "attempts": [
+        {
+          "observed": {
+            "schema": 1,
+            "id": "skill-01-tibicen-1",
+            "scenarioId": "skill-01",
+            "profileId": "codex-0.157.0-gpt-6-sol",
+            "variant": "tibicen",
+            "started": true,
+            "launch": {
+              "status": "pass",
+              "durationMs": 1581.294084
+            },
+            "setup": {
+              "status": "pass",
+              "durationMs": 166390.52875
+            },
+            "task": {
+              "status": "pass",
+              "durationMs": 41294.154458000005
+            }
+          },
+          "evaluated": {
+            "schema": 1,
+            "id": "skill-01-tibicen-1",
+            "scenarioId": "skill-01",
+            "profileId": "codex-0.157.0-gpt-6-sol",
+            "variant": "tibicen",
+            "started": true,
+            "launch": {
+              "status": "pass",
+              "durationMs": 1581.294084
+            },
+            "setup": {
+              "status": "error",
+              "durationMs": 166390.52875,
+              "reason": "missing-quality-review"
+            },
+            "task": {
+              "status": "skip",
+              "durationMs": 0,
+              "reason": "evaluated-setup-not-passed"
+            }
+          },
+          "quality": null,
+          "costUsd": null,
+          "mechanicalGrades": [
+            {
+              "id": "setup-invariants",
+              "stage": "setup",
+              "scope": "invariants",
+              "verdict": "pass",
+              "reason": "native-reviewed-effects-preserved",
+              "evidenceEventCount": 82
+            },
+            {
+              "id": "task-result",
+              "stage": "task",
+              "scope": "task",
+              "verdict": "pass",
+              "reason": "independent-exports-passed",
+              "evidenceEventCount": 1
+            },
+            {
+              "id": "task-invariants",
+              "stage": "task",
+              "scope": "invariants",
+              "verdict": "pass",
+              "reason": "native-reviewed-effects-preserved",
+              "evidenceEventCount": 33
+            }
+          ],
+          "independentTaskCheck": [
+            {
+              "seq": 117,
+              "stage": "task",
+              "kind": "host-command",
+              "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+              "exitCode": 0
+            }
+          ],
+          "assertions": {
+            "total": 98,
+            "hashMatches": 98
+          },
+          "kernelAssertions": [
+            {
+              "seq": 52,
+              "stage": "setup",
+              "id": "reviewed-kernel-service-intent",
+              "expectedHash": "93f8c7273d48f6f38e73400cb9a5f409f5123a91a25ef61802bdc5f289521b0a",
+              "actualHash": "93f8c7273d48f6f38e73400cb9a5f409f5123a91a25ef61802bdc5f289521b0a"
+            },
+            {
+              "seq": 53,
+              "stage": "setup",
+              "id": "approved-kernel-artifact",
+              "expectedHash": "ea3f4661c7eba46e3b88dcd9e93fcead9e10a48d02b51ac5db4a23da2833f529",
+              "actualHash": "ea3f4661c7eba46e3b88dcd9e93fcead9e10a48d02b51ac5db4a23da2833f529"
+            },
+            {
+              "seq": 81,
+              "stage": "setup",
+              "id": "kernel-service-receipt",
+              "expectedHash": "9e02f3fb09dea2ddf2e0347a9ff19c6075ebc6175c45fbe5c3eed1448b677dfd",
+              "actualHash": "9e02f3fb09dea2ddf2e0347a9ff19c6075ebc6175c45fbe5c3eed1448b677dfd"
+            }
+          ],
+          "instructionLoads": [
+            {
+              "seq": 89,
+              "stage": "task",
+              "path": ".agents/skills/ponytail/SKILL.md",
+              "contentHash": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509",
+              "toolUseId": "item_3",
+              "sessionHash": "4841849854cfb18163abb4a4fa24f38009759aca54a5f0f4df4f698107c28f0f"
+            },
+            {
+              "seq": 104,
+              "stage": "task",
+              "path": ".agents/skills/ponytail/SKILL.md",
+              "contentHash": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509",
+              "toolUseId": "item_3",
+              "sessionHash": "15735c1ca561e895dbe5236af299a8088718df42c9f5628608b5ba3ff6ba54b5"
+            }
+          ],
+          "runHash": "e8d29f3c404d23db593e3484ba8d1afbd2e4cee2451c659b0712dbacb06199b3",
+          "sessions": [
+            {
+              "stage": "setup",
+              "phase": "setup-proposal",
+              "hash": "d7607d6b8677c703af87aee3e69dd1dc2a6c62a01e16869dea1d007b95a07ecf",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            },
+            {
+              "stage": "setup",
+              "phase": "setup-apply",
+              "hash": "c0c22e7207dfc0cc5ae16f42f1beb19fbc4f0a739afd4add5e36cefeecefb044",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            },
+            {
+              "stage": "task",
+              "phase": "task-proposal",
+              "hash": "4841849854cfb18163abb4a4fa24f38009759aca54a5f0f4df4f698107c28f0f",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            },
+            {
+              "stage": "task",
+              "phase": "task-apply",
+              "hash": "15735c1ca561e895dbe5236af299a8088718df42c9f5628608b5ba3ff6ba54b5",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            }
+          ]
+        },
+        {
+          "observed": {
+            "schema": 1,
+            "id": "skill-01-baseline-1",
+            "scenarioId": "skill-01",
+            "profileId": "codex-0.157.0-gpt-6-sol",
+            "variant": "baseline",
+            "started": true,
+            "launch": {
+              "status": "pass",
+              "durationMs": 1275.1569170000148
+            },
+            "setup": {
+              "status": "pass",
+              "durationMs": 66328.79241699999
+            },
+            "task": {
+              "status": "pass",
+              "durationMs": 45323.23000000004
+            }
+          },
+          "evaluated": {
+            "schema": 1,
+            "id": "skill-01-baseline-1",
+            "scenarioId": "skill-01",
+            "profileId": "codex-0.157.0-gpt-6-sol",
+            "variant": "baseline",
+            "started": true,
+            "launch": {
+              "status": "pass",
+              "durationMs": 1275.1569170000148
+            },
+            "setup": {
+              "status": "error",
+              "durationMs": 66328.79241699999,
+              "reason": "missing-quality-review"
+            },
+            "task": {
+              "status": "skip",
+              "durationMs": 0,
+              "reason": "evaluated-setup-not-passed"
+            }
+          },
+          "quality": null,
+          "costUsd": null,
+          "mechanicalGrades": [
+            {
+              "id": "setup-invariants",
+              "stage": "setup",
+              "scope": "invariants",
+              "verdict": "pass",
+              "reason": "native-reviewed-effects-preserved",
+              "evidenceEventCount": 28
+            },
+            {
+              "id": "task-result",
+              "stage": "task",
+              "scope": "task",
+              "verdict": "pass",
+              "reason": "independent-exports-passed",
+              "evidenceEventCount": 1
+            },
+            {
+              "id": "task-invariants",
+              "stage": "task",
+              "scope": "invariants",
+              "verdict": "pass",
+              "reason": "native-reviewed-effects-preserved",
+              "evidenceEventCount": 32
+            }
+          ],
+          "independentTaskCheck": [
+            {
+              "seq": 62,
+              "stage": "task",
+              "kind": "host-command",
+              "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+              "exitCode": 0
+            }
+          ],
+          "assertions": {
+            "total": 44,
+            "hashMatches": 44
+          },
+          "kernelAssertions": [],
+          "instructionLoads": [
+            {
+              "seq": 34,
+              "stage": "task",
+              "path": ".agents/skills/ponytail/SKILL.md",
+              "contentHash": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509",
+              "toolUseId": "item_1",
+              "sessionHash": "866954abf4e2f69287f987093c4bb3323347f5325d2c3b9785de29e3121b62ec"
+            },
+            {
+              "seq": 49,
+              "stage": "task",
+              "path": ".agents/skills/ponytail/SKILL.md",
+              "contentHash": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509",
+              "toolUseId": "item_3",
+              "sessionHash": "2d8722495d961808da9c5463183a392c8ab8faedea264a4cd940ae6e4c8c78d9"
+            }
+          ],
+          "runHash": "005e4ab16698a2d837c8877f3bae15cefa99f7b69f680c8f39d550a1f48d0dbd",
+          "sessions": [
+            {
+              "stage": "setup",
+              "phase": "setup-proposal",
+              "hash": "f2e29ae735ef543fbdcd0c0bb87e18850c0051355d585115497de33da6c08e91",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            },
+            {
+              "stage": "setup",
+              "phase": "setup-apply",
+              "hash": "a8c160bfeb842842b0112f910d7673a2806716a35912b0ec261976c23d825ea9",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            },
+            {
+              "stage": "task",
+              "phase": "task-proposal",
+              "hash": "866954abf4e2f69287f987093c4bb3323347f5325d2c3b9785de29e3121b62ec",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            },
+            {
+              "stage": "task",
+              "phase": "task-apply",
+              "hash": "2d8722495d961808da9c5463183a392c8ab8faedea264a4cd940ae6e4c8c78d9",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scenarioId": "pref-01",
+      "experimentId": "codex-canonical-plan-pref-01-2026-10-26",
+      "sourceSnapshotObservedAt": "2026-10-25T22:39:11.594Z",
+      "cohortId": "cc283c09a7bcea0e7fdc58c2f734353cf6fe2db9f81fb4071fd1d1a2b57aa0e9",
+      "experimentHash": "31cc67e487476fed8e668123244f55f32869538a5fc0300a23dce9a8e6905a12",
+      "conditionsHash": "7407f729fd552e3f6ab0bd6fc44f7d20530984bbc72b5f38a566656efe7da246",
+      "scenarioHash": "dee7346d7c3a702e4c64aaa9eb726b8bf23c4b7a97dc934a617fd1d29b556204",
+      "profileHash": "b475ba5eef238a46dc084f2c49321edd7efef97a23f1497dbaa1ea91e709e8ed",
+      "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+      "reportHash": "3a718d1ea7325295353e09d45cb248912c9dd41e06a3ab7b4e594aa6aceabed2",
+      "profile": {
+        "id": "codex-0.157.0-gpt-6-sol",
+        "agent": "codex",
+        "version": "0.157.0",
+        "model": "gpt-6-sol",
+        "auth": "subscription",
+        "paid": false,
+        "startupHash": "2c289d056f3f557a84b377413a7ebcf72a0288bebd82f4dc59e04754a6ce472a",
+        "permissionsHash": "2ee4bcee130ea5d6e4a586d4224b73cd24085ea7d6e7529508714ad3836e7c5d"
+      },
+      "nativeProtocol": 2,
+      "mode": "observed",
+      "qualityPlan": {
+        "setup": ["grounding", "fit", "sufficiency", "consistency"],
+        "task": ["application"]
+      },
+      "limits": {
+        "launchMs": 45000,
+        "setupMs": 180000,
+        "taskMs": 120000,
+        "maxCostUsd": null
+      },
+      "repeats": 1,
+      "order": ["tibicen", "baseline"],
+      "executorSessions": 8,
+      "qualityJudgeSessions": 0,
+      "humanReviews": 0,
+      "apiCallsAllowed": false,
+      "distributionHash": "781c641468bbf6776d20e76bb386ce465e11164f90c6fe5f6da15e0588b66d14",
+      "harnessHash": "7b0c4eeb75d8ec6eacf0809ac6fda01fdae6c6f27922fc565020e8ad60b4da90",
+      "fixturesHash": "afc0481e54fecc8c50d9916a1536761f64faab5ae70e2f7318d8419534672f5f",
+      "sourceMirrorHash": "294ec49e6fa10eb810feeb15100b20e1843c59f54a83b2f7276ddc791ba7ad79",
+      "reusedPreflightHash": "bc8e5fed874739569ab42ceeba4e08d95411ebc8b25c745a64f75c6ed57999f7",
+      "runtimeProbe": {
+        "policyHash": "afd87f6bfa56ccd78cef9671094f4a5874d54cdb23a5eabfc29f762cf3133dba",
+        "scriptHash": "dec4cf53a09b7b0289ced2f5415f1629a579eb3d14320152afcf1b5e181551bf",
+        "exitCode": 0,
+        "timedOut": false,
+        "facts": {
+          "denied": true,
+          "resourcesReadable": true,
+          "runtimeWriteDenied": true
+        },
+        "verified": true
+      },
+      "invariantFailures": [],
+      "attempts": [
+        {
+          "observed": {
+            "schema": 1,
+            "id": "pref-01-tibicen-1",
+            "scenarioId": "pref-01",
+            "profileId": "codex-0.157.0-gpt-6-sol",
+            "variant": "tibicen",
+            "started": true,
+            "launch": {
+              "status": "pass",
+              "durationMs": 1450.739459
+            },
+            "setup": {
+              "status": "pass",
+              "durationMs": 89719.827333
+            },
+            "task": {
+              "status": "pass",
+              "durationMs": 38999.329209
+            }
+          },
+          "evaluated": {
+            "schema": 1,
+            "id": "pref-01-tibicen-1",
+            "scenarioId": "pref-01",
+            "profileId": "codex-0.157.0-gpt-6-sol",
+            "variant": "tibicen",
+            "started": true,
+            "launch": {
+              "status": "pass",
+              "durationMs": 1450.739459
+            },
+            "setup": {
+              "status": "error",
+              "durationMs": 89719.827333,
+              "reason": "missing-quality-review"
+            },
+            "task": {
+              "status": "skip",
+              "durationMs": 0,
+              "reason": "evaluated-setup-not-passed"
+            }
+          },
+          "quality": null,
+          "costUsd": null,
+          "mechanicalGrades": [
+            {
+              "id": "setup-invariants",
+              "stage": "setup",
+              "scope": "invariants",
+              "verdict": "pass",
+              "reason": "native-reviewed-effects-preserved",
+              "evidenceEventCount": 53
+            },
+            {
+              "id": "task-result",
+              "stage": "task",
+              "scope": "task",
+              "verdict": "pass",
+              "reason": "independent-exports-passed",
+              "evidenceEventCount": 1
+            },
+            {
+              "id": "task-invariants",
+              "stage": "task",
+              "scope": "invariants",
+              "verdict": "pass",
+              "reason": "native-reviewed-effects-preserved",
+              "evidenceEventCount": 22
+            }
+          ],
+          "independentTaskCheck": [
+            {
+              "seq": 77,
+              "stage": "task",
+              "kind": "host-command",
+              "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+              "exitCode": 0
+            }
+          ],
+          "assertions": {
+            "total": 59,
+            "hashMatches": 59
+          },
+          "kernelAssertions": [
+            {
+              "seq": 33,
+              "stage": "setup",
+              "id": "reviewed-kernel-service-intent",
+              "expectedHash": "11721f546515196305a2d2a7fca4f78d9e67256f69958837e0df10a6a91fbfd6",
+              "actualHash": "11721f546515196305a2d2a7fca4f78d9e67256f69958837e0df10a6a91fbfd6"
+            },
+            {
+              "seq": 34,
+              "stage": "setup",
+              "id": "approved-kernel-artifact",
+              "expectedHash": "5be35daa8e30d3c78ad0bb897917ec616ae3421540b532420e2fd39e3527f6c2",
+              "actualHash": "5be35daa8e30d3c78ad0bb897917ec616ae3421540b532420e2fd39e3527f6c2"
+            },
+            {
+              "seq": 52,
+              "stage": "setup",
+              "id": "kernel-service-receipt",
+              "expectedHash": "05af0eaf9c7d3825e878430e50358e13fffc73bfbe255dc28c26e7db6a633ff8",
+              "actualHash": "05af0eaf9c7d3825e878430e50358e13fffc73bfbe255dc28c26e7db6a633ff8"
+            }
+          ],
+          "instructionLoads": [
+            {
+              "seq": 5,
+              "stage": "setup",
+              "path": "AGENTS.md",
+              "contentHash": "dc68976bba80414d5e365617664eae891c764b8866ffc160fb22ea390bb3005b",
+              "toolUseId": "item_1",
+              "sessionHash": "9d50b19ea340c6c9272804f323754647584ae1cdb988b3a5bad9c8b77795a7db"
+            },
+            {
+              "seq": 60,
+              "stage": "task",
+              "path": "AGENTS.md",
+              "contentHash": "23593295fb5e44893d117bc1f15ad3076b65a168358e9334b13074b0b7d69a30",
+              "toolUseId": "item_2",
+              "sessionHash": "994172a4c26287b211b5d7267188da3011b8df31eb0104ea86b1f2ce7a859592"
+            }
+          ],
+          "runHash": "6ba6d6b4ff505baba9c31d0848d181c67115be9b03d0aa7e8fb2592fbbeaeb8c",
+          "sessions": [
+            {
+              "stage": "setup",
+              "phase": "setup-proposal",
+              "hash": "9d50b19ea340c6c9272804f323754647584ae1cdb988b3a5bad9c8b77795a7db",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            },
+            {
+              "stage": "setup",
+              "phase": "setup-apply",
+              "hash": "b2e3c395c03b4966873450e95f275e0e872dddb2d865052cf33dc42ea6b14214",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            },
+            {
+              "stage": "task",
+              "phase": "task-proposal",
+              "hash": "994172a4c26287b211b5d7267188da3011b8df31eb0104ea86b1f2ce7a859592",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            },
+            {
+              "stage": "task",
+              "phase": "task-apply",
+              "hash": "ad73a3bb4729f753b7f8ca5317c54bf4d2ce9543400a58bf6249e51e29b22feb",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            }
+          ]
+        },
+        {
+          "observed": {
+            "schema": 1,
+            "id": "pref-01-baseline-1",
+            "scenarioId": "pref-01",
+            "profileId": "codex-0.157.0-gpt-6-sol",
+            "variant": "baseline",
+            "started": true,
+            "launch": {
+              "status": "pass",
+              "durationMs": 1314.1436250000115
+            },
+            "setup": {
+              "status": "pass",
+              "durationMs": 47267.629625
+            },
+            "task": {
+              "status": "pass",
+              "durationMs": 31549.063374999998
+            }
+          },
+          "evaluated": {
+            "schema": 1,
+            "id": "pref-01-baseline-1",
+            "scenarioId": "pref-01",
+            "profileId": "codex-0.157.0-gpt-6-sol",
+            "variant": "baseline",
+            "started": true,
+            "launch": {
+              "status": "pass",
+              "durationMs": 1314.1436250000115
+            },
+            "setup": {
+              "status": "error",
+              "durationMs": 47267.629625,
+              "reason": "missing-quality-review"
+            },
+            "task": {
+              "status": "skip",
+              "durationMs": 0,
+              "reason": "evaluated-setup-not-passed"
+            }
+          },
+          "quality": null,
+          "costUsd": null,
+          "mechanicalGrades": [
+            {
+              "id": "setup-invariants",
+              "stage": "setup",
+              "scope": "invariants",
+              "verdict": "pass",
+              "reason": "native-reviewed-effects-preserved",
+              "evidenceEventCount": 30
+            },
+            {
+              "id": "task-result",
+              "stage": "task",
+              "scope": "task",
+              "verdict": "pass",
+              "reason": "independent-exports-passed",
+              "evidenceEventCount": 1
+            },
+            {
+              "id": "task-invariants",
+              "stage": "task",
+              "scope": "invariants",
+              "verdict": "pass",
+              "reason": "native-reviewed-effects-preserved",
+              "evidenceEventCount": 21
+            }
+          ],
+          "independentTaskCheck": [
+            {
+              "seq": 53,
+              "stage": "task",
+              "kind": "host-command",
+              "commandHash": "e45a0be3d86703fb942ddca35d7f8137e25dd3af0f54687808808400e111acf4",
+              "exitCode": 0
+            }
+          ],
+          "assertions": {
+            "total": 35,
+            "hashMatches": 35
+          },
+          "kernelAssertions": [],
+          "instructionLoads": [
+            {
+              "seq": 7,
+              "stage": "setup",
+              "path": "AGENTS.md",
+              "contentHash": "dc68976bba80414d5e365617664eae891c764b8866ffc160fb22ea390bb3005b",
+              "toolUseId": "item_6",
+              "sessionHash": "79a511d246c1dc5bee15af280d98bd6f690263121260d9d132b8cced0b85b624"
+            },
+            {
+              "seq": 39,
+              "stage": "task",
+              "path": "AGENTS.md",
+              "contentHash": "dc68976bba80414d5e365617664eae891c764b8866ffc160fb22ea390bb3005b",
+              "toolUseId": "item_4",
+              "sessionHash": "cc6ee6911ed8753a54c1f1f04575e3f22df5e3c07ab857f0fe71ff3a72a722ff"
+            }
+          ],
+          "runHash": "040098fbe97832b915fe0781b3d3a06868b3c4ba175a4463385d5554c17c5e27",
+          "sessions": [
+            {
+              "stage": "setup",
+              "phase": "setup-proposal",
+              "hash": "79a511d246c1dc5bee15af280d98bd6f690263121260d9d132b8cced0b85b624",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            },
+            {
+              "stage": "setup",
+              "phase": "setup-apply",
+              "hash": "cd2471d0d6c34e328d5d1e5e32a3a44cb6c3ad619e3dfbdc114a0e0f685ae6cb",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            },
+            {
+              "stage": "task",
+              "phase": "task-proposal",
+              "hash": "cc6ee6911ed8753a54c1f1f04575e3f22df5e3c07ab857f0fe71ff3a72a722ff",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            },
+            {
+              "stage": "task",
+              "phase": "task-apply",
+              "hash": "cea306b74931dea5659508de8078bf2746c42d577f90565ba4b926ba06a1a597",
+              "exitCode": 0,
+              "timedOut": false,
+              "completedTurns": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "sourceInventoryHashVerified": true,
+    "frozenConditionsAndHarnessHashesVerified": true,
+    "reportsReproduced": 2,
+    "validatedRuns": 4,
+    "selectedEvidenceValidated": 4,
+    "sessionFileHashesAndRunBindingsVerified": 16,
+    "loadingReadContentAndSessionLinksVerified": 8,
+    "assertionHashMatches": 236,
+    "mechanicalGradesPass": 12,
+    "runtimeProbesVerified": 2
+  },
+  "limitations": [
+    "Независимых модельных и человеческих оценок этой когорты нет. Полная приёмка setup/task и качество продукта не подтверждены.",
+    "Один повтор каждой пары, порядок Tibicen → baseline. Длительности описывают эти попытки и не доказывают ускорение или причинный эффект.",
+    "Покрыты только SKILL-01 и PREF-01. PROC, остальные сценарии, ZCode и пилот в эту когорту не входят.",
+    "Профиль подписочный, paid:false; платный API-маршрут и fallback не использовались. Стоимость неизвестна и сохранена как null.",
+    "Preflight переиспользован; новых startup-запросов нет. Отдельный runtime probe каждой пары прошёл в её среде.",
+    "Runtime probe подтверждает наблюдённые canary-проверки чтения и запрета записи, а не все возможные обходы изоляции.",
+    "Публикуется проекция с хэшами и статусами; приватные traces, содержимое команд/ответов и личные пути не включены. Хэши связывают записи, но сами по себе не доказывают качество.",
+    "Результаты и оценки прежних контрольных когорт не перенесены. SKILL и PREF сохраняют отдельные experiment/cohort/profile hashes."
+  ]
+}

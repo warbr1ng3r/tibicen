@@ -2,7 +2,7 @@
 
 The eight local L1 cases below were verified on frozen Tibicen **0.1.0 / source `3fb29efb1087a616aeb69a3b22f400972bfb8a3e`**. This is a deterministic run of the actual installed CLI; it does not establish a new agent session or human/semantic/release acceptance. No new product defects were confirmed.
 
-The distribution was copied from maintainer-local record; omitted from public source into a separate owned temporary directory **outside the checkout**. Both skills were invoked by absolute path through Node **24.15.0**, with separate HOME/TMPDIR and a minimal PATH. After verification, the original candidate and installed copy match their initial snapshots byte for byte: 86 listed resources plus `SHA256SUMS` (87 files). SHA-256 of the checksum file itself: `6ecd6b77d28e7adf3e9921b20078c80b2091a0109c8b5b6bfabaa9a201b4de23`.
+The distribution was copied from `.evals-private/mvp-candidate-3fb29ef/dist/` into a separate owned temporary directory **outside the checkout**. Both skills were invoked by absolute path through Node **24.15.0**, with separate HOME/TMPDIR and a minimal PATH. After verification, the original candidate and installed copy match their initial snapshots byte for byte: 86 listed resources plus `SHA256SUMS` (87 files). SHA-256 of the checksum file itself: `6ecd6b77d28e7adf3e9921b20078c80b2091a0109c8b5b6bfabaa9a201b4de23`.
 
 | Case | Observed result | CLI evidence |
 |---|---|---|
@@ -21,7 +21,7 @@ For init, the exact check command was an absolute Node path + `--test app.test.j
 
 In total, **50 receipts were saved: 48 candidate CLI calls and 2 direct owned Node test runs**. Each call records argv, cwd, a safe explicit environment, stdin JSON, stdout/stderr, and exit code. The exact plan was passed through stdin, and approval matched the returned digest. This is the deterministic test host's authority over its own fixtures; it is not presented as approval from an external project's owner.
 
-Machine-readable summary: result.json (maintainer-local record; omitted from public source). Full local evidence: private result (maintainer-local), command index (maintainer-local), context (maintainer-local). This private area also contains receipts, initial/final hash/mode/mtime snapshots, final fixtures, and a copy of the owned HOME. The temporary installed copy is retained; its path is recorded in context.json.
+Machine-readable summary: [result.json](result.json). Full local evidence: private result (maintainer-local), command index (maintainer-local), context (maintainer-local). This private area also contains receipts, initial/final hash/mode/mtime snapshots, final fixtures, and a copy of the owned HOME. The temporary installed copy is retained; its path is recorded in context.json.
 
 Limitations: init was checked on a fresh Node project that already existed without infrastructure, not an empty directory. Incomplete was induced through the known missing-file defect; a sudden kill, an ambiguous command outcome, and retrying it were not checked here. The manual step remains pending in the saved report. Network-based sources and current practices, Git delivery/update/remove, supported-schema migration, OpenSpec/other components, instruction loading, task/quiz/compatibility in a new agent session, and human evaluation are outside this L1 observation. Sources and compatibility pairs are empty; no behavioral pass is claimed.
 

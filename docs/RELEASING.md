@@ -48,9 +48,12 @@ publication date only when that version is released.
    supported platform limits. Earlier versions need not already be public.
    A local path or archive does not prove the public Git route.
 5. Link the candidate to current L1/PREF/SKILL/PROC evidence, source versions,
-   independent and human review, initial pilot and support limits. OpenSpec
-   scenarios apply to requests selecting that component. Unverified loading or
-   application remains an open gap.
+   the [independent engineering assessment](evals/ENGINEERING_ACCEPTANCE.md)
+   and support limits. Under the 2026-11-03 policy, human calibration and the
+   initial usefulness pilot have a separate voluntary postpublication schedule;
+   their absence is disclosed. OpenSpec scenarios apply to requests selecting
+   that component. Missing mandatory loading, application or other technical
+   evidence remains an open gap; review cannot replace an absent observation.
 6. Prepare a local release draft containing version, source SHA, installation
    route, sums, notes, update/removal instructions and limits. Obtain explicit
    approval for publication only after the draft is concrete and reviewable.
@@ -59,15 +62,38 @@ Record corrections in a new candidate. Preserve failed attempts and old sums.
 Published tags and bytes stay immutable; a published defect requires a new
 version. There is no background update of installed Tibicen or project setup.
 
+## Prepared 1.0.0 candidate — 4 November 2026
+
+The source package version is `1.0.0`. The prepared distribution commit is `e8532bba0582564c93e50de1f55174daaa9bbd34`; its 86 payload files have inventory SHA-256 `0bdcf606c644859120dbae065b04095a8f7bacedb39ec98508f72290cfc0bbb3`. This identifies the distribution separately from the source commit; it is not evidence of public installation or a published version tag.
+
+The exact local source gate passed 736 tests, zero failures and one intentional skip, then build, using cached locked dependencies. The actual local package passed eight version/resource calls on Node 22.20.0/24.15.0. These records predate the final installer/site metadata edits. Fresh normal frozen-install CI, final declared platform checks, public Git/asset installation and Pages returned-byte checks remain pending. Keep the existing alpha refs and historical evidence unchanged; move Unreleased changelog entries only when the release actually occurs.
+
 ## Inputs still required for the full MVP
 
-- Responsible maintainer and private security/conduct contacts.
-- Independent channel for advisories and distribution checksums.
-- Voluntary pilot participants and agreed measurements using the [draft pilot protocol](PILOT.md); actual human/pilot results remain required.
-- Full component coverage and acceptance for additional agents and platforms.
+The owner confirmed [@warbr1ng3r](https://github.com/warbr1ng3r) as core/adapter maintainer and private security-report recipient on 31 October 2026. The private vulnerability reporting route is enabled; see [SECURITY](../SECURITY.md).
+
+- Verify the scoped public project/private GitHub Support reporting routes in the [CoC](../CODE_OF_CONDUCT.md), preserving the confirmed private vulnerability recipient. The former general private conduct-inbox promise is replaced; no inbox or alternate is appointed. Form/notification delivery is not newly verified.
+- Publish and verify the separate committed Pages advisory/checksum index defined in [MAINTENANCE](MAINTENANCE.md). Its local alpha record does not establish a working channel; GitHub administration is shared.
+- Candidate-bound technical coverage and acceptance for the declared components, agents and platforms; retain explicitly permitted unsupported outcomes with reasons.
+
+The [maintenance procedure](MAINTENANCE.md) and [latest source review](evals/results/2026-11-03-maintenance-review/README.md) cover the appointed maintainer, review cadence and documentation/CLI metadata. They do not establish notification delivery or actual Pages-index publication, or substitute for remaining behavior evidence. The adopted [maintenance-channel contract](../openspec/changes/define-maintenance-reporting-and-checksum-channel/specs/maintenance-channels/spec.md) defines separate artifact/publication/origin independence; publication and byte checks remain pending task 3.2.
 
 These inputs remain open after the limited alpha. Maintenance is monthly and
 after significant tool changes; changed recommendations need fresh init/adopt checks.
+
+## Voluntary postpublication research
+
+The initial real-work usefulness pilot and human rubric calibration are deferred,
+not completed, under the adopted [evidence policy](../openspec/changes/separate-release-evidence-from-usefulness-pilot/specs/product-scope/spec.md).
+No owner questionnaire or participant recruitment is a prerelease dependency.
+Use the [pilot protocol](PILOT.md) if volunteers become available. Report human
+benefit as unmeasured until observed; public discussions and model judgments
+do not fill participant records. Human-calibrated studies retain their existing
+calibration/cross-check rules and old evaluated outcomes.
+
+Retain the 50 measured sessions / 8 weeks after publication checkpoint and
+30-day reuse definitions. Insufficient data requires an explicit recruit,
+extend or close decision; it neither proves benefit nor resets the clock.
 
 ## Published first alpha
 
@@ -80,4 +106,4 @@ after significant tool changes; changed recommendations need fresh init/adopt ch
 
 The public source snapshot omits local development history and private/raw records; the original repository is preserved locally. Ready-to-install skills live in the separate distribution branch. Pin skills 1.7.4 to the full GitHub tree SHA or immutable version tag and select only tibicen-init and tibicen-adopt. In this installer, owner/repo@name selects a skill rather than a Git ref. Release assets and Pages remain separate outputs.
 
-Full MVP acceptance, broader component/agent/platform coverage, human review/pilot and support contacts remain open.
+Full technical MVP acceptance, broader component/agent/platform coverage and remaining support arrangements remain open. Human review/pilot is separate voluntary research after publication; no human benefit is claimed.

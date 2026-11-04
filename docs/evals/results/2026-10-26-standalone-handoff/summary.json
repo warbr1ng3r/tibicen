@@ -1,0 +1,263 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "status": "two-requested-configurations-root-verified-complete",
+  "purpose": "Own Tibicen init/improve completion and clear final report; component checks follow the requested configuration",
+  "privateSourceId": "codex-standalone-handoff-20261026-ONwP9w6c",
+  "profile": {
+    "id": "codex-0.157.0-gpt-6-astra",
+    "agent": "codex",
+    "version": "0.157.0",
+    "model": "gpt-6-astra",
+    "auth": "subscription",
+    "paid": false,
+    "startupHash": "1743e736ab2ce8ce9ac49376abd7ec52ee23d41cdaf46faa42feb8b4a914e7b3",
+    "permissionsHash": "13fcb18f056b9d43d5d81998d8ac5f588ebfe698d1f4afc48931fe5160b257a0"
+  },
+  "sourceSha": "6fd6cb535da478df28d1f603b86604e82848c41f",
+  "sourceTreeHash": "161d30ecaa0db6fd6adfae6ca0122c8563a5727cc99c1ed69930e9759a71b1e2",
+  "frozenHash": "429104bdd88711771afb0e28f460c41e10ebdc6f1192297511b805bd7e741e7b",
+  "hostHash": "ce4925a4cd7b1f283435ee0818ac7b924f59f6c6a00e1fff61d0bb71705967d0",
+  "selfcheckHash": "e3e60ddbcda4d3608febc5c7b943ebc1c163b0a2156215b2eff415ad03cf0993",
+  "archivedFiles": 191,
+  "checkedDistFiles": 84,
+  "limits": {
+    "maxNewExecutorSessions": 4,
+    "newStartupRequests": 0,
+    "newJudgeRequests": 0,
+    "launchMs": 45000,
+    "proposalMs": 180000,
+    "applyHandoffMs": 180000,
+    "retries": 0,
+    "modelChange": false,
+    "apiFallback": false
+  },
+  "offlineVerification": {
+    "tests": 596,
+    "passed": 596,
+    "skipped": 0,
+    "lintFormatTypesStrictSpecs": true,
+    "build": true,
+    "unpackedSkills": 2,
+    "distSums": 84,
+    "independentReview": "clean-after-legacy-fix"
+  },
+  "productFixes": [
+    "report.applied exposes known path/action entries",
+    "report.reason exposes the persisted stop reason or null",
+    "older sessions without attempts remain readable"
+  ],
+  "apiCalls": 0,
+  "judgeRequests": 0,
+  "humanReviews": 0,
+  "scope": "Two selected minimal instruction configurations; not universal configuration or release acceptance",
+  "newExecutorSessions": 4,
+  "newStartupRequests": 0,
+  "newJudgeRequests": 0,
+  "retries": 0,
+  "sourceStable": true,
+  "usage": {
+    "inputTokens": 660515,
+    "outputTokens": 6848,
+    "unknownInput": 0,
+    "unknownOutput": 0,
+    "cachedInputTokens": 536832,
+    "cachedInputAttribution": "Summed raw terminal turn.completed usage; not added to input total"
+  },
+  "cases": [
+    {
+      "id": "init",
+      "executionStatus": "root-verified-complete",
+      "ownStatus": "complete",
+      "infrastructure": "passed",
+      "applied": [
+        {
+          "path": "AGENTS.md",
+          "action": "add"
+        }
+      ],
+      "checks": {
+        "infrastructure": {
+          "kind": "infrastructure",
+          "status": "passed",
+          "scope": "structure-only",
+          "issues": [],
+          "sharedRules": {
+            "status": "passed",
+            "copies": [],
+            "issues": []
+          }
+        },
+        "verify": {
+          "kind": "verify",
+          "status": "unverified",
+          "reason": "no-project-checks",
+          "newRegressions": []
+        },
+        "task": {
+          "kind": "task",
+          "status": "unverified",
+          "reason": "not-requested"
+        },
+        "quiz": {
+          "kind": "quiz",
+          "status": "unverified",
+          "reason": "not-requested"
+        },
+        "compat": {
+          "enabled": false,
+          "reason": "skipped-by-user",
+          "pairs": []
+        },
+        "mcp": []
+      },
+      "manualActions": [],
+      "receiptHash": "5791fde874daa6b9ac2f4db0fd9f62e39baba72557618e01c84d6dfb16ec0c4c",
+      "reportHash": "463abe692e78ac790181bde2b6ae7deb71002baa8cf9cb6b2ae7d3b5b3112bd6",
+      "finalAnswerHash": "949bc1a799479f5e9094dc95872c9242cdf7d6016303077beca388b8651177c2",
+      "finalReport": "init-report.md",
+      "approvedBytesAndOwnerFilesPreserved": true,
+      "proposalReadOnly": true,
+      "defaultReportFileAbsent": true,
+      "stateCleanedUp": true,
+      "stageReads": {
+        "proposal": 8,
+        "apply": 4
+      },
+      "sessions": [
+        {
+          "phase": "proposal",
+          "hash": "7da860156d73e59a899351ec7cc08b1e272c069eb6523b4e4b48da4dcd8d7ff1",
+          "timing": {
+            "startedAt": "2026-10-26T11:47:49.729Z",
+            "endedAt": "2026-10-26T11:49:04.028Z",
+            "durationMs": 74299.203542,
+            "launchMs": 1300.0849170000001
+          },
+          "exitCode": 0,
+          "timedOut": false,
+          "usage": {
+            "inputTokens": 166981,
+            "outputTokens": 1953
+          }
+        },
+        {
+          "phase": "apply-handoff",
+          "hash": "9b645f596352bd0fbc2cb1a546a94e3e70ca8618a845e337d9e7dca12e901690",
+          "timing": {
+            "startedAt": "2026-10-26T11:49:04.085Z",
+            "endedAt": "2026-10-26T11:50:01.601Z",
+            "durationMs": 57516.123833000005,
+            "launchMs": 529.7124999999942
+          },
+          "exitCode": 0,
+          "timedOut": false,
+          "usage": {
+            "inputTokens": 146933,
+            "outputTokens": 1423
+          }
+        }
+      ]
+    },
+    {
+      "id": "improve",
+      "executionStatus": "root-verified-complete",
+      "ownStatus": "complete",
+      "infrastructure": "passed",
+      "applied": [
+        {
+          "path": "AGENTS.md",
+          "action": "modify"
+        }
+      ],
+      "checks": {
+        "infrastructure": {
+          "kind": "infrastructure",
+          "status": "passed",
+          "scope": "structure-only",
+          "issues": [],
+          "sharedRules": {
+            "status": "passed",
+            "copies": [],
+            "issues": []
+          }
+        },
+        "verify": {
+          "kind": "verify",
+          "status": "unverified",
+          "reason": "no-project-checks",
+          "newRegressions": []
+        },
+        "task": {
+          "kind": "task",
+          "status": "unverified",
+          "reason": "not-requested"
+        },
+        "quiz": {
+          "kind": "quiz",
+          "status": "unverified",
+          "reason": "not-requested"
+        },
+        "compat": {
+          "enabled": false,
+          "reason": "skipped-by-user",
+          "pairs": []
+        },
+        "mcp": []
+      },
+      "manualActions": [],
+      "receiptHash": "7ee3f96d5c3ef986922aec7bd22d3244f29d7fe3f49f52e42e4ada4cb2a484cf",
+      "reportHash": "ceaf1155da351964324f2f2ee80d075065aced5828960efa3b6dd97136e1b984",
+      "finalAnswerHash": "2e2d1b1915b5731403746b33cdba802d8337b9daee63588795dc68cb6525e602",
+      "finalReport": "adopt-report.md",
+      "approvedBytesAndOwnerFilesPreserved": true,
+      "proposalReadOnly": true,
+      "defaultReportFileAbsent": true,
+      "stateCleanedUp": true,
+      "stageReads": {
+        "proposal": 8,
+        "apply": 4
+      },
+      "sessions": [
+        {
+          "phase": "proposal",
+          "hash": "b5d9a15649417ed6d74d41101d5317b8dcdcee9a6b763e62642b8fd823edd5d9",
+          "timing": {
+            "startedAt": "2026-10-26T11:50:02.252Z",
+            "endedAt": "2026-10-26T11:51:18.945Z",
+            "durationMs": 76693.31150000001,
+            "launchMs": 1356.911832999991
+          },
+          "exitCode": 0,
+          "timedOut": false,
+          "usage": {
+            "inputTokens": 200409,
+            "outputTokens": 2015
+          }
+        },
+        {
+          "phase": "apply-handoff",
+          "hash": "0d8a2175a493f085b1c136bc618587e8430d3d4113d944517cbaa86b54769cd1",
+          "timing": {
+            "startedAt": "2026-10-26T11:51:18.989Z",
+            "endedAt": "2026-10-26T11:52:20.390Z",
+            "durationMs": 61377.61716599998,
+            "launchMs": 610.4052500000107
+          },
+          "exitCode": 0,
+          "timedOut": false,
+          "usage": {
+            "inputTokens": 146192,
+            "outputTokens": 1457
+          }
+        }
+      ]
+    }
+  ],
+  "rootVerificationHash": "83967788d629d3adb7d82186a9f0ef15d91bcee1f8585c184ab4540636b5a7cf",
+  "primaryHostStatus": "not-passed",
+  "primaryOutcomeHash": "079cf7aec68ab16fcedc1ea828e27f6f4e7c8b7ce5cd12a86512cd1007a78da0",
+  "primaryHostSummaryIssue": "Case execution status overwritten by own CLI status object during Object.assign; raw outcomes unchanged",
+  "formalQualityAcceptance": false,
+  "reportingCorrectionProofHash": "411c0acf182ed17cee9970bac46d887ce853c30b8f56937f5a9f3a3e5aabfe1a"
+}

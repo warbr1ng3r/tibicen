@@ -16,7 +16,7 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 const repository = 'https://github.com/warbr1ng3r/tibicen';
 const guide = `${repository}/blob/main/README.md`;
-const release = `${repository}/releases/tag/v0.1.0-alpha.1`;
+const release = `${repository}/releases/tag/v1.0.0`;
 const scenarios = [
   {
     label: 'tibicen-init',
@@ -73,8 +73,8 @@ const questions = [
       'Какие агенты и платформы проверены?',
     ),
     description: t(
-      'Release installation is verified on macOS, Node 24 and Codex. Claude Code and Cursor installation targets are experimental. Bounded Codex and copied-skill ZCode exercises do not prove automatic discovery or support for every environment. Project build/test/lint checks currently use the web profile.',
-      'Установка релиза проверена на macOS, Node 24 и Codex. Цели Claude Code и Cursor экспериментальные. Ограниченные упражнения Codex и скопированный скилл в ZCode не доказывают автоматическое обнаружение или поддержку всех сред. Проектные build/test/lint-проверки пока используют web-профиль.',
+      'Historical alpha installation was verified on macOS, Node 24 and Codex. Public delivery checks for 1.0.0 remain pending. Claude Code and Cursor installation targets are experimental. Bounded Codex and copied-skill ZCode exercises do not prove automatic discovery or support for every environment. Project build/test/lint checks currently use the web profile.',
+      'Историческая установка alpha проверена на macOS, Node 24 и Codex. Проверки публичной доставки 1.0.0 ещё ожидаются. Цели Claude Code и Cursor экспериментальные. Ограниченные упражнения Codex и скопированный скилл в ZCode не доказывают автоматическое обнаружение или поддержку всех сред. Проектные build/test/lint-проверки пока используют web-профиль.',
     ),
   },
   {
@@ -236,7 +236,7 @@ const geometry = [
             </p>
             <div class="hero-actions">
               <a class="button button-primary" href="#start">
-                {t('Install alpha', 'Установить alpha')}{' '}
+                {t('Install Tibicen', 'Установить Tibicen')}{' '}
                 <span aria-hidden="true">↗</span>
               </a>
               <a class="text-link" href={repository}>
@@ -246,7 +246,7 @@ const geometry = [
             </div>
             <p class="hero-note">
               <span class="status-dot" aria-hidden="true"></span>
-              {t('Limited alpha', 'Ограниченная alpha')} · 0.1.0-alpha.1 · MIT
+              Tibicen · 1.0.0 · MIT
             </p>
           </div>
           <ProjectPreview {locale} />
@@ -273,12 +273,12 @@ const geometry = [
             </div>
             <p class="support-note">
               {t(
-                'Verified delivery: macOS · Node 24 · Codex. Claude Code and Cursor targets are experimental. Windows command execution is unavailable; read-only operations remain available.',
-                'Проверенная доставка: macOS · Node 24 · Codex. Цели Claude Code и Cursor экспериментальные. На Windows исполнение команд недоступно; чтение остаётся доступным.',
+                'Historical alpha delivery: macOS · Node 24 · Codex. Public 1.0.0 delivery checks are pending. Claude Code and Cursor targets are experimental. Windows command execution is unavailable; read-only operations remain available.',
+                'Историческая доставка alpha: macOS · Node 24 · Codex. Публичная доставка 1.0.0 ещё проверяется. Цели Claude Code и Cursor экспериментальные. На Windows исполнение команд недоступно; чтение остаётся доступным.',
               )}
             </p>
             <div class="project-links">
-              <a href={`${guide}#install-the-limited-alpha`}>
+              <a href={`${guide}#install-tibicen`}>
                 {t('Installation guide', 'Инструкция установки')}
               </a>
               <a href={release}>{t('Release notes', 'Описание релиза')}</a>
@@ -447,6 +447,9 @@ const geometry = [
         <a href={repository}>GitHub</a>
         <a href={guide}>{t('Documentation', 'Документация')}</a>
         <a href={release}>{t('Release notes', 'Описание релиза')}</a>
+        <a href={`${basePath}/maintenance/index.json`}>
+          {t('Advisories and checksums', 'Предупреждения и суммы')}
+        </a>
         <a href={`${guide}#update-or-remove-an-installation`}>
           {t('Update or remove', 'Обновить или удалить')}
         </a>

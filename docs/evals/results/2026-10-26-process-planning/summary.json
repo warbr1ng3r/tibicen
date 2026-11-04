@@ -1,0 +1,384 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "timezone": "Europe/Moscow",
+  "draft": false,
+  "status": "setup-errors-task-planning-gate-not-reached",
+  "privateSourceId": "codex-proc-planning-20261026-l4SPIu",
+  "experimentId": "codex-proc-planning-2026-10-26",
+  "cohortId": "08c97055ccaf8422a6aa44b94b7d7e32c3a3e329b221b485b52e5d599c70f80a",
+  "experimentHash": "c100748b92a19326dd83428edd7816fa622c52c181fc724216d6afb535081494",
+  "conditionsHash": "ffd5fb82d03579716db1a0cf6a23ac1d31b5ddf9526f50edb78a99acaf708b1d",
+  "scenarioId": "proc-01",
+  "scenarioHash": "a0dde7ed17f74ff5901de9700e528404412a13eec41c4f58d484b14d4bfb3a35",
+  "profileHash": "ceee670ac9240ffddc8e24d69a7845befd76bdca15d8bae8c78dc7bfc2f5f8f6",
+  "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+  "observedReportHash": "8b1f648c41b1faf296780e84563215aa67d90c276b063de887230c6e1931a11d",
+  "collectedReportHash": "8b1f648c41b1faf296780e84563215aa67d90c276b063de887230c6e1931a11d",
+  "source": {
+    "sha": "bdd889d9f4f626daec1bf10057fa1003d2e2a252",
+    "dirty": true,
+    "treeHash": "4d89f8a85137ef9590736a102e55319c7bfcc324230700bbeef99e26286ed190",
+    "files": 157,
+    "observedAt": "2026-10-26T08:22:26.914Z",
+    "postRunVerification": {
+      "schema": 1,
+      "observedAt": "2026-10-26T08:29:08.132069+00:00",
+      "files": 157,
+      "treeHash": "4d89f8a85137ef9590736a102e55319c7bfcc324230700bbeef99e26286ed190",
+      "allBytesAndModesMatch": true
+    }
+  },
+  "profile": {
+    "id": "codex-0.157.0-gpt-6-sol",
+    "agent": "codex",
+    "version": "0.157.0",
+    "model": "gpt-6-sol",
+    "auth": "subscription",
+    "paid": false,
+    "startupHash": "940fe159ea80b1ea308864d26e9889f883d3a199a1e331ff7db169f16f475cbd",
+    "permissionsHash": "ea988fbd30ea060e0a0ed2b53223522ec99b2ec21bdedf22e6105da9d485d0ae"
+  },
+  "mode": "observed",
+  "nativeProtocol": 2,
+  "qualityPlan": {
+    "setup": ["grounding", "fit", "sufficiency", "consistency"],
+    "task": ["application", "loading", "process"]
+  },
+  "limits": {
+    "launchMs": 45000,
+    "setupMs": 180000,
+    "taskMs": 360000,
+    "maxCostUsd": null
+  },
+  "repeats": 1,
+  "order": ["tibicen", "baseline"],
+  "budget": {
+    "allocation": "Separate allocation; no extension or retrospective recount of the previous cycle.",
+    "executorCap": 16,
+    "executorSessions": 3,
+    "qualityJudgeCap": 0,
+    "qualityJudgeSessions": 0,
+    "humanReviews": 0,
+    "newStartupRequests": 0,
+    "previousClosedCycle": {
+      "executorUsed": 20,
+      "executorCap": 32,
+      "qualityJudgeUsed": 2,
+      "qualityJudgeCap": 2,
+      "historicalOutcomesUnchanged": true
+    }
+  },
+  "counts": {
+    "plannedAttempts": 2,
+    "recordedAttempts": 2,
+    "startedAttempts": 2,
+    "observedLaunchPass": 2,
+    "observedSetupError": 2,
+    "observedTaskSkip": 2,
+    "evaluatedSetupPass": 0,
+    "evaluatedTaskPass": 0,
+    "taskPlanningGateReached": 0
+  },
+  "quality": {
+    "modelRequests": 0,
+    "humanReviews": 0,
+    "assessment": null,
+    "fullAcceptance": false
+  },
+  "preflight": {
+    "reused": true,
+    "historicalObservedAt": "2026-10-25T22:03:25.879Z",
+    "preflightHash": "bc8e5fed874739569ab42ceeba4e08d95411ebc8b25c745a64f75c6ed57999f7",
+    "newStartupRequests": 0
+  },
+  "apiCallsAllowed": false,
+  "costUsd": null,
+  "distributionHash": "50f24a389a86cbfecedc36646d6362894062a7b8db44f22f639d80dff610a7c9",
+  "harnessHash": "7429b819f3a99aa3cb2f33c1cba0307408a569db706f36063229e363306c464e",
+  "fixturesHash": "73d32fa447c8c89ca618763eb09b963d83ab35b2c10eae44d50a00aae03ba129",
+  "sourceMirrorHash": "294ec49e6fa10eb810feeb15100b20e1843c59f54a83b2f7276ddc791ba7ad79",
+  "runtimeProbe": {
+    "policyHash": "0d2e9ccefa194b54f63c7686dfbaa0e2544c3b6bab438259cebeab8abf72e3b0",
+    "scriptHash": "53569e01bba00f5041437c0f516ddb8c63aa32acb42fa5c386ec3cfd66c7f7f5",
+    "exitCode": 0,
+    "timedOut": false,
+    "facts": {
+      "denied": true,
+      "resourcesReadable": true,
+      "runtimeWriteDenied": true
+    },
+    "verified": true
+  },
+  "invariantFailures": [],
+  "attempts": [
+    {
+      "observed": {
+        "schema": 1,
+        "id": "proc-01-tibicen-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1390.040417
+        },
+        "setup": {
+          "status": "error",
+          "durationMs": 178636.389333,
+          "reason": "native-execution-failed"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "setup-not-passed"
+        }
+      },
+      "evaluated": {
+        "schema": 1,
+        "id": "proc-01-tibicen-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1390.040417
+        },
+        "setup": {
+          "status": "error",
+          "durationMs": 178636.389333,
+          "reason": "native-execution-failed"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "evaluated-setup-not-passed"
+        }
+      },
+      "quality": null,
+      "mechanicalGrades": [
+        {
+          "id": "setup-invariants",
+          "stage": "setup",
+          "scope": "invariants",
+          "verdict": "unverified",
+          "reason": "native-reviewed-effects-preserved",
+          "evidenceEventCount": 48
+        }
+      ],
+      "measurements": {
+        "durationMs": {
+          "launch": 1390.040417,
+          "setup": 178636.389333,
+          "task": null
+        },
+        "usage": {
+          "launch": {
+            "costUsd": null,
+            "inputTokens": null,
+            "outputTokens": null
+          },
+          "setup": {
+            "costUsd": null,
+            "inputTokens": null,
+            "outputTokens": null
+          },
+          "task": null
+        },
+        "costUsd": null
+      },
+      "runHash": "03d0eac824b2dcdaab7014846d395a54242c61e35dcca6ea107e6679c81a3d4b",
+      "assertionHashes": 44,
+      "setupObservation": {
+        "startCheckpointSeq": 2,
+        "endCheckpointSeq": 49,
+        "completeSnapshots": true,
+        "filesBefore": 7,
+        "filesAfter": 13,
+        "applicationFilesPreserved": true,
+        "approvalCount": 1,
+        "approvalSeqs": [33],
+        "independentHostChecks": 0
+      },
+      "taskPlanningGateReached": false,
+      "linkedRunHash": "9a75803ce6b375741c510088e9278a6b647be9346553d4ce2928201284f27542",
+      "preparedJudgePacketHash": "20e906fc07a55e71fb6ec8609007c510be50155da4619d40bff832cb20b11252",
+      "preparedJudgeBindingHash": "9a75803ce6b375741c510088e9278a6b647be9346553d4ce2928201284f27542",
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "hash": "2cac5009e84299421c08edf447380cf1cd3a9e220ddfbb9077b2dbd65e48d3e3",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1,
+          "failedTurns": 0,
+          "errorRecords": 0,
+          "usage": {
+            "inputTokens": 220865,
+            "outputTokens": 4378
+          }
+        },
+        {
+          "stage": "setup",
+          "phase": "setup-apply",
+          "hash": "b5bfe69472344bbc948bece89dc70efa9b91e04d199b0788ad7420cb5b16c220",
+          "exitCode": null,
+          "timedOut": true,
+          "completedTurns": 0,
+          "failedTurns": 0,
+          "errorRecords": 0,
+          "usage": {
+            "inputTokens": null,
+            "outputTokens": null
+          }
+        }
+      ],
+      "failure": {
+        "observed": "setup-apply session timed out",
+        "phase": "setup-apply",
+        "causalRelationToPlanningChange": "not established"
+      }
+    },
+    {
+      "observed": {
+        "schema": 1,
+        "id": "proc-01-baseline-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1396.7387499999895
+        },
+        "setup": {
+          "status": "error",
+          "durationMs": 51878.207417,
+          "reason": "native-execution-failed"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "setup-not-passed"
+        }
+      },
+      "evaluated": {
+        "schema": 1,
+        "id": "proc-01-baseline-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1396.7387499999895
+        },
+        "setup": {
+          "status": "error",
+          "durationMs": 51878.207417,
+          "reason": "native-execution-failed"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "evaluated-setup-not-passed"
+        }
+      },
+      "quality": null,
+      "mechanicalGrades": [
+        {
+          "id": "setup-invariants",
+          "stage": "setup",
+          "scope": "invariants",
+          "verdict": "unverified",
+          "reason": "native-reviewed-effects-preserved",
+          "evidenceEventCount": 31
+        }
+      ],
+      "measurements": {
+        "durationMs": {
+          "launch": 1396.7387499999895,
+          "setup": 51878.207417,
+          "task": null
+        },
+        "usage": {
+          "launch": {
+            "costUsd": null,
+            "inputTokens": null,
+            "outputTokens": null
+          },
+          "setup": {
+            "costUsd": null,
+            "inputTokens": null,
+            "outputTokens": null
+          },
+          "task": null
+        },
+        "costUsd": null
+      },
+      "runHash": "971f51557767bf3000c9bf99f720bb8b44cc34803eb5ae78023d41395b043b87",
+      "assertionHashes": 29,
+      "setupObservation": {
+        "startCheckpointSeq": 2,
+        "endCheckpointSeq": 32,
+        "completeSnapshots": true,
+        "filesBefore": 7,
+        "filesAfter": 7,
+        "applicationFilesPreserved": true,
+        "approvalCount": 0,
+        "approvalSeqs": [],
+        "independentHostChecks": 0
+      },
+      "taskPlanningGateReached": false,
+      "linkedRunHash": "b83b4e27b1ce21c4d9dcb7b026d55d25f0c98fd392fb10b737ffb413e51abc11",
+      "preparedJudgePacketHash": "8c31914e8db1e39d5f621271dc29e4ea8e71683c96494230e84e4122e11ce59e",
+      "preparedJudgeBindingHash": "b83b4e27b1ce21c4d9dcb7b026d55d25f0c98fd392fb10b737ffb413e51abc11",
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "hash": "04f41079e7f0535288e221befc6874f220e2af7ae2b266355ee86e43cbf02201",
+          "exitCode": 1,
+          "timedOut": false,
+          "completedTurns": 0,
+          "failedTurns": 1,
+          "errorRecords": 1,
+          "usage": {
+            "inputTokens": null,
+            "outputTokens": null
+          }
+        }
+      ],
+      "failure": {
+        "observed": "explicit error and turn.failed",
+        "phase": "setup-proposal",
+        "providerMessage": "Selected model is at capacity.",
+        "causalRelationToPlanningChange": "not established"
+      }
+    }
+  ],
+  "verification": {
+    "sourceInventoryHashAndPostRunArtifactChecked": true,
+    "frozenConditionExperimentScenarioProfileBindingsChecked": true,
+    "rawRunAndEvidenceBindingsVerified": 2,
+    "sessionFileHashesAndRunReceiptsVerified": 3,
+    "collectorSessionUsageBindingsVerified": 3,
+    "packetAndLinkedRunBindingsVerified": 2,
+    "assertionHashMatches": 73,
+    "originalApplicationBytesAndModesPreserved": true,
+    "currentRuntimeCompared": false
+  },
+  "limitations": [
+    "Оба setup завершились native-execution-failed; task не начинался. Новый planning gate 5.6 не достигнут и не проверен этой живой парой.",
+    "У Tibicen setup-apply timedOut=true, exitCode=null и нет turn.completed. Причина незавершения apply в этой проекции не установлена; связь с дефектом planning 5.6 не доказана.",
+    "У baseline сохранены error/turn.failed с сообщением Selected model is at capacity. Это наблюдённый отказ данной сессии, не оценка качества настройки или общего состояния аккаунта.",
+    "Оба setup-invariants имеют unverified: native-reviewed-effects-preserved. Пустой invariantFailures не означает успешные setup или подтверждённую завершённость изменений.",
+    "Известны counters только завершённой Tibicen proposal: 220865 input / 4378 output tokens. Полный setup usage неизвестен из-за незавершённой apply; стоимость остаётся null.",
+    "Collector подготовил связанные packets без judge-сессий. Новых model quality reviews и human reviews нет; исторические оценки не переносились, полная 3.6 остаётся открытой.",
+    "Один повтор, порядок Tibicen → baseline. Длительности ошибочных setup не доказывают сравнительную скорость, устойчивость или причинное преимущество продукта.",
+    "Платный API-маршрут и fallback не использовались. Публичная проекция не содержит полных traces, содержимого ответов, авторизационных данных или личных путей."
+  ]
+}

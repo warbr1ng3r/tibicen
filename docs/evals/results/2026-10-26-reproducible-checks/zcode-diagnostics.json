@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "outcome": "pass",
+  "projectorCases": 44,
+  "publicEntryPoint": "createZCodeApp.submitPrompt",
+  "statusSinkEntryPoint": "public getCurrentModelInvocationContext().statusSink",
+  "failureBeforeTools": true,
+  "knownFailureFacts": {
+    "reason": "invalid_request",
+    "code": "invalid_model_request",
+    "statusCode": 422,
+    "phase": "validation"
+  },
+  "origins": [
+    "model_network_status",
+    "turn_error",
+    "caught_exception"
+  ],
+  "syntheticSecretAbsent": true,
+  "priorFilesUnchanged": 222,
+  "sourceCommit": "3c5b227649371507ddc4eb46ac5133afe6db1cab",
+  "sourceVersion": "0.17.0",
+  "boundaryPassed": true,
+  "modelSessions": 0,
+  "modelCalls": 0,
+  "httpRequests": 0,
+  "retries": 0,
+  "fakeModelRequests": 1,
+  "priorResultRewritten": false,
+  "immediateSanitizedPersistence": true,
+  "limits": "Synthetic public-SDK path only; real provider cause and native-tool live acceptance remain unverified.",
+  "proofHash": "47393eb43d0471242fa24a06dabdc0672596992d8950fcb136d85f6f3ffd740a",
+  "totalFakeModelRequestsAcrossAttempts": 3,
+  "liveProviderCause": "unknown"
+}

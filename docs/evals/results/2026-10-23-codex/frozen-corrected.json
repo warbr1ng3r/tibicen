@@ -1,0 +1,127 @@
+{
+  "experiment": {
+    "schema": 1,
+    "id": "codex-diagnostic-corrected-2026-10-23",
+    "sourceSha": "408beb5a5e4af1bae78d2a3d6b4bf23b04611f90",
+    "conditionsHash": "82e92deefd03a326c34f9c6eb7241d0be44a1564fbafd81bbe72a6ac866670ed",
+    "scenarios": [
+      {
+        "id": "diagnostic-bare",
+        "hash": "273bf0ebe5fbb89549f629fda1728bca4949028cd16372cbdb8ba7335d9b921b"
+      },
+      {
+        "id": "diagnostic-conflicts",
+        "hash": "d2463dba27f1ca3fcdef5549bf0d37ea91c074a3449c803947163ff103b56f04"
+      }
+    ],
+    "profiles": [
+      {
+        "id": "codex-0.157.0-gpt-6-sol",
+        "agent": "codex",
+        "version": "0.157.0",
+        "model": "gpt-6-sol",
+        "auth": "subscription",
+        "paid": false,
+        "startupHash": "78762fd1c7e364d2ffb319814a1c04e375c72e5617eaf275181b236a0e4e69ca",
+        "permissionsHash": "4c73b7d56861e67882a530371e185c86147aa864b26110e5d6f0dcb05ac9b8e4"
+      }
+    ],
+    "repeats": 1,
+    "limits": {
+      "launchMs": 45000,
+      "setupMs": 180000,
+      "taskMs": 120000,
+      "maxCostUsd": null
+    },
+    "order": [
+      {
+        "id": "bare-tibicen",
+        "scenarioId": "diagnostic-bare",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      },
+      {
+        "id": "bare-baseline",
+        "scenarioId": "diagnostic-bare",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "conflicts-baseline",
+        "scenarioId": "diagnostic-conflicts",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "repeat": 1
+      },
+      {
+        "id": "conflicts-tibicen",
+        "scenarioId": "diagnostic-conflicts",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "repeat": 1
+      }
+    ]
+  },
+  "conditions": {
+    "schema": 1,
+    "sourceSha": "408beb5a5e4af1bae78d2a3d6b4bf23b04611f90",
+    "distributionHash": "af8de4d9b2cfdd53f59f2d00cade56ca2f09172c1fd1ff13ce71558646a1829f",
+    "preflightHash": "21f3da4608126a779399dea45ea334adf40cc488de5c3af9cc2f8287c8ad19f4",
+    "model": "gpt-6-sol",
+    "repeats": 1,
+    "maxModelSessions": 16,
+    "apiCallsAllowed": false,
+    "cost": "Subscription usage, monetary/token cost unknown until observed; no API key route.",
+    "order": [
+      "bare-tibicen",
+      "bare-baseline",
+      "conflicts-baseline",
+      "conflicts-tibicen"
+    ],
+    "limits": {
+      "launchMs": 45000,
+      "setupMs": 180000,
+      "taskMs": 120000,
+      "maxCostUsd": null
+    },
+    "consent": "Read-only proposal; exact reviewed changes/commands plus a separately bound trusted-kernel service-write intent; fresh task proposal and consent.",
+    "sourceState": "Product distribution from the accepted HEAD; uncommitted development harness is separately hashed.",
+    "harnessFiles": [
+      {
+        "path": "codex-diagnostic.ts",
+        "hash": "b0230a4563c06d35eff688e535d67db8fdfb0ae3d631193210b2006f50c9f761"
+      },
+      {
+        "path": "codex-preflight.ts",
+        "hash": "9d0803ab8c4a47b53ddd79bf034a64ee094f6fd140440f8477467855979a7cac"
+      },
+      {
+        "path": "contracts.ts",
+        "hash": "abdcc980f68cd346fe75fa172d6bb62f83a4c0a6d8061a38bdd504cca14eafea"
+      },
+      {
+        "path": "fixtures.ts",
+        "hash": "2b4527b42e5f440fc030dc9c9c22af0ed7af4aec33dc55092c3e8b3663911ae3"
+      },
+      {
+        "path": "observations.ts",
+        "hash": "9835b2151d5b3ca9a80d15c9e72b358d2d64b38eac0f2f227e9835ea65aae96f"
+      },
+      {
+        "path": "report.ts",
+        "hash": "512228533e0e6030aab3cbcd4ea877414c6c197ea9c308a02220600c11bafdef"
+      },
+      {
+        "path": "results.ts",
+        "hash": "378e4d5c1c3ec7d8fc3e7e3e6395d73e4f9455fbf2b94453b5dc6f4fa4bc2df5"
+      },
+      {
+        "path": "quality.ts",
+        "hash": "17dc47f46a375ef9ca1301b7a929e7bef9ca7abc6ae1cab633a9378ce0fccd6a"
+      }
+    ],
+    "harnessHash": "43058ebb0edba8ff58cc6c2957a4a480cbf767b2527e47f553bbcdf82ce270f3"
+  }
+}

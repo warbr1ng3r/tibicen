@@ -1,5 +1,7 @@
 # Skill and process integration acceptance
 
+**Release policy, 2026-11-03:** technical acceptance uses the separate [engineering assessment](ENGINEERING_ACCEPTANCE.md) and [evidence rules](QUALITY_AND_REPORTS.md#engineering-release-assessment). All scenario criteria, positive loading/use and hard invariants below remain required. Human sample/calibration clauses below govern studies claiming human-calibrated results; they are voluntary postpublication research rather than a prerelease dependency. Existing graded outcomes are unchanged.
+
 An end-to-end acceptance program for additional skills (§6.1 of the main vision and §9 of the addendum) and the first process adapter (§6 of the addendum). These are prepared scenarios, not run results. Contracts/runner/graders are in the [harness](../../openspec/changes/build-agent-evaluation-harness/tasks.md); the adapter is covered by [tasks 3.3–3.4](../../openspec/changes/extend-infrastructure-contracts/tasks.md). The [PREF](PREFERENCE_SELECTION.md) program separately checks the basis for selection.
 
 Positive SKILL-01 and PROC-01 check integration of an explicitly requested tool. Their success does not prove that recommending the tool for another project is correct. Selection suitability is checked separately in PREF, including the four PREF-08 contexts; neither adapter availability nor successful installation replaces that assessment.

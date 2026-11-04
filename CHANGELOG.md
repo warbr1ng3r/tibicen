@@ -5,6 +5,22 @@ immutable source/distribution references, checks and remaining acceptance.
 
 ## Unreleased
 
+- Prepare 1.0.0 installer/site metadata pinned to the full standalone distribution
+  commit; publication, fresh CI and public-byte checks remain separate.
+- Keep a current-reply preference inferred and correctable until the user explicitly
+  chooses a permanent project rule; a later explicit project correction replaces
+  the earlier inference without transferring application consent.
+
+- Refuse resume before writes when its remaining plan omits a required pending
+  manual action from the original session; keep explicit completion and optional
+  steps visible.
+- Include MCP command/argument environment references in availability results;
+  distinguish quoted Codex server names from nested dotted TOML tables.
+
+- Clarify that uncertainty about a mandatory project stage requires a question
+  before proposing to remove, combine or change it, when questions are allowed.
+  Keep the existing stage while awaiting the answer.
+
 - Use observable writable permissions for new first-party Windows text files;
   reject unsupported exact modes before writes and preserve repeated snapshots.
   POSIX mode bits do not establish Windows ACL privacy.

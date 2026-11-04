@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "observedAt": "2026-10-23T12:58:46.624Z",
+  "profile": "zcode",
+  "desktop": {
+    "path": "/Applications/ZCode.app",
+    "version": "3.14.4",
+    "build": "3.14.4.7912",
+    "infoHash": "4ef6bc5cce05aea1fe0c1329dacacc46af7eaa97a5c2a795694ca6a21b3d03f8"
+  },
+  "runtime": {
+    "version": "v24.15.0",
+    "binaryHash": "3200fbd9f7fd4410426dd541e10d1ab829d3472f270d743c7fabd1696c03fe32"
+  },
+  "cli": {
+    "version": "0.16.9",
+    "entrypoint": {
+      "path": "/Applications/ZCode.app/Contents/Resources/glm/zcode.cjs",
+      "hash": "fad4c35c4c36ec210d8a06d3fa0e77de23c8545e2eb6ff90aea1eb38d1e6275f"
+    },
+    "helpHash": "792f3f9bce61a346181887daa1d8eedf01b7ba47c367f9f44a0e6b73038cf6db"
+  },
+  "preflight": {
+    "status": "blocked",
+    "startupControlled": false,
+    "authProtected": false,
+    "processTreeControlled": false,
+    "isolation": "controlled",
+    "reason": "native-startup-auth-isolation-unverified"
+  },
+  "modelRequests": 0,
+  "note": "Sanitized installed-bundle discovery projection, not a ready native-runner input. Only --version/--help with fresh HOME/TMPDIR/ZCODE_DATA_BASE_DIR; no prompt, login, personal data, or model requests. Desktop version and bundled CLI version are distinct."
+}

@@ -1,5 +1,7 @@
 # Preference selection acceptance
 
+**Релизная политика от 03.11.2026:** техническая приёмка использует отдельную [инженерную оценку](ENGINEERING_ACCEPTANCE.md) и [правила свидетельств](QUALITY_AND_REPORTS.md#engineering-release-assessment). Все сценарные критерии, положительные загрузка/применение и жёсткие инварианты ниже остаются обязательными. Условия человеческой выборки/калибровки ниже относятся к исследованиям с заявленными человечески откалиброванными результатами; это добровольная работа после публикации, а не дорелизная зависимость. Прежние оценённые исходы не меняются.
+
 Программа §9 [дополнения](../PRODUCT_VISION_ADDENDUM.md#9-identifying-preferences-and-selecting-components), change [infer-preferences-for-component-selection](../../openspec/changes/infer-preferences-for-component-selection/proposal.md). Это входы и независимые критерии будущих прогонов, не журнал выполненной приёмки. Runner, сериализованный формат сценария и профили принадлежат [стенду](../../openspec/changes/build-agent-evaluation-harness/tasks.md); новый движок здесь не вводится.
 
 ## Execution contract

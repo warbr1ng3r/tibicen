@@ -1,0 +1,385 @@
+{
+  "installedFilesMatch": 86,
+  "repeatFilesMatch": 86,
+  "reinstalledFilesMatch": 86,
+  "standaloneCommands": 8,
+  "noGit": true,
+  "readOutsideScopeDeniedByNode": true,
+  "localUpdatePreservedEdits": true,
+  "localReinstallOverwritesEdits": true,
+  "localReinstallDeletesAddedFile": true,
+  "localEditsBackupAvailable": true,
+  "removalDeletedBothSkills": true,
+  "userOwnedFiles": 6,
+  "userOwnedPreserved": true,
+  "networkAttempts": "",
+  "candidateChecksumFileHashAfter": "6ecd6b77d28e7adf3e9921b20078c80b2091a0109c8b5b6bfabaa9a201b4de23",
+  "schema": 1,
+  "observedAt": "2026-10-27",
+  "scope": "local macOS arm64, Codex installer target; model-free mechanical delivery",
+  "sourceSha": "3fb29efb1087a616aeb69a3b22f400972bfb8a3e",
+  "version": "0.1.0",
+  "installer": {
+    "name": "skills",
+    "version": "1.7.4",
+    "route": "direct executable of a copied existing cached package; cached runtime dependencies copied separately",
+    "cliHash": "b7d92e2a619e8982d38390572750efb8c2ec81cdf23c33aed2fa426d080a1e4e",
+    "binHash": "cda9a4dd5cd209c6f1dc551feacbaef503cefb5d8986d3c4cab9a95e1bbc47e6",
+    "dependencies": [
+      {
+        "name": "yaml",
+        "version": "2.9.1"
+      },
+      {
+        "name": "tar",
+        "version": "7.5.22"
+      },
+      {
+        "name": "chownr",
+        "version": "3.0.0"
+      },
+      {
+        "name": "minipass",
+        "version": "7.1.3"
+      },
+      {
+        "name": "minizlib",
+        "version": "3.1.0"
+      },
+      {
+        "name": "yallist",
+        "version": "5.0.0"
+      },
+      {
+        "name": "@isaacs/fs-minipass",
+        "version": "4.0.1"
+      }
+    ]
+  },
+  "candidateBytesStillMatch": 86,
+  "installationPath": "$HOME/.agents/skills/{tibicen-init,tibicen-adopt}",
+  "lockPath": "$XDG_STATE_HOME/skills/.skill-lock.json",
+  "lockAfterRemoval": {
+    "version": 3,
+    "skills": {},
+    "dismissed": {}
+  },
+  "removalDeletesFilesAddedInsideSkill": true,
+  "backupRestoreTested": false,
+  "externalData": "six delivery sentinels; this does not establish manifest/state schema or migration acceptance",
+  "authReads": 0,
+  "modelCalls": 0,
+  "remoteCalls": 0,
+  "publications": 0,
+  "commits": 0,
+  "unverified": [
+    "public Git owner/repo + tag/full SHA delivery",
+    "Ubuntu/Linux delivery",
+    "transition between two different frozen distributions",
+    "resume after an actual distribution version transition",
+    "fresh agent discovery/loading/use",
+    "npm/pnpm/Yarn package acquisition in this run"
+  ],
+  "commands": [
+    {
+      "id": "00-installer-version",
+      "command": [
+        "node",
+        "$CACHED_SKILLS/bin/cli.mjs",
+        "--version"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "c0a5a6493b8efd6757e5fecc6fccd3dfc513b1963331f7c8af2c4d6854f9bf66",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "01-installer-help",
+      "command": [
+        "node",
+        "$CACHED_SKILLS/bin/cli.mjs",
+        "--help"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "db3dd9dcd95a942b2df6ab36400ea38fa9054fbbc1d6c37dd355708cca407a0b",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "02-install",
+      "command": [
+        "node",
+        "$CACHED_SKILLS/bin/cli.mjs",
+        "add",
+        "$FROZEN_DIST",
+        "-g",
+        "--agent",
+        "codex",
+        "--copy",
+        "-y"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "da9048e1944aad8be508f194fc56ec429221288ac25773f946daa3cfca5f04f3",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "03-list",
+      "command": [
+        "node",
+        "$CACHED_SKILLS/bin/cli.mjs",
+        "list",
+        "-g",
+        "--agent",
+        "codex",
+        "--json"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "5bb4b843919283bfa293e83d89cc242d980a26eeba443d4c84752f97e64042fc",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "04-tibicen-init-self-test",
+      "command": [
+        "node",
+        "--permission",
+        "--allow-fs-read=$SCOPE",
+        "--allow-fs-write=$SCOPE",
+        "$SCOPE/home/.agents/skills/tibicen-init/scripts/tibicen.ts",
+        "self-test",
+        "--root",
+        "$SCOPE/outside-checkout"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "a09b38cca7958544bdd100f173c7773dcf8dbeb83c825ff083e3db2180c607a4",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "04-tibicen-init-version",
+      "command": [
+        "node",
+        "--permission",
+        "--allow-fs-read=$SCOPE",
+        "--allow-fs-write=$SCOPE",
+        "$SCOPE/home/.agents/skills/tibicen-init/scripts/tibicen.ts",
+        "version",
+        "--root",
+        "$SCOPE/outside-checkout"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "6e93ab33c097ecf3bfe871e5a5a263ebdb70dffce5c50b2c50a7e2e88b8c4372",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "04-tibicen-init-help",
+      "command": [
+        "node",
+        "--permission",
+        "--allow-fs-read=$SCOPE",
+        "--allow-fs-write=$SCOPE",
+        "$SCOPE/home/.agents/skills/tibicen-init/scripts/tibicen.ts",
+        "help",
+        "--root",
+        "$SCOPE/outside-checkout"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "365c7b3d43aa01a84282810391270d4ce3508862961958f4960489a43d436a11",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "04-tibicen-init-scan",
+      "command": [
+        "node",
+        "--permission",
+        "--allow-fs-read=$SCOPE",
+        "--allow-fs-write=$SCOPE",
+        "$SCOPE/home/.agents/skills/tibicen-init/scripts/tibicen.ts",
+        "scan",
+        "--root",
+        "$SCOPE/outside-checkout"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "38f23dcd981fde8c9626d6a399b67a6d3dee4209b23e0f037bc0caa1529c8364",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "04-tibicen-adopt-self-test",
+      "command": [
+        "node",
+        "--permission",
+        "--allow-fs-read=$SCOPE",
+        "--allow-fs-write=$SCOPE",
+        "$SCOPE/home/.agents/skills/tibicen-adopt/scripts/tibicen.ts",
+        "self-test",
+        "--root",
+        "$SCOPE/outside-checkout"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "a09b38cca7958544bdd100f173c7773dcf8dbeb83c825ff083e3db2180c607a4",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "04-tibicen-adopt-version",
+      "command": [
+        "node",
+        "--permission",
+        "--allow-fs-read=$SCOPE",
+        "--allow-fs-write=$SCOPE",
+        "$SCOPE/home/.agents/skills/tibicen-adopt/scripts/tibicen.ts",
+        "version",
+        "--root",
+        "$SCOPE/outside-checkout"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "6e93ab33c097ecf3bfe871e5a5a263ebdb70dffce5c50b2c50a7e2e88b8c4372",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "04-tibicen-adopt-help",
+      "command": [
+        "node",
+        "--permission",
+        "--allow-fs-read=$SCOPE",
+        "--allow-fs-write=$SCOPE",
+        "$SCOPE/home/.agents/skills/tibicen-adopt/scripts/tibicen.ts",
+        "help",
+        "--root",
+        "$SCOPE/outside-checkout"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "365c7b3d43aa01a84282810391270d4ce3508862961958f4960489a43d436a11",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "04-tibicen-adopt-scan",
+      "command": [
+        "node",
+        "--permission",
+        "--allow-fs-read=$SCOPE",
+        "--allow-fs-write=$SCOPE",
+        "$SCOPE/home/.agents/skills/tibicen-adopt/scripts/tibicen.ts",
+        "scan",
+        "--root",
+        "$SCOPE/outside-checkout"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "38f23dcd981fde8c9626d6a399b67a6d3dee4209b23e0f037bc0caa1529c8364",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "05-repeat-install",
+      "command": [
+        "node",
+        "$CACHED_SKILLS/bin/cli.mjs",
+        "add",
+        "$FROZEN_DIST",
+        "-g",
+        "--agent",
+        "codex",
+        "--copy",
+        "-y"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "da9048e1944aad8be508f194fc56ec429221288ac25773f946daa3cfca5f04f3",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "06-update-local",
+      "command": [
+        "node",
+        "$CACHED_SKILLS/bin/cli.mjs",
+        "update",
+        "tibicen-init",
+        "tibicen-adopt",
+        "-g",
+        "-y"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "fbf66ab26b4917615f86ea443f8b9f3eb744c6130ac6e7f71d37718ebb84e216",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "07-reinstall-over-local-edits",
+      "command": [
+        "node",
+        "$CACHED_SKILLS/bin/cli.mjs",
+        "add",
+        "$FROZEN_DIST",
+        "-g",
+        "--agent",
+        "codex",
+        "--copy",
+        "-y"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "da9048e1944aad8be508f194fc56ec429221288ac25773f946daa3cfca5f04f3",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "08-remove",
+      "command": [
+        "node",
+        "$CACHED_SKILLS/bin/cli.mjs",
+        "remove",
+        "tibicen-init",
+        "tibicen-adopt",
+        "-g",
+        "--agent",
+        "codex",
+        "-y"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "e17f0937c82fbfb82924f60680d8e553de4df11cbe4d3d0ab371e7acdf322f66",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "09-install-removal-local-file",
+      "command": [
+        "node",
+        "$CACHED_SKILLS/bin/cli.mjs",
+        "add",
+        "$FROZEN_DIST",
+        "-g",
+        "--agent",
+        "codex",
+        "--copy",
+        "-y"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "0e03ab7635fc3e4514624b5b9bd4870f00f1b29e015535e9dfb877ba24b2691f",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "10-remove-with-local-file",
+      "command": [
+        "node",
+        "$CACHED_SKILLS/bin/cli.mjs",
+        "remove",
+        "tibicen-init",
+        "tibicen-adopt",
+        "-g",
+        "--agent",
+        "codex",
+        "-y"
+      ],
+      "cwd": "$SCOPE/outside-checkout",
+      "exitCode": 0,
+      "stdoutHash": "e17f0937c82fbfb82924f60680d8e553de4df11cbe4d3d0ab371e7acdf322f66",
+      "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

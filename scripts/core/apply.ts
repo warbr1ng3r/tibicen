@@ -252,6 +252,22 @@ export async function applyPlan(
       'resume-required',
       'Unfinished work must be resumed with new consent.',
     );
+  if (options.resume) {
+    const manualActions =
+      previous.state?.proposal.manualActions ??
+      previous.manifest?.sessions.at(-1)?.manualActions ??
+      [];
+    assert(
+      manualActions.every(
+        (action) =>
+          action.required === false ||
+          action.status !== 'pending' ||
+          proposal.manualActions.some((next) => next.id === action.id),
+      ),
+      'manual-action-required',
+      'A resumed plan must explicitly include every required pending manual action.',
+    );
+  }
   if (options.resume && previous.state) {
     assert(
       previous.recovery!.manifest !== 'ambiguous',

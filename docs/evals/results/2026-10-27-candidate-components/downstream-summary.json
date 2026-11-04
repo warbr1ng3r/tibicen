@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "kind": "fresh-app-subagent-observations",
+  "candidateSource": "3fb29efb1087a616aeb69a3b22f400972bfb8a3e",
+  "candidateVersion": "0.1.0",
+  "environment": "Codex app subagent; actual app version unmeasured",
+  "skill": {
+    "source": "DietrichGebert/ponytail",
+    "sha": "09c434ab73ca43761c5d8b0c5d341926c2fba710",
+    "skillHash": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509",
+    "licenseIncluded": true,
+    "loading": "explicit project skill file read observed in a fresh context",
+    "task": "add triple(value), preserve double, no dependencies",
+    "testsPassed": 2,
+    "changedFiles": [
+      "src/math.js",
+      "tests/math.test.js"
+    ],
+    "unchangedFiles": 5,
+    "rootIndependentAssertions": 12
+  },
+  "process": {
+    "setupCases": [
+      "init",
+      "adopt"
+    ],
+    "downstreamWorkflows": 1,
+    "downstreamOrigin": "adopt copy",
+    "cliVersion": "1.14.3",
+    "loading": "explicit project instruction and native templates read in fresh context",
+    "planningConsent": "5 exact planning files approved before writes",
+    "implementationConsent": "separate artifact review and approval before application changes",
+    "testsPassed": 5,
+    "strictValidationExitCode": 0,
+    "nativeTasksComplete": 3,
+    "nativeTasksTotal": 3,
+    "protectedOriginalFilesPreserved": 12,
+    "originalApplicationFilesChanged": [
+      "src/math.js",
+      "tests/math.test.js"
+    ],
+    "rootIndependentAssertions": 12,
+    "initFreshWorkflow": "not executed separately"
+  },
+  "limitations": [
+    "No separate native app startup or automatic discovery claim",
+    "No human acceptance sample",
+    "One skill/task observation; not the whole SKILL/PROC matrix",
+    "Native compat/app outcomes in the saved Tibicen setup report are not overwritten"
+  ]
+}

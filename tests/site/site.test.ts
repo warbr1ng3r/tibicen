@@ -48,6 +48,13 @@ for (const { filename, route, locale, other } of pages) {
   test(`${locale}: static page language, first use and project exits are complete`, async () => {
     const html = await readFile(new URL(filename, site), 'utf8');
     assert.match(html, new RegExp(`<html\\b[^>]*lang="${locale}"`));
+    assert.match(html, /Tibicen 1\.0\.0/);
+    assert.ok(
+      html.includes(
+        'https://github.com/warbr1ng3r/tibicen/tree/e8532bba0582564c93e50de1f55174daaa9bbd34',
+      ),
+      'The default installation must pin the 1.0.0 distribution commit.',
+    );
     const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
     const description = html.match(
       /<meta\b[^>]*name="description"[^>]*content="([^"]+)"/,

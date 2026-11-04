@@ -1,5 +1,15 @@
 # Verification
 
+## Mandatory-stage clarification correction — 31 October 2026
+
+The [three-case app diagnostic](../../../docs/evals/results/2026-10-31-preference-decisions/README.md) retained an actual PREF-06 response that combined separate review and consent without the required clarification. One shared interview paragraph now makes mandatory-stage uncertainty explicit when questions are allowed; the old rule stays active pending the answer. Existing limits and the no-questions safe-gap branch are unchanged. Requirements, fixtures and release criteria were not relaxed.
+
+Only the two built stage-interview.md copies differ from the prior working payload; inventory79002226def0ff0b1695cfc8fa854003c03ba7a655c2e29cfdae5c4f507cbd40, still unreleased version0.1.0-alpha.1. Focused resource/matrix89/89 and both outside-checkout copied self-tests passed. The complete pinned pnpm gate passed715tests/zero failed/one intentional portable skip in77.971seconds; its rebuild matches the frozen corrected tree. The run used owned minimal HOME/empty package configs and disabled pnpm's pre-run auto-install, with procedural offline scope and no outer OS sandbox.
+
+A separately frozen final fresh app context asked the material review question before proposing a changed procedure. Its initial answer was captured before the unchanged synthetic reply; the same-context follow-up retained separate review and explicit consent. All six project files/modes/file sets and87distribution files remained unchanged, HOME stayed empty, and the original failed responses/earlier preview archive remain intact. This is one corrected raw observation at24/24 executor contexts, not accepted human-calibrated PREF-06, causal reliability or full MVP acceptance. App/model build/full activity remain unknown; no application check/apply, human grade, paid API, source version bump, commit or publication. The earlier private rc.1 does not contain this correction.
+
+Independent source review: Ship. Exact receipts/captures and final artifact review are stored separately under .evals-private/review-clarification-fix-20261031/ and its review folders. Historical verification below keeps its original scope.
+
 Дата: 22.10.2026. Изменение реализует инструкции и механическую видимость оснований §9; семантическое поведение настоящего агента этим проходом не подтверждено.
 
 ## Implemented scope

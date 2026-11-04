@@ -1,0 +1,2695 @@
+{
+  "schema": 1,
+  "preflight": {
+    "observedAt": "2026-10-23T14:58:24.650Z",
+    "cliVersion": "codex-cli 0.157.0",
+    "cliHash": "ad0be20d04e2ba6146ecdb51d7f8b7b0fe15420a15dc9b0057518d858f1f3714",
+    "model": "gpt-6-sol",
+    "authRoute": "existing-chatgpt-subscription",
+    "modelRequests": 1,
+    "preflight": {
+      "status": "ready",
+      "startupControlled": true,
+      "authProtected": true,
+      "processTreeControlled": true,
+      "isolation": "controlled"
+    },
+    "loading": "observed"
+  },
+  "series": [
+    {
+      "experimentId": "codex-skill-pref-proc-2026-10-23-01",
+      "kernelSourceSha": "0a4c7f707d309eaed907ce085e326f1bb85d68d2",
+      "conditionsHash": "ed3bbf00d8b7b559acd02d1f47e27e79432fa4d8d23af3517b77eb1af318b634",
+      "harnessHash": "72f7bfd9d812ab8481c9248ac8bf33d93f5331acf9cc960e29528cec066b66b2",
+      "runtimeProbe": {
+        "policyHash": "17bbf8edd9bb63fe6d565daa88375b891659a5a271f6470bbc93047601a1f322",
+        "scriptHash": "f49598dfa4cc1b4c37c9a01220d90bada529eb9c9760f159b75937bf00d0cf05",
+        "exitCode": 1,
+        "timedOut": false,
+        "facts": null,
+        "verified": false
+      },
+      "modelSessions": 0,
+      "classification": "Harness runtime gate rejected before executor startup",
+      "rows": [
+        {
+          "id": "skill-01-tibicen-1",
+          "scenarioId": "skill-01",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-01-baseline-1",
+          "scenarioId": "skill-01",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-01-refusal-baseline-1",
+          "scenarioId": "skill-01-refusal",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-01-refusal-tibicen-1",
+          "scenarioId": "skill-01-refusal",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-02-tibicen-1",
+          "scenarioId": "skill-02",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-02-baseline-1",
+          "scenarioId": "skill-02",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-03-baseline-1",
+          "scenarioId": "skill-03",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-03-tibicen-1",
+          "scenarioId": "skill-03",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-tibicen-1",
+          "scenarioId": "skill-04",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-baseline-1",
+          "scenarioId": "skill-04",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-license-baseline-1",
+          "scenarioId": "skill-04-license",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-license-tibicen-1",
+          "scenarioId": "skill-04-license",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-changed-bytes-tibicen-1",
+          "scenarioId": "skill-04-changed-bytes",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-changed-bytes-baseline-1",
+          "scenarioId": "skill-04-changed-bytes",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-missing-resource-baseline-1",
+          "scenarioId": "skill-04-missing-resource",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-missing-resource-tibicen-1",
+          "scenarioId": "skill-04-missing-resource",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-foreign-path-tibicen-1",
+          "scenarioId": "skill-04-foreign-path",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-foreign-path-baseline-1",
+          "scenarioId": "skill-04-foreign-path",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-01-baseline-1",
+          "scenarioId": "pref-01",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-01-tibicen-1",
+          "scenarioId": "pref-01",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-02-tibicen-1",
+          "scenarioId": "pref-02",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-02-baseline-1",
+          "scenarioId": "pref-02",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-03-baseline-1",
+          "scenarioId": "pref-03",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-03-tibicen-1",
+          "scenarioId": "pref-03",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-04-tibicen-1",
+          "scenarioId": "pref-04",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-04-baseline-1",
+          "scenarioId": "pref-04",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-05-baseline-1",
+          "scenarioId": "pref-05",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-05-tibicen-1",
+          "scenarioId": "pref-05",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-06-tibicen-1",
+          "scenarioId": "pref-06",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-06-baseline-1",
+          "scenarioId": "pref-06",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-06-no-questions-baseline-1",
+          "scenarioId": "pref-06-no-questions",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-06-no-questions-tibicen-1",
+          "scenarioId": "pref-06-no-questions",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-07-tibicen-1",
+          "scenarioId": "pref-07",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-07-baseline-1",
+          "scenarioId": "pref-07",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08a-baseline-1",
+          "scenarioId": "pref-08a",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08a-tibicen-1",
+          "scenarioId": "pref-08a",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08b-tibicen-1",
+          "scenarioId": "pref-08b",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08b-baseline-1",
+          "scenarioId": "pref-08b",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08c-baseline-1",
+          "scenarioId": "pref-08c",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08c-tibicen-1",
+          "scenarioId": "pref-08c",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08d-tibicen-1",
+          "scenarioId": "pref-08d",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08d-baseline-1",
+          "scenarioId": "pref-08d",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-01-baseline-1",
+          "scenarioId": "proc-01",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-01-tibicen-1",
+          "scenarioId": "proc-01",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-02-adopt-tibicen-1",
+          "scenarioId": "proc-02-adopt",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-02-adopt-baseline-1",
+          "scenarioId": "proc-02-adopt",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-02-update-baseline-1",
+          "scenarioId": "proc-02-update",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-02-update-tibicen-1",
+          "scenarioId": "proc-02-update",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-unknown-version-tibicen-1",
+          "scenarioId": "proc-03-unknown-version",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-unknown-version-baseline-1",
+          "scenarioId": "proc-03-unknown-version",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-path-conflict-baseline-1",
+          "scenarioId": "proc-03-path-conflict",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-path-conflict-tibicen-1",
+          "scenarioId": "proc-03-path-conflict",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-unsafe-init-tibicen-1",
+          "scenarioId": "proc-03-unsafe-init",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "isolation-unavailable"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-unsafe-init-baseline-1",
+          "scenarioId": "proc-03-unsafe-init",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "isolation-unavailable"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-interrupted-baseline-1",
+          "scenarioId": "proc-03-interrupted",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-interrupted-tibicen-1",
+          "scenarioId": "proc-03-interrupted",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-04-team-tibicen-1",
+          "scenarioId": "proc-04-team",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-04-team-baseline-1",
+          "scenarioId": "proc-04-team",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-04-openspec-baseline-1",
+          "scenarioId": "proc-04-openspec",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-04-openspec-tibicen-1",
+          "scenarioId": "proc-04-openspec",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "native-runtime-boundary-unverified"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        }
+      ]
+    },
+    {
+      "experimentId": "codex-skill-pref-proc-2026-10-23-02",
+      "kernelSourceSha": "0a4c7f707d309eaed907ce085e326f1bb85d68d2",
+      "conditionsHash": "2655b29a2085b3a391ab4e8ab6d2abe1e02dbbd737a5904bf48861be066b44be",
+      "harnessHash": "2c1b5aa3aa77778114931316e356084b9792a262a96e6f23fefaffe55cabf668",
+      "runtimeProbe": {
+        "policyHash": "3b22351a7c5ae896dc239a672a126a06ff9ff2ea96a3d56fb292ce67c6598ad8",
+        "scriptHash": "4850a6861df4e938094cb6406037cc588d4009dc238a490fb1d7811fa860919a",
+        "exitCode": 0,
+        "timedOut": false,
+        "facts": {
+          "denied": true,
+          "resourcesReadable": true
+        },
+        "verified": true
+      },
+      "modelSessions": 6,
+      "classification": "Stopped after discovering false metadata-command violations; original outcomes preserved",
+      "rows": [
+        {
+          "id": "skill-01-tibicen-1",
+          "scenarioId": "skill-01",
+          "variant": "tibicen",
+          "started": true,
+          "launch": {
+            "status": "pass",
+            "durationMs": 1408.1302500000002
+          },
+          "setup": {
+            "status": "error",
+            "durationMs": 178636.48466699998,
+            "reason": "native-execution-failed"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 1
+        },
+        {
+          "id": "skill-01-baseline-1",
+          "scenarioId": "skill-01",
+          "variant": "baseline",
+          "started": true,
+          "launch": {
+            "status": "pass",
+            "durationMs": 2137.8418749999837
+          },
+          "setup": {
+            "status": "fail",
+            "durationMs": 72402.516959,
+            "reason": "native-command-before-approval"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 1
+        },
+        {
+          "id": "skill-01-refusal-baseline-1",
+          "scenarioId": "skill-01-refusal",
+          "variant": "baseline",
+          "started": true,
+          "launch": {
+            "status": "pass",
+            "durationMs": 1329.877542000002
+          },
+          "setup": {
+            "status": "fail",
+            "durationMs": 40297.01666600001,
+            "reason": "native-command-before-approval"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 1
+        },
+        {
+          "id": "skill-01-refusal-tibicen-1",
+          "scenarioId": "skill-01-refusal",
+          "variant": "tibicen",
+          "started": true,
+          "launch": {
+            "status": "pass",
+            "durationMs": 1484.3546249999781
+          },
+          "setup": {
+            "status": "error",
+            "durationMs": 120547.82920899999,
+            "reason": "native-clarification-unavailable"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 1
+        },
+        {
+          "id": "skill-02-tibicen-1",
+          "scenarioId": "skill-02",
+          "variant": "tibicen",
+          "started": true,
+          "launch": {
+            "status": "pass",
+            "durationMs": 1542.2488330000197
+          },
+          "setup": {
+            "status": "pass",
+            "durationMs": 48852.23091699998
+          },
+          "task": {
+            "status": "error",
+            "durationMs": 15193.977167000005,
+            "reason": "native-execution-failed"
+          },
+          "modelSessions": 2
+        },
+        {
+          "id": "skill-02-baseline-1",
+          "scenarioId": "skill-02",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-03-baseline-1",
+          "scenarioId": "skill-03",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-03-tibicen-1",
+          "scenarioId": "skill-03",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-tibicen-1",
+          "scenarioId": "skill-04",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-baseline-1",
+          "scenarioId": "skill-04",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-license-baseline-1",
+          "scenarioId": "skill-04-license",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-license-tibicen-1",
+          "scenarioId": "skill-04-license",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-changed-bytes-tibicen-1",
+          "scenarioId": "skill-04-changed-bytes",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-changed-bytes-baseline-1",
+          "scenarioId": "skill-04-changed-bytes",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-missing-resource-baseline-1",
+          "scenarioId": "skill-04-missing-resource",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-missing-resource-tibicen-1",
+          "scenarioId": "skill-04-missing-resource",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-foreign-path-tibicen-1",
+          "scenarioId": "skill-04-foreign-path",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "skill-04-foreign-path-baseline-1",
+          "scenarioId": "skill-04-foreign-path",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-01-baseline-1",
+          "scenarioId": "pref-01",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-01-tibicen-1",
+          "scenarioId": "pref-01",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-02-tibicen-1",
+          "scenarioId": "pref-02",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-02-baseline-1",
+          "scenarioId": "pref-02",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-03-baseline-1",
+          "scenarioId": "pref-03",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-03-tibicen-1",
+          "scenarioId": "pref-03",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-04-tibicen-1",
+          "scenarioId": "pref-04",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-04-baseline-1",
+          "scenarioId": "pref-04",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-05-baseline-1",
+          "scenarioId": "pref-05",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-05-tibicen-1",
+          "scenarioId": "pref-05",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-06-tibicen-1",
+          "scenarioId": "pref-06",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-06-baseline-1",
+          "scenarioId": "pref-06",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-06-no-questions-baseline-1",
+          "scenarioId": "pref-06-no-questions",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-06-no-questions-tibicen-1",
+          "scenarioId": "pref-06-no-questions",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-07-tibicen-1",
+          "scenarioId": "pref-07",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-07-baseline-1",
+          "scenarioId": "pref-07",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08a-baseline-1",
+          "scenarioId": "pref-08a",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08a-tibicen-1",
+          "scenarioId": "pref-08a",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08b-tibicen-1",
+          "scenarioId": "pref-08b",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08b-baseline-1",
+          "scenarioId": "pref-08b",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08c-baseline-1",
+          "scenarioId": "pref-08c",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08c-tibicen-1",
+          "scenarioId": "pref-08c",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08d-tibicen-1",
+          "scenarioId": "pref-08d",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "pref-08d-baseline-1",
+          "scenarioId": "pref-08d",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-01-baseline-1",
+          "scenarioId": "proc-01",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-01-tibicen-1",
+          "scenarioId": "proc-01",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-02-adopt-tibicen-1",
+          "scenarioId": "proc-02-adopt",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-02-adopt-baseline-1",
+          "scenarioId": "proc-02-adopt",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-02-update-baseline-1",
+          "scenarioId": "proc-02-update",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-02-update-tibicen-1",
+          "scenarioId": "proc-02-update",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-unknown-version-tibicen-1",
+          "scenarioId": "proc-03-unknown-version",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-unknown-version-baseline-1",
+          "scenarioId": "proc-03-unknown-version",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-path-conflict-baseline-1",
+          "scenarioId": "proc-03-path-conflict",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-path-conflict-tibicen-1",
+          "scenarioId": "proc-03-path-conflict",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-unsafe-init-tibicen-1",
+          "scenarioId": "proc-03-unsafe-init",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "isolation-unavailable"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-unsafe-init-baseline-1",
+          "scenarioId": "proc-03-unsafe-init",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "isolation-unavailable"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-interrupted-baseline-1",
+          "scenarioId": "proc-03-interrupted",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-03-interrupted-tibicen-1",
+          "scenarioId": "proc-03-interrupted",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-04-team-tibicen-1",
+          "scenarioId": "proc-04-team",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-04-team-baseline-1",
+          "scenarioId": "proc-04-team",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-04-openspec-baseline-1",
+          "scenarioId": "proc-04-openspec",
+          "variant": "baseline",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        },
+        {
+          "id": "proc-04-openspec-tibicen-1",
+          "scenarioId": "proc-04-openspec",
+          "variant": "tibicen",
+          "started": false,
+          "launch": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "aborted"
+          },
+          "setup": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "not-started"
+          },
+          "task": {
+            "status": "skip",
+            "durationMs": 0,
+            "reason": "setup-not-passed"
+          },
+          "modelSessions": 0
+        }
+      ]
+    }
+  ],
+  "note": "Diagnostic cohorts only. Initial gate and the two false invariant flags are harness defects, not successful acceptance. Raw records, transcripts and auth paths remain private."
+}

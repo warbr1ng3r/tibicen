@@ -19,6 +19,12 @@ Tibicen SHALL учитывать явные и обоснованно вывед
 - **THEN** рекомендация использует короткие ясные ответы с необходимыми условиями и ограничениями без заявления о скрытом предпочтении
 - **AND** специальный компонент ради выдуманного предпочтения не добавляется
 
+#### Scenario: A reply format does not confirm a persistent project rule
+- **WHEN** an available reply requests a format for the current discussion without explicitly choosing a persistent project style
+- **THEN** a generalized preference remains a correctable inferred assumption with a brief basis in that reply
+- **AND** it is not marked user-confirmed or installed as a mandatory project instruction merely because the reply is directly phrased
+- **AND** a later explicit project-level choice takes precedence without transferring approval to its new proposal
+
 ### Requirement: Explicit choices resolve preference uncertainty
 Явное решение пользователя SHALL иметь приоритет перед выведенным предпочтением. Достаточные основания SHALL не порождать отдельную анкету; существенный конфликт и неизвестное с высокой ценой ошибки уточняются в пределах действующего интервью. Предпочтение самостоятельности SHALL не создавать доверие, права или согласие на исполнение.
 

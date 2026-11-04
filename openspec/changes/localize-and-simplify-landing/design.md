@@ -2,7 +2,7 @@
 
 ## Context
 
-See [proposal](proposal.md) and the source/public-page audit (maintainer-local record; omitted from public source). The current single index.astro owns Russian copy and page structure. Installation, preset, illustration, Features accessibility text, app.ts feedback and preset.ts validation also contain Russian. Existing static tests inspect one page; browser navigation assumes a root URL. The Pages workflow already supplies Astro site/base.
+See [proposal](proposal.md) and the source/public-page audit (`../../../.scratch/codex-zcode-acceptance/landing-review.md`; private development record; excluded from public source). The current single index.astro owns Russian copy and page structure. Installation, preset, illustration, Features accessibility text, app.ts feedback and preset.ts validation also contain Russian. Existing static tests inspect one page; browser navigation assumes a root URL. The Pages workflow already supplies Astro site/base.
 
 The repository's owner-supplied English-canonical documentation convention takes precedence over the older Russian-only planning context. These artifacts have Russian translations; links in both languages point to the English canonical files. The OpenSpec validator permits only spec.md inside capability folders, so the two spec translations live beside this design as landing-experience_ru.md and landing-interactions_ru.md.
 

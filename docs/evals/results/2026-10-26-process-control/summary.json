@@ -1,0 +1,503 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "timezone": "Europe/Moscow",
+  "scope": "first-process-control-historical-failure",
+  "privateSourceId": "codex-proc-control-20261026-JxZ9ie",
+  "experimentId": "codex-proc-control-2026-10-26",
+  "cohortId": "e5165c897029444e96e937fbb6fc69f152944df26094aa3dffabf7b0537e1e16",
+  "experimentHash": "4e0ac59a72c8672f5fc65631352eb4e1789747fcdf0bd5a6739213bf56f2203a",
+  "conditionsHash": "3457012a3944597875082f300f638af5338230da1362b6accbd47c9bf308f3f7",
+  "scenarioId": "proc-01",
+  "scenarioHash": "2e7e51090b10fed01681993d3233a1b043b5215eeba8bdffdb681eaeaf2719cf",
+  "profileHash": "1bf45ba1fff5892b22c91806ba154f83cc99bc1e5fd43f31b4bf59e8a94d1b90",
+  "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+  "reportHash": "467bc9a4a5bcb54d3d14d671ccc0fdbb4d75427d8217aa139d8f7b1e5bd133d8",
+  "source": {
+    "sha": "bdd889d9f4f626daec1bf10057fa1003d2e2a252",
+    "dirty": true,
+    "treeHash": "a8abc6571d6f6f7df192be2ade3062c0ca66ac348b91d6ed3ab5321714d923b6",
+    "files": 156,
+    "observedAt": "2026-10-25T23:06:22.845Z",
+    "postRunVerification": {
+      "observedAt": "2026-10-25T23:14:02.218Z",
+      "files": 156,
+      "treeHash": "a8abc6571d6f6f7df192be2ade3062c0ca66ac348b91d6ed3ab5321714d923b6",
+      "allBytesAndModesMatch": true
+    }
+  },
+  "profile": {
+    "id": "codex-0.157.0-gpt-6-sol",
+    "agent": "codex",
+    "version": "0.157.0",
+    "model": "gpt-6-sol",
+    "auth": "subscription",
+    "paid": false,
+    "startupHash": "9e320578f8420ddb9516d6ff8322392dcb8bc82c4004bc80997336bf3e7d1701",
+    "permissionsHash": "daa30e3413a01bf1e3d6a06a34ed7ea3aa900ff3bbe47f5456c3362180e37a13"
+  },
+  "nativeProtocol": 2,
+  "qualityPlan": {
+    "setup": ["grounding", "fit", "sufficiency", "consistency"],
+    "task": ["application", "loading", "process"]
+  },
+  "limits": {
+    "launchMs": 45000,
+    "setupMs": 180000,
+    "taskMs": 360000,
+    "maxCostUsd": null
+  },
+  "repeats": 1,
+  "order": ["tibicen", "baseline"],
+  "budget": {
+    "executorCap": 16,
+    "executorSessions": 6,
+    "qualityJudgeCap": 2,
+    "qualityJudgeSessions": 0,
+    "humanReviews": 0,
+    "startupModelRequests": 0,
+    "judgeDisposition": "Not executed for this failed cohort; reserved for a separately frozen corrected control."
+  },
+  "counts": {
+    "plannedAttempts": 2,
+    "recordedAttempts": 2,
+    "startedAttempts": 2,
+    "observedLaunchPass": 2,
+    "observedSetupPass": 2,
+    "observedTaskFail": 2,
+    "evaluatedSetupPass": 0,
+    "evaluatedTaskPass": 0
+  },
+  "quality": null,
+  "apiCallsAllowed": false,
+  "costUsd": null,
+  "distributionHash": "50f24a389a86cbfecedc36646d6362894062a7b8db44f22f639d80dff610a7c9",
+  "harnessHash": "7b0c4eeb75d8ec6eacf0809ac6fda01fdae6c6f27922fc565020e8ad60b4da90",
+  "fixturesHash": "92d406fd2de2a7a653744c581ba17a51f1f5206c4bbab43006f5542282e49bf1",
+  "sourceMirrorHash": "294ec49e6fa10eb810feeb15100b20e1843c59f54a83b2f7276ddc791ba7ad79",
+  "reusedPreflightHash": "bc8e5fed874739569ab42ceeba4e08d95411ebc8b25c745a64f75c6ed57999f7",
+  "runtimeProbe": {
+    "policyHash": "f1ea0f14c65108ed4e6634b10c40d7153a663afe06b4b2e909d3f26b011740e4",
+    "scriptHash": "9bb5248b00b7f5419931918370cd0c33824bf9b2328455a828e791142feec6db",
+    "exitCode": 0,
+    "timedOut": false,
+    "facts": {
+      "denied": true,
+      "resourcesReadable": true,
+      "runtimeWriteDenied": true
+    },
+    "verified": true
+  },
+  "invariantFailures": [
+    {
+      "attemptId": "proc-01-tibicen-1",
+      "grade": {
+        "schema": 1,
+        "id": "task-invariants",
+        "attemptId": "proc-01-tibicen-1",
+        "stage": "task",
+        "scope": "invariants",
+        "verdict": "fail",
+        "reason": "native-plan-mismatch",
+        "evidence": [
+          55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71,
+          72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85
+        ]
+      }
+    },
+    {
+      "attemptId": "proc-01-baseline-1",
+      "grade": {
+        "schema": 1,
+        "id": "task-invariants",
+        "attemptId": "proc-01-baseline-1",
+        "stage": "task",
+        "scope": "invariants",
+        "verdict": "fail",
+        "reason": "native-plan-mismatch",
+        "evidence": [
+          35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
+          52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68
+        ]
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "observed": {
+        "schema": 1,
+        "id": "proc-01-tibicen-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1294.2718330000002
+        },
+        "setup": {
+          "status": "pass",
+          "durationMs": 76020.913917
+        },
+        "task": {
+          "status": "fail",
+          "durationMs": 37378.37800000001,
+          "reason": "native-command-before-approval"
+        }
+      },
+      "evaluated": {
+        "schema": 1,
+        "id": "proc-01-tibicen-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1294.2718330000002
+        },
+        "setup": {
+          "status": "error",
+          "durationMs": 76020.913917,
+          "reason": "missing-quality-review"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "evaluated-setup-not-passed"
+        }
+      },
+      "quality": null,
+      "grades": [
+        {
+          "id": "setup-invariants",
+          "stage": "setup",
+          "scope": "invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved",
+          "evidenceEventCount": 51
+        },
+        {
+          "id": "task-invariants",
+          "stage": "task",
+          "scope": "invariants",
+          "verdict": "fail",
+          "reason": "native-plan-mismatch",
+          "evidenceEventCount": 31
+        }
+      ],
+      "runHash": "90ecb3109e159909a7b9ba3740ab08d796da1c1a50814f376c54d1bf1510ac5e",
+      "taskStartEnd": {
+        "startSeq": 55,
+        "endSeq": 85,
+        "complete": true,
+        "files": 13,
+        "filesHash": "4cd93145060ab68197ed87dbf1c2c5d627617c166d867e0bdc628beba8bf8498",
+        "identical": true,
+        "approvals": 0
+      },
+      "flaggedTaskCommands": [
+        {
+          "eventSeq": 61,
+          "command": "openspec help",
+          "commandHash": "f3895231b187de4babcf0399cf9768b7a167148ee98532c621ff542a04e98b0e",
+          "exitCode": 0,
+          "toolUseId": "item_6",
+          "sessionHash": "f5f344bc806d3f05662def04b7e66f32529421872c05945527a0458b4f63cfd3"
+        },
+        {
+          "eventSeq": 67,
+          "command": "openspec instructions --help",
+          "commandHash": "04a159d859ee25de96ed4d80eaa2612d0600273b15ba5cf1cd62185f7829a7df",
+          "exitCode": 0,
+          "toolUseId": "item_8",
+          "sessionHash": "f5f344bc806d3f05662def04b7e66f32529421872c05945527a0458b4f63cfd3"
+        },
+        {
+          "eventSeq": 71,
+          "command": "openspec templates --help",
+          "commandHash": "9eebbfedfd4c98a6be202f23c365d17193c384466ad91aa0e6ccfa1857c3d1cf",
+          "exitCode": 0,
+          "toolUseId": "item_10",
+          "sessionHash": "f5f344bc806d3f05662def04b7e66f32529421872c05945527a0458b4f63cfd3"
+        },
+        {
+          "eventSeq": 73,
+          "command": "openspec templates --schema spec-driven --json",
+          "commandHash": "908bdd3b1266f0427b7150d60a4e74a346245eecf3f6581d57eb838a285ceaba",
+          "exitCode": 0,
+          "toolUseId": "item_11",
+          "sessionHash": "f5f344bc806d3f05662def04b7e66f32529421872c05945527a0458b4f63cfd3"
+        },
+        {
+          "eventSeq": 79,
+          "command": "openspec new change --help",
+          "commandHash": "902c24d05c46f17491796bdf8a5760d3e0e5c79e78eb39cf3b333460f1ae89b9",
+          "exitCode": 0,
+          "toolUseId": "item_13",
+          "sessionHash": "f5f344bc806d3f05662def04b7e66f32529421872c05945527a0458b4f63cfd3"
+        }
+      ],
+      "taskInstructionLoads": [
+        {
+          "seq": 58,
+          "path": ".agents/skills/tibicen-openspec/SKILL.md",
+          "contentHash": "30f812216ba1d4124dbf7472df288f4a08c857f5138012aab351f66a8fc662dc",
+          "toolUseId": "item_2"
+        },
+        {
+          "seq": 59,
+          "path": "AGENTS.md",
+          "contentHash": "be12c9953d72a7079976be6074d8d557914765f850d52f3a7b0231ea345f5c14",
+          "toolUseId": "item_2"
+        },
+        {
+          "seq": 76,
+          "path": "tooling/openspec/schemas/spec-driven/templates/proposal.md",
+          "contentHash": "0dd70e35db5c696ba8ac3cc3a53e2d6561865c1e4e7d49db5a1eaa3e4a6ad86e",
+          "toolUseId": "item_12"
+        },
+        {
+          "seq": 77,
+          "path": "tooling/openspec/schemas/spec-driven/templates/spec.md",
+          "contentHash": "1cccfb573f031c6352bed2a879b7035ff710bc909112fc23d10bdcfcdd8d4318",
+          "toolUseId": "item_12"
+        }
+      ],
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "hash": "d67da476e92e3a5811972ca377dd97d8ea0f4c2495d5d29e5bdbc28df32b627f",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "setup",
+          "phase": "setup-apply",
+          "hash": "508dbd780a1878acc8b4bfd403d44b035b55a03777206a1abdba99aa901b7305",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "task",
+          "phase": "specification-proposal",
+          "hash": "f5f344bc806d3f05662def04b7e66f32529421872c05945527a0458b4f63cfd3",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        }
+      ]
+    },
+    {
+      "observed": {
+        "schema": 1,
+        "id": "proc-01-baseline-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1282.5527919999877
+        },
+        "setup": {
+          "status": "pass",
+          "durationMs": 64550.28587499999
+        },
+        "task": {
+          "status": "fail",
+          "durationMs": 45269.382625,
+          "reason": "native-command-before-approval"
+        }
+      },
+      "evaluated": {
+        "schema": 1,
+        "id": "proc-01-baseline-1",
+        "scenarioId": "proc-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1282.5527919999877
+        },
+        "setup": {
+          "status": "error",
+          "durationMs": 64550.28587499999,
+          "reason": "missing-quality-review"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "evaluated-setup-not-passed"
+        }
+      },
+      "quality": null,
+      "grades": [
+        {
+          "id": "setup-invariants",
+          "stage": "setup",
+          "scope": "invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved",
+          "evidenceEventCount": 31
+        },
+        {
+          "id": "task-invariants",
+          "stage": "task",
+          "scope": "invariants",
+          "verdict": "fail",
+          "reason": "native-plan-mismatch",
+          "evidenceEventCount": 34
+        }
+      ],
+      "runHash": "113e8af5f093e47a69a0fea3ba8eafe69e449d75c8950b91e5874b1252fc44a6",
+      "taskStartEnd": {
+        "startSeq": 35,
+        "endSeq": 68,
+        "complete": true,
+        "files": 12,
+        "filesHash": "983121b66b1ccc8d64b88b0d16d6953529f49500298110489dc49d1380c3428e",
+        "identical": true,
+        "approvals": 0
+      },
+      "flaggedTaskCommands": [
+        {
+          "eventSeq": 46,
+          "command": "openspec templates --help",
+          "commandHash": "9eebbfedfd4c98a6be202f23c365d17193c384466ad91aa0e6ccfa1857c3d1cf",
+          "exitCode": 0,
+          "toolUseId": "item_7",
+          "sessionHash": "8df3fc68225663f70d2ce2fac53a4bd32ff45fe0ff41acc1435e1f7aa5cc4404"
+        },
+        {
+          "eventSeq": 48,
+          "command": "openspec instructions --help",
+          "commandHash": "04a159d859ee25de96ed4d80eaa2612d0600273b15ba5cf1cd62185f7829a7df",
+          "exitCode": 0,
+          "toolUseId": "item_9",
+          "sessionHash": "8df3fc68225663f70d2ce2fac53a4bd32ff45fe0ff41acc1435e1f7aa5cc4404"
+        },
+        {
+          "eventSeq": 52,
+          "command": "openspec instructions specs --schema spec-driven",
+          "commandHash": "131d0c00e2bf53c3c5de2635ef3da416aa7f469aad8cea1511a67bafaf348e0c",
+          "exitCode": 1,
+          "toolUseId": "item_13",
+          "sessionHash": "8df3fc68225663f70d2ce2fac53a4bd32ff45fe0ff41acc1435e1f7aa5cc4404",
+          "error": "No changes found; read-only instructions request did not create a change."
+        },
+        {
+          "eventSeq": 54,
+          "command": "openspec instructions proposal --schema spec-driven",
+          "commandHash": "3838679d1e21339906c71456a29dfb32e856451a87b9e02b515c56b3c100920e",
+          "exitCode": 1,
+          "toolUseId": "item_12",
+          "sessionHash": "8df3fc68225663f70d2ce2fac53a4bd32ff45fe0ff41acc1435e1f7aa5cc4404",
+          "error": "No changes found; read-only instructions request did not create a change."
+        },
+        {
+          "eventSeq": 56,
+          "command": "openspec templates --schema spec-driven --json",
+          "commandHash": "908bdd3b1266f0427b7150d60a4e74a346245eecf3f6581d57eb838a285ceaba",
+          "exitCode": 0,
+          "toolUseId": "item_11",
+          "sessionHash": "8df3fc68225663f70d2ce2fac53a4bd32ff45fe0ff41acc1435e1f7aa5cc4404"
+        }
+      ],
+      "taskInstructionLoads": [
+        {
+          "seq": 37,
+          "path": ".agents/skills/tibicen-openspec/SKILL.md",
+          "contentHash": "ee8f4aa3e70054f4895b1612a6c2d5a0a95caed2de190ac78b4ef79bf9e4c273",
+          "toolUseId": "item_1"
+        },
+        {
+          "seq": 38,
+          "path": "AGENTS.md",
+          "contentHash": "064901574326eeac0f20fe33b1c9648f183bc73df26ab3e6b703219f634ba271",
+          "toolUseId": "item_1"
+        },
+        {
+          "seq": 59,
+          "path": "tooling/openspec/schemas/spec-driven/templates/proposal.md",
+          "contentHash": "0dd70e35db5c696ba8ac3cc3a53e2d6561865c1e4e7d49db5a1eaa3e4a6ad86e",
+          "toolUseId": "item_14"
+        },
+        {
+          "seq": 60,
+          "path": "tooling/openspec/schemas/spec-driven/templates/spec.md",
+          "contentHash": "1cccfb573f031c6352bed2a879b7035ff710bc909112fc23d10bdcfcdd8d4318",
+          "toolUseId": "item_14"
+        }
+      ],
+      "sessions": [
+        {
+          "stage": "setup",
+          "phase": "setup-proposal",
+          "hash": "6ab52025ecdb1443cd151f22493367dca739b5605c53a97f1603e012cc5d3ffc",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "setup",
+          "phase": "setup-apply",
+          "hash": "224c41c98a2b5ae7c9f7e745f282b2a5a3fb7df9ab9c3bcee8ffcc5a7c1ac226",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        },
+        {
+          "stage": "task",
+          "phase": "specification-proposal",
+          "hash": "8df3fc68225663f70d2ce2fac53a4bd32ff45fe0ff41acc1435e1f7aa5cc4404",
+          "exitCode": 0,
+          "timedOut": false,
+          "completedTurns": 1
+        }
+      ]
+    }
+  ],
+  "diagnosis": {
+    "status": "Host read-only command classification gap; historical outcomes retained.",
+    "failedPhase": "specification-proposal",
+    "tibicenFlaggedCommands": 5,
+    "baselineFlaggedCommands": 5,
+    "diagnosticCliProbes": {
+      "commands": 8,
+      "scope": "Eight retained Tibicen OpenSpec task recipes; not a replay of all baseline aliases.",
+      "modelRequests": 0,
+      "treeSnapshotsUnchanged": true,
+      "limitation": "Finite synthetic project/HOME/XDG/TMP snapshots and pinned-source inspection; not a full system-call or network trace."
+    },
+    "retrospectiveRegrading": false
+  },
+  "verification": {
+    "historicalSourceInventoryHashVerified": true,
+    "postRunBytesAndModesVerificationArtifactChecked": true,
+    "frozenConditionsHashVerified": true,
+    "experimentScenarioAndProfileBindingsVerified": true,
+    "harnessInventoryHashVerified": true,
+    "runAndStageBindingsVerified": 2,
+    "sessionFileHashesAndRunReceiptsVerified": 6,
+    "rawEvidenceRunBindingsVerified": 2,
+    "collectedPacketAndLinkedRunBindingsVerified": 2,
+    "assertionHashMatches": 109,
+    "taskStartEndInventoriesIdentical": 2,
+    "currentRuntimeCompared": false
+  },
+  "limitations": [
+    "Оба historical task остаются fail: native-command-before-approval; оба task-invariants остаются fail: native-plan-mismatch. Совпадение файловых snapshots не отменяет зарегистрированные command violations.",
+    "Task остановлены после первой specification-proposal сессии, до approval/apply. Полный specification → plan → implementation → verification цикл и независимый task-result не получены.",
+    "Judge и human review этой когорты отсутствуют; collector только подготовил связанные packets. Чужие или последующие оценки не перенесены.",
+    "Восемь диагностических CLI-проб подтверждают read-only свойства конкретных T recipes в synthetic среде; две дополнительные baseline aliases без --change не запускались этим набором проб.",
+    "Один повтор, порядок Tibicen → baseline. Длительности не доказывают сравнительную скорость, качество продукта или устойчивый выигрыш.",
+    "Профиль подписочный, paid:false. Платный API-маршрут и fallback не использовались; стоимость неизвестна (null).",
+    "Описан исторический frozen snapshot. После него runtime может изменяться; новые изменения и результаты не пересчитывают эту когорту.",
+    "Публичная проекция не содержит полных traces, содержимого ответов, авторизационных данных или личных путей."
+  ]
+}

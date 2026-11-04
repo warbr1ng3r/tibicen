@@ -1,12 +1,10 @@
 # Verification
 
-> Public source snapshot: detailed local development records are omitted. Historical verification summaries below retain their original limits.
-
-Commit review on 27.10.2026 fixed removal skipped after failed wait/state validation. Four offline regressions and one fresh real Docker seed/collect/stop/remove proof passed; owned CID was independently absent. Full gate667/667, build/86 checksums/both unpacked self-tests passed. Ponytail review; private proof `.evals-private/ponytail-review-20261027-r1/docker-cleanup-proof.json`. No new model/auth calls.
+Commit review on 27.10.2026 fixed removal skipped after failed wait/state validation. Four offline regressions and one fresh real Docker seed/collect/stop/remove proof passed; owned CID was independently absent. Full gate667/667, build/86 checksums/both unpacked self-tests passed. Ponytail review (`../../../.scratch/codex-zcode-acceptance/review-package33.md`; private development record; excluded from public source); private proof `.evals-private/ponytail-review-20261027-r1/docker-cleanup-proof.json`. No new model/auth calls.
 
 ## Executed evidence
 
-Сводка: результаты пакета. Image r2 pinned ID ba23f5c65d7d77b8aaac15fb53cdda90ecd25acff2738fd6d40fc762519dc6bd; 5 lifecycle canaries и environmentConfig/read прошли. Private evidence-r2 SHA-256 208609d9c04ffb8c4da58d6181c7d0ddb60e010e4b01cef9957a2e0cd0d87f00.
+Сводка: [результаты пакета](../../../docs/evals/results/2026-10-26-container-executor/README.md). Image r2 pinned ID ba23f5c65d7d77b8aaac15fb53cdda90ecd25acff2738fd6d40fc762519dc6bd; 5 lifecycle canaries и environmentConfig/read прошли. Private evidence-r2 SHA-256 208609d9c04ffb8c4da58d6181c7d0ddb60e010e4b01cef9957a2e0cd0d87f00.
 
 Final-source session r4 прошёл 7 cases, source hashes неизменны, attached client закрыт до terminal result, Node runner завершился нормально. Proof SHA-256 a27bf8cf80094d1e7ad2bb7f9f582fa8dea66fed3c6340bb1263b6f677d2a8d7. Строгий byte-only collector отверг реальную symlink; positive bytes совпали. Unit checks покрыли traversal/links/duplicate/limits и отказ критических workspace paths.
 

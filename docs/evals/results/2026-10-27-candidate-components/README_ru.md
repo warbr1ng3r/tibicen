@@ -8,7 +8,7 @@
 | OpenSpec init | complete | passed, structure-and-package-resources | 1/1 до и после |
 | OpenSpec adopt | complete, applied[] | passed, structure-and-package-resources | 1/1 после; исходный app SHA сохранён |
 
-Приложение — маленький Node ES module с double(value). package.json, src/math.js и tests/math.test.js не изменены setup. Adopt сохранил 13 неслужебных файлов: приложение, AGENTS.md, конфиг процесса, локальную инструкцию, командный шаблон и пользовательский change keep-double. Данные и результаты — в setup-summary.json (локальная запись сопровождающего; не входит в публичный снимок). Точные планы, отдельные согласия root и фактические apply/verify/status/report сохранены в private evidence; публичная сводка не содержит личных или временных абсолютных путей.
+Приложение — маленький Node ES module с double(value). package.json, src/math.js и tests/math.test.js не изменены setup. Adopt сохранил 13 неслужебных файлов: приложение, AGENTS.md, конфиг процесса, локальную инструкцию, командный шаблон и пользовательский change keep-double. Данные и результаты — в [setup-summary.json](setup-summary.json). Точные планы, отдельные согласия root и фактические apply/verify/status/report сохранены в private evidence; публичная сводка не содержит личных или временных абсолютных путей.
 
 ## Закреплённые источники
 
@@ -33,7 +33,7 @@ OpenSpec: @fission-ai/openspec1.14.3, MIT, исходник из закрепл�
 | Ponytail | Прочитан установленный SKILL.md с закреплённым SHA; добавлен triple при сохранении double, 2/2 Node-теста | Изменены только два разрешённых файла, пять других сохранены; 12 функциональных проверок прошли |
 | OpenSpec | Прочитаны проектная инструкция и нативные шаблоны; согласованы пять planning-файлов, затем после отдельного ревью — реализация. 5/5 Node-тестов, strict validation, native progress 3/3 all_done | Сохранены 12 защищённых исходных файлов, добавлены только пять согласованных planning-файлов; 12 функциональных проверок прошли |
 
-Очищенная сводка новых сессий (локальная запись сопровождающего; не входит в публичный снимок). OpenSpec workflow выполнен один раз на копии принятого adopt с keep-double; init имеет setup-факты, без второго самостоятельного downstream. Командные инструкции, локальный шаблон и существующий change сохранены. Сохранённые Tibicen reports остаются исходными: внешние наблюдения не переписывают unverified в этих reports.
+[Очищенная сводка новых сессий](downstream-summary.json). OpenSpec workflow выполнен один раз на копии принятого adopt с keep-double; init имеет setup-факты, без второго самостоятельного downstream. Командные инструкции, локальный шаблон и существующий change сохранены. Сохранённые Tibicen reports остаются исходными: внешние наблюдения не переписывают unverified в этих reports.
 
 Это положительные наблюдения для выбранных источников и сценариев. Полная SKILL/PROC матрица, отдельный init workflow, component update/отрицательные варианты, native startup и human acceptance остаются открытыми. Человеческая выборка отсутствует.
 

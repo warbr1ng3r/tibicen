@@ -1,0 +1,310 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "experimentId": "codex-source-check-skill-01-2026-10-26",
+  "conditionsHash": "3c0c638a0c41299a51a472782e21a69f49a408137c7285d6c332a2e161c04dc9",
+  "source": {
+    "sha": "bdd889d9f4f626daec1bf10057fa1003d2e2a252",
+    "dirty": true,
+    "treeHash": "a8abc6571d6f6f7df192be2ade3062c0ca66ac348b91d6ed3ab5321714d923b6",
+    "files": 156
+  },
+  "profile": {
+    "id": "codex-0.157.0-gpt-6-sol",
+    "agent": "codex",
+    "version": "0.157.0",
+    "model": "gpt-6-sol",
+    "auth": "subscription",
+    "paid": false,
+    "startupHash": "2c289d056f3f557a84b377413a7ebcf72a0288bebd82f4dc59e04754a6ce472a",
+    "permissionsHash": "dc370ca5a205cbc46b5d082fa1e4a084abcda6ad2a99fd801d8b5bc7e89141f2"
+  },
+  "runtimeProbe": {
+    "policyHash": "b8f7cbb57fc64274f3ef8fc67d42547d1cceaa44d5b5ad5e316b48b99573415c",
+    "scriptHash": "2ed586f99644b1dc1f9cb417224a9f46edfc9ee88409656b233cf022a4ec5eff",
+    "exitCode": 0,
+    "timedOut": false,
+    "facts": {
+      "denied": true,
+      "resourcesReadable": true,
+      "runtimeWriteDenied": true
+    },
+    "verified": true
+  },
+  "executorSessions": 8,
+  "quality": {
+    "modelRequests": 0,
+    "humanReviews": 0,
+    "status": "missing-quality-review"
+  },
+  "aggregateContinuationBudget": {
+    "executorUsed": 29,
+    "executorCap": 32,
+    "qualityJudgeUsed": 2,
+    "qualityJudgeCap": 2
+  },
+  "attempts": [
+    {
+      "observed": {
+        "schema": 1,
+        "id": "skill-01-tibicen-1",
+        "scenarioId": "skill-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1312.352
+        },
+        "setup": {
+          "status": "pass",
+          "durationMs": 118650.197417
+        },
+        "task": {
+          "status": "pass",
+          "durationMs": 36009.969209
+        }
+      },
+      "evaluated": {
+        "schema": 1,
+        "id": "skill-01-tibicen-1",
+        "scenarioId": "skill-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "tibicen",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1312.352
+        },
+        "setup": {
+          "status": "error",
+          "durationMs": 118650.197417,
+          "reason": "missing-quality-review"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "evaluated-setup-not-passed"
+        }
+      },
+      "grades": [
+        {
+          "id": "setup-invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved"
+        },
+        {
+          "id": "task-result",
+          "verdict": "pass",
+          "reason": "independent-exports-passed"
+        },
+        {
+          "id": "task-invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved"
+        }
+      ],
+      "runHash": "6001f64b10c0a89c318326f0fa1e4bde9f3880375cd66fcbd5d2869cfbdd6d47",
+      "sessions": [
+        {
+          "phase": "setup-proposal",
+          "hash": "99d37bc1e7470c4d7e5d74132fb276cd8124b007c7563e7641d7c7ac096ad3f8",
+          "exitCode": 0,
+          "timedOut": false
+        },
+        {
+          "phase": "setup-apply",
+          "hash": "7062268f34ff6d19ac9fc458e5ee89255b35aab7cb60e02c3cb71ea7a6c5f6ee",
+          "exitCode": 0,
+          "timedOut": false
+        },
+        {
+          "phase": "task-proposal",
+          "hash": "989155fc6eca0825267597f2b09d41516005506db814fcaa47eeaa618f1fc656",
+          "exitCode": 0,
+          "timedOut": false
+        },
+        {
+          "phase": "task-apply",
+          "hash": "e4501443b31a2d421acbe408529e89dd55378d8646fac45a487245bad811acfc",
+          "exitCode": 0,
+          "timedOut": false
+        }
+      ]
+    },
+    {
+      "observed": {
+        "schema": 1,
+        "id": "skill-01-baseline-1",
+        "scenarioId": "skill-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1611.9160420000262
+        },
+        "setup": {
+          "status": "pass",
+          "durationMs": 65964.48199999999
+        },
+        "task": {
+          "status": "pass",
+          "durationMs": 33600.415750000015
+        }
+      },
+      "evaluated": {
+        "schema": 1,
+        "id": "skill-01-baseline-1",
+        "scenarioId": "skill-01",
+        "profileId": "codex-0.157.0-gpt-6-sol",
+        "variant": "baseline",
+        "started": true,
+        "launch": {
+          "status": "pass",
+          "durationMs": 1611.9160420000262
+        },
+        "setup": {
+          "status": "error",
+          "durationMs": 65964.48199999999,
+          "reason": "missing-quality-review"
+        },
+        "task": {
+          "status": "skip",
+          "durationMs": 0,
+          "reason": "evaluated-setup-not-passed"
+        }
+      },
+      "grades": [
+        {
+          "id": "setup-invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved"
+        },
+        {
+          "id": "task-result",
+          "verdict": "pass",
+          "reason": "independent-exports-passed"
+        },
+        {
+          "id": "task-invariants",
+          "verdict": "pass",
+          "reason": "native-reviewed-effects-preserved"
+        }
+      ],
+      "runHash": "6134dac3a279fc30e9badd03817fcd114c735847c178cebc197e352cacfc7a85",
+      "sessions": [
+        {
+          "phase": "setup-proposal",
+          "hash": "940707677e3bca9c1b871ee2e0c45a979947774eed08892ff2add1ed78ab580f",
+          "exitCode": 0,
+          "timedOut": false
+        },
+        {
+          "phase": "setup-apply",
+          "hash": "f8064bde0d9592ab4e5d5645be2c785d739538ffe1a88e127c2785730f849d4f",
+          "exitCode": 0,
+          "timedOut": false
+        },
+        {
+          "phase": "task-proposal",
+          "hash": "642e79dc8df9a5f2c62f78fdc970838f097e32fb1c8b3706eb192347a678908c",
+          "exitCode": 0,
+          "timedOut": false
+        },
+        {
+          "phase": "task-apply",
+          "hash": "f0b9d324a7b986b4840b8724ad1b246e06ae576ed019055eeff2ce9b42142a42",
+          "exitCode": 0,
+          "timedOut": false
+        }
+      ]
+    }
+  ],
+  "comparison": {
+    "scope": "One completed Tibicen SKILL run per separately frozen source tree; descriptive only.",
+    "previous": {
+      "terminalEvents": 72,
+      "fileChangeEvents": 1,
+      "toolOutputBytes": 402231,
+      "phases": [
+        {
+          "phase": "setup-proposal",
+          "terminalEvents": 41,
+          "fileChangeEvents": 0,
+          "toolOutputBytes": 339003
+        },
+        {
+          "phase": "setup-apply",
+          "terminalEvents": 18,
+          "fileChangeEvents": 0,
+          "toolOutputBytes": 54020
+        },
+        {
+          "phase": "task-proposal",
+          "terminalEvents": 6,
+          "fileChangeEvents": 0,
+          "toolOutputBytes": 4785
+        },
+        {
+          "phase": "task-apply",
+          "terminalEvents": 7,
+          "fileChangeEvents": 1,
+          "toolOutputBytes": 4423
+        }
+      ]
+    },
+    "current": {
+      "terminalEvents": 42,
+      "fileChangeEvents": 1,
+      "toolOutputBytes": 134397,
+      "phases": [
+        {
+          "phase": "setup-proposal",
+          "terminalEvents": 23,
+          "fileChangeEvents": 0,
+          "toolOutputBytes": 106972
+        },
+        {
+          "phase": "setup-apply",
+          "terminalEvents": 12,
+          "fileChangeEvents": 0,
+          "toolOutputBytes": 23161
+        },
+        {
+          "phase": "task-proposal",
+          "terminalEvents": 6,
+          "fileChangeEvents": 0,
+          "toolOutputBytes": 4103
+        },
+        {
+          "phase": "task-apply",
+          "terminalEvents": 1,
+          "fileChangeEvents": 1,
+          "toolOutputBytes": 161
+        }
+      ]
+    },
+    "sourceCheck": {
+      "attempts": 2,
+      "first": "invalid-source: URL instead of owner/repo",
+      "second": "pass"
+    },
+    "remainingScriptExploration": {
+      "proposalEvents": 4,
+      "proposalOutputBytes": 6638,
+      "applyMixedEvent": 1,
+      "applyMixedOutputBytes": 4029
+    },
+    "proposalCompilations": {
+      "previous": 1,
+      "current": 1
+    }
+  },
+  "costUsd": null,
+  "limitations": [
+    "One repeat, Tibicen then baseline. No causal or repeatability claim for elapsed time.",
+    "New cohort has no independent quality judge or human review; earlier judgements are not reused.",
+    "PROC and the full acceptance matrix remain open."
+  ]
+}

@@ -22,7 +22,7 @@ Root ran both project suites and both independent checks with Node **24.15.0**: 
 
 ## Evidence and limits
 
-[Machine-readable results](results.json) contain full instruction hashes, changed paths, runtime distinctions and check outcomes. Raw instructions-read evidence, frozen checks, amendments, red/green logs, patches and final snapshots are maintainer-local at the maintainer-local evidence collection.
+[Machine-readable results](results.json) contain full instruction hashes, changed paths, runtime distinctions and check outcomes. Raw instructions-read evidence, frozen checks, amendments, red/green logs, patches and final snapshots are maintainer-local at `.evals-private/fresh-session-usefulness-20261028-r1/`.
 
 This demonstrates explicit project-instruction reads and completed useful tasks in two fresh Codex contexts, using instructions from the ZCode setup. It does not establish automatic native instruction discovery, a fresh task execution in ZCode itself, causal benefit over an unconfigured project, measured time/cost savings or a human pilot. Instruction discovery was requested; there was no isolated measurement of automatic loading.
 

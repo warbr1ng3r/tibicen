@@ -61,6 +61,18 @@ const sourcePaths = [
 ];
 const hash = (value: string | Buffer) =>
   createHash('sha256').update(value).digest('hex');
+function canonicalJson(value: unknown): string {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
+  if (value !== null && typeof value === 'object')
+    return `{${Object.keys(value)
+      .sort()
+      .map(
+        (key) =>
+          `${JSON.stringify(key)}:${canonicalJson((value as Record<string, unknown>)[key])}`,
+      )
+      .join(',')}}`;
+  return JSON.stringify(value);
+}
 const forcedPreferences =
   'ObjC.import("CoreFoundation"); JSON.stringify([$.CFPreferencesAppValueIsForced($("config_toml_base64"),$("com.openai.codex")),$.CFPreferencesAppValueIsForced($("requirements_toml_base64"),$("com.openai.codex"))])';
 
@@ -265,15 +277,36 @@ async function inspect(
     assert(result.status === 0, 'contained-codex-image-unavailable');
     const image = JSON.parse(result.bytes.toString());
     assert(
-      image.Id === imageId &&
+      image?.Id === imageId &&
         image.Os === 'linux' &&
         image.Architecture === 'arm64' &&
+        (image.Variant == null || typeof image.Variant === 'string') &&
         image.Config?.User === '0:0' &&
         JSON.stringify(image.Config?.Entrypoint) ===
-          JSON.stringify(['/usr/local/bin/node', '/opt/tibicen/watchdog.mjs']),
+          JSON.stringify([
+            '/usr/local/bin/node',
+            '/opt/tibicen/watchdog.mjs',
+          ]) &&
+        image.RootFS?.Type === 'layers' &&
+        Array.isArray(image.RootFS.Layers) &&
+        image.RootFS.Layers.length > 0 &&
+        image.RootFS.Layers.every(
+          (layer: unknown) =>
+            typeof layer === 'string' && /^sha256:[a-f0-9]{64}$/.test(layer),
+        ),
       'unsupported-contained-codex-image',
     );
-    return hash(JSON.stringify(image));
+    return hash(
+      canonicalJson({
+        identityProjectionSchema: 1,
+        Id: image.Id,
+        Os: image.Os,
+        Architecture: image.Architecture,
+        Variant: image.Variant ?? null,
+        Config: image.Config,
+        RootFS: image.RootFS,
+      }),
+    );
   }
   const imageHash = await inspectImage();
   const sourceHashes = Object.freeze(

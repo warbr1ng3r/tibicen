@@ -1,10 +1,12 @@
 # Initial voluntary pilot
 
-**Status: draft, not frozen.** The cohort, group sizes and real projects have not been selected. No pilot observations are recorded here. Release tasks 3.3 and 3.4 remain open; preparing this document completes neither task.
+**Status: voluntary postpublication research; protocol draft, not frozen. Policy adopted 2026-11-03.** Initial human observations and human rubric calibration are not prerequisites for technical release acceptance. Release tasks 3.3 and 3.4 are deferred research, not completed trials. The owner volunteered on 2026-10-30; no pilot observations are recorded here. Exact route/project scope, group minimums and pretrial conditions are agreed only if willing participants begin a trial.
 
-Current acceptance work uses generated projects at the owner's request. Those runs are synthetic scenario checks; real participants and a voluntary human pilot remain future work.
+**Availability update, 2026-11-03:** the owner cannot currently complete the assessment or recruit participants and requested public-source research instead. The earlier volunteering remains historical; an available participant is no longer assumed. No owner assessment or trial is scheduled. [Public agent-setup research](research/PUBLIC_AGENT_SETUP_EVIDENCE.md) informs priorities; the adopted [evidence policy](../openspec/changes/separate-release-evidence-from-usefulness-pilot/specs/product-scope/spec.md) separates this research from the [engineering release assessment](evals/ENGINEERING_ACCEPTANCE.md), without inventing participant observations.
 
-Basis: [Product Vision §14](PRODUCT_VISION.md#14-usefulness-and-quality-metrics) and the [full MVP release inputs](RELEASING.md#inputs-still-required-for-the-full-mvp). The pilot compares Tibicen with each participant's usual method on real work. Initial setup (`init`) and improvement (`adopt`) are assessed separately. The published limited alpha is not full MVP acceptance.
+Earlier acceptance used generated projects at the owner's request. Those runs remain synthetic scenario checks. A [preliminary real-project adopt comparison](evals/results/2026-10-30-owner-pilot-adopt/README.md) now has two proposal-only app observations; full setup/useful-task and participant measurements remain unobserved.
+
+Basis: [Product Vision §14](PRODUCT_VISION.md#14-usefulness-and-quality-metrics) and [postpublication research](RELEASING.md#voluntary-postpublication-research). The pilot compares Tibicen with each participant's usual method on real work. Initial setup (`init`) and improvement (`adopt`) are assessed separately. The published limited alpha is not full MVP acceptance; deferring human research does not close missing technical evidence.
 
 ## Before the first trial
 
@@ -13,10 +15,10 @@ The owner and participants fill in this record before observing results. Keep th
 | Field | Record before the trial |
 |---|---|
 | Pilot record and coordinator | Identifier, date/revision, responsible person, agreed private summary channel; not yet assigned |
-| Voluntary groups and sizes | Participant codes; planned and minimum participant/project/session counts for init and adopt separately; overlap between groups; not yet selected |
+| Voluntary groups and sizes | Owner volunteered on 2026-10-30 but is unavailable as of 2026-11-03; if trials resume, agree anonymous codes and planned/minimum participant/project/session counts for init and adopt separately, with group overlap, before observation |
 | Projects and scope | Anonymous project codes, coarse stack, initial infrastructure, route, task and exclusions; real projects chosen by participants, not invented examples |
 | Version and environment | Installed Tibicen version/ref, agent/version, OS/Node and relevant tool versions; actual publication date for the §14 clock |
-| Usual-method baseline | Participant's normal approach, same agreed task and comparable starting state, agent/tools, limits and method order; explain unavoidable differences |
+| Usual-method baseline | Owner confirmed ordinary Codex without Tibicen as the usual method on 2026-10-30; still freeze the same task, comparable starting state, tools, limits and order, explaining differences |
 | Measurements | Same start/end rule, correction-count rule, manual-work categories, cost source and interruption handling for both methods |
 | Reuse follow-up | Start/end of each participant's 30-day window and how to request an optional follow-up |
 
@@ -70,4 +72,4 @@ Initial hypothesis review triggers are completion **<40%**, applicable verify-pa
 
 ## What remains before an actual pilot
 
-The owner and participants must select the voluntary cohort, group sizes and real projects, agree the pretrial record and private sharing channel, then collect separate init/adopt observations and anonymized benefit/limitation summaries. No participants, completed trials or full MVP gate closure are implied by this draft.
+If an actual pilot resumes, willing participants must select the cohort, group sizes and real projects, agree the pretrial record and private sharing channel, then collect separate init/adopt observations and anonymized benefit/limitation summaries. The earlier volunteer is currently unavailable; completed trials, frozen trial conditions and full MVP gate closure are not implied by this draft.

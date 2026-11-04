@@ -1,7 +1,5 @@
 # Verification
 
-> Public source snapshot: detailed local development records are omitted. Historical verification summaries below retain their original limits.
-
 Дата: 2026-10-26. Реализация ticket 37; pnpm 11.21.0, Node v24.15.0, macOS Darwin 24.6.0 arm64. Исторические live evidence не менялись.
 
 ## Results
@@ -32,4 +30,4 @@ Production Codex preflight с observeStartup=true не исполняет даж
 
 Повторное ponytail-review нашло inherited environment bypass и signal-to-supervisor bypass. Helper копирует все enumerable env keys в object без prototype, проверяет и передаёт ровно его; inherited NODE_OPTIONS/OPENSSL_CONF отклоняются до spawn. OS policy запрещает signal, отдельная signal-0 canary требует EPERM. Изолированный SIGSTOP regression проверяет сохранение deadline с гарантированным cleanup. На временной копии старого helper оба новых случая падают ожидаемо, исправленный helper проходит 5/5.
 
-Финальный pnpm test: **616/616**, 0 skipped, включая lint/format/types/site/strict specs; pnpm build pass, **86 checksums**, обе автономные CLI self-test и local-node-modules proposal/apply/report complete/green с пустым PATH вне checkout. Логи `/tmp/tibicen-package25-review-test-20261026.log` и `/tmp/tibicen-package25-review-build-20261026.log`. Полный review report. Historical proof не переписывался; live/auth/model/API запросов 0.
+Финальный pnpm test: **616/616**, 0 skipped, включая lint/format/types/site/strict specs; pnpm build pass, **86 checksums**, обе автономные CLI self-test и local-node-modules proposal/apply/report complete/green с пустым PATH вне checkout. Логи `/tmp/tibicen-package25-review-test-20261026.log` и `/tmp/tibicen-package25-review-build-20261026.log`. Полный review report (`../../../.scratch/codex-zcode-acceptance/review-package25.md`; private development record; excluded from public source). Historical proof не переписывался; live/auth/model/API запросов 0.

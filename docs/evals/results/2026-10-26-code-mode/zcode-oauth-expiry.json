@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "projection": {
+    "probeCompleted": true,
+    "timedOut": false,
+    "sourceVerified": true,
+    "profileCopyVerified": true,
+    "storeLoadCompleted": true,
+    "oneStoreLoad": true,
+    "networkUnused": true,
+    "originalMetadataUnchanged": true,
+    "scopeRemoved": true,
+    "tokenPresent": true,
+    "jwtPayloadParsed": true,
+    "finiteExp": true,
+    "expiredAtR2Session": true,
+    "expiredNow": true,
+    "claimSignatureVerified": false
+  },
+  "freezeHash": "8aa81ee088041862a2d6941421043bc70ca71923a4d125cf936f962f1de116be",
+  "resultHash": "a5e2d7f2f0b7d954b999246039eae95e2d535057f65b32a3b55ab7b2b45475f6",
+  "officialStoreLoads": 1,
+  "httpRequests": 0,
+  "modelRequests": 0,
+  "apiRequests": 0,
+  "credentialMutations": 0,
+  "meaning": "JWT expiry claim is unverified; saved token claims expired before r2 and now. This does not prove server status or historical failure cause."
+}

@@ -1,0 +1,1062 @@
+{
+  "schema": 1,
+  "meaning": "experimental-comparison",
+  "cohorts": [
+    {
+      "id": "4cf2686ada523892cbc04b0adcf6a0744f825cb5005162dd1bd7e0163ccad44e",
+      "experimentHash": "39a4cfe762b5cdd19c330c549d21d362c7e1566ddd330d42b15830ab6cca77f9",
+      "scenarioHash": "273bf0ebe5fbb89549f629fda1728bca4949028cd16372cbdb8ba7335d9b921b",
+      "profileHash": "dfac5318c02c502335d241623ed1416597134865269c474d0e6f25c5f0f14ef8",
+      "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+      "plan": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application",
+          "loading"
+        ]
+      },
+      "mode": "observed",
+      "experimentId": "codex-diagnostic-2026-10-23",
+      "sourceSha": "408beb5a5e4af1bae78d2a3d6b4bf23b04611f90",
+      "conditionsHash": "63ceb31403b73f333ab38e3ca4af5cd77c9d75f7002e8fcae161e4eaed03a746",
+      "limits": {
+        "launchMs": 45000,
+        "setupMs": 180000,
+        "taskMs": 120000,
+        "maxCostUsd": null
+      },
+      "scenarioId": "diagnostic-bare",
+      "profile": {
+        "id": "codex-0.157.0-gpt-6-sol",
+        "agent": "codex",
+        "version": "0.157.0",
+        "model": "gpt-6-sol",
+        "auth": "subscription",
+        "paid": false,
+        "startupHash": "fd01748a8a5933f2972518c8d1314ab961bf8cf37ca3ae11b691edb87256c0e5",
+        "permissionsHash": "43f4a47fa283df568f332eb46b4c71b06b34fa1f105b04248bc5efa4666e09b6"
+      },
+      "variants": {
+        "tibicen": {
+          "planned": 1,
+          "recorded": 1,
+          "missing": 0,
+          "observed": {
+            "schema": 1,
+            "total": 1,
+            "started": 1,
+            "notStarted": {
+              "error": 0,
+              "skip": 0
+            },
+            "outcomes": {
+              "launch": {
+                "pass": 1,
+                "error": 0,
+                "skip": 0
+              },
+              "setup": {
+                "pass": 0,
+                "fail": 0,
+                "error": 1,
+                "skip": 0
+              },
+              "task": {
+                "pass": 0,
+                "fail": 0,
+                "error": 0,
+                "skip": 1
+              }
+            },
+            "setupSuccess": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0
+            },
+            "taskSuccessGivenSetup": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "endToEndSuccess": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0
+            }
+          },
+          "evaluated": {
+            "schema": 1,
+            "total": 1,
+            "started": 1,
+            "notStarted": {
+              "error": 0,
+              "skip": 0
+            },
+            "outcomes": {
+              "launch": {
+                "pass": 1,
+                "error": 0,
+                "skip": 0
+              },
+              "setup": {
+                "pass": 0,
+                "fail": 0,
+                "error": 1,
+                "skip": 0
+              },
+              "task": {
+                "pass": 0,
+                "fail": 0,
+                "error": 0,
+                "skip": 1
+              }
+            },
+            "setupSuccess": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0
+            },
+            "taskSuccessGivenSetup": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "endToEndSuccess": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0
+            }
+          },
+          "costUsd": {
+            "knownSubtotal": 0,
+            "knownCount": 0,
+            "unknownCount": 1,
+            "notExecutedCount": 0,
+            "total": null
+          },
+          "durationMs": {
+            "launch": {
+              "knownSubtotal": 1530.8126670000001,
+              "knownCount": 1,
+              "unknownCount": 0,
+              "notExecutedCount": 0,
+              "total": 1530.8126670000001
+            },
+            "setup": {
+              "knownSubtotal": 77556.56108300001,
+              "knownCount": 1,
+              "unknownCount": 0,
+              "notExecutedCount": 0,
+              "total": 77556.56108300001
+            },
+            "task": {
+              "knownSubtotal": 0,
+              "knownCount": 0,
+              "unknownCount": 0,
+              "notExecutedCount": 1,
+              "total": null
+            }
+          }
+        },
+        "baseline": {
+          "planned": 1,
+          "recorded": 1,
+          "missing": 0,
+          "observed": {
+            "schema": 1,
+            "total": 1,
+            "started": 1,
+            "notStarted": {
+              "error": 0,
+              "skip": 0
+            },
+            "outcomes": {
+              "launch": {
+                "pass": 1,
+                "error": 0,
+                "skip": 0
+              },
+              "setup": {
+                "pass": 1,
+                "fail": 0,
+                "error": 0,
+                "skip": 0
+              },
+              "task": {
+                "pass": 1,
+                "fail": 0,
+                "error": 0,
+                "skip": 0
+              }
+            },
+            "setupSuccess": {
+              "numerator": 1,
+              "denominator": 1,
+              "rate": 1
+            },
+            "taskSuccessGivenSetup": {
+              "numerator": 1,
+              "denominator": 1,
+              "rate": 1
+            },
+            "endToEndSuccess": {
+              "numerator": 1,
+              "denominator": 1,
+              "rate": 1
+            }
+          },
+          "evaluated": {
+            "schema": 1,
+            "total": 1,
+            "started": 1,
+            "notStarted": {
+              "error": 0,
+              "skip": 0
+            },
+            "outcomes": {
+              "launch": {
+                "pass": 1,
+                "error": 0,
+                "skip": 0
+              },
+              "setup": {
+                "pass": 0,
+                "fail": 0,
+                "error": 1,
+                "skip": 0
+              },
+              "task": {
+                "pass": 0,
+                "fail": 0,
+                "error": 0,
+                "skip": 1
+              }
+            },
+            "setupSuccess": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0
+            },
+            "taskSuccessGivenSetup": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "endToEndSuccess": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0
+            }
+          },
+          "costUsd": {
+            "knownSubtotal": 0,
+            "knownCount": 0,
+            "unknownCount": 1,
+            "notExecutedCount": 0,
+            "total": null
+          },
+          "durationMs": {
+            "launch": {
+              "knownSubtotal": 1287.7306669999962,
+              "knownCount": 1,
+              "unknownCount": 0,
+              "notExecutedCount": 0,
+              "total": 1287.7306669999962
+            },
+            "setup": {
+              "knownSubtotal": 46967.986667000005,
+              "knownCount": 1,
+              "unknownCount": 0,
+              "notExecutedCount": 0,
+              "total": 46967.986667000005
+            },
+            "task": {
+              "knownSubtotal": 38558.39266699999,
+              "knownCount": 1,
+              "unknownCount": 0,
+              "notExecutedCount": 0,
+              "total": 38558.39266699999
+            }
+          }
+        }
+      },
+      "pairs": [
+        {
+          "repeat": 1,
+          "tibicen": {
+            "id": "bare-tibicen",
+            "record": {
+              "id": "bare-tibicen",
+              "observed": {
+                "schema": 1,
+                "id": "bare-tibicen",
+                "scenarioId": "diagnostic-bare",
+                "profileId": "codex-0.157.0-gpt-6-sol",
+                "variant": "tibicen",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 1530.8126670000001
+                },
+                "setup": {
+                  "status": "error",
+                  "durationMs": 77556.56108300001,
+                  "reason": "native-command-before-approval"
+                },
+                "task": {
+                  "status": "skip",
+                  "durationMs": 0,
+                  "reason": "setup-not-passed"
+                }
+              },
+              "evaluated": {
+                "schema": 1,
+                "id": "bare-tibicen",
+                "scenarioId": "diagnostic-bare",
+                "profileId": "codex-0.157.0-gpt-6-sol",
+                "variant": "tibicen",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 1530.8126670000001
+                },
+                "setup": {
+                  "status": "error",
+                  "durationMs": 77556.56108300001,
+                  "reason": "native-command-before-approval"
+                },
+                "task": {
+                  "status": "skip",
+                  "durationMs": 0,
+                  "reason": "evaluated-setup-not-passed"
+                }
+              },
+              "observedGrades": [
+                {
+                  "schema": 1,
+                  "id": "setup-invariants",
+                  "attemptId": "bare-tibicen",
+                  "stage": "setup",
+                  "scope": "invariants",
+                  "verdict": "fail",
+                  "reason": "native-command-before-approval",
+                  "evidence": [
+                    2,
+                    3,
+                    4
+                  ]
+                }
+              ],
+              "quality": null,
+              "measurements": {
+                "durationMs": {
+                  "launch": 1530.8126670000001,
+                  "setup": 77556.56108300001,
+                  "task": null
+                },
+                "usage": {
+                  "launch": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "setup": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "task": null
+                },
+                "costUsd": null
+              }
+            }
+          },
+          "baseline": {
+            "id": "bare-baseline",
+            "record": {
+              "id": "bare-baseline",
+              "observed": {
+                "schema": 1,
+                "id": "bare-baseline",
+                "scenarioId": "diagnostic-bare",
+                "profileId": "codex-0.157.0-gpt-6-sol",
+                "variant": "baseline",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 1287.7306669999962
+                },
+                "setup": {
+                  "status": "pass",
+                  "durationMs": 46967.986667000005
+                },
+                "task": {
+                  "status": "pass",
+                  "durationMs": 38558.39266699999
+                }
+              },
+              "evaluated": {
+                "schema": 1,
+                "id": "bare-baseline",
+                "scenarioId": "diagnostic-bare",
+                "profileId": "codex-0.157.0-gpt-6-sol",
+                "variant": "baseline",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 1287.7306669999962
+                },
+                "setup": {
+                  "status": "error",
+                  "durationMs": 46967.986667000005,
+                  "reason": "missing-quality-review"
+                },
+                "task": {
+                  "status": "skip",
+                  "durationMs": 0,
+                  "reason": "evaluated-setup-not-passed"
+                }
+              },
+              "observedGrades": [
+                {
+                  "schema": 1,
+                  "id": "setup-invariants",
+                  "attemptId": "bare-baseline",
+                  "stage": "setup",
+                  "scope": "invariants",
+                  "verdict": "pass",
+                  "reason": "native-reviewed-effects-preserved",
+                  "evidence": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                  ]
+                },
+                {
+                  "schema": 1,
+                  "id": "task-invariants",
+                  "attemptId": "bare-baseline",
+                  "stage": "task",
+                  "scope": "invariants",
+                  "verdict": "pass",
+                  "reason": "native-reviewed-effects-preserved",
+                  "evidence": [
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14
+                  ]
+                },
+                {
+                  "schema": 1,
+                  "id": "task-task",
+                  "attemptId": "bare-baseline",
+                  "stage": "task",
+                  "scope": "task",
+                  "verdict": "pass",
+                  "reason": "independent-exports-passed",
+                  "evidence": [
+                    15
+                  ]
+                }
+              ],
+              "quality": null,
+              "measurements": {
+                "durationMs": {
+                  "launch": 1287.7306669999962,
+                  "setup": 46967.986667000005,
+                  "task": 38558.39266699999
+                },
+                "usage": {
+                  "launch": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "setup": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "task": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  }
+                },
+                "costUsd": null
+              }
+            }
+          },
+          "complete": true,
+          "delta": {
+            "setupMs": 30588.574416000003,
+            "taskMs": null,
+            "costUsd": null
+          }
+        }
+      ],
+      "invariantFailures": [
+        {
+          "attemptId": "bare-tibicen",
+          "grade": {
+            "schema": 1,
+            "id": "setup-invariants",
+            "attemptId": "bare-tibicen",
+            "stage": "setup",
+            "scope": "invariants",
+            "verdict": "fail",
+            "reason": "native-command-before-approval",
+            "evidence": [
+              2,
+              3,
+              4
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "28b512fc5123241dc327b23ddf0565a001e0411c7b91b7042ba26219b8e68978",
+      "experimentHash": "39a4cfe762b5cdd19c330c549d21d362c7e1566ddd330d42b15830ab6cca77f9",
+      "scenarioHash": "d2463dba27f1ca3fcdef5549bf0d37ea91c074a3449c803947163ff103b56f04",
+      "profileHash": "dfac5318c02c502335d241623ed1416597134865269c474d0e6f25c5f0f14ef8",
+      "rubricHash": "9b7b35680565e5fc97fb4c1377ce77836e8e2e87de095a1c4453d3164e62af9f",
+      "plan": {
+        "setup": [
+          "grounding",
+          "fit",
+          "sufficiency",
+          "consistency"
+        ],
+        "task": [
+          "application",
+          "loading"
+        ]
+      },
+      "mode": "observed",
+      "experimentId": "codex-diagnostic-2026-10-23",
+      "sourceSha": "408beb5a5e4af1bae78d2a3d6b4bf23b04611f90",
+      "conditionsHash": "63ceb31403b73f333ab38e3ca4af5cd77c9d75f7002e8fcae161e4eaed03a746",
+      "limits": {
+        "launchMs": 45000,
+        "setupMs": 180000,
+        "taskMs": 120000,
+        "maxCostUsd": null
+      },
+      "scenarioId": "diagnostic-conflicts",
+      "profile": {
+        "id": "codex-0.157.0-gpt-6-sol",
+        "agent": "codex",
+        "version": "0.157.0",
+        "model": "gpt-6-sol",
+        "auth": "subscription",
+        "paid": false,
+        "startupHash": "fd01748a8a5933f2972518c8d1314ab961bf8cf37ca3ae11b691edb87256c0e5",
+        "permissionsHash": "43f4a47fa283df568f332eb46b4c71b06b34fa1f105b04248bc5efa4666e09b6"
+      },
+      "variants": {
+        "tibicen": {
+          "planned": 1,
+          "recorded": 1,
+          "missing": 0,
+          "observed": {
+            "schema": 1,
+            "total": 1,
+            "started": 1,
+            "notStarted": {
+              "error": 0,
+              "skip": 0
+            },
+            "outcomes": {
+              "launch": {
+                "pass": 1,
+                "error": 0,
+                "skip": 0
+              },
+              "setup": {
+                "pass": 0,
+                "fail": 1,
+                "error": 0,
+                "skip": 0
+              },
+              "task": {
+                "pass": 0,
+                "fail": 0,
+                "error": 0,
+                "skip": 1
+              }
+            },
+            "setupSuccess": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0
+            },
+            "taskSuccessGivenSetup": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "endToEndSuccess": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0
+            }
+          },
+          "evaluated": {
+            "schema": 1,
+            "total": 1,
+            "started": 1,
+            "notStarted": {
+              "error": 0,
+              "skip": 0
+            },
+            "outcomes": {
+              "launch": {
+                "pass": 1,
+                "error": 0,
+                "skip": 0
+              },
+              "setup": {
+                "pass": 0,
+                "fail": 1,
+                "error": 0,
+                "skip": 0
+              },
+              "task": {
+                "pass": 0,
+                "fail": 0,
+                "error": 0,
+                "skip": 1
+              }
+            },
+            "setupSuccess": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0
+            },
+            "taskSuccessGivenSetup": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "endToEndSuccess": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0
+            }
+          },
+          "costUsd": {
+            "knownSubtotal": 0,
+            "knownCount": 0,
+            "unknownCount": 1,
+            "notExecutedCount": 0,
+            "total": null
+          },
+          "durationMs": {
+            "launch": {
+              "knownSubtotal": 1557.4355839999916,
+              "knownCount": 1,
+              "unknownCount": 0,
+              "notExecutedCount": 0,
+              "total": 1557.4355839999916
+            },
+            "setup": {
+              "knownSubtotal": 126149.13,
+              "knownCount": 1,
+              "unknownCount": 0,
+              "notExecutedCount": 0,
+              "total": 126149.13
+            },
+            "task": {
+              "knownSubtotal": 0,
+              "knownCount": 0,
+              "unknownCount": 0,
+              "notExecutedCount": 1,
+              "total": null
+            }
+          }
+        },
+        "baseline": {
+          "planned": 1,
+          "recorded": 1,
+          "missing": 0,
+          "observed": {
+            "schema": 1,
+            "total": 1,
+            "started": 1,
+            "notStarted": {
+              "error": 0,
+              "skip": 0
+            },
+            "outcomes": {
+              "launch": {
+                "pass": 1,
+                "error": 0,
+                "skip": 0
+              },
+              "setup": {
+                "pass": 0,
+                "fail": 1,
+                "error": 0,
+                "skip": 0
+              },
+              "task": {
+                "pass": 0,
+                "fail": 0,
+                "error": 0,
+                "skip": 1
+              }
+            },
+            "setupSuccess": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0
+            },
+            "taskSuccessGivenSetup": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "endToEndSuccess": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0
+            }
+          },
+          "evaluated": {
+            "schema": 1,
+            "total": 1,
+            "started": 1,
+            "notStarted": {
+              "error": 0,
+              "skip": 0
+            },
+            "outcomes": {
+              "launch": {
+                "pass": 1,
+                "error": 0,
+                "skip": 0
+              },
+              "setup": {
+                "pass": 0,
+                "fail": 1,
+                "error": 0,
+                "skip": 0
+              },
+              "task": {
+                "pass": 0,
+                "fail": 0,
+                "error": 0,
+                "skip": 1
+              }
+            },
+            "setupSuccess": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0
+            },
+            "taskSuccessGivenSetup": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "endToEndSuccess": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0
+            }
+          },
+          "costUsd": {
+            "knownSubtotal": 0,
+            "knownCount": 0,
+            "unknownCount": 1,
+            "notExecutedCount": 0,
+            "total": null
+          },
+          "durationMs": {
+            "launch": {
+              "knownSubtotal": 1469.1308750000026,
+              "knownCount": 1,
+              "unknownCount": 0,
+              "notExecutedCount": 0,
+              "total": 1469.1308750000026
+            },
+            "setup": {
+              "knownSubtotal": 76421.63758399998,
+              "knownCount": 1,
+              "unknownCount": 0,
+              "notExecutedCount": 0,
+              "total": 76421.63758399998
+            },
+            "task": {
+              "knownSubtotal": 0,
+              "knownCount": 0,
+              "unknownCount": 0,
+              "notExecutedCount": 1,
+              "total": null
+            }
+          }
+        }
+      },
+      "pairs": [
+        {
+          "repeat": 1,
+          "tibicen": {
+            "id": "conflicts-tibicen",
+            "record": {
+              "id": "conflicts-tibicen",
+              "observed": {
+                "schema": 1,
+                "id": "conflicts-tibicen",
+                "scenarioId": "diagnostic-conflicts",
+                "profileId": "codex-0.157.0-gpt-6-sol",
+                "variant": "tibicen",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 1557.4355839999916
+                },
+                "setup": {
+                  "status": "fail",
+                  "durationMs": 126149.13,
+                  "reason": "native-plan-mismatch"
+                },
+                "task": {
+                  "status": "skip",
+                  "durationMs": 0,
+                  "reason": "setup-not-passed"
+                }
+              },
+              "evaluated": {
+                "schema": 1,
+                "id": "conflicts-tibicen",
+                "scenarioId": "diagnostic-conflicts",
+                "profileId": "codex-0.157.0-gpt-6-sol",
+                "variant": "tibicen",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 1557.4355839999916
+                },
+                "setup": {
+                  "status": "fail",
+                  "durationMs": 126149.13,
+                  "reason": "native-plan-mismatch"
+                },
+                "task": {
+                  "status": "skip",
+                  "durationMs": 0,
+                  "reason": "evaluated-setup-not-passed"
+                }
+              },
+              "observedGrades": [
+                {
+                  "schema": 1,
+                  "id": "setup-invariants",
+                  "attemptId": "conflicts-tibicen",
+                  "stage": "setup",
+                  "scope": "invariants",
+                  "verdict": "fail",
+                  "reason": "native-plan-mismatch",
+                  "evidence": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10
+                  ]
+                }
+              ],
+              "quality": null,
+              "measurements": {
+                "durationMs": {
+                  "launch": 1557.4355839999916,
+                  "setup": 126149.13,
+                  "task": null
+                },
+                "usage": {
+                  "launch": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "setup": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "task": null
+                },
+                "costUsd": null
+              }
+            }
+          },
+          "baseline": {
+            "id": "conflicts-baseline",
+            "record": {
+              "id": "conflicts-baseline",
+              "observed": {
+                "schema": 1,
+                "id": "conflicts-baseline",
+                "scenarioId": "diagnostic-conflicts",
+                "profileId": "codex-0.157.0-gpt-6-sol",
+                "variant": "baseline",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 1469.1308750000026
+                },
+                "setup": {
+                  "status": "fail",
+                  "durationMs": 76421.63758399998,
+                  "reason": "native-plan-mismatch"
+                },
+                "task": {
+                  "status": "skip",
+                  "durationMs": 0,
+                  "reason": "setup-not-passed"
+                }
+              },
+              "evaluated": {
+                "schema": 1,
+                "id": "conflicts-baseline",
+                "scenarioId": "diagnostic-conflicts",
+                "profileId": "codex-0.157.0-gpt-6-sol",
+                "variant": "baseline",
+                "started": true,
+                "launch": {
+                  "status": "pass",
+                  "durationMs": 1469.1308750000026
+                },
+                "setup": {
+                  "status": "fail",
+                  "durationMs": 76421.63758399998,
+                  "reason": "native-plan-mismatch"
+                },
+                "task": {
+                  "status": "skip",
+                  "durationMs": 0,
+                  "reason": "evaluated-setup-not-passed"
+                }
+              },
+              "observedGrades": [
+                {
+                  "schema": 1,
+                  "id": "setup-invariants",
+                  "attemptId": "conflicts-baseline",
+                  "stage": "setup",
+                  "scope": "invariants",
+                  "verdict": "fail",
+                  "reason": "native-plan-mismatch",
+                  "evidence": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11
+                  ]
+                }
+              ],
+              "quality": null,
+              "measurements": {
+                "durationMs": {
+                  "launch": 1469.1308750000026,
+                  "setup": 76421.63758399998,
+                  "task": null
+                },
+                "usage": {
+                  "launch": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "setup": {
+                    "costUsd": null,
+                    "inputTokens": null,
+                    "outputTokens": null
+                  },
+                  "task": null
+                },
+                "costUsd": null
+              }
+            }
+          },
+          "complete": true,
+          "delta": {
+            "setupMs": 49727.49241600002,
+            "taskMs": null,
+            "costUsd": null
+          }
+        }
+      ],
+      "invariantFailures": [
+        {
+          "attemptId": "conflicts-baseline",
+          "grade": {
+            "schema": 1,
+            "id": "setup-invariants",
+            "attemptId": "conflicts-baseline",
+            "stage": "setup",
+            "scope": "invariants",
+            "verdict": "fail",
+            "reason": "native-plan-mismatch",
+            "evidence": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ]
+          }
+        },
+        {
+          "attemptId": "conflicts-tibicen",
+          "grade": {
+            "schema": 1,
+            "id": "setup-invariants",
+            "attemptId": "conflicts-tibicen",
+            "stage": "setup",
+            "scope": "invariants",
+            "verdict": "fail",
+            "reason": "native-plan-mismatch",
+            "evidence": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

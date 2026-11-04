@@ -1,0 +1,277 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "status": "finished-partial",
+  "web": {
+    "status": "complete-with-root-continuation",
+    "originalFrozenModelCase": "not-passed",
+    "initialHostReason": "standalone-scan-unverified",
+    "canonicalScanObserved": true,
+    "strictFullProposalReviewPassed": true,
+    "executorSessions": 1,
+    "extraModelCalls": 0,
+    "modelRetries": 0,
+    "startupRequests": 0,
+    "judgeRequests": 0,
+    "apiCalls": 0,
+    "usage": {
+      "inputTokens": 222845,
+      "outputTokens": 2926,
+      "unknownInput": 0,
+      "unknownOutput": 0
+    },
+    "rootApplied": true,
+    "ownStatus": "complete",
+    "ownReportStatus": "complete",
+    "infrastructure": "passed",
+    "ownProjectCheck": {
+      "kind": "verify",
+      "status": "unverified",
+      "reason": "environment-unverified",
+      "newRegressions": []
+    },
+    "ownerApplicationDependenciesPreserved": true,
+    "sourceStable": true,
+    "sourceFiles": 240,
+    "applied": [
+      {
+        "path": "AGENTS.md",
+        "action": "modify"
+      }
+    ],
+    "externalReference": {
+      "beforePassed": true,
+      "afterPassed": true,
+      "equalInputs": true,
+      "applicationHash": "32be7397a944b3aa51913dc094dca2074153a76a32bda3896f8e2a54643b762c",
+      "dependencyHash": "ffd5761abd10a5bd2ba6211ba2dc296bfd80bb44e7a7651a5f36e01f6651e7a2",
+      "commandsHash": "68b06a3e635942d0eed50d0d0653b3d7db37c338ea7e61da65f6480939a3a679",
+      "environmentHash": "a9c273ac8ef834d56580bcf71f55c194019b21eeba4fe565fa7a3b83b74d614c",
+      "runs": [
+        {
+          "id": "astro-build",
+          "exitCode": 0,
+          "timedOut": false,
+          "summary": [
+            "\u001b[2m15:52:35\u001b[22m \u001b[34m[build]\u001b[39m 1 page(s) built in \u001b[1m464ms\u001b[22m"
+          ]
+        },
+        {
+          "id": "site-unit",
+          "exitCode": 0,
+          "timedOut": false,
+          "summary": [
+            "ℹ tests 13",
+            "ℹ pass 13",
+            "ℹ fail 0"
+          ]
+        }
+      ]
+    },
+    "manualActions": [],
+    "frozenFileDigest": "bf6dca818df8095df778844431419a7a1f8999fc051b3cfe3eac1e91868c8f28",
+    "primaryOutcomeFrozenHash": "25bbfd02e2c946d50b77252e398593f088555157d40daa74f2de8e6ab4a16b80",
+    "primaryHashMismatchExplained": true,
+    "privateSourceId": "codex-real-web-20261026-JDCV9o2i",
+    "artifacts": [
+      {
+        "path": "frozen.json",
+        "sha256": "6abb20c931a3a8a3868576c794edfa0004efb3f8ca2568d40f412d59bd9dfecf"
+      },
+      {
+        "path": "protocol-selfcheck.json",
+        "sha256": "88a0b50c5822f9831428dfe13a9c20b7ac3af14a6a1f663494751b1127563c26"
+      },
+      {
+        "path": "outcome.json",
+        "sha256": "e378d507c3e60b99a186607cf26bb241c9a595e1ed7bd5164fce0b4d9c3e8136"
+      },
+      {
+        "path": "improve-proposal-session.json",
+        "sha256": "7af72a7255dbb5807a21bda1ae6d33402d4f400887c82787aef6b200f6bf37fb"
+      },
+      {
+        "path": "root-proposal-review.json",
+        "sha256": "930887fb086a8065d9b0a39cc6cad1c86a8d82be84bb4e05910450a8611f4120"
+      },
+      {
+        "path": "root-reviewed-plan.json",
+        "sha256": "8d456869be6bb8dbac9f4acbfca826f08972422b9c67adb19bb301ef0a202667"
+      },
+      {
+        "path": "root-continuation-protocol.json",
+        "sha256": "d41387db013b65fd4aff9cc0f5c3c8c3880ff98fe88a3eb7fe18fd350512fa28"
+      },
+      {
+        "path": "root-continuation-implementation.json",
+        "sha256": "299b7d6292b1b71684ee03ff51b6418ab6ba8e8b0889621ae7e5e790408da1f6"
+      },
+      {
+        "path": "root-apply.json",
+        "sha256": "8a73a3fd690dea8d7aea2cedd26d8b230ff51b48b2dcefe8943436548c49f50a"
+      },
+      {
+        "path": "root-verify.json",
+        "sha256": "1fe154b5b6bbf8ae29131aadfe51e83072fd17ee49658725b5596789b4e00eb1"
+      },
+      {
+        "path": "root-status.json",
+        "sha256": "983b16416e50a48016ad40ee72f643ae75f91d6f3fc659a22cc11c56e8b62720"
+      },
+      {
+        "path": "root-report.json",
+        "sha256": "cdd4661ffaa9fd33dd139f16886757ce3a969835036e6ce1a966c127bd06e4f7"
+      },
+      {
+        "path": "root-continuation-result.json",
+        "sha256": "cd7586310c37dda31e37a3598e2915f5129e1d09a227a03892073002bcbedcc9"
+      },
+      {
+        "path": "reference-before.json",
+        "sha256": "c75330000a9066454e3ea78222ca2ddc57faca10bfd5575898c8665a2b805f0a"
+      },
+      {
+        "path": "root-reference-after.json",
+        "sha256": "3f3a941372412bc3f85beb20f6ac40c7f6c7ec6b17562b2decbd580a9d6b5654"
+      }
+    ]
+  },
+  "lifecycle": {
+    "schema": 1,
+    "outcome": "pass",
+    "caseCount": 2,
+    "cases": [
+      {
+        "name": "update-resume",
+        "outcome": "pass"
+      },
+      {
+        "name": "stale-ambiguous",
+        "outcome": "pass"
+      }
+    ],
+    "findings": [],
+    "sourceStable": true,
+    "cliReceipts": 26,
+    "knownCommandRecoveryTests": {
+      "tests": 2,
+      "passed": 2,
+      "failed": 0
+    },
+    "counts": {
+      "externalModel": 0,
+      "startup": 0,
+      "judge": 0,
+      "externalApi": 0,
+      "sharedEdits": 0,
+      "commits": 0
+    },
+    "limits": "Synthetic offline infrastructure changes only; no selected external component update or application execution. Project checks remain honestly unverified.",
+    "artifacts": [
+      {
+        "path": "frozen.json",
+        "sha256": "00c17c69d6d8e7fb8adad6dad6ba5c829e25f84587e499cf80bc58da70fb8782"
+      },
+      {
+        "path": "run.mjs",
+        "sha256": "1a8680fc38b39cc4337a3e26b99a9d4ebb9a7bcccd7bf6dc376512ffb4d93f7e"
+      },
+      {
+        "path": "fault-apply.mjs",
+        "sha256": "470d13b265c163ebf0c2bf44a6f17e984a0b2efb6bdc993d50dd559659b91df3"
+      },
+      {
+        "path": "receipts.json",
+        "sha256": "12ce2eb9808b2cc6c9ba138d0f902a26ff8c9b5cde9ff1e954b199cae8dae213"
+      },
+      {
+        "path": "outcome.json",
+        "sha256": "6544c7ebef4af2c74c84997977dda9012b6479daf63362c9f82769865f7e6b37"
+      },
+      {
+        "path": "update-resume-result.json",
+        "sha256": "2c7da2c00bb7899c977fcd021e68f7c60f32bfde825638453d25ed40d0df0efe"
+      },
+      {
+        "path": "stale-ambiguous-result.json",
+        "sha256": "9ffdf05c71fb7fd81ddb1ce8c3fd13fea4a1aadd79b5b26103b4e5c35122cfad"
+      },
+      {
+        "path": "focused-recovery-result.json",
+        "sha256": "43f01d2f0a1dff7a3377522f5548e009e72da48312819f7c13f64a9bb54fe578"
+      }
+    ],
+    "privateSourceId": "tibicen-update-resume-20261026-g6R3vu",
+    "summaryBytesHash": "cd5cf009ede30dd0331f6357c038d57d943844c279fd693c6aa36de405126457",
+    "sameSessionOnResume": true,
+    "ownerAndApplicationPreserved": true,
+    "oldDigestAndAmbiguousChangesRefused": true
+  },
+  "zcode": {
+    "schema": 1,
+    "outcome": "error",
+    "nativePass": false,
+    "hostSessions": 1,
+    "hostRetries": 0,
+    "observedModelRequestEvents": 1,
+    "internalHttpRetryCount": null,
+    "usage": null,
+    "nativeToolCalls": 0,
+    "modelSelected": {
+      "providerId": "account:zai-individual-coding-plan",
+      "modelId": "GLM-5.3",
+      "options": {
+        "reasoningLevel": "low"
+      }
+    },
+    "sourceVersion": "0.17.0",
+    "installedVersion": "0.16.9",
+    "elapsedMs": 9864,
+    "stage": "agent-loop",
+    "errorDetailHash": "6d1bec16ba69dd7bf5ae105279b140a81edc32a6a665e64901c4a8f5541b9e7a",
+    "errorReason": "Unknown; safe observation retained hashes only.",
+    "offlineProtocolPassed": true,
+    "liveBoundaryPassed": true,
+    "judgeSessions": 0,
+    "startupSessions": 0,
+    "apiSessions": 0,
+    "privateSourceId": "zcode-native-tools-20261026-MumMEN",
+    "artifacts": [
+      {
+        "path": "live-1/result.json",
+        "sha256": "59af0cf9fe0f93b73c1da65291f2b4b4ce50b996f2a9f030610fc5b7d110840f"
+      },
+      {
+        "path": "live-1/events.json",
+        "sha256": "08e3bedf55b20e7242c7c8a98a97ded4f32f5beb53670ff0c2d047b42b1b51aa"
+      },
+      {
+        "path": "live-1/ports.json",
+        "sha256": "4c5437bd9a7203a6d950fb292775548f2533f5dd0bc114d7722d7eb48836e541"
+      },
+      {
+        "path": "live-1/boundary.json",
+        "sha256": "fc158b2bb81a31852828c8b61192ec88e29f6f4ffb84294a2ae57a01f43e1488"
+      },
+      {
+        "path": "live-1/frozen.json",
+        "sha256": "611c8b1eabecbff60a5cc68d6768d5e7777cde7bc3083f7343b19d44f8645b1b"
+      },
+      {
+        "path": "live-1/session-started.json",
+        "sha256": "6e298652ba5e05f2975015daa352660b74775c09062bb59ba6fb775ad70cca37"
+      },
+      {
+        "path": "root-readiness.json",
+        "sha256": "62533e801140d8d895c03d0c007c967f3d4e178a580ad63c768a5a39d77e91a6"
+      }
+    ]
+  },
+  "apiCalls": 0,
+  "commits": 0,
+  "nextIssues": [
+    "36-reproduce-project-check-environment",
+    "37-stop-detached-check-processes",
+    "38-retain-zcode-error-reason"
+  ]
+}

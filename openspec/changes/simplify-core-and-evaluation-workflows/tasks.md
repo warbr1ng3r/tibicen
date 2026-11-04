@@ -1,8 +1,6 @@
 # Tasks
 
-> Public source snapshot: detailed local development records are omitted. Historical verification summaries below retain their original limits.
-
-Статус на 26.10.2026: исходные четыре пакета и три исправления review выполнены, 13/13. Текущий gate — 585/585 офлайн-тестов; build, 84 суммы и обе распакованные CLI прошли. [Review](review.md) содержит три исправленных дефекта и ограничения. Историческая приёмка четырёх пакетов: 10/10. Итоговый gate — 550 офлайн-тестов, браузеры — 59 passed / 1 ожидаемый skip; сборка, обе автономные CLI и 84 суммы прошли. Свидетельства — в verification.md; удалённый CI и живая приёмка не выполнялись. Одноисточниковая версия выполнена отдельно в prepare-first-public-release 1.1. Карта закрыта: дашборд.
+Статус на 26.10.2026: исходные четыре пакета и три исправления review выполнены, 13/13. Текущий gate — 585/585 офлайн-тестов; build, 84 суммы и обе распакованные CLI прошли. [Review](review.md) содержит три исправленных дефекта и ограничения. Историческая приёмка четырёх пакетов: 10/10. Итоговый gate — 550 офлайн-тестов, браузеры — 59 passed / 1 ожидаемый skip; сборка, обе автономные CLI и 84 суммы прошли. Свидетельства — в verification.md; удалённый CI и живая приёмка не выполнялись. Одноисточниковая версия выполнена отдельно в prepare-first-public-release 1.1. Карта закрыта: дашборд (`../../../.scratch/tibicen-simplification/dashboard.md`; private development record; excluded from public source).
 
 ## 1. Correctness and development feedback
 
