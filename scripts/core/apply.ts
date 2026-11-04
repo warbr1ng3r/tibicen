@@ -44,6 +44,7 @@ import { inspectSharedRules, resolveSharedRules } from './shared-rules.ts';
 import { inspectProcess, processAllows } from '../process/index.ts';
 import { mcpNeedsExecutionTrust } from '../mcp/index.ts';
 import { finalizeSession, mergeHistory } from './finalize.ts';
+import { memoryAllows, resolveMemory } from './memory.ts';
 
 export async function atomicWrite(
   root: string,
@@ -345,6 +346,35 @@ export async function applyPlan(
   const registeredProcess =
     componentBaseline?.recoveredProcess ?? componentBaseline?.manifest?.process;
   assert(
+    !proposal.memory || oldState?.schema !== 3,
+    'resume-required',
+    'Complete the pending legacy session before configuring memory.',
+  );
+  const registeredMemory =
+    componentBaseline?.recoveredMemory ?? componentBaseline?.manifest?.memory;
+  const memory = resolveMemory(
+    proposal.memory ? { path: proposal.memory.path } : undefined,
+    registeredMemory,
+  );
+  assert(
+    digest(memory ?? null) === digest(proposal.memory ?? null),
+    'invalid-memory',
+    'Retain the registered user-memory binding and schema.',
+  );
+  if (memory) {
+    const current = await readCurrent(root, memory.path, {
+      forbiddenPaths: proposal.forbiddenPaths,
+    });
+    assert(
+      current.content !== null ||
+        proposal.changes.some(
+          (change) => change.path === memory.path && change.action === 'add',
+        ),
+      'invalid-memory',
+      'The canonical memory must exist or be explicitly created.',
+    );
+  }
+  assert(
     !registeredProcess ||
       (proposal.process &&
         proposal.process.agent === registeredProcess.agent &&
@@ -422,6 +452,7 @@ export async function applyPlan(
       };
     },
     proposal.migrateManifest,
+    proposal.memory ? 3 : 2,
   );
   assert(
     digest(components) === digest(proposal.components),
@@ -497,6 +528,7 @@ export async function applyPlan(
     );
     assert(
       isInfrastructurePath(change.path) ||
+        memoryAllows(proposal.memory, change.path) ||
         processAllows(proposal.process, change.path) ||
         (proposal.mode === 'init' && proposal.emptyProject && originalEmpty),
       'application-protected',
@@ -627,7 +659,7 @@ export async function applyPlan(
     ...(migration ? { manifestMigration: migration } : {}),
   };
   const session: Session = {
-    schema: STATE_SCHEMA,
+    schema: proposal.memory ? 4 : STATE_SCHEMA,
     id:
       oldState?.id ??
       (options.resume ? previous.manifest?.sessions?.at(-1)?.id : null) ??
@@ -848,12 +880,15 @@ export async function applyPlan(
         return {
           infrastructure: await verifyInfrastructure(root, {
             components: proposal.components,
-            expectedFiles: session.applied.filter((item) =>
-              isInfrastructurePath(item.path),
+            expectedFiles: session.applied.filter(
+              (item) =>
+                isInfrastructurePath(item.path) ||
+                memoryAllows(proposal.memory, item.path),
             ),
             forbiddenPaths: proposal.forbiddenPaths,
             sharedRules: proposal.sharedRules ?? [],
             process: proposal.process,
+            memory: proposal.memory,
           }),
         };
       });

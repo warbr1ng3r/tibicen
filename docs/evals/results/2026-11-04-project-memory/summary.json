@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "date": "2026-11-04",
+  "version": "1.1.0",
+  "status": "local-unpublished-candidate",
+  "sourceBaseCommit": "f76f185214e560084baeac57cfe614fe58f9e49c",
+  "sourceInventoryScope": "package.json, LICENSE and all scripts/references/skills build inputs excluding development scripts/evals; docs/tracker/evidence/landing tracked separately",
+  "sourceInventorySha256": "dda94fb5b4d6ed45ea3faea954d77f5832e87a5b6d93649308fb69c514992fa5",
+  "distributionInventorySha256": "7e69ef226fdcd282c40060efc02f30cd7d672a7da520745715d81e6756e63395",
+  "archiveSha256": "e285fbac490f586c277e7b037a9f193197e2a8ae1b84aeb196f8a85d465339ee",
+  "payloadFiles": 90,
+  "archiveRegularFiles": 91,
+  "sourceGate": {
+    "passed": 767,
+    "failed": 0,
+    "skipped": 1,
+    "packageVersionDuringGate": "1.0.0",
+    "subsequentCandidateBuild": "passed"
+  },
+  "contexts": {
+    "P01": {
+      "freezeHash": "9f7104728de0564f5b97083b6e3af50dbc1cade1a5d7de05c1366a17514e0d90",
+      "outcomeSha256": "6069e47fad6aa6b717db4a59ef049cb6a39eaa7fa12aedb86b708db7e1b06306",
+      "nativePass": true,
+      "preservationGatePass": true
+    },
+    "P02": {
+      "freezeHash": "dca7e0014d86cfc80135eca8de4825452dce3c7c5b61c524e226b0c6404cb9ea",
+      "outcomeSha256": "e4ea5b5ef63e21576f05627fe7ff6a6a44b1d54dd9e8cc71e091a03ef5979701",
+      "nativePass": true,
+      "preservationGatePass": true,
+      "independentPosttaskReceiptSha256": "1e58dc2153404dc15b2a1c522848d20dbe39a12554bbd905203af4bf77d519b0",
+      "independentApplicationTests": 4,
+      "independentOracleAssertions": 7
+    },
+    "P03": {
+      "freezeHash": "9128349ed1a3f6f1e3d866daa3657ac9f1b18a44d0a60f61e48a2b5ffaaa47fd",
+      "outcomeSha256": "41da99f1366306135b214315fb6e8f2747ee1e3c4f975ee039c55aa4ad9a3d8a",
+      "nativePass": true,
+      "preservationGatePass": true
+    },
+    "P04": {
+      "freezeHash": "ade20dce81dd2b30462efff6dd11f4393176592cc448bc5cb13a3fc9809ed22b",
+      "outcomeSha256": "fbb21ac39819c0e3582ce01b97fa8d04aeddb90d0f7e6f842864ed2e7f86b9cf",
+      "nativePass": true,
+      "preservationGatePass": true,
+      "independentPosttaskReceiptSha256": "77d8ed4e4db97cedbdb3075ac6b84b7012c5c34d3584ea7bca582fda1d40ad74",
+      "independentApplicationTests": 3,
+      "independentOracleAssertions": 7
+    }
+  },
+  "nativePrimaryContexts": 4,
+  "nativeReserveContexts": 0,
+  "automaticRetries": 0,
+  "paidApiUsd": 0,
+  "independentBehaviorVerdict": "Ship",
+  "independentReviewSha256": "8e9932266a068a3c418e81d7be0b304b896955258e2c1662a599880416d3ca31",
+  "acceptedClaim": "In two fresh controlled Codex task contexts following exact operator-assisted setup, agents explicitly read current project memory before a relevant decision, used cents/RUB, retained or corrected an accepted zero-total decision, and preserved unrelated notes and protected setup. Returned final code passed independent tests and a frozen oracle; first-party verify accepted the legitimate memory-body changes.",
+  "limits": [
+    "two synthetic fixtures and single observations only",
+    "explicit setup skill selection and root assistance; no native self-approval",
+    "no automatic startup injection or implicit skill-discovery claim",
+    "native test receipts show one test file each; independent final-byte checks establish4/4 and3/3",
+    "server model build and observed network endpoint unknown",
+    "no additional model/agent/OS coverage, repeat reliability or human usefulness",
+    "public CI, six platform cells, public Git delivery, immutable tag/assets and Pages remain pending",
+    "source gate package1.0.0 before metadata bump; subsequent candidate build/self-tests/lifecycle observations bind1.1.0"
+  ],
+  "delivery": {
+    "installerCalls": 15,
+    "versionResourceCalls": 24,
+    "registeredMemoryRecovery": "passed",
+    "laterNotePreservation": "passed"
+  },
+  "publication": {
+    "commit": false,
+    "push": false,
+    "tag": false,
+    "release": false,
+    "pages": false
+  },
+  "supplementaryIntegrationReview": {
+    "verdict": "Ship",
+    "sha256": "a4a7e6c1ac09af392d4bc419aabe90c6614d07b0cabfccfced3880678cd96ab1",
+    "scope": "bundle inventory and valid mechanical fixtures; nullable test guard; unused CSS cleanup"
+  }
+}

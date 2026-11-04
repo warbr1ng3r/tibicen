@@ -52,6 +52,8 @@ async function fixture(t: TestContext, mode = 'pass') {
     files['.agents/skills/demo/references/rule.md'] =
       'Keep the owner constraint.\n';
     files['.tibicen/manifest.yml'] = JSON.stringify({
+      schema: 2,
+      sessions: [],
       installed: [
         {
           repo: 'owner/demo',
@@ -60,11 +62,19 @@ async function fixture(t: TestContext, mode = 'pass') {
           files: [
             {
               path: '.agents/skills/demo/SKILL.md',
+              sourcePath: 'SKILL.md',
               contentHash: hashContent(files['.agents/skills/demo/SKILL.md']!),
+              installedHash: hashContent(
+                files['.agents/skills/demo/SKILL.md']!,
+              ),
             },
             {
               path: '.agents/skills/demo/references/rule.md',
+              sourcePath: 'references/rule.md',
               contentHash: hashContent(
+                files['.agents/skills/demo/references/rule.md']!,
+              ),
+              installedHash: hashContent(
                 files['.agents/skills/demo/references/rule.md']!,
               ),
             },

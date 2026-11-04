@@ -5,6 +5,24 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+## [1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0) — 2026-11-04
+
+### Changed
+
+- Clarify the landing's two-skill workflow with illustrative init/adopt examples,
+  ordered installation, first-session help and a shorter mobile hero in EN/RU.
+- Document post-1.0 SemVer, completed-work changelog entries, candidate version
+  preparation, immutable published artifacts and separate publication authorization.
+
+### Added
+
+- Configure optional project memory through one explicitly approved path and
+  concise agent rules for reading, retaining and correcting decisions. Preserve
+  later notes while keeping initial writes, recovery and legacy migration exact;
+  use opt-in versioned records that older runtimes refuse before writes.
+- Add an EN/RU project-memory guide covering the 1.1.0 workflow,
+  supported locations, preservation, correction, migration and evidence limits.
+
 ## [1.0.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0) — 2026-11-04
 
 - Publish 1.0.0 with installer/site metadata pinned to the full standalone

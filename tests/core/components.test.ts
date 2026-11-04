@@ -593,6 +593,64 @@ test('passport migration is explicit and preserves the original history and prov
   );
 });
 
+test('schema 1 memory migration and a later component update preserve user notes and provenance', async (t) => {
+  const { root, home, manifest, discovery } = await fixture(t, 1);
+  const memoryPath = 'MEMORY.md';
+  const initialNotes = '# User decisions\r\nKeep this unrelated note.  \r\n';
+  await writeFile(path.join(root, memoryPath), initialNotes);
+  const migration = await createProposal(
+    root,
+    {
+      mode: 'improve',
+      memory: { path: memoryPath },
+      migrateManifest: true,
+      changes: [
+        {
+          path: 'AGENTS.md',
+          content: 'Read `MEMORY.md` before relevant work.\n',
+          reason: 'Connect the existing notes.',
+        },
+      ],
+    },
+    { home },
+  );
+  assert.equal(migration.proposal.components.fromSchema, 1);
+  assert.equal(migration.proposal.components.toSchema, 3);
+  const migrated = await applyPlan(root, migration, {
+    home,
+    approvedDigest: migration.digest,
+  });
+  assert.equal(migrated.status, 'complete');
+  assert.deepEqual(migrated.manifest!.sessions[0], manifest.sessions[0]);
+  assert.deepEqual(migrated.manifest!.sessions.at(-1)!.manifestMigration, {
+    from: 1,
+    to: 3,
+  });
+  assert.equal(migrated.manifest!.installed[0].provenance, 'unverified');
+  for (const file of migrated.manifest!.installed[0].files!)
+    assert.equal(file.installedHash, file.contentHash);
+  const later = `${initialNotes}- A later accepted decision.\n`;
+  await writeFile(path.join(root, memoryPath), later);
+  const plan = await createProposal(root, update(), { home });
+  assert.equal(plan.proposal.schema, 2);
+  assert.deepEqual(plan.proposal.memory, {
+    path: memoryPath,
+    ownership: 'user-memory',
+  });
+  const result = await applyPlan(root, plan, {
+    home,
+    approvedDigest: plan.digest,
+    discovery,
+  });
+  assert.equal(result.status, 'complete');
+  assert.equal(result.manifest!.schema, 3);
+  assert.equal(await readFile(path.join(root, memoryPath), 'utf8'), later);
+  assert.equal(
+    await readFile(path.join(root, 'app.ts'), 'utf8'),
+    'Existing application, unchanged.\n',
+  );
+});
+
 test('initial source installation still checks pinned bytes and records upstream and installed hashes', async (t) => {
   const { root, home, passport, discovery } = await fixture(t);
   await rm(passport);
@@ -643,7 +701,7 @@ test('older saved state and incomplete schema 2 passports refuse continuation wi
   assert.deepEqual(await readdir(home), []);
 });
 
-for (const schema of [0, 3, 999]) {
+for (const schema of [0, 4, 999]) {
   test(`unsupported passport schema ${schema} refuses all writes`, async (t) => {
     const { root, home, passport, manifest } = await fixture(t);
     const plan = await createProposal(root, { mode: 'improve' }, { home });

@@ -23,7 +23,11 @@ Application source code, existing package manifests, CI, and data are preserved 
 
 ## Install Tibicen
 
-The command below pins the published 1.0.0 distribution at its full commit. Installation through skills 1.7.4 was checked for Codex, Claude Code and Cursor, with exact payload hashes, version/resource access, pinned update, backup restoration and removal. The source branch is not an installation target.
+The command below pins the 1.1.0 distribution at its full commit. The
+[candidate report](docs/evals/results/2026-11-04-project-memory/README.md) records
+local checks, two controlled fresh memory tasks and their assistance/limits.
+Release publication and public delivery are tracked in [release details](docs/RELEASING.md).
+The source branch is not an installation target.
 
 The [published alpha](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1) uses a versioned distribution tag, separate
 from the development source tree; release assets include checksums. Installation
@@ -32,7 +36,7 @@ session resume and removal checks passed. These observations cover macOS with
 Node 24 and Codex; other agent options remain experimental.
 
 ```sh
-npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/e8532bba0582564c93e50de1f55174daaa9bbd34 -g --agent codex --skill tibicen-init tibicen-adopt --copy
+npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7bbd953a020ac4ac4c7dfb99efa59f6e4b195026 -g --agent codex --skill tibicen-init tibicen-adopt --copy
 ```
 
 Use the full distribution SHA from the release notes when an exact commit is
@@ -179,6 +183,8 @@ English is canonical for project documentation. Russian translations live beside
 
 - [Product vision](docs/PRODUCT_VISION.md).
 - [Development plan and work allocation](docs/DEVELOPMENT_PLAN.md).
+- [Project memory — in development for 1.1.0](docs/PROJECT_MEMORY.md).
+- [Versioning and release procedure](docs/RELEASING.md).
 - [Voluntary postpublication usefulness protocol](docs/PILOT.md).
 - [Security boundaries and vulnerability reporting](SECURITY.md).
 

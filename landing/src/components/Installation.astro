@@ -11,8 +11,11 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
 ---
 
 <div class="installation">
+  <p class="start-step">
+    {t('1. Choose your coding agent', '1. Выберите своего агента')}
+  </p>
   <div class="installation-head">
-    <span>Tibicen 1.0.0</span>
+    <span>Tibicen 1.1.0</span>
     <button
       class="copy-button"
       type="button"
@@ -43,12 +46,10 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
     disabled
   >
     <div>
-      <label for="install-agent">
-        {t('Installation target', 'Цель установки')}
-      </label>
+      <label for="install-agent">{t('Your coding agent', 'Ваш агент')}</label>
       <Select
         id="install-agent"
-        label={t('Installation target', 'Цель установки')}
+        label={t('Your coding agent', 'Ваш агент')}
         value="codex"
         options={Object.entries(agents).map(([value, label]) => ({
           value,
@@ -57,10 +58,12 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
       />
     </div>
     <div>
-      <label for="install-manager">{t('Run with', 'Запустить через')}</label>
+      <label for="install-manager">
+        {t('Command runner', 'Чем запустить команду')}
+      </label>
       <Select
         id="install-manager"
-        label={t('Run with', 'Запустить через')}
+        label={t('Command runner', 'Чем запустить команду')}
         value="npm"
         options={Object.keys(managers).map((value) => ({
           value,
@@ -69,11 +72,14 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
       />
     </div>
   </fieldset>
+  <p class="start-step install-run">
+    {t('2. Run this in your terminal', '2. Выполните в терминале')}
+  </p>
   <pre><code id="install-command">{installationCommand('npm', 'codex')}</code></pre>
   <p>
     {t(
-      'The installer adds two skills to your agent environment. Your project’s package manager and dependencies stay unchanged.',
-      'Установщик добавит два скилла в окружение вашего агента. Менеджер пакетов и зависимости целевого проекта не меняются.',
+      'Installs both skills in your user account for the selected agent, across projects. It does not change your project’s packages.',
+      'Установит оба скилла для выбранного агента в вашей учётной записи, для разных проектов. Пакеты проекта не меняются.',
     )}
   </p>
   <noscript>

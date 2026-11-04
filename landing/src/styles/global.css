@@ -90,8 +90,7 @@
   .skill-label,
   .preview-toolbar,
   .repo-content,
-  .installation-head,
-  .requirements {
+  .installation-head {
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
   }
   .page-width {
@@ -459,12 +458,6 @@
     border-radius: 1px;
     opacity: 0.75;
   }
-  .tree-tool {
-    width: 17px;
-    height: 20px;
-    margin-inline: -1px;
-    color: #b5b5b5;
-  }
   .tree-name {
     min-width: 0;
   }
@@ -481,10 +474,6 @@
       'Segoe UI',
       Arial,
       sans-serif;
-  }
-  .annotation-optional {
-    color: var(--muted);
-    background: #ffffff06;
   }
   .annotation-muted {
     color: var(--subtle);
@@ -620,8 +609,66 @@
     padding-top: 72px;
   }
   .start-copy .support-note {
-    margin-top: 20px;
+    margin-top: 16px;
+    padding-left: 12px;
+    border-left: 2px solid var(--accent);
     font-size: 12px;
+  }
+  .start-step {
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .installation > .start-step {
+    color: var(--ink);
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+  .installation > .install-run {
+    margin-block: 24px 0;
+  }
+  .start-help {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.85;
+  }
+  .start-help summary {
+    display: list-item;
+    min-height: 44px;
+    padding-block: 10px;
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .start-help summary::-webkit-details-marker {
+    display: inline;
+  }
+  .start-help p,
+  .start-help ol {
+    margin-block: 8px 12px;
+  }
+  .start-help ol {
+    padding-left: 24px;
+    list-style: decimal;
+  }
+  .start-help li + li {
+    margin-top: 8px;
+  }
+  .start-help a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .first-session {
+    padding-top: 36px;
+  }
+  .first-session > p + p {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
   }
   .project-links {
     display: flex;
@@ -660,28 +707,63 @@
     font-size: 16px;
     color: var(--ink);
   }
-  .result-card p + h3 {
+  .example-intro {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 740px;
+    margin-block: -12px 28px;
+  }
+  .walkthrough > .skill-label {
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .walkthrough-steps {
+    list-style: decimal;
+    padding-left: 22px;
+    margin-block: 20px 0;
+  }
+  .walkthrough-steps > li {
+    padding-left: 8px;
+  }
+  .walkthrough-steps > li + li {
     margin-top: 24px;
   }
-  .report-example dl {
-    margin: 0;
-  }
-  .report-example dl > div + div {
-    margin-top: 12px;
-  }
-  .report-example dt {
-    font-weight: 600;
+  .walkthrough-steps > li::marker {
     color: var(--accent);
+    font-weight: 600;
   }
-  .report-example dd {
-    margin: 0;
+  .walkthrough h4 {
+    margin-block: 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
   }
-  .result-note {
-    margin-top: 22px;
-    font-size: 12px;
-    line-height: 1.9;
-    color: var(--muted);
+  .walkthrough pre {
+    white-space: pre-wrap;
     overflow-wrap: anywhere;
+    background: var(--night);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 12px;
+    margin-block: 12px 0;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .walkthrough .proposal-diff {
+    color: var(--ink);
+  }
+  .walkthrough blockquote {
+    margin: 0;
+    border-left: 2px solid var(--accent);
+    padding-left: 12px;
+    color: var(--ink);
+  }
+  .walkthrough .clarification,
+  .walkthrough .example-unverified {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 12px;
   }
   .start-copy .eyebrow {
     color: var(--muted);
@@ -698,19 +780,6 @@
     font-size: 13px;
     line-height: 1.9;
     color: var(--night-text);
-  }
-  .requirements {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 13px;
-    margin-top: 25px;
-    color: var(--muted);
-    font-size: 12px;
-  }
-  .requirements span + span:before {
-    content: '/';
-    color: var(--subtle);
-    margin-right: 13px;
   }
   .installation {
     border: 1px solid var(--line);
@@ -1177,8 +1246,8 @@
       gap: 20px;
     }
     .hero {
-      padding-block: 45px 40px;
-      gap: 34px;
+      padding-block: 36px 28px;
+      gap: 20px;
     }
     h1 {
       font-size: clamp(39px, 9.6vw, 60px);
@@ -1215,7 +1284,7 @@
       width: 100%;
     }
     .repo-stage {
-      padding-block: 30px 12px;
+      padding-block: 12px 10px;
     }
     .hero-surface::before {
       background-size: auto 100%;
@@ -1235,13 +1304,13 @@
         0 25px 40px -25px #0009;
     }
     .preview-toolbar {
-      padding: 20px 17px;
+      padding: 12px 14px;
     }
     .preview-project {
       font-size: 16px;
     }
     .repo-content {
-      padding: 19px 17px;
+      padding: 10px 14px;
       font-size: 11px;
     }
     .tree-annotation {
@@ -1249,23 +1318,25 @@
       padding-inline: 6px;
     }
     .tree-row {
-      gap: 8px;
+      column-gap: 8px;
+      row-gap: 0;
+      padding-block: 4px;
     }
     .work-contents {
       font-size: 8px;
       padding-left: 23px;
     }
     .tree-row {
-      min-height: 50px;
+      min-height: 34px;
     }
     .repo-tree li::before {
-      top: 25px;
+      top: 17px;
     }
     .repo-tree .project-work::before {
-      top: 35px;
+      top: 23px;
     }
     .repo-status {
-      padding: 17px;
+      padding: 10px 14px;
       font-size: 10px;
     }
     .setup-preview figcaption {
@@ -1287,7 +1358,7 @@
       font-size: 12px;
     }
     .start-install {
-      padding-top: 48px;
+      padding-top: 32px;
     }
     .result-grid {
       grid-template-columns: minmax(0, 1fr);
@@ -1296,20 +1367,17 @@
       padding: 22px;
     }
     .start-grid {
-      gap: 29px;
+      gap: 16px;
     }
     .start-copy h2 {
       font-size: 37px;
+      margin-bottom: 14px;
+    }
+    .start-copy .eyebrow {
+      margin-bottom: 12px;
     }
     .start-copy > p:not(.eyebrow) {
       font-size: 12px;
-    }
-    .requirements {
-      font-size: 12px;
-      gap: 8px;
-    }
-    .requirements span + span:before {
-      margin-right: 8px;
     }
     .installation {
       padding: 18px;

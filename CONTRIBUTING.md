@@ -46,6 +46,17 @@ directly. Keep milestone order in [the roadmap](docs/DEVELOPMENT_PLAN.md), with
 detailed tasks in the change. Development OpenSpec tools and generated skills
 must stay outside the distributed Tibicen skills.
 
+For project-memory changes, follow the [memory contract and user guide](docs/PROJECT_MEMORY.md):
+keep the one approved store, preserve unrelated notes, and distinguish structural
+checks from observed use in fresh sessions. The feature is being developed for
+1.1.0 and is not part of the published 1.0.0 distribution.
+
+Record completed user-visible work under `Unreleased` in [CHANGELOG](CHANGELOG.md).
+After 1.0, compatible fixes use patch, compatible features minor, and incompatible
+supported contracts major. Candidate preparation owns the root package version;
+do not edit generated skill metadata by hand. Follow the [release procedure](docs/RELEASING.md)
+for immutable artifacts, checks and separate publication authorization.
+
 A rule or adapter proposal should name the user problem, dated primary source,
 exact version, affected agents and paths, expected side effects, and tests for
 init/adopt and preservation. A component name alone does not establish support.

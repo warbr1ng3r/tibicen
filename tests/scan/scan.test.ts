@@ -13,7 +13,10 @@ import {
 } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { pathToFileURL } from 'node:url';
 import { scanProject } from '../../scripts/scan/index.ts';
+import { MAX_DATA_BYTES } from '../../scripts/core/contracts.ts';
 
 async function fixture(t: TestContext, files: Record<string, string> = {}) {
   const root = await mkdtemp(path.join(tmpdir(), 'tibicen-scan-test-'));
@@ -122,6 +125,69 @@ test('partial scans cannot claim complete coverage and unsafe constraints are re
     code: 'unsafe-path',
   });
 });
+
+test('memory discovery does not read a forbidden project manifest', async (t) => {
+  const root = await fixture(t, {
+    '.tibicen/manifest.yml': 'Not permitted to parse this manifest.',
+    'MEMORY.md': 'User notes.\n',
+  });
+  const scan = await scanProject(root, { forbiddenPaths: ['.tibicen'] });
+  assert.deepEqual(scan.memoryCandidates, ['MEMORY.md']);
+  assert.equal(
+    scan.files.find((file) => file.path === 'MEMORY.md')!.infrastructure,
+    false,
+  );
+  assert(
+    scan.excluded.some(
+      (file) => file.path === '.tibicen' && file.reason === 'forbidden-path',
+    ),
+  );
+});
+
+for (const kind of ['fifo', 'directory', 'oversized', 'malformed']) {
+  test(`scan and direct manifest reads reject a ${kind} manifest within a bounded child`, async (t) => {
+    if (kind === 'fifo' && process.platform === 'win32')
+      return t.skip('FIFO requires POSIX');
+    const root = await fixture(t, { 'app.js': 'unchanged\n' });
+    await mkdir(path.join(root, '.tibicen'));
+    const filename = path.join(root, '.tibicen/manifest.yml');
+    if (kind === 'fifo') {
+      const made = spawnSync('mkfifo', [filename], { timeout: 3000 });
+      assert.equal(made.status, 0);
+    } else if (kind === 'directory') await mkdir(filename);
+    else
+      await writeFile(
+        filename,
+        kind === 'oversized' ? Buffer.alloc(MAX_DATA_BYTES + 1, 32) : '{broken',
+      );
+    const source = `import {scanProject} from ${JSON.stringify(pathToFileURL(path.resolve('scripts/scan/index.ts')).href)};import {readManifest} from ${JSON.stringify(pathToFileURL(path.resolve('scripts/core/components.ts')).href)};const results=await Promise.allSettled([scanProject(${JSON.stringify(root)}),readManifest(${JSON.stringify(root)})]);console.log(JSON.stringify(results.map(result=>result.status==='rejected'?result.reason.code:'accepted')));`;
+    const result = spawnSync(
+      process.execPath,
+      ['--input-type=module', '-e', source],
+      { encoding: 'utf8', timeout: 3000 },
+    );
+    assert.equal(
+      result.error,
+      undefined,
+      'Neither read may hang on a special file.',
+    );
+    assert.equal(result.status, 0, result.stderr);
+    const expected =
+      kind === 'oversized'
+        ? 'file-too-large'
+        : kind === 'malformed'
+          ? 'invalid-data'
+          : 'unsupported-file';
+    assert.deepEqual(JSON.parse(result.stdout), [expected, expected]);
+    assert.equal(
+      await readFile(path.join(root, 'app.js'), 'utf8'),
+      'unchanged\n',
+    );
+    assert.deepEqual(await readdir(path.join(root, '.tibicen')), [
+      'manifest.yml',
+    ]);
+  });
+}
 
 test('partially unreadable directories produce a gap without hiding readable files', async (t) => {
   const root = await fixture(t, {

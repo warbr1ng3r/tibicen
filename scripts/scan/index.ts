@@ -15,6 +15,7 @@ import {
   safePath,
   validateRelativePath,
 } from '../core/paths.ts';
+import { MEMORY_PATHS, memoryAllows, validateMemory } from '../core/memory.ts';
 
 const IGNORED = new Set([
   '.git',
@@ -135,11 +136,19 @@ export async function scanProject(
     maxFiles = 10000,
     maxTotalBytes = 128 * 1024 * 1024,
     maxDepth = 40,
+    memory,
   }: ScanOptions = {},
 ) {
   for (const relative of forbiddenPaths)
     validateRelativePath(relative.replace(/\/$/, ''));
   const base = await realpath(root);
+  if (!memory && !exclusionReason('.tibicen/manifest.yml', forbiddenPaths))
+    memory = (
+      await import('../core/components.ts').then(({ readManifest }) =>
+        readManifest(base),
+      )
+    ).manifest?.memory;
+  if (memory) validateMemory(memory);
   assert(
     (await lstat(base)).isDirectory(),
     'invalid-root',
@@ -217,7 +226,8 @@ export async function scanProject(
           limited = true;
           return;
         }
-        const infrastructure = infrastructurePath(name);
+        const infrastructure =
+          infrastructurePath(name) || memoryAllows(memory, name);
         files.push({
           path: name,
           hash: hashContent(content),
@@ -315,6 +325,9 @@ export async function scanProject(
     kind: existing || gaps.length ? 'existing' : 'empty',
     mode: files.some((file) => file.infrastructure) ? 'improve' : 'init',
     files,
+    memoryCandidates: files
+      .filter((file) => MEMORY_PATHS.includes(file.path))
+      .map((file) => file.path),
     languages: [...languages].sort(),
     commands,
     agents: [...agents].sort(),

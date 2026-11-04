@@ -63,6 +63,8 @@ if (mode === 'spoof-host') {
     files['.agents/skills/demo/references/rule.md'] =
       'Keep the owner constraint.\n';
     files['.tibicen/manifest.yml'] = JSON.stringify({
+      schema: 2,
+      sessions: [],
       installed: [
         {
           repo: 'owner/demo',
@@ -71,11 +73,17 @@ if (mode === 'spoof-host') {
           files: [
             {
               path: '.agents/skills/demo/SKILL.md',
+              sourcePath: 'SKILL.md',
               contentHash: hash(files['.agents/skills/demo/SKILL.md']),
+              installedHash: hash(files['.agents/skills/demo/SKILL.md']),
             },
             {
               path: '.agents/skills/demo/references/rule.md',
+              sourcePath: 'references/rule.md',
               contentHash: hash(
+                files['.agents/skills/demo/references/rule.md'],
+              ),
+              installedHash: hash(
                 files['.agents/skills/demo/references/rule.md'],
               ),
             },

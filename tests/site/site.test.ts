@@ -48,12 +48,18 @@ for (const { filename, route, locale, other } of pages) {
   test(`${locale}: static page language, first use and project exits are complete`, async () => {
     const html = await readFile(new URL(filename, site), 'utf8');
     assert.match(html, new RegExp(`<html\\b[^>]*lang="${locale}"`));
-    assert.match(html, /Tibicen 1\.0\.0/);
+    assert.match(html, /Tibicen 1\.1\.0/);
     assert.ok(
       html.includes(
-        'https://github.com/warbr1ng3r/tibicen/tree/e8532bba0582564c93e50de1f55174daaa9bbd34',
+        'https://github.com/warbr1ng3r/tibicen/tree/7bbd953a020ac4ac4c7dfb99efa59f6e4b195026',
       ),
-      'The default installation must pin the 1.0.0 distribution commit.',
+      'The default installation must pin the 1.1.0 distribution commit.',
+    );
+    assert.ok(
+      html.includes(
+        'href="https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0"',
+      ),
+      'Release notes must describe the installed version.',
     );
     const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
     const description = html.match(
@@ -65,7 +71,7 @@ for (const { filename, route, locale, other } of pages) {
       assert.match(html, /Illustrative example/);
     } else {
       assert.match(`${title} ${description}`, /[А-Яа-яЁё]/);
-      assert.match(html, /Пример результата/);
+      assert.match(html, /Учебные примеры/);
     }
     assert.match(html, new RegExp(`<a\\b[^>]*hreflang="${other}"`));
     const sections = ['start', 'workflow', 'result', 'faq', 'preset'].map(
@@ -103,6 +109,105 @@ for (const { filename, route, locale, other } of pages) {
       html,
       /href="[^"]+(?:README_ru\.md|\/docs\/[^"#]+_ru\.md)/,
     );
+  });
+
+  test(`${locale}: first use shows the route, visible limits and recovery before optional preferences`, async () => {
+    const html = await readFile(new URL(filename, site), 'utf8');
+    const start = html.slice(
+      html.indexOf('id="start"'),
+      html.indexOf('id="workflow"'),
+    );
+    const route = [
+      '1. Choose your coding agent',
+      '2. Run this in your terminal',
+      '3. Open a fresh session in your project',
+      '4. Send your first request',
+    ];
+    const translatedRoute = [
+      '1. Выберите своего агента',
+      '2. Выполните в терминале',
+      '3. Откройте новую сессию в проекте',
+      '4. Отправьте первый запрос',
+    ];
+    const positions = (locale === 'en' ? route : translatedRoute).map((label) =>
+      start.indexOf(label),
+    );
+    assert.ok(positions.every((offset) => offset >= 0));
+    assert.deepEqual(
+      positions,
+      [...positions].sort((a, b) => a - b),
+    );
+    const visibleWarning = start.match(
+      /<p\s+class="support-note">([\s\S]*?)<\/p>/,
+    )?.[1];
+    assert.ok(visibleWarning);
+    assert.match(visibleWarning, /Windows/);
+    assert.match(
+      visibleWarning,
+      locale === 'en' ? /experimental/ : /экспериментальна/,
+    );
+    assert.ok(
+      start.indexOf(visibleWarning) < start.indexOf('id="install-command"'),
+    );
+    for (const id of ['compatibility', 'skill-help']) {
+      assert.match(start, new RegExp(`<details\\b[^>]*id="${id}"[^>]*>`));
+    }
+    assert.match(start, /README\.md#build-and-install-from-source/);
+    assert.match(
+      start,
+      locale === 'en' ? /assisted loading/ : /ручная загрузка/,
+    );
+  });
+
+  test(`${locale}: illustrative init and adopt show context, exact proposal, approval and bounded result`, async () => {
+    const html = await readFile(new URL(filename, site), 'utf8');
+    const result = html.slice(
+      html.indexOf('id="result"'),
+      html.indexOf('id="faq"'),
+    );
+    assert.match(
+      result,
+      locale === 'en' ? /not recorded runs/ : /не записи прогонов/,
+    );
+    for (const kind of ['init', 'adopt']) {
+      const example = result.match(
+        new RegExp(
+          `<article\\b[^>]*id="walkthrough-${kind}"[^>]*>([\\s\\S]*?)<\\/article>`,
+        ),
+      )?.[1];
+      assert.ok(example, `Missing ${kind} walkthrough.`);
+      assert.deepEqual(
+        [...example.matchAll(/data-step="([^"]+)"/g)].map((match) => match[1]),
+        ['before', 'request', 'inspect', 'proposal', 'approval', 'result'],
+      );
+      for (const retained of ['src/', 'tests/', 'package.json', 'AGENTS.md']) {
+        assert.ok(
+          example.includes(retained),
+          `Missing project context: ${retained}`,
+        );
+      }
+      assert.match(example, /class="proposal-diff"/);
+      assert.match(
+        example,
+        locale === 'en' ? /No question needed/ : /Вопрос не нужен/,
+      );
+      assert.match(
+        example,
+        locale === 'en' ? /next agent session/ : /следующей сессии агента/,
+      );
+      assert.match(example, /\.tibicen\/manifest\.yml/);
+      if (kind === 'adopt') {
+        assert.match(example, /npm run test:old/);
+        assert.match(example, /npm test/);
+        assert.match(
+          example,
+          locale === 'en'
+            ? /Ask before adding dependencies/
+            : /Спрашивай перед добавлением зависимостей/,
+        );
+      }
+    }
+    assert.doesNotMatch(result, /project-memory|\.agents\/memory\.md|1\.1\.0/);
   });
 
   test(`${locale}: IDs, accessible associations, local resources and destination fragments resolve`, async () => {

@@ -24,6 +24,7 @@ export interface PathOptions {
 }
 
 export interface ScanOptions extends PathOptions {
+  memory?: ProjectMemory;
   maxFiles?: number;
   maxTotalBytes?: number;
   maxDepth?: number;
@@ -220,6 +221,13 @@ export interface ManifestSnapshot {
   recoveredInstalled?: Source[];
   recoveredSharedRules?: SharedRule[];
   recoveredProcess?: ProcessPlan;
+  recoveredMemory?: ProjectMemory;
+  pendingStateSchema?: number;
+}
+
+export interface ProjectMemory {
+  path: string;
+  ownership: 'user-memory';
 }
 
 export interface SharedRuleInput {
@@ -473,6 +481,7 @@ export interface Checks {
 
 export interface ProposalInput {
   mode: string;
+  memory?: { path: string };
   process?: ProcessInput;
   forbiddenPaths?: string[];
   changes?: (Omit<Change, 'beforeHash' | 'action'> & {
@@ -497,6 +506,7 @@ export interface ProposalInput {
 }
 
 export interface Proposal extends ProposalInput {
+  memory?: ProjectMemory;
   schema: number;
   process?: ProcessPlan;
   root: string;
@@ -530,6 +540,7 @@ export interface Attempt {
 
 export interface SessionSummary {
   id: string;
+  memory?: ProjectMemory;
   process?: ProcessPlan;
   processHistory?: ProcessPlan[];
   attempts: Attempt[];
@@ -578,6 +589,7 @@ export interface Session {
 
 export interface Manifest {
   schema: number;
+  memory?: ProjectMemory;
   process?: ProcessPlan;
   tibicen: {
     version: string;
@@ -666,6 +678,7 @@ export interface ScanResult {
   kind: string;
   mode: string;
   files: FileRecord[];
+  memoryCandidates?: string[];
   languages: string[];
   commands: Command[];
   agents: string[];

@@ -1,0 +1,156 @@
+---
+import { localize, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = (en: string, ru: string) => localize(locale, en, ru);
+const examples = [
+  {
+    id: 'init',
+    skill: 'tibicen-init',
+    title: t('No instructions yet', 'Инструкций ещё нет'),
+    before: t(
+      'task-board is a small Node app. Its code and tests already exist; AGENTS.md does not.',
+      'task-board — небольшое Node-приложение. Код и тесты уже есть, AGENTS.md пока нет.',
+    ),
+    files: 'task-board/\n  src/\n  tests/\n  package.json',
+    initial: 'package.json\n"scripts": { "test": "node --test" }',
+    request: t(
+      'Use tibicen-init. Set this project up for Codex.',
+      'Используй tibicen-init. Подготовь этот проект для Codex.',
+    ),
+    inspection: t(
+      'Reads package.json, src/ and tests/. Finds the test command and no existing agent instructions.',
+      'Читает package.json, src/ и tests/. Находит команду тестов и видит, что агентских инструкций ещё нет.',
+    ),
+    clarification: t(
+      'No question needed: the project already supplies the command and the request names the agent.',
+      'Вопрос не нужен: команда есть в проекте, а агент указан в запросе.',
+    ),
+    proposal: t(
+      'Create AGENTS.md with the contents below and record the setup in .tibicen/. Keep the application as it is. No extra tool or project command is included.',
+      'Создать AGENTS.md с текстом ниже и записать настройку в .tibicen/. Приложение сохранить. Дополнительные инструменты и запуск команд проекта не включены.',
+    ),
+    diff: '+ AGENTS.md\n+ # Project instructions\n+ - Application code: src/. Tests: tests/.\n+ - Test command: `node --test`.',
+    result: t(
+      'Adds the approved AGENTS.md and records the setup in .tibicen/manifest.yml. Reports the file-content and structure checks. src/, tests/ and package.json are unchanged.',
+      'Добавляет согласованный AGENTS.md и запись о настройке в .tibicen/manifest.yml. Сообщает результаты проверки содержимого и структуры. src/, tests/ и package.json не меняются.',
+    ),
+  },
+  {
+    id: 'adopt',
+    skill: 'tibicen-adopt',
+    title: t('The instructions are outdated', 'Инструкции устарели'),
+    before: t(
+      'notes-api is an existing Node app. AGENTS.md has an old test command and a useful rule about dependencies.',
+      'notes-api — существующее Node-приложение. В AGENTS.md старая команда тестов и полезное правило о зависимостях.',
+    ),
+    files: 'notes-api/\n  src/\n  tests/\n  package.json\n  AGENTS.md',
+    initial: t(
+      'package.json\n"scripts": { "test": "node --test" }\n\nAGENTS.md\nTest command: `npm run test:old`.\nAsk before adding dependencies.',
+      'package.json\n"scripts": { "test": "node --test" }\n\nAGENTS.md\nКоманда тестов: `npm run test:old`.\nСпрашивай перед добавлением зависимостей.',
+    ),
+    request: t(
+      'Use tibicen-adopt. The agent keeps using the wrong test command. Sort it out.',
+      'Используй tibicen-adopt. Агент всё время запускает не ту команду тестов. Разберись.',
+    ),
+    inspection: t(
+      'Compares AGENTS.md with package.json. test:old is missing; npm test runs node --test. Keeps the dependency rule.',
+      'Сравнивает AGENTS.md и package.json. test:old отсутствует; npm test запускает node --test. Сохраняет правило о зависимостях.',
+    ),
+    clarification: t(
+      'No question needed: the files explain the conflict, and the existing user decision is clear.',
+      'Вопрос не нужен: конфликт виден в файлах, а решение пользователя понятно.',
+    ),
+    proposal: t(
+      'Change one line in AGENTS.md and record the change in .tibicen/. Keep the dependency rule and application files. No installation or project command is included.',
+      'Изменить одну строку в AGENTS.md и записать изменение в .tibicen/. Сохранить правило о зависимостях и файлы приложения. Установка и запуск команд проекта не включены.',
+    ),
+    diff: t(
+      'AGENTS.md\n- Test command: `npm run test:old`.\n+ Test command: `npm test`.\n  Ask before adding dependencies.',
+      'AGENTS.md\n- Команда тестов: `npm run test:old`.\n+ Команда тестов: `npm test`.\n  Спрашивай перед добавлением зависимостей.',
+    ),
+    result: t(
+      'Corrects that one line and records the change in .tibicen/manifest.yml. Reports the file-content and structure checks. The dependency rule, src/, tests/ and package.json are unchanged.',
+      'Исправляет одну строку и записывает изменение в .tibicen/manifest.yml. Сообщает результаты проверки содержимого и структуры. Правило о зависимостях, src/, tests/ и package.json не меняются.',
+    ),
+  },
+];
+---
+
+<section
+  id="result"
+  class="result-section section-space page-width"
+  aria-labelledby="result-title"
+>
+  <p class="eyebrow">{t('Illustrative examples', 'Учебные примеры')}</p>
+  <h2 id="result-title">
+    {t(
+      'What you ask. What the agent does.',
+      'Что просите вы. Что делает агент.',
+    )}
+  </h2>
+  <p class="example-intro">
+    {t(
+      'Two made-up projects, shown step by step. These are illustrations of the workflow, not recorded runs or guaranteed results.',
+      'Два вымышленных проекта, шаг за шагом. Это иллюстрации процесса, а не записи прогонов или гарантированные результаты.',
+    )}
+  </p>
+  <div class="result-grid">
+    {examples.map((example) => (
+      <article
+        class="result-card walkthrough"
+        id={`walkthrough-${example.id}`}
+        aria-labelledby={`walkthrough-${example.id}-title`}
+      >
+        <p class="skill-label">{example.skill}</p>
+        <h3 id={`walkthrough-${example.id}-title`}>{example.title}</h3>
+        <ol class="walkthrough-steps">
+          <li data-step="before">
+            <h4>{t('Starting project', 'Что было в проекте')}</h4>
+            <p>{example.before}</p>
+            <pre><code>{example.files}</code></pre>
+            <pre><code>{example.initial}</code></pre>
+          </li>
+          <li data-step="request">
+            <h4>{t('You ask', 'Вы пишете')}</h4>
+            <blockquote>{example.request}</blockquote>
+          </li>
+          <li data-step="inspect">
+            <h4>{t('The agent inspects', 'Агент изучает')}</h4>
+            <p>{example.inspection}</p>
+            <p class="clarification">{example.clarification}</p>
+          </li>
+          <li data-step="proposal">
+            <h4>{t('The agent proposes', 'Агент предлагает')}</h4>
+            <p>{example.proposal}</p>
+            <pre class="proposal-diff"><code>{example.diff}</code></pre>
+          </li>
+          <li data-step="approval">
+            <h4>{t('You approve', 'Вы соглашаетесь')}</h4>
+            <blockquote>
+              {t('Yes, apply this plan.', 'Да, примени этот план.')}
+            </blockquote>
+          </li>
+          <li data-step="result">
+            <h4>
+              {t(
+                'The agent applies and reports',
+                'Агент применяет и отчитывается',
+              )}
+            </h4>
+            <p>{example.result}</p>
+            <p class="example-unverified">
+              {t(
+                'Not checked in this illustration: project tests or behavior in the next agent session. A real report lists the actual checks and their limits.',
+                'В этой иллюстрации не проверены тесты проекта и поведение следующей сессии агента. Настоящий отчёт перечисляет фактические проверки и ограничения.',
+              )}
+            </p>
+          </li>
+        </ol>
+      </article>
+    ))}
+  </div>
+</section>

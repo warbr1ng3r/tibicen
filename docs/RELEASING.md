@@ -12,51 +12,82 @@ skills. Change a schema only for an actual schema change.
 
 ## Version and changelog policy
 
-Before 1.0, compatible fixes increment patch; new capabilities and breaking
-changes increment minor. Describe breaking changes and migration steps even in
-0.x. Examples from a published 0.1.0:
+After 1.0, use [SemVer 2.0.0](https://semver.org/spec/v2.0.0.html): compatible
+fixes increment patch, compatible functionality increments minor, and incompatible
+supported interfaces increment major. Describe compatibility and migration steps,
+including opt-in persisted formats an older runtime cannot read. Examples from
+the published 1.0.0:
 
 | Change | Next version | Example title |
 | --- | --- | --- |
-| Compatible bug fix | 0.1.1 | `fix(report): retain the incomplete reason` |
-| New capability | 0.2.0 | `feat(adopt): add a supported adapter` |
-| Breaking change | 0.2.0 | `feat(core)!: change the proposal format` |
-| First candidate for 0.2.0 | 0.2.0-rc.1 | `chore(release): prepare 0.2.0-rc.1` |
-| Candidate correction | 0.2.0-rc.2 | `fix(core): preserve a local block` |
+| Compatible bug fix | 1.0.1 | `fix(report): retain the incomplete reason` |
+| Compatible new capability | 1.1.0 | `feat(memory): configure project memory` |
+| Incompatible supported contract | 2.0.0 | `feat(core)!: replace a supported proposal format` |
+| First published prerelease for 1.1.0 | 1.1.0-rc.1 | `chore(release): prepare 1.1.0-rc.1` |
+| Correction to that published prerelease | 1.1.0-rc.2 | `fix(core): preserve a local block` |
 
 Use Conventional Commits (`feat`, `fix`, `docs`, `refactor`, `test`, `build`,
 `ci`, `chore`); scope is optional. Mark incompatibility with `!` or a
 `BREAKING CHANGE:` footer. Commit type alone does not publish or bump a version.
-Keep user-visible changes in [CHANGELOG.md](../CHANGELOG.md), with unreleased
-work separate from published versions. Move entries under a version and actual
-publication date only when that version is released.
+Keep completed user-visible changes under `Unreleased` in
+[CHANGELOG.md](../CHANGELOG.md), using the relevant Added, Changed, Deprecated,
+Removed, Fixed or Security categories from
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Plans and unchecked tasks
+are not completed features. Change the root package version during candidate
+preparation, then generate both skills from it. Move the completed entries under
+the version and actual publication date when releasing; a prepared draft stays
+clearly unpublished until then.
+
+Use `-rc.N` only for an actual prerelease. An internal candidate may instead bind
+the intended stable version to an immutable snapshot, build hash and attempt
+identifier. Every correction after publication gets a new version. Published
+tags, release assets and checksums retain their original bytes.
 
 ## Candidate procedure
 
-1. Review the release tasks and evidence in
-   [prepare-first-public-release](../openspec/changes/prepare-first-public-release/tasks.md).
-   Confirm the source SHA, intended version and approved scope. A dirty tree is
-   reviewable work, not an immutable release source.
+1. Follow the current change and release tasks linked from the
+   [development plan](DEVELOPMENT_PLAN.md). Confirm completed scope, compatibility,
+   intended version and source identity. Update `package.json` for the candidate;
+   keep internal schema changes separately justified. A working tree can be
+   reviewed, but freeze its exact inventory/hash before candidate observations.
 2. With the pinned Node/pnpm, run `pnpm install --frozen-lockfile`, `pnpm test`
    and `pnpm build`. Run separate browser checks for site changes. Preserve logs
-   and the source SHA; tests do not replace candidate-specific acceptance.
+   and the frozen source identity; tests do not replace candidate acceptance.
 3. Copy the built tree and `dist/SHA256SUMS` into a new candidate directory.
-   Check all sums, both installed skill versions/resources and both CLI
-   `self-test` commands outside the checkout with Git absent from PATH.
-4. Test the actual distribution repository at its full SHA with the pinned
-   installer. Check update between frozen distributions, removal, user data and
-   supported platform limits. Earlier versions need not already be public.
-   A local path or archive does not prove the public Git route.
-5. Link the candidate to current L1/PREF/SKILL/PROC evidence, source versions,
+   Check both generated skill versions/resources, the archive inventory and every
+   checksum. Run both CLI `self-test` commands outside the checkout with Git
+   absent from PATH. Retain the exact bytes; regenerating them creates a new
+   candidate unless their identity is proved unchanged.
+4. Obtain independent engineering review and the change's candidate-bound
+   behavioral observations. Preserve failures and assistance. For project memory,
+   separate file/pointer checks from actual fresh-session reading, use and updates;
+   see [project memory](PROJECT_MEMORY.md). Changes to distributed bytes require
+   refreshed affected checks and observations.
+5. Check local exact-candidate installation, update between frozen distributions,
+   recovery, removal and preservation of user data. Include memory added after
+   setup when applicable. A local path or archive does not prove public delivery.
+6. Link the candidate to applicable L1/PREF/SKILL/PROC evidence, source versions,
    the [independent engineering assessment](evals/ENGINEERING_ACCEPTANCE.md)
    and support limits. Under the 2026-11-03 policy, human calibration and the
    initial usefulness pilot have a separate voluntary postpublication schedule;
    their absence is disclosed. OpenSpec scenarios apply to requests selecting
    that component. Missing mandatory loading, application or other technical
    evidence remains an open gap; review cannot replace an absent observation.
-6. Prepare a local release draft containing version, source SHA, installation
-   route, sums, notes, update/removal instructions and limits. Obtain explicit
-   approval for publication only after the draft is concrete and reviewable.
+7. Prepare a local release draft containing version, frozen source/distribution
+   identities, intended `v<version>` tag, installation route, checksums, changelog,
+   release notes, compatibility/migration, update/recovery/removal instructions and
+   supported/unverified limits. Identify the public checks still pending. Obtain
+   explicit owner authorization for commit, push and publication on that concrete
+   packet; feature-plan approval does not authorize release actions.
+8. After authorization, bind the public source commit and distribution SHA to the
+   candidate. Pass normal public CI and the existing six macOS/Ubuntu/Windows ×
+   Node 22.20/24.15 cells. Test installation from the actual public distribution
+   repository at its full SHA with the pinned installer, including applicable
+   update/removal and preservation checks. Record exact results and limits.
+9. After successful gates, publish the new immutable SemVer tag, release assets
+   and matching notes. Verify returned asset bytes and checksums. Update Pages
+   metadata/checksum records only to describe the released bytes and separately
+   verify that deployment. Report actual public URLs and remaining limitations.
 
 Record corrections in a new candidate. Preserve failed attempts and old sums.
 Published tags and bytes stay immutable; a published defect requires a new

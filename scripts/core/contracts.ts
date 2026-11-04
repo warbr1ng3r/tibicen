@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { validateSharedRules } from './shared-rules.ts';
 import { validateProcessChanges } from '../process/index.ts';
+import { validateMemory } from './memory.ts';
 
 export const VERSION: string = JSON.parse(
   readFileSync(new URL('../../package.json', import.meta.url), 'utf8'),
@@ -136,10 +137,17 @@ export function validateProposal(input: unknown): Proposal {
   const plan = input as Proposal;
   validateData(plan);
   assert(
-    plan?.schema === 1 && ['init', 'improve'].includes(plan.mode),
+    [1, 2].includes(plan?.schema) && ['init', 'improve'].includes(plan.mode),
     'invalid-plan',
     'Unsupported plan schema or mode.',
   );
+  if (plan.schema === 2) validateMemory(plan.memory);
+  else
+    assert(
+      plan.memory === undefined,
+      'invalid-memory',
+      'Memory ownership requires proposal schema 2.',
+    );
   assert(
     Array.isArray(plan.changes) &&
       Array.isArray(plan.commands) &&
@@ -149,8 +157,10 @@ export function validateProposal(input: unknown): Proposal {
   );
   assert(
     plan.components?.schema === 1 &&
-      plan.components.toSchema === 2 &&
-      [null, 1, 2].includes(plan.components.fromSchema) &&
+      plan.components.toSchema === (plan.memory ? 3 : 2) &&
+      (plan.memory ? [null, 1, 2, 3] : [null, 1, 2]).includes(
+        plan.components.fromSchema,
+      ) &&
       Array.isArray(plan.components.files),
     'invalid-plan',
     'Compile the component inventory with the current proposal command; older plans need a new proposal.',
@@ -198,6 +208,11 @@ export function validateProposal(input: unknown): Proposal {
   }
   const paths = new Set();
   for (const change of plan.changes) {
+    assert(
+      change.path !== plan.memory?.path || change.action !== 'delete',
+      'memory-protected',
+      'User-owned memory is preserved when removing infrastructure.',
+    );
     assert(
       !('managedBlock' in change),
       'invalid-plan',

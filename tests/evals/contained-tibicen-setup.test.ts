@@ -401,7 +401,16 @@ test('metadata-only batch freeze binds runtime/order/caps and cancellation prece
       authPath: path.join(directory, 'must-not-read-auth'),
     },
   });
-  assert.equal(Object.keys(driver.freeze.runtime).length, 86);
+  assert.equal(Object.keys(driver.freeze.runtime).length, 90);
+  for (const name of ['tibicen-init', 'tibicen-adopt'])
+    for (const relative of [
+      'scripts/core/memory.ts',
+      'references/project-memory.md',
+    ])
+      assert.match(
+        driver.freeze.runtime[setupRuntime + '/' + name + '/' + relative],
+        /^[a-f0-9]{64}$/,
+      );
   assert.deepEqual(driver.freeze.order, ['contained-init', 'contained-adopt']);
   assert.equal(driver.freeze.caps.hostSessions, 4);
   assert.equal(driver.freeze.caps.retries, 0);
