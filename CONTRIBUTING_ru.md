@@ -1,6 +1,6 @@
 # Участие в разработке Tibicen
 
-Tibicen [1.0.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0) опубликован. Репозиторий — [warbr1ng3r/tibicen](https://github.com/warbr1ng3r/tibicen). Ответственный сопровождающий и частный security-маршрут подтверждены в [SECURITY](SECURITY.md). CI релиза, заявленные платформенные проверки и публичная доставка записаны; deployment advisory/checksum-канала Pages и сверка возвращённых байтов открыты. Область обращений определяет [кодекс поведения](CODE_OF_CONDUCT.md). Перед подготовкой нового выпуска или приглашением участников пилота прочитайте [сведения о выпуске](docs/RELEASING.md).
+Tibicen [1.0.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0) опубликован. Репозиторий — [warbr1ng3r/tibicen](https://github.com/warbr1ng3r/tibicen). Ответственный сопровождающий и частный security-маршрут подтверждены в [SECURITY](SECURITY.md). CI релиза, заявленные платформенные проверки и публичная доставка записаны; deployment advisory/checksum-канала Pages и сверка возвращённых байтов проверены в [MAINTENANCE](docs/MAINTENANCE.md). Область обращений определяет [кодекс поведения](CODE_OF_CONDUCT.md). Перед подготовкой нового выпуска или приглашением участников пилота прочитайте [сведения о выпуске](docs/RELEASING.md).
 
 ## Язык документации
 

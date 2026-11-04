@@ -1,5 +1,9 @@
 # Tasks
 
+## Published technical release — 4 November 2026
+
+[1.0.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0) is published under the owner’s explicit commit/push/release instruction. Reviewed source `4c1be3ecc4126f1531030e51c4a8a56e9a292190`, standalone `e8532bba0582564c93e50de1f55174daaa9bbd34`, normal frozen-install CI and six declared platform cells passed. Scoped public SHA/tag install, update, restoration/removal and all three assets are checked. [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/41782942576) deployed site source `5f8b7dcaae6c1f93b96583c7348903c1efd2dc45`; all 18 returned bodies match its clean build and index SHA-256 is `08541bcb5897be0ed79fe832315248fe1fd1436cd826f9e3fc84138ed986a501`. Reporting routes were inspected without submission; notification delivery remains untested. Independent engineering review is Ship for the existing 67-criterion accounting and candidate bindings, within the scope in [ENGINEERING_ACCEPTANCE](../../../docs/evals/ENGINEERING_ACCEPTANCE.md). This does not give 67 whole-case grades, universal native loading or measured human benefit. Tasks 3.3–3.4 remain deferred and unchecked; alpha/historical records below retain their original scope.
+
 ## Current policy — 3 November 2026
 
 The adopted [release evidence policy](../separate-release-evidence-from-usefulness-pilot/specs/product-scope/spec.md) retains every mandatory technical observation, invariant, candidate/platform/delivery check and maintenance obligation. Record their scope and remaining gaps in the [engineering assessment](../../../docs/evals/ENGINEERING_ACCEPTANCE.md). Human tasks 3.3–3.4 are **DEFERRED** voluntary postpublication work, remain unchecked and are not technical release prerequisites. Historical counts and alpha approvals below are not current acceptance or new publication permission.
@@ -18,23 +22,23 @@ The adopted [release evidence policy](../separate-release-evidence-from-usefulne
 
 - [x] 2.1 Добавить офлайн-CI с закреплённым pnpm и SHA внешних Actions/минимальными правами; проверить test/spec/build и запрет передачи авторизации моделей fork PR.
 - [x] 2.2 Проверить комплектность, версии и суммы чистой сборки, self-test распакованного дерева и отсутствие dev/eval-ресурсов, внешнего OpenSpec CLI и сгенерированных им скиллов; подтвердить наличие собственных ресурсов опционального адаптера и сохранить результаты кандидата.
-- [ ] 2.3 После определения owner/repo и размещения собранного дерева проверить конкретную установку по tag/full SHA закреплённым установщиком в отдельный user-scope; подтвердить байты обоих скиллов, ресурсы и работу вне checkout/без Git после установки на заявляемых платформах.
-- [ ] 2.4 Проверить обновление ранее установленной версии с пресетами, паспортом, локальными правками и незавершённой сессией; подтвердить гарантии группы 2 `extend-infrastructure-contracts`, отказ/миграцию неизвестной схемы и сохранение истории, описать ограничения.
+- [x] 2.3 После определения owner/repo и размещения собранного дерева проверить конкретную установку по tag/full SHA закреплённым установщиком в отдельный user-scope; подтвердить байты обоих скиллов, ресурсы и работу вне checkout/без Git после установки на заявляемых платформах.
+- [x] 2.4 Проверить обновление ранее установленной версии с пресетами, паспортом, локальными правками и незавершённой сессией; подтвердить гарантии группы 2 `extend-infrastructure-contracts`, отказ/миграцию неизвестной схемы и сохранение истории, описать ограничения.
 - [x] 2.5 Проверить удаление выбранным установщиком в тестовом user-scope; документировать сохранность пользовательских данных, оставшиеся настройки и необходимые ручные действия.
 
 - [x] 2.6 Prepare a manual-only standalone platform smoke workflow and a small portable CLI integration check for the declared runtime/OS cells; run local available cells and leave actual remote cells unverified until dispatch. Keep the default PR gate unchanged and retain Windows execution refusal where required.
 
 ## 3. Maintenance and voluntary research
 
-- [ ] 3.1 Назначить ответственного за ядро/адаптеры и описать ежемесячный/событийный пересмотр; проверить наличие источника, даты, области и фактических свидетельств в матрице, повторить init/adopt для изменившихся рекомендаций.
-- [ ] 3.2 Определить рабочие контакты безопасности и независимый канал advisory/контрольных сумм; проверить доступность маршрутов и перед открытием репозитория проверить материалы/историю на секреты и личные данные, сохранив лицензии.
+- [x] 3.1 Назначить ответственного за ядро/адаптеры и описать ежемесячный/событийный пересмотр; проверить наличие источника, даты, области и фактических свидетельств в матрице, повторить init/adopt для изменившихся рекомендаций.
+- [x] 3.2 Определить рабочие контакты безопасности и независимый канал advisory/контрольных сумм; проверить доступность маршрутов и перед открытием репозитория проверить материалы/историю на секреты и личные данные, сохранив лицензии.
 - [ ] 3.3 **DEFERRED — voluntary postpublication research.** Before a pilot, define willing cohorts/sizes, their ordinary baseline, time/corrections/manual-integration measurements and anonymization; retain §14 definitions, the 50-session/8-week checkpoint and the separate 30-day reuse cohort. Experiment fractions do not replace these measures. Deferral does not complete recruitment, the protocol or human calibration.
 - [ ] 3.4 **DEFERRED — voluntary postpublication research.** Conduct the initial private init/adopt pilot when participants are available and retain separate anonymized usefulness/limit summaries. Report absent observations and unknown benefit; do not claim a completed checkpoint, reset its clock or enroll the owner by assumption.
 
 ## 4. Candidate readiness
 
-- [ ] 4.1 Assemble candidate-bound technical evidence for the core clarifications, first OpenSpec adapter (3.3–3.4 of extend-infrastructure-contracts), SKILL-01–04/PROC-01–04 from docs/evals/COMPONENT_INTEGRATION.md, L0/L1 invariants and functional quality, declared platform coverage, delivery/update/recovery and maintenance. Independently review source/payload/version bindings, positive skill loading/use and process init/adopt/fresh-session use; keep mandatory missing observations open. Record any impact analysis separately from actual candidate execution, preserve failures and attempt limits, and disclose absent human calibration/pilot without claiming measured benefit or future-adapter support.
-- [ ] 4.2 Подготовить воспроизводимый кандидат и ручной draft с source SHA, версией/суммами, release notes, матрицей/ограничениями, owner/repo/сайтом и инструкцией обновления; сверить все ссылки и байты без публичного выпуска.
+- [x] 4.1 Assemble candidate-bound technical evidence for the core clarifications, first OpenSpec adapter (3.3–3.4 of extend-infrastructure-contracts), SKILL-01–04/PROC-01–04 from docs/evals/COMPONENT_INTEGRATION.md, L0/L1 invariants and functional quality, declared platform coverage, delivery/update/recovery and maintenance. Independently review source/payload/version bindings, positive skill loading/use and process init/adopt/fresh-session use; keep mandatory missing observations open. Record any impact analysis separately from actual candidate execution, preserve failures and attempt limits, and disclose absent human calibration/pilot without claiming measured benefit or future-adapter support.
+- [x] 4.2 Подготовить воспроизводимый кандидат и ручной draft с source SHA, версией/суммами, release notes, матрицей/ограничениями, owner/repo/сайтом и инструкцией обновления; сверить все ссылки и байты без публичного выпуска.
 
 ## 5. Approved limited alpha0.1.0-alpha.1
 

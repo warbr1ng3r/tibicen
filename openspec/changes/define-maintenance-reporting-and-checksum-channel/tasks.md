@@ -1,6 +1,6 @@
 # Tasks
 
-Local implementation authorized under task 182 after independent proposal review. Checked tasks record actual local work; broader maintenance gates remain open. Task 3.2 requires separate publication authority and live verification. Proposal/design retain the reviewed pre-implementation planning record; this task file and current guides record local adoption. Task 3.1 passed local checks and independent implementation review; task 3.2 remains open.
+Local implementation was authorized under task 182 after independent proposal review. Tasks 1.1–3.1 record the local work; task 3.2 records the separately authorized publication and live verification. Proposal/design retain the reviewed pre-implementation planning record; this task file and current guides record local adoption. Task 3.1 passed local checks and independent implementation review. Task 3.2 completed on 4 November 2026 under separate owner publication authority: actual Pages run 41782942576 / source 5f8b7dc / deployment 7539210555 succeeded, all 18 returned bodies match the clean build, and index 08541bcb… matches the actual current and alpha asset records. Route accessibility and sign-in limits were recorded without submission; notification delivery remains untested. Independent review is Ship. See the dated current [maintenance guide](../../../docs/MAINTENANCE.md).
 
 ## 1. Reporting policy and guide consistency
 
@@ -14,7 +14,7 @@ Local implementation authorized under task 182 after independent proposal review
 ## 3. Focused integration and actual verification
 
 - [x] 3.1 With pinned Node/pnpm, run focused data/site checks, the root/project-base site builds/checks required by group 2, formatting, strict OpenSpec validation and canonical-link/translation checks; obtain independent review of the exact policy/data/source changes and record unavailable checks. Verify old published records and distributed payload remain unchanged; local checks establish preparation only.
-- [ ] 3.2 Under separate explicit publication authority, deploy the reviewed committed Pages artifact through the existing manual workflow, bind source/site revision/deployment/index-byte hash and compare returned index/manifest/archive bytes; inspect actual public project, Support and vulnerability route accessibility without submitting reports or changing accounts/settings. Record recipients, sign-in/tool limitations and untested notification delivery accurately. Leave unavailable routes/channel checks open; feed only actual results to the existing release tasks and readiness assessment, without declaring full MVP acceptance.
+- [x] 3.2 Under separate explicit publication authority, deploy the reviewed committed Pages artifact through the existing manual workflow, bind source/site revision/deployment/index-byte hash and compare returned index/manifest/archive bytes; inspect actual public project, Support and vulnerability route accessibility without submitting reports or changing accounts/settings. Record recipients, sign-in/tool limitations and untested notification delivery accurately. Leave unavailable routes/channel checks open; feed only actual results to the existing release tasks and readiness assessment, without declaring full MVP acceptance.
 
 ## Workflow follow-up
 

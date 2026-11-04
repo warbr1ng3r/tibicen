@@ -1,5 +1,7 @@
 # Issue tracker
 
+**Current status — 4 November 2026:** [1.0.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0) is published; CI, six platform cells, scoped mechanical public delivery and Pages/all 18 returned bodies are verified. Exact bindings and limits are in the [engineering assessment](../evals/ENGINEERING_ACCEPTANCE.md), [readiness ledger](../evals/V1_READINESS.md) and [maintenance guide](../MAINTENANCE.md). This is not a blanket grade for all 67 cases, native loading or human benefit. Prerelease narratives and queues below are historical snapshots, not a current task list or new execution permission.
+
 Development in this repository uses Local Markdown. Git remote origin points to the public warbr1ng3r/tibicen repository; no external tracker is configured. The canonical tracker is in `.scratch/`; this directory is not excluded from Git. This setup is not part of the Tibicen distribution.
 
 ## Wayfinding operations
@@ -13,7 +15,7 @@ Development in this repository uses Local Markdown. Git remote origin points to 
 - Substantial change details and implementation checkboxes live in OpenSpec. A ticket holds the question/result, responsibility boundaries and a link to the exact task group. The roadmap holds stage order.
 - `dashboard.md` is a view of the tickets, updated after status/dependency changes. A visual in chat is a snapshot, not a second tracker.
 
-## Current effort
+## Historical prerelease effort — through 3 November 2026
 
 The destination is the **full original MVP →1.0**. For technical release work, read the [engineering assessment](../evals/ENGINEERING_ACCEPTANCE.md) for missing observations and source/version/candidate bindings, and the [readiness ledger](../evals/V1_READINESS.md) for remaining technical and support gates. Use the map (`../../.scratch/codex-zcode-acceptance/map.md`; private development record; excluded from public source) for decisions and the dashboard (`../../.scratch/codex-zcode-acceptance/dashboard.md`; private development record; excluded from public source) for the active work view. Detailed behavior tasks stay in OpenSpec; milestone order stays in [the roadmap](../DEVELOPMENT_PLAN.md).
 
