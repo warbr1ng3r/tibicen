@@ -1,12 +1,14 @@
 # Changelog
 
-The first limited alpha is public. See [release details](docs/RELEASING.md) for
-immutable source/distribution references, checks and remaining acceptance.
+Version 1.0.0 is public. See [release details](docs/RELEASING.md) for
+immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
-- Prepare 1.0.0 installer/site metadata pinned to the full standalone distribution
-  commit; publication, fresh CI and public-byte checks remain separate.
+## [1.0.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0) — 2026-11-04
+
+- Publish 1.0.0 with installer/site metadata pinned to the full standalone
+  distribution commit; CI, six platform cells and public asset hashes passed.
 - Keep a current-reply preference inferred and correctable until the user explicitly
   chooses a permanent project rule; a later explicit project correction replaces
   the earlier inference without transferring application consent.

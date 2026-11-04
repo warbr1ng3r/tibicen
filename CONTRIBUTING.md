@@ -1,6 +1,6 @@
 # Contributing to Tibicen
 
-Tibicen has published its first limited [alpha prerelease](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1). The repository is [warbr1ng3r/tibicen](https://github.com/warbr1ng3r/tibicen). The maintainer and private security route are confirmed in [SECURITY](SECURITY.md). Full technical MVP acceptance and actual advisory/checksum-channel publication remain open. Reporting scope is defined by the [code of conduct](CODE_OF_CONDUCT.md). See [release details](docs/RELEASING.md) before preparing another release or inviting a pilot.
+Tibicen [1.0.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0) is published. The repository is [warbr1ng3r/tibicen](https://github.com/warbr1ng3r/tibicen). The maintainer and private security route are confirmed in [SECURITY](SECURITY.md). Release CI, declared platform checks and public delivery are recorded; Pages advisory/checksum-channel deployment and returned-byte checks remain open. Reporting scope is defined by the [code of conduct](CODE_OF_CONDUCT.md). See [release details](docs/RELEASING.md) before preparing another release or inviting a pilot.
 
 ## Documentation language
 

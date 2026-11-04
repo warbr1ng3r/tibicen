@@ -153,7 +153,7 @@ function validate(value: Index, previous?: Index) {
   }
 }
 
-test('maintenance index freezes the original published alpha facts, not the current working payload', () => {
+test('maintenance index freezes the published alpha and 1.0 facts, not the current working payload', () => {
   validate(index);
   assert.deepEqual(
     index.versions.map((record) => ({
@@ -176,6 +176,20 @@ test('maintenance index freezes the original published alpha facts, not the curr
           [
             'tibicen-0.1.0-alpha.1.tar.gz',
             '95d62ec9b8a2fdf78a47122a9fd8c16d58bbb8a6d2a2af564db4b3006e6bb606',
+          ],
+        ],
+      },
+      {
+        version: '1.0.0',
+        publishedAtUtc: '2026-11-04T05:36:46Z',
+        sourceCommit: '4c1be3ecc4126f1531030e51c4a8a56e9a292190',
+        distributionCommit: 'e8532bba0582564c93e50de1f55174daaa9bbd34',
+        manifest:
+          '0bdcf606c644859120dbae065b04095a8f7bacedb39ec98508f72290cfc0bbb3',
+        archives: [
+          [
+            'tibicen-1.0.0.tar.gz',
+            '5bf57bd93f14d5443bfbd6e697e9020ebcd761ef9fc0e78e65a7934d97124eaa',
           ],
         ],
       },

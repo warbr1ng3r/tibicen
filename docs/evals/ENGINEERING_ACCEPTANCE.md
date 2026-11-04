@@ -1,5 +1,9 @@
 # Engineering release assessment
 
+## Public release — 4 November 2026
+
+**Published 4 November 2026:** [1.0.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0) binds source `4c1be3ecc4126f1531030e51c4a8a56e9a292190` to distribution `e8532bba0582564c93e50de1f55174daaa9bbd34`. [Normal frozen-install CI](https://github.com/warbr1ng3r/tibicen/actions/runs/41779006751) passed; the [platform workflow](https://github.com/warbr1ng3r/tibicen/actions/runs/41779751678) passed all six macOS/Ubuntu/Windows × Node 22.20/24.15 cells. Public full-SHA installations for Codex, Claude Code and Cursor each matched all 86 payload files; 16 version/resource checks, pinned update, backup restoration and removal passed. All three release assets were received with matching hashes; the archive contains 87 regular files and all 86 payload hashes match. These are mechanical delivery checks, not native discovery/loading, application execution, whole-case grades or measured human benefit. Windows command launch remains unsupported; read-only operations are available. Pages deployment and returned-byte verification for this metadata remain pending.
+
 **4 November 2026: technical acceptance remains open.** This is the separate engineering assessment required by the [release evidence policy](QUALITY_AND_REPORTS.md#engineering-release-assessment). It retains the full MVP and all 67 prepared cases. The original audit created no experiment or human grade. The dated follow-up below records separately scoped observations; it creates no public candidate. Measured human benefit is unknown.
 
 ## Method and reviewer context
@@ -133,6 +137,8 @@ The IDs below are the exact [frozen matrix](MATRIX.md) IDs. Grouped block/recove
 Counts: product/formats/ML 12 + PREF 12 + blocks 12 + recovery/two-tool 13 + SKILL 9 + PROC 9 = **67**, each listed once. The map supplies mechanical support for every ID; it does not supply every ID's missing decision, positive use or current-candidate binding.
 
 ## Remaining technical work
+
+The source freeze, gate/build, six platform cells, public Git installation and release-asset checks listed below were subsequently completed for the published references above. The remaining current publication work is Pages deployment and returned-byte verification; reporting-route delivery and native/application/human limits remain disclosed. The numbered list is the retained prepublication checklist, not a new pending gate.
 
 1. **Freeze the integrated source/evidence.** All 234 initial choices, same-actor PREF-03 transition and 15 separate effects are independently reviewed. Root seal 2936ed62… binds 275 artifacts/553977 body bytes/33 original project files. Both original 237 task-text/file-effect subcriteria are independently Ship 634ea0e3…; no further task models are missing. Complete final source/privacy review and freeze without changing original criteria or old seals.
 2. **Carry forward the exact 235 binding.** Preserve all 67 original criteria/IDs/order/frozen hashes, the reviewed source-line correction and dated pending snapshot. Keep the separately bound actual 234/237 supplement; never change old seals. Unchanged process/skill/mechanical/platform/delivery facts transfer only within their exact source/input/profile scope; no new implementation, hostile initializer, secret/server check or blanket model replay is required.

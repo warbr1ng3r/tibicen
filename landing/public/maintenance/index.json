@@ -21,6 +21,25 @@
         }
       ],
       "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1"
+    },
+    {
+      "version": "1.0.0",
+      "publishedAtUtc": "2026-11-04T05:36:46Z",
+      "sourceCommit": "4c1be3ecc4126f1531030e51c4a8a56e9a292190",
+      "distributionCommit": "e8532bba0582564c93e50de1f55174daaa9bbd34",
+      "scope": "Mechanical public installation verified for Codex, Claude Code and Cursor; six macOS/Ubuntu/Windows × Node 22.20/24.15 standalone CI cells passed. Windows command launch is unsupported; read-only operations are available. Native discovery/loading and application execution are not established by installation. Human benefit is unmeasured.",
+      "payloadManifest": {
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.0.0/distribution-SHA256SUMS",
+        "sha256": "0bdcf606c644859120dbae065b04095a8f7bacedb39ec98508f72290cfc0bbb3"
+      },
+      "archives": [
+        {
+          "name": "tibicen-1.0.0.tar.gz",
+          "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.0.0/tibicen-1.0.0.tar.gz",
+          "sha256": "5bf57bd93f14d5443bfbd6e697e9020ebcd761ef9fc0e78e65a7934d97124eaa"
+        }
+      ],
+      "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0"
     }
   ],
   "warnings": []

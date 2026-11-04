@@ -62,23 +62,21 @@ Record corrections in a new candidate. Preserve failed attempts and old sums.
 Published tags and bytes stay immutable; a published defect requires a new
 version. There is no background update of installed Tibicen or project setup.
 
-## Prepared 1.0.0 candidate — 4 November 2026
+## Published 1.0.0 — 4 November 2026
 
-The source package version is `1.0.0`. The prepared distribution commit is `e8532bba0582564c93e50de1f55174daaa9bbd34`; its 86 payload files have inventory SHA-256 `0bdcf606c644859120dbae065b04095a8f7bacedb39ec98508f72290cfc0bbb3`. This identifies the distribution separately from the source commit; it is not evidence of public installation or a published version tag.
-
-The exact local source gate passed 736 tests, zero failures and one intentional skip, then build, using cached locked dependencies. The actual local package passed eight version/resource calls on Node 22.20.0/24.15.0. These records predate the final installer/site metadata edits. Fresh normal frozen-install CI, final declared platform checks, public Git/asset installation and Pages returned-byte checks remain pending. Keep the existing alpha refs and historical evidence unchanged; move Unreleased changelog entries only when the release actually occurs.
+**Published 4 November 2026:** [1.0.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0) binds source `4c1be3ecc4126f1531030e51c4a8a56e9a292190` to distribution `e8532bba0582564c93e50de1f55174daaa9bbd34`. [Normal frozen-install CI](https://github.com/warbr1ng3r/tibicen/actions/runs/41779006751) passed; the [platform workflow](https://github.com/warbr1ng3r/tibicen/actions/runs/41779751678) passed all six macOS/Ubuntu/Windows × Node 22.20/24.15 cells. Public full-SHA installations for Codex, Claude Code and Cursor each matched all 86 payload files; 16 version/resource checks, pinned update, backup restoration and removal passed. All three release assets were received with matching hashes; the archive contains 87 regular files and all 86 payload hashes match. These are mechanical delivery checks, not native discovery/loading, application execution, whole-case grades or measured human benefit. Windows command launch remains unsupported; read-only operations are available. Pages deployment and returned-byte verification for this metadata remain pending.
 
 ## Inputs still required for the full MVP
 
 The owner confirmed [@warbr1ng3r](https://github.com/warbr1ng3r) as core/adapter maintainer and private security-report recipient on 31 October 2026. The private vulnerability reporting route is enabled; see [SECURITY](../SECURITY.md).
 
 - Verify the scoped public project/private GitHub Support reporting routes in the [CoC](../CODE_OF_CONDUCT.md), preserving the confirmed private vulnerability recipient. The former general private conduct-inbox promise is replaced; no inbox or alternate is appointed. Form/notification delivery is not newly verified.
-- Publish and verify the separate committed Pages advisory/checksum index defined in [MAINTENANCE](MAINTENANCE.md). Its local alpha record does not establish a working channel; GitHub administration is shared.
+- Publish and verify the separate committed Pages advisory/checksum index defined in [MAINTENANCE](MAINTENANCE.md). Its local alpha and 1.0 records do not establish a working channel; GitHub administration is shared.
 - Candidate-bound technical coverage and acceptance for the declared components, agents and platforms; retain explicitly permitted unsupported outcomes with reasons.
 
 The [maintenance procedure](MAINTENANCE.md) and [latest source review](evals/results/2026-11-03-maintenance-review/README.md) cover the appointed maintainer, review cadence and documentation/CLI metadata. They do not establish notification delivery or actual Pages-index publication, or substitute for remaining behavior evidence. The adopted [maintenance-channel contract](../openspec/changes/define-maintenance-reporting-and-checksum-channel/specs/maintenance-channels/spec.md) defines separate artifact/publication/origin independence; publication and byte checks remain pending task 3.2.
 
-These inputs remain open after the limited alpha. Maintenance is monthly and
+These maintenance/access limits remain after publication of 1.0.0. Maintenance is monthly and
 after significant tool changes; changed recommendations need fresh init/adopt checks.
 
 ## Voluntary postpublication research

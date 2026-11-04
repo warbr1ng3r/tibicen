@@ -15,7 +15,7 @@ Two entry points:
 
 [Version 0.1.0-alpha.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1) was published on 27 October 2026 as a limited prerelease. The [configuration page](https://warbr1ng3r.github.io/tibicen/) is live. Observations cover macOS/Node 24/Codex; full technical MVP acceptance, broader agent coverage and remaining support arrangements stay open. See [CHANGELOG](CHANGELOG.md), [contributing](CONTRIBUTING.md) and [release details](docs/RELEASING.md).
 
-The **1.0.0 candidate** is prepared with a pinned distribution commit. Its local cached-dependency gate and package/resource checks passed; fresh CI, public installation/download and Pages returned-byte checks are pending. This is not an announcement that 1.0.0 has been published.
+[**1.0.0 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0) on 4 November 2026. Normal frozen-install CI and all six declared OS/runtime checks passed. Public full-SHA installations matched all 86 payload files for Codex, Claude Code and Cursor; release asset bytes and checksums match. These mechanical checks do not establish native discovery/loading or measured human benefit. The 1.0 Pages metadata deployment and returned-byte checks remain pending.
 
 Your agent's native initialization or a direct request to audit existing instructions may also be sufficient. Tibicen's comparative effort savings and human usefulness have not been measured.
 
@@ -23,7 +23,7 @@ Application source code, existing package manifests, CI, and data are preserved 
 
 ## Install Tibicen
 
-The command below pins the prepared 1.0.0 distribution at its full commit. Public availability and installed bytes must still be checked after the authorized push. The source branch is not an installation target.
+The command below pins the published 1.0.0 distribution at its full commit. Installation through skills 1.7.4 was checked for Codex, Claude Code and Cursor, with exact payload hashes, version/resource access, pinned update, backup restoration and removal. The source branch is not an installation target.
 
 The [published alpha](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1) uses a versioned distribution tag, separate
 from the development source tree; release assets include checksums. Installation
