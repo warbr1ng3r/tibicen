@@ -40,6 +40,25 @@
         }
       ],
       "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0"
+    },
+    {
+      "version": "1.1.0",
+      "publishedAtUtc": "2026-11-04T21:02:42Z",
+      "sourceCommit": "3166be50a1a3979e600ea08b65694c9255dcb89a",
+      "distributionCommit": "7bbd953a020ac4ac4c7dfb99efa59f6e4b195026",
+      "scope": "Optional project memory with one approved Markdown store. Mechanical public installation/update/removal verified for Codex, Claude Code and Cursor; all 90 payload files matched. Six macOS/Ubuntu/Windows × Node 22.20/24.15 standalone CI cells passed. Two fresh controlled Codex tasks explicitly read, used and updated memory after root-assisted setup; automatic startup loading and equivalent behavior in other agents are not established. Windows command launch is unsupported; read-only operations are available. Human benefit is unmeasured.",
+      "payloadManifest": {
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.1.0/distribution-SHA256SUMS",
+        "sha256": "bf6d76cfddf7c41f071bb1f9c9f3633ab69070aeac38cd0fc246b583ad33ec0f"
+      },
+      "archives": [
+        {
+          "name": "tibicen-1.1.0.tar.gz",
+          "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.1.0/tibicen-1.1.0.tar.gz",
+          "sha256": "e285fbac490f586c277e7b037a9f193197e2a8ae1b84aeb196f8a85d465339ee"
+        }
+      ],
+      "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0"
     }
   ],
   "warnings": []
