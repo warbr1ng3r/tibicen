@@ -35,6 +35,7 @@ import {
 } from '../process/index.ts';
 import { infrastructureScope } from '../verify/scope.ts';
 import { inspectNodeEnvironment } from '../verify/environment.ts';
+import { memoryAllows, resolveMemory } from './memory.ts';
 
 export function containsSecret(content: string) {
   if (
@@ -131,6 +132,29 @@ export async function createProposal(
     root,
     await readManifest(root),
   );
+  const memory = resolveMemory(
+    input.memory,
+    baseline.recoveredMemory ?? baseline.manifest?.memory,
+  );
+  assert(
+    !memory || baseline.pendingStateSchema !== 3,
+    'resume-required',
+    'Complete the pending legacy session before configuring memory.',
+  );
+  if (memory) {
+    const current = await readCurrent(root, memory.path, { forbiddenPaths });
+    assert(
+      current.content !== null ||
+        requestedChanges.some(
+          (change) =>
+            change.path === memory.path &&
+            change.action !== 'delete' &&
+            typeof change.content === 'string',
+        ),
+      'invalid-memory',
+      'Bind an existing memory file or include its exact creation in changes.',
+    );
+  }
   const processSetup = await planProcess(
     input.process,
     baseline.recoveredProcess ?? baseline.manifest?.process,
@@ -254,6 +278,7 @@ export async function createProposal(
     );
     assert(
       isInfrastructurePath(change.path ?? '') ||
+        memoryAllows(memory, change.path) ||
         processAllows(processSetup.process, change.path) ||
         (input.mode === 'init' && emptyProject),
       'application-protected',
@@ -308,6 +333,8 @@ export async function createProposal(
     const expectedHash = previous?.hash ?? previous?.afterHash;
     const expectedMode = previous?.mode ?? previous?.afterMode;
     const acceptsLocalChange =
+      (baseline.pendingStateSchema === 4 &&
+        memoryAllows(memory, change.path)) ||
       (expectedHash !== undefined && expectedHash !== before.hash) ||
       (expectedMode !== undefined && expectedMode !== before.mode);
     if (
@@ -363,6 +390,7 @@ export async function createProposal(
     changes,
     (relative) => readCurrent(root, relative, { forbiddenPaths }),
     input.migrateManifest,
+    memory ? 3 : 2,
   );
   const sharedStatus = await inspectSharedRules(
     sharedRules,
@@ -398,7 +426,8 @@ export async function createProposal(
     });
   }
   const proposal: Proposal = {
-    schema: 1,
+    schema: memory ? 2 : 1,
+    ...(memory ? { memory } : {}),
     root,
     mode: input.mode,
     emptyProject,
@@ -452,6 +481,7 @@ export async function createProposal(
         ...(fileMode === undefined ? {} : { fileMode }),
       })),
       components,
+      ...(memory ? { memory } : {}),
       sharedRules: sharedStatus,
       ...(proposal.process
         ? { process: { ...proposal.process, verification: processStatus } }

@@ -67,6 +67,7 @@ export async function recoverPlanningBaseline(
   );
   return {
     ...snapshot,
+    pendingStateSchema: state.schema,
     ...(digest(installed) === digest(snapshot.manifest?.installed ?? [])
       ? {}
       : { recoveredInstalled: installed }),
@@ -74,6 +75,9 @@ export async function recoverPlanningBaseline(
       state.proposal.sharedRules ?? snapshot.manifest?.sharedRules ?? [],
     ...(state.proposal.process
       ? { recoveredProcess: state.proposal.process }
+      : {}),
+    ...(state.proposal.memory
+      ? { recoveredMemory: state.proposal.memory }
       : {}),
   };
 }
@@ -102,9 +106,9 @@ export async function inspectRecovery(
   actualManifestHash: string | null,
 ) {
   assert(
-    state.schema === STATE_SCHEMA,
+    state.schema === (state.proposal?.schema === 2 ? 4 : STATE_SCHEMA),
     'unsupported-state-schema',
-    'Saved work needs state schema 3 with file originals and execution/write journals; inspect and migrate older state explicitly.',
+    'Saved work needs state schema 3 (legacy) or 4 (memory), with file originals and execution/write journals; inspect older state explicitly.',
   );
   assert(
     state.proposalDigest === digest(unwrapPlan(state.proposal)) &&

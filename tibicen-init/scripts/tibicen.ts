@@ -121,8 +121,10 @@ export async function main(argv = process.argv.slice(2)) {
     return createProposal(root, await inputData(options.input));
   if (command === 'status') {
     const result = await getStatus(root);
+    const memory = result.state?.proposal.memory ?? result.manifest?.memory;
     return {
       schema: 1,
+      ...(memory ? { memory } : {}),
       status: result.status,
       continuationAvailable: Boolean(result.state),
       sessionId:
@@ -144,8 +146,10 @@ export async function main(argv = process.argv.slice(2)) {
     const session = current.state ?? current.manifest?.sessions?.at(-1);
     const process =
       current.state?.proposal.process ?? current.manifest?.process;
+    const memory = current.state?.proposal.memory ?? current.manifest?.memory;
     const report = {
       schema: 1,
+      ...(memory ? { memory } : {}),
       status: current.status,
       reason:
         current.state?.reason ?? session?.attempts?.at(-1)?.reason ?? null,
@@ -218,9 +222,13 @@ export async function main(argv = process.argv.slice(2)) {
   if (command === 'verify') {
     const { scanProject } = await import('./scan/index.ts');
     const { verifyInfrastructure } = await import('./verify/index.ts');
-    const scan = await scanProject(root);
     const current = await getStatus(root);
-    return verifyInfrastructure(root, {
+    const memory = current.state?.proposal.memory ?? current.manifest?.memory;
+    const forbiddenPaths = current.state?.proposal.forbiddenPaths ?? [];
+    const scan = await scanProject(root, { forbiddenPaths, memory });
+    const checked = await verifyInfrastructure(root, {
+      forbiddenPaths,
+      memory,
       observedFiles: scan.files,
       components: current.state?.proposal.components,
       expectedFiles: current.state ? current.observedApplied : [],
@@ -230,6 +238,21 @@ export async function main(argv = process.argv.slice(2)) {
         [],
       process: current.state?.proposal.process ?? current.manifest?.process,
     });
+    const conflicts =
+      current.recovery?.files.filter(
+        (file) => file.path === memory?.path && file.state === 'ambiguous',
+      ) ?? [];
+    if (conflicts.length) {
+      checked.status = 'issues-found';
+      checked.issues = [
+        ...(checked.issues ?? []),
+        ...conflicts.map((file) => ({
+          path: file.path,
+          reason: 'pending-memory-conflict',
+        })),
+      ];
+    }
+    return checked;
   }
   if (command === 'source-check') {
     const { validateSources } = await import('./discovery/index.ts');

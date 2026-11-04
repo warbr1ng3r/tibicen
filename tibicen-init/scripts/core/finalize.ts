@@ -11,11 +11,7 @@ import {
 } from './contracts.ts';
 import { safePath } from './paths.ts';
 import { readCurrent } from './plan.ts';
-import {
-  installedComponents,
-  MANIFEST_SCHEMA,
-  readManifest,
-} from './components.ts';
+import { installedComponents, readManifest } from './components.ts';
 import { manifestRecovery } from './recovery.ts';
 
 interface FinalizationContext {
@@ -127,6 +123,7 @@ async function writeManifest(
   );
   sessions.push({
     id: state.id,
+    ...(state.proposal.memory ? { memory: state.proposal.memory } : {}),
     attempts: state.attempts,
     manualActions: state.proposal.manualActions,
     status: state.status,
@@ -158,7 +155,8 @@ async function writeManifest(
       }),
   );
   const manifest = {
-    schema: MANIFEST_SCHEMA,
+    schema: state.proposal.components.toSchema,
+    ...(state.proposal.memory ? { memory: state.proposal.memory } : {}),
     tibicen: {
       version: VERSION,
       rulesVersion: VERSION,
