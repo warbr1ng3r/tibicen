@@ -10,6 +10,7 @@ import {
   realpath,
   rm,
   symlink,
+  lstat,
 } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
@@ -77,6 +78,20 @@ function cli(root: string, command: string) {
   );
   assert.equal(result.stderr, '');
   return { exitCode: result.status, result: JSON.parse(result.stdout) };
+}
+
+async function fileState(root: string) {
+  return Promise.all(
+    (await readdir(root, { recursive: true })).sort().map(async (relative) => {
+      const filename = path.join(root, relative);
+      const stat = await lstat(filename);
+      return {
+        path: relative,
+        mode: stat.mode & 0o777,
+        ...(stat.isFile() ? { content: await readFile(filename) } : {}),
+      };
+    }),
+  );
 }
 
 test('init in an empty directory approves memory without inventing an application', async (t) => {
@@ -292,6 +307,152 @@ test('existing memory can be bound without rewriting or claiming third-party own
   assert.equal(await readFile(path.join(root, 'docs/memory.md'), 'utf8'), body);
   assert.deepEqual((await getStatus(root)).manifest!.installed, []);
 });
+
+for (const instructionPath of [
+  '.cursor/rules/notes.mdc',
+  '.claude/rules/notes.md',
+  '.cursorrules',
+  'packages/ui/.cursor/rules/notes.mdc',
+  'packages/ui/.claude/rules/notes.md',
+  'packages/ui/.cursorrules',
+  'packages/ui/AGENTS.md',
+  'packages/ui/CLAUDE.md',
+]) {
+  test(`existing ${instructionPath} connects memory without a redundant root pointer`, async (t) => {
+    const memoryPath = 'docs/memory.md';
+    const pointer = `Read relevant decisions in \`${memoryPath}\`, resolved from the project root.\n`;
+    const { root, home } = await fixture(t, {
+      [memoryPath]: '# Decisions\r\nPreserve unrelated notes.  \r\n',
+      'AGENTS.md': pointer,
+      [instructionPath]: pointer,
+    });
+    const plan = await createProposal(
+      root,
+      { mode: 'improve', memory: { path: memoryPath }, changes: [] },
+      { home },
+    );
+    assert.deepEqual(plan.proposal.changes, []);
+    assert.deepEqual(plan.proposal.commands, []);
+    assert.equal(
+      (await applyPlan(root, plan, { home, approvedDigest: plan.digest }))
+        .status,
+      'complete',
+    );
+    await rm(path.join(root, 'AGENTS.md'));
+    const before = await fileState(root);
+    const homeBefore = await fileState(home);
+    const scan = await scanProject(root);
+    assert(scan.files.some((file) => file.path === instructionPath));
+    const checked = cli(root, 'verify');
+    assert.equal(checked.exitCode, 0);
+    assert.equal(checked.result.status, 'passed');
+    assert.deepEqual(checked.result.issues, []);
+    const report = cli(root, 'report').result;
+    assert.equal(report.status, 'complete');
+    assert.equal(report.diagnosis.structure.status, 'passed');
+    assert.deepEqual(report.diagnosis.instructions.candidates, [
+      { path: instructionPath, directory: path.posix.dirname(instructionPath) },
+    ]);
+    assert.equal(report.diagnosis.instructions.applicability, 'unverified');
+    assert.equal(report.diagnosis.instructions.loading.status, 'unverified');
+    assert.equal(report.diagnosis.instructions.use.status, 'unverified');
+    if (
+      instructionPath.startsWith('packages/ui/.cursor') ||
+      instructionPath.startsWith('packages/ui/.claude')
+    )
+      await assert.rejects(
+        createProposal(
+          root,
+          {
+            mode: 'improve',
+            changes: [
+              {
+                path: instructionPath,
+                content: 'Replacement\n',
+                reason: 'Protected nested rule.',
+              },
+            ],
+          },
+          { home },
+        ),
+        { code: 'application-protected' },
+      );
+    assert.deepEqual(await fileState(root), before);
+    assert.deepEqual(await fileState(home), homeBefore);
+  });
+}
+
+for (const sample of [
+  { name: 'unrelated Markdown', path: 'packages/ui/notes.md' },
+  {
+    name: 'unsupported extension',
+    path: 'packages/ui/.cursor/rules/notes.json',
+  },
+  {
+    name: 'missing pointer',
+    path: 'packages/ui/.cursor/rules/notes.mdc',
+    content: '# Local rules\n',
+  },
+  {
+    name: 'relative-to-rule pointer',
+    path: 'packages/ui/.claude/rules/notes.md',
+    content: 'Read ../../../docs/memory.md.\n',
+  },
+  {
+    name: 'backup suffix',
+    path: 'packages/ui/.cursorrules',
+    content: 'Read docs/memory.md.backup.\n',
+  },
+  {
+    name: 'forbidden rule',
+    path: 'packages/ui/.cursor/rules/notes.mdc',
+    forbiddenPaths: ['packages/ui'],
+  },
+  {
+    name: 'symlink rule',
+    path: 'packages/ui/.claude/rules/notes.md',
+    symlink: true,
+  },
+]) {
+  test(`non-connecting ${sample.name} cannot satisfy structural memory checks`, async (t) => {
+    const memory = {
+      path: 'docs/memory.md',
+      ownership: 'user-memory' as const,
+    };
+    const pointer = 'Read `docs/memory.md`, resolved from the project root.\n';
+    const { root, home } = await fixture(t, {
+      [memory.path]: '# Decisions\nPreserve unrelated notes.\n',
+      [sample.path]: sample.content ?? pointer,
+    });
+    if (sample.symlink) {
+      const target = path.join(home, 'rule.md');
+      await writeFile(target, pointer);
+      await rm(path.join(root, sample.path));
+      await symlink(target, path.join(root, sample.path));
+    }
+    const before = await fileState(root);
+    const homeBefore = await fileState(home);
+    const scan = await scanProject(root, {
+      memory,
+      forbiddenPaths: sample.forbiddenPaths,
+    });
+    const checked = await verifyInfrastructure(root, {
+      memory,
+      observedFiles: scan.files,
+      forbiddenPaths: sample.forbiddenPaths,
+    });
+    assert.equal(checked.status, 'issues-found');
+    assert(
+      checked.issues!.some(
+        (issue) => issue.reason === 'missing-memory-connection',
+      ),
+    );
+    if (sample.forbiddenPaths || sample.symlink)
+      assert(!scan.files.some((file) => file.path === sample.path));
+    assert.deepEqual(await fileState(root), before);
+    assert.deepEqual(await fileState(home), homeBefore);
+  });
+}
 
 test('stale memory edits and symlinks refuse before writing state', async (t) => {
   const { root, home } = await fixture(t, {

@@ -15,7 +15,41 @@ Development in this repository uses Local Markdown. Git remote origin points to 
 - Substantial change details and implementation checkboxes live in OpenSpec. A ticket holds the question/result, responsibility boundaries and a link to the exact task group. The roadmap holds stage order.
 - `dashboard.md` is a view of the tickets, updated after status/dependency changes. A visual in chat is a snapshot, not a second tracker.
 
-## Current effort — project memory 1.1 release closure
+## Latest completed local effort — adopt diagnosis follow-up
+
+The owner's 5 November instruction authorized this packet with parallel
+core/rules/docs agents. Implementation and independent review are complete;
+the work is Unreleased. Use the [map](../../.scratch/adopt-diagnosis/map.md),
+[dashboard](../../.scratch/adopt-diagnosis/dashboard.md) and
+[change tasks](../../openspec/changes/archive/2026-11-05-clarify-adopt-diagnosis/tasks.md). Scope is
+existing report/current structure, instruction-scope explanation and clear
+repair/no-change handoff. It includes offline checks and independent Ponytail
+review, but no commit, publication, version bump or fresh native-agent budget.
+Actual checks and retained correction history are in [verification](../../openspec/changes/archive/2026-11-05-clarify-adopt-diagnosis/verification.md).
+
+The owner's autonomous continuation closed that change and extended offline
+lifecycle acceptance. It also reproduced a false missing-memory-connection in
+permitted existing nested native rules. The [bounded correction](../../openspec/changes/archive/2026-11-05-detect-nested-memory-connections/proposal.md)
+is complete through [core](../../.scratch/adopt-diagnosis/issues/07-nested-memory-connections.md),
+[docs](../../.scratch/adopt-diagnosis/issues/08-nested-memory-docs.md) and
+[integration](../../.scratch/adopt-diagnosis/issues/09-nested-memory-integration.md).
+It changes structural recognition only. All tasks/tickets and sync/archive are
+complete; [verification](../../openspec/changes/archive/2026-11-05-detect-nested-memory-connections/verification.md)
+records independent Ship, 798/798 tests without skips and changed-byte standalone
+checks. No release or commit is implied by local completion.
+
+## Completed research — current capabilities and public user problems
+
+The owner requested a factual snapshot and public-source research on 5 November.
+The [research map](../../.scratch/user-problems-20261105/map.md) and
+[dashboard](../../.scratch/user-problems-20261105/dashboard.md) record three completed parallel
+source lanes, root synthesis and independent review. The deliverables are the
+[current-capability snapshot](../CURRENT_CAPABILITIES.md) and
+[opportunity study](../research/2026-11-05-user-problems/README.md). Scope is
+documentation and read-only research; no product changes, commit/publication,
+new native evaluations or paid APIs follow from this instruction.
+
+## Completed effort — project memory 1.1 release closure
 
 The memory map (`../../.scratch/project-memory/map.md`; private development record; excluded from public source) and dashboard (`../../.scratch/project-memory/dashboard.md`; private development record; excluded from public source) record implementation, independent review and the owner's later release instruction. Core/rules/docs and landing L1–L6 are complete; exact publication evidence is in the [report](../evals/results/2026-11-04-project-memory/README.md). All 24 memory tasks and all six landing tasks are complete; Pages matched all 18 official artifact bodies. No new native contexts or paid API budget are granted. The released 1.0 effort remains historical. Future landing L7–L10 and voluntary usefulness research are separate work, with no inferred success.
 

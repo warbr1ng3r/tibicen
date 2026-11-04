@@ -121,6 +121,12 @@ for the exact tested scope.
 4. After approval, it applies only the displayed plan. If another process changes an affected file, writing stops.
 5. It hands over the result, limitations, and a useful first prompt. The manifest preserves provenance, changes, and the original session history.
 
+In development, adopt explains the starting setup, concrete finding, what to
+keep/change, actual checks and one next step. The existing report gains a fresh
+read-only diagnosis alongside its recorded session results. See the
+[four plain examples](docs/ADOPT_DIAGNOSIS.md); these additions are Unreleased,
+and the published 1.1.0 installation above stays unchanged.
+
 `complete` means integration is finished with no known mandatory defect; project and behavioral checks have independent results. `manual-action-required` means mandatory external actions remain. An internal failure or an unresolved mandatory defect produces `incomplete`; state and original versions of affected files are preserved so work can resume with new approval.
 
 ## Capabilities and verification limits
@@ -186,8 +192,11 @@ The landing page is a separate Astro workspace in `landing/`, with adapted Astro
 English is canonical for project documentation. Russian translations live beside it as `*_ru.md`; all references target the English documents. Update a translation alongside its guide.
 
 - [Product vision](docs/PRODUCT_VISION.md).
+- [What published Tibicen does today](docs/CURRENT_CAPABILITIES.md).
+- [Public user problems and small-product priorities](docs/research/2026-11-05-user-problems/README.md).
 - [Development plan and work allocation](docs/DEVELOPMENT_PLAN.md).
 - [Project memory — available in 1.1.0](docs/PROJECT_MEMORY.md).
+- [Understanding an adopt result — in development](docs/ADOPT_DIAGNOSIS.md).
 - [Versioning and release procedure](docs/RELEASING.md).
 - [Voluntary postpublication usefulness protocol](docs/PILOT.md).
 - [Security boundaries and vulnerability reporting](SECURITY.md).

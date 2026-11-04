@@ -114,6 +114,13 @@ and the exact release's compatibility notes.
 
 ## What a check proves
 
+The Unreleased correction recognizes permitted existing nested `.cursorrules`
+and rule files under `.cursor/rules/` or `.claude/rules/` found by the bounded
+scan as structural connections when they contain the exact selected memory
+path relative to the project root, such as `docs/memory.md`. This does not
+establish task applicability or native loading, or authorize editing protected
+nested rules.
+
 Structural checks can establish a safe file and intact instruction connection.
 They cannot establish that an agent read, used or updated memory. Fresh-session
 observations must identify the tested distribution, agent/tool versions,

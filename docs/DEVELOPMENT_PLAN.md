@@ -2,6 +2,40 @@
 
 **Current status — 5 November 2026 (Moscow):** [1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0) is published at `2026-11-04T21:02:42Z`. Normal CI, six platform cells, exact public Git delivery and downloaded assets passed; [memory observations and release follow-up](evals/results/2026-11-04-project-memory/README.md) retain setup assistance and coverage limits. Pages passed all 18 returned-body comparisons against its official artifact. Historical 1.0/prerelease narratives remain dated records, not a current task queue.
 
+## Completed local work — clearer adopt diagnosis and handoff
+
+The owner approved implementation on 5 November. The [change](../openspec/changes/archive/2026-11-05-clarify-adopt-diagnosis/proposal.md)
+adds fresh read-only diagnosis to the existing report and makes adopt explain
+findings, retained decisions, minimum changes, checks and the next step. Core,
+rules and EN/RU documentation were delegated in parallel; integration and
+independent review are complete in the [dashboard](../.scratch/adopt-diagnosis/dashboard.md).
+The [verification record](../openspec/changes/archive/2026-11-05-clarify-adopt-diagnosis/verification.md)
+retains the full offline gate, build, standalone checks and corrected review findings.
+The [guide](ADOPT_DIAGNOSIS.md) labels this work Unreleased. No new command,
+persisted schema, native-agent trial, version bump, commit or publication is part
+of this packet. Detailed behavior/tasks stay in the change.
+
+Autonomous continuation closed that change and passed the additional standalone
+lifecycle. It then reproduced and corrected a false missing-memory-connection
+for existing nested native rules. The [small correction](../openspec/changes/archive/2026-11-05-detect-nested-memory-connections/proposal.md)
+keeps write permissions unchanged. Independent review, the 798-test gate without
+skips, changed-byte standalone checks and sync/archive are complete in the same
+dashboard. [Correction evidence](../openspec/changes/archive/2026-11-05-detect-nested-memory-connections/verification.md)
+retains the exact bindings and limits. No new adapter or subsystem is added.
+
+## Post-1.1 research — recommendation baseline
+
+The [current-capability snapshot](CURRENT_CAPABILITIES.md) fixes the 1.1.0 baseline.
+The [5 November user-problem research](research/2026-11-05-user-problems/README.md)
+recommends clearer diagnosis and handoff within existing init/adopt first, then
+only bounded missing instruction-scope, memory or local-environment checks.
+Additional adapters follow demonstrated unsupported tasks. These priorities are
+research recommendations; the later implementation instruction above authorizes
+only the selected packet. No version or live-evaluation budget follows from the
+research. The [research map](../.scratch/user-problems-20261105/map.md) records the
+documentation work. The selected packet's detailed tasks are in the change above;
+other recommendations require their own scoped change.
+
 ## Project memory — 1.1.0 release
 
 **Implementation, release and Pages verification complete.** Core preservation, agent rules and EN/RU guides were delegated, integrated and independently reviewed. Four bounded Codex contexts confirmed explicit read/use/update in two fresh working tasks; application and held-out checks passed. Root-assisted setup and unknown automatic loading/human usefulness remain disclosed. See the dashboard (`../.scratch/project-memory/dashboard.md`; private development record; excluded from public source), [change tasks](../openspec/changes/archive/2026-11-05-configure-project-memory/tasks.md) and [report](evals/results/2026-11-04-project-memory/README.md). Version 1.1.0 adds optional compatible functionality; published 1.0 stays unchanged. The separate [landing L1–L6 batch](../openspec/changes/archive/2026-11-05-clarify-landing-first-use/verification.md) is included in the Pages update; L7–L10 remain later work.

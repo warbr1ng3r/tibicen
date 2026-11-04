@@ -5,6 +5,26 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+### Added
+
+- Add a fresh read-only diagnosis to the existing report: current structural
+  findings, instruction candidates with their directories, coverage gaps and
+  explicit unverified loading, separate from recorded session outcomes.
+- Add four illustrative EN/RU adopt flows showing the starting project,
+  ordinary request, necessary actions, minimal change or no-change result,
+  checks and next step.
+
+### Changed
+
+- Explain adopt findings and handoff in plain language while preserving useful
+  decisions, intentional instruction scopes and approval of the exact plan.
+
+### Fixed
+
+- Recognize permitted existing nested Cursor/Claude rule memory pointers during
+  structural checks, avoiding false `missing-memory-connection` results without
+  expanding write permissions or claiming native loading.
+
 ## [1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0) — 2026-11-04
 
 ### Changed
