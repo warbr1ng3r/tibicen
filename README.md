@@ -13,9 +13,15 @@ Two entry points:
 - `tibicen-init` — “Set up agent infrastructure.” For an empty directory or an existing application without an agent setup.
 - `tibicen-adopt` — “Review and update agent infrastructure.” For fixing, extending, and updating existing instructions and integrations.
 
-[Version 0.1.0-alpha.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1) was published on 27 October 2026 as a limited prerelease. The [configuration page](https://warbr1ng3r.github.io/tibicen/) is live. Observations cover macOS/Node 24/Codex; full technical MVP acceptance, broader agent coverage and remaining support arrangements stay open. See [CHANGELOG](CHANGELOG.md), [contributing](CONTRIBUTING.md) and [release details](docs/RELEASING.md).
-
-[**1.0.0 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0) on 4 November 2026. Normal frozen-install CI and all six declared OS/runtime checks passed. Public full-SHA installations matched all 86 payload files for Codex, Claude Code and Cursor; release asset bytes and checksums match. These mechanical checks do not establish native discovery/loading or measured human benefit. The 1.0 Pages metadata is deployed and its returned bytes verified; see [maintenance](docs/MAINTENANCE.md) for the exact binding.
+[**1.1.0 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0):
+optional project memory with explicit read, update and correction rules. Normal CI
+and all six OS/Node cells passed. Public installation/update/removal for Codex,
+Claude Code and Cursor preserved project notes and matched all 90 payload files.
+Two controlled fresh Codex tasks used and updated memory with setup assistance;
+automatic loading and human usefulness remain unverified. See
+[observations and release follow-up](docs/evals/results/2026-11-04-project-memory/README.md)
+and the [live configuration page](https://warbr1ng3r.github.io/tibicen/).
+Earlier 1.0/alpha releases remain in [CHANGELOG](CHANGELOG.md).
 
 Your agent's native initialization or a direct request to audit existing instructions may also be sufficient. Tibicen's comparative effort savings and human usefulness have not been measured.
 
@@ -29,11 +35,9 @@ local checks, two controlled fresh memory tasks and their assistance/limits.
 Release publication and public delivery are tracked in [release details](docs/RELEASING.md).
 The source branch is not an installation target.
 
-The [published alpha](https://github.com/warbr1ng3r/tibicen/releases/tag/v0.1.0-alpha.1) uses a versioned distribution tag, separate
-from the development source tree; release assets include checksums. Installation
-from both the full distribution SHA and tag matched all 86 files, and approved
-session resume and removal checks passed. These observations cover macOS with
-Node 24 and Codex; other agent options remain experimental.
+Installation uses the separate built distribution. Checks cover exact payloads,
+version/resource access, explicit replacement, backup restoration and removal.
+Native discovery/loading is a separate observation, not an installer guarantee.
 
 ```sh
 npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7bbd953a020ac4ac4c7dfb99efa59f6e4b195026 -g --agent codex --skill tibicen-init tibicen-adopt --copy
@@ -163,7 +167,7 @@ Use focused checks while editing; run `pnpm test` before integrating changes.
 
 The full `pnpm test` gate still runs lint, formatting, all type checks, the site build, strict OpenSpec validation and every Node test. Browser tests remain the separate `pnpm test:site` command.
 
-[Offline CI](docs/CI.md) runs the full gate, build, distribution checksums and unpacked self-tests without model credentials. The published source passed [GitHub Actions on Ubuntu](https://github.com/warbr1ng3r/tibicen/actions/runs/40437643480); the local clean-source gate passed all 668 tests.
+[Offline CI](docs/CI.md) runs the full gate, build, distribution checksums and unpacked self-tests without model credentials. The 1.1 source passed [GitHub Actions on Ubuntu](https://github.com/warbr1ng3r/tibicen/actions/runs/41911531361); the clean public-source gate passed 767 tests with one intentional skip.
 
 Use `pnpm eval:diagnostic` for the documented [diagnostic entry](docs/evals/EXTERNAL_RUNS.md): dry-run by default, or offline calibration with a fake driver. Native execution requires an explicit supported request; unsupported routes produce a saved blocked result.
 
@@ -183,7 +187,7 @@ English is canonical for project documentation. Russian translations live beside
 
 - [Product vision](docs/PRODUCT_VISION.md).
 - [Development plan and work allocation](docs/DEVELOPMENT_PLAN.md).
-- [Project memory — in development for 1.1.0](docs/PROJECT_MEMORY.md).
+- [Project memory — available in 1.1.0](docs/PROJECT_MEMORY.md).
 - [Versioning and release procedure](docs/RELEASING.md).
 - [Voluntary postpublication usefulness protocol](docs/PILOT.md).
 - [Security boundaries and vulnerability reporting](SECURITY.md).

@@ -1,6 +1,6 @@
 # Landing verification — 4 November 2026
 
-Implemented locally; not committed, pushed or deployed. The public site and installation pin still describe published 1.0.0. This record covers L1–L6 only; [review recommendations](../../../docs/research/2026-11-04-landing-review/README.md) L7–L10 remain outside the batch.
+Implemented locally; not committed, pushed or deployed. The public site and installation pin still describe published 1.0.0. This record covers L1–L6 only; [review recommendations](../../../../docs/research/2026-11-04-landing-review/README.md) L7–L10 remain outside the batch.
 
 ## Observed checks
 

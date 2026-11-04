@@ -93,6 +93,25 @@ Record corrections in a new candidate. Preserve failed attempts and old sums.
 Published tags and bytes stay immutable; a published defect requires a new
 version. There is no background update of installed Tibicen or project setup.
 
+## Published 1.1.0 — 4 November 2026 UTC
+
+[1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0) was published at
+`2026-11-04T21:02:42Z` (5 November in Moscow). Source
+`3166be50a1a3979e600ea08b65694c9255dcb89a` binds the accepted distribution
+`7bbd953a020ac4ac4c7dfb99efa59f6e4b195026`.
+[Normal CI](https://github.com/warbr1ng3r/tibicen/actions/runs/41911531361) and the
+[existing six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/41911587517)
+passed. Public full-SHA installation/update/backup restoration/removal passed for
+Codex, Claude Code and Cursor, preserving registered projects and later memory
+notes. All three downloaded release files and 90 payloads matched the frozen
+candidate. The 1.0 tag/body/assets remain unchanged. These are observed bindings;
+GitHub's release `immutable` flag is false, so server enforcement is not claimed.
+
+Memory is opt-in, with schema compatibility and assisted fresh-session limits in
+[project memory](PROJECT_MEMORY.md) and the
+[candidate/report follow-up](evals/results/2026-11-04-project-memory/README.md).
+Pages is a separate deployment recorded in [MAINTENANCE](MAINTENANCE.md).
+
 ## Published 1.0.0 — 4 November 2026
 
 **Published 4 November 2026:** [1.0.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0) binds source `4c1be3ecc4126f1531030e51c4a8a56e9a292190` to distribution `e8532bba0582564c93e50de1f55174daaa9bbd34`. [Normal frozen-install CI](https://github.com/warbr1ng3r/tibicen/actions/runs/41779006751) passed; the [platform workflow](https://github.com/warbr1ng3r/tibicen/actions/runs/41779751678) passed all six macOS/Ubuntu/Windows × Node 22.20/24.15 cells. Public full-SHA installations for Codex, Claude Code and Cursor each matched all 86 payload files; 16 version/resource checks, pinned update, backup restoration and removal passed. All three release assets were received with matching hashes; the archive contains 87 regular files and all 86 payload hashes match. These are mechanical delivery checks, not native discovery/loading, application execution, whole-case grades or measured human benefit. Windows command launch remains unsupported; read-only operations are available. Pages deployment and returned-byte verification are complete within the scope recorded in [MAINTENANCE](MAINTENANCE.md).

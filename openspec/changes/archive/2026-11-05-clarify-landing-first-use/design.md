@@ -2,7 +2,7 @@
 
 ## Context
 
-See [proposal](proposal.md) and [dated review](../../../docs/research/2026-11-04-landing-review/README.md). Astro renders both languages through shared components and `localize`; installation already has accessible selectors and a SHA-pinned published command. Tests cover built HTML and browser interactions. No new framework or dependency is needed.
+See [proposal](proposal.md) and [dated review](../../../../docs/research/2026-11-04-landing-review/README.md). Astro renders both languages through shared components and `localize`; installation already has accessible selectors and a SHA-pinned published command. Tests cover built HTML and browser interactions. No new framework or dependency is needed.
 
 ## Goals / Non-Goals
 

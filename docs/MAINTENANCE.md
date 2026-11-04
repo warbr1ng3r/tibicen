@@ -26,6 +26,19 @@ Each dated review records:
 
 Reporting follows the [CoC](../CODE_OF_CONDUCT.md): nonsensitive project matters use public issues/PRs; private GitHub Support reports cover platform-rule violations on GitHub; vulnerabilities go privately to the confirmed recipient in [SECURITY](../SECURITY.md). The former unfulfilled general private conduct-inbox promise is replaced, not declared satisfied. No alternate is appointed; an implicated maintainer must not decide a complaint about their own conduct. Do not post sensitive details publicly. Form/notification delivery has not been newly tested.
 
+**Latest channel verification — 5 November 2026 (Moscow):** the
+[1.1.0 Pages run](https://github.com/warbr1ng3r/tibicen/actions/runs/41912950614)
+succeeded from `7c1146d5aa0eea7a82087deb75210cf68ad8d2fa`.
+All 18 returned HTTP 200 bodies matched the official GitHub build artifact,
+including EN/RU and the index. Index SHA256:
+`585a154277569a155d82fe0ec1ba294d5c9ffddd81550a66cd91ea5bf2a73173`.
+The published 1.1 source/distribution/asset record was appended; alpha/1.0 objects
+and warnings stayed unchanged. See the [full release follow-up](evals/results/2026-11-04-project-memory/README.md#publication-follow-up)
+for artifact/deployment identities and the retained unsuccessful local-build
+attempt. Exact official-artifact/HTTP matching is the accepted baseline.
+
+The following paragraph records the earlier 1.0 channel verification.
+
 The [committed index](../landing/public/maintenance/index.json) is published at https://warbr1ng3r.github.io/tibicen/maintenance/index.json, on an HTTP origin distinct from release attachments. **Publication and returned-byte verification passed on 4 November 2026.** [Pages deployment](https://github.com/warbr1ng3r/tibicen/actions/runs/41782942576) used site source `5f8b7dcaae6c1f93b96583c7348903c1efd2dc45`. All 18 actual HTTP 200 bodies matched its clean production build; the returned index SHA-256 is `08541bcb5897be0ed79fe832315248fe1fd1436cd826f9e3fc84138ed986a501`, preserving the original alpha record and adding the published 1.0.0 asset bindings. Administration remains shared with GitHub/repository releases: this channel can cross-check changed attachments while the Pages record stays trustworthy, but cannot protect against compromise of their shared administration/provider, authenticate an initially compromised source or replace a code audit.
 
 During initial prepublication preparation, the record bound the original published 0.1.0-alpha.1: retained downloaded manifest/archive bytes were independently rehashed against the dated release receipts, with all 86 archive payload sums checked. Current public release/raw-manifest text corroborates the references; connector/DNS/release-asset retrieval failures prevented a fresh binary download. These are original immutable-byte facts, not a claim about unverified current downloads or a new public 1.0.

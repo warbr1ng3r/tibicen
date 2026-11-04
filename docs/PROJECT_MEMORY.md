@@ -1,10 +1,9 @@
 # Project memory
 
-**Status:** implemented in the local, unpublished 1.1.0 candidate. The published
-1.0.0 distribution does not include this workflow. Two controlled fresh Codex
-sessions read, used and updated configured memory; setup assistance and limits
-are recorded in the [candidate checks](evals/results/2026-11-04-project-memory/README.md).
-Release readiness is tracked in the [development plan](DEVELOPMENT_PLAN.md).
+**Status:** available in published [1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0).
+The older 1.0.0 distribution does not include this workflow. Two controlled fresh
+Codex sessions read, used and updated configured memory; setup assistance and
+limits are recorded in the [candidate checks and release follow-up](evals/results/2026-11-04-project-memory/README.md).
 Examples below are illustrative, not transcripts of those runs.
 
 Project memory helps later agents find the decisions that matter to you. Tibicen

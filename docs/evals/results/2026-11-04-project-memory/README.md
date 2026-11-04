@@ -1,6 +1,6 @@
 # Project-memory candidate checks — 4 November 2026
 
-**Local, unpublished 1.1.0 candidate.** This record covers optional project memory,
+**Historical local checks; 1.1.0 subsequently published.** See the [publication follow-up](#publication-follow-up). This record covers optional project memory,
 two controlled Codex flows and mechanical delivery. Published 1.0.0 remains
 unchanged. It does not measure human usefulness or establish every agent's native
 loading behavior. See the [memory guide](../../../PROJECT_MEMORY.md),
@@ -43,7 +43,7 @@ reviewer rechecked the fix and returned **Ship**. A final targeted Ponytail
 review also accepted the bundle-count/fixture corrections, nullable test guard
 and unused CSS cleanup, with no actionable findings.
 
-The separately approved [landing batch L1–L6](../../../../openspec/changes/clarify-landing-first-use/verification.md)
+The separately approved [landing batch L1–L6](../../../../openspec/changes/archive/2026-11-05-clarify-landing-first-use/verification.md)
 passed 41 site checks and 86 browser checks with one existing skip, plus independent
 Ponytail review. It keeps the published 1.0 installation pin and is not deployed.
 
@@ -131,10 +131,52 @@ part of the accepted scope. The [summary](summary.json) binds candidate identiti
 context outcomes, final-byte checks and the independent review by SHA256.
 No further native contexts were required.
 
-## Remaining boundary
+## Boundary at the local acceptance checkpoint
 
 Public CI, the existing six OS/Node cells, public Git delivery, immutable tag and
 returned release bytes remain for a separately authorized release. Local Node
 22.23.4 checks do not substitute for the workflow's Node 22.20 cells. There is no
 new 1.1 tag, release, push or Pages deployment. Human usefulness and broad native
 agent compatibility remain unmeasured.
+
+## Publication follow-up
+
+Published at **2026-11-04T21:02:42Z** (5 November in Moscow):
+[1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0).
+Source `3166be50a1a3979e600ea08b65694c9255dcb89a`; distribution
+`7bbd953a020ac4ac4c7dfb99efa59f6e4b195026`; annotated tag
+`cb9ffdddd20cee84d0b15685ec92fd5c2b8e6ec3` peels to that distribution.
+
+- [Automatic CI](https://github.com/warbr1ng3r/tibicen/actions/runs/41911531361): success on the exact source.
+- [Platform workflow](https://github.com/warbr1ng3r/tibicen/actions/runs/41911587517): all six macOS/Ubuntu/Windows × Node 22.20.0/24.15.0 cells passed.
+- Public full-SHA installation, 1.0 → 1.1 replacement, pinned update, edited backup restoration and removal passed for Codex, Claude Code and Cursor: 12 installer commands and 24 standalone version/resource checks. All three 52-file registered projects and later notes were preserved byte-for-byte and mode-for-mode. Six retained internal Git clone-by-SHA failures used the installer's existing exact-fetch fallback; there were no manual retries.
+- Three actual public asset downloads returned HTTP 200 and matched every expected byte, size and SHA256. The archive's 91 regular files/90 payloads matched the accepted candidate, including modes. Outer/payload manifests verified.
+- The 1.0 release body, stable metadata, asset IDs/digests and annotated tag remained unchanged. GitHub reports release `immutable: false`; observed bindings and the project's no-replacement policy do not claim server-enforced immutability.
+
+The acceptance sections above retain their original local scope and assistance.
+Pages is a separate deployment from source
+`7c1146d5aa0eea7a82087deb75210cf68ad8d2fa`; returned-byte checks are recorded
+in the following completed record. No new native contexts or paid API requests were used.
+
+### Pages verification
+
+[Deployment run 41912950614](https://github.com/warbr1ng3r/tibicen/actions/runs/41912950614)
+succeeded on source `7c1146d5aa0eea7a82087deb75210cf68ad8d2fa`;
+GitHub deployment `7557893579`, status `21377891482`, was successful.
+The exact official `github-pages` artifact (ID `13364380482`, SHA256
+`ae83b698805311ea076b34677bd4dcef3e126d9956ca28736c4a8808f21e00d9`)
+was downloaded through the authenticated UI. All **18 actual HTTP 200 bodies**
+matched that artifact byte-for-byte, including English/Russian pages, assets,
+licenses and the index. Index SHA256:
+`585a154277569a155d82fe0ec1ba294d5c9ffddd81550a66cd91ea5bf2a73173`.
+The historical version/warning objects remained unchanged; the real 1.1 record
+matches the published date, source, distribution and asset hashes.
+
+The attempted independent local build was unavailable: synthetic offline pnpm
+metadata and automatic dependency checks prevented a complete baseline. Those
+failures were retained; policies were not disabled, processes were stopped and
+all 709 source files remained unchanged. The successful official build artifact,
+its API/deployment binding and direct HTTP comparison provide the final baseline.
+An initial verifier assumption about external-only scripts was corrected to check
+Astro's inline scripts too, with positive/negative self-checks before the GET pass.
+This does not establish physical accessibility, conversion or human usefulness.

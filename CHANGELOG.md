@@ -1,6 +1,6 @@
 # Changelog
 
-Version 1.0.0 is public. See [release details](docs/RELEASING.md) for
+Version 1.1.0 is public. See [release details](docs/RELEASING.md) for
 immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased

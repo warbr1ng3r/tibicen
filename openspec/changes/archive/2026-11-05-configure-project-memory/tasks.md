@@ -1,6 +1,6 @@
 # Tasks
 
-The owner approved implementation on 4 November 2026; see the approval ticket in the dashboard. [Design](design.md) defines the contract and finite future evaluation budget. Ticket status and ownership live in the dashboard (`../../../.scratch/project-memory/dashboard.md`; private development record; excluded from public source). Groups 2–4 may run in parallel only after 1.1, with non-overlapping file ownership.
+The owner approved implementation on 4 November 2026; see the approval ticket in the dashboard. [Design](design.md) defines the contract and finite future evaluation budget. Ticket status and ownership live in the dashboard (`../../../../.scratch/project-memory/dashboard.md`; private development record; excluded from public source). Groups 2–4 may run in parallel only after 1.1, with non-overlapping file ownership.
 
 ## 1. Approve scope
 
@@ -50,8 +50,8 @@ The owner approved implementation on 4 November 2026; see the approval ticket in
 
 ## 9. Publish only after a separate release instruction
 
-- [ ] 9.1 After the owner's explicit instruction for the concrete candidate, commit/push through the established public-source procedure and pass public CI plus the existing six OS/Node cells; record exact bindings and refresh affected checks for any correction.
-- [ ] 9.2 Publish the new immutable SemVer tag/assets and matching release notes only after successful gates; verify public returned bytes/checksums, update the roadmap/tracker, and report the actual release URL and remaining limits.
+- [x] 9.1 After the owner's explicit instruction for the concrete candidate, commit/push through the established public-source procedure and pass public CI plus the existing six OS/Node cells; record exact bindings and refresh affected checks for any correction.
+- [x] 9.2 Publish the new immutable SemVer tag/assets and matching release notes only after successful gates; verify public returned bytes/checksums, update the roadmap/tracker, and report the actual release URL and remaining limits.
 
 ## Workflow follow-up
 

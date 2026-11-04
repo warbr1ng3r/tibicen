@@ -1,6 +1,6 @@
 # Tasks
 
-The owner authorized the first landing batch on 4 November 2026. [Design](design.md) and effort map (`../../../.scratch/landing-clarity/map.md`; private development record; excluded from public source) bound implementation; memory work is separate.
+The owner authorized the first landing batch on 4 November 2026. [Design](design.md) and effort map (`../../../../.scratch/landing-clarity/map.md`; private development record; excluded from public source) bound implementation; memory work is separate.
 
 ## 1. Explain the product and interaction
 

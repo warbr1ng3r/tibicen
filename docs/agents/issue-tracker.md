@@ -1,6 +1,6 @@
 # Issue tracker
 
-**Current status — 4 November 2026:** [1.0.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.0.0) is published; CI, six platform cells, scoped mechanical public delivery and Pages/all 18 returned bodies are verified. Exact bindings and limits are in the [engineering assessment](../evals/ENGINEERING_ACCEPTANCE.md), [readiness ledger](../evals/V1_READINESS.md) and [maintenance guide](../MAINTENANCE.md). This is not a blanket grade for all 67 cases, native loading or human benefit. Prerelease narratives and queues below are historical snapshots, not a current task list or new execution permission.
+**Current status — 5 November 2026 (Moscow):** [1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0) is published. CI, six platform cells, public Git install/update/removal and downloaded assets passed. The [memory/release report](../evals/results/2026-11-04-project-memory/README.md) records exact bindings, assisted fresh-session results and the separate Pages verification. Historical queues below retain their old outcomes; they are not a new execution budget.
 
 Development in this repository uses Local Markdown. Git remote origin points to the public warbr1ng3r/tibicen repository; no external tracker is configured. The canonical tracker is in `.scratch/`; this directory is not excluded from Git. This setup is not part of the Tibicen distribution.
 
@@ -15,9 +15,9 @@ Development in this repository uses Local Markdown. Git remote origin points to 
 - Substantial change details and implementation checkboxes live in OpenSpec. A ticket holds the question/result, responsibility boundaries and a link to the exact task group. The roadmap holds stage order.
 - `dashboard.md` is a view of the tickets, updated after status/dependency changes. A visual in chat is a snapshot, not a second tracker.
 
-## Current effort — project memory for 1.1
+## Current effort — project memory 1.1 release closure
 
-Read the project-memory map (`../../.scratch/project-memory/map.md`; private development record; excluded from public source) and dashboard (`../../.scratch/project-memory/dashboard.md`; private development record; excluded from public source). The owner requested plan review before implementation. Requirements, design, bounded fixture protocol and detailed tasks live in [configure-project-memory](../../openspec/changes/configure-project-memory/proposal.md). The approval ticket (`../../.scratch/project-memory/issues/01-approve-memory-plan.md`; private development record; excluded from public source) now records the owner's explicit instruction: implement with core/rules/docs agents, integrate, run Ponytail review and the approved bounded fresh-session protocol. Claim only ready owned scopes. The separate landing effort (`../../.scratch/landing-clarity/map.md`; private development record; excluded from public source) implements the [review](../research/2026-11-04-landing-review/README.md) first batch L1–L6 with its own agent and local checks. The proposed compatible feature targets 1.1.0; commit, push and publication need a later instruction for the concrete candidate.
+The memory map (`../../.scratch/project-memory/map.md`; private development record; excluded from public source) and dashboard (`../../.scratch/project-memory/dashboard.md`; private development record; excluded from public source) record implementation, independent review and the owner's later release instruction. Core/rules/docs and landing L1–L6 are complete; exact publication evidence is in the [report](../evals/results/2026-11-04-project-memory/README.md). All 24 memory tasks and all six landing tasks are complete; Pages matched all 18 official artifact bodies. No new native contexts or paid API budget are granted. The released 1.0 effort remains historical. Future landing L7–L10 and voluntary usefulness research are separate work, with no inferred success.
 
 ## Historical prerelease effort — through 3 November 2026
 

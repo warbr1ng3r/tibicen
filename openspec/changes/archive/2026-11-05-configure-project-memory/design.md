@@ -6,7 +6,7 @@ Tibicen 1.0.0 is already published. Its interview distinguishes evidenced lastin
 
 Relevant seams are `scripts/core/{types,contracts,paths,plan,apply,recovery,components,finalize,runtime}.ts`, `scripts/scan/index.ts`, `scripts/verify/{index,scope}.ts` and shared stage references. Root `scripts/build.ts` generates both skill distributions; generated copies are not edited directly. Presets reject unknown fields and will retain their current schema.
 
-This is a proposed design for owner review, not a record of implementation or acceptance. The [requirements](specs/project-memory/spec.md) define observable behavior; [tasks](tasks.md) own implementation checkboxes; the dashboard (`../../../.scratch/project-memory/dashboard.md`; private development record; excluded from public source) owns work status. As in existing changes, capability translations live at the change root as `<capability>-spec_ru.md`: OpenSpec accepts only canonical `spec.md` deltas inside `specs/`.
+This is a proposed design for owner review, not a record of implementation or acceptance. The [requirements](specs/project-memory/spec.md) define observable behavior; [tasks](tasks.md) own implementation checkboxes; the dashboard (`../../../../.scratch/project-memory/dashboard.md`; private development record; excluded from public source) owns work status. As in existing changes, capability translations live at the change root as `<capability>-spec_ru.md`: OpenSpec accepts only canonical `spec.md` deltas inside `specs/`.
 
 ## Goals / Non-Goals
 
