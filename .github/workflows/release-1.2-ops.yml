@@ -1,0 +1,45 @@
+name: One-off Tibicen 1.2.0 operations
+
+on:
+  push:
+    branches: [codex/release-1.2-ops]
+
+permissions: {}
+
+concurrency:
+  group: release-1.2-ops
+  cancel-in-progress: false
+
+env:
+  SOURCE_SHA: 1a38fef4974370620f9a9aefd72f1ca709d82ff4
+
+jobs:
+  checks:
+    if: >-
+      github.repository == 'warbr1ng3r/tibicen' &&
+      github.ref == 'refs/heads/codex/release-1.2-ops' &&
+      github.run_attempt == 1 &&
+      github.event.head_commit.message == 'release-1.2-ops: checks'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Dispatch only the existing platform workflow at the frozen main head
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(gh api repos/warbr1ng3r/tibicen/git/ref/heads/main --jq .object.sha)" = "$SOURCE_SHA"
+          test "$(gh api repos/warbr1ng3r/tibicen/actions/workflows/platforms.yml --jq .state)" = active
+          run_id="$(gh api --method POST repos/warbr1ng3r/tibicen/actions/workflows/platforms.yml/dispatches \
+            -H 'X-GitHub-Api-Version: 2026-03-10' -f ref=main --jq .workflow_run_id)"
+          [[ "$run_id" =~ ^[0-9]+$ ]] || exit 1
+          printf 'Platform run: https://github.com/warbr1ng3r/tibicen/actions/runs/%s\n' "$run_id"
+          gh api "repos/warbr1ng3r/tibicen/actions/runs/$run_id" \
+            --jq '{id,html_url,head_sha,path,event,status,conclusion}' | tee platform-run.json
+          jq -e --arg sha "$SOURCE_SHA" \
+            '.head_sha == $sha and .path == ".github/workflows/platforms.yml" and .event == "workflow_dispatch"' platform-run.json
+          echo 'Root must verify the new platform run head SHA and all six jobs before the separate publish push.'
