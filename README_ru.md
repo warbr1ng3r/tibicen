@@ -175,6 +175,7 @@ ESLint проверяет TypeScript, JavaScript и Astro рекомендова
 - [Продуктовое видение](docs/PRODUCT_VISION.md).
 - [Что опубликованный Tibicen делает сейчас](docs/CURRENT_CAPABILITIES.md).
 - [Публичные проблемы пользователей и приоритеты простой утилиты](docs/research/2026-11-05-user-problems/README.md).
+- [Актуальные инструменты и исследование обновления рекомендаций](docs/research/2026-11-05-technology-refresh/README.md).
 - [План разработки и распределение работ](docs/DEVELOPMENT_PLAN.md).
 - [Память проекта — доступна в 1.1.0](docs/PROJECT_MEMORY.md).
 - [Как понимать результат adopt — в разработке](docs/ADOPT_DIAGNOSIS.md).

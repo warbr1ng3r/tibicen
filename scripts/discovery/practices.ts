@@ -216,7 +216,7 @@ export async function checkPractices(
   {
     agents = [],
     agentVersions = {},
-  }: { agents?: string[]; agentVersions?: Record<string, string> } = {},
+  }: { agents?: string[]; agentVersions?: unknown } = {},
   options: PracticeOptions = {},
 ) {
   assert(
@@ -224,6 +224,25 @@ export async function checkPractices(
     'invalid-agents',
     'Select at most the three supported agents.',
   );
+  assert(
+    agentVersions !== null &&
+      typeof agentVersions === 'object' &&
+      !Array.isArray(agentVersions),
+    'invalid-agent-versions',
+    'agentVersions must be an object of selected agent versions.',
+  );
+  const versions = agentVersions as Record<string, unknown>;
+  for (const [agent, version] of Object.entries(versions))
+    assert(
+      Object.hasOwn(OFFICIAL_SOURCES, agent) &&
+        agents.includes(agent) &&
+        typeof version === 'string' &&
+        version.trim().length > 0 &&
+        version.length <= 100 &&
+        !/\p{Cc}/u.test(version),
+      'invalid-agent-versions',
+      'Versions need selected supported agent keys and nonblank strings of at most 100 characters without controls.',
+    );
   const checkedAt = new Date(options.now ?? Date.now()).toISOString();
   const result: { schema: number; practices: Practice[]; gaps: PathReason[] } =
     { schema: 1, practices: [], gaps: [] };
@@ -233,7 +252,10 @@ export async function checkPractices(
       result.gaps.push({ agent, reason: 'unsupported-agent' });
       continue;
     }
-    if (!agentVersions[agent])
+    const agentVersion = Object.hasOwn(versions, agent)
+      ? (versions[agent] as string)
+      : undefined;
+    if (!agentVersion)
       result.gaps.push({ agent, reason: 'agent-version-unverified' });
     const sources =
       options.sources?.[agent] ??
@@ -248,7 +270,7 @@ export async function checkPractices(
         source,
         checkedAt,
         appliesTo: `${agent} project instructions and skills`,
-        ...(agentVersions[agent] ? { agentVersion: agentVersions[agent] } : {}),
+        ...(agentVersion ? { agentVersion } : {}),
       };
       try {
         result.practices.push({

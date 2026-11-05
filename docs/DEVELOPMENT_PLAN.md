@@ -2,6 +2,21 @@
 
 **Current status — 5 November 2026 (Moscow):** [1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0) is published at `2026-11-04T21:02:42Z`. Normal CI, six platform cells, exact public Git delivery and downloaded assets passed; [memory observations and release follow-up](evals/results/2026-11-04-project-memory/README.md) retain setup assistance and coverage limits. Pages passed all 18 returned-body comparisons against its official artifact. Historical 1.0/prerelease narratives remain dated records, not a current task queue.
 
+## Completed local work — version-bound practice evidence
+
+The owner approved a bounded implementation packet following the
+[technology-refresh study](research/2026-11-05-technology-refresh/README.md).
+Connect available version observations to the existing practices command and
+make init/adopt explain evidence limits and keep/change/unknown. Parallel core,
+rules and EN/RU documentation, integration and independent review are complete.
+Detailed requirements/tasks stay in the [change](../openspec/changes/archive/2026-11-05-bind-practice-evidence-to-agent-versions/proposal.md);
+actual progress is in the [dashboard](../.scratch/practice-evidence/dashboard.md).
+The [verification](../openspec/changes/archive/2026-11-05-bind-practice-evidence-to-agent-versions/verification.md)
+records independent Ship, 801/801 offline tests without skips, both standalone
+self-tests and 92/92 checksums. The completed change is synced/archived and
+Unreleased; no new tool
+bundle, background updater or product version is implied.
+
 ## Completed local work — clearer adopt diagnosis and handoff
 
 The owner approved implementation on 5 November. The [change](../openspec/changes/archive/2026-11-05-clarify-adopt-diagnosis/proposal.md)
@@ -35,6 +50,13 @@ only the selected packet. No version or live-evaluation budget follows from the
 research. The [research map](../.scratch/user-problems-20261105/map.md) records the
 documentation work. The selected packet's detailed tasks are in the change above;
 other recommendations require their own scoped change.
+
+The follow-up [technology-refresh study](research/2026-11-05-technology-refresh/README.md)
+assesses SDD, instruction skills, memory services and context compression. It
+recommends version-bound evidence within the existing assessment before new
+integrations, keeping no-change valid. The [research dashboard](../.scratch/technology-refresh-research/dashboard.md)
+records source review and documentation checks. This is a research recommendation,
+not an approved implementation queue or a background-update mechanism.
 
 ## Project memory — 1.1.0 release
 

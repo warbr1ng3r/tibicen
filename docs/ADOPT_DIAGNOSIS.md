@@ -1,9 +1,10 @@
 # Understanding an adopt result
 
 **In development, not yet released.** Published [1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0)
-remains unchanged. The examples below describe the clearer diagnosis being added
-to the existing `tibicen-adopt` workflow. They are illustrative projects and
-responses, not transcripts, completed runs or evidence of user benefit.
+remains unchanged. The examples below describe the clearer diagnosis and
+version-aware practice assessment being added to `tibicen-adopt`. They are
+illustrative projects and responses, not transcripts, completed runs or evidence
+of user benefit.
 
 Ask in ordinary words:
 
@@ -132,6 +133,57 @@ it missed the rule. I recommend no configuration change from this evidence.”
 whether the decision is read and used. Explicitly naming the memory file is
 help with reading it; that does not demonstrate automatic startup loading.
 An unperformed behavior check stays `unverified`, with its reason.
+
+## Version context and official guidance
+
+The agent uses trusted host metadata or an already authorized observation to
+obtain available agent versions. A repository file, preset or historical manifest
+does not establish the current installation. Without a reliable observation, the
+version stays unknown. The `practices` command does not detect or execute agent
+binaries; it receives supplied version context and reads allowed official sources.
+Successful retrieval retains the source, check date and content hash, with
+`requires-agent-assessment`: applicability and native compatibility still need
+separate evidence.
+
+These short outputs are illustrative too. The version, date and source assessment
+are assumed for the examples, not results of native runs:
+
+- **Keep, observed version available:** “Host metadata reports Codex 0.157.0.
+  The relevant official guidance read on 5 November 2026 supports keeping the
+  inspected instruction layout. No configuration change is needed within this
+  scope. Fresh-session loading is unverified.”
+- **Change, applicable evidence:** “For that observed version, the inspected
+  files and relevant guidance support connecting the existing decisions file as
+  shown above. I propose that one connection; it makes the decisions reachable
+  without another tool. The exact plan needs approval, then a structural check;
+  fresh-session use remains to be observed.”
+- **Unknown version:** “I could not obtain a reliable agent version. I found no
+  necessary structural change in the inspected files, so I would keep them.
+  Version-specific applicability remains unknown.” The output retains an
+  `agent-version-unverified` gap.
+- **Unavailable or inapplicable source:** “The official source could not be read,
+  or its guidance describes a different release. I cannot justify applying it
+  here. I would keep the current setup pending relevant evidence.” Report the
+  actual read failure or version mismatch; old evidence or a fix on a source's
+  main branch does not establish behavior in the installed release. Uncertainty
+  alone does not call for an upgrade or a rewrite.
+
+The optional CLI input is JSON. Replace `SKILL_DIR` with the absolute directory
+containing the installed skill's `SKILL.md`; the example token is illustrative:
+
+```sh
+printf '%s\n' '{"agentVersions":{"codex":"0.157.0"}}' |
+  node "SKILL_DIR/scripts/tibicen.ts" practices --agents codex --input -
+```
+
+`--agents` selects the agents. Only their supported keys may appear in
+`agentVersions`; malformed input is rejected before source reads. Omitting
+`--input` or a selected version remains valid and leaves that version unverified.
+An already existing JSON file can be read with `--input EXISTING_FILE` instead.
+Before plan approval, keep prepared input in memory and pass it through stdin;
+do not create a temporary project file. This read-only command creates no state,
+cache or project edits. A supplied version is context, not independent proof of
+the installed binary or compatible behavior. See the [evidence rules](../references/rules.md).
 
 ## Current evidence and saved history
 

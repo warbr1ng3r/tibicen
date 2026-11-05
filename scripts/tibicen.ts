@@ -99,7 +99,7 @@ export async function main(argv = process.argv.slice(2)) {
     scan: [],
     discover: ['query', 'kind'],
     'source-check': ['input'],
-    practices: ['agents'],
+    practices: ['agents', 'input'],
     proposal: ['input'],
     apply: ['plan', 'approve'],
     resume: ['plan', 'approve'],
@@ -132,7 +132,8 @@ export async function main(argv = process.argv.slice(2)) {
         scan: 'scan --root PATH',
         discover: 'discover --query TEXT [--kind skill|mcp]',
         'source-check': 'source-check --input FILE_OR_STDIN_DASH',
-        practices: 'practices --agents codex,cursor,claude-code',
+        practices:
+          'practices --agents codex,cursor,claude-code [--input FILE_OR_STDIN_DASH]',
         proposal: 'proposal --root PATH --input FILE_OR_STDIN_DASH',
         apply: 'apply --root PATH --plan FILE_OR_STDIN_DASH --approve DIGEST',
         resume:
@@ -298,7 +299,20 @@ export async function main(argv = process.argv.slice(2)) {
       'invalid-arguments',
       'Provide --agents codex,cursor,claude-code.',
     );
-    return checkPractices({ agents: options.agents.split(',') });
+    const input =
+      options.input === undefined ? {} : await inputData(options.input);
+    assert(
+      input !== null &&
+        typeof input === 'object' &&
+        !Array.isArray(input) &&
+        Object.keys(input).every((key) => key === 'agentVersions'),
+      'invalid-practices-input',
+      'Practice input accepts only an optional agentVersions object.',
+    );
+    return checkPractices({
+      agents: options.agents.split(','),
+      agentVersions: (input as { agentVersions?: unknown }).agentVersions,
+    });
   }
   if (command === 'mcp-verify') {
     const { validateMcpConfig, verifyCodexMcpBlock } =

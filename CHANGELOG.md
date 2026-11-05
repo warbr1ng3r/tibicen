@@ -7,6 +7,8 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ### Added
 
+- Accept optional agent-version JSON for read-only `practices` through stdin or
+  an existing file, retaining unknown-version gaps and source applicability limits.
 - Add a fresh read-only diagnosis to the existing report: current structural
   findings, instruction candidates with their directories, coverage gaps and
   explicit unverified loading, separate from recorded session outcomes.
@@ -17,7 +19,8 @@ immutable source/distribution references, checks and remaining scope limits.
 ### Changed
 
 - Explain adopt findings and handoff in plain language while preserving useful
-  decisions, intentional instruction scopes and approval of the exact plan.
+  decisions, intentional instruction scopes and approval of the exact plan;
+  explain keep/change/unknown with version observations and dated source limits.
 
 ### Fixed
 

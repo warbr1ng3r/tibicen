@@ -194,6 +194,7 @@ English is canonical for project documentation. Russian translations live beside
 - [Product vision](docs/PRODUCT_VISION.md).
 - [What published Tibicen does today](docs/CURRENT_CAPABILITIES.md).
 - [Public user problems and small-product priorities](docs/research/2026-11-05-user-problems/README.md).
+- [Current tools and technology-refresh research](docs/research/2026-11-05-technology-refresh/README.md).
 - [Development plan and work allocation](docs/DEVELOPMENT_PLAN.md).
 - [Project memory — available in 1.1.0](docs/PROJECT_MEMORY.md).
 - [Understanding an adopt result — in development](docs/ADOPT_DIAGNOSIS.md).

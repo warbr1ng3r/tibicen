@@ -15,7 +15,35 @@ Development in this repository uses Local Markdown. Git remote origin points to 
 - Substantial change details and implementation checkboxes live in OpenSpec. A ticket holds the question/result, responsibility boundaries and a link to the exact task group. The roadmap holds stage order.
 - `dashboard.md` is a view of the tickets, updated after status/dependency changes. A visual in chat is a snapshot, not a second tracker.
 
-## Latest completed local effort — adopt diagnosis follow-up
+## Latest completed local effort — version-bound practice evidence
+
+The owner's “Поехали” approved the next implementation packet described after
+the technology-refresh study: requirements, parallel core/rules/docs work,
+integration and independent Ponytail review. The [map](../../.scratch/practice-evidence/map.md),
+[dashboard](../../.scratch/practice-evidence/dashboard.md) and
+[change tasks](../../openspec/changes/archive/2026-11-05-bind-practice-evidence-to-agent-versions/tasks.md)
+own the scope and actual progress. All tickets and six change tasks are complete.
+[Verification](../../openspec/changes/archive/2026-11-05-bind-practice-evidence-to-agent-versions/verification.md)
+records independent Ship, 801/801 offline tests with portable lifecycle, both
+self-tests and 92/92 checksums. Supplied versions remain context, not proved
+compatibility. The completed change is synced/archived and Unreleased; no version
+bump or new native/model
+budget, push or publication is included.
+
+## Completed research — technology refresh
+
+The owner requested another public-source study of SDD, mem0, Ponytail, an
+uncertain Netflix-related context tool and other current tools, including whether
+self-updating recommendations would improve Tibicen. The
+[map](../../.scratch/technology-refresh-research/map.md) and
+[dashboard](../../.scratch/technology-refresh-research/dashboard.md) separate three
+research lanes and root synthesis. All lanes and independent evidence/synthesis
+review are complete in the [study](../research/2026-11-05-technology-refresh/README.md).
+It recommends bounded version-aware evidence refresh before new integrations.
+Scope is primary-source research and paired documentation, not implementation,
+installation, native evaluation or publication.
+
+## Earlier completed local effort — adopt diagnosis follow-up
 
 The owner's 5 November instruction authorized this packet with parallel
 core/rules/docs agents. Implementation and independent review are complete;

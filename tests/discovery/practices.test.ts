@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { hashContent } from '../../scripts/core/contracts.ts';
 import {
   checkPractices,
   OFFICIAL_SOURCES,
@@ -36,7 +37,86 @@ test('reads only selected agent sources and attaches dated structured evidence',
   assert.equal(result.practices[0].agentVersion, '0.157.0');
   assert.equal(result.practices[0].status, 'checked');
   assert.equal(result.practices[0].evidence!.title, 'Project instructions');
+  assert.equal(
+    result.practices[0].evidence!.applicability,
+    'requires-agent-assessment',
+  );
+  assert.equal(
+    result.practices[0].evidence!.contentHash,
+    hashContent(
+      '# Project instructions\n\nKeep relevant instructions short and applicable to the project.\n\n```sh\ngit commit -am arbitrary\n```',
+    ),
+  );
+  assert.deepEqual(result.gaps, []);
   assert.ok(!JSON.stringify(result).includes('git commit'));
+});
+
+test('partial and omitted version context retain explicit missing-version gaps', async () => {
+  for (const agentVersions of [
+    { codex: 'preview / 2026.11+local' },
+    {},
+    undefined,
+  ]) {
+    let calls = 0;
+    const result = await checkPractices(
+      { agents: ['codex', 'cursor'], agentVersions },
+      {
+        fetch: async () => {
+          calls++;
+          return new Response(
+            '# Instructions\n\nUse relevant project guidance.',
+          );
+        },
+      },
+    );
+    assert.equal(calls, 4);
+    assert.deepEqual(
+      result.gaps,
+      (agentVersions?.codex ? ['cursor'] : ['codex', 'cursor']).map(
+        (agent) => ({ agent, reason: 'agent-version-unverified' }),
+      ),
+    );
+    assert.deepEqual(
+      result.practices.map((entry) => entry.agentVersion),
+      [agentVersions?.codex, agentVersions?.codex, undefined, undefined],
+    );
+  }
+});
+
+test('invalid version maps fail before any source read, including invalid later entries', async () => {
+  let calls = 0;
+  for (const agentVersions of [
+    null,
+    [],
+    '0.157.0',
+    1,
+    false,
+    { codex: null },
+    { codex: 1 },
+    { codex: {} },
+    { codex: '' },
+    { codex: ' \t ' },
+    { codex: 'a'.repeat(101) },
+    { codex: 'release\nnext' },
+    { codex: 'release\u007f' },
+    { codex: 'release\u0085' },
+    { codex: 'valid', cursor: 'unselected' },
+    { codex: 'valid', unknown: 'unsupported' },
+    JSON.parse('{"codex":"valid","__proto__":"unsupported"}'),
+  ])
+    await assert.rejects(
+      checkPractices(
+        { agents: ['codex'], agentVersions },
+        {
+          fetch: async () => {
+            calls++;
+            throw new Error('Unexpected request');
+          },
+        },
+      ),
+      { code: 'invalid-agent-versions' },
+    );
+  assert.equal(calls, 0);
 });
 
 test('HTML scripts and executable page markup never reach extracted data', async () => {
@@ -95,7 +175,7 @@ test('denies unofficial hosts, source redirects and excess source counts', async
 test('partial source failure preserves successful evidence and its coverage gap', async () => {
   let count = 0;
   const result = await checkPractices(
-    { agents: ['claude-code'] },
+    { agents: ['claude-code'], agentVersions: { 'claude-code': '2.0-local' } },
     {
       fetch: async () =>
         ++count === 1
@@ -106,8 +186,17 @@ test('partial source failure preserves successful evidence and its coverage gap'
     },
   );
   assert.equal(result.practices[0].status, 'unverified');
+  assert.equal(result.practices[0].agentVersion, '2.0-local');
+  assert.equal(result.practices[0].evidence, undefined);
   assert.equal(result.practices[1].status, 'checked');
-  assert.ok(result.gaps.some((gap) => gap.reason === 'source-unavailable'));
+  assert.equal(count, 2);
+  assert.deepEqual(result.gaps, [
+    {
+      source: OFFICIAL_SOURCES['claude-code'][0],
+      agent: 'claude-code',
+      reason: 'source-unavailable',
+    },
+  ]);
 });
 
 test('bounded streaming source reads stop oversized responses without excerpts', async () => {
