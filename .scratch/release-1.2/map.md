@@ -22,10 +22,13 @@ new scope. No paid API, credential changes or old-tag/asset rewrites.
   lock assertion failure remains recorded; no product/installer change hid it.
 - I01 failed before agent output, with unknown cause; A01 is withheld and original
   M03 unexecuted. That controlled-CLI scope remains closed.
-- A separately reviewed source-supplied Desktop pair may assess changed generic
-  reasoning. It cannot claim installed loading, CLI identity or OS isolation.
-  An actual accepted proposal still needs explicit root digest approval and real
-  fixture application. No fresh outcome or publication is yet claimed.
+- [Bounded preparation](issues/02-acceptance.md) and
+  [fresh observations](issues/04-observations.md) are complete. D01/D02 generic
+  reasoning and D03 retained application subcriteria plus separate D04 report
+  passed independent review. D03's collector stop is preserved, not regraded.
+- [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) was published
+  at 2026-11-05T03:46:37Z after final independent Ship. Returned assets/body/tag passed, preserving 1.1; factual
+  metadata and distinct Pages verification remain [active](issues/03-release.md).
 - [Broader harness coverage](../harness-coverage/map.md) is a separate planned
   product packet. Current three-agent hardcoding is confirmed, not universal
   support. Network limits and approved write paths stay intact.

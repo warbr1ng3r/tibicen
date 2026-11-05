@@ -12,7 +12,7 @@ export type Manager = keyof typeof managers;
 export type Agent = keyof typeof agents;
 
 export function installationCommand(manager: Manager, agent: Agent): string {
-  return `${managers[manager]} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7bbd953a020ac4ac4c7dfb99efa59f6e4b195026 -g --agent ${agent} --skill tibicen-init tibicen-adopt --copy`;
+  return `${managers[manager]} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0656f12e00ea83d84229180d331f3178bf253407 -g --agent ${agent} --skill tibicen-init tibicen-adopt --copy`;
 }
 
 export function mountInstallation() {

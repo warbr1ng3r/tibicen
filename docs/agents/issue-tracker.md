@@ -1,6 +1,6 @@
 # Issue tracker
 
-**Current status — 5 November 2026 (Moscow):** [1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0) is published. CI, six platform cells, public Git install/update/removal and downloaded assets passed. The [memory/release report](../evals/results/2026-11-04-project-memory/README.md) records exact bindings, assisted fresh-session results and the separate Pages verification. Historical queues below retain their old outcomes; they are not a new execution budget.
+**Current status — 5 November 2026 (Moscow):** [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) is published at `2026-11-05T03:46:37Z`. The [release report](../evals/results/2026-11-05-release-1.2/README.md) preserves exact bindings, the original native failure, scoped supplied-context observations and delivery results. The 804-test gate and current normal CI passed; six platform cells apply through unchanged inputs; mechanical full-SHA delivery matched 92 payloads for Codex, Claude Code and Cursor. Combined D03/D04 observations / engineering verdict: actual subcriteria of stopped D03 and the separate D04 report accepted / Ship for the frozen candidate and exact publication packet. Assets: passed: all three downloaded files match the exact release notes, tag and frozen candidate; 93 archive files/modes and 92 payload checksums match. Pages: separate 1.2 deployment and returned-byte checks pending. Historical queues retain their old outcomes and grant no new execution budget.
 
 Development in this repository uses Local Markdown. Git remote origin points to the public warbr1ng3r/tibicen repository; no external tracker is configured. The canonical tracker is in `.scratch/`; this directory is not excluded from Git. This setup is not part of the Tibicen distribution.
 
@@ -15,17 +15,15 @@ Development in this repository uses Local Markdown. Git remote origin points to 
 - Substantial change details and implementation checkboxes live in OpenSpec. A ticket holds the question/result, responsibility boundaries and a link to the exact task group. The roadmap holds stage order.
 - `dashboard.md` is a view of the tickets, updated after status/dependency changes. A visual in chat is a snapshot, not a second tracker.
 
-## Current effort — release 1.2.0
+## Current effort — 1.2.0 publication follow-up
 
-The owner delegated the release after the reviewed feature packet. The frozen
-1.2.0 source and distribution candidates are pushed; 801 tests, normal CI and
-all six OS/Node cells passed. Fresh init failed before agent output; adopt was
-withheld. The [status report](../evals/results/2026-11-05-release-1.2/README.md)
-keeps failures and delivery outcomes separate. The
+The owner delegated the release after the reviewed feature packet. The
 [release map](../../.scratch/release-1.2/map.md) and
-[dashboard](../../.scratch/release-1.2/dashboard.md) own the remaining technical
-work. Published 1.1.0 remains current. Paid APIs, credential changes and rewriting
-published tags/assets remain outside scope.
+[dashboard](../../.scratch/release-1.2/dashboard.md) retain actual attempt accounting,
+remaining publication checks and integration state. Version-aware practice
+evidence, adopt diagnosis and nested memory-pointer recognition are included;
+broader harness coverage remains the separate [planned effort](../../.scratch/harness-coverage/map.md).
+Paid APIs, credential changes and rewriting published tags/assets remain outside scope.
 
 ## Latest completed local effort — version-bound practice evidence
 
@@ -38,9 +36,9 @@ own the scope and actual progress. All tickets and six change tasks are complete
 [Verification](../../openspec/changes/archive/2026-11-05-bind-practice-evidence-to-agent-versions/verification.md)
 records independent Ship, 801/801 offline tests with portable lifecycle, both
 self-tests and 92/92 checksums. Supplied versions remain context, not proved
-compatibility. The completed change is synced/archived and Unreleased; no version
-bump or new native/model
-budget, push or publication is included.
+compatibility. The completed change is synced/archived and included in 1.2.0 through the later
+release packet. The original implementation packet included no version bump,
+new native/model budget, push or publication.
 
 ## Completed research — technology refresh
 

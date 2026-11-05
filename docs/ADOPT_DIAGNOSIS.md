@@ -1,10 +1,11 @@
 # Understanding an adopt result
 
-**In development, not yet released.** Published [1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0)
-remains unchanged. The examples below describe the clearer diagnosis and
-version-aware practice assessment being added to `tibicen-adopt`. They are
+**Available in [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0).**
+The examples below describe clearer diagnosis and version-aware practice
+assessment in `tibicen-adopt`. Published 1.1 bytes remain unchanged. These are
 illustrative projects and responses, not transcripts, completed runs or evidence
-of user benefit.
+of user benefit. Actual candidate observations and their assistance/limits are
+recorded in the [release report](evals/results/2026-11-05-release-1.2/README.md).
 
 Ask in ordinary words:
 

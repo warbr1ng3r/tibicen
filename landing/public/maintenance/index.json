@@ -59,6 +59,25 @@
         }
       ],
       "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0"
+    },
+    {
+      "version": "1.2.0",
+      "publishedAtUtc": "2026-11-05T03:46:37Z",
+      "sourceCommit": "fb80e78198e7fe12353fbe8f9319f84ac943f792",
+      "distributionCommit": "0656f12e00ea83d84229180d331f3178bf253407",
+      "scope": "Version-aware practice evidence, clearer adopt diagnosis and recognition of existing nested memory pointers. Mechanical public installation/update/backup restoration/removal verified for Codex, Claude Code and Cursor; all 92 payload files matched. Six macOS/Ubuntu/Windows × Node 22.20/24.15 standalone CI cells are reused through unchanged exact runtime/build/platform inputs. Two source-supplied Desktop observations were independently accepted for generic explanation and keep/change reasoning only; new native or implicit loading, current target compatibility and broader harness support are not established. Historical skill/process/memory observations retain their original source/input/profile and assistance limits. Windows command launch is unsupported; read-only operations are available. Human benefit is unmeasured.",
+      "payloadManifest": {
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.2.0/distribution-SHA256SUMS",
+        "sha256": "9c4853a038fec91a37ad430e50184ef3364e9ebb1f7569ff2010ba7a39cb70c5"
+      },
+      "archives": [
+        {
+          "name": "tibicen-1.2.0.tar.gz",
+          "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.2.0/tibicen-1.2.0.tar.gz",
+          "sha256": "fa33bdfbad280cba71b199671e280d71fcda1fc0b568b66130b0a1036aba47d9"
+        }
+      ],
+      "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0"
     }
   ],
   "warnings": []

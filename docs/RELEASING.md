@@ -93,14 +93,45 @@ Record corrections in a new candidate. Preserve failed attempts and old sums.
 Published tags and bytes stay immutable; a published defect requires a new
 version. There is no background update of installed Tibicen or project setup.
 
-## Unpublished 1.2.0 candidate
+## Published 1.2.0 — 5 November 2026 UTC
 
-The frozen candidate passed its 801-test local gate, normal public CI and all
-six platform cells. A fresh init observation failed before agent output, so
-changed-behavior acceptance and the following application check remain open.
-[Candidate status](evals/results/2026-11-05-release-1.2/README.md) records the exact
-source/distribution identities, delivery results and retained failures. No 1.2.0
-tag, release or Pages update is claimed. Published 1.1.0 stays current.
+[1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) was published at
+`2026-11-05T03:46:37Z` (release ID `434759670`); publication run: [41963669550](https://github.com/warbr1ng3r/tibicen/actions/runs/41963669550).
+Frozen public source `fb80e78198e7fe12353fbe8f9319f84ac943f792` binds distribution
+`0656f12e00ea83d84229180d331f3178bf253407`. The 804/804 offline gate passed without
+skips, as did [normal CI](https://github.com/warbr1ng3r/tibicen/actions/runs/41957289753).
+The [six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/41952044767)
+are reused through exact unchanged platform/build/runtime inputs, rather than
+represented as a new run. Public full-SHA installation/update/backup restoration/
+removal passed for Codex, Claude Code and Cursor, matching all 92 payload files
+and preserving projects, later memory notes, sibling skills and external settings.
+The initial strict-lock checker failure and corrected separate pass are retained.
+
+Version-aware practice context, clearer adopt diagnosis and nested memory-pointer
+recognition are compatible additions/fixes. No persisted-format migration is
+introduced by 1.2. Supplied versions are context, not proof of compatibility.
+D01/D02 passed independent review only for source-supplied generic reasoning.
+Combined D03/D04 observations and final engineering verdict: actual subcriteria of stopped D03 and the separate D04 report accepted / Ship for the frozen candidate and exact publication packet.
+D03 stopped on a root collector error after five CLI calls; its report command never ran.
+The separate D04 read-only report was independently accepted, without repeating apply.
+The original I01 failure, withheld A01 and unexecuted M03 keep their original status.
+New native/implicit loading, broader harness support and measured benefit are not claimed.
+
+| Release asset | Bytes | SHA256 |
+| --- | --- | --- |
+| [tibicen-1.2.0.tar.gz](https://github.com/warbr1ng3r/tibicen/releases/download/v1.2.0/tibicen-1.2.0.tar.gz) | 225604 | `fa33bdfbad280cba71b199671e280d71fcda1fc0b568b66130b0a1036aba47d9` |
+| [distribution-SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.2.0/distribution-SHA256SUMS) | 9582 | `9c4853a038fec91a37ad430e50184ef3364e9ebb1f7569ff2010ba7a39cb70c5` |
+| [SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.2.0/SHA256SUMS) | 177 | `b81625fc6b24efd63a5b655e0f7d58a3fc76e2168e3b43c176daac8d2e527772` |
+
+Returned-byte verification: passed: all three downloaded files match the exact release notes, tag and frozen candidate; 93 archive files/modes and 92 payload checksums match.
+Earlier tag/body/asset preservation: passed: the 1.1 tag/body and all three asset metadata/digests remain unchanged.
+GitHub reports `immutable: false`; server-enforced immutability is not claimed.
+The archive contains 93 regular files; the manifest covers 92 payload files.
+Install using the full distribution SHA in [README](../README.md); back up local
+skill edits before explicit replacement. Project updates remain separately approved.
+See the [release report](evals/results/2026-11-05-release-1.2/README.md) for exact
+bindings, assistance and failures. Pages verification is separate in
+[MAINTENANCE](MAINTENANCE.md); project memory's original 1.1 observations remain historical.
 
 ## Published 1.1.0 — 4 November 2026 UTC
 

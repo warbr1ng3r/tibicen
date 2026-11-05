@@ -2,8 +2,8 @@
 
 Type: task
 Labels: wayfinder:task
-Status: claimed
-Assignee: /root/release12_acceptance
+Status: resolved
+Assignee: none
 Blocked by: none
 
 ## Contract
@@ -20,9 +20,10 @@ ready protocol and gaps; tests must not force a component or spec workflow.
 
 ## Answer
 
-The original two-context protocol was reviewed. I01 consumed one failed attempt
-before assistant output; A01 stays withheld and the original scope is closed.
-Corrected CLI templates remain unexecuted. A separately scoped source-supplied
-Desktop pair is being prepared for the changed generic explanation subcriteria;
-it makes no CLI identity, installed-loading or OS-isolation claim. No new
-execution occurs before frozen bindings, independent review and root GO.
+The finite original CLI protocol and separate supplied-context Desktop profile
+were prepared, independently reviewed and bound to the frozen candidate. I01's
+failed attempt and withheld A01 remain historical; corrected CLI templates were
+not launched. The separate D01/D02 packets and root-assisted lifecycle scopes
+received exact bindings and independent review before their actual observations.
+Preparation is complete; actual outcomes are recorded in
+[observations](04-observations.md) and the [release report](../../../docs/evals/results/2026-11-05-release-1.2/README.md).

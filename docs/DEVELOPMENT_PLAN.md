@@ -1,17 +1,16 @@
 # Tibicen development plan
 
-**Current status — 5 November 2026 (Moscow):** [1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0) is published at `2026-11-04T21:02:42Z`. Normal CI, six platform cells, exact public Git delivery and downloaded assets passed; [memory observations and release follow-up](evals/results/2026-11-04-project-memory/README.md) retain setup assistance and coverage limits. Pages passed all 18 returned-body comparisons against its official artifact. Historical 1.0/prerelease narratives remain dated records, not a current task queue.
+**Current status — 5 November 2026 (Moscow):** [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) is published at `2026-11-05T03:46:37Z`. The [release report](evals/results/2026-11-05-release-1.2/README.md) retains exact source/distribution bindings, the original failed native attempt, supplied-context D01/D02 observations and scoped reuse of historical mechanisms. The 804-test gate and normal CI passed; six platform cells are reused through unchanged inputs, and mechanical public delivery matched 92 payloads for all three targets. Final engineering / combined D03/D04 result: Ship for the frozen candidate and exact publication packet / actual subcriteria of stopped D03 and the separate D04 report accepted. Assets: passed: all three downloaded files match the exact release notes, tag and frozen candidate; 93 archive files/modes and 92 payload checksums match. Pages: separate 1.2 deployment and returned-byte checks pending. Historical 1.1/1.0/prerelease narratives keep their dated outcomes.
 
-## Current work — release 1.2.0
+## Current work — 1.2.0 publication follow-up
 
-The frozen 1.2.0 candidate is committed and pushed. Its 801-test gate, normal
-public CI and all six OS/Node cells passed. The fresh init attempt failed before
-agent output; adopt was withheld and the application follow-up is blocked.
-Complete the missing behavior observations before publication. The
-[candidate status](evals/results/2026-11-05-release-1.2/README.md) records delivery
-checks, exact identities and retained failures. The
-[release dashboard](../.scratch/release-1.2/dashboard.md) owns the next actions;
-[RELEASING](RELEASING.md) owns the procedure. Published 1.1.0 remains current.
+The release includes version-aware practice evidence, clearer adopt diagnosis and
+nested memory-pointer recognition. Detailed acceptance, attempts and publication
+follow-up remain in the [release map](../.scratch/release-1.2/map.md) and
+[dashboard](../.scratch/release-1.2/dashboard.md); [RELEASING](RELEASING.md) owns the
+procedure. Keep exact observations, returned-byte checks and Pages verification
+separate. No additional harness support, background update or human benefit is
+implied. The following coverage work remains a separately scoped packet.
 
 ## Next planned work — broader harness coverage
 
@@ -34,9 +33,9 @@ Detailed requirements/tasks stay in the [change](../openspec/changes/archive/202
 actual progress is in the [dashboard](../.scratch/practice-evidence/dashboard.md).
 The [verification](../openspec/changes/archive/2026-11-05-bind-practice-evidence-to-agent-versions/verification.md)
 records independent Ship, 801/801 offline tests without skips, both standalone
-self-tests and 92/92 checksums. The completed change is synced/archived and
-Unreleased; no new tool
-bundle, background updater or product version is implied.
+self-tests and 92/92 checksums. The completed change is synced/archived and included in 1.2.0 through the later
+release packet. The original implementation packet did not authorize a version
+bump or publication; no new tool bundle or background updater is added.
 
 ## Completed local work — clearer adopt diagnosis and handoff
 
@@ -47,9 +46,9 @@ rules and EN/RU documentation were delegated in parallel; integration and
 independent review are complete in the [dashboard](../.scratch/adopt-diagnosis/dashboard.md).
 The [verification record](../openspec/changes/archive/2026-11-05-clarify-adopt-diagnosis/verification.md)
 retains the full offline gate, build, standalone checks and corrected review findings.
-The [guide](ADOPT_DIAGNOSIS.md) labels this work Unreleased. No new command,
-persisted schema, native-agent trial, version bump, commit or publication is part
-of this packet. Detailed behavior/tasks stay in the change.
+The [guide](ADOPT_DIAGNOSIS.md) describes this work, included in 1.2.0 through the
+later release packet. The original implementation packet included no new command,
+persisted schema, native-agent trial, version bump, commit or publication. Detailed behavior/tasks stay in the change.
 
 Autonomous continuation closed that change and passed the additional standalone
 lifecycle. It then reproduced and corrected a false missing-memory-connection

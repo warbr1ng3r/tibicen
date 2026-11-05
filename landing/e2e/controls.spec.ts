@@ -54,7 +54,7 @@ test('all installation combinations update immediately after selection', async (
       ]) {
         await choose(page, 'install-agent', agent);
         await expect(page.locator('#install-command')).toHaveText(
-          `${runner} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7bbd953a020ac4ac4c7dfb99efa59f6e4b195026 -g --agent ${flag} --skill tibicen-init tibicen-adopt --copy`,
+          `${runner} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0656f12e00ea83d84229180d331f3178bf253407 -g --agent ${flag} --skill tibicen-init tibicen-adopt --copy`,
         );
       }
     }
@@ -280,7 +280,7 @@ test('without JavaScript English stays default in a Russian browser and language
     await expect(page.locator('#name')).toBeDisabled();
     await expect(page.locator('#download-preset')).toBeDisabled();
     await expect(page.locator('#install-command')).toHaveText(
-      'npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7bbd953a020ac4ac4c7dfb99efa59f6e4b195026 -g --agent codex --skill tibicen-init tibicen-adopt --copy',
+      'npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0656f12e00ea83d84229180d331f3178bf253407 -g --agent codex --skill tibicen-init tibicen-adopt --copy',
     );
     await page
       .locator('#name')

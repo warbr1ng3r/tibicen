@@ -1,21 +1,20 @@
 # Release 1.2 dashboard
 
-**1.2.0 is an unpublished candidate. The current release is 1.1.0.**
+**1.2.0 is published. Returned assets match; the separate site update is in progress.**
 
 | Work | Status | Next action |
 | --- | --- | --- |
-| [Requirements and evidence](issues/01-audit.md) | Complete | Preserve the reviewed impact map and historical support limits. |
-| Candidate, CI and platforms | Passed | 801 candidate tests; 804 after the safe developer-helper correction; normal CI and all six OS/Node cells. |
-| Public full-SHA delivery | Passed after checker correction | Three installation targets, update, external backup/fresh restore, removal and protected data preservation. Original failure retained. |
-| [Fresh reasoning setup](issues/02-acceptance.md) | In progress | Review and bind the separately supplied-context Desktop packets. |
-| [Fresh reasoning and real application](issues/04-observations.md) | Awaiting prepared packets | Root GO, independent result review and an actual approved fixture proposal. |
-| [Publication](issues/03-release.md) | Waiting for observations | Then tag/assets, returned bytes and separate Pages verification. |
+| [Requirements and evidence](issues/01-audit.md) | Complete | Preserve exact impact bindings and historical support limits. |
+| Candidate, CI and platforms | Passed | 804 tests, normal CI; all six OS/Node cells reused through unchanged inputs. |
+| Public full-SHA delivery | Passed after checker correction | Three installer targets, update, backup/restore, removal and protected notes preserved. |
+| [Bounded preparation](issues/02-acceptance.md) | Complete | Exact packets, criteria, finite scopes and independent reviews retained. |
+| [Fresh reasoning and actual effects](issues/04-observations.md) | Accepted within scope | D01/D02; D03 accepted subcriteria with retained collector stop; separate D04 report. |
+| [Publication](issues/03-release.md) | Published; follow-ups active | Returned assets passed; finish paired release/site metadata, normal CI and separate Pages bytes. |
 
-The controlled CLI attempt failed before agent output, with unknown cause. Its
-scope is closed; the unused adopt attempt is withheld. The new Desktop scope
-checks generic reasoning only and cannot claim installed native loading.
+Original I01 remains failed, A01 withheld and M03 unexecuted. Supplied-context
+observations do not establish native loading or measured human benefit.
+[Detailed report](../../docs/evals/results/2026-11-05-release-1.2/README.md).
 
-[Detailed candidate report](../../docs/evals/results/2026-11-05-release-1.2/README.md).
 [Broader harness coverage](../harness-coverage/map.md) is the next planned product
-packet; it does not expand these release claims. No owner questionnaire, paid API
-or credential change is scheduled.
+packet; this release does not expand its support claims. No questionnaire,
+paid API or credential change is scheduled.

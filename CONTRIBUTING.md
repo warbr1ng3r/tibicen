@@ -1,9 +1,9 @@
 # Contributing to Tibicen
 
-Tibicen [1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0) is published.
+Tibicen [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) is published.
 The repository is [warbr1ng3r/tibicen](https://github.com/warbr1ng3r/tibicen).
 Release CI, six platform cells and public delivery are recorded in the
-[release follow-up](docs/evals/results/2026-11-04-project-memory/README.md).
+[release follow-up](docs/evals/results/2026-11-05-release-1.2/README.md).
 The maintainer/private security route is in [SECURITY](SECURITY.md); reporting scope
 is in the [code of conduct](CODE_OF_CONDUCT.md). Pages has separate deployment
 and returned-byte evidence in [MAINTENANCE](docs/MAINTENANCE.md).
@@ -55,7 +55,7 @@ must stay outside the distributed Tibicen skills.
 
 For project-memory changes, follow the [memory contract and user guide](docs/PROJECT_MEMORY.md):
 keep the one approved store, preserve unrelated notes, and distinguish structural
-checks from observed use in fresh sessions. The feature is available in published 1.1.0; the older 1.0.0 distribution
+checks from observed use in fresh sessions. The feature has been available since 1.1.0; the older 1.0.0 distribution
 does not include it.
 
 Record completed user-visible work under `Unreleased` in [CHANGELOG](CHANGELOG.md).

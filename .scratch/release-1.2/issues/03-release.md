@@ -4,7 +4,7 @@ Type: task
 Labels: wayfinder:task
 Status: claimed
 Assignee: /root
-Blocked by: 04
+Blocked by: none
 
 ## Contract
 
@@ -19,11 +19,16 @@ publication, retry loops, token changes, paidAPI or oldrelease rewriting.
 
 ## Answer
 
-Implementation and candidate preparation are committed/pushed. Frozen candidate
-801/801, safe observer revision 804/804, normal CI, all six OS/Node cells and
-corrected public full-SHA delivery passed. All 93 rebuilt distribution files
-remain byte/mode-identical. The first delivery failure and the failed I01 are
-preserved. Publication waits for [fresh reasoning/application](04-observations.md)
-and successful final public gates; 1.1.0 remains current.
+Prepublication engineering requirements and the exact publication packet passed
+independent review within unchanged coverage. Source gate 804/804, normal CI,
+six platform cells through unchanged inputs, exact distribution identity and
+three-target public Git delivery passed. Retained failures and assistance remain
+in the [release report](../../../docs/evals/results/2026-11-05-release-1.2/README.md).
 
-See the [candidate report](../../../docs/evals/results/2026-11-05-release-1.2/README.md).
+[1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) was published
+2026-11-05T03:46:37Z by [run 41963669550](https://github.com/warbr1ng3r/tibicen/actions/runs/41963669550).
+The new annotated tag peels to distribution `0656f12e00ea83d84229180d331f3178bf253407`;
+no old tag/asset was rewritten. All three returned asset bodies, notes/tag, 93 archive files/modes and 92 payload
+checksums passed; stable 1.1 metadata/body/assets/tag remain unchanged. Factual
+paired metadata integration and separate Pages deployment/returned-byte checks
+remain in progress. This ticket stays open until those follow-ups finish.

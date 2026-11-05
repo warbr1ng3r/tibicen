@@ -2,9 +2,9 @@
 
 Type: task
 Labels: wayfinder:task
-Status: claimed
-Assignee: /root
-Blocked by: 02
+Status: resolved
+Assignee: none
+Blocked by: none
 
 ## Contract
 
@@ -25,4 +25,19 @@ gap stays open. No paid API, credential change or automatic route fallback.
 
 ## Answer
 
-Preparation and source freeze in progress. No Desktop context launched yet.
+D01/D02 each ran once in fresh supplied-context Desktop sessions. Independent
+review accepted the grounded one-file init proposal and adopt retention, with
+version/source/applicability and loading limits. All 9/12 fixture files and the
+1,117 frozen source files retained their bytes/modes.
+
+D03 independently established the actual wrong-digest refusal, exact root-approved
+455-byte AGENTS addition, structural verification, complete public status and
+preservation. A root collector KeyError stopped its original five-call scope;
+report ordinal 6 remains unconsumed, so D03 is not a full-flow pass. Separately
+reviewed/approved D04 observed the single remaining read-only report, with complete
+preservation and independent acceptance. No apply or model turn was repeated.
+
+The final integration review accepted only these actual subcriteria plus the
+scoped unchanged-mechanism impact map. Original I01 failure/A01 withholding/M03
+non-execution remain unchanged; no new loading, compatibility or human-benefit
+claim follows. See the [release report](../../../docs/evals/results/2026-11-05-release-1.2/README.md).

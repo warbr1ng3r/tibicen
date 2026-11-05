@@ -13,15 +13,17 @@ Two entry points:
 - `tibicen-init` — “Set up agent infrastructure.” For an empty directory or an existing application without an agent setup.
 - `tibicen-adopt` — “Review and update agent infrastructure.” For fixing, extending, and updating existing instructions and integrations.
 
-[**1.1.0 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0):
-optional project memory with explicit read, update and correction rules. Normal CI
-and all six OS/Node cells passed. Public installation/update/removal for Codex,
-Claude Code and Cursor preserved project notes and matched all 90 payload files.
-Two controlled fresh Codex tasks used and updated memory with setup assistance;
-automatic loading and human usefulness remain unverified. See
-[observations and release follow-up](docs/evals/results/2026-11-04-project-memory/README.md)
-and the [live configuration page](https://warbr1ng3r.github.io/tibicen/).
-Earlier 1.0/alpha releases remain in [CHANGELOG](CHANGELOG.md).
+[**1.2.0 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0):
+version-aware practice evidence, clearer adopt diagnosis and recognition of
+existing nested memory pointers. The 804-test gate and normal CI passed; six
+platform cells apply through unchanged runtime/build inputs. Mechanical public
+installation/update/backup restoration/removal matched all 92 payloads for Codex,
+Claude Code and Cursor. Two source-supplied Desktop observations passed review
+for generic explanation and keep/change reasoning; they do not establish new
+native loading or compatibility. See the [release report](docs/evals/results/2026-11-05-release-1.2/README.md)
+and [configuration page](https://warbr1ng3r.github.io/tibicen/).
+Project memory was introduced in 1.1.0; its [assisted fresh-task observations](docs/evals/results/2026-11-04-project-memory/README.md)
+retain their original scope. Earlier releases remain in [CHANGELOG](CHANGELOG.md).
 
 Your agent's native initialization or a direct request to audit existing instructions may also be sufficient. Tibicen's comparative effort savings and human usefulness have not been measured.
 
@@ -29,10 +31,10 @@ Application source code, existing package manifests, CI, and data are preserved 
 
 ## Install Tibicen
 
-The command below pins the 1.1.0 distribution at its full commit. The
-[candidate report](docs/evals/results/2026-11-04-project-memory/README.md) records
-local checks, two controlled fresh memory tasks and their assistance/limits.
-Release publication and public delivery are tracked in [release details](docs/RELEASING.md).
+The command below pins the 1.2.0 distribution at its full commit. The
+[release report](docs/evals/results/2026-11-05-release-1.2/README.md) records exact
+checks, the retained failed native attempt and supplied-context observation limits.
+Publication and public delivery are tracked in [release details](docs/RELEASING.md).
 The source branch is not an installation target.
 
 Installation uses the separate built distribution. Checks cover exact payloads,
@@ -40,7 +42,7 @@ version/resource access, explicit replacement, backup restoration and removal.
 Native discovery/loading is a separate observation, not an installer guarantee.
 
 ```sh
-npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7bbd953a020ac4ac4c7dfb99efa59f6e4b195026 -g --agent codex --skill tibicen-init tibicen-adopt --copy
+npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0656f12e00ea83d84229180d331f3178bf253407 -g --agent codex --skill tibicen-init tibicen-adopt --copy
 ```
 
 Use the full distribution SHA from the release notes when an exact commit is
@@ -121,11 +123,11 @@ for the exact tested scope.
 4. After approval, it applies only the displayed plan. If another process changes an affected file, writing stops.
 5. It hands over the result, limitations, and a useful first prompt. The manifest preserves provenance, changes, and the original session history.
 
-In development, adopt explains the starting setup, concrete finding, what to
-keep/change, actual checks and one next step. The existing report gains a fresh
+Since 1.2.0, adopt explains the starting setup, concrete finding, what to
+keep/change, actual checks and one next step. The existing report includes a fresh
 read-only diagnosis alongside its recorded session results. See the
-[four plain examples](docs/ADOPT_DIAGNOSIS.md); these additions are Unreleased,
-and the published 1.1.0 installation above stays unchanged.
+[four plain examples](docs/ADOPT_DIAGNOSIS.md). Supplied agent versions remain
+context; dated source content alone does not prove applicability or loading.
 
 `complete` means integration is finished with no known mandatory defect; project and behavioral checks have independent results. `manual-action-required` means mandatory external actions remain. An internal failure or an unresolved mandatory defect produces `incomplete`; state and original versions of affected files are preserved so work can resume with new approval.
 
@@ -173,7 +175,7 @@ Use focused checks while editing; run `pnpm test` before integrating changes.
 
 The full `pnpm test` gate still runs lint, formatting, all type checks, the site build, strict OpenSpec validation and every Node test. Browser tests remain the separate `pnpm test:site` command.
 
-[Offline CI](docs/CI.md) runs the full gate, build, distribution checksums and unpacked self-tests without model credentials. The 1.1 source passed [GitHub Actions on Ubuntu](https://github.com/warbr1ng3r/tibicen/actions/runs/41911531361); the clean public-source gate passed 767 tests with one intentional skip.
+[Offline CI](docs/CI.md) runs the full gate, build, distribution checksums and unpacked self-tests without model credentials. The 1.2 frozen source passed [GitHub Actions on Ubuntu](https://github.com/warbr1ng3r/tibicen/actions/runs/41957289753); its full offline gate passed 804 tests without skips. Exact candidate and reused platform bindings are in the [release report](docs/evals/results/2026-11-05-release-1.2/README.md).
 
 Use `pnpm eval:diagnostic` for the documented [diagnostic entry](docs/evals/EXTERNAL_RUNS.md): dry-run by default, or offline calibration with a fake driver. Native execution requires an explicit supported request; unsupported routes produce a saved blocked result.
 
@@ -192,17 +194,17 @@ The landing page is a separate Astro workspace in `landing/`, with adapted Astro
 English is canonical for project documentation. Russian translations live beside it as `*_ru.md`; all references target the English documents. Update a translation alongside its guide.
 
 - [Product vision](docs/PRODUCT_VISION.md).
-- [What published Tibicen does today](docs/CURRENT_CAPABILITIES.md).
+- [Capability snapshot — 1.1.0 baseline](docs/CURRENT_CAPABILITIES.md).
 - [Public user problems and small-product priorities](docs/research/2026-11-05-user-problems/README.md).
 - [Current tools and technology-refresh research](docs/research/2026-11-05-technology-refresh/README.md).
 - [Development plan and work allocation](docs/DEVELOPMENT_PLAN.md).
-- [Project memory — available in 1.1.0](docs/PROJECT_MEMORY.md).
-- [Understanding an adopt result — in development](docs/ADOPT_DIAGNOSIS.md).
+- [Project memory — available since 1.1.0](docs/PROJECT_MEMORY.md).
+- [Understanding an adopt result — available in 1.2.0](docs/ADOPT_DIAGNOSIS.md).
 - [Versioning and release procedure](docs/RELEASING.md).
 - [Voluntary postpublication usefulness protocol](docs/PILOT.md).
 - [Security boundaries and vulnerability reporting](SECURITY.md).
 
-Core/adapter ownership and the private security route are recorded in [SECURITY](SECURITY.md). The [maintenance procedure](docs/MAINTENANCE.md) now records source review, scope and follow-up; its [latest review](docs/evals/results/2026-11-03-maintenance-review/README.md) covers documentation and CLI metadata. Reporting now follows the scoped [code of conduct](CODE_OF_CONDUCT.md), which replaces the former general private conduct-inbox promise. The separate Pages [checksum index](landing/public/maintenance/index.json) is published and its returned bytes match the committed record; candidate-specific behavior retains its separately recorded evidence and limits in the [maintenance guide](docs/MAINTENANCE.md). GitHub administration is shared. Voluntary pilot parameters belong to the separate postpublication study. The core and adapters are reviewed at least monthly and when supported tools change significantly. Updating an installed Tibicen is an explicit user action; there is no background self-update.
+Core/adapter ownership and the private security route are recorded in [SECURITY](SECURITY.md). The [maintenance procedure](docs/MAINTENANCE.md) now records source review, scope and follow-up; its [latest review](docs/evals/results/2026-11-03-maintenance-review/README.md) covers documentation and CLI metadata. Reporting now follows the scoped [code of conduct](CODE_OF_CONDUCT.md), which replaces the former general private conduct-inbox promise. The separate Pages [checksum index](landing/public/maintenance/index.json) retains its verified 1.1 baseline; deployment and returned-byte checks for the new 1.2 record are pending. Candidate-specific behavior keeps its separate evidence and limits in the [maintenance guide](docs/MAINTENANCE.md). GitHub administration is shared. Voluntary pilot parameters belong to the separate postpublication study. The core and adapters are reviewed at least monthly and when supported tools change significantly. Updating an installed Tibicen is an explicit user action; there is no background self-update.
 
 License: MIT.
 
