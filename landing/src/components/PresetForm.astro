@@ -173,7 +173,7 @@ const kinds = [
           </Field>
         </div>
         <fieldset data-field="agents">
-          <legend>{t('Agent hints', 'Какими агентами пользуетесь?')}</legend>
+          <legend>{t('Harness suggestions', 'Подсказки среды агента')}</legend>
           <div class="agent-choices">
             {HARNESS_PROFILES.map(({ id, label, status }) => (
               <label>
@@ -202,6 +202,24 @@ const kinds = [
             hidden
           ></p>
         </fieldset>
+        <Field
+          id="custom-agents"
+          name="customAgents"
+          label={t('Other harness IDs', 'ID других сред агента')}
+          hint={t(
+            'Separate lowercase IDs with spaces or commas, for example team-agent. Up to 16 distinct IDs including suggestions. Preferences only.',
+            'Строчные ID через пробел или запятую, например team-agent. Не более 16 разных ID вместе с подсказками. Только предпочтения.',
+          )}
+        >
+          <input
+            id="custom-agents"
+            name="customAgents"
+            placeholder="team-agent"
+            autocapitalize="none"
+            spellcheck="false"
+            aria-describedby="custom-agents-hint custom-agents-error"
+          />
+        </Field>
         <Field
           id="forbidden-paths"
           name="forbiddenPaths"

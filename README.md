@@ -40,19 +40,32 @@ The source branch is not an installation target.
 Installation uses the separate built distribution. Checks cover exact payloads,
 version/resource access, explicit replacement, backup restoration and removal.
 Native discovery/loading is a separate observation, not an installer guarantee.
+The explicit `universal` target puts both complete skills in `~/.agents/skills/`;
+it does not require your host, model or provider to be in Tibicen's catalog.
 
 ```sh
-npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0656f12e00ea83d84229180d331f3178bf253407 -g --agent codex --skill tibicen-init tibicen-adopt --copy
+npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0656f12e00ea83d84229180d331f3178bf253407 -g --agent universal --skill tibicen-init tibicen-adopt --copy
 ```
 
 Use the full distribution SHA from the release notes when an exact commit is
 required. Do not install from the default source branch: it includes development
-skills. Node and Git are required for installation; repository dependencies and
+skills. Node and Git are required for the Git-backed installer route; repository dependencies and
 a site build are not.
+
+Open a project session in your usual file-capable agent and ask:
+
+> Read `~/.agents/skills/tibicen-init/SKILL.md` and follow its instructions. Set up agent infrastructure for this project with minimal process. Show the exact plan before applying it.
+
+For existing infrastructure, use `~/.agents/skills/tibicen-adopt/SKILL.md` and ask
+it to review and improve the setup. Expand `~` to your actual home path if the
+host needs an absolute path. Explicit reading works without native skill
+discovery; it does not establish automatic loading or behavior in another session.
+See [installation and complete manual-folder recovery](docs/INSTALLATION.md)
+and [working across hosts and models](docs/HARNESS_PORTABILITY.md).
 
 ## Build and install from source
 
-Building and using the skills requires Node ≥22.20 and a configured agent. Installing the skills does not require repository dependencies or a site build. The installer requires Git; once installed, Tibicen can work without Git using a temporary project copy.
+Building and using the skills requires Node ≥22.20 and a host that can read project files and perform the required local operations. The model and provider stay configured in that host; Tibicen adds no provider client, credential requirement or model allowlist. Installing the skills does not require repository dependencies or a site build. The installer requires Git; once installed, Tibicen can work without Git using a temporary project copy.
 
 Command execution controls the process group on POSIX systems and stops descendants on timeout or cancellation, with up to one extra second for forced termination. Windows execution currently returns `process-tree-unavailable` before launching a command; read-only operations remain available. Standalone checks passed on [macOS, Ubuntu and Windows for the recorded working-source snapshot](docs/evals/results/2026-10-30-platform-checks/README.md). Those checks do not establish final-candidate or native-agent coverage.
 
@@ -66,20 +79,20 @@ Then run **one** command with your preferred package manager:
 
 ```sh
 # npm
-npx skills@1.7.4 add ./dist -g --agent codex --copy
+npx skills@1.7.4 add ./dist -g --agent universal --skill tibicen-init tibicen-adopt --copy
 
 # pnpm
-pnpm dlx skills@1.7.4 add ./dist -g --agent codex --copy
+pnpm dlx skills@1.7.4 add ./dist -g --agent universal --skill tibicen-init tibicen-adopt --copy
 
 # Yarn 2+
-yarn dlx skills@1.7.4 add ./dist -g --agent codex --copy
+yarn dlx skills@1.7.4 add ./dist -g --agent universal --skill tibicen-init tibicen-adopt --copy
 ```
 
 Yarn Classic 1.x has no `dlx`; use `npx`. This only selects how to run the installer: the target project's package manager and dependencies remain unchanged.
 
-Replace `codex` with `claude-code` or `cursor` as needed. These commands were verified by installing both skills through npm, pnpm 11.21.0, and Yarn 4.18.1 into separate temporary user scopes (Node 24.15.0, macOS). After installation, their resources are accessible outside the source repository. `--copy` creates an independent copy; `-g` installs skills in the developer's user scope.
+Keep `--agent universal` explicit: omitting it can select multiple installer targets. `--copy` creates an independent copy; `-g` installs in the developer's user scope. Earlier npm/pnpm/Yarn delivery observations used named native targets and retain that scope in their reports; they do not prove universal native discovery. The complete folders and their resources must stay together.
 
-In your agent, explicitly invoke the skill by name and describe your project. For example: “Use tibicen-init. Set up agent infrastructure for this project with minimal process.” You can request “all defaults” to skip the interview questions; the final plan still requires approval.
+Use the explicit `SKILL.md` reading prompt above with the installed location. You can request “all defaults” to skip the interview questions; the final plan still requires approval.
 
 `dist/` is the distribution tree, containing two standalone skills and `SHA256SUMS`. Each skill includes its own copies of shared resources, built automatically from a single source. The published distribution branch and version tags contain this built tree. Installing from the root of the unbuilt source repository is unsupported.
 
@@ -102,15 +115,16 @@ the next Tibicen release. Back up local edits, then repeat `add` with the next
 release's explicit URL. Resuming a project session is a separate, approved
 Tibicen operation. Candidate-specific acceptance is recorded in release notes.
 
-To remove both skills from the tested Codex user scope:
+To remove both skills from the common user scope:
 
 ```sh
-pnpm dlx skills@1.7.4 remove tibicen-init tibicen-adopt -g --agent codex -y
+pnpm dlx skills@1.7.4 remove tibicen-init tibicen-adopt -g --agent universal -y
 ```
 
-This removes their installed directories and any files inside them. In the local
-macOS check it preserved project files, `.tibicen` manifests/state, presets and
-agent configuration outside those directories. Empty parent directories and the
+This removes their installed directories and any files inside them. Earlier
+local macOS observations for named native targets preserved project files,
+`.tibicen` manifests/state, presets and agent configuration outside those
+directories; those observations retain their original target scope. Empty parent directories and the
 installer's lock file may remain. Removal does not undo approved project setup;
 review project changes separately. See the [delivery evidence](docs/evals/results/2026-10-27-candidate-delivery/README.md)
 for the exact tested scope.
@@ -130,6 +144,17 @@ read-only diagnosis alongside its recorded session results. See the
 context; dated source content alone does not prove applicability or loading.
 
 `complete` means integration is finished with no known mandatory defect; project and behavioral checks have independent results. `manual-action-required` means mandatory external actions remain. An internal failure or an unresolved mandatory defect produces `incomplete`; state and original versions of affected files are preserved so work can resume with new approval.
+
+One approved `AGENTS.md`, explicitly read by each selected host, can be sufficient
+for several tools and user-selected models. Required reading or activation that
+has not happened remains `manual-action-required`. Native shared copies need a
+separately supported request; missing automatic task/quiz/loading probes remain
+`unverified` without blocking the available setup. Read-only or no-Node hosts get
+the specific missing operation and a local/manual next step, not an invented
+scan or completed application.
+
+The expanded portable guidance and uncatalogued preset hints in this checkout
+are **Unreleased**; the pinned 1.2 distribution keeps its published bytes.
 
 ## Capabilities and verification limits
 
@@ -201,6 +226,8 @@ English is canonical for project documentation. Russian translations live beside
 - [Project memory — available since 1.1.0](docs/PROJECT_MEMORY.md).
 - [Understanding an adopt result — available in 1.2.0](docs/ADOPT_DIAGNOSIS.md).
 - [Harness profiles and evidence limits — Unreleased](docs/HARNESS_CAPABILITIES.md).
+- [Installation and manual recovery](docs/INSTALLATION.md).
+- [Portable workflow across hosts and models — updated guidance Unreleased](docs/HARNESS_PORTABILITY.md).
 - [Versioning and release procedure](docs/RELEASING.md).
 - [Voluntary postpublication usefulness protocol](docs/PILOT.md).
 - [Security boundaries and vulnerability reporting](SECURITY.md).

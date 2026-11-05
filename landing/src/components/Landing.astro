@@ -17,6 +17,7 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 const repository = 'https://github.com/warbr1ng3r/tibicen';
 const guide = `${repository}/blob/main/README.md`;
+const installationGuide = `${repository}/blob/main/docs/INSTALLATION.md`;
 const release = `${repository}/releases/tag/v1.2.0`;
 const scenarios = [
   {
@@ -27,8 +28,8 @@ const scenarios = [
       'Для пустой папки или приложения без агентских инструкций. Опишите задачу — Tibicen изучит проект.',
     ),
     prompt: t(
-      'Use tibicen-init. Set this project up for my coding agent.',
-      'Используй tibicen-init. Подготовь этот проект для моего агента.',
+      'Read ~/.agents/skills/tibicen-init/SKILL.md and follow its instructions. Set this project up for my coding agent.',
+      'Прочитай ~/.agents/skills/tibicen-init/SKILL.md и следуй его инструкциям. Подготовь этот проект для моего агента.',
     ),
   },
   {
@@ -39,8 +40,8 @@ const scenarios = [
       'Для существующих инструкций и инструментов. Найдите конфликты и устаревшие правила, сохранив полезные решения.',
     ),
     prompt: t(
-      'Use tibicen-adopt. Check the project instructions and fix what is outdated.',
-      'Используй tibicen-adopt. Проверь инструкции проекта и исправь устаревшее.',
+      'Read ~/.agents/skills/tibicen-adopt/SKILL.md and follow its instructions. Check the project instructions and fix what is outdated.',
+      'Прочитай ~/.agents/skills/tibicen-adopt/SKILL.md и следуй его инструкциям. Проверь инструкции проекта и исправь устаревшее.',
     ),
   },
 ];
@@ -74,8 +75,8 @@ const questions = [
       'Можно использовать другого агента?',
     ),
     description: t(
-      'The installation selector covers Codex, Claude Code and Cursor. Other environments are not established by these installation checks. Check Compatibility and limits near the installation command for the scope of the published release.',
-      'В выборе установки есть Codex, Claude Code и Cursor. Эти проверки установки не подтверждают другие среды. Область поддержки опубликованного релиза описана в разделе «Совместимость и ограничения» рядом с командой.',
+      'Use a host that can read project files and run the required Node commands. Explicitly open the installed SKILL.md; a catalog entry or automatic discovery is not required. Your host chooses the model and provider. Check Compatibility and limits for the narrower observations on the published release.',
+      'Нужна среда, которая читает файлы проекта и запускает нужные Node-команды. Явно откройте установленный SKILL.md; запись в каталоге и автоматическое обнаружение не обязательны. Модель и провайдера выбирает ваша среда. Наблюдения для опубликованного релиза перечислены в разделе «Совместимость и ограничения».',
     ),
   },
   {
@@ -263,14 +264,14 @@ const geometry = [
             <h2 id="start-title">{t('Get started', 'Начните работу')}</h2>
             <p>
               {t(
-                'You need Node ≥22.20, Git and your coding agent. No preset required.',
-                'Нужны Node ≥22.20, Git и ваш агент. Пресет необязателен.',
+                'Your agent needs file access and Node ≥22.20; the installer needs Git. No preset required.',
+                'Нужны доступ к файлам, Node ≥22.20 и Git для установщика. Пресет необязателен.',
               )}
             </p>
             <p class="support-note">
               {t(
-                'Automatic skill loading is experimental. On Windows, Tibicen cannot run project commands; read-only work is available.',
-                'Автоматическая загрузка скиллов экспериментальна. На Windows Tibicen не запускает команды проекта; чтение доступно.',
+                'Automatic loading is experimental. Without file/Node tools, use a local operator. On Windows, run project commands manually.',
+                'Автозагрузка экспериментальна. Без файлов/Node нужен локальный оператор. На Windows запускайте команды проекта вручную.',
               )}
             </p>
             <details class="start-help" id="compatibility">
@@ -293,14 +294,14 @@ const geometry = [
         <div class="page-width first-session">
           <p class="start-step">
             {t(
-              '3. Open a fresh session in your project',
-              '3. Откройте новую сессию в проекте',
+              '3. Open the skill in your project session',
+              '3. Откройте скилл в сессии проекта',
             )}
           </p>
           <p>
             {t(
-              'Open or reopen your coding agent in the project folder. Then send one of the requests below.',
-              'Откройте или перезапустите агента в папке проекта. Затем отправьте один из запросов ниже.',
+              'Open your agent in the project folder and send one request below. Replace ~ with your home directory if needed, or use your manual-install path. Keep the complete skill folder available for its resources.',
+              'Откройте агента в папке проекта и отправьте один запрос ниже. При необходимости замените ~ на домашнюю папку или укажите путь ручной установки. Сохраните доступ ко всей папке скилла с ресурсами.',
             )}
           </p>
           <details class="start-help" id="skill-help">
@@ -310,24 +311,24 @@ const geometry = [
             <ol>
               <li>
                 {t(
-                  'Start a fresh agent session after installation.',
-                  'После установки начните новую сессию агента.',
+                  'Ask the agent to read the exact SKILL.md path shown in the request. If necessary, provide its absolute path or use the host’s documented file-attachment step.',
+                  'Попросите агента прочитать SKILL.md по пути из запроса. При необходимости укажите абсолютный путь или прикрепите файл способом из документации среды.',
                 )}
               </li>
               <li>
                 {t(
-                  'Check that the installation target matches the agent you opened, then invoke tibicen-init or tibicen-adopt explicitly.',
-                  'Проверьте, что при установке выбрали именно открытый агент. Явно укажите tibicen-init или tibicen-adopt в запросе.',
+                  'The host must also read the skill’s referenced files and run its Node CLI. Without those tools, use a local operator for the approved commands; supplied text alone only supports guidance.',
+                  'Среда должна читать связанные файлы скилла и запускать его Node CLI. Без этих средств согласованные команды выполняет локальный оператор; переданный текст даёт только рекомендации.',
                 )}
               </li>
               <li>
                 {t(
-                  'If it still cannot load the skill, check the installation guide and your agent’s documented skill-loading steps. Manually providing the installed SKILL.md is assisted loading, not automatic discovery.',
-                  'Если скилл всё ещё не загружается, сверьтесь с инструкцией установки и документацией вашего агента о загрузке скиллов. Если вы вручную передаёте установленный SKILL.md, это ручная загрузка, а не автоматическое обнаружение.',
+                  'Explicit reading is assisted loading. Automatic discovery and use remain unverified for your host. After setup, explicitly read the approved project AGENTS.md in each session when the host does not discover it.',
+                  'Явное чтение — ручная загрузка. Автоматическое обнаружение и использование в вашей среде остаются непроверенными. После настройки явно читайте согласованный AGENTS.md проекта в каждой сессии, если среда не находит его сама.',
                 )}
               </li>
             </ol>
-            <a href={`${guide}#build-and-install-from-source`}>
+            <a href={installationGuide}>
               {t(
                 'Installation and explicit invocation',
                 'Установка и явный вызов',

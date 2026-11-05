@@ -7,11 +7,14 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ### Added
 
+- Accept well-formed uncatalogued harness hints in core and the local browser form through shared validation, with at most sixteen distinct IDs.
+- Document explicit skill-file loading, one common project instruction/memory route and complete manual archive installation for file/Node-capable hosts with user-selected models/providers.
 - Add a dated catalog covering 13 harness profiles and read-only `harnesses` command with explicit unknown and legacy outcomes.
 - Share descriptive identities across core/browser preset hints and recognize native instruction candidates and structural memory references without expanding automatic writes or native compatibility claims.
 
 ### Changed
 
+- Use the pinned installer's explicit universal target as the default installation route; keep native discovery and optional behavior checks separate from structural setup.
 - Select practices across catalog identities with at most sixteen selections, two sources per profile and six total HTTP attempts; report withheld sources and accept selected unknown-version context without fetching an invented source.
 - Keep installation, checked MCP/process adapters and native evaluation permissions separate from descriptive profiles; preserve the original published 1.2 assets and pins.
 

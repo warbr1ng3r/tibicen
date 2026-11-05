@@ -230,6 +230,18 @@ export const isHarnessId = (value: unknown): value is string =>
   value.length <= 64 &&
   /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
 
+export function isHarnessHintList(value: unknown): value is string[] {
+  if (!Array.isArray(value)) return false;
+  const distinct = new Set<string>();
+  for (let index = 0; index < value.length; index++) {
+    if (!Object.hasOwn(value, index) || !isHarnessId(value[index]))
+      return false;
+    distinct.add(value[index]);
+    if (distinct.size > 16) return false;
+  }
+  return true;
+}
+
 export function instructionCandidate(relative: string) {
   return (
     /(?:^|\/)(?:AGENTS(?:\.local)?\.md|AGENT\.md|CLAUDE\.md|GEMINI\.md|\.cursorrules|\.windsurfrules|\.roorules(?:-[a-zA-Z0-9_-]+)?|\.clinerules)$/.test(

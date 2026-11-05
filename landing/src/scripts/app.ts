@@ -114,6 +114,7 @@ form.addEventListener('submit', (event) => {
         process: data.get('process'),
         style: data.get('style'),
         agents: data.getAll('agents'),
+        customAgents: data.get('customAgents'),
         forbiddenPaths: data.get('forbiddenPaths'),
       },
       locale,

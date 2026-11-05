@@ -15,6 +15,34 @@ Development in this repository uses Local Markdown. Git remote origin points to 
 - Substantial change details and implementation checkboxes live in OpenSpec. A ticket holds the question/result, responsibility boundaries and a link to the exact task group. The roadmap holds stage order.
 - `dashboard.md` is a view of the tickets, updated after status/dependency changes. A visual in chat is a snapshot, not a second tracker.
 
+## Completed local effort — harness and model portability
+
+The [portability map](../../.scratch/harness-portability/map.md) and
+[dashboard](../../.scratch/harness-portability/dashboard.md) own the completed
+three-lane implementation and local integration. Actual results: 843/843 offline
+tests, 42 affected browser checks, independent source review, universal local
+delivery and the mechanical init/adopt U02 route. U01 remains failed; no native or
+LLM observation is inferred. Candidate-02 is unpublished; candidate-01 and H01/H02
+retain their original scope. Release work follows the retained release effort
+and its concrete authorization requirements below.
+
+## Current effort — local 1.3 acceptance and public release packet
+
+The [release map](../../.scratch/release-1.3/map.md) owns the next packet. Fresh
+source-assisted init/adopt cases and exact candidate-02 update/recovery/removal
+passed independent review. The [candidate report](../evals/results/2026-11-05-release-1.3/README.md)
+records actual results and unverified native/model scope. Source commit/push and
+public release gates require explicit authorization on the prepared packet.
+
+## Retained intermediate 1.3.0 preparation
+
+The owner authorized the reviewed feature commit/push and autonomous candidate
+preparation. Use the [release map](../../.scratch/release-1.3/map.md) and
+[dashboard](../../.scratch/release-1.3/dashboard.md). Candidate, affected guidance
+observations and exact local delivery have separate scopes. New public release
+actions require the concrete packet and authorization in [RELEASING](../RELEASING.md).
+Feature public commit: `93d9305380ee24deb7ffca88f6d62fb48250f2f2`.
+
 ## Completed local effort — descriptive harness profiles (Unreleased)
 
 The owner's autonomous continuation activated the [coverage map](../../.scratch/harness-coverage/map.md)

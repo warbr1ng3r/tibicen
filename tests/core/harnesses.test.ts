@@ -8,7 +8,59 @@ import {
   observedHarnesses,
   harnessInfrastructurePath,
   isHarnessId,
+  isHarnessHintList,
 } from '../../scripts/agents/profiles.ts';
+
+test('harness hints accept uncatalogued IDs and count distinct values without mutation', () => {
+  const sixteen = Array.from({ length: 16 }, (_, index) => `team-${index}`);
+  for (const hints of [
+    [],
+    ['codex', 'team-agent', 'constructor'],
+    HARNESS_PROFILES.map(({ id }) => id),
+    Array(32).fill('codex'),
+    sixteen,
+    [...sixteen, ...sixteen],
+    ['a'.repeat(64)],
+  ]) {
+    const original = [...hints];
+    assert.equal(isHarnessHintList(hints), true);
+    assert.deepEqual(hints, original);
+  }
+  assert.equal(isHarnessHintList([...sixteen, 'seventeenth']), false);
+});
+
+test('harness hints reject malformed values and holes even when an index is inherited', () => {
+  const sparse = ['codex'];
+  sparse.length = 2;
+  const inherited = Array(1);
+  Object.setPrototypeOf(inherited, { 0: 'codex' });
+  const largeSparse: string[] = [];
+  largeSparse.length = 100_000;
+  for (const value of [
+    null,
+    undefined,
+    'codex',
+    { 0: 'codex', length: 1 },
+    [null],
+    [undefined],
+    [1],
+    [{}],
+    [''],
+    ['Uppercase'],
+    ['team agent'],
+    ['two--hyphens'],
+    ['-prefix'],
+    ['trailing-'],
+    ['with_underscore'],
+    ['../codex'],
+    ['team\nagent'],
+    ['a'.repeat(65)],
+    sparse,
+    inherited,
+    largeSparse,
+  ])
+    assert.equal(isHarnessHintList(value), false);
+});
 
 test('catalog retains scoped current and legacy identities without executable metadata', async () => {
   assert.equal(HARNESS_PROFILES.length, 13);

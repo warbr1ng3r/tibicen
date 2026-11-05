@@ -1,5 +1,5 @@
 ---
-import { agents, managers, installationCommand } from '../scripts/install';
+import { managers, installationCommand } from '../scripts/install';
 import Select from './ui/Select.astro';
 import { localize, type Locale } from '../i18n';
 
@@ -12,7 +12,7 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
 
 <div class="installation">
   <p class="start-step">
-    {t('1. Choose your coding agent', '1. Выберите своего агента')}
+    {t('1. Choose a command runner', '1. Выберите способ запуска')}
   </p>
   <div class="installation-head">
     <span>Tibicen 1.2.0</span>
@@ -46,18 +46,6 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
     disabled
   >
     <div>
-      <label for="install-agent">{t('Your coding agent', 'Ваш агент')}</label>
-      <Select
-        id="install-agent"
-        label={t('Your coding agent', 'Ваш агент')}
-        value="codex"
-        options={Object.entries(agents).map(([value, label]) => ({
-          value,
-          label,
-        }))}
-      />
-    </div>
-    <div>
       <label for="install-manager">
         {t('Command runner', 'Чем запустить команду')}
       </label>
@@ -75,25 +63,34 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
   <p class="start-step install-run">
     {t('2. Run this in your terminal', '2. Выполните в терминале')}
   </p>
-  <pre><code id="install-command">{installationCommand('npm', 'codex')}</code></pre>
+  <pre><code id="install-command">{installationCommand('npm')}</code></pre>
   <p>
+    {t('Installs both complete skills in', 'Установит оба скилла целиком в')}{' '}
+    <code>~/.agents/skills/</code>.
     {t(
-      'Installs both skills in your user account for the selected agent, across projects. It does not change your project’s packages.',
-      'Установит оба скилла для выбранного агента в вашей учётной записи, для разных проектов. Пакеты проекта не меняются.',
+      ' Open the entry file explicitly in your agent. Back up local skill edits before reinstalling.',
+      ' Явно откройте файл скилла в своём агенте. Перед переустановкой сохраните локальные правки скиллов.',
     )}
+  </p>
+  <p>
+    <a href="https://github.com/warbr1ng3r/tibicen/blob/main/docs/INSTALLATION.md#manual-archive-installation">
+      {t(
+        'Manual archive installation and checksums',
+        'Установка из архива и контрольные суммы',
+      )}{' '}
+      ↗
+    </a>
   </p>
   <noscript>
     <p>
       {t(
-        'Without JavaScript, the command uses npm and Codex. For pnpm use',
-        'Без JavaScript показана команда для npm и Codex. Для pnpm используйте',
+        'Without JavaScript, the command uses npm and the universal folder. For pnpm use',
+        'Без JavaScript показана команда для npm и общей папки. Для pnpm используйте',
       )}{' '}
       <code>pnpm dlx</code>
       {t(', for Yarn 2+ use', ', для Yarn 2+ —')} <code>yarn dlx</code>{' '}
-      {t('instead of', 'вместо')} <code>npx</code>. {t('The', 'Значение')}{' '}
-      <code>--agent</code>
-      {t(' value is', ':')} <code>codex</code>, <code>claude-code</code>{' '}
-      {t('or', 'или')} <code>cursor</code>.
+      {t('instead of', 'вместо')} <code>npx</code>.{t(' Keep', ' Сохраните')}{' '}
+      <code>--agent universal</code>.
     </p>
   </noscript>
 </div>

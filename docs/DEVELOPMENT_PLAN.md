@@ -2,6 +2,30 @@
 
 **Current status — 5 November 2026 (Moscow):** [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) is published at `2026-11-05T03:46:37Z`. The [release report](evals/results/2026-11-05-release-1.2/README.md) retains exact source/distribution bindings, the original failed native attempt, supplied-context D01/D02 observations and scoped reuse of historical mechanisms. The 804-test gate and normal CI passed; six platform cells are reused through unchanged inputs, and mechanical public delivery matched 92 payloads for all three targets. Final engineering / combined D03/D04 result: Ship for the frozen candidate and exact publication packet / actual subcriteria of stopped D03 and the separate D04 report accepted. Assets: passed: all three downloaded files match the exact release notes, tag and frozen candidate; 93 archive files/modes and 92 payload checksums match. Pages: deployment passed and all 18 returned bodies matched the official artifact; exact bindings are in [MAINTENANCE](MAINTENANCE.md). Historical 1.1/1.0/prerelease narratives keep their dated outcomes.
 
+## Completed local work — portable workflow (Unreleased)
+
+The product entry now uses universal installation and explicit skill reading in
+any file/Node-capable host, with user-selected models/providers and valid unknown
+preset hints. Three parallel lanes are integrated: 843/843 offline tests, 42
+browser checks, independent source reviews and the external U02 mechanical
+init/adopt route passed. U01's containment failure is retained separately.
+Use the [map](../.scratch/harness-portability/map.md) and
+[dashboard](../.scratch/harness-portability/dashboard.md).
+Candidate-02 retains exact changed bytes; candidate-01 and unconsumed H01/H02 stay
+historical. Fresh source-assisted init/adopt and exact local update/recovery are
+independently accepted in the [candidate report](evals/results/2026-11-05-release-1.3/README.md).
+Next is the separately authorized 1.3 public packet; broad native/LLM compatibility is not claimed.
+
+## Retained intermediate 1.3.0 candidate
+
+The descriptive harness feature is committed and pushed to public main as
+`93d9305380ee24deb7ffca88f6d62fb48250f2f2`; its installed release remains
+Unreleased. The [release map](../.scratch/release-1.3/map.md) and
+[dashboard](../.scratch/release-1.3/dashboard.md) own candidate preparation,
+affected observations and delivery review. The intended compatible minor is
+1.3.0. Public 1.2.0 installation pins remain accurate until a separately
+authorized release passes the public gates in [RELEASING](RELEASING.md).
+
 ## Completed work — 1.2.0 release and Pages
 
 The release includes version-aware practice evidence, clearer adopt diagnosis and

@@ -1,5 +1,5 @@
 import { localize, type Locale } from '../i18n.ts';
-import { getHarnessProfile } from '../../../scripts/agents/profiles.ts';
+import { isHarnessHintList } from '../../../scripts/agents/profiles.ts';
 
 const PROCESSES = ['minimal', 'balanced', 'structured'];
 const STYLES = ['concise', 'detailed'];
@@ -11,6 +11,7 @@ interface PresetInput {
   process?: FormDataEntryValue | null;
   style?: FormDataEntryValue | null;
   agents?: FormDataEntryValue[];
+  customAgents?: FormDataEntryValue | null;
   forbiddenPaths?: FormDataEntryValue | null;
 }
 
@@ -31,6 +32,7 @@ export function buildPreset(
     process = 'balanced',
     style = 'concise',
     agents = [],
+    customAgents = '',
     forbiddenPaths = '',
   }: PresetInput,
   locale: Locale = 'en',
@@ -61,19 +63,17 @@ export function buildPreset(
         'Выберите предложенную подробность ответов.',
       ),
     );
-  if (
-    !Array.isArray(agents) ||
-    !agents.every(
-      (agent) => typeof agent === 'string' && getHarnessProfile(agent),
-    )
-  )
-    throw new PresetValidationError(
-      'agents',
-      t(
-        'Choose an agent hint from the catalog.',
-        'Выберите агента из каталога подсказок.',
-      ),
-    );
+  const hintError = t(
+    'Use up to 16 distinct harness IDs: 1–64 lowercase Latin letters, numbers and hyphens, starting with a letter or number.',
+    'Не более 16 разных ID: 1–64 строчных латинских буквы, цифры и дефисы; первый символ — буква или цифра.',
+  );
+  if (!isHarnessHintList(agents))
+    throw new PresetValidationError('agents', hintError);
+  if (typeof customAgents !== 'string')
+    throw new PresetValidationError('customAgents', hintError);
+  const hints = [...agents, ...customAgents.split(/[\s,]+/).filter(Boolean)];
+  if (!isHarnessHintList(hints))
+    throw new PresetValidationError('customAgents', hintError);
   const stack_hint: Record<string, string> = {};
   for (const [key, input] of Object.entries({ language, kind })) {
     const value = String(input).trim();
@@ -117,7 +117,7 @@ export function buildPreset(
     answers: {
       process,
       style,
-      agents: [...new Set(agents)],
+      agents: [...new Set(hints)],
       forbidden_paths: [...new Set(forbidden_paths)],
     },
     preferred_sources: [],

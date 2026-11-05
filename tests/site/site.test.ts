@@ -55,6 +55,14 @@ for (const { filename, route, locale, other } of pages) {
       ),
       'The default installation must pin the 1.2.0 distribution commit.',
     );
+    assert.match(
+      html,
+      /skills@1\.7\.4 add [^<]+ -g --agent universal --skill tibicen-init tibicen-adopt --copy/,
+    );
+    assert.doesNotMatch(html, /id="install-agent/);
+    for (const skill of ['tibicen-init', 'tibicen-adopt'])
+      assert.ok(html.includes(`~/.agents/skills/${skill}/SKILL.md`));
+    assert.match(html, /INSTALLATION\.md#manual-archive-installation/);
     assert.ok(
       html.includes(
         'href="https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0"',
@@ -118,15 +126,15 @@ for (const { filename, route, locale, other } of pages) {
       html.indexOf('id="workflow"'),
     );
     const route = [
-      '1. Choose your coding agent',
+      '1. Choose a command runner',
       '2. Run this in your terminal',
-      '3. Open a fresh session in your project',
+      '3. Open the skill in your project session',
       '4. Send your first request',
     ];
     const translatedRoute = [
-      '1. Выберите своего агента',
+      '1. Выберите способ запуска',
       '2. Выполните в терминале',
-      '3. Откройте новую сессию в проекте',
+      '3. Откройте скилл в сессии проекта',
       '4. Отправьте первый запрос',
     ];
     const positions = (locale === 'en' ? route : translatedRoute).map((label) =>
@@ -152,7 +160,7 @@ for (const { filename, route, locale, other } of pages) {
     for (const id of ['compatibility', 'skill-help']) {
       assert.match(start, new RegExp(`<details\\b[^>]*id="${id}"[^>]*>`));
     }
-    assert.match(start, /README\.md#build-and-install-from-source/);
+    assert.match(start, /docs\/INSTALLATION\.md/);
     assert.match(
       start,
       locale === 'en' ? /assisted loading/ : /ручная загрузка/,

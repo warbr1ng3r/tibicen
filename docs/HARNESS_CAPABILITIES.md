@@ -1,9 +1,21 @@
 # Harness capabilities
 
-This guide describes the **Unreleased** catalog in the source checkout. Published
-1.2.0 keeps its original scope; the catalog does not add installer targets.
+This guide describes the **Unreleased** portable workflow and catalog in the
+source checkout. Published 1.2.0 keeps its original scope; a catalog entry does
+not add installer targets or native capabilities.
 A harness is the application that runs the agent, such as Gemini CLI or Cline.
 Changing its model or provider does not create a different harness profile.
+
+## Use your host without a catalog entry
+
+A host that can read project files and run the required Node runtime can use
+Tibicen through explicit skill-file reading. Its brand, model and provider do
+not need a Tibicen profile. Follow [installation](INSTALLATION.md) and the
+[portable workflow](HARNESS_PORTABILITY.md) for the complete skill folders and
+first reading step. Where sufficient, selected hosts can explicitly read one
+approved project `AGENTS.md` and the same existing memory store. Explicit reading
+does not establish native autodiscovery, and unavailable operations remain
+specific gaps.
 
 ## Inspect your tool before changing its setup
 
@@ -66,9 +78,27 @@ structural reference to existing project memory. Shared `AGENTS.md` or
 `.agents/skills/` alone cannot identify which harness is installed. A distinctive
 path is still an observation, not proof that the tool read it.
 
-A preset saves these names as **preferences**. The optional form marks legacy
-entries and rejects unknown IDs; leave it empty if you want environment discovery.
-Unknown tools can still be inspected through `harnesses` or `practices`.
+A preset saves harness names as **preferences**. Catalog entries are optional
+suggestions; a private or uncatalogued ID such as `team-agent` is also valid.
+For example, `answers.agents` can contain `["gemini-cli", "team-agent"]`.
+Leave the hints empty if they are not useful. The form marks legacy suggestions
+and keeps preference entry local.
+
+IDs use 1–64 lowercase Latin letters or digits, with single hyphens between
+segments. Spaces, uppercase letters, commands and paths are rejected. A preset
+accepts at most sixteen distinct IDs across known and custom hints. Repeated IDs
+count once toward that limit; existing repeated hints remain readable. Neither
+an unknown hint nor a known name grants documentation URLs, native discovery,
+write permission, an installer target, an MCP/process adapter or execution.
+Unknown tools can still be inspected through `harnesses` or `practices`; their
+unavailable documentation and methods remain explicit.
+
+Older validators may reject new hints. Published 1.2.0 accepts only `codex`,
+`claude-code` and `cursor`; an intermediate catalog-only validator also rejects
+uncatalogued IDs. For downgrade, remove only optional `answers.agents` values
+that the older version does not accept, or leave that array empty. Preserve the
+other preferences, project memory and history. The preset remains schema 1;
+this change adds no project-manifest migration.
 
 A catalog entry grants no new automatic write path, installer choice, MCP/process
 adapter or native evaluation method. When a useful native configuration lies

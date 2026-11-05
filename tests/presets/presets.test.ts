@@ -56,7 +56,7 @@ test('preset requires an explicit request before creating any local state', asyn
   assert.deepEqual(await readdir(home), []);
 });
 
-test('core presets accept catalog hints without operational adapter requirements', () => {
+test('core presets accept known and uncatalogued hints without operational adapter requirements', () => {
   const all = {
     ...preset(),
     answers: {
@@ -65,12 +65,15 @@ test('core presets accept catalog hints without operational adapter requirements
     },
   };
   assert.deepEqual(validatePreset(all), all);
-  for (const invalid of [
-    'future-agent',
-    'constructor',
-    'Gemini-CLI',
-    '../codex',
-  ])
+  for (const hints of [
+    ['future-agent', 'constructor', 'codex'],
+    Array(32).fill('claude-code'),
+    Array.from({ length: 16 }, (_, index) => `private-${index}`),
+  ]) {
+    const input = { ...all, answers: { ...all.answers, agents: hints } };
+    assert.deepEqual(validatePreset(input), input);
+  }
+  for (const invalid of ['Gemini-CLI', '../codex'])
     assert.throws(
       () =>
         validatePreset({
@@ -79,6 +82,35 @@ test('core presets accept catalog hints without operational adapter requirements
         }),
       { code: 'invalid-preset' },
     );
+});
+
+test('uncatalogued hints survive save/load while invalid and excessive hints write no state', async (t) => {
+  const home = await temporary(t);
+  const sparse = ['codex'];
+  sparse.length = 2;
+  for (const agents of [
+    ['codex', 'not a slug'],
+    ['codex', 1],
+    sparse,
+    Array.from({ length: 17 }, (_, index) => `private-${index}`),
+  ])
+    await assert.rejects(
+      savePreset(
+        { ...preset(), answers: { ...preset().answers, agents } },
+        { home, requested: true },
+      ),
+      { code: 'invalid-preset' },
+    );
+  assert.deepEqual(await readdir(home), []);
+  const input = {
+    ...preset(),
+    answers: {
+      ...preset().answers,
+      agents: ['codex', 'team-agent', 'team-agent'],
+    },
+  };
+  await savePreset(input, { home, requested: true });
+  assert.deepEqual(await loadPreset(input.name, { home }), input);
 });
 
 test('save and load preserve only validated preferences in a private atomic file', async (t) => {
@@ -194,7 +226,7 @@ test('browser constructor output uses the same contract as saved and loaded pres
   assert.throws(() =>
     buildPreset({ name: 'bad', forbiddenPaths: 'C:/outside' }),
   );
-  assert.throws(() => buildPreset({ name: 'bad', agents: ['unknown-agent'] }));
+  assert.throws(() => buildPreset({ name: 'bad', agents: ['unknown agent'] }));
 });
 
 test('constructor validation identifies the field without weakening rejected inputs', () => {
@@ -202,7 +234,7 @@ test('constructor validation identifies the field without weakening rejected inp
     ['name', { name: 'Bad Name' }],
     ['process', { name: 'valid', process: 'unknown' }],
     ['style', { name: 'valid', style: 'unknown' }],
-    ['agents', { name: 'valid', agents: ['unknown'] }],
+    ['agents', { name: 'valid', agents: ['unknown agent'] }],
     ['language', { name: 'valid', language: 'bad;command' }],
     ['kind', { name: 'valid', kind: 'bad;command' }],
     ['forbiddenPaths', { name: 'valid', forbiddenPaths: '../outside' }],

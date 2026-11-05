@@ -107,29 +107,105 @@ test('catalog hints stay local preferences in English and Russian on a narrow vi
   ).toEqual([]);
 });
 
-test('all installation combinations update immediately after selection', async ({
+test('universal installation runners update immediately after selection', async ({
   page,
 }) => {
   for (const route of ['./', 'ru/']) {
     await page.goto(route);
     await expect(page.locator('#install-controls')).toBeEnabled();
+    await expect(page.locator('#install-agent')).toHaveCount(0);
     for (const [manager, runner] of [
       ['npm', 'npx'],
       ['pnpm', 'pnpm dlx'],
       ['Yarn 2+', 'yarn dlx'],
     ]) {
       await choose(page, 'install-manager', manager);
-      for (const [agent, flag] of [
-        ['Codex', 'codex'],
-        ['Claude Code', 'claude-code'],
-        ['Cursor', 'cursor'],
-      ]) {
-        await choose(page, 'install-agent', agent);
-        await expect(page.locator('#install-command')).toHaveText(
-          `${runner} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0656f12e00ea83d84229180d331f3178bf253407 -g --agent ${flag} --skill tibicen-init tibicen-adopt --copy`,
-        );
-      }
+      await expect(page.locator('#install-command')).toHaveText(
+        `${runner} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0656f12e00ea83d84229180d331f3178bf253407 -g --agent universal --skill tibicen-init tibicen-adopt --copy`,
+      );
     }
+    const runner = page.locator('#install-manager');
+    await runner.focus();
+    await page.keyboard.press('Enter');
+    await expect(
+      page.getByRole('option', { name: 'Yarn 2+', exact: true }),
+    ).toBeFocused();
+    await page.keyboard.press('Home');
+    await expect(
+      page.getByRole('option', { name: 'npm', exact: true }),
+    ).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(runner).toBeFocused();
+    await expect(page.locator('#install-command')).toHaveText(
+      /^npx .*--agent universal /,
+    );
+  }
+});
+
+test('custom hints show localized errors at their input and download locally after correction', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 844 });
+  for (const locale of ['en', 'ru']) {
+    await page.goto(locale === 'en' ? './' : 'ru/');
+    await openPreset(page);
+    await openAdvanced(page);
+    const requests: string[] = [];
+    const record = (request: { url(): string; postData(): string | null }) =>
+      requests.push(`${request.url()} ${request.postData() ?? ''}`);
+    page.on('request', record);
+    let downloads = 0;
+    const countDownload = () => downloads++;
+    page.on('download', countDownload);
+    const custom = page.locator('#custom-agents');
+    await custom.fill('Private_Host');
+    await page.locator('.advanced > summary').click();
+    await page.locator('#download-preset').focus();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('.advanced')).toHaveAttribute('open', '');
+    await expect(custom).toBeFocused();
+    await expect(custom).toHaveAttribute('aria-invalid', 'true');
+    await expect(custom).toHaveAttribute(
+      'aria-describedby',
+      /custom-agents-error/,
+    );
+    await expect(page.locator('#custom-agents-error')).toContainText(
+      locale === 'en' ? '16 distinct harness IDs' : '16 разных ID',
+    );
+    await expect(
+      page.locator('.agent-choices input[aria-invalid]'),
+    ).toHaveCount(0);
+    expect(downloads).toBe(0);
+    const privateIDs = Array.from(
+      { length: 16 },
+      (_, index) => `private-host-${index}`,
+    );
+    await custom.fill(['codex', ...privateIDs].join(', '));
+    await expect(custom).not.toHaveAttribute('aria-invalid');
+    await expect(page.locator('#custom-agents-error')).toBeHidden();
+    await page.locator('#download-preset').click();
+    await expect(custom).toBeFocused();
+    await expect(page.locator('#custom-agents-error')).toBeVisible();
+    expect(downloads).toBe(0);
+    await page.getByRole('checkbox', { name: 'Codex', exact: true }).check();
+    const agents = ['codex', ...privateIDs.slice(0, 15)];
+    await custom.fill([...agents, 'codex'].join(', '));
+    await expect(page.locator('#custom-agents-error')).toBeHidden();
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth),
+    ).toBe(320);
+    const pending = page.waitForEvent('download');
+    await page.locator('#download-preset').click();
+    expect(
+      JSON.parse(await downloadedText(await pending)).answers.agents,
+    ).toEqual(agents);
+    expect(downloads).toBe(1);
+    expect(
+      requests,
+      'Custom hints and downloads must stay in this browser.',
+    ).toEqual([]);
+    page.off('request', record);
+    page.off('download', countDownload);
   }
 });
 
@@ -352,10 +428,20 @@ test('without JavaScript English stays default in a Russian browser and language
     await expect(page.locator('#name')).toBeDisabled();
     await expect(page.locator('#download-preset')).toBeDisabled();
     await expect(page.locator('#install-command')).toHaveText(
-      'npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0656f12e00ea83d84229180d331f3178bf253407 -g --agent codex --skill tibicen-init tibicen-adopt --copy',
+      'npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0656f12e00ea83d84229180d331f3178bf253407 -g --agent universal --skill tibicen-init tibicen-adopt --copy',
     );
+    await expect(
+      page.locator('a[href$="INSTALLATION.md#manual-archive-installation"]'),
+    ).toBeVisible();
+    for (const [scenario, skill] of ['tibicen-init', 'tibicen-adopt'].entries())
+      await expect(page.locator(`#prompt-scenarios-${scenario}`)).toContainText(
+        `~/.agents/skills/${skill}/SKILL.md`,
+      );
     await page
       .locator('#name')
+      .evaluate((field: HTMLInputElement) => (field.value = 'private-answer'));
+    await page
+      .locator('#custom-agents')
       .evaluate((field: HTMLInputElement) => (field.value = 'private-answer'));
     // Native submission can bypass a disabled button. Its disabled controls must still carry no answers.
     await Promise.all([
@@ -374,7 +460,7 @@ test('without JavaScript English stays default in a Russian browser and language
   }
   expect(
     requests.filter(({ url, body }) =>
-      /private-answer|[?&](name|language|forbiddenPaths)=/.test(
+      /private-answer|[?&](name|language|forbiddenPaths|customAgents)=/.test(
         `${url} ${body ?? ''}`,
       ),
     ),

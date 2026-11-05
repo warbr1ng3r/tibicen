@@ -93,13 +93,7 @@ for (const [width, height] of [
     await page.setViewportSize({ width, height });
     await page.locator('.preset-details > summary').click();
     await page.locator('.advanced > summary').click();
-    for (const id of [
-      'install-agent',
-      'install-manager',
-      'language',
-      'kind',
-      'style',
-    ]) {
+    for (const id of ['install-manager', 'language', 'kind', 'style']) {
       const trigger = page.locator(`#${id}`);
       await trigger.click();
       const popup = page.getByRole('listbox');
