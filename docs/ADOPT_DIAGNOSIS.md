@@ -188,8 +188,8 @@ the installed binary or compatible behavior. See the [evidence rules](../referen
 
 ## Current evidence and saved history
 
-The existing `report` command gains an additive `diagnosis` field in this
-development change. It collects a fresh bounded inventory and structural check,
+The existing `report` command includes a `diagnosis` field. It collects a fresh
+bounded inventory and structural check,
 instruction candidates with their directories, gaps, and an explicit loading
 limit. The candidates are files found, not proof that a particular agent loaded
 them. Checked adapter formats and versions describe Tibicen's bounded contracts,
@@ -212,3 +212,169 @@ Default reporting writes no project files and runs no project commands. Saving
 a report file still requires an explicit request. Check scope, supported
 versions and native execution limits remain in the [agent matrix](../references/agent-matrix.md)
 and the [current published capabilities](CURRENT_CAPABILITIES.md).
+
+## Task context for init and adopt — Unreleased
+
+The development version can attach the selected host, working directory and
+intended task path to the same read-only report used by both skills. Published
+1.3 does not include this optional input. The agent derives available context
+from the session; you do not need to fill in another questionnaire.
+
+Replace `SKILL_DIR` with the absolute directory of the complete development
+skill and `/actual/project` with the project root:
+
+```sh
+printf '%s\n' '{"agent":"team-agent","cwd":"docs","targetPath":"docs/ru/install.md"}' |
+  node "SKILL_DIR/scripts/tibicen.ts" report --root "/actual/project" --input -
+```
+
+`--input EXISTING_FILE` reads an existing JSON file instead. Before approval,
+pass prepared context through stdin rather than writing a project file. The
+object requires `agent` and `cwd`; `agentVersion` and `targetPath` are optional.
+`agent` accepts a valid known or uncatalogued harness ID. Paths use forward
+slashes relative to the project root, including `targetPath`; `cwd` may be `.`.
+Absolute paths, traversal, backslashes, control characters, unknown fields and
+invalid types are rejected before project inspection or saving a report. A call
+without `--input` keeps its existing behavior.
+
+The additional `diagnosis.instructions.taskScope` separates supplied context,
+documented profile facts and lexical relationships between candidate directories
+and the working/target paths. For the translation example above, root
+`AGENTS.md` is above both paths; `docs/ru/AGENTS.md` is above the target but not
+the working directory. These relationships help explain the intentional
+exception; they do not prove either file is active. Conditional native rules
+still require host-specific assessment and cannot be excluded by directory
+position alone. No extra path is inspected because it appears in context; scan
+exclusions remain.
+
+In **init**, a project without instruction candidates can still receive one
+sufficient setup and an exact first reading step. In **adopt**, preserve useful
+root/subtree differences and correct only a demonstrated defect; no change is
+a valid result. A supplied version is not an observed installation, an unknown
+host stays unknown, and neither case turns applicability, loading or task use
+into a passed check. Reuse the reviewed context for verification and the first
+task, or disclose what changed. See [portable activation](HARNESS_PORTABILITY.md)
+and the [later memory check](PROJECT_MEMORY.md#check-the-first-task-and-later-memory-use--unreleased).
+
+## Local MCP diagnosis for init and adopt — Unreleased
+
+The development version adds `mcp-diagnose` for one named server. Published 1.3
+does not include this command. It reads explicitly selected project settings
+without starting a server, writing state or returning settings contents. The
+existing `mcp-verify` command and supported write paths remain unchanged.
+
+**You:** “Connect our local tool” in init, or “The tool is configured, but the
+agent cannot see it” in adopt. The agent identifies the selected host, relevant
+project source and available launch evidence. You do not need another technical
+questionnaire or a different model.
+
+Any valid harness ID can explicitly select a supported `format`; no catalog
+profile is needed. For another syntax, `format: "stdio-observation"` accepts
+redacted facts tied to the inspected source text by SHA-256. The agent obtains
+those facts from permitted inspection without executing the configuration.
+Each source then includes `observation: {sourceHash, state, envNames}`; state is
+`stdio`, `disabled` or `unknown`, and env names are empty for non-stdio states.
+A matching stdio observation produces a `reported-stdio` source; its explicit
+selection as `effectiveSource` gives `configuration.basis: "caller-observation"`,
+not parsed validity. Stale or
+unavailable sources leave it unverified. See [formats and evidence](MCP_FORMATS.md)
+for exact bounds and native source differences.
+
+For a project whose selected OpenCode V2 source is `opencode.json`, pass metadata
+through stdin. Replace `SKILL_DIR` and `/actual/project` as in the earlier example:
+
+```sh
+printf '%s\n' '{"agent":"opencode","server":"local-tools","format":"opencode-v2","sources":[{"path":"opencode.json"}],"effectiveSource":"opencode.json"}' |
+  node "SKILL_DIR/scripts/tibicen.ts" mcp-diagnose --root "/actual/project" --input -
+```
+
+`--input EXISTING_FILE` reads an existing metadata file instead. The request names
+the host and server, up to four unique project-relative source paths, and an
+optional selected source, format and host version. Only existing Claude Code,
+Cursor and Gemini CLI requests retain defaults without a format; other readers
+require explicit selection. Source order does not determine precedence. A supplied
+`effectiveSource` records the caller's selection; it does not prove which file
+the running host uses or cover global, managed or session settings.
+
+The reader accepts permitted regular files of at most 1 MiB each. Unsafe or
+sensitive source paths are rejected as invalid metadata before inspection.
+Forbidden, symlinked or unreadable sources remain unavailable rather than becoming
+"server missing." It does not follow credential/file references. Results contain
+names and fixed status/reason fields, without settings text, command/argument
+values, environment values or raw errors. Do not paste a settings file or secret
+into the request.
+
+Optional `launch` observations contain only `targetContextKnown`,
+`availableEnvNames`, `executableAvailable` and `cwdAvailable`. Environment entries
+are variable **names**, never values. Availability booleans and names matter only
+when `targetContextKnown` is true; omitted observations remain unverified. A tool
+working in your shell does not establish availability in a GUI or remote host.
+Neither these observations nor valid configuration prove connection or tool use.
+`formatEvidence` records caller selection, a harness default or an unverified
+format. Parsed results use `configuration.basis: "parsed-format"`; supplied
+observations retain their distinct basis. `nativeActivation` stays `unverified`.
+
+### One result and one next step
+
+These are illustrative outcomes, not recorded connection tests:
+
+- **A supported record needs a correction.** The confirmed effective source is
+  Cursor's `.cursor/mcp.json`; its selected server uses the wrong env-reference
+  grammar. The necessary correction is:
+
+  ```diff
+  - "env": {"TOOL_TOKEN": "${TOOL_TOKEN}"}
+  + "env": {"TOOL_TOKEN": "${env:TOOL_TOKEN}"}
+  ```
+
+  This uses the documented [Cursor interpolation syntax](https://cursor.com/docs/mcp#config-interpolation),
+  freshly checked on 6 November 2026.
+  Show the exact proposed record through the existing approved writer, preserve
+  other records/settings, then repeat the same diagnosis. This bounded repair
+  does not cover inline credentials, ambiguous JSON or unsupported fields.
+  Applying the edit does not prove that the server connected.
+- **The target needs a native action.** Other native settings need a correction,
+  or the effective source/launch context is unknown. Explain the precise missing
+  fact and the manual/native step. Their new readers do not add automatic writers;
+  Codex retains its manual TOML fragment. Do not guess a path, export secrets,
+  enable a disabled server or weaken trust/filtering to make a check pass.
+  A missing target environment variable, executable or cwd in otherwise valid
+  settings calls for that environment/launch follow-up; it does not establish
+  a file defect or justify rewriting the record.
+- **The format is not parsed.** For a DeepSeek Harness overlay, a GigaChat-based
+  application or another host, preserve the actual configuration language and
+  provide only source-bound stdio facts. The hash does not establish their
+  correctness or file safety. Explicit target facts may identify a missing env
+  variable or executable. Repair remains native/manual; without a more specific
+  target problem its reason is `observed-configuration-not-parsed`. It does not
+  qualify for a writer.
+- **No correction is established.** Preserve the inspected setup and state what
+  remains unverified. A valid local record may still need a connection check in
+  the selected host. Do not create a session, component or replacement file merely
+  to record a no-change result.
+
+Native `gemini mcp list` and `opencode mcp list` can start configured servers to
+check connections. They are follow-up executions with the existing approval and
+trust boundary, not preapproval file inspection. Reuse an applicable existing
+native observation when available, and disclose its version and context.
+
+### Host contracts checked on 6 November 2026
+
+The [format matrix](MCP_FORMATS.md) adds ZCode native/shared, current Kimi Code
+and bounded Vibe contracts, with their source dates and policy limits. These
+optional readers complement the common observation route; they define no host
+or model allowlist. The earlier reader sources remain:
+
+| Reader | Relevant current contract and limit |
+| --- | --- |
+| Gemini JSON | `mcpServers`, string `command`, `args`, `env`; URL transport takes priority over a local command. Explicit env references and host sanitization differ from a shell. See [MCP settings](https://geminicli.com/docs/tools/mcp-server/) and [configuration layers](https://geminicli.com/docs/reference/configuration/). |
+| OpenCode V2 JSON | `mcp.servers`, command array, `environment`, `{env:NAME}`, `disabled`; an overriding same-name source replaces the complete record. Relative `cwd` uses the workspace. See [MCP settings](https://dev.opencode.ai/v2/docs/mcp-servers/) and [configuration locations](https://dev.opencode.ai/v2/docs/config/). |
+
+The bounded reader supports unambiguous JSON, not every format the native host
+accepts: JSONC, unsupported fields and ambiguous layouts retain manual limits.
+Gemini's MCP page is dated 6 October and its configuration page 15 October 2026;
+OpenCode links describe the living V2 contract. These readings do not establish a
+minimum released version or compatibility with an installed host. Gemini's
+external enablement and unobserved host policies remain unknown. The documentation
+does not establish how Gemini resolves a relative `cwd`; retain that launch gap
+unless the target context is supplied. See the [capability boundary](HARNESS_CAPABILITIES.md#local-mcp-readers--unreleased).

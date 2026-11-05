@@ -75,6 +75,36 @@ The notes are readable Markdown. There is no mandatory entry schema, timestamp
 format or separate questionnaire, and the full history need not be copied into
 every instruction file.
 
+## Check the first task and later memory use — Unreleased
+
+The development handoff reuses the reviewed host, working directory and target
+path from [task-context diagnosis](ADOPT_DIAGNOSIS.md#task-context-for-init-and-adopt--unreleased),
+or explains what changed. This adds a scoped check to the memory workflow
+available since 1.1; it adds no store, schema or background memory service.
+
+For example, both init with new notes and adopt with existing notes can hand
+off a small price-formatting task. These are illustrative steps, not new run
+results:
+
+1. Start a fresh working session with the approved instructions and one selected
+   memory file in place. Record the candidate, available host/version and any
+   explicit reading help. Use an ordinary request such as “Show prices in the
+   order summary”; the stored decision says amounts are integer kopecks in RUB
+   and zero is displayed as “0 ₽”. An unrelated note forbids unapproved dependencies.
+2. Check whether the agent actually read that decision before choosing the
+   representation and whether the resulting work used it. A statement that the
+   notes exist, or a good answer alone, does not prove the read.
+3. Give an explicit correction: “Show zero as ‘Free’ now; remember that decision.”
+   Check that “0 ₽” is replaced by “Free”, while integer kopecks, RUB and the
+   dependency note remain. Application edits in this working task need their own authorization;
+   setup approval covers infrastructure only.
+
+Report structural connection, observed reading, use and correction separately.
+Supplying instruction or memory text to an observer is assistance and must be
+recorded. An observation with that help does not establish native autodiscovery;
+an unperformed step stays `unverified`, with its reason. No new observation is
+claimed by these examples, and the historical 1.1 sessions retain their limits.
+
 ## One supported location
 
 The initial scope supports these exact project-relative paths:
@@ -114,7 +144,7 @@ and the exact release's compatibility notes.
 
 ## What a check proves
 
-The Unreleased correction recognizes permitted existing nested `.cursorrules`
+Published 1.2 recognizes permitted existing nested `.cursorrules`
 and rule files under `.cursor/rules/` or `.claude/rules/` found by the bounded
 scan as structural connections when they contain the exact selected memory
 path relative to the project root, such as `docs/memory.md`. This does not
@@ -127,7 +157,7 @@ observations must identify the tested distribution, agent/tool versions,
 assistance and actual outcome. Missing controlled execution stays `unverified`;
 success in one agent does not establish behavior in another.
 
-The release packet will disclose those observations separately from structure
+Reports disclose those observations separately from structure
 and from human usefulness, which remains unmeasured. This feature adds no account,
 server, global/private agent-memory editing, cross-project synchronization or
 memory fields in saved presets. See [release preparation](RELEASING.md) for the

@@ -5,6 +5,17 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+### Added
+
+- Accept optional selected-harness, version, working-directory and task-path context in the read-only report, with lexical instruction relationships and explicit applicability/loading limits.
+- Diagnose a selected local MCP server across up to four bounded project sources through metadata-only input: any valid harness can select a known format or provide hash-bound redacted stdio observations; native readers include ZCode native/shared JSON, current Kimi Code JSON and bounded Mistral Vibe TOML alongside existing contracts.
+
+### Changed
+
+- Carry the same task context through init/adopt recommendations, verification and first-task handoff; preserve existing minimal setup and project-memory behavior.
+- Explain MCP source/disable/launch uncertainty and the exact supported repair or native follow-up in both entry flows, preserving secret boundaries and existing writer/approval scope.
+- Separate caller-selected format, parsed or observed configuration and unverified native activation from harness identity and model/provider choice; reader selection grants no new writer.
+
 ## [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) — 2026-11-05
 
 ### Added

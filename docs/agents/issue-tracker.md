@@ -4,6 +4,66 @@
 
 Development in this repository uses Local Markdown. Git remote origin points to the public warbr1ng3r/tibicen repository; no external tracker is configured. The canonical tracker is in `.scratch/`; this directory is not excluded from Git. This setup is not part of the Tibicen distribution.
 
+## Active release — 1.4.0
+
+The owner authorized work through release on 6 November: candidate preparation,
+review, commits, push, public gates and publication. The [release dashboard](../../.scratch/release-1.4/dashboard.md)
+owns current progress; [release notes](../evals/results/2026-11-06-release-1.4/README.md)
+are drafted and unpublished. Root version1.4.0 prepares a compatible minor;
+installation links remain published1.3 until the new public gates pass.
+
+## Completed local effort — MCP portability for arbitrary harnesses
+
+The owner-approved 6 November packet is complete. Any valid harness can select
+an explicit known format or supply source-bound redacted observations; native
+readers are additional coverage, not a host/model allowlist. Three parallel lanes
+and independent Ponytail review are integrated: 891 full-gate tests passed,
+standalone 3/3, both self-tests, 12 CLI cases and all 101 frozen hashes/modes.
+All six [tasks](../../openspec/changes/decouple-mcp-formats-from-harnesses/tasks.md)
+and four [dashboard tickets](../../.scratch/mcp-portability/dashboard.md) are closed.
+[Verification](../../openspec/changes/decouple-mcp-formats-from-harnesses/verification.md)
+retains corrections, exact candidate and native/model limits. Work is Unreleased
+alongside the previous two packets; the next milestone is normal compatible
+minor-release preparation under [RELEASING](../RELEASING.md).
+No version bump, commit or public action occurred in this implementation packet.
+
+## Completed local effort — actionable MCP diagnosis
+
+The owner-authorized uninterrupted packet is complete: four bounded readers,
+metadata-only redacted CLI, both entry flows and the existing exact repair/native
+follow-up path. All six [OpenSpec tasks](../../openspec/changes/diagnose-local-mcp-context/tasks.md)
+and four [dashboard tickets](../../.scratch/mcp-diagnosis/dashboard.md) are closed.
+[Verification](../../openspec/changes/diagnose-local-mcp-context/verification.md)
+records the fixed sensitive-inspection finding, preserved earlier failures,
+872 passing full-gate tests / 1 manual skip, standalone 3/3, 15 CLI cases and one
+approved correction preserving 14 unrelated files/modes. Independent code and
+final evidence review: Ship. Work is local Unreleased together with task-aware
+setup; connection/use, native/model coverage and human benefit remain unverified.
+No new writer, version bump, commit or publication.
+
+## Completed local effort — task-aware init and adopt
+
+The owner-approved 6 November packet is complete: three parallel lanes,
+integration and all seven [OpenSpec tasks](../../openspec/changes/explain-task-aware-setup/tasks.md).
+The [map](../../.scratch/task-aware-setup/map.md) and
+[dashboard](../../.scratch/task-aware-setup/dashboard.md) record resolved ownership;
+[verification](../../openspec/changes/explain-task-aware-setup/verification.md)
+records the full gate (849 pass / 1 skip), exact standalone 3/3, four fresh assisted
+sessions and independent Ponytail Ship after one guide correction. Init and adopt
+share optional task context; memory stores and useful subtree differences remain
+preserved. I1's selected-host manual action and native/model limits remain explicit.
+This is local Unreleased work; no commit, version bump or publication. Narrow
+local stdio MCP diagnosis is the next separate milestone.
+
+## Completed research — next priorities after 1.3
+
+The [research map](../../.scratch/post-1.3-priorities-research/map.md) owns the
+owner-requested fresh internet investigation of user problems, native remedies
+and concrete gaps after published 1.3. Three source lanes, root synthesis and focused evidence review are complete in
+the [study](../research/2026-11-05-post-1.3-priorities/README.md). The candidates
+are task-specific adopt explanation and narrow local stdio repair; a new graph
+or portable manifest is not justified yet. No implementation or publication follows.
+
 ## Wayfinding operations
 
 - Effort map: `.scratch/<effort>/map.md`; label `wayfinder:map`.

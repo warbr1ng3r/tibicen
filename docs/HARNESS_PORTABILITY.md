@@ -66,6 +66,47 @@ supported contracts and approval. Existing registered copy links remain intact;
 choosing the common route does not silently remove them. Explicit reading is an
 activation step, not evidence of automatic discovery or later task behavior.
 
+## Diagnose MCP without changing hosts — Unreleased
+
+The development MCP workflow accepts any valid harness ID: choose an explicit
+supported format, or supply hash-bound redacted `stdio-observation` facts for
+another language or application. For example, an agent inspecting DeepSeek
+Harness YAML or a GigaChat application's Python can report the observed server
+state and required env names without evaluating that code. The hash identifies
+the inspected text; it does not prove that the reported facts are correct.
+Caller observations, parsed configuration, target launch facts and native
+connection/use stay separate. A missing native parser therefore does not force
+a model/provider switch, a new configuration file or a copied vendor setup.
+See [formats and evidence](MCP_FORMATS.md) and the [init/adopt workflow](ADOPT_DIAGNOSIS.md#local-mcp-diagnosis-for-init-and-adopt--unreleased).
+
+## Carry the same context into the first task — Unreleased
+
+The development workflow adds optional [task context in the report](ADOPT_DIAGNOSIS.md#task-context-for-init-and-adopt--unreleased).
+It records the selected host, working directory and intended task path without
+making a catalog entry or native adapter mandatory. Published 1.3 retains the
+common-file workflow above; it does not include this new report input.
+
+- **Init:** “Set up agents for this project.” For a dependency-free Node app
+  without instructions, the agent derives its command from `package.json`,
+  proposes sufficient instructions and optional memory, and gives the first
+  explicit reading step. Application files stay intact during setup.
+- **Adopt:** “Check our rules before updating the Russian installation guide.”
+  The agent retains the project root, working directory and `docs/ru/install.md`
+  target, explains the root and translation-specific instructions, and preserves
+  intentional differences. A genuine defect receives an exact proposed fix;
+  finding multiple files does not itself require a change.
+
+For an uncatalogued `team-agent`, a first-task handoff can say: “From
+`/actual/project`, read `/actual/project/AGENTS.md` and the retained
+`/actual/project/docs/ru/AGENTS.md`; then update `docs/ru/install.md` to match the
+English guide.” This is an explicit reading instruction for that task, with
+ordinary write approval still required. It does not promise automatic loading
+or native precedence. If the next session uses a different host, working
+directory or target, disclose the change and reassess the scope. Record actual
+reading, task behavior and unavailable checks separately, including any supplied
+file hints. The [memory guide](PROJECT_MEMORY.md#check-the-first-task-and-later-memory-use--unreleased)
+covers checking later decisions without creating another store.
+
 ## Three ordinary cases
 
 | Your situation | What can proceed | What the handoff must retain |

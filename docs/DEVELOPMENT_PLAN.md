@@ -2,6 +2,54 @@
 
 **Current status — 5 November 2026 (Moscow):** [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) was published at `2026-11-05T19:34:40Z`. The [release report](evals/results/2026-11-05-release-1.3/README.md) records exact source/distribution bindings, 843/843 offline tests, 42 browser checks, successful exact-source CI and six fresh platform cells. Public universal 1.2→1.3 replacement/repeat, installed self-tests, complete backup restoration and removal passed with 94 payloads. All three returned release assets and 95 archive files/modes match the accepted candidate; 1.2 is unchanged. The owner authorized commit, push and publication. Metadata is public; Pages run 42096956053 deployed source `606f5b25f83831c3d9c5e29709d85c32ae0cf7a9`. Audit 42097697236 verified all 18 returned bodies against the official artifact and preserved the four older maintenance records. Broad native/model compatibility and human benefit remain unverified.
 
+## Active release — 1.4.0
+
+The owner authorized work through release on 6 November: candidate preparation,
+review, commits, push, public gates and publication. The [release dashboard](../.scratch/release-1.4/dashboard.md)
+owns current progress; [release notes](evals/results/2026-11-06-release-1.4/README.md)
+are drafted and unpublished. Root version1.4.0 prepares a compatible minor;
+installation links remain published1.3 until the new public gates pass.
+
+## Completed local effort — MCP portability for arbitrary harnesses
+
+The owner-approved 6 November packet is complete. Any valid harness can select
+an explicit known format or supply source-bound redacted observations; native
+readers are additional coverage, not a host/model allowlist. Three parallel lanes
+and independent Ponytail review are integrated: 891 full-gate tests passed,
+standalone 3/3, both self-tests, 12 CLI cases and all 101 frozen hashes/modes.
+All six [tasks](../openspec/changes/decouple-mcp-formats-from-harnesses/tasks.md)
+and four [dashboard tickets](../.scratch/mcp-portability/dashboard.md) are closed.
+[Verification](../openspec/changes/decouple-mcp-formats-from-harnesses/verification.md)
+retains corrections, exact candidate and native/model limits. Work is Unreleased
+alongside the previous two packets; the next milestone is normal compatible
+minor-release preparation under [RELEASING](RELEASING.md).
+No version bump, commit or public action occurred in this implementation packet.
+
+## Completed local milestone — MCP diagnosis and repair handoff
+
+The task-aware init/adopt and MCP packets are integrated and independently
+reviewed. Current MCP scope includes four bounded readers, safe metadata input,
+source/launch uncertainty and a supported exact repair or native follow-up.
+All six [tasks](../openspec/changes/diagnose-local-mcp-context/tasks.md) and
+[dashboard tickets](../.scratch/mcp-diagnosis/dashboard.md) are complete;
+[verification](../openspec/changes/diagnose-local-mcp-context/verification.md)
+records the full gate, standalone delivery and retained limits. Both packets are
+Unreleased, with no version bump or public action. The next release-preparation
+milestone can combine these compatible features under the normal minor-version
+procedure in [RELEASING](RELEASING.md).
+
+## Completed local work — task-aware init and adopt
+
+Both entry flows now share a validated optional task-context report and scoped
+explanation. Three parallel lanes, fresh assisted first-task/memory observations,
+full checks and independent review are complete in
+[verification](../openspec/changes/explain-task-aware-setup/verification.md).
+Detailed tasks remain in the [change](../openspec/changes/explain-task-aware-setup/tasks.md);
+resolved ownership is in the [dashboard](../.scratch/task-aware-setup/dashboard.md).
+The work is Unreleased; published 1.3.0 remains unchanged. The next separate
+milestone is bounded local stdio MCP diagnosis using effective configuration and
+native diagnostics where available; new write adapters need their own contract.
+
 ## Completed work — portable workflow (1.3.0)
 
 The product entry now uses universal installation and explicit skill reading in

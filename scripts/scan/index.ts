@@ -10,7 +10,7 @@ import { constants } from 'node:fs';
 import { open, readdir, realpath, lstat } from 'node:fs/promises';
 import { assert, hashContent, validateScanResult } from '../core/contracts.ts';
 import {
-  isSensitivePath,
+  isSensitiveInspectionPath,
   isInfrastructurePath,
   safePath,
   validateRelativePath,
@@ -74,13 +74,7 @@ export function exclusionReason(
     relative.startsWith('.tibicen/state/')
   )
     return 'cache-or-metadata';
-  if (
-    isSensitivePath(relative) ||
-    /(?:^|\/)(?:\.npmrc|\.netrc|\.pypirc|\.git-credentials|[^/]*credentials[^/]*\.json)$/i.test(
-      relative,
-    )
-  )
-    return 'sensitive-path';
+  if (isSensitiveInspectionPath(relative)) return 'sensitive-path';
   return null;
 }
 

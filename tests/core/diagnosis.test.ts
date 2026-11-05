@@ -1,6 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { summarizeDiagnosis } from '../../scripts/core/diagnosis.ts';
+import {
+  summarizeDiagnosis,
+  validateTaskContext,
+} from '../../scripts/core/diagnosis.ts';
 import type { CheckResult, ScanResult } from '../../scripts/core/types.ts';
 
 function scan(paths = ['AGENTS.md']): ScanResult {
@@ -337,4 +340,226 @@ test('projection leaves input records untouched and omits unrelated content and 
   assert(!serialized.includes('PRIVATE_COMMAND_OUTPUT'));
   assert(!serialized.includes('.env'));
   assert(!serialized.includes('changed-output'));
+});
+
+test('task paths are relative to root and retain separate cwd and target relationships', () => {
+  const observed = scan([
+    'docs/ru/AGENTS.md',
+    'src/AGENTS.md',
+    'AGENTS.md',
+    'docs/AGENTS.md',
+  ]);
+  const context = {
+    agent: 'zcode',
+    agentVersion: '1.2.3',
+    cwd: 'docs',
+    targetPath: 'docs/ru/guide.md',
+  };
+  const inputs = { scan: observed, infrastructure: structure(), context };
+  const before = JSON.stringify(inputs);
+  const result = summarizeDiagnosis(inputs);
+  const scope = result.instructions.taskScope!;
+  assert.deepEqual(scope.context, context);
+  assert.equal(scope.contextBasis, 'caller-supplied');
+  assert.equal(scope.basis, 'lexical-directory-relationships');
+  assert.equal(scope.host.id, 'zcode');
+  assert.equal(scope.host.status, 'documented');
+  assert.equal(scope.host.installedVersion, 'unverified');
+  assert.match(scope.host.documentationScope!, /workspace AGENTS\.md only/);
+  assert.deepEqual(
+    scope.candidates.map(({ path, cwdRelation, targetRelation }) => ({
+      path,
+      cwdRelation,
+      targetRelation,
+    })),
+    [
+      {
+        path: 'AGENTS.md',
+        cwdRelation: 'ancestor-or-same',
+        targetRelation: 'ancestor-or-same',
+      },
+      {
+        path: 'docs/AGENTS.md',
+        cwdRelation: 'ancestor-or-same',
+        targetRelation: 'ancestor-or-same',
+      },
+      {
+        path: 'docs/ru/AGENTS.md',
+        cwdRelation: 'other-subtree',
+        targetRelation: 'ancestor-or-same',
+      },
+      {
+        path: 'src/AGENTS.md',
+        cwdRelation: 'other-subtree',
+        targetRelation: 'other-subtree',
+      },
+    ],
+  );
+  assert.deepEqual(scope.assessment, {
+    status: 'unverified',
+    reason: 'host-version-configuration-and-session-not-assessed',
+  });
+  assert.equal(result.instructions.applicability, 'unverified');
+  assert.equal(result.instructions.loading.status, 'unverified');
+  assert.equal(result.instructions.use.status, 'unverified');
+  scope.context.cwd = 'changed';
+  scope.host.sources[0] = 'changed';
+  scope.candidates[0].path = 'changed';
+  assert.equal(JSON.stringify(inputs), before);
+});
+
+test('unknown supplied hosts remain distinct from observed markers and native rules remain conditional', () => {
+  const observed = scan([
+    'src/AGENTS.md',
+    'src2/CLAUDE.md',
+    '.github/copilot-instructions.md',
+    '.github/instructions/frontend.instructions.md',
+    '.claude/rules/AGENTS.md',
+    'packages/ui/.cursor/rules/frontend.mdc',
+  ]);
+  observed.agents = ['codex'];
+  const result = summarizeDiagnosis({
+    scan: observed,
+    infrastructure: structure(),
+    context: {
+      agent: 'future-tool',
+      cwd: 'src2',
+      targetPath: 'src2/view.ts',
+    },
+  });
+  const scope = result.instructions.taskScope!;
+  assert.deepEqual(scope.host, {
+    id: 'future-tool',
+    status: 'unknown',
+    sources: [],
+    installedVersion: 'unverified',
+  });
+  assert(!Object.hasOwn(scope.context, 'agentVersion'));
+  assert.equal(
+    scope.candidates.find((item) => item.path === 'src/AGENTS.md')!
+      .targetRelation,
+    'other-subtree',
+  );
+  assert.equal(
+    scope.candidates.find((item) => item.path === 'src2/CLAUDE.md')!
+      .targetRelation,
+    'ancestor-or-same',
+  );
+  for (const item of scope.candidates.filter(
+    (item) => item.path.startsWith('.') || item.path.startsWith('packages/'),
+  )) {
+    assert.equal(item.kind, 'conditional-or-host-specific');
+    assert.equal(item.cwdRelation, 'unverified');
+    assert.equal(item.targetRelation, 'unverified');
+  }
+  assert(
+    result.instructions.adapterContracts.every(
+      (adapter) => adapter.installedVersion === 'unverified',
+    ),
+  );
+});
+
+test('legacy reports have no taskScope and an omitted target stays omitted', () => {
+  const inputs = {
+    scan: scan(['AGENTS.md', '.cursor/rules/frontend.mdc']),
+    infrastructure: structure(),
+  };
+  assert(!Object.hasOwn(summarizeDiagnosis(inputs).instructions, 'taskScope'));
+  const result = summarizeDiagnosis({
+    ...inputs,
+    context: { agent: 'gemini-cli', cwd: '.' },
+  });
+  const scope = result.instructions.taskScope!;
+  assert(!Object.hasOwn(scope.context, 'targetPath'));
+  assert(
+    scope.candidates.every((item) => item.targetRelation === 'not-supplied'),
+  );
+  const { taskScope: _scope, ...instructions } = result.instructions;
+  assert.deepEqual(instructions, summarizeDiagnosis(inputs).instructions);
+});
+
+test('task context accepts bounded versions and canonical project-relative paths', () => {
+  const context = {
+    agent: 'a'.repeat(64),
+    agentVersion: 'v'.repeat(128),
+    cwd: '.',
+    targetPath: `docs/${'a'.repeat(4091)}`,
+  };
+  assert.deepEqual(validateTaskContext(context), context);
+  assert.deepEqual(
+    validateTaskContext({ agent: 'future-tool', cwd: 'документы/guide' }),
+    { agent: 'future-tool', cwd: 'документы/guide' },
+  );
+});
+
+test('invalid task context is rejected without normalization or unknown fields', () => {
+  const valid = { agent: 'codex', cwd: '.' };
+  const invalid: unknown[] = [
+    undefined,
+    null,
+    [],
+    'codex',
+    {},
+    { cwd: '.' },
+    { agent: 'codex' },
+    { ...valid, unexpected: true },
+    { ...valid, [Symbol('hidden')]: true },
+    Object.create(valid),
+  ];
+  for (const agent of [
+    '',
+    'Codex',
+    'codex,claude-code',
+    '-codex',
+    'a'.repeat(65),
+    null,
+    1,
+  ])
+    invalid.push({ ...valid, agent });
+  for (const agentVersion of [
+    '',
+    ' ',
+    ' 1.0',
+    '1.0 ',
+    'v'.repeat(129),
+    '1\n2',
+    '1\u00852',
+    '1\u200b2',
+    '1\u20282',
+    null,
+    1,
+    undefined,
+  ])
+    invalid.push({ ...valid, agentVersion });
+  for (const field of ['cwd', 'targetPath']) {
+    for (const value of [
+      '',
+      '/src',
+      'C:src',
+      'C:/src',
+      '\\src',
+      'src\\file',
+      '..',
+      '../src',
+      'src/..',
+      'src/./file',
+      './src',
+      'src//file',
+      'src/',
+      'src\u0000file',
+      'src\nfile',
+      'src\u0085file',
+      'src\u2028file',
+      'a'.repeat(4097),
+      1,
+      null,
+      undefined,
+    ])
+      invalid.push({ ...valid, [field]: value });
+  }
+  invalid.push({ ...valid, targetPath: '.' });
+  for (const context of invalid)
+    assert.throws(() => validateTaskContext(context), {
+      code: 'invalid-task-context',
+    });
 });

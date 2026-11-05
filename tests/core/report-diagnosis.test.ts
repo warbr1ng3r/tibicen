@@ -11,6 +11,8 @@ import {
 } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { main } from '../../scripts/tibicen.ts';
 import { createProposal } from '../../scripts/core/plan.ts';
 import { applyPlan } from '../../scripts/core/apply.ts';
@@ -39,6 +41,107 @@ async function fixture(t: TestContext) {
 
 const report = async (root: string) =>
   (await main(['report', '--root', root])) as Report;
+
+test('optional task context keeps existing report fields and project bytes unchanged', async (t) => {
+  const { root } = await fixture(t);
+  await mkdir(path.join(root, 'docs/ru'), { recursive: true });
+  await mkdir(path.join(root, 'src'));
+  const files = {
+    'AGENTS.md': '# Shared instructions\n',
+    'docs/ru/AGENTS.md': '# Russian documentation only\n',
+    'src/AGENTS.md': '# Application instructions\n',
+  };
+  for (const [relative, body] of Object.entries(files))
+    await writeFile(path.join(root, relative), body);
+  const context = {
+    agent: 'team-agent',
+    agentVersion: 'local-2',
+    cwd: 'docs',
+    targetPath: 'docs/ru/install.md',
+  };
+  const input = path.join(path.dirname(root), 'context.json');
+  await writeFile(input, JSON.stringify(context));
+  const before = await readdir(root, { recursive: true });
+  const legacy = await report(root);
+  const current = (await main([
+    'report',
+    '--root',
+    root,
+    '--input',
+    input,
+  ])) as Report;
+  const { taskScope, ...unscoped } = current.diagnosis.instructions;
+  assert.ok(taskScope);
+  assert.deepEqual(taskScope.context, context);
+  assert.equal(taskScope.contextBasis, 'caller-supplied');
+  assert.equal(taskScope.host.status, 'unknown');
+  assert.equal(taskScope.host.installedVersion, 'unverified');
+  assert.equal(
+    taskScope.candidates.find((item) => item.path === 'docs/ru/AGENTS.md')
+      ?.targetRelation,
+    'ancestor-or-same',
+  );
+  assert.equal(
+    taskScope.candidates.find((item) => item.path === 'src/AGENTS.md')
+      ?.targetRelation,
+    'other-subtree',
+  );
+  assert.deepEqual(unscoped, legacy.diagnosis.instructions);
+  assert.deepEqual(
+    { ...current, diagnosis: { ...current.diagnosis, instructions: unscoped } },
+    legacy,
+  );
+  assert.deepEqual(await readdir(root, { recursive: true }), before);
+  for (const [relative, body] of Object.entries(files))
+    assert.equal(await readFile(path.join(root, relative), 'utf8'), body);
+});
+
+test('invalid task context is rejected before inspecting state or saving a report', async (t) => {
+  const { root } = await fixture(t);
+  await mkdir(path.join(root, '.tibicen'));
+  const brokenManifest = '{ malformed';
+  await writeFile(path.join(root, '.tibicen/manifest.yml'), brokenManifest);
+  const input = path.join(path.dirname(root), 'invalid-context.json');
+  await writeFile(input, JSON.stringify({ agent: 'codex', cwd: '../private' }));
+  await assert.rejects(
+    main(['report', '--root', root, '--input', input, '--save', '--requested']),
+    { code: 'invalid-task-context' },
+  );
+  assert.deepEqual(await readdir(path.join(root, '.tibicen')), [
+    'manifest.yml',
+  ]);
+  assert.equal(
+    await readFile(path.join(root, '.tibicen/manifest.yml'), 'utf8'),
+    brokenManifest,
+  );
+});
+
+test('report accepts context on stdin without creating an input or state file', async (t) => {
+  const { root } = await fixture(t);
+  const before = await readdir(root, { recursive: true });
+  const result = spawnSync(
+    process.execPath,
+    [
+      fileURLToPath(new URL('../../scripts/tibicen.ts', import.meta.url)),
+      'report',
+      '--root',
+      root,
+      '--input',
+      '-',
+    ],
+    {
+      input: JSON.stringify({ agent: 'gemini-cli', cwd: '.' }),
+      encoding: 'utf8',
+      timeout: 10000,
+    },
+  );
+  assert.equal(result.status, 0, result.stderr);
+  const current = JSON.parse(result.stdout) as Report;
+  assert.equal(current.diagnosis.instructions.taskScope?.host.id, 'gemini-cli');
+  assert.equal(current.diagnosis.instructions.loading.status, 'unverified');
+  assert.equal(current.diagnosis.instructions.use.status, 'unverified');
+  assert.deepEqual(await readdir(root, { recursive: true }), before);
+});
 
 test('report exposes additional documented profiles without creating or selecting an adapter', async (t) => {
   const { root, home } = await fixture(t);
@@ -153,7 +256,15 @@ test('a fresh report exposes current drift while preserving recorded complete ch
   const manifestPath = path.join(root, '.tibicen/manifest.yml');
   const manifest = await readFile(manifestPath, 'utf8');
   await writeFile(path.join(root, 'AGENTS.md'), '# Changed owner rules\n');
-  const current = await report(root);
+  const input = path.join(path.dirname(root), 'context.json');
+  await writeFile(input, JSON.stringify({ agent: 'zcode', cwd: '.' }));
+  const current = (await main([
+    'report',
+    '--root',
+    root,
+    '--input',
+    input,
+  ])) as Report;
   assert.equal(current.status, 'complete');
   assert.deepEqual(current.checks, baseline.checks);
   assert.deepEqual(
@@ -249,7 +360,22 @@ test('report respects the unfinished plan forbidden paths instead of expanding i
   });
   const statePath = path.join(root, '.tibicen/state/session.json');
   const before = await readFile(statePath, 'utf8');
-  const current = await report(root);
+  const input = path.join(path.dirname(root), 'context.json');
+  await writeFile(
+    input,
+    JSON.stringify({
+      agent: 'team-agent',
+      cwd: 'private',
+      targetPath: 'private/task.js',
+    }),
+  );
+  const current = (await main([
+    'report',
+    '--root',
+    root,
+    '--input',
+    input,
+  ])) as Report;
   assert.equal(current.diagnosis.inventory.complete, false);
   assert.ok(
     current.diagnosis.inventory.coverageLimits.includes('forbidden-path'),

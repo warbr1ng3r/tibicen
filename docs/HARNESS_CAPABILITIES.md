@@ -107,3 +107,33 @@ step. A vendor's MCP or memory feature does not connect Tibicen's approved memor
 store or authorize a server launch. Keep one suitable existing store and verify
 reading, task use and updates separately in an authorized fresh session. See the
 [project memory guide](PROJECT_MEMORY.md) and [adopt diagnosis](ADOPT_DIAGNOSIS.md).
+
+## Local MCP readers — Unreleased
+
+The development `mcp-diagnose` command accepts any valid harness ID. Explicitly
+select a known format, or use `stdio-observation` for safe redacted facts bound to
+an inspected project source hash. This common route covers unsupported languages
+without evaluating their code; its `reported-stdio` result remains a caller
+observation, not parsed validity. No catalog profile or model/provider switch is
+required.
+
+Optional native readers cover Claude Code, Cursor, Gemini CLI, OpenCode V2,
+ZCode native/shared JSON, current Kimi Code JSON and bounded Mistral Vibe TOML.
+These are concrete coverage cells, not a harness allowlist. Explicit format
+selection works with uncatalogued IDs too. See the [format/evidence matrix](MCP_FORMATS.md)
+for names, defaults, source contracts and remaining limits, including DeepSeek
+Harness and GigaChat-based applications.
+
+Reader selection grants no writer. Automatic changes remain limited to the
+existing matching Claude Code/Cursor host, format and approved exact project
+JSON paths; Codex retains its manual TOML helper. Other native settings retain
+their precise follow-up rather than borrowing a write adapter.
+
+The selected source, format, host version and target launch observations are
+supplied context. Format evidence and parsed/caller-observed configuration are
+reported separately; native activation remains unverified. They do not establish
+effective native precedence, connection or task use. The command does not run
+native diagnostics or start a server. See the
+[paired workflow and command example](ADOPT_DIAGNOSIS.md#local-mcp-diagnosis-for-init-and-adopt--unreleased)
+for repair, no-change and native follow-up outcomes and dated official contracts.
+This feature is local Unreleased work and is absent from published 1.3.0.
