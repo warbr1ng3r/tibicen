@@ -55,13 +55,51 @@ async function inputData(filename: unknown) {
   return parseData(text);
 }
 
+async function inspectCurrent(
+  root: string,
+  current: Awaited<ReturnType<typeof getStatus>>,
+) {
+  const { scanProject } = await import('./scan/index.ts');
+  const { verifyInfrastructure } = await import('./verify/index.ts');
+  const memory = current.state?.proposal.memory ?? current.manifest?.memory;
+  const forbiddenPaths = current.state?.proposal.forbiddenPaths ?? [];
+  const scan = await scanProject(root, { forbiddenPaths, memory });
+  const infrastructure = await verifyInfrastructure(root, {
+    forbiddenPaths,
+    memory,
+    observedFiles: scan.files,
+    components: current.state?.proposal.components,
+    expectedFiles: current.state ? current.observedApplied : [],
+    sharedRules:
+      current.state?.proposal.sharedRules ??
+      current.manifest?.sharedRules ??
+      [],
+    process: current.state?.proposal.process ?? current.manifest?.process,
+  });
+  const conflicts =
+    current.recovery?.files.filter(
+      (file) => file.path === memory?.path && file.state === 'ambiguous',
+    ) ?? [];
+  if (conflicts.length) {
+    infrastructure.status = 'issues-found';
+    infrastructure.issues = [
+      ...(infrastructure.issues ?? []),
+      ...conflicts.map((file) => ({
+        path: file.path,
+        reason: 'pending-memory-conflict',
+      })),
+    ];
+  }
+  return { scan, infrastructure };
+}
+
 export async function main(argv = process.argv.slice(2)) {
   const { command, options } = parseArgs(argv);
   const accepted: Record<string, string[]> = {
     scan: [],
     discover: ['query', 'kind'],
     'source-check': ['input'],
-    practices: ['agents'],
+    practices: ['agents', 'input'],
     proposal: ['input'],
     apply: ['plan', 'approve'],
     resume: ['plan', 'approve'],
@@ -94,7 +132,8 @@ export async function main(argv = process.argv.slice(2)) {
         scan: 'scan --root PATH',
         discover: 'discover --query TEXT [--kind skill|mcp]',
         'source-check': 'source-check --input FILE_OR_STDIN_DASH',
-        practices: 'practices --agents codex,cursor,claude-code',
+        practices:
+          'practices --agents codex,cursor,claude-code [--input FILE_OR_STDIN_DASH]',
         proposal: 'proposal --root PATH --input FILE_OR_STDIN_DASH',
         apply: 'apply --root PATH --plan FILE_OR_STDIN_DASH --approve DIGEST',
         resume:
@@ -147,6 +186,8 @@ export async function main(argv = process.argv.slice(2)) {
     const process =
       current.state?.proposal.process ?? current.manifest?.process;
     const memory = current.state?.proposal.memory ?? current.manifest?.memory;
+    const { summarizeDiagnosis } = await import('./core/diagnosis.ts');
+    const { scan, infrastructure } = await inspectCurrent(root, current);
     const report = {
       schema: 1,
       ...(memory ? { memory } : {}),
@@ -176,6 +217,14 @@ export async function main(argv = process.argv.slice(2)) {
         current.state?.proposal?.manualFragments ??
         current.manifest?.manualFragments ??
         [],
+      diagnosis: summarizeDiagnosis({
+        scan,
+        infrastructure,
+        session: session?.id
+          ? { id: session.id, status: current.status }
+          : null,
+        continuationAvailable: Boolean(current.state),
+      }),
     };
     if (options.save) {
       assert(
@@ -220,39 +269,8 @@ export async function main(argv = process.argv.slice(2)) {
     }
   }
   if (command === 'verify') {
-    const { scanProject } = await import('./scan/index.ts');
-    const { verifyInfrastructure } = await import('./verify/index.ts');
     const current = await getStatus(root);
-    const memory = current.state?.proposal.memory ?? current.manifest?.memory;
-    const forbiddenPaths = current.state?.proposal.forbiddenPaths ?? [];
-    const scan = await scanProject(root, { forbiddenPaths, memory });
-    const checked = await verifyInfrastructure(root, {
-      forbiddenPaths,
-      memory,
-      observedFiles: scan.files,
-      components: current.state?.proposal.components,
-      expectedFiles: current.state ? current.observedApplied : [],
-      sharedRules:
-        current.state?.proposal.sharedRules ??
-        current.manifest?.sharedRules ??
-        [],
-      process: current.state?.proposal.process ?? current.manifest?.process,
-    });
-    const conflicts =
-      current.recovery?.files.filter(
-        (file) => file.path === memory?.path && file.state === 'ambiguous',
-      ) ?? [];
-    if (conflicts.length) {
-      checked.status = 'issues-found';
-      checked.issues = [
-        ...(checked.issues ?? []),
-        ...conflicts.map((file) => ({
-          path: file.path,
-          reason: 'pending-memory-conflict',
-        })),
-      ];
-    }
-    return checked;
+    return (await inspectCurrent(root, current)).infrastructure;
   }
   if (command === 'source-check') {
     const { validateSources } = await import('./discovery/index.ts');
@@ -281,7 +299,20 @@ export async function main(argv = process.argv.slice(2)) {
       'invalid-arguments',
       'Provide --agents codex,cursor,claude-code.',
     );
-    return checkPractices({ agents: options.agents.split(',') });
+    const input =
+      options.input === undefined ? {} : await inputData(options.input);
+    assert(
+      input !== null &&
+        typeof input === 'object' &&
+        !Array.isArray(input) &&
+        Object.keys(input).every((key) => key === 'agentVersions'),
+      'invalid-practices-input',
+      'Practice input accepts only an optional agentVersions object.',
+    );
+    return checkPractices({
+      agents: options.agents.split(','),
+      agentVersions: (input as { agentVersions?: unknown }).agentVersions,
+    });
   }
   if (command === 'mcp-verify') {
     const { validateMcpConfig, verifyCodexMcpBlock } =

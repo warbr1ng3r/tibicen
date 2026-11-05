@@ -51,8 +51,8 @@ export function memoryAllows(
 export function memoryInstructionPath(relative: string) {
   return (
     /(?:^|\/)(?:AGENTS\.md|CLAUDE\.md)$/.test(relative) ||
-    relative === '.cursorrules' ||
-    /^\.(?:claude|cursor)\/rules\/.+\.(?:md|mdc|txt)$/.test(relative)
+    /(?:^|\/)\.cursorrules$/.test(relative) ||
+    /(?:^|\/)\.(?:claude|cursor)\/rules\/.+\.(?:md|mdc|txt)$/.test(relative)
   );
 }
 
