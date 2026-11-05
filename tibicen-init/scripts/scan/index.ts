@@ -16,6 +16,10 @@ import {
   validateRelativePath,
 } from '../core/paths.ts';
 import { MEMORY_PATHS, memoryAllows, validateMemory } from '../core/memory.ts';
+import {
+  harnessInfrastructurePath,
+  observedHarnesses,
+} from '../agents/profiles.ts';
 
 const IGNORED = new Set([
   '.git',
@@ -47,10 +51,7 @@ const LANGUAGES: Record<string, string> = {
 export function infrastructurePath(relative: string) {
   return (
     isInfrastructurePath(relative) ||
-    /(?:^|\/)\.cursorrules$/.test(relative) ||
-    /(?:^|\/)\.(?:claude|cursor|codex)\/(?:settings(?:\.local)?\.json|config\.toml|commands\/|agents\/|skills\/|rules\/)/.test(
-      relative,
-    ) ||
+    harnessInfrastructurePath(relative) ||
     relative === '.tibicen/manifest.yml'
   );
 }
@@ -237,14 +238,7 @@ export async function scanProject(
         });
         const language = LANGUAGES[path.posix.extname(name)];
         if (language && !infrastructure) languages.add(language);
-        if (
-          /(?:^|\/)(?:CLAUDE\.md|\.claude\/)/.test(name) ||
-          name === '.mcp.json'
-        )
-          agents.add('claude-code');
-        if (/(?:^|\/)(?:\.cursor\/|\.cursorrules$)/.test(name))
-          agents.add('cursor');
-        if (/(?:^|\/)\.codex\//.test(name)) agents.add('codex');
+        for (const agent of observedHarnesses(name)) agents.add(agent);
         if (!infrastructure && path.posix.basename(name) === 'package.json') {
           let manifest;
           try {

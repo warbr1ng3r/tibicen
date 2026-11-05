@@ -4,13 +4,14 @@ import { readFileSync } from 'node:fs';
 import { validateSharedRules } from './shared-rules.ts';
 import { validateProcessChanges } from '../process/index.ts';
 import { validateMemory } from './memory.ts';
+import { HARNESS_PROFILES, isHarnessHintList } from '../agents/profiles.ts';
 
 export const VERSION: string = JSON.parse(
   readFileSync(new URL('../../package.json', import.meta.url), 'utf8'),
 ).version;
 export const SCHEMA_VERSION = 1;
 export const MAX_DATA_BYTES = 8 * 1024 * 1024;
-export const AGENTS = ['claude-code', 'codex', 'cursor'];
+export const AGENTS = HARNESS_PROFILES.map((profile) => profile.id);
 export const TRANSFER_STATUSES = [
   'complete',
   'manual-action-required',
@@ -394,9 +395,9 @@ export function validatePreset(input: unknown): Preset {
       );
     } else if (key === 'agents') {
       assert(
-        Array.isArray(value) && value.every((agent) => AGENTS.includes(agent)),
+        isHarnessHintList(value),
         'invalid-preset',
-        'Unsupported preset agent.',
+        'Harness hints need valid lowercase IDs with at most sixteen distinct values.',
       );
     } else
       assert(
