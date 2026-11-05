@@ -166,3 +166,101 @@ jobs:
             .release-1.2/tibicen-1.2.0.tar.gz .release-1.2/distribution-SHA256SUMS .release-1.2/SHA256SUMS \
             --repo warbr1ng3r/tibicen --verify-tag --title 'Tibicen 1.2.0' \
             --notes-file .release-1.2/notes.md --latest
+
+  # PRIVATE DRAFT: append under jobs only after release, public-copy review and a literal new main SHA.
+  pages:
+    if: >-
+      github.event_name == 'push' &&
+      github.repository == 'warbr1ng3r/tibicen' &&
+      github.ref == 'refs/heads/codex/release-1.2-ops' &&
+      github.run_attempt == 1 &&
+      github.event.head_commit.message == 'release-1.2-ops: pages'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    permissions:
+      contents: read
+      actions: write
+    env:
+      PAGES_SOURCE_SHA: 802c01ece6d7e3fd07f080263e2e19c7537e3a46
+    steps:
+      - name: Dispatch the existing Pages workflow once and inspect its raw response
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          umask 077
+          [[ "$PAGES_SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]] || exit 1
+          test "$(gh api repos/warbr1ng3r/tibicen/git/ref/heads/main --jq .object.sha)" = "$PAGES_SOURCE_SHA"
+          test "$(gh api repos/warbr1ng3r/tibicen/actions/workflows/pages.yml --jq '.state + " " + .path')" = 'active .github/workflows/pages.yml'
+          tibicen_pages_receipt="$(mktemp -d "$RUNNER_TEMP/tibicen-pages-dispatch.XXXXXX")"
+          date -u +%Y-%m-%dT%H:%M:%SZ > "$tibicen_pages_receipt/started-at"
+          printf '%s\n' "$PAGES_SOURCE_SHA" > "$tibicen_pages_receipt/expected-source"
+          tibicen_pages_curl_exit=0
+          curl --disable --proto '=https' --connect-timeout 10 --max-time 30 --max-filesize 1048576 -sS \
+            --request POST \
+            -H 'Accept: application/vnd.github+json' \
+            -H 'Content-Type: application/json' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'X-GitHub-Api-Version: 2026-03-10' \
+            --data '{"ref":"main"}' \
+            -D "$tibicen_pages_receipt/dispatch.headers" \
+            -o "$tibicen_pages_receipt/dispatch.body" \
+            -w '%{http_code}' \
+            https://api.github.com/repos/warbr1ng3r/tibicen/actions/workflows/pages.yml/dispatches \
+            > "$tibicen_pages_receipt/http-status" || tibicen_pages_curl_exit=$?
+          printf '%s\n' "$tibicen_pages_curl_exit" > "$tibicen_pages_receipt/curl-exit"
+          python3 - "$tibicen_pages_receipt" <<'PY'
+          from pathlib import Path
+          import hashlib, json, re, sys
+          root = Path(sys.argv[1])
+          body = (root / 'dispatch.body').read_bytes() if (root / 'dispatch.body').exists() else b''
+          status = (root / 'http-status').read_text().strip()
+          curl_exit = int((root / 'curl-exit').read_text())
+          headers = (root / 'dispatch.headers').read_text() if (root / 'dispatch.headers').exists() else ''
+          version = re.findall(r'^x-github-api-version-selected:\s*(\d{4}-\d{2}-\d{2})\s*$', headers, re.M | re.I)
+          receipt = {
+              'expectedSource': (root / 'expected-source').read_text().strip(),
+              'startedAt': (root / 'started-at').read_text().strip(),
+              'httpStatus': status, 'curlExit': curl_exit,
+              'selectedApiVersion': version[-1] if version else None,
+              'bodyBytes': len(body), 'bodySha256': hashlib.sha256(body).hexdigest(),
+              'runId': None, 'dispatchPostAttempts': 1,
+          }
+          outcome = 'transport-outcome-unknown'
+          passed = False
+          if curl_exit == 0 and status == '204' and not body:
+              outcome, passed = 'acknowledged-without-run-id', True
+          elif curl_exit == 0 and status == '200':
+              try:
+                  value = json.loads(body)
+                  run_id = value.get('workflow_run_id') if isinstance(value, dict) else None
+              except (ValueError, UnicodeError):
+                  run_id = None
+              if type(run_id) is int and run_id > 0:
+                  receipt['runId'] = run_id
+                  (root / 'run-id').write_text(str(run_id) + '\n')
+                  outcome, passed = 'acknowledged-with-run-id', True
+              else:
+                  outcome = 'unexpected-200-response-shape'
+          elif curl_exit == 0:
+              outcome = 'unexpected-http-status-or-body'
+          receipt['outcome'] = outcome
+          (root / 'receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
+          print(json.dumps(receipt, indent=2))
+          if not passed:
+              print('Stop and inspect the response/run state; do not dispatch again.', file=sys.stderr)
+              raise SystemExit(1)
+          PY
+          if test -s "$tibicen_pages_receipt/run-id"; then
+            tibicen_pages_run_id="$(cat "$tibicen_pages_receipt/run-id")"
+            printf 'Pages run: https://github.com/warbr1ng3r/tibicen/actions/runs/%s\n' "$tibicen_pages_run_id"
+            gh api "repos/warbr1ng3r/tibicen/actions/runs/$tibicen_pages_run_id" \
+              --jq '{id,html_url,head_sha,head_branch,path,event,status,conclusion}' \
+              | tee "$tibicen_pages_receipt/pages-run.json"
+            jq -e --arg sha "$PAGES_SOURCE_SHA" \
+              '.head_sha == $sha and .head_branch == "main" and .path == ".github/workflows/pages.yml" and .event == "workflow_dispatch"' \
+              "$tibicen_pages_receipt/pages-run.json"
+          else
+            echo 'Dispatch acknowledged without a run ID. Root must identify the actual Pages run and verify its exact source; do not dispatch again.'
+          fi
