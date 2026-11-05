@@ -26,8 +26,6 @@ jobs:
     permissions:
       contents: read
       actions: write
-    env:
-      RECEIPT_DIRECTORY: ${{ runner.temp }}/tibicen-1.3-platform-dispatch
     steps:
       - name: Dispatch the existing platform workflow once at the frozen main head
         shell: bash
@@ -35,6 +33,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
+          RECEIPT_DIRECTORY="$RUNNER_TEMP/tibicen-1.3-platform-dispatch"
+          export RECEIPT_DIRECTORY
           umask 077
           [[ "$SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]] || exit 1
           mkdir "$RECEIPT_DIRECTORY"
@@ -125,6 +125,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
+          RECEIPT_DIRECTORY="$RUNNER_TEMP/tibicen-1.3-platform-dispatch"
+          export RECEIPT_DIRECTORY
           python3 - <<'PY'
           from pathlib import Path
           import hashlib, json, os
