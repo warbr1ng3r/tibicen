@@ -1,4 +1,5 @@
 import { test, expect, type Download, type Page } from '@playwright/test';
+import { HARNESS_PROFILES } from '../../scripts/agents/profiles.ts';
 
 async function openPreset(page: Page) {
   await expect(page.locator('#download-preset')).toBeEnabled();
@@ -33,6 +34,77 @@ test.beforeEach(async ({ page }) => {
     'aria-controls',
     /.+/,
   );
+});
+
+test('catalog hints stay local preferences in English and Russian on a narrow viewport', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const requests: string[] = [];
+  page.on('request', (request) =>
+    requests.push(`${request.url()} ${request.postData() ?? ''}`),
+  );
+  for (const route of ['./', 'ru/']) {
+    await page.goto(route);
+    await openPreset(page);
+    await openAdvanced(page);
+    const russian = route === 'ru/';
+    const checkboxes = page.locator('.agent-choices input');
+    expect(
+      await checkboxes.evaluateAll((inputs) =>
+        inputs.map((input) => (input as HTMLInputElement).value),
+      ),
+    ).toEqual(HARNESS_PROFILES.map(({ id }) => id));
+    await expect(page.locator('#agents-hint')).toContainText(
+      russian ? 'Это предпочтения' : 'Preferences only',
+    );
+    for (const label of ['Roo Code', 'Windsurf']) {
+      await expect(
+        page.getByRole('checkbox', {
+          name: `${label}${russian ? ' (прежний формат)' : ' (legacy)'}`,
+          exact: true,
+        }),
+      ).toBeVisible();
+    }
+    await page.locator('#name').fill('private-catalog-preference');
+    const gemini = page.getByRole('checkbox', {
+      name: 'Gemini CLI',
+      exact: true,
+    });
+    await gemini.focus();
+    await page.keyboard.press('Space');
+    await expect(gemini).toBeChecked();
+    await expect(gemini).toBeFocused();
+    await page
+      .getByRole('checkbox', { name: 'OpenCode V2', exact: true })
+      .check();
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth),
+    ).toBe(390);
+    const targets = await page
+      .locator('.agent-choices label')
+      .evaluateAll((labels) =>
+        labels.map((label) => label.getBoundingClientRect().height),
+      );
+    expect(Math.min(...targets)).toBeGreaterThanOrEqual(44);
+    const downloaded = page.waitForEvent('download');
+    await page.locator('#download-preset').click();
+    const download = await downloaded;
+    expect(download.suggestedFilename()).toBe('preset.yaml');
+    expect(JSON.parse(await downloadedText(download))).toMatchObject({
+      schema: 1,
+      name: 'private-catalog-preference',
+      answers: { agents: ['opencode', 'gemini-cli'] },
+    });
+    await expect(page.locator('#install-command')).toContainText(
+      '0656f12e00ea83d84229180d331f3178bf253407',
+    );
+  }
+  expect(
+    requests.filter((request) =>
+      /private-catalog-preference|[?&]agents=/.test(request),
+    ),
+  ).toEqual([]);
 });
 
 test('all installation combinations update immediately after selection', async ({

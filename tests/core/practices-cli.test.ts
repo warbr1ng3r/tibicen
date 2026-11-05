@@ -17,6 +17,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { hashContent } from '../../scripts/core/contracts.ts';
 import { OFFICIAL_SOURCES } from '../../scripts/discovery/practices.ts';
+import { HARNESS_PROFILES } from '../../scripts/agents/profiles.ts';
 
 test('practices accepts version data read-only in source and standalone init/adopt outside a checkout', async (t) => {
   const base = await realpath(
@@ -135,7 +136,7 @@ globalThis.fetch = async (url, options = {}) => {
   ]) {
     assert.equal(
       (await execute(cli, ['help'])).result.commands.practices,
-      'practices --agents codex,cursor,claude-code [--input FILE_OR_STDIN_DASH]',
+      'practices --agents ID[,ID...] [--input FILE_OR_STDIN_DASH]',
     );
     const args = ['practices', '--agents', 'codex,cursor,claude-code'];
     let stdinResult;
@@ -184,6 +185,50 @@ globalThis.fetch = async (url, options = {}) => {
       );
     }
     const requestsBefore = await readFile(log, 'utf8');
+    const catalog = await execute(cli, ['harnesses']);
+    assert.equal(catalog.exitCode, 0);
+    assert.deepEqual(catalog.result, {
+      schema: 1,
+      harnesses: HARNESS_PROFILES,
+    });
+    const selection = await execute(cli, [
+      'harnesses',
+      '--agents',
+      'gemini-cli,future-agent,roo-code,gemini-cli',
+    ]);
+    assert.equal(selection.exitCode, 0);
+    assert.deepEqual(
+      selection.result.harnesses.map(
+        ({ id, status }: { id: string; status: string }) => ({ id, status }),
+      ),
+      [
+        { id: 'gemini-cli', status: 'documented' },
+        { id: 'future-agent', status: 'unknown' },
+        { id: 'roo-code', status: 'legacy' },
+      ],
+    );
+    const unknown = await execute(
+      cli,
+      ['practices', '--agents', 'future-agent', '--input', '-'],
+      { agentVersions: { 'future-agent': '1.0.0' } },
+    );
+    assert.equal(unknown.exitCode, 0);
+    assert.deepEqual(unknown.result.gaps, [
+      { agent: 'future-agent', reason: 'unsupported-agent' },
+    ]);
+    for (const command of ['harnesses', 'practices'])
+      for (const invalid of [
+        '',
+        'codex,Unknown',
+        'codex,with_under',
+        'a'.repeat(65),
+        Array(17).fill('codex').join(','),
+      ]) {
+        const result = await execute(cli, [command, '--agents', invalid]);
+        assert.equal(result.exitCode, 1);
+        assert.equal(result.result.error.code, 'invalid-agents');
+      }
+    assert.equal(await readFile(log, 'utf8'), requestsBefore);
     for (const [input, code] of [
       [null, 'invalid-practices-input'],
       [[], 'invalid-practices-input'],

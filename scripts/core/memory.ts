@@ -1,5 +1,6 @@
 import type { ProjectMemory } from './types.ts';
 import { assert } from './contracts.ts';
+export { instructionCandidate as memoryInstructionPath } from '../agents/profiles.ts';
 
 export const MEMORY_PATHS = [
   '.agents/memory.md',
@@ -46,14 +47,6 @@ export function memoryAllows(
   relative: string,
 ) {
   return !!memory && memory.path === relative;
-}
-
-export function memoryInstructionPath(relative: string) {
-  return (
-    /(?:^|\/)(?:AGENTS\.md|CLAUDE\.md)$/.test(relative) ||
-    /(?:^|\/)\.cursorrules$/.test(relative) ||
-    /(?:^|\/)\.(?:claude|cursor)\/rules\/.+\.(?:md|mdc|txt)$/.test(relative)
-  );
 }
 
 export function referencesMemory(content: string, memory: ProjectMemory) {

@@ -185,7 +185,7 @@ The build uses an ordinary `dist/` directory. Custom output is allowed under `di
 
 Source code and tests use TypeScript with strict type checking. The CLI runs directly on Node ≥22.20. Landing page development and builds require Node ≥22.23.4; TypeScript, Astro, and type checking tools remain development and site dependencies. There are no runtime dependencies. `scripts/tibicen.ts` outputs structured JSON. Discovery and proposal generation do not save files; the completed proposal and its digest are passed through stdin. `--approve` binds actual human approval to a specific plan; it does not authorize a script or agent to approve its own input.
 
-Main commands: `scan`, `discover`, `practices`, `proposal`, `apply`, `resume`, `status`, `verify`, `report`, `preset-load`, `preset-save`. Used on its own, `verify` performs structural checks only. Executable checks are specified in the approved proposal. Input format and example: [proposal-format.md](references/proposal-format.md).
+Main commands: `scan`, `discover`, `practices`, `proposal`, `apply`, `resume`, `status`, `verify`, `report`, `preset-load`, `preset-save`. The Unreleased checkout also provides read-only `harnesses` for documented and unknown profiles; see the [profile guide](docs/HARNESS_CAPABILITIES.md). Used on its own, `verify` performs structural checks only. Executable checks are specified in the approved proposal. Input format and example: [proposal-format.md](references/proposal-format.md).
 
 The landing page is a separate Astro workspace in `landing/`, with adapted AstroWind sections, Tailwind CSS, client-side TypeScript, and local assets. Section provenance and the MIT notice are documented in [landing/README.md](landing/README.md). Install dependencies for all parts with a single `pnpm install --frozen-lockfile` from the root. Start the development server with `pnpm dev:site` (http://127.0.0.1:8371/). Build with `pnpm build:site` and preview with `pnpm preview:site`. The static output in the ignored `landing/dist/` directory can be deployed to ordinary static hosting; the page requires neither an application server nor external assets. The landing page and its dependencies are excluded from installed skills.
 
@@ -200,6 +200,7 @@ English is canonical for project documentation. Russian translations live beside
 - [Development plan and work allocation](docs/DEVELOPMENT_PLAN.md).
 - [Project memory — available since 1.1.0](docs/PROJECT_MEMORY.md).
 - [Understanding an adopt result — available in 1.2.0](docs/ADOPT_DIAGNOSIS.md).
+- [Harness profiles and evidence limits — Unreleased](docs/HARNESS_CAPABILITIES.md).
 - [Versioning and release procedure](docs/RELEASING.md).
 - [Voluntary postpublication usefulness protocol](docs/PILOT.md).
 - [Security boundaries and vulnerability reporting](SECURITY.md).

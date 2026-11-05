@@ -1,6 +1,7 @@
 import path from 'node:path';
 import type { CheckResult, PathReason, ScanResult } from './types.ts';
 import { AGENT_MATRIX, CHECKED_AT } from '../compat/matrix.ts';
+import { getHarnessProfile, instructionCandidate } from '../agents/profiles.ts';
 
 interface DiagnosisInput {
   scan: ScanResult;
@@ -17,10 +18,6 @@ const orderedReasons = (items: PathReason[]) =>
         `${b.path ?? ''}\0${b.agent ?? ''}\0${b.reason}`,
       ),
     );
-
-const instructionCandidate = (relative: string) =>
-  /(?:^|\/)(?:AGENTS\.md|CLAUDE\.md|\.cursorrules)$/.test(relative) ||
-  /(?:^|\/)\.(?:claude|cursor)\/rules\/.+\.(?:md|mdc|txt)$/.test(relative);
 
 export function summarizeDiagnosis({
   scan,
@@ -97,9 +94,23 @@ export function summarizeDiagnosis({
           installedVersion: 'unverified',
         }),
       ),
+      harnessProfiles: scan.agents.flatMap((agent) => {
+        const profile = getHarnessProfile(agent);
+        return profile
+          ? [
+              {
+                ...profile,
+                instructionPaths: [...profile.instructionPaths],
+                skillPaths: profile.skillPaths ? [...profile.skillPaths] : null,
+                sources: [...profile.sources],
+                installedVersion: 'unverified',
+              },
+            ]
+          : [];
+      }),
       applicability: 'unverified',
       reason:
-        'Candidate directories and adapter contracts do not establish the selected agent/version, working directory, target path or active precedence.',
+        'Candidate directories, documented profiles and adapter contracts do not establish the selected agent/version, working directory, target path or active precedence.',
       loading: {
         status: 'unverified',
         reason: 'no-current-native-observation',

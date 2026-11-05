@@ -250,7 +250,15 @@ test('a supported binding grants no other Markdown, app or global write permissi
       { code: 'invalid-memory' },
     );
   }
-  for (const relative of ['docs/other.md', 'MEMORY.md', 'app.js']) {
+  for (const relative of [
+    'docs/other.md',
+    'MEMORY.md',
+    'app.js',
+    '.gemini/settings.json',
+    'opencode.jsonc',
+    '.zcode/config.json',
+    '.aider.conf.yml',
+  ]) {
     const input = setup();
     input.changes.push({
       path: relative,
@@ -308,6 +316,19 @@ test('existing memory can be bound without rewriting or claiming third-party own
   assert.deepEqual((await getStatus(root)).manifest!.installed, []);
 });
 
+const nativeInstructionPaths = [
+  'GEMINI.md',
+  'packages/ui/GEMINI.md',
+  '.github/copilot-instructions.md',
+  '.github/instructions/backend.instructions.md',
+  '.clinerules',
+  '.cline/rules/notes.md',
+  '.devin/rules/notes.md',
+  '.continue/rules/notes.md',
+  '.roo/rules/notes.md',
+  '.windsurf/rules/notes.md',
+];
+
 for (const instructionPath of [
   '.cursor/rules/notes.mdc',
   '.claude/rules/notes.md',
@@ -317,6 +338,7 @@ for (const instructionPath of [
   'packages/ui/.cursorrules',
   'packages/ui/AGENTS.md',
   'packages/ui/CLAUDE.md',
+  ...nativeInstructionPaths,
 ]) {
   test(`existing ${instructionPath} connects memory without a redundant root pointer`, async (t) => {
     const memoryPath = 'docs/memory.md';
@@ -358,7 +380,8 @@ for (const instructionPath of [
     assert.equal(report.diagnosis.instructions.use.status, 'unverified');
     if (
       instructionPath.startsWith('packages/ui/.cursor') ||
-      instructionPath.startsWith('packages/ui/.claude')
+      instructionPath.startsWith('packages/ui/.claude') ||
+      nativeInstructionPaths.includes(instructionPath)
     )
       await assert.rejects(
         createProposal(
@@ -384,6 +407,9 @@ for (const instructionPath of [
 
 for (const sample of [
   { name: 'unrelated Markdown', path: 'packages/ui/notes.md' },
+  { name: 'unconfigured Aider convention', path: 'CONVENTIONS.md' },
+  { name: 'native raw config', path: '.gemini/settings.json' },
+  { name: 'native skill body', path: '.opencode/skills/notes/SKILL.md' },
   {
     name: 'unsupported extension',
     path: 'packages/ui/.cursor/rules/notes.json',
@@ -411,6 +437,16 @@ for (const sample of [
   {
     name: 'symlink rule',
     path: 'packages/ui/.claude/rules/notes.md',
+    symlink: true,
+  },
+  {
+    name: 'forbidden native rule',
+    path: 'packages/ui/GEMINI.md',
+    forbiddenPaths: ['packages/ui'],
+  },
+  {
+    name: 'symlink native rule',
+    path: '.continue/rules/notes.md',
     symlink: true,
   },
 ]) {

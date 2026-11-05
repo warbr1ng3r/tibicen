@@ -68,6 +68,7 @@ test('a native setup has no invented session, selected agent, or loading result'
   assert.deepEqual(result.instructions.candidates, [
     { path: 'AGENTS.md', directory: '.' },
   ]);
+  assert.deepEqual(result.instructions.harnessProfiles, []);
   assert.equal(result.instructions.applicability, 'unverified');
   assert.deepEqual(result.instructions.loading, {
     status: 'unverified',
@@ -96,6 +97,67 @@ test('a native setup has no invented session, selected agent, or loading result'
   );
   assert.equal(result.nextAction.kind, 'review-evidence');
   assert.match(result.nextAction.reason, /does not establish sufficiency/);
+});
+
+test('documented native profiles remain separate from the checked runtime adapter contracts', () => {
+  const observed = scan([
+    'GEMINI.md',
+    'packages/ui/GEMINI.md',
+    '.github/copilot-instructions.md',
+    '.continue/rules/project.md',
+    '.roo/rules/project.md',
+    '.zcode/config.json',
+    '.agents/skills/review/SKILL.md',
+  ]);
+  observed.agents = [
+    'copilot-cli',
+    'gemini-cli',
+    'continue-ide',
+    'roo-code',
+    'zcode',
+    'future-tool',
+  ];
+  const result = summarizeDiagnosis({
+    scan: observed,
+    infrastructure: structure(),
+  });
+  assert.deepEqual(
+    result.instructions.candidates.map((file) => file.path),
+    [
+      '.continue/rules/project.md',
+      '.github/copilot-instructions.md',
+      '.roo/rules/project.md',
+      'GEMINI.md',
+      'packages/ui/GEMINI.md',
+    ],
+  );
+  assert.deepEqual(
+    result.instructions.harnessProfiles.map((profile) => profile.id),
+    observed.agents.slice(0, -1),
+  );
+  assert.equal(
+    result.instructions.harnessProfiles.find(
+      (profile) => profile.id === 'roo-code',
+    )!.status,
+    'legacy',
+  );
+  assert(
+    result.instructions.harnessProfiles.every(
+      (profile) => profile.installedVersion === 'unverified',
+    ),
+  );
+  assert.deepEqual(
+    result.instructions.adapterContracts,
+    summarizeDiagnosis({ scan: scan(), infrastructure: structure() })
+      .instructions.adapterContracts,
+  );
+  assert.deepEqual(
+    result.instructions.adapterContracts.map((adapter) => adapter.agent),
+    ['claude-code', 'codex', 'cursor'],
+  );
+  assert.equal(result.instructions.applicability, 'unverified');
+  assert.equal(result.instructions.loading.status, 'unverified');
+  assert.equal(result.instructions.use.status, 'unverified');
 });
 
 test('partial inventory and unverified versions cannot become a clean setup conclusion', () => {
@@ -254,6 +316,7 @@ test('unavailable structural checks require inspection rather than a no-change v
 
 test('projection leaves input records untouched and omits unrelated content and private root', () => {
   const observed = scan();
+  observed.agents = ['gemini-cli'];
   observed.excluded = [{ path: '.env', reason: 'sensitive-path' }];
   const infrastructure = structure('issues-found');
   infrastructure.issues = [{ path: 'AGENTS.md', reason: 'missing-file' }];
@@ -265,6 +328,9 @@ test('projection leaves input records untouched and omits unrelated content and 
   result.structure.issues[0].reason = 'changed-output';
   result.instructions.candidates[0].path = 'changed-output';
   result.instructions.adapterContracts[0].entrypoints[0] = 'changed-output';
+  result.instructions.harnessProfiles[0].instructionPaths[0] = 'changed-output';
+  result.instructions.harnessProfiles[0].sources[0] = 'changed-output';
+  result.instructions.harnessProfiles[0].skillPaths![0] = 'changed-output';
   assert.equal(JSON.stringify(inputs), original);
   const serialized = JSON.stringify(summarizeDiagnosis(inputs));
   assert(!serialized.includes('/private/project'));

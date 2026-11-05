@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { HARNESS_PROFILES } from '../../scripts/agents/profiles.ts';
+import { validatePreset } from '../../scripts/core/contracts.ts';
 import {
   buildPreset,
   serializePreset,
@@ -28,8 +30,8 @@ const invalidCases = [
   {
     field: 'agents',
     value: ['unknown'],
-    en: 'Choose a supported agent.',
-    ru: 'Выберите поддержанного агента.',
+    en: 'Choose an agent hint from the catalog.',
+    ru: 'Выберите агента из каталога подсказок.',
   },
   {
     field: 'language',
@@ -119,6 +121,43 @@ test('equivalent populated presets are byte-identical in both page languages', (
     assert.equal(
       serializePreset(preset),
       `${JSON.stringify(expected, null, 2)}\n`,
+    );
+  }
+});
+
+test('browser and core accept every catalog hint in both languages, including legacy profiles', () => {
+  const agents = HARNESS_PROFILES.map(({ id }) => id);
+  for (const locale of ['en', 'ru'] as const) {
+    const preset = buildPreset(
+      { name: 'catalog', agents: [...agents, agents[0]] },
+      locale,
+    );
+    assert.deepEqual(preset.answers.agents, agents);
+    assert.deepEqual(validatePreset(preset), preset);
+  }
+});
+
+test('unknown and malformed hints stay invalid in browser and core', () => {
+  for (const agent of [
+    'another-agent',
+    'Codex',
+    'gemini_cli',
+    '../codex',
+    '__proto__',
+    'toString',
+  ]) {
+    for (const locale of ['en', 'ru'] as const) {
+      assert.throws(
+        () => buildPreset({ name: 'invalid', agents: [agent] }, locale),
+        PresetValidationError,
+      );
+    }
+    const preset = buildPreset({ name: 'invalid' });
+    assert.throws(() =>
+      validatePreset({
+        ...preset,
+        answers: { ...preset.answers, agents: [agent] },
+      }),
     );
   }
 });

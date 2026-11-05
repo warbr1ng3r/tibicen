@@ -12,15 +12,18 @@ procedure. Keep exact observations, returned-byte checks and Pages verification
 separate. No additional harness support, background update or human benefit is
 implied. The following coverage work remains a separately scoped packet.
 
-## Next planned work — broader harness coverage
+## Completed local work — descriptive harness profiles (Unreleased)
 
-The owner identified the current three-agent hardcoding as a product limitation.
-The [coverage map](../.scratch/harness-coverage/map.md) queues a small capability
-profile catalog, explicit unknown outcomes and separate installation/loading/use
-claims. Preserve network limits and approved write paths. Additional harnesses
-need primary-source checks and affected tests; this does not expand the 1.2
-release scope. Detailed requirements and implementation tasks will live in
-OpenSpec when that packet starts.
+The owner delegated autonomous continuation after 1.2. A source audit and dated
+primary-source research informed the [change](../openspec/changes/archive/2026-11-05-catalog-harness-capabilities/proposal.md).
+Core/catalog, read-only observation and rules/docs/preset UI were implemented
+in parallel. Full offline verification passed 835/835 without skips; both portable
+lifecycles and independent code/source reviews passed. The [coverage map](../.scratch/harness-coverage/map.md) and
+[dashboard](../.scratch/harness-coverage/dashboard.md) own assignments/results;
+detailed requirements and checkboxes stay in OpenSpec. This is Unreleased work.
+Catalog recognition stays separate from write authority, verified adapters,
+installer targets and native execution. New behavior keeps the global six-request
+practice budget; no background updater or universal loading claim is introduced.
 
 ## Completed local work — version-bound practice evidence
 

@@ -2,6 +2,7 @@
 import Field from './ui/Field.astro';
 import Select from './ui/Select.astro';
 import { localize, type Locale } from '../i18n';
+import { HARNESS_PROFILES } from '../../../scripts/agents/profiles';
 
 interface Props {
   locale?: Locale;
@@ -174,38 +175,23 @@ const kinds = [
         <fieldset data-field="agents">
           <legend>{t('Agent hints', 'Какими агентами пользуетесь?')}</legend>
           <div class="agent-choices">
-            <label>
-              <input
-                type="checkbox"
-                name="agents"
-                value="claude-code"
-                aria-describedby="agents-hint agents-error"
-              />{' '}
-              Claude Code
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="agents"
-                value="codex"
-                aria-describedby="agents-hint agents-error"
-              />{' '}
-              Codex
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="agents"
-                value="cursor"
-                aria-describedby="agents-hint agents-error"
-              />{' '}
-              Cursor
-            </label>
+            {HARNESS_PROFILES.map(({ id, label, status }) => (
+              <label>
+                <input
+                  type="checkbox"
+                  name="agents"
+                  value={id}
+                  aria-describedby="agents-hint agents-error"
+                />{' '}
+                {label}
+                {status === 'legacy' ? t(' (legacy)', ' (прежний формат)') : ''}
+              </label>
+            ))}
           </div>
           <small id="agents-hint">
             {t(
-              'Leave empty to let the agent check your environment.',
-              'Можно оставить пустым — агент уточнит окружение.',
+              'Preferences only: these names do not guarantee installation or loading support. Leave empty to check your environment. Legacy entries help preserve an existing setup.',
+              'Это предпочтения, без гарантии установки или загрузки. Можно оставить пустым — агент проверит окружение. Прежние форматы помогают сохранить существующую настройку.',
             )}
           </small>
           <p

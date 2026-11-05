@@ -67,6 +67,110 @@ test('routes empty, existing app and existing infrastructure without writing or 
   );
 });
 
+test('native harness markers are observations with unverified versions and no project changes', async (t) => {
+  const rules = {
+    '.claude/settings.json': '{}',
+    '.codex/config.toml': '# Existing configuration',
+    '.cursor/rules/main.mdc': 'Existing Cursor rule',
+    '.opencode/skills/review/SKILL.md': '# Existing skill',
+    'GEMINI.md': '# Existing Gemini instructions',
+    'packages/ui/GEMINI.md': '# Component instructions',
+    '.github/copilot-instructions.md': '# Existing Copilot instructions',
+    '.aider.conf.yml': 'read: CONVENTIONS.md',
+    '.zcode/config.json': '{}',
+    '.cline/rules/main.md': 'Existing Cline rule',
+    '.devin/rules/main.md': 'Existing Devin Local rule',
+    '.continue/rules/main.md': 'Existing Continue rule',
+    '.roo/rules/main.md': 'Existing legacy Roo rule',
+    '.windsurf/rules/main.md': 'Existing legacy Windsurf rule',
+  };
+  const root = await fixture(t, {
+    ...rules,
+    'src/app.js': 'throw new Error("Do not execute");',
+  });
+  const before = await readdir(root, { recursive: true });
+  const scan = await scanProject(root);
+  assert.equal(scan.mode, 'improve');
+  assert.deepEqual(scan.agents, [
+    'aider',
+    'claude-code',
+    'cline',
+    'codex',
+    'continue-ide',
+    'copilot-cli',
+    'cursor',
+    'devin-local',
+    'gemini-cli',
+    'opencode',
+    'roo-code',
+    'windsurf',
+    'zcode',
+  ]);
+  assert.deepEqual(
+    [...scan.gaps].sort((a, b) => a.agent!.localeCompare(b.agent!)),
+    scan.agents.map((agent) => ({
+      agent,
+      reason: 'agent-version-unverified',
+    })),
+  );
+  assert(
+    scan.files
+      .filter((file) => file.path in rules)
+      .every((file) => file.infrastructure),
+  );
+  assert.equal(
+    scan.files.find((file) => file.path === 'src/app.js')!.infrastructure,
+    false,
+  );
+  assert.deepEqual(scan.commands, []);
+  assert.deepEqual(await readdir(root, { recursive: true }), before);
+  for (const [relative, content] of Object.entries(rules))
+    assert.equal(await readFile(path.join(root, relative), 'utf8'), content);
+});
+
+test('shared instruction and skill files do not identify a particular harness', async (t) => {
+  const root = await fixture(t, {
+    'AGENTS.md': '# Shared instructions',
+    'packages/ui/AGENTS.md': '# Shared component instructions',
+    '.agents/skills/review/SKILL.md': '# Shared skill',
+    'packages/ui/.agents/skills/review/SKILL.md': '# Shared component skill',
+  });
+  const scan = await scanProject(root);
+  assert.equal(scan.mode, 'improve');
+  assert.deepEqual(scan.agents, []);
+  assert.deepEqual(scan.gaps, []);
+  assert(scan.files.every((file) => file.infrastructure));
+});
+
+test('new native markers retain forbidden, sensitive, metadata and symlink exclusions', async (t) => {
+  const outside = await fixture(t, { 'GEMINI.md': 'OUTSIDE_PRIVATE' });
+  const root = await fixture(t, {
+    'private/GEMINI.md': 'FORBIDDEN_PRIVATE',
+    'secrets/.zcode/config.json': 'SECRET_PRIVATE',
+    '.git/.aider.conf.yml': 'METADATA_PRIVATE',
+    'public.txt': 'safe',
+  });
+  await symlink(path.join(outside, 'GEMINI.md'), path.join(root, 'GEMINI.md'));
+  const scan = await scanProject(root, { forbiddenPaths: ['private'] });
+  assert.deepEqual(
+    scan.files.map((file) => file.path),
+    ['public.txt'],
+  );
+  assert.deepEqual(scan.agents, []);
+  assert.equal(scan.complete, false);
+  assert.deepEqual(scan.excluded.map(({ reason }) => reason).sort(), [
+    'cache-or-metadata',
+    'forbidden-path',
+    'sensitive-path',
+    'symlink',
+  ]);
+  assert(!JSON.stringify(scan).includes('PRIVATE'));
+  assert.equal(
+    await readFile(path.join(outside, 'GEMINI.md'), 'utf8'),
+    'OUTSIDE_PRIVATE',
+  );
+});
+
 test('excludes secret paths, forbidden trees, metadata and symlinks without returning their contents', async (t) => {
   const outside = await fixture(t, { 'outside.txt': 'OUTSIDE_PRIVATE' });
   const root = await fixture(t, {

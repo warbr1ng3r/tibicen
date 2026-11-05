@@ -15,6 +15,16 @@ Development in this repository uses Local Markdown. Git remote origin points to 
 - Substantial change details and implementation checkboxes live in OpenSpec. A ticket holds the question/result, responsibility boundaries and a link to the exact task group. The roadmap holds stage order.
 - `dashboard.md` is a view of the tickets, updated after status/dependency changes. A visual in chat is a snapshot, not a second tracker.
 
+## Completed local effort — descriptive harness profiles (Unreleased)
+
+The owner's autonomous continuation activated the [coverage map](../../.scratch/harness-coverage/map.md)
+and [dashboard](../../.scratch/harness-coverage/dashboard.md). The strictly validated
+[change](../../openspec/changes/archive/2026-11-05-catalog-harness-capabilities/proposal.md) owns
+requirements/tasks; three disjoint lanes own core/catalog, read-only observation
+and rules/docs/preset UI. Root integrated the lanes: 835/835 offline tests without skips, both portable lifecycles and independent code/source Ship.
+Profiles are descriptive; write/adapter/installer/native evidence stays separate.
+The work is local Unreleased; [verification](../../openspec/changes/archive/2026-11-05-catalog-harness-capabilities/verification.md) records actual results and retained corrections.
+
 ## Completed effort — 1.2.0 release and Pages
 
 The owner delegated the release after the reviewed feature packet. The
@@ -22,7 +32,7 @@ The owner delegated the release after the reviewed feature packet. The
 [dashboard](../../.scratch/release-1.2/dashboard.md) retain actual attempt accounting,
 completed publication checks and integration results. Version-aware practice
 evidence, adopt diagnosis and nested memory-pointer recognition are included;
-broader harness coverage remains the separate [planned effort](../../.scratch/harness-coverage/map.md).
+broader harness coverage is now the separate [completed local effort](../../.scratch/harness-coverage/map.md).
 Paid APIs, credential changes and rewriting published tags/assets remain outside scope.
 
 ## Latest completed local effort — version-bound practice evidence

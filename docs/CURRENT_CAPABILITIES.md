@@ -1,8 +1,8 @@
 # What Tibicen does today
 
-Development follow-up: [clearer adopt diagnosis](ADOPT_DIAGNOSIS.md) is implemented
-and independently reviewed, Unreleased; [offline verification](../openspec/changes/archive/2026-11-05-clarify-adopt-diagnosis/verification.md).
-The snapshot below remains bound to published 1.1.0, not the current working tree.
+The snapshot below preserves the published 1.1 baseline. [1.2 release results](evals/results/2026-11-05-release-1.2/README.md) record the later published adopt diagnosis, version context and nested-memory recognition.
+
+Local Unreleased development adds [descriptive harness profiles](HARNESS_CAPABILITIES.md), shared preference hints and bounded read-only observation/discovery. It does not expand published 1.2, installer targets or native loading/use claims. Implementation checks and review belong to the [current change](../openspec/changes/archive/2026-11-05-catalog-harness-capabilities/tasks.md).
 
 **Snapshot: 5 November 2026 (Moscow), published version 1.1.0.** This describes the
 released product, rather than the target scope in the [product vision](PRODUCT_VISION.md).

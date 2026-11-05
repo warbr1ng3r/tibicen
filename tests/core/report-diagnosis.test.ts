@@ -40,6 +40,47 @@ async function fixture(t: TestContext) {
 const report = async (root: string) =>
   (await main(['report', '--root', root])) as Report;
 
+test('report exposes additional documented profiles without creating or selecting an adapter', async (t) => {
+  const { root, home } = await fixture(t);
+  const files = {
+    'AGENTS.md': '# Shared instructions\n',
+    'GEMINI.md': '# Existing Gemini instructions\n',
+    '.github/copilot-instructions.md': '# Existing Copilot instructions\n',
+    '.zcode/config.json': '{}\n',
+  };
+  for (const [relative, content] of Object.entries(files)) {
+    await mkdir(path.dirname(path.join(root, relative)), { recursive: true });
+    await writeFile(path.join(root, relative), content);
+  }
+  const before = await readdir(root, { recursive: true });
+  const current = await report(root);
+  assert.equal(current.status, 'not-configured');
+  assert.deepEqual(
+    current.diagnosis.instructions.candidates.map((file) => file.path),
+    ['.github/copilot-instructions.md', 'AGENTS.md', 'GEMINI.md'],
+  );
+  assert.deepEqual(
+    current.diagnosis.instructions.harnessProfiles.map((profile) => profile.id),
+    ['copilot-cli', 'gemini-cli', 'zcode'],
+  );
+  assert.deepEqual(
+    current.diagnosis.instructions.adapterContracts.map(
+      (adapter) => adapter.agent,
+    ),
+    ['claude-code', 'codex', 'cursor'],
+  );
+  assert.equal(current.diagnosis.instructions.loading.status, 'unverified');
+  assert.equal(current.diagnosis.instructions.use.status, 'unverified');
+  assert.deepEqual(await readdir(root, { recursive: true }), before);
+  assert.deepEqual(await readdir(home), []);
+  for (const [relative, content] of Object.entries(files))
+    assert.equal(await readFile(path.join(root, relative), 'utf8'), content);
+  assert.equal(
+    await readFile(path.join(root, 'app.js'), 'utf8'),
+    'throw new Error("Do not execute");\n',
+  );
+});
+
 test('report inspects native root/subtree instructions without creating a session or running code', async (t) => {
   const { root, home } = await fixture(t);
   await mkdir(path.join(root, 'src'));

@@ -238,6 +238,68 @@ test('an unregistered project still checks observed infrastructure without inven
   });
 });
 
+test('new native instruction candidates receive structural checks without authorizing writes', async (t) => {
+  const base = await mkdtemp(path.join(tmpdir(), 'tibicen-native-scope-'));
+  t.after(() => rm(base, { recursive: true, force: true }));
+  const root = path.join(base, 'project');
+  const home = path.join(base, 'home');
+  await mkdir(path.join(root, 'packages/ui/.continue/rules'), {
+    recursive: true,
+  });
+  await mkdir(home);
+  await writeFile(path.join(root, 'app.js'), 'protected application\n');
+  const nativePaths = ['GEMINI.md', 'packages/ui/.continue/rules/ui.md'];
+  for (const relative of nativePaths)
+    await writeFile(
+      path.join(root, relative),
+      '# Existing native instructions\n',
+    );
+  assert.equal(
+    ((await main(['verify', '--root', root])) as CheckResult).status,
+    'passed',
+  );
+  for (const relative of nativePaths) {
+    await assert.rejects(
+      createProposal(
+        root,
+        {
+          mode: 'improve',
+          changes: [
+            {
+              path: relative,
+              content: 'Replacement\n',
+              reason: 'Cannot infer permission from observation.',
+            },
+          ],
+        },
+        { home },
+      ),
+      { code: 'application-protected' },
+    );
+    await writeFile(path.join(root, relative), '\n');
+  }
+  const checked = (await main(['verify', '--root', root])) as CheckResult;
+  assert.equal(checked.status, 'issues-found');
+  assert.equal(checked.scope, 'structure-only');
+  assert.deepEqual(
+    checked.issues!.map((issue) => ({
+      path: issue.path,
+      reason: issue.reason,
+    })),
+    nativePaths.map((relative) => ({
+      path: relative,
+      reason: 'empty-infrastructure-file',
+    })),
+  );
+  assert.equal(
+    await readFile(path.join(root, 'app.js'), 'utf8'),
+    'protected application\n',
+  );
+  await assert.rejects(readFile(path.join(root, '.tibicen/manifest.yml')), {
+    code: 'ENOENT',
+  });
+});
+
 for (const point of ['before-file-write', 'after-file-write'] as const) {
   test(`verify distinguishes pending and observed writes at ${point}, then resumes`, async (t) => {
     const { root, home } = await fixture(t);

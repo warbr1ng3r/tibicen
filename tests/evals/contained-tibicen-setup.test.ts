@@ -401,9 +401,10 @@ test('metadata-only batch freeze binds runtime/order/caps and cancellation prece
       authPath: path.join(directory, 'must-not-read-auth'),
     },
   });
-  assert.equal(Object.keys(driver.freeze.runtime).length, 92);
+  assert.equal(Object.keys(driver.freeze.runtime).length, 94);
   for (const name of ['tibicen-init', 'tibicen-adopt'])
     for (const relative of [
+      'scripts/agents/profiles.ts',
       'scripts/core/diagnosis.ts',
       'scripts/core/memory.ts',
       'references/project-memory.md',
@@ -419,6 +420,13 @@ test('metadata-only batch freeze binds runtime/order/caps and cancellation prece
   assert.deepEqual(driver.freeze.order, ['contained-init', 'contained-adopt']);
   assert.equal(driver.freeze.caps.hostSessions, 4);
   assert.equal(driver.freeze.caps.retries, 0);
+  const catalog = setupRuntime + '/tibicen-init/scripts/agents/profiles.ts';
+  const catalogHash = driver.freeze.runtime[catalog];
+  delete driver.freeze.runtime[catalog];
+  await assert.rejects(driver.validate(), {
+    code: 'contained-setup-source-changed',
+  });
+  driver.freeze.runtime[catalog] = catalogHash;
   const controller = new AbortController();
   controller.abort();
   await assert.rejects(

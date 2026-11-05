@@ -15,6 +15,7 @@ import {
   realpath,
 } from 'node:fs/promises';
 import { loadPreset, savePreset } from '../../scripts/presets/index.ts';
+import { HARNESS_PROFILES } from '../../scripts/agents/profiles.ts';
 import {
   parseData,
   serializeData,
@@ -53,6 +54,31 @@ test('preset requires an explicit request before creating any local state', asyn
     code: 'consent-required',
   });
   assert.deepEqual(await readdir(home), []);
+});
+
+test('core presets accept catalog hints without operational adapter requirements', () => {
+  const all = {
+    ...preset(),
+    answers: {
+      ...preset().answers,
+      agents: HARNESS_PROFILES.map(({ id }) => id),
+    },
+  };
+  assert.deepEqual(validatePreset(all), all);
+  for (const invalid of [
+    'future-agent',
+    'constructor',
+    'Gemini-CLI',
+    '../codex',
+  ])
+    assert.throws(
+      () =>
+        validatePreset({
+          ...all,
+          answers: { ...all.answers, agents: [invalid] },
+        }),
+      { code: 'invalid-preset' },
+    );
 });
 
 test('save and load preserve only validated preferences in a private atomic file', async (t) => {

@@ -5,6 +5,16 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+### Added
+
+- Add a dated catalog covering 13 harness profiles and read-only `harnesses` command with explicit unknown and legacy outcomes.
+- Share descriptive identities across core/browser preset hints and recognize native instruction candidates and structural memory references without expanding automatic writes or native compatibility claims.
+
+### Changed
+
+- Select practices across catalog identities with at most sixteen selections, two sources per profile and six total HTTP attempts; report withheld sources and accept selected unknown-version context without fetching an invented source.
+- Keep installation, checked MCP/process adapters and native evaluation permissions separate from descriptive profiles; preserve the original published 1.2 assets and pins.
+
 ## [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) — 2026-11-05
 
 ### Added

@@ -220,3 +220,183 @@ test('no selected agent performs no reads', async () => {
   );
   assert.deepEqual(result.practices, []);
 });
+
+test('selected unknown versions are context only and cause no source read', async () => {
+  const result = await checkPractices(
+    {
+      agents: ['future-agent', 'constructor'],
+      agentVersions: { 'future-agent': '1.2.3', constructor: 'local' },
+    },
+    { fetch: () => assert.fail('Unexpected request') },
+  );
+  assert.deepEqual(result, {
+    schema: 1,
+    practices: [],
+    gaps: [
+      { agent: 'future-agent', reason: 'unsupported-agent' },
+      { agent: 'constructor', reason: 'unsupported-agent' },
+    ],
+  });
+});
+
+test('six-source budget preserves deterministic order, duplicate handling and withheld records', async () => {
+  const agents = [
+    'codex',
+    'codex',
+    'gemini-cli',
+    'opencode',
+    'copilot-cli',
+    'aider',
+  ];
+  const selected = [...new Set(agents)];
+  for (const fail of [false, true]) {
+    const calls: string[] = [];
+    const result = await checkPractices(
+      {
+        agents,
+        agentVersions: Object.fromEntries(
+          selected.map((id) => [id, 'caller-version']),
+        ),
+      },
+      {
+        fetch: async (url) => {
+          calls.push(url);
+          if (fail) throw new Error('Offline source failure');
+          return new Response(
+            '# Guidance\n\nUse only relevant project instructions.',
+          );
+        },
+      },
+    );
+    const sources = selected.flatMap((id) => OFFICIAL_SOURCES[id]);
+    assert.deepEqual(calls, sources.slice(0, 6));
+    assert.equal(result.practices.length, sources.length);
+    assert.deepEqual(
+      result.practices
+        .slice(6)
+        .map(({ source, status, reason, agentVersion }) => ({
+          source,
+          status,
+          reason,
+          agentVersion,
+        })),
+      sources.slice(6).map((source) => ({
+        source,
+        status: 'unverified',
+        reason: 'source-budget-exhausted',
+        agentVersion: 'caller-version',
+      })),
+    );
+    assert.ok(
+      result.practices
+        .slice(0, 6)
+        .every(({ status, reason }) =>
+          fail
+            ? status === 'unverified' && reason === 'source-unavailable'
+            : status === 'checked',
+        ),
+    );
+    assert.equal(
+      result.gaps.filter(({ reason }) => reason === 'source-budget-exhausted')
+        .length,
+      sources.length - 6,
+    );
+  }
+});
+
+test('all selection and source-count validation finishes before any read', async () => {
+  let calls = 0;
+  const fetch = async () => {
+    calls++;
+    return new Response('# Unexpected');
+  };
+  const sparse = ['codex'];
+  sparse.length = 2;
+  for (const agents of [
+    ['codex', 'Uppercase'],
+    ['codex', 'with_underscore'],
+    ['codex', '-prefix'],
+    ['codex', 'trailing-'],
+    ['codex', 'two--hyphens'],
+    ['codex', ''],
+    ['codex', 'a'.repeat(65)],
+    ['codex', null],
+    ['codex', 1],
+    ['codex', ...Array(16).fill('codex')],
+    sparse,
+  ])
+    await assert.rejects(
+      checkPractices({ agents: agents as string[] }, { fetch }),
+      { code: 'invalid-agents' },
+    );
+  await assert.rejects(
+    checkPractices(
+      { agents: ['codex', 'opencode'] },
+      {
+        fetch,
+        sources: { opencode: Array(3).fill(OFFICIAL_SOURCES.opencode[0]) },
+      },
+    ),
+    { code: 'source-request-limit' },
+  );
+  assert.equal(calls, 0);
+  const result = await checkPractices(
+    { agents: Array(16).fill('future-agent') },
+    { fetch },
+  );
+  assert.deepEqual(result.gaps, [
+    { agent: 'future-agent', reason: 'unsupported-agent' },
+  ]);
+});
+
+test('reviewed additional hosts preserve no-credentials and no-redirect request safeguards', async () => {
+  for (const id of [
+    'opencode',
+    'gemini-cli',
+    'copilot-cli',
+    'aider',
+    'zcode',
+    'cline',
+    'devin-local',
+    'continue-ide',
+    'roo-code',
+    'windsurf',
+  ]) {
+    const result = await checkPractices(
+      { agents: [id] },
+      {
+        fetch: async (url, options) => {
+          assert.ok(OFFICIAL_SOURCES[id].includes(url));
+          assert.equal(options.method, 'GET');
+          assert.equal(options.redirect, 'error');
+          assert.equal(
+            new Headers(options.headers).has('Authorization'),
+            false,
+          );
+          return new Response(
+            '# Official guidance\n\nKeep relevant instructions explicit.',
+          );
+        },
+      },
+    );
+    assert.ok(
+      result.practices.every(({ status }) => status === 'checked'),
+      id,
+    );
+  }
+  for (const source of [
+    'https://unreviewed.example/docs',
+    'http://geminicli.com/docs/cli/skills/',
+    'https://user:secret@geminicli.com/docs/cli/skills/',
+    'https://geminicli.com:8443/docs/cli/skills/',
+  ]) {
+    const result = await checkPractices(
+      { agents: ['gemini-cli'] },
+      {
+        sources: { 'gemini-cli': [source] },
+        fetch: () => assert.fail('Unexpected request'),
+      },
+    );
+    assert.equal(result.practices[0].reason, 'network-denied');
+  }
+});

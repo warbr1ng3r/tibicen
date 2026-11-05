@@ -6,6 +6,11 @@ import { assert, parseData, serializeData, VERSION } from './core/contracts.ts';
 import { createProposal, unwrapPlan } from './core/plan.ts';
 import { applyPlan, getStatus, atomicWrite } from './core/apply.ts';
 import type { Source } from './core/types.ts';
+import {
+  HARNESS_PROFILES,
+  getHarnessProfile,
+  isHarnessId,
+} from './agents/profiles.ts';
 
 function parseArgs(argv: string[]) {
   const [command = 'help', ...args] = argv;
@@ -100,6 +105,7 @@ export async function main(argv = process.argv.slice(2)) {
     discover: ['query', 'kind'],
     'source-check': ['input'],
     practices: ['agents', 'input'],
+    harnesses: ['agents'],
     proposal: ['input'],
     apply: ['plan', 'approve'],
     resume: ['plan', 'approve'],
@@ -132,8 +138,8 @@ export async function main(argv = process.argv.slice(2)) {
         scan: 'scan --root PATH',
         discover: 'discover --query TEXT [--kind skill|mcp]',
         'source-check': 'source-check --input FILE_OR_STDIN_DASH',
-        practices:
-          'practices --agents codex,cursor,claude-code [--input FILE_OR_STDIN_DASH]',
+        practices: 'practices --agents ID[,ID...] [--input FILE_OR_STDIN_DASH]',
+        harnesses: 'harnesses [--agents ID[,ID...]]',
         proposal: 'proposal --root PATH --input FILE_OR_STDIN_DASH',
         apply: 'apply --root PATH --plan FILE_OR_STDIN_DASH --approve DIGEST',
         resume:
@@ -152,6 +158,33 @@ export async function main(argv = process.argv.slice(2)) {
         'Review the exact proposal and obtain explicit user consent before apply/resume. Autopilot is not approval.',
     };
   if (command === 'version') return { version: VERSION, schema: 1 };
+  if (command === 'harnesses') {
+    assert(
+      options.agents === undefined || typeof options.agents === 'string',
+      'invalid-agents',
+      'Provide comma-separated harness IDs.',
+    );
+    const selected =
+      options.agents === undefined
+        ? HARNESS_PROFILES.map((profile) => profile.id)
+        : options.agents.split(',');
+    assert(
+      selected.length <= 16 && selected.every(isHarnessId),
+      'invalid-agents',
+      'Select at most sixteen lowercase harness IDs of at most 64 characters.',
+    );
+    return {
+      schema: 1,
+      harnesses: [...new Set(selected)].map(
+        (id) =>
+          getHarnessProfile(id) ?? {
+            id,
+            status: 'unknown',
+            reason: 'unsupported-agent',
+          },
+      ),
+    };
+  }
   if (command === 'scan') {
     const { scanProject } = await import('./scan/index.ts');
     return scanProject(root);
@@ -297,7 +330,7 @@ export async function main(argv = process.argv.slice(2)) {
     assert(
       typeof options.agents === 'string',
       'invalid-arguments',
-      'Provide --agents codex,cursor,claude-code.',
+      'Provide --agents ID[,ID...]; use harnesses to inspect known profiles.',
     );
     const input =
       options.input === undefined ? {} : await inputData(options.input);

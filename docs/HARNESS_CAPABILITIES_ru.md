@@ -1,0 +1,81 @@
+# Возможности harness
+
+Руководство описывает каталог **Unreleased** в исходном коде. Опубликованная
+1.2.0 сохраняет прежнюю область поддержки; каталог не добавляет цели установщика.
+Harness — приложение, которое запускает агента, например Gemini CLI или Cline.
+Смена модели или провайдера не создаёт другой профиль harness.
+
+## Сначала изучите инструмент и его настройку
+
+```sh
+node scripts/tibicen.ts harnesses
+node scripts/tibicen.ts harnesses --agents gemini-cli,cline
+node scripts/tibicen.ts harnesses --agents my-other-agent
+```
+
+Команды читают статический каталог без сети и записи в проект. Известный профиль
+показывает датированные сведения документации и пути проекта; `legacy` обозначает
+сохранённую прежнюю настройку. Допустимое имя вне каталога получает явный
+неизвестный результат, без наследования правил другого инструмента. Установленная
+версия и фактическая загрузка/использование требуют отдельных наблюдений.
+
+Для проверки рекомендаций выберите инструменты, которыми действительно пользуетесь:
+
+```sh
+node scripts/tibicen.ts practices --agents gemini-cli,cline
+```
+
+Команда проверяет официальные источники: максимум два на профиль и шесть HTTP-попыток
+суммарно, включая неудачные. Для более широкого выбора остаются gaps
+`source-budget-exhausted`. Допустимы до шестнадцати корректных ID; повторы убираются
+в порядке выбора. Необязательные `agentVersions` — контекст вызывающего, а не
+доказательство установки или совместимости. Применимость загруженной страницы
+по-прежнему оценивает агент; недоступность сохраняется явным пробелом.
+
+## Что описывает каталог
+
+Дополнительные источники ниже проверены **5 ноября 2026 года**. Это изменяемая
+текущая документация, а не испытание конкретной установленной версии. Первые три
+профиля сохраняют отдельную [матрицу адаптеров](../references/agent-matrix.md)
+и ограничения её исторических свидетельств.
+
+| ID профиля | Инструкции проекта и важные ограничения | Официальный источник |
+| --- | --- | --- |
+| `claude-code` | `CLAUDE.md`, нативные скиллы проекта. Область существующего адаптера рассматривается отдельно. | [Claude Code skills](https://code.claude.com/docs/en/skills) |
+| `codex` | `AGENTS.md`, `.agents/skills/`. Область существующего адаптера рассматривается отдельно. | [Codex skills](https://developers.openai.com/codex/skills) |
+| `cursor` | `AGENTS.md`, `.cursor/rules/`; область существующего адаптера рассматривается отдельно. | [Cursor rules](https://cursor.com/docs/context/rules) |
+| `opencode` | Инструкции и скиллы именно **V2**; `AGENTS.md`, без предположения о V1/CLAUDE fallback. | [V2 instructions](https://dev.opencode.ai/v2/docs/instructions/), [skills](https://dev.opencode.ai/v2/docs/skills/) |
+| `gemini-cli` | `GEMINI.md`; другое имя инструкций требует настройки. | [Context](https://geminicli.com/docs/cli/gemini-md/), [skills](https://geminicli.com/docs/cli/skills/) |
+| `copilot-cli` | `.github/copilot-instructions.md`; сведения относятся к CLI, а не VS Code или облачному агенту. Противоречивые детали вложенности/импортов неизвестны. | [Instructions](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions), [CLI reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference) |
+| `aider` | Файлы соглашений явно передаются через `--read`, `/read` или конфигурацию; автоматическое обнаружение AGENTS/скиллов не предполагается. | [Conventions](https://aider.chat/docs/usage/conventions.html) |
+| `zcode` | Встроенный Agent читает `AGENTS.md` текущего workspace; путь скиллов проекта неизвестен. | [Agent](https://zcode.z.ai/en/docs/agents), [skills](https://zcode.z.ai/en/docs/skill) |
+| `cline` | `.cline/rules/` и корневой `AGENTS.md`; нативные/общие скиллы. | [Rules](https://docs.cline.bot/customization/cline-rules), [configuration](https://docs.cline.bot/getting-started/config) |
+| `devin-local` | Корневые/каталожные инструкции и `.devin/rules/`; текущий Devin Local отделён от прежнего Cascade. | [Customizations](https://docs.devin.ai/desktop/devin-local/customizations) |
+| `continue-ide` | `.continue/rules/` для Agent/Chat/Edit, кроме autocomplete/apply. Обнаружение Agent Skills здесь неизвестно. | [IDE rules](https://docs.continue.dev/customize/deep-dives/rules) |
+| `roo-code` | **Прежний профиль:** сохраняем инструкции `.roo`; официальная документация сообщает о закрытии расширения. | [Notice](https://roocodeinc.github.io/Roo-Code/), [instructions](https://roocodeinc.github.io/Roo-Code/features/custom-instructions/) |
+| `windsurf` | **Распознавание прежней настройки:** существующие пути `.windsurf`; у текущего Devin Local отдельный профиль. | [Текущая документация настройки/импорта](https://docs.devin.ai/desktop/devin-local/customizations) |
+
+Для дополнительных профилей фактическая загрузка/использование и совместимость
+установленной версии остаются непроверенными. «Неизвестно» означает нехватку
+свидетельств, а не отсутствие возможности у инструмента.
+
+## Что происходит в init или adopt
+
+Tibicen может инвентаризировать разрешённые кандидаты нативных инструкций и найти
+структурную ссылку на существующую память проекта. Одни общие `AGENTS.md` или
+`.agents/skills/` не определяют установленный harness. Даже характерный путь —
+наблюдение, а не доказательство чтения инструментом.
+
+Пресет сохраняет названия как **предпочтения**. Необязательная форма помечает
+прежние профили и отклоняет неизвестные ID; оставьте выбор пустым для исследования
+окружения. Неизвестный инструмент всё равно можно изучить через `harnesses` или
+`practices`.
+
+Запись каталога не добавляет права автоматической записи, цель установщика,
+адаптер MCP/процесса или метод живого испытания. Если полезная нативная настройка
+вне поддержанной записи, сохраните её и объясните точный оставшийся шаг
+интеграции. Встроенные MCP или память поставщика не подключают согласованную
+память Tibicen и не разрешают запуск сервера. Сохраните одно подходящее хранилище
+и отдельно проверьте чтение, применение в задаче и обновление в согласованной
+свежей сессии. См. [память проекта](PROJECT_MEMORY.md) и
+[диагностику adopt](ADOPT_DIAGNOSIS.md).

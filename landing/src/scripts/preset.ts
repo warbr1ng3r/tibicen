@@ -1,6 +1,6 @@
 import { localize, type Locale } from '../i18n.ts';
+import { getHarnessProfile } from '../../../scripts/agents/profiles.ts';
 
-const AGENTS = ['claude-code', 'codex', 'cursor'];
 const PROCESSES = ['minimal', 'balanced', 'structured'];
 const STYLES = ['concise', 'detailed'];
 
@@ -64,12 +64,15 @@ export function buildPreset(
   if (
     !Array.isArray(agents) ||
     !agents.every(
-      (agent) => typeof agent === 'string' && AGENTS.includes(agent),
+      (agent) => typeof agent === 'string' && getHarnessProfile(agent),
     )
   )
     throw new PresetValidationError(
       'agents',
-      t('Choose a supported agent.', 'Выберите поддержанного агента.'),
+      t(
+        'Choose an agent hint from the catalog.',
+        'Выберите агента из каталога подсказок.',
+      ),
     );
   const stack_hint: Record<string, string> = {};
   for (const [key, input] of Object.entries({ language, kind })) {
