@@ -158,3 +158,195 @@ jobs:
           path: ${{ runner.temp }}/tibicen-1.3-platform-dispatch
           retention-days: 7
           if-no-files-found: error
+
+  publish:
+    if: >-
+      github.event_name == 'push' &&
+      github.repository == 'warbr1ng3r/tibicen' &&
+      github.ref == 'refs/heads/codex/release-1.3-ops' &&
+      github.run_attempt == 1 &&
+      github.event.head_commit.message == 'release-1.3-ops: publish'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    env:
+      SOURCE_SHA: 797b96e5306da77e8acc54a28c8a6a8e85b3cfd7
+      DISTRIBUTION_SHA: b61a19583dc91ee9e3e795250d733d2cc99e6569
+      TAG_OBJECT_SHA: 142a3accd350c1173ae9a9b836effc03f58f3136
+      NOTES_SHA256: b07a7d101bac78f29f8f4e0f91c85b4db9a42156cec7bb814fa9c4eaea6096f8
+      SOURCE_CI_RUN_ID: '42092841285'
+      PLATFORM_RUN_ID: '42094073753'
+      PUBLIC_DELIVERY_RECEIPT_SHA256: d70a77c0308bbb6d61cb3712c5cb1aed6dcd3438458a9c9e41693f27cd97fed0
+    steps:
+      - name: Require concrete reviewed bindings before reading the packet
+        shell: bash
+        run: |
+          set -euo pipefail
+          for tibicen_name in SOURCE_SHA DISTRIBUTION_SHA TAG_OBJECT_SHA; do
+            [[ "${!tibicen_name}" =~ ^[0-9a-f]{40}$ ]] || exit 1
+          done
+          for tibicen_name in NOTES_SHA256 PUBLIC_DELIVERY_RECEIPT_SHA256; do
+            [[ "${!tibicen_name}" =~ ^[0-9a-f]{64}$ ]] || exit 1
+          done
+          for tibicen_name in SOURCE_CI_RUN_ID PLATFORM_RUN_ID; do
+            [[ "${!tibicen_name}" =~ ^[1-9][0-9]*$ ]] || exit 1
+          done
+
+      - name: Read only the exact operations commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Verify the exact candidate files and approved delivery receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, json, os, re
+          root = Path('.release-1.3')
+          expected = {
+              'tibicen-1.3.0.tar.gz': (237193, '86862c77462896229fac1dffd1877953f591a5362e4724b95c41a7ad791ba194'),
+              'distribution-SHA256SUMS': (9795, 'bf589996433f8eb46b83f87cd229fc6ead81af46f0ce50959e4c7c05525bee4d'),
+              'SHA256SUMS': (177, '561fc7e0192909dadbc919e02a2fdcec105cabb448b96d7c701c36cccd7f9c1f'),
+          }
+          assert root.is_dir() and not root.is_symlink()
+          assert {p.name for p in root.iterdir()} == {*expected, 'notes.md', 'public-delivery-receipt.json'}
+          for name in [*expected, 'notes.md', 'public-delivery-receipt.json']:
+              file = root / name
+              assert file.is_file() and not file.is_symlink(), name
+              data = file.read_bytes()
+              if name in expected:
+                  size, digest = expected[name]
+                  assert len(data) == size and hashlib.sha256(data).hexdigest() == digest, name
+              else:
+                  env_key = 'NOTES_SHA256' if name == 'notes.md' else 'PUBLIC_DELIVERY_RECEIPT_SHA256'
+                  assert data and hashlib.sha256(data).hexdigest() == os.environ[env_key], name
+          outer = (b'86862c77462896229fac1dffd1877953f591a5362e4724b95c41a7ad791ba194  tibicen-1.3.0.tar.gz\n'
+                   b'bf589996433f8eb46b83f87cd229fc6ead81af46f0ce50959e4c7c05525bee4d  distribution-SHA256SUMS\n')
+          assert (root / 'SHA256SUMS').read_bytes() == outer
+          delivery_data = (root / 'public-delivery-receipt.json').read_text()
+          delivery = json.loads(delivery_data)
+          assert isinstance(delivery, dict)
+          assert set(delivery) == {'status', 'distributionCommit', 'candidateArchiveSha256', 'payloadFiles', 'calls', 'preservationPassed', 'rawReceiptSha256', 'limits'}
+          assert delivery['status'] == 'passed'
+          assert delivery['distributionCommit'] == os.environ['DISTRIBUTION_SHA']
+          assert delivery['candidateArchiveSha256'] == expected['tibicen-1.3.0.tar.gz'][1]
+          assert delivery['payloadFiles'] == 94 and delivery['calls'] == {'installer': 4, 'standalone': 2}
+          assert delivery['preservationPassed'] is True
+          assert re.fullmatch(r'[0-9a-f]{64}', delivery['rawReceiptSha256'])
+          assert isinstance(delivery['limits'], list) and delivery['limits'] and all(isinstance(value, str) for value in delivery['limits'])
+          assert not re.search(r'/Users/|/private/|/var/folders/|[A-Za-z]:\\|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}', delivery_data)
+          PY
+          (cd .release-1.3 && sha256sum -c SHA256SUMS)
+
+      - name: Verify actual source CI and all six platform jobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          tibicen_gates="$(mktemp -d "$RUNNER_TEMP/tibicen-1.3-gates.XXXXXX")"
+          trap 'rm -rf "$tibicen_gates"' EXIT
+          for tibicen_pair in "source:$SOURCE_CI_RUN_ID" "platform:$PLATFORM_RUN_ID"; do
+            tibicen_label="${tibicen_pair%%:*}"
+            tibicen_run="${tibicen_pair#*:}"
+            curl --disable --proto '=https' --connect-timeout 10 --max-time 30 --max-filesize 2097152 -fsS \
+              -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2026-03-10' \
+              "https://api.github.com/repos/warbr1ng3r/tibicen/actions/runs/$tibicen_run" \
+              -o "$tibicen_gates/$tibicen_label-run.json"
+            curl --disable --proto '=https' --connect-timeout 10 --max-time 30 --max-filesize 2097152 -fsS \
+              -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2026-03-10' \
+              "https://api.github.com/repos/warbr1ng3r/tibicen/actions/runs/$tibicen_run/jobs?per_page=100" \
+              -o "$tibicen_gates/$tibicen_label-jobs.json"
+          done
+          python3 - "$tibicen_gates" <<'PY'
+          from pathlib import Path
+          import json, os, sys
+          root = Path(sys.argv[1])
+          for label, path, event, key in [
+              ('source', '.github/workflows/ci.yml', 'push', 'SOURCE_CI_RUN_ID'),
+              ('platform', '.github/workflows/platforms.yml', 'workflow_dispatch', 'PLATFORM_RUN_ID'),
+          ]:
+              run = json.loads((root / f'{label}-run.json').read_text())
+              assert run['id'] == int(os.environ[key])
+              assert (run['head_sha'], run['head_branch'], run['path'], run['event']) == (os.environ['SOURCE_SHA'], 'main', path, event)
+              assert (run['status'], run['conclusion']) == ('completed', 'success')
+              assert run['run_attempt'] == 1
+              jobs_response = json.loads((root / f'{label}-jobs.json').read_text())
+              jobs = jobs_response['jobs']
+              expected = {'checks'} if label == 'source' else {
+                  f'standalone ({platform}, {node})'
+                  for platform in ['macos-15', 'ubuntu-24.04', 'windows-2022']
+                  for node in ['22.20.0', '24.15.0']
+              }
+              assert jobs_response['total_count'] == len(jobs) == len(expected)
+              assert {job['name'] for job in jobs} == expected
+              assert all((job['status'], job['conclusion']) == ('completed', 'success') for job in jobs)
+          print('Exact-source normal CI and all six platform jobs passed; reviewed public delivery receipt is bound separately.')
+          PY
+
+      - name: Verify source, annotated tag, old release and new-release absence
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tibicen_release_audit="$(mktemp -d "$RUNNER_TEMP/tibicen-1.3-release-audit.XXXXXX")"
+          trap 'rm -rf "$tibicen_release_audit"' EXIT
+          test "$(gh api repos/warbr1ng3r/tibicen/git/ref/heads/main --jq .object.sha)" = "$SOURCE_SHA"
+          gh api repos/warbr1ng3r/tibicen/git/ref/tags/v1.3.0 > "$tibicen_release_audit/tag13.json"
+          gh api "repos/warbr1ng3r/tibicen/git/tags/$TAG_OBJECT_SHA" > "$tibicen_release_audit/tag13-object.json"
+          gh api repos/warbr1ng3r/tibicen/releases/latest > "$tibicen_release_audit/latest.json"
+          gh api repos/warbr1ng3r/tibicen/releases/tags/v1.2.0 > "$tibicen_release_audit/release12.json"
+          gh api repos/warbr1ng3r/tibicen/git/ref/tags/v1.2.0 > "$tibicen_release_audit/tag12.json"
+          python3 - "$tibicen_release_audit" <<'PY'
+          from pathlib import Path
+          import hashlib, json, os, sys
+          root = Path(sys.argv[1])
+          tag = json.loads((root / 'tag13.json').read_text())
+          obj = json.loads((root / 'tag13-object.json').read_text())
+          assert tag['ref'] == 'refs/tags/v1.3.0'
+          assert tag['object'] == {'sha': os.environ['TAG_OBJECT_SHA'], 'type': 'tag', 'url': obj['url']}
+          assert obj['sha'] == os.environ['TAG_OBJECT_SHA'] and obj['tag'] == 'v1.3.0'
+          assert obj['object']['type'] == 'commit' and obj['object']['sha'] == os.environ['DISTRIBUTION_SHA']
+          latest = json.loads((root / 'latest.json').read_text())
+          old = json.loads((root / 'release12.json').read_text())
+          old_tag = json.loads((root / 'tag12.json').read_text())
+          assert latest['id'] == old['id'] == 434759670
+          assert old['tag_name'] == 'v1.2.0' and not old['draft'] and not old['prerelease']
+          assert old['published_at'] == old['updated_at'] == '2026-11-05T03:46:37Z'
+          assert hashlib.sha256(old['body'].encode()).hexdigest() == 'd2ed6bccb8c9c4f8edad08cc71e19bcc395b4ae8ac2ccad2a3fb45365a46887f'
+          assert (old_tag['object']['type'], old_tag['object']['sha']) == ('tag', '1ee251473693ceb1e1b2dba52ff443221162cb26')
+          expected = {
+              'distribution-SHA256SUMS': (711956271, 9582, '9c4853a038fec91a37ad430e50184ef3364e9ebb1f7569ff2010ba7a39cb70c5'),
+              'SHA256SUMS': (711956272, 177, 'b81625fc6b24efd63a5b655e0f7d58a3fc76e2168e3b43c176daac8d2e527772'),
+              'tibicen-1.2.0.tar.gz': (711956273, 225604, 'fa33bdfbad280cba71b199671e280d71fcda1fc0b568b66130b0a1036aba47d9'),
+          }
+          assert len(old['assets']) == 3 and {a['name'] for a in old['assets']} == set(expected)
+          for asset in old['assets']:
+              identity, size, digest = expected[asset['name']]
+              assert (asset['id'], asset['size'], asset['digest']) == (identity, size, 'sha256:' + digest)
+              assert asset['state'] == 'uploaded' and asset['updated_at'] == '2026-11-05T03:46:36Z'
+          PY
+          existing="$(gh api --paginate 'repos/warbr1ng3r/tibicen/releases?per_page=100' --jq '.[] | select(.tag_name == "v1.3.0") | .id')"
+          test -z "$existing"
+          tibicen_status="$(curl --disable --proto '=https' --connect-timeout 10 --max-time 30 --max-filesize 1048576 -sS \
+            -H 'Accept: application/vnd.github+json' -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'X-GitHub-Api-Version: 2026-03-10' \
+            -o "$tibicen_release_audit/release13.json" -w '%{http_code}' \
+            https://api.github.com/repos/warbr1ng3r/tibicen/releases/tags/v1.3.0)"
+          test "$tibicen_status" = 404
+
+      - name: Create 1.3.0 once with exactly three assets and reviewed notes
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(gh api repos/warbr1ng3r/tibicen/git/ref/heads/main --jq .object.sha)" = "$SOURCE_SHA"
+          gh release create v1.3.0 \
+            .release-1.3/tibicen-1.3.0.tar.gz .release-1.3/distribution-SHA256SUMS .release-1.3/SHA256SUMS \
+            --repo warbr1ng3r/tibicen --verify-tag --title 'Tibicen 1.3.0' \
+            --notes-file .release-1.3/notes.md --latest

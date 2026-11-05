@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "distributionCommit": "b61a19583dc91ee9e3e795250d733d2cc99e6569",
+  "candidateArchiveSha256": "86862c77462896229fac1dffd1877953f591a5362e4724b95c41a7ad791ba194",
+  "payloadFiles": 94,
+  "calls": {
+    "installer": 4,
+    "standalone": 2
+  },
+  "preservationPassed": true,
+  "rawReceiptSha256": "ebc7d28bff93f76446e2e9bc7eddbdde4b0a35914b9013a0d92f36669c2f8a05",
+  "limits": [
+    "One universal target on macOS arm64 / Node 24.15.0; no broad native-loading or LLM compatibility claim.",
+    "Pinned skills 1.7.4 explicit add/replacement; no skills update or unchanged-lock-bytes claim.",
+    "Installer Node reads ambient and writes owned-only; trusted Git children have normal OS permissions, not OS isolation.",
+    "Edited complete 1.2 backup restored into actual installed skill paths before removal; later project memory and unrelated settings preserved."
+  ]
+}
