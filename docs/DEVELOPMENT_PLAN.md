@@ -4,12 +4,24 @@
 
 ## Current work — release 1.2.0
 
-The owner delegated completion after the reviewed practice-evidence packet.
-Prepare compatible minor 1.2.0, bind affected init/adopt observations and delivery
-to frozen bytes, then pass public CI/platform/install gates before publication.
-The [release dashboard](../.scratch/release-1.2/dashboard.md) owns actual status;
-[RELEASING](RELEASING.md) owns the procedure. Published 1.1.0 remains unchanged
-until a separate successful new release; no new product scope is added here.
+The frozen 1.2.0 candidate is committed and pushed. Its 801-test gate, normal
+public CI and all six OS/Node cells passed. The fresh init attempt failed before
+agent output; adopt was withheld and the application follow-up is blocked.
+Complete the missing behavior observations before publication. The
+[candidate status](evals/results/2026-11-05-release-1.2/README.md) records delivery
+checks, exact identities and retained failures. The
+[release dashboard](../.scratch/release-1.2/dashboard.md) owns the next actions;
+[RELEASING](RELEASING.md) owns the procedure. Published 1.1.0 remains current.
+
+## Next planned work — broader harness coverage
+
+The owner identified the current three-agent hardcoding as a product limitation.
+The [coverage map](../.scratch/harness-coverage/map.md) queues a small capability
+profile catalog, explicit unknown outcomes and separate installation/loading/use
+claims. Preserve network limits and approved write paths. Additional harnesses
+need primary-source checks and affected tests; this does not expand the 1.2
+release scope. Detailed requirements and implementation tasks will live in
+OpenSpec when that packet starts.
 
 ## Completed local work — version-bound practice evidence
 

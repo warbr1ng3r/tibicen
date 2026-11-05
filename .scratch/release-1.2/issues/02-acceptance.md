@@ -20,4 +20,9 @@ ready protocol and gaps; tests must not force a component or spec workflow.
 
 ## Answer
 
-In progress.
+The original two-context protocol was reviewed. I01 consumed one failed attempt
+before assistant output; A01 stays withheld and the original scope is closed.
+Corrected CLI templates remain unexecuted. A separately scoped source-supplied
+Desktop pair is being prepared for the changed generic explanation subcriteria;
+it makes no CLI identity, installed-loading or OS-isolation claim. No new
+execution occurs before frozen bindings, independent review and root GO.

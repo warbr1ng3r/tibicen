@@ -273,6 +273,11 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
             if (!record || containedCodexFailure(record)) {
               failed = true;
               controls.stop();
+              if (['error', 'turn.failed'].includes(record?.type))
+                input.onRecord?.({
+                  type: record.type,
+                  detailHash: hashContent(JSON.stringify(record)),
+                });
               return;
             }
             input.onRecord?.(record);

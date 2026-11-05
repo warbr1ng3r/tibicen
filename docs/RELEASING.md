@@ -93,6 +93,15 @@ Record corrections in a new candidate. Preserve failed attempts and old sums.
 Published tags and bytes stay immutable; a published defect requires a new
 version. There is no background update of installed Tibicen or project setup.
 
+## Unpublished 1.2.0 candidate
+
+The frozen candidate passed its 801-test local gate, normal public CI and all
+six platform cells. A fresh init observation failed before agent output, so
+changed-behavior acceptance and the following application check remain open.
+[Candidate status](evals/results/2026-11-05-release-1.2/README.md) records the exact
+source/distribution identities, delivery results and retained failures. No 1.2.0
+tag, release or Pages update is claimed. Published 1.1.0 stays current.
+
 ## Published 1.1.0 — 4 November 2026 UTC
 
 [1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0) was published at

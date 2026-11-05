@@ -4,6 +4,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import {
   mkdir,
+  lstat,
   mkdtemp,
   readFile,
   realpath,
@@ -11,8 +12,15 @@ import {
   writeFile,
 } from 'node:fs/promises';
 
-test('native caller reports rejected post-run validation as unverified', async (t) => {
-  for (const mode of ['completed', 'tool-failure', 'validation-unavailable']) {
+test('native caller preserves validation, terminal failure and cleanup results', async (t) => {
+  for (const mode of [
+    'completed',
+    'tool-failure',
+    'validation-unavailable',
+    'error-first',
+    'turn-failed-first',
+    'callback-throws',
+  ]) {
     await t.test(mode, async (t) => {
       const root = await realpath(await mkdtemp('/tmp/tibicen-caller-result-'));
       t.after(() => rm(root, { recursive: true, force: true }));
@@ -20,9 +28,12 @@ test('native caller reports rejected post-run validation as unverified', async (
       const stubs = `
         import assert from 'node:assert/strict';
         const mode = ${JSON.stringify(mode)};
+        const terminalFailure = ['error-first', 'turn-failed-first', 'callback-throws'].includes(mode);
+        const privateMarker = 'SYNTHETIC PRIVATE TERMINAL DETAILS';
+        export const fixtureState = { stops: 0, stopReasons: [], disposed: false };
         export { assert };
         export const digest = () => 'a'.repeat(64);
-        export const hashContent = digest;
+        export { hashContent } from ${JSON.stringify(new URL('../../scripts/core/contracts.ts', import.meta.url).href)};
         export const linuxCodeModeHost = 'unused';
         export const linuxCodeModeHash = 'unused';
         export const stageContainerCodeMode = () => { throw Error('Must not stage'); };
@@ -32,12 +43,30 @@ test('native caller reports rejected post-run validation as unverified', async (
         export const generateContainerCodexHome = async () => ({
           argv: [], env: {}, validate: async () => {},
         });
-        export const parseCodex = () => ({ started: true, completed: true });
+        export { parseCodex } from ${JSON.stringify(new URL('../../scripts/evals/profiles/codex/profile.ts', import.meta.url).href)};
         export function createProcessSupervisor() {
           const controller = new AbortController();
           return {
-            signal: controller.signal, cancel: () => controller.abort(), dispose() {},
-            async run() { return { status: 0, stdout: '', stderr: '', timedOut: false, spawnError: false }; },
+            signal: controller.signal, cancel: () => controller.abort(),
+            dispose() { fixtureState.disposed = true; },
+            async run(command) {
+              const error = { type: 'error', message: privateMarker };
+              const failed = { type: 'turn.failed', error: { message: privateMarker } };
+              const records = [
+                { type: 'thread.started', thread_id: 'inert-fixture' },
+                { type: 'turn.started' },
+                ...(terminalFailure
+                  ? mode === 'turn-failed-first' ? [failed, error] : [error, failed]
+                  : [{ type: 'item.completed', item: { type: 'agent_message', text: 'offline completion' } }]),
+                { type: 'turn.completed', usage: { input_tokens: 0, output_tokens: 0 } },
+              ];
+              const stdout = records.map(record => JSON.stringify(record)).join('\\n') + '\\n';
+              command.onStdout(stdout, {
+                stop() { fixtureState.stops++; },
+                deadlineIn() {},
+              });
+              return { status: 0, stdout, stderr: '', timedOut: false, spawnError: false };
+            },
           };
         }
         export async function inspectContainedCodexProfile(input) {
@@ -62,7 +91,7 @@ test('native caller reports rejected post-run validation as unverified', async (
           };
           return {
             manifestPath: 'inert-fixture', session: { failure: new Promise(() => {}) }, finished,
-            async stop() { finish(receipt); return receipt; },
+            async stop(_paths, reason) { fixtureState.stopReasons.push(reason); finish(receipt); return receipt; },
           };
         }
       `;
@@ -95,6 +124,16 @@ test('native caller reports rejected post-run validation as unverified', async (
       const module = (await import(
         pathToFileURL(runner).href
       )) as typeof import('../../scripts/evals/contained-codex.ts');
+      const { fixtureState } = await import(
+        pathToFileURL(path.join(root, 'scripts/fixture.ts')).href
+      );
+      const terminalFailure = [
+        'error-first',
+        'turn-failed-first',
+        'callback-throws',
+      ].includes(mode);
+      const observed: { record: Record<string, unknown>; stopped: boolean }[] =
+        [];
       const result = await module.runContainedCodexSession({
         binary: '/never-execute',
         binaryHash: 'a'.repeat(64),
@@ -107,9 +146,81 @@ test('native caller reports rejected post-run validation as unverified', async (
         deadlineMs: 10000,
         prompt: 'offline fixture',
         route: { kind: 'synthetic', baseUrl: 'http://127.0.0.1:1/v1' },
+        onRecord(record) {
+          observed.push({ record, stopped: fixtureState.stops > 0 });
+          if (mode === 'callback-throws' && record.type === 'error')
+            throw new Error('SYNTHETIC PRIVATE CALLBACK DETAILS');
+        },
       });
-      assert.equal(result.sourceUnchanged, mode === 'completed' ? true : null);
+      assert.equal(
+        result.sourceUnchanged,
+        ['tool-failure', 'validation-unavailable'].includes(mode) ? null : true,
+      );
       assert.equal(result.pass, mode === 'completed');
+      assert.equal(result.parsed.completed, true);
+      const terminal = observed.filter(({ record }) =>
+        ['error', 'turn.failed'].includes(String(record.type)),
+      );
+      if (terminalFailure) {
+        assert.deepEqual(
+          terminal.map(({ record, stopped }) => ({
+            type: record.type,
+            stopped,
+          })),
+          [
+            {
+              type: mode === 'turn-failed-first' ? 'turn.failed' : 'error',
+              stopped: true,
+            },
+          ],
+        );
+        assert.deepEqual(
+          terminal[0].record,
+          result.parsed.records.find(
+            (record) => record.type === terminal[0].record.type,
+          ),
+        );
+        assert.deepEqual(Object.keys(terminal[0].record).sort(), [
+          'detailHash',
+          'type',
+        ]);
+        assert(fixtureState.stops >= 1);
+      } else {
+        assert.equal(terminal.length, 0);
+        assert.equal(fixtureState.stops, 0);
+        assert.deepEqual(
+          observed.map(({ record }) => record.type),
+          [
+            'thread.started',
+            'turn.started',
+            'item.completed',
+            'turn.completed',
+          ],
+        );
+      }
+      assert.deepEqual(fixtureState.stopReasons, [
+        'host-finished',
+        'caller-finally',
+      ]);
+      assert.equal(fixtureState.disposed, true);
+      await assert.rejects(lstat(path.join(root, 'home')), { code: 'ENOENT' });
+      const saved = path.join(root, 'result.json');
+      await writeFile(saved, JSON.stringify(result));
+      const eventLog = path.join(root, 'events.json');
+      await writeFile(eventLog, JSON.stringify(observed));
+      for (const marker of [
+        'SYNTHETIC PRIVATE TERMINAL DETAILS',
+        'SYNTHETIC PRIVATE CALLBACK DETAILS',
+      ]) {
+        assert.equal(JSON.stringify(result.parsed).includes(marker), false);
+        assert.equal(JSON.stringify(result).includes(marker), false);
+        assert.equal(JSON.stringify(observed).includes(marker), false);
+        assert.equal((await readFile(saved, 'utf8')).includes(marker), false);
+        assert.equal(
+          (await readFile(eventLog, 'utf8')).includes(marker),
+          false,
+        );
+      }
       assert.deepEqual(
         result.receipt.toolFailure,
         mode === 'tool-failure' ? { kind: 'rpc-error', code: -32000 } : null,

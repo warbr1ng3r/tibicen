@@ -4,7 +4,7 @@ Type: task
 Labels: wayfinder:task
 Status: claimed
 Assignee: /root
-Blocked by: none
+Blocked by: 04
 
 ## Contract
 
@@ -19,4 +19,11 @@ publication, retry loops, token changes, paidAPI or oldrelease rewriting.
 
 ## Answer
 
-In progress.
+Implementation and candidate preparation are committed/pushed. Frozen candidate
+801/801, safe observer revision 804/804, normal CI, all six OS/Node cells and
+corrected public full-SHA delivery passed. All 93 rebuilt distribution files
+remain byte/mode-identical. The first delivery failure and the failed I01 are
+preserved. Publication waits for [fresh reasoning/application](04-observations.md)
+and successful final public gates; 1.1.0 remains current.
+
+See the [candidate report](../../../docs/evals/results/2026-11-05-release-1.2/README.md).

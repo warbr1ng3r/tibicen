@@ -17,14 +17,15 @@ Development in this repository uses Local Markdown. Git remote origin points to 
 
 ## Current effort — release 1.2.0
 
-The owner delegated the remaining work after the reviewed feature packet.
-The [release map](../../.scratch/release-1.2/map.md) and
-[dashboard](../../.scratch/release-1.2/dashboard.md) own candidate preparation,
-affected observations, delivery, commit/push and publication gates. Compatible
-new functionality targets 1.2.0. The root package is being prepared at that
-version; published 1.1.0 stays unchanged. No release is claimed before the
-candidate and public gates pass. Paid APIs and credential changes remain outside
-this effort.
+The owner delegated the release after the reviewed feature packet. The frozen
+1.2.0 source and distribution candidates are pushed; 801 tests, normal CI and
+all six OS/Node cells passed. Fresh init failed before agent output; adopt was
+withheld. The [status report](../evals/results/2026-11-05-release-1.2/README.md)
+keeps failures and delivery outcomes separate. The
+[release map](../../.scratch/release-1.2/map.md) and
+[dashboard](../../.scratch/release-1.2/dashboard.md) own the remaining technical
+work. Published 1.1.0 remains current. Paid APIs, credential changes and rewriting
+published tags/assets remain outside scope.
 
 ## Latest completed local effort — version-bound practice evidence
 

@@ -1,16 +1,21 @@
-# Release1.2 dashboard
+# Release 1.2 dashboard
 
-5 November2026(Moscow). Preparing local1.2.0candidate; not published.
+**1.2.0 is an unpublished candidate. The current release is 1.1.0.**
 
-| Lane | Owner | Status |
+| Work | Status | Next action |
 | --- | --- | --- |
-| [Requirement/evidence audit](issues/01-audit.md) | /root/release12_audit | Claimed |
-| [Changed-behavior acceptance](issues/02-acceptance.md) | /root/release12_acceptance | Claimed |
-| [Candidate/publication](issues/03-release.md) | /root | Claimed |
+| [Requirements and evidence](issues/01-audit.md) | Complete | Preserve the reviewed impact map and historical support limits. |
+| Candidate, CI and platforms | Passed | 801 candidate tests; 804 after the safe developer-helper correction; normal CI and all six OS/Node cells. |
+| Public full-SHA delivery | Passed after checker correction | Three installation targets, update, external backup/fresh restore, removal and protected data preservation. Original failure retained. |
+| [Fresh reasoning setup](issues/02-acceptance.md) | In progress | Review and bind the separately supplied-context Desktop packets. |
+| [Fresh reasoning and real application](issues/04-observations.md) | Awaiting prepared packets | Root GO, independent result review and an actual approved fixture proposal. |
+| [Publication](issues/03-release.md) | Waiting for observations | Then tag/assets, returned bytes and separate Pages verification. |
 
-Target1.2.0; existing1.1.0 remains published and immutable. GitHub MCP/systemDNS/browser unavailable; per-request freshDNS with normal
-SSHkey/TLSchecks restores SSH and anonymous REST. No new credential or
-paid API scope. The latest reviewed packet had801/801 offline tests at1.1.0;
-that is not yet version1.2candidate acceptance. Implementation commit300ef76
-exists locally. Cached controlledCodexmetadata passed; two new observations
-are prepared but unconsumed.
+The controlled CLI attempt failed before agent output, with unknown cause. Its
+scope is closed; the unused adopt attempt is withheld. The new Desktop scope
+checks generic reasoning only and cannot claim installed native loading.
+
+[Detailed candidate report](../../docs/evals/results/2026-11-05-release-1.2/README.md).
+[Broader harness coverage](../harness-coverage/map.md) is the next planned product
+packet; it does not expand these release claims. No owner questionnaire, paid API
+or credential change is scheduled.
