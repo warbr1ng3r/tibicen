@@ -2,8 +2,8 @@
 
 Type: task
 Labels: wayfinder:task
-Status: claimed
-Assignee: /root
+Status: resolved
+Assignee: none
 Blocked by: none
 
 ## Contract
@@ -30,5 +30,9 @@ in the [release report](../../../docs/evals/results/2026-11-05-release-1.2/READM
 The new annotated tag peels to distribution `0656f12e00ea83d84229180d331f3178bf253407`;
 no old tag/asset was rewritten. All three returned asset bodies, notes/tag, 93 archive files/modes and 92 payload
 checksums passed; stable 1.1 metadata/body/assets/tag remain unchanged. Factual
-paired metadata integration and separate Pages deployment/returned-byte checks
-remain in progress. This ticket stays open until those follow-ups finish.
+paired metadata is published. [Normal CI](https://github.com/warbr1ng3r/tibicen/actions/runs/41965074048) passed at source
+`802c01ece6d7e3fd07f080263e2e19c7537e3a46`. The separate
+[Pages run](https://github.com/warbr1ng3r/tibicen/actions/runs/41965496745)
+deployed that source successfully. All 18 returned HTTP bodies match its official
+artifact, including EN/RU installation pins and the maintenance index. Publication
+and the scoped release follow-ups are complete; support limits remain unchanged.

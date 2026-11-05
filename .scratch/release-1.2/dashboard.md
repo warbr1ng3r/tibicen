@@ -1,6 +1,6 @@
 # Release 1.2 dashboard
 
-**1.2.0 is published. Returned assets match; the separate site update is in progress.**
+**1.2.0 and the updated site are published. Release assets and all 18 site files match the verified artifacts.**
 
 | Work | Status | Next action |
 | --- | --- | --- |
@@ -9,7 +9,7 @@
 | Public full-SHA delivery | Passed after checker correction | Three installer targets, update, backup/restore, removal and protected notes preserved. |
 | [Bounded preparation](issues/02-acceptance.md) | Complete | Exact packets, criteria, finite scopes and independent reviews retained. |
 | [Fresh reasoning and actual effects](issues/04-observations.md) | Accepted within scope | D01/D02; D03 accepted subcriteria with retained collector stop; separate D04 report. |
-| [Publication](issues/03-release.md) | Published; follow-ups active | Returned assets passed; finish paired release/site metadata, normal CI and separate Pages bytes. |
+| [Publication](issues/03-release.md) | Complete | Release assets, published metadata CI, separate Pages deployment and 18/18 returned site bodies passed. |
 
 Original I01 remains failed, A01 withheld and M03 unexecuted. Supplied-context
 observations do not establish native loading or measured human benefit.

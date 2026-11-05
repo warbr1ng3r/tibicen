@@ -26,20 +26,20 @@ Each dated review records:
 
 Reporting follows the [CoC](../CODE_OF_CONDUCT.md): nonsensitive project matters use public issues/PRs; private GitHub Support reports cover platform-rule violations on GitHub; vulnerabilities go privately to the confirmed recipient in [SECURITY](../SECURITY.md). The former unfulfilled general private conduct-inbox promise is replaced, not declared satisfied. No alternate is appointed; an implicated maintainer must not decide a complaint about their own conduct. Do not post sensitive details publicly. Form/notification delivery has not been newly tested.
 
-**1.2.0 channel update — deployment and returned-byte verification pending.**
-[1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) was published at
-`2026-11-05T03:46:37Z`. Its record has been appended locally with public source
-`fb80e78198e7fe12353fbe8f9319f84ac943f792`, distribution
-`0656f12e00ea83d84229180d331f3178bf253407` and exact archive/payload-manifest hashes.
-Existing alpha/1.0/1.1 objects and warnings remain unchanged. Separate release-attachment validation passed: all three returned files, 93
-archive files/modes and 92 payload checksums match the frozen candidate. The 1.1
-tag/body and three asset metadata/digests remain unchanged. Preparing the index does not establish a deployed 1.2 channel.
-Actual Pages source/artifact/deployment identities and HTTP-body comparisons will
-be recorded after that separate observation; no future commit hash is inferred.
-The last verified 1.1 channel result is preserved below. See the
-[release report](evals/results/2026-11-05-release-1.2/README.md).
+**1.2.0 channel update — deployed and returned bytes verified on 5 November 2026.**
+[Pages 41965496745](https://github.com/warbr1ng3r/tibicen/actions/runs/41965496745) deployed site source
+`802c01ece6d7e3fd07f080263e2e19c7537e3a46`; deployment `7564878761` succeeded at `2026-11-05T04:05:17Z`.
+At `2026-11-05T04:09:17Z`, all 18 actual HTTP 200 bodies matched the official artifact; EN/RU, installation and
+maintenance assertions passed. The returned index SHA256 is
+`341ff652a47f0b5fac2088512ba0535a50c04d350dffbe51ac9d236c6c44b668`.
+The [1.2.0 release](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0), published at
+`2026-11-05T03:46:37Z`, retains release source `fb80e78198e7fe12353fbe8f9319f84ac943f792` and distribution
+`0656f12e00ea83d84229180d331f3178bf253407`. Existing alpha/1.0/1.1 objects and warnings remain unchanged.
+All three release attachments, 93 archive files/modes and 92 payload checksums match the frozen candidate;
+the 1.1 tag/body and three asset metadata/digests are unchanged. Artifact identity and byte-check scope are in the
+[release report](evals/results/2026-11-05-release-1.2/README.md). Earlier channel observations below remain historical.
 
-**Latest channel verification — 5 November 2026 (Moscow):** the
+**Previous 1.1 channel verification — 5 November 2026 (Moscow):** the
 [1.1.0 Pages run](https://github.com/warbr1ng3r/tibicen/actions/runs/41912950614)
 succeeded from `7c1146d5aa0eea7a82087deb75210cf68ad8d2fa`.
 All 18 returned HTTP 200 bodies matched the official GitHub build artifact,

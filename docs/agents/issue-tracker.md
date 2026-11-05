@@ -1,6 +1,6 @@
 # Issue tracker
 
-**Current status — 5 November 2026 (Moscow):** [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) is published at `2026-11-05T03:46:37Z`. The [release report](../evals/results/2026-11-05-release-1.2/README.md) preserves exact bindings, the original native failure, scoped supplied-context observations and delivery results. The 804-test gate and current normal CI passed; six platform cells apply through unchanged inputs; mechanical full-SHA delivery matched 92 payloads for Codex, Claude Code and Cursor. Combined D03/D04 observations / engineering verdict: actual subcriteria of stopped D03 and the separate D04 report accepted / Ship for the frozen candidate and exact publication packet. Assets: passed: all three downloaded files match the exact release notes, tag and frozen candidate; 93 archive files/modes and 92 payload checksums match. Pages: separate 1.2 deployment and returned-byte checks pending. Historical queues retain their old outcomes and grant no new execution budget.
+**Current status — 5 November 2026 (Moscow):** [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) is published at `2026-11-05T03:46:37Z`. The [release report](../evals/results/2026-11-05-release-1.2/README.md) preserves exact bindings, the original native failure, scoped supplied-context observations and delivery results. The 804-test gate and current normal CI passed; six platform cells apply through unchanged inputs; mechanical full-SHA delivery matched 92 payloads for Codex, Claude Code and Cursor. Combined D03/D04 observations / engineering verdict: actual subcriteria of stopped D03 and the separate D04 report accepted / Ship for the frozen candidate and exact publication packet. Assets: passed: all three downloaded files match the exact release notes, tag and frozen candidate; 93 archive files/modes and 92 payload checksums match. Pages: deployment passed and all 18 returned bodies matched the official artifact; exact bindings are in [MAINTENANCE](../MAINTENANCE.md). Historical queues retain their old outcomes and grant no new execution budget.
 
 Development in this repository uses Local Markdown. Git remote origin points to the public warbr1ng3r/tibicen repository; no external tracker is configured. The canonical tracker is in `.scratch/`; this directory is not excluded from Git. This setup is not part of the Tibicen distribution.
 
@@ -15,12 +15,12 @@ Development in this repository uses Local Markdown. Git remote origin points to 
 - Substantial change details and implementation checkboxes live in OpenSpec. A ticket holds the question/result, responsibility boundaries and a link to the exact task group. The roadmap holds stage order.
 - `dashboard.md` is a view of the tickets, updated after status/dependency changes. A visual in chat is a snapshot, not a second tracker.
 
-## Current effort — 1.2.0 publication follow-up
+## Completed effort — 1.2.0 release and Pages
 
 The owner delegated the release after the reviewed feature packet. The
 [release map](../../.scratch/release-1.2/map.md) and
 [dashboard](../../.scratch/release-1.2/dashboard.md) retain actual attempt accounting,
-remaining publication checks and integration state. Version-aware practice
+completed publication checks and integration results. Version-aware practice
 evidence, adopt diagnosis and nested memory-pointer recognition are included;
 broader harness coverage remains the separate [planned effort](../../.scratch/harness-coverage/map.md).
 Paid APIs, credential changes and rewriting published tags/assets remain outside scope.

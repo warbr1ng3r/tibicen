@@ -1,12 +1,12 @@
 # Tibicen development plan
 
-**Current status — 5 November 2026 (Moscow):** [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) is published at `2026-11-05T03:46:37Z`. The [release report](evals/results/2026-11-05-release-1.2/README.md) retains exact source/distribution bindings, the original failed native attempt, supplied-context D01/D02 observations and scoped reuse of historical mechanisms. The 804-test gate and normal CI passed; six platform cells are reused through unchanged inputs, and mechanical public delivery matched 92 payloads for all three targets. Final engineering / combined D03/D04 result: Ship for the frozen candidate and exact publication packet / actual subcriteria of stopped D03 and the separate D04 report accepted. Assets: passed: all three downloaded files match the exact release notes, tag and frozen candidate; 93 archive files/modes and 92 payload checksums match. Pages: separate 1.2 deployment and returned-byte checks pending. Historical 1.1/1.0/prerelease narratives keep their dated outcomes.
+**Current status — 5 November 2026 (Moscow):** [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) is published at `2026-11-05T03:46:37Z`. The [release report](evals/results/2026-11-05-release-1.2/README.md) retains exact source/distribution bindings, the original failed native attempt, supplied-context D01/D02 observations and scoped reuse of historical mechanisms. The 804-test gate and normal CI passed; six platform cells are reused through unchanged inputs, and mechanical public delivery matched 92 payloads for all three targets. Final engineering / combined D03/D04 result: Ship for the frozen candidate and exact publication packet / actual subcriteria of stopped D03 and the separate D04 report accepted. Assets: passed: all three downloaded files match the exact release notes, tag and frozen candidate; 93 archive files/modes and 92 payload checksums match. Pages: deployment passed and all 18 returned bodies matched the official artifact; exact bindings are in [MAINTENANCE](MAINTENANCE.md). Historical 1.1/1.0/prerelease narratives keep their dated outcomes.
 
-## Current work — 1.2.0 publication follow-up
+## Completed work — 1.2.0 release and Pages
 
 The release includes version-aware practice evidence, clearer adopt diagnosis and
-nested memory-pointer recognition. Detailed acceptance, attempts and publication
-follow-up remain in the [release map](../.scratch/release-1.2/map.md) and
+nested memory-pointer recognition. Completed acceptance, attempts and publication
+results are recorded in the [release map](../.scratch/release-1.2/map.md) and
 [dashboard](../.scratch/release-1.2/dashboard.md); [RELEASING](RELEASING.md) owns the
 procedure. Keep exact observations, returned-byte checks and Pages verification
 separate. No additional harness support, background update or human benefit is

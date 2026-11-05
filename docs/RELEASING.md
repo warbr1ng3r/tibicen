@@ -99,7 +99,9 @@ version. There is no background update of installed Tibicen or project setup.
 `2026-11-05T03:46:37Z` (release ID `434759670`); publication run: [41963669550](https://github.com/warbr1ng3r/tibicen/actions/runs/41963669550).
 Frozen public source `fb80e78198e7fe12353fbe8f9319f84ac943f792` binds distribution
 `0656f12e00ea83d84229180d331f3178bf253407`. The 804/804 offline gate passed without
-skips, as did [normal CI](https://github.com/warbr1ng3r/tibicen/actions/runs/41957289753).
+skips, as did [frozen-source CI](https://github.com/warbr1ng3r/tibicen/actions/runs/41957289753).
+The later metadata source `802c01ece6d7e3fd07f080263e2e19c7537e3a46` passed
+[normal CI 41965074048](https://github.com/warbr1ng3r/tibicen/actions/runs/41965074048) before Pages deployment.
 The [six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/41952044767)
 are reused through exact unchanged platform/build/runtime inputs, rather than
 represented as a new run. Public full-SHA installation/update/backup restoration/
@@ -130,7 +132,7 @@ The archive contains 93 regular files; the manifest covers 92 payload files.
 Install using the full distribution SHA in [README](../README.md); back up local
 skill edits before explicit replacement. Project updates remain separately approved.
 See the [release report](evals/results/2026-11-05-release-1.2/README.md) for exact
-bindings, assistance and failures. Pages verification is separate in
+bindings, assistance and failures. Pages deployment passed and all 18 returned bodies matched the official artifact, as recorded in
 [MAINTENANCE](MAINTENANCE.md); project memory's original 1.1 observations remain historical.
 
 ## Published 1.1.0 — 4 November 2026 UTC

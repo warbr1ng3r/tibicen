@@ -4,7 +4,7 @@
 (release ID `434759670`).** Independent engineering review accepted the exact candidate and publication packet within
 the unchanged declared support and recorded evidence scopes. D01/D02 generic reasoning, D03's retained application
 subcriteria and D04's separate report are accepted; D03 remains stopped, not a full-flow pass. Three returned assets
-match the frozen bytes. The separate 1.2 Pages deployment and returned-byte verification remain pending.
+match the frozen bytes. The separate 1.2 Pages deployment passed; all 18 returned bodies matched the official artifact.
 
 The release adds optional validated agent-version context to `practices` and clarifies how init/adopt explain evidence,
 applicability and the smallest useful change or no-change result. Supplied versions are caller context, not proof of an
@@ -15,15 +15,15 @@ installed version or compatibility. Retrieval, dated content and semantic applic
 | Scope | Recorded result | Limit or remaining work |
 | --- | --- | --- |
 | Current source gate | **804/804 tests passed**, zero failures/skips, with portable distribution checks enabled; rebuilt distribution bytes/modes and archive remained identical. | Original candidate01 retains its separate 801/801 result and installed-skill self-tests. Neither gate proves native loading or usefulness. |
-| Current public CI | [Run 41957289753](https://github.com/warbr1ng3r/tibicen/actions/runs/41957289753) passed on `fb80e78198e7fe12353fbe8f9319f84ac943f792`, all 11 steps and zero annotations. | Original [run 41950161822](https://github.com/warbr1ng3r/tibicen/actions/runs/41950161822) remains bound to the earlier public source below. |
-| Six platform cells | [Run 41952044767](https://github.com/warbr1ng3r/tibicen/actions/runs/41952044767) passed all six OS/Node cells on original public source `1a38fef4974370620f9a9aefd72f1ca709d82ff4`. | Reused through exact unchanged platform/build/portable/package/runtime inputs. Subsequent code changes affect only the developer observer and its test. |
+| Current public CI | [Run 41965074048](https://github.com/warbr1ng3r/tibicen/actions/runs/41965074048) passed on `802c01ece6d7e3fd07f080263e2e19c7537e3a46`. | Earlier [run 41957289753](https://github.com/warbr1ng3r/tibicen/actions/runs/41957289753) remains bound to `fb80e78198e7fe12353fbe8f9319f84ac943f792`; original [run 41950161822](https://github.com/warbr1ng3r/tibicen/actions/runs/41950161822) retains its earlier source binding. |
+| Six platform cells | [Run 41952044767](https://github.com/warbr1ng3r/tibicen/actions/runs/41952044767) passed all six OS/Node cells on original public source `1a38fef4974370620f9a9aefd72f1ca709d82ff4`. | Reused through exact unchanged platform/build/portable/package/runtime inputs. Between `1a38fef…` and `fb80e781…`, code changes affect only the developer observer and its test. Later site metadata and installer/test literal changes at `802c01ec…` do not alter those reused standalone inputs. |
 | D01: init reasoning | **Accepted** against the unchanged prospective criteria: one grounded root `AGENTS.md` draft, with version/source/applicability limits and approval boundary. | A read-only supplied-context answer; no compiled proposal, approval or application. |
 | D02: adopt reasoning | **Accepted**: retain the complementary root/src/Cursor instructions and existing memory; unknown version/applicability/loading remain explicit. | No change, new component or saved session was invented; no Cursor loading/use was observed. |
 | D03: actual D01 proposal lifecycle | **Stopped after five CLI calls on a root collector error; retained subcriteria independently accepted.** Exact approval, wrong-digest refusal, one unchanged 455-byte addition, structural verify, complete status and preservation were observed. | Report ordinal six never ran; D03 is not a full-flow pass. Application/task/quiz/compatibility checks were not performed. |
 | D04: read-only report | **Independently accepted:** one separately authorized report/current diagnosis, exit 0, with exact read-only preservation. | Separate from stopped D03; no apply or model repeat. Structure-only success does not establish current loading, compatibility or task fit. |
 | Public full-SHA delivery | **Accepted after checker correction:** 1.1 → 1.2 install, pinned update, external backup/fresh restore and removal for Codex, Claude Code and Cursor; all 92 payloads matched per target. | Mechanical macOS arm64/Node 24.15 checks in three synthetic HOMEs: 12 installer, 24 version/self-test and nine DNS invocations; no native-loading or all-harness claim. |
 | Release and returned assets | **Published and checked:** [run 41963669550](https://github.com/warbr1ng3r/tibicen/actions/runs/41963669550) succeeded; all three downloads, exact notes/tag, 93 archive files/modes and 92 payload checksums matched. | 1.1 tag/body and three asset metadata/digests stayed unchanged. GitHub reports `immutable: false`; server enforcement is not claimed. |
-| Hosted 1.2 delivery | **Pending separately.** | No 1.2 Pages deployment or returned-body result is claimed; the verified 1.1 Pages baseline is preserved in [MAINTENANCE](../../../MAINTENANCE.md). |
+| Hosted 1.2 delivery | **Passed separately:** [Pages 41965496745](https://github.com/warbr1ng3r/tibicen/actions/runs/41965496745) deployed `802c01ece6d7e3fd07f080263e2e19c7537e3a46`; all 18 actual HTTP 200 bodies matched the official artifact. | EN/RU, installer and maintenance assertions passed. Hosted bytes do not prove native loading or human usefulness; prior records remain in [MAINTENANCE](../../../MAINTENANCE.md). |
 
 The [operational controller, run 41952034366](https://github.com/warbr1ng3r/tibicen/actions/runs/41952034366) failed
 after dispatch; its cause is unknown and raw-log retrieval returned 403. The successful platform run's association with
@@ -140,5 +140,11 @@ SHA256 is `669f122cbc2c4612fce24347bdd279c85fc0db46ad4a9e94ea7d4871c876b2d5`.
 | [distribution-SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.2.0/distribution-SHA256SUMS) | 9582 | `9c4853a038fec91a37ad430e50184ef3364e9ebb1f7569ff2010ba7a39cb70c5` |
 | [SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.2.0/SHA256SUMS) | 177 | `b81625fc6b24efd63a5b655e0f7d58a3fc76e2168e3b43c176daac8d2e527772` |
 
-Pages remains a separate pending observation. Its actual source/artifact/deployment identities and returned-body
-comparisons will be recorded after deployment; no future site commit hash or successful 1.2 hosted result is inferred.
+[Pages 41965496745](https://github.com/warbr1ng3r/tibicen/actions/runs/41965496745) built and deployed site source
+`802c01ece6d7e3fd07f080263e2e19c7537e3a46`; deployment `7564878761` succeeded at `2026-11-05T04:05:17Z`.
+Official artifact `13387740687` was downloaded through authenticated GitHub UI: the 75434-byte ZIP has SHA256
+`37c726df025088cfab8fcd80175243654b408fb4e7b4487ce368ad6c0aae24a8`, matching the official API. Safe data-only
+unpacking yielded 18 files. At `2026-11-05T04:09:17Z`, all 18 actual HTTP 200 bodies matched those files;
+EN/RU, installation and maintenance assertions passed. The returned index SHA256 is
+`341ff652a47f0b5fac2088512ba0535a50c04d350dffbe51ac9d236c6c44b668`. Prior alpha/1.0/1.1 records remain unchanged.
+These checks establish hosted bytes, not native loading or human usefulness.

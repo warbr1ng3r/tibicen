@@ -1,8 +1,8 @@
 # Release 1.2.0
 
 Labels: wayfinder:map
-Status: claimed
-Assignee: /root
+Status: resolved
+Assignee: none
 
 ## Destination
 
@@ -27,8 +27,10 @@ new scope. No paid API, credential changes or old-tag/asset rewrites.
   reasoning and D03 retained application subcriteria plus separate D04 report
   passed independent review. D03's collector stop is preserved, not regraded.
 - [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) was published
-  at 2026-11-05T03:46:37Z after final independent Ship. Returned assets/body/tag passed, preserving 1.1; factual
-  metadata and distinct Pages verification remain [active](issues/03-release.md).
+  at 2026-11-05T03:46:37Z after final independent Ship. Returned assets/body/tag
+  passed, preserving 1.1. Published metadata passed normal CI; separate Pages
+  deployment and all 18 returned artifact bodies passed. The
+  [publication ticket](issues/03-release.md) is complete.
 - [Broader harness coverage](../harness-coverage/map.md) is a separate planned
   product packet. Current three-agent hardcoding is confirmed, not universal
   support. Network limits and approved write paths stay intact.
