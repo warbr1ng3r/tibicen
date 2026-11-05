@@ -15,6 +15,17 @@ Development in this repository uses Local Markdown. Git remote origin points to 
 - Substantial change details and implementation checkboxes live in OpenSpec. A ticket holds the question/result, responsibility boundaries and a link to the exact task group. The roadmap holds stage order.
 - `dashboard.md` is a view of the tickets, updated after status/dependency changes. A visual in chat is a snapshot, not a second tracker.
 
+## Current effort — release 1.2.0
+
+The owner delegated the remaining work after the reviewed feature packet.
+The [release map](../../.scratch/release-1.2/map.md) and
+[dashboard](../../.scratch/release-1.2/dashboard.md) own candidate preparation,
+affected observations, delivery, commit/push and publication gates. Compatible
+new functionality targets 1.2.0. The root package is being prepared at that
+version; published 1.1.0 stays unchanged. No release is claimed before the
+candidate and public gates pass. Paid APIs and credential changes remain outside
+this effort.
+
 ## Latest completed local effort — version-bound practice evidence
 
 The owner's “Поехали” approved the next implementation packet described after

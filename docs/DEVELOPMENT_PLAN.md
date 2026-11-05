@@ -2,6 +2,15 @@
 
 **Current status — 5 November 2026 (Moscow):** [1.1.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.1.0) is published at `2026-11-04T21:02:42Z`. Normal CI, six platform cells, exact public Git delivery and downloaded assets passed; [memory observations and release follow-up](evals/results/2026-11-04-project-memory/README.md) retain setup assistance and coverage limits. Pages passed all 18 returned-body comparisons against its official artifact. Historical 1.0/prerelease narratives remain dated records, not a current task queue.
 
+## Current work — release 1.2.0
+
+The owner delegated completion after the reviewed practice-evidence packet.
+Prepare compatible minor 1.2.0, bind affected init/adopt observations and delivery
+to frozen bytes, then pass public CI/platform/install gates before publication.
+The [release dashboard](../.scratch/release-1.2/dashboard.md) owns actual status;
+[RELEASING](RELEASING.md) owns the procedure. Published 1.1.0 remains unchanged
+until a separate successful new release; no new product scope is added here.
+
 ## Completed local work — version-bound practice evidence
 
 The owner approved a bounded implementation packet following the
