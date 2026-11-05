@@ -111,7 +111,8 @@ export async function main(argv = process.argv.slice(2)) {
     resume: ['plan', 'approve'],
     status: [],
     verify: [],
-    report: ['save', 'requested'],
+    report: ['input', 'save', 'requested'],
+    'mcp-diagnose': ['input'],
     'mcp-verify': ['agent', 'config', 'input'],
     'preset-load': ['name'],
     'preset-save': ['input', 'requested'],
@@ -146,7 +147,9 @@ export async function main(argv = process.argv.slice(2)) {
           'resume --root PATH [--plan FILE_OR_STDIN_DASH] --approve DIGEST',
         status: 'status --root PATH',
         verify: 'verify --root PATH',
-        report: 'report --root PATH [--save --requested]',
+        report:
+          'report --root PATH [--input FILE_OR_STDIN_DASH] [--save --requested]',
+        'mcp-diagnose': 'mcp-diagnose --root PATH --input FILE_OR_STDIN_DASH',
         'mcp-verify':
           'mcp-verify --root PATH --agent claude-code|cursor|codex [--config CODEX_CONFIG --input SERVER_SPEC]',
         'preset-load': 'preset-load --name NAME_OR_PATH',
@@ -214,12 +217,17 @@ export async function main(argv = process.argv.slice(2)) {
     };
   }
   if (command === 'report') {
+    const { summarizeDiagnosis, validateTaskContext } =
+      await import('./core/diagnosis.ts');
+    const context =
+      options.input === undefined
+        ? undefined
+        : validateTaskContext(await inputData(options.input));
     const current = await getStatus(root);
     const session = current.state ?? current.manifest?.sessions?.at(-1);
     const process =
       current.state?.proposal.process ?? current.manifest?.process;
     const memory = current.state?.proposal.memory ?? current.manifest?.memory;
-    const { summarizeDiagnosis } = await import('./core/diagnosis.ts');
     const { scan, infrastructure } = await inspectCurrent(root, current);
     const report = {
       schema: 1,
@@ -253,6 +261,7 @@ export async function main(argv = process.argv.slice(2)) {
       diagnosis: summarizeDiagnosis({
         scan,
         infrastructure,
+        context,
         session: session?.id
           ? { id: session.id, status: current.status }
           : null,
@@ -346,6 +355,26 @@ export async function main(argv = process.argv.slice(2)) {
       agents: options.agents.split(','),
       agentVersions: (input as { agentVersions?: unknown }).agentVersions,
     });
+  }
+  if (command === 'mcp-diagnose') {
+    const { validateMcpDiagnosisRequest, diagnoseMcp } =
+      await import('./mcp/diagnosis.ts');
+    const request = validateMcpDiagnosisRequest(await inputData(options.input));
+    const current = await getStatus(root);
+    const { readProjectFile } = await import('./scan/index.ts');
+    const configs = new Map<string, string>();
+    for (const source of request.sources) {
+      try {
+        const { content } = await readProjectFile(root, source.path, {
+          forbiddenPaths: current.state?.proposal.forbiddenPaths ?? [],
+          maxFileBytes: 1024 * 1024,
+        });
+        configs.set(source.path, content.toString('utf8'));
+      } catch {
+        // Missing map entries preserve unreadable/excluded status without raw errors.
+      }
+    }
+    return diagnoseMcp(request, configs);
   }
   if (command === 'mcp-verify') {
     const { validateMcpConfig, verifyCodexMcpBlock } =

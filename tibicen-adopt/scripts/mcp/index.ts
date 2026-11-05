@@ -230,6 +230,8 @@ function parseConfig(text: string) {
   return { data, ast: ast as SyntaxObject };
 }
 
+export { parseConfig as parseMcpJson };
+
 function containsLiteralSecret(value: unknown): boolean {
   if (!value || typeof value !== 'object') return false;
   return Object.entries(value).some(

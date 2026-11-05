@@ -15,6 +15,15 @@ export function isSensitivePath(relative: string) {
   );
 }
 
+export function isSensitiveInspectionPath(relative: string) {
+  return (
+    isSensitivePath(relative) ||
+    /(?:^|\/)(?:\.npmrc|\.netrc|\.pypirc|\.git-credentials|[^/]*credentials[^/]*\.json)$/i.test(
+      relative,
+    )
+  );
+}
+
 export function validateRelativePath(
   relative: string,
   { allowDot = false }: PathOptions = {},
