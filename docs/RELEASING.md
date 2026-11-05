@@ -116,9 +116,11 @@ ordinary OS permissions; child isolation is not claimed.
 | [distribution-SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.3.0/distribution-SHA256SUMS) | 9795 | `bf589996433f8eb46b83f87cd229fc6ead81af46f0ce50959e4c7c05525bee4d` |
 | [SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.3.0/SHA256SUMS) | 177 | `561fc7e0192909dadbc919e02a2fdcec105cabb448b96d7c701c36cccd7f9c1f` |
 
-All three returned release assets matched the frozen candidate. Pages and returned-body verification are separate;
-no new successful Pages outcome is claimed here. Exact bindings and limits are
-in the [release report](evals/results/2026-11-05-release-1.3/README.md).
+All three returned release assets matched the frozen candidate.
+[Pages 42096956053](https://github.com/warbr1ng3r/tibicen/actions/runs/42096956053) deployed metadata source `606f5b25f83831c3d9c5e29709d85c32ae0cf7a9`;
+a [separate auditor](https://github.com/warbr1ng3r/tibicen/actions/runs/42097697236) matched all 18 actual HTTP 200 bodies to the official artifact.
+The four older index objects and warnings were preserved. Exact bindings are in
+[MAINTENANCE](MAINTENANCE.md) and the [release report](evals/results/2026-11-05-release-1.3/README.md).
 All earlier releases, assets and observations below retain their original facts.
 
 ## Published 1.2.0 — 5 November 2026 UTC

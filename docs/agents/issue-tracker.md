@@ -1,6 +1,6 @@
 # Issue tracker
 
-**Current status — 5 November 2026 (Moscow):** [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) was published at `2026-11-05T19:34:40Z`. The [release report](../evals/results/2026-11-05-release-1.3/README.md) records exact source/distribution bindings, 843/843 offline tests, 42 browser checks, successful exact-source CI and six fresh platform cells. Public universal 1.2→1.3 replacement/repeat, installed self-tests, complete backup restoration and removal passed with 94 payloads. All three returned release assets and 95 archive files/modes match the accepted candidate; 1.2 is unchanged. The owner authorized commit, push and publication. Metadata publication and separate Pages deployment/body verification are in progress; broad native/model compatibility and human benefit remain unverified.
+**Current status — 5 November 2026 (Moscow):** [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) was published at `2026-11-05T19:34:40Z`. The [release report](../evals/results/2026-11-05-release-1.3/README.md) records exact source/distribution bindings, 843/843 offline tests, 42 browser checks, successful exact-source CI and six fresh platform cells. Public universal 1.2→1.3 replacement/repeat, installed self-tests, complete backup restoration and removal passed with 94 payloads. All three returned release assets and 95 archive files/modes match the accepted candidate; 1.2 is unchanged. The owner authorized commit, push and publication. Metadata is public; Pages run 42096956053 deployed source `606f5b25f83831c3d9c5e29709d85c32ae0cf7a9`. Audit 42097697236 verified all 18 returned bodies against the official artifact and preserved the four older maintenance records. Broad native/model compatibility and human benefit remain unverified.
 
 Development in this repository uses Local Markdown. Git remote origin points to the public warbr1ng3r/tibicen repository; no external tracker is configured. The canonical tracker is in `.scratch/`; this directory is not excluded from Git. This setup is not part of the Tibicen distribution.
 
@@ -25,13 +25,13 @@ delivery and the mechanical init/adopt U02 route. U01 remains failed; no native 
 LLM observation is inferred. Candidate-02 is published as 1.3.0; candidate-01 and H01/H02
 retain their original scope. Release metadata and Pages follow-up remains below.
 
-## Current effort — 1.3 release metadata and Pages
+## Completed effort — 1.3 release metadata and Pages
 
 The [release map](../../.scratch/release-1.3/map.md) owns the next packet. Fresh
 source-assisted init/adopt cases and exact candidate-02 update/recovery/removal
 passed independent review. The [candidate report](../evals/results/2026-11-05-release-1.3/README.md)
 records actual results and unverified native/model scope. The owner authorized the concrete packet. Source commit/push, public gates,
-release publication and returned assets passed; metadata and Pages remain.
+release publication, returned assets and separate Pages verification passed.
 
 ## Retained intermediate 1.3.0 preparation
 

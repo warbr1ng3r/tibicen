@@ -2,8 +2,8 @@
 
 Type: task
 Labels: wayfinder:task
-Status: claimed
-Assignee: root
+Status: resolved
+Assignee: none
 Blocked by: 02, 03
 
 ## Contract
@@ -12,6 +12,20 @@ Follow [RELEASING](../../../docs/RELEASING.md) on the concrete candidate-02 pack
 
 ## Answer
 
-Owner explicitly authorized commit, push and release1.3.0 after successful public gates (reply: «делай»). Root claimed the accepted packet; exact-source CI, platform cells, public delivery and publication are in progress. No tag/assets/Pages publication is implied by this status.
-
-Source `797b96e5306da77e8acc54a28c8a6a8e85b3cfd7` / distribution `b61a19583dc91ee9e3e795250d733d2cc99e6569`; CI 42092841285 and all six platform jobs 42094073753 passed. Universal public P01 passed four installer/two self-test calls with exact 94 payloads, recovery/removal and protected memory. Published release 435642115 at `2026-11-05T19:34:40Z`; all three returned assets, tag and 95 archive files/modes verified. Old 1.2 identities unchanged. Metadata and separate Pages checks remain in progress.
+Owner explicitly authorized commit, push and release 1.3.0 (reply: «делай»).
+Reviewed source `797b96e5306da77e8acc54a28c8a6a8e85b3cfd7` and distribution
+`b61a19583dc91ee9e3e795250d733d2cc99e6569` are public. Source CI 42092841285,
+all six platform jobs 42094073753 and public universal P01 passed (4 installer /
+2 self-tests, 94 payloads, complete actual-path recovery/removal, memory preserved).
+Release 435642115 was published at `2026-11-05T19:34:40Z`; all three downloaded
+assets, tag and 95 archive files/modes matched. Old 1.2 identities are unchanged.
+Metadata source `606f5b25f83831c3d9c5e29709d85c32ae0cf7a9` passed CI 42096237029.
+Pages 42096956053 / deployment 7583607107 succeeded at `2026-11-05T19:46:46Z`.
+Audit 42097697236 downloaded the official artifact and matched all 18 returned
+bodies, EN/RU pins and append-only maintenance index. Root read its full
+runtime summary; local receipt-bundle download timed out, with no repeated
+execution or local rebuild. Independent review and raw provenance are retained.
+See the [release report](../../../docs/evals/results/2026-11-05-release-1.3/README.md)
+and [maintenance record](../../../docs/MAINTENANCE.md).
+No paid API, personal-auth change, old tag/asset rewrite, broader native/model
+compatibility or measured human benefit is claimed.

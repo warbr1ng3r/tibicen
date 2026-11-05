@@ -59,9 +59,11 @@ Git имел обычные права ОС; изоляция дочерних �
 | [distribution-SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.3.0/distribution-SHA256SUMS) | 9795 | `bf589996433f8eb46b83f87cd229fc6ead81af46f0ce50959e4c7c05525bee4d` |
 | [SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.3.0/SHA256SUMS) | 177 | `561fc7e0192909dadbc919e02a2fdcec105cabb448b96d7c701c36cccd7f9c1f` |
 
-Все три скачанных файла выпуска совпали с замороженным кандидатом. Pages и сверка возвращённых страниц — отдельная
-проверка; новый успешный исход здесь не заявлен. Полная привязка и ограничения —
-в [отчёте выпуска](evals/results/2026-11-05-release-1.3/README.md).
+Все три скачанных файла выпуска совпали с замороженным кандидатом.
+[Pages 42096956053](https://github.com/warbr1ng3r/tibicen/actions/runs/42096956053) выложил metadata-исходник `606f5b25f83831c3d9c5e29709d85c32ae0cf7a9`;
+[отдельный аудитор](https://github.com/warbr1ng3r/tibicen/actions/runs/42097697236) подтвердил все 18 реальных HTTP 200 тел по официальному артефакту.
+Четыре прежние записи индекса и warnings сохранены. Точные привязки — в
+[MAINTENANCE](MAINTENANCE.md) и [отчёте выпуска](evals/results/2026-11-05-release-1.3/README.md).
 Все прежние выпуски, файлы и наблюдения ниже сохраняют исходные факты.
 
 ## Опубликованная 1.2.0 — 5 ноября 2026 UTC

@@ -12,8 +12,18 @@ Public universal P01 passed in 25.521 seconds: 4 installer calls and 2 self-test
 exact 1.2→1.3 replacement/repeat, complete edited-backup restoration into actual
 skill paths and removal preserved the seven-file project, later memory, sibling
 skill and settings. This was repeated explicit `add`, not `skills update` or
-lock-byte stability. All three returned release assets matched the frozen candidate. Pages requires separate deployment
-and returned-byte verification.
+lock-byte stability. All three returned release assets matched the frozen candidate.
+[Metadata CI 42096237029](https://github.com/warbr1ng3r/tibicen/actions/runs/42096237029) passed on `606f5b25f83831c3d9c5e29709d85c32ae0cf7a9`;
+[Pages 42096956053](https://github.com/warbr1ng3r/tibicen/actions/runs/42096956053) deployed that same source (deployment `7583607107`, `2026-11-05T19:46:46Z`).
+[Separate auditor 42097697236](https://github.com/warbr1ng3r/tibicen/actions/runs/42097697236) matched all 18 HTTP 200 bodies to official
+artifact `13446539150`, API ZIP SHA-256
+`97aac8270d19fa0d9aa1275b5467080b695740b681101f7cca6c1eb43287f58f`.
+EN/RU, universal installation and maintenance checks passed; the four older records and warnings were preserved.
+Returned index SHA-256: `62666d334972d1377825b718f0e3c03c2cfbb153e9428a50a2a2dd804defd2f4`. Details are in [MAINTENANCE](../../../MAINTENANCE.md).
+The body comparison ran in GitHub Actions; root read all 18 results in the complete authenticated browser summary.
+A separate local audit-artifact ZIP download timed out; no local rebuild was performed.
+Actions returned-receipt SHA-256: `eecc7f652994cb6a9281d176d02fbfb44b0dddfa680a32419280d9f18c4b41f2`.
+
 
 Native loading, compatibility with every model and measured human benefit remain
 unverified. Source-assisted H03/H04 reasoning and local U02/D01 retain their

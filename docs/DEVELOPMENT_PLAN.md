@@ -1,6 +1,6 @@
 # Tibicen development plan
 
-**Current status — 5 November 2026 (Moscow):** [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) was published at `2026-11-05T19:34:40Z`. The [release report](evals/results/2026-11-05-release-1.3/README.md) records exact source/distribution bindings, 843/843 offline tests, 42 browser checks, successful exact-source CI and six fresh platform cells. Public universal 1.2→1.3 replacement/repeat, installed self-tests, complete backup restoration and removal passed with 94 payloads. All three returned release assets and 95 archive files/modes match the accepted candidate; 1.2 is unchanged. The owner authorized commit, push and publication. Metadata publication and separate Pages deployment/body verification are in progress; broad native/model compatibility and human benefit remain unverified.
+**Current status — 5 November 2026 (Moscow):** [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) was published at `2026-11-05T19:34:40Z`. The [release report](evals/results/2026-11-05-release-1.3/README.md) records exact source/distribution bindings, 843/843 offline tests, 42 browser checks, successful exact-source CI and six fresh platform cells. Public universal 1.2→1.3 replacement/repeat, installed self-tests, complete backup restoration and removal passed with 94 payloads. All three returned release assets and 95 archive files/modes match the accepted candidate; 1.2 is unchanged. The owner authorized commit, push and publication. Metadata is public; Pages run 42096956053 deployed source `606f5b25f83831c3d9c5e29709d85c32ae0cf7a9`. Audit 42097697236 verified all 18 returned bodies against the official artifact and preserved the four older maintenance records. Broad native/model compatibility and human benefit remain unverified.
 
 ## Completed work — portable workflow (1.3.0)
 
@@ -14,7 +14,7 @@ Use the [map](../.scratch/harness-portability/map.md) and
 Candidate-02 retains exact changed bytes; candidate-01 and unconsumed H01/H02 stay
 historical. Fresh source-assisted init/adopt and exact local update/recovery are
 independently accepted in the [candidate report](evals/results/2026-11-05-release-1.3/README.md).
-The owner-authorized 1.3 release is public; metadata and Pages follow-up remains. Broad native/LLM compatibility is not claimed.
+The owner-authorized 1.3 release, metadata and Pages follow-up are complete. Broad native/LLM compatibility is not claimed.
 
 ## Retained intermediate 1.3.0 candidate
 

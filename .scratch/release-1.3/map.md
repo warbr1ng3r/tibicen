@@ -1,8 +1,8 @@
 # Release 1.3.0 preparation
 
 Labels: wayfinder:map
-Status: claimed
-Assignee: root
+Status: resolved
+Assignee: none
 
 ## Destination
 
@@ -42,6 +42,6 @@ Candidate-02 local portability is implemented and mechanically checked in the li
 
 - The owner approved the next local acceptance packet: two fresh supplied-context init/adopt observations and exact candidate-02 update/recovery/removal checks. Independent protocol review precedes execution. H01/H02 and U01/U02 retain their old outcomes. No new paid API, personal-auth or release action is inferred.
 
-- [Fresh observations](issues/02-observations.md) and [local delivery/release preparation](issues/03-delivery-and-review.md) are complete for candidate-02: H03/H04 source-assisted reasoning accepted; D01 universal replacement/restoration/removal and combined local assessment Ship. Raw child traces/native model compatibility remain unverified. [Public release](issues/04-public-release.md) is the next frontier, awaiting explicit concrete-packet authorization.
+- [Fresh observations](issues/02-observations.md) and [local delivery/release preparation](issues/03-delivery-and-review.md) are complete for candidate-02: H03/H04 source-assisted reasoning accepted; D01 universal replacement/restoration/removal and combined local assessment Ship. Raw child traces/native model compatibility remain unverified. [Public release](issues/04-public-release.md) followed the owner’s later concrete-packet authorization, as recorded below.
 
-- [Public release](issues/04-public-release.md): owner authorization received; source `797b96e`, distribution `b61a195`, CI and all six platform cells passed. Public universal delivery passed; [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) published at `2026-11-05T19:34:40Z`, all three returned assets verified. Metadata and Pages remain in progress.
+- [Public release](issues/04-public-release.md): owner authorization received; source `797b96e`, distribution `b61a195`, CI and all six platform cells passed. Public universal delivery passed; [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) published at `2026-11-05T19:34:40Z`, all three returned assets verified. Metadata CI 42096237029 passed; Pages 42096956053 deployed metadata source `606f5b25f83831c3d9c5e29709d85c32ae0cf7a9`. Actual audit 42097697236 verified all 18 returned bodies and preserved the four earlier maintenance records. Release work is complete.
