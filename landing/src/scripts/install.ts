@@ -6,7 +6,7 @@ export const managers = {
 export type Manager = keyof typeof managers;
 
 export function installationCommand(manager: Manager): string {
-  return `${managers[manager]} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0656f12e00ea83d84229180d331f3178bf253407 -g --agent universal --skill tibicen-init tibicen-adopt --copy`;
+  return `${managers[manager]} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/b61a19583dc91ee9e3e795250d733d2cc99e6569 -g --agent universal --skill tibicen-init tibicen-adopt --copy`;
 }
 
 export function mountInstallation() {

@@ -1,6 +1,6 @@
 # Issue tracker
 
-**Current status — 5 November 2026 (Moscow):** [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) is published at `2026-11-05T03:46:37Z`. The [release report](../evals/results/2026-11-05-release-1.2/README.md) preserves exact bindings, the original native failure, scoped supplied-context observations and delivery results. The 804-test gate and current normal CI passed; six platform cells apply through unchanged inputs; mechanical full-SHA delivery matched 92 payloads for Codex, Claude Code and Cursor. Combined D03/D04 observations / engineering verdict: actual subcriteria of stopped D03 and the separate D04 report accepted / Ship for the frozen candidate and exact publication packet. Assets: passed: all three downloaded files match the exact release notes, tag and frozen candidate; 93 archive files/modes and 92 payload checksums match. Pages: deployment passed and all 18 returned bodies matched the official artifact; exact bindings are in [MAINTENANCE](../MAINTENANCE.md). Historical queues retain their old outcomes and grant no new execution budget.
+**Current status — 5 November 2026 (Moscow):** [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) was published at `2026-11-05T19:34:40Z`. The [release report](../evals/results/2026-11-05-release-1.3/README.md) records exact source/distribution bindings, 843/843 offline tests, 42 browser checks, successful exact-source CI and six fresh platform cells. Public universal 1.2→1.3 replacement/repeat, installed self-tests, complete backup restoration and removal passed with 94 payloads. All three returned release assets and 95 archive files/modes match the accepted candidate; 1.2 is unchanged. The owner authorized commit, push and publication. Metadata publication and separate Pages deployment/body verification are in progress; broad native/model compatibility and human benefit remain unverified.
 
 Development in this repository uses Local Markdown. Git remote origin points to the public warbr1ng3r/tibicen repository; no external tracker is configured. The canonical tracker is in `.scratch/`; this directory is not excluded from Git. This setup is not part of the Tibicen distribution.
 
@@ -22,17 +22,16 @@ The [portability map](../../.scratch/harness-portability/map.md) and
 three-lane implementation and local integration. Actual results: 843/843 offline
 tests, 42 affected browser checks, independent source review, universal local
 delivery and the mechanical init/adopt U02 route. U01 remains failed; no native or
-LLM observation is inferred. Candidate-02 is unpublished; candidate-01 and H01/H02
-retain their original scope. Release work follows the retained release effort
-and its concrete authorization requirements below.
+LLM observation is inferred. Candidate-02 is published as 1.3.0; candidate-01 and H01/H02
+retain their original scope. Release metadata and Pages follow-up remains below.
 
-## Current effort — local 1.3 acceptance and public release packet
+## Current effort — 1.3 release metadata and Pages
 
 The [release map](../../.scratch/release-1.3/map.md) owns the next packet. Fresh
 source-assisted init/adopt cases and exact candidate-02 update/recovery/removal
 passed independent review. The [candidate report](../evals/results/2026-11-05-release-1.3/README.md)
-records actual results and unverified native/model scope. Source commit/push and
-public release gates require explicit authorization on the prepared packet.
+records actual results and unverified native/model scope. The owner authorized the concrete packet. Source commit/push, public gates,
+release publication and returned assets passed; metadata and Pages remain.
 
 ## Retained intermediate 1.3.0 preparation
 

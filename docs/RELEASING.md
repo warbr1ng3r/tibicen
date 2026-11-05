@@ -93,6 +93,34 @@ Record corrections in a new candidate. Preserve failed attempts and old sums.
 Published tags and bytes stay immutable; a published defect requires a new
 version. There is no background update of installed Tibicen or project setup.
 
+## Published 1.3.0 — 2026-11-05 (Moscow)
+
+[1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) was published at `2026-11-05T19:34:40Z`.
+Source `797b96e5306da77e8acc54a28c8a6a8e85b3cfd7` binds distribution `b61a19583dc91ee9e3e795250d733d2cc99e6569` and accepted candidate-02.
+Universal installation, explicit skill reading and uncatalogued hints are included;
+a catalog entry does not establish native loading or compatibility with every model.
+
+The 843/843 local gate, 42 affected browser scenarios,
+[CI 42092841285](https://github.com/warbr1ng3r/tibicen/actions/runs/42092841285) and all six
+macOS 15 / Ubuntu 24.04 / Windows 2022 × Node 22.20.0 / 24.15.0 cells of
+[workflow 42094073753](https://github.com/warbr1ng3r/tibicen/actions/runs/42094073753) passed.
+Public full-SHA universal delivery passed: 4 installer calls, 2 self-tests, 94 payloads;
+1.2→1.3 replacement, repeat, complete edited-backup restoration into actual installed
+paths and removal preserved the project, later memory, sibling skill and settings.
+`skills update` and lock-byte stability were not checked. Trusted Git children had
+ordinary OS permissions; child isolation is not claimed.
+
+| Published asset | Bytes | SHA-256 |
+| --- | ---: | --- |
+| [tibicen-1.3.0.tar.gz](https://github.com/warbr1ng3r/tibicen/releases/download/v1.3.0/tibicen-1.3.0.tar.gz) | 237193 | `86862c77462896229fac1dffd1877953f591a5362e4724b95c41a7ad791ba194` |
+| [distribution-SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.3.0/distribution-SHA256SUMS) | 9795 | `bf589996433f8eb46b83f87cd229fc6ead81af46f0ce50959e4c7c05525bee4d` |
+| [SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.3.0/SHA256SUMS) | 177 | `561fc7e0192909dadbc919e02a2fdcec105cabb448b96d7c701c36cccd7f9c1f` |
+
+All three returned release assets matched the frozen candidate. Pages and returned-body verification are separate;
+no new successful Pages outcome is claimed here. Exact bindings and limits are
+in the [release report](evals/results/2026-11-05-release-1.3/README.md).
+All earlier releases, assets and observations below retain their original facts.
+
 ## Published 1.2.0 — 5 November 2026 UTC
 
 [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) was published at

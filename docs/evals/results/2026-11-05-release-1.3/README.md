@@ -1,4 +1,29 @@
-# 1.3.0 local candidates — UNPUBLISHED
+# Tibicen 1.3.0 release and retained candidates
+
+## Publication follow-up — 2026-11-05 (Moscow)
+
+[1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) was published at `2026-11-05T19:34:40Z`.
+Source `797b96e5306da77e8acc54a28c8a6a8e85b3cfd7`; distribution/tag target `b61a19583dc91ee9e3e795250d733d2cc99e6569`.
+Accepted candidate-02 has 94 payloads and 95 regular archive members:
+archive SHA-256 `86862c77462896229fac1dffd1877953f591a5362e4724b95c41a7ad791ba194`, manifest `bf589996433f8eb46b83f87cd229fc6ead81af46f0ce50959e4c7c05525bee4d`, outer sums `561fc7e0192909dadbc919e02a2fdcec105cabb448b96d7c701c36cccd7f9c1f`.
+[Normal CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42092841285) and
+[all six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/42094073753) passed.
+Public universal P01 passed in 25.521 seconds: 4 installer calls and 2 self-tests;
+exact 1.2→1.3 replacement/repeat, complete edited-backup restoration into actual
+skill paths and removal preserved the seven-file project, later memory, sibling
+skill and settings. This was repeated explicit `add`, not `skills update` or
+lock-byte stability. All three returned release assets matched the frozen candidate. Pages requires separate deployment
+and returned-byte verification.
+
+Native loading, compatibility with every model and measured human benefit remain
+unverified. Source-assisted H03/H04 reasoning and local U02/D01 retain their
+assistance/limits; U01's failure and unconsumed H01/H02 are not renamed.
+Trusted Git children had ordinary OS permissions; OS isolation is not claimed.
+
+## Historical local acceptance record before publication
+
+The original dated facts below are retained. References to unpublished status, 1.2
+and pending public gates describe that earlier stage, not the current release.
 
 ## Portability follow-up — candidate-02
 

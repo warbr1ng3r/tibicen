@@ -13,15 +13,14 @@ Two entry points:
 - `tibicen-init` — “Set up agent infrastructure.” For an empty directory or an existing application without an agent setup.
 - `tibicen-adopt` — “Review and update agent infrastructure.” For fixing, extending, and updating existing instructions and integrations.
 
-[**1.2.0 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0):
-version-aware practice evidence, clearer adopt diagnosis and recognition of
-existing nested memory pointers. The 804-test gate and normal CI passed; six
-platform cells apply through unchanged runtime/build inputs. Mechanical public
-installation/update/backup restoration/removal matched all 92 payloads for Codex,
-Claude Code and Cursor. Two source-supplied Desktop observations passed review
-for generic explanation and keep/change reasoning; they do not establish new
-native loading or compatibility. See the [release report](docs/evals/results/2026-11-05-release-1.2/README.md)
-and [configuration page](https://warbr1ng3r.github.io/tibicen/).
+[**1.3.0 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0):
+universal installation, explicit skill-file reading, custom harness hints and
+one common project instruction/memory route. Your host reads files and runs the
+required Node operations; you choose its model and provider. Public installation,
+replacement, recovery and removal passed for the explicit `universal` target;
+this does not establish native loading or compatibility with every model. See
+the [release report](docs/evals/results/2026-11-05-release-1.3/README.md) and
+[configuration page](https://warbr1ng3r.github.io/tibicen/).
 Project memory was introduced in 1.1.0; its [assisted fresh-task observations](docs/evals/results/2026-11-04-project-memory/README.md)
 retain their original scope. Earlier releases remain in [CHANGELOG](CHANGELOG.md).
 
@@ -31,9 +30,9 @@ Application source code, existing package manifests, CI, and data are preserved 
 
 ## Install Tibicen
 
-The command below pins the 1.2.0 distribution at its full commit. The
-[release report](docs/evals/results/2026-11-05-release-1.2/README.md) records exact
-checks, the retained failed native attempt and supplied-context observation limits.
+The command below pins the 1.3.0 distribution at its full commit. The
+[release report](docs/evals/results/2026-11-05-release-1.3/README.md) records exact
+checks, retained earlier failures and source-assisted observation limits.
 Publication and public delivery are tracked in [release details](docs/RELEASING.md).
 The source branch is not an installation target.
 
@@ -44,7 +43,7 @@ The explicit `universal` target puts both complete skills in `~/.agents/skills/`
 it does not require your host, model or provider to be in Tibicen's catalog.
 
 ```sh
-npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0656f12e00ea83d84229180d331f3178bf253407 -g --agent universal --skill tibicen-init tibicen-adopt --copy
+npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/b61a19583dc91ee9e3e795250d733d2cc99e6569 -g --agent universal --skill tibicen-init tibicen-adopt --copy
 ```
 
 Use the full distribution SHA from the release notes when an exact commit is

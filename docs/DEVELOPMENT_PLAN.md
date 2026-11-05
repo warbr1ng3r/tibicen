@@ -1,8 +1,8 @@
 # Tibicen development plan
 
-**Current status — 5 November 2026 (Moscow):** [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) is published at `2026-11-05T03:46:37Z`. The [release report](evals/results/2026-11-05-release-1.2/README.md) retains exact source/distribution bindings, the original failed native attempt, supplied-context D01/D02 observations and scoped reuse of historical mechanisms. The 804-test gate and normal CI passed; six platform cells are reused through unchanged inputs, and mechanical public delivery matched 92 payloads for all three targets. Final engineering / combined D03/D04 result: Ship for the frozen candidate and exact publication packet / actual subcriteria of stopped D03 and the separate D04 report accepted. Assets: passed: all three downloaded files match the exact release notes, tag and frozen candidate; 93 archive files/modes and 92 payload checksums match. Pages: deployment passed and all 18 returned bodies matched the official artifact; exact bindings are in [MAINTENANCE](MAINTENANCE.md). Historical 1.1/1.0/prerelease narratives keep their dated outcomes.
+**Current status — 5 November 2026 (Moscow):** [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) was published at `2026-11-05T19:34:40Z`. The [release report](evals/results/2026-11-05-release-1.3/README.md) records exact source/distribution bindings, 843/843 offline tests, 42 browser checks, successful exact-source CI and six fresh platform cells. Public universal 1.2→1.3 replacement/repeat, installed self-tests, complete backup restoration and removal passed with 94 payloads. All three returned release assets and 95 archive files/modes match the accepted candidate; 1.2 is unchanged. The owner authorized commit, push and publication. Metadata publication and separate Pages deployment/body verification are in progress; broad native/model compatibility and human benefit remain unverified.
 
-## Completed local work — portable workflow (Unreleased)
+## Completed work — portable workflow (1.3.0)
 
 The product entry now uses universal installation and explicit skill reading in
 any file/Node-capable host, with user-selected models/providers and valid unknown
@@ -14,9 +14,11 @@ Use the [map](../.scratch/harness-portability/map.md) and
 Candidate-02 retains exact changed bytes; candidate-01 and unconsumed H01/H02 stay
 historical. Fresh source-assisted init/adopt and exact local update/recovery are
 independently accepted in the [candidate report](evals/results/2026-11-05-release-1.3/README.md).
-Next is the separately authorized 1.3 public packet; broad native/LLM compatibility is not claimed.
+The owner-authorized 1.3 release is public; metadata and Pages follow-up remains. Broad native/LLM compatibility is not claimed.
 
 ## Retained intermediate 1.3.0 candidate
+
+This section retains the earlier preparation state before the publication above.
 
 The descriptive harness feature is committed and pushed to public main as
 `93d9305380ee24deb7ffca88f6d62fb48250f2f2`; its installed release remains

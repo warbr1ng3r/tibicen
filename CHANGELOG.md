@@ -1,9 +1,11 @@
 # Changelog
 
-Version 1.2.0 is public. See [release details](docs/RELEASING.md) for
+Version 1.3.0 is public. See [release details](docs/RELEASING.md) for
 immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
+
+## [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) — 2026-11-05
 
 ### Added
 
@@ -16,7 +18,7 @@ immutable source/distribution references, checks and remaining scope limits.
 
 - Use the pinned installer's explicit universal target as the default installation route; keep native discovery and optional behavior checks separate from structural setup.
 - Select practices across catalog identities with at most sixteen selections, two sources per profile and six total HTTP attempts; report withheld sources and accept selected unknown-version context without fetching an invented source.
-- Keep installation, checked MCP/process adapters and native evaluation permissions separate from descriptive profiles; preserve the original published 1.2 assets and pins.
+- Keep installation, checked MCP/process adapters and native evaluation permissions separate from descriptive profiles; keep every earlier published release artifact unchanged.
 
 ## [1.2.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.2.0) — 2026-11-05
 

@@ -5,12 +5,12 @@ and invokes tools; its **model and provider** are your choices in that host.
 Tibicen does not connect to model APIs, select a model from an allowlist or ask
 you to create provider credentials for ordinary setup.
 
-The common `AGENTS.md` mechanism already exists in the published 1.2 core.
-The expanded stage guidance and uncatalogued preset hints in this checkout are
-**Unreleased**. The [installation guide](INSTALLATION.md) keeps the published
-1.2 pin; installing it does not install unreleased instructions. Earlier
-[release observations](evals/results/2026-11-05-release-1.2/README.md) keep their
-original versions, inputs and limits. No new native/model run is claimed here.
+The common `AGENTS.md` mechanism already existed in 1.2. Published 1.3 includes
+expanded stage guidance, uncatalogued preset hints and the explicit common
+installation route. The [installation guide](INSTALLATION.md) pins 1.3; the
+[release report](evals/results/2026-11-05-release-1.3/README.md) separates mechanical
+delivery and source-assisted reasoning from native loading and model
+compatibility. Earlier observations retain their original limits.
 
 ## Start in your project
 

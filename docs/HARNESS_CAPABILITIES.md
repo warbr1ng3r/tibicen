@@ -1,8 +1,8 @@
 # Harness capabilities
 
-This guide describes the **Unreleased** portable workflow and catalog in the
-source checkout. Published 1.2.0 keeps its original scope; a catalog entry does
-not add installer targets or native capabilities.
+This guide describes the **Tibicen 1.3.0** portable workflow and catalog.
+Earlier 1.2.0 keeps its original scope; a catalog entry does not add installer
+targets or native capabilities. See [release details](RELEASING.md).
 A harness is the application that runs the agent, such as Gemini CLI or Cline.
 Changing its model or provider does not create a different harness profile.
 

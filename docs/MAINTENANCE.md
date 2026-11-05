@@ -26,6 +26,15 @@ Each dated review records:
 
 Reporting follows the [CoC](../CODE_OF_CONDUCT.md): nonsensitive project matters use public issues/PRs; private GitHub Support reports cover platform-rule violations on GitHub; vulnerabilities go privately to the confirmed recipient in [SECURITY](../SECURITY.md). The former unfulfilled general private conduct-inbox promise is replaced, not declared satisfied. No alternate is appointed; an implicated maintainer must not decide a complaint about their own conduct. Do not post sensitive details publicly. Form/notification delivery has not been newly tested.
 
+**1.3.0 is published; its Pages channel update is pending.**
+[1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0), `2026-11-05T19:34:40Z`, binds
+source `797b96e5306da77e8acc54a28c8a6a8e85b3cfd7` to distribution `b61a19583dc91ee9e3e795250d733d2cc99e6569`.
+The index appends the actual published release; earlier version and warning objects
+are preserved. All three returned release assets matched the frozen candidate. Pages deployment and returned-byte
+verification are not established by this metadata update. See the
+[1.3 report](evals/results/2026-11-05-release-1.3/README.md).
+The 1.2 and earlier channel checks below remain historical.
+
 **1.2.0 channel update — deployed and returned bytes verified on 5 November 2026.**
 [Pages 41965496745](https://github.com/warbr1ng3r/tibicen/actions/runs/41965496745) deployed site source
 `802c01ece6d7e3fd07f080263e2e19c7537e3a46`; deployment `7564878761` succeeded at `2026-11-05T04:05:17Z`.

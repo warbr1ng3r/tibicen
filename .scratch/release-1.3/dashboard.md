@@ -1,7 +1,7 @@
 # 1.3.0 release dashboard
 
 The [map](map.md) owns decisions; [RELEASING](../../docs/RELEASING.md) owns the procedure.
-Published skills and Pages remain 1.2.0. Local candidate-02 is accepted and Unreleased.
+Skills 1.3.0 are published and returned assets verified. Pages update is in progress.
 
 | Work | Status | Actual result |
 | --- | --- | --- |
@@ -9,7 +9,7 @@ Published skills and Pages remain 1.2.0. Local candidate-02 is accepted and Unre
 | Candidate-02 implementation/build | Complete | 843/843, 42 browser checks, 94 payloads / 95 archive files; original candidate-01 retained |
 | [Fresh init/adopt](issues/02-observations.md) | Complete | H03/H04 source-assisted reasoning accepted; two fresh contexts, 6 reads/footer actor-declared each; no native claim |
 | [Local update/recovery/packet](issues/03-delivery-and-review.md) | Complete | D01 passed 4 installer / 2 self-tests, actual-path backup recovery/removal, preserved later memory; combined Ship |
-| [Commit/push/public release](issues/04-public-release.md) | Open, awaiting authorization | Concrete candidate-02 draft ready; public CI/platform/distribution/delivery/tag/assets/Pages remain pending |
+| [Commit/push/public release](issues/04-public-release.md) | Claimed by root | Owner authorized; source/public CI, six platform cells, full-SHA universal delivery and release/returned assets passed. Metadata and Pages pending |
 
-No new paid API, personal-auth change or public action was performed. H01/H02 remain
+No paid API or personal-auth change was performed. Publication follows the owner’s explicit authorization. H01/H02 remain
 withheld/unconsumed; U01 remains failed. Older candidate/profile outcomes retain their scope.
