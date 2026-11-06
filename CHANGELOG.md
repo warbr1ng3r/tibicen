@@ -5,9 +5,15 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+## 1.4.1 — unpublished candidate
+
 ### Changed
 
-- Simplify the bilingual landing to one recommended installation command and two first-request choices, one native-switchable illustrative case, and a separate local-only preset builder. Skill version and pinned distribution stay at 1.4.0.
+- Simplify the bilingual landing to one recommended installation command and two first-request choices, one native-switchable illustrative case, and a separate local-only preset builder. Skill version and pinned distribution stayed at 1.4.0 for that separate landing deployment.
+
+### Fixed
+
+- Show a one-line proposal edit with three surrounding context lines instead of removing and adding the whole file; retain exact approved content, permissions and line endings, including existing approved plans.
 
 ## [1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0) — 2026-11-06
 

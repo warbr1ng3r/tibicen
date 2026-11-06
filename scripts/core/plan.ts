@@ -100,6 +100,58 @@ export async function readCurrent(
   }
 }
 
+function proposalDiff(
+  filename: string,
+  before: string | null,
+  after: string | null,
+  beforeMode: number | null,
+  afterMode: number | null,
+) {
+  const beforeLines = before?.match(/[^\n]*\n|[^\n]+$/g) ?? [];
+  const afterLines = after?.match(/[^\n]*\n|[^\n]+$/g) ?? [];
+  let diff = `--- ${before === null ? '/dev/null' : filename}\n+++ ${after === null ? '/dev/null' : filename}\n`;
+  if (beforeMode !== afterMode)
+    diff += `old mode ${beforeMode === null ? 'absent' : beforeMode.toString(8)}\nnew mode ${afterMode === null ? 'absent' : afterMode.toString(8)}\n`;
+  let prefix = 0;
+  while (
+    prefix < beforeLines.length &&
+    prefix < afterLines.length &&
+    beforeLines[prefix] === afterLines[prefix]
+  )
+    prefix++;
+  if (prefix === beforeLines.length && prefix === afterLines.length)
+    return diff;
+  let beforeEnd = beforeLines.length,
+    afterEnd = afterLines.length;
+  while (
+    beforeEnd > prefix &&
+    afterEnd > prefix &&
+    beforeLines[beforeEnd - 1] === afterLines[afterEnd - 1]
+  ) {
+    beforeEnd--;
+    afterEnd--;
+  }
+  // shortcut: keep one combined changed region; split hunks only if review needs it.
+  const start = Math.max(0, prefix - 3);
+  const beforeCount = Math.min(beforeLines.length, beforeEnd + 3) - start;
+  const afterCount = Math.min(afterLines.length, afterEnd + 3) - start;
+  diff += `@@ -${beforeCount ? start + 1 : start},${beforeCount} +${afterCount ? start + 1 : start},${afterCount} @@\n`;
+  const render = (lines: string[], marker: string) =>
+    lines
+      .map(
+        (line) =>
+          `${marker}${line}${line.endsWith('\n') ? '' : '\n\\ No newline at end of file\n'}`,
+      )
+      .join('');
+  return (
+    diff +
+    render(beforeLines.slice(start, prefix), ' ') +
+    render(beforeLines.slice(prefix, beforeEnd), '-') +
+    render(afterLines.slice(prefix, afterEnd), '+') +
+    render(beforeLines.slice(beforeEnd, start + beforeCount), ' ')
+  );
+}
+
 export async function createProposal(
   root: string,
   data: unknown,
@@ -345,8 +397,6 @@ export async function createProposal(
     )
       continue;
     const content = action === 'delete' ? null : change.content;
-    const beforeLines = before.content?.split('\n') ?? [];
-    const afterLines = content?.split('\n') ?? [];
     changes.push({
       path: change.path,
       action,
@@ -354,10 +404,13 @@ export async function createProposal(
       beforeMode: before.mode,
       ...(content === null ? {} : { content, fileMode }),
       reason: change.reason,
-      diff: `--- ${change.path}\n+++ ${change.path}\n${fileMode !== undefined && before.mode !== fileMode ? `old mode ${before.mode === null ? 'absent' : before.mode.toString(8)}\nnew mode ${fileMode.toString(8)}\n` : ''}@@ -1,${beforeLines.length} +1,${afterLines.length} @@\n${beforeLines
-        .map((line) => `-${line}`)
-        .concat(afterLines.map((line) => `+${line}`))
-        .join('\n')}`,
+      diff: proposalDiff(
+        change.path,
+        before.content,
+        content ?? null,
+        before.mode,
+        fileMode ?? null,
+      ),
     });
   }
   const preparedChecks = prepareCheckCommands(

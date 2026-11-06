@@ -1,5 +1,13 @@
 # Issue tracker
 
+## Current effort — compatible 1.4.1 patch
+
+The owner directed uninterrupted autonomous work after the working-session commit. The 1.4.1 release effort (`../../.scratch/release-1.4.1/map.md`; private development record; excluded from public source) now owns candidate acceptance, curated publication, public gates, delivery and Pages. The preview correction is compatible; published 1.4 artifacts remain immutable. This section records preparation, not publication.
+
+## Completed local work — first working session
+
+The first working-session packet (`../../.scratch/working-path/map.md`; private development record; excluded from public source) is complete: five controlled frozen 1.4 cases, separately attributed mechanical application and fresh tasks, a later memory correction/read, a focused proposal-preview fix and concise roadmap. The [report](../evals/results/2026-11-06-first-working-session/README.md) retains consent, assistance and runtime limits. Independent Ponytail/evidence reviews passed; the full gate passed 930 tests with one default manual skip, and the separate standalone lifecycle passed 3/3. All [tasks](../../openspec/changes/validate-first-working-session/tasks.md) and five tickets are closed. At validation completion, changes were local and Unreleased; no commit, version bump, push or publication had occurred. The owner subsequently authorized a local commit of the verified packet; push and publication remain separate.
+
 ## Completed local work — simpler first use
 
 The owner approved the [first-use packet](../../.scratch/landing-first-use/map.md) after the dated installation review. Parallel installation/examples/preset lanes and root integration completed the [change](../../openspec/changes/simplify-first-use-landing/tasks.md). Local implementation and independent Ponytail review are complete: full gate 900 passed/1 existing skip; site 57/57 and browser 101 passed/1 existing skip at both bases. All 101 skill files remain unchanged. See [verification](../../openspec/changes/simplify-first-use-landing/verification.md) for checks and limits. Source `a6d54bc` is public and passed CI; [Pages 42156035977](https://github.com/warbr1ng3r/tibicen/actions/runs/42156035977) deployed that same source. Live EN/RU home/preset routes, desktop/mobile and no-JavaScript flows passed; skill version remains 1.4.0.

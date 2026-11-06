@@ -289,10 +289,13 @@ for (const resolution of ['merge', 'replace'] as const) {
       reason: `Show the exact ${resolution} diff.`,
     });
     const plan = await createProposal(root, input, { home });
-    assert(
-      plan.proposal.changes
-        .find((change) => change.path.endsWith('SKILL.md'))!
-        .diff!.includes('-Local project constraint.'),
+    assert.equal(
+      plan.proposal.changes.find((change) => change.path.endsWith('SKILL.md'))!
+        .diff,
+      `--- ${target}SKILL.md\n+++ ${target}SKILL.md\n` +
+        (resolution === 'merge'
+          ? '@@ -1,2 +1,2 @@\n-# Original workflow\n+# Updated workflow\n Local project constraint.\n'
+          : '@@ -1,2 +1,1 @@\n-# Original workflow\n-Local project constraint.\n+# Updated workflow\n'),
     );
     const result = await applyPlan(root, plan, {
       home,
