@@ -52,7 +52,7 @@ The [landing page](https://warbr1ng3r.github.io/tibicen/) was published on 27 Oc
 
 Sections in `src/components/astrowind/` are adapted from [AstroWind](https://github.com/arthelokyo/astrowind/tree/14e1a691f80548dcc36370847b1a02c0d0b12821): `Features2`, `FAQs`, `Headline` and `WidgetWrapper`. Widget composition, typed props, Tailwind grids and native details are retained. Unused variants, integrations and reveal animations were removed; Tibicen colors and prompt-copying were added. The full blog/CMS/analytics template was not imported.
 
-The upstream MIT notice is preserved in `public/licenses/astrowind.txt` and linked from the page. The custom `ProjectPreview`, preset builder and background graphics remain separate Tibicen components.
+The upstream MIT notice is preserved in `public/licenses/astrowind.txt` and included in the static build. The custom `ProjectPreview`, preset builder and background graphics remain separate Tibicen components.
 
 ## UI components and browser checks
 

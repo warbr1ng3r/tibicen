@@ -52,7 +52,7 @@ TIBICEN_SITE_BASE=/repo/ pnpm exec playwright test --config landing/playwright.c
 
 Секции `src/components/astrowind/` адаптированы из [AstroWind](https://github.com/arthelokyo/astrowind/tree/14e1a691f80548dcc36370847b1a02c0d0b12821): `Features2`, `FAQs`, `Headline` и `WidgetWrapper`. Сохранены композиция виджетов, типизированные props, сетки Tailwind и нативные details. Убраны неиспользуемые варианты, интеграции и анимации появления; добавлены палитра Tibicen и копирование запросов. Полный шаблон с блогом, CMS и аналитикой не переносился.
 
-MIT-уведомление upstream сохранено в `public/licenses/astrowind.txt` и доступно на странице. Собственные `ProjectPreview`, конструктор пресета и фоновая графика остаются отдельными компонентами Tibicen.
+MIT-уведомление upstream сохранено в `public/licenses/astrowind.txt` и попадает в статическую сборку. Собственные `ProjectPreview`, конструктор пресета и фоновая графика остаются отдельными компонентами Tibicen.
 
 ## UI-компоненты и браузерные проверки
 

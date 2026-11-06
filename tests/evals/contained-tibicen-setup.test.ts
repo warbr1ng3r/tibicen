@@ -454,7 +454,7 @@ test('metadata-only batch freeze binds runtime/order/caps and cancellation prece
       authPath: path.join(directory, 'must-not-read-auth'),
     },
   });
-  assert.equal(Object.keys(driver.freeze.runtime).length, 100);
+  assert.equal(Object.keys(driver.freeze.runtime).length, 110);
   const profileSource = 'scripts/evals/profiles/codex/tibicen-setup.ts';
   assert.equal(
     driver.freeze.sourceHashes[profileSource],
@@ -466,11 +466,16 @@ test('metadata-only batch freeze binds runtime/order/caps and cancellation prece
     for (const relative of [
       'scripts/agents/profiles.ts',
       'scripts/core/diagnosis.ts',
+      'scripts/core/instruction-sources.ts',
+      'scripts/core/memory-sources.ts',
       'scripts/core/memory.ts',
+      'scripts/core/report-evidence.ts',
+      'scripts/core/version-impact.ts',
       'scripts/mcp/diagnosis.ts',
       'scripts/mcp/vibe-toml.ts',
       'references/project-memory.md',
       'references/mcp-diagnosis.md',
+      'references/report-context-evidence.md',
     ])
       assert.equal(
         driver.freeze.runtime[setupRuntime + '/' + name + '/' + relative],

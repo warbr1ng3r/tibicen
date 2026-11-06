@@ -32,6 +32,49 @@ async function localFile(url: URL) {
 }
 
 for (const { filename, route, locale, other } of pages) {
+  test(`${locale}: the six-row preview explains optional setup without fixed memory or skill paths`, async () => {
+    const html = await readFile(new URL(filename, site), 'utf8');
+    const preview = html.match(
+      /<figure\b[^>]*id="example"[\s\S]*?<\/figure>/,
+    )?.[0];
+    assert.ok(preview);
+    assert.equal([...preview.matchAll(/<li\b/g)].length, 6);
+    assert.doesNotMatch(
+      preview,
+      /MEMORY\.md|\.agents\/|your-work\/|Example setup|Paths and tools depend/,
+    );
+    for (const text of locale === 'en'
+      ? [
+          'Agent instructions',
+          'your host’s format',
+          'Project memory',
+          'if you want it',
+          'Project skills',
+          'if useful',
+          'MCP',
+          'if needed',
+          '.tibicen/',
+          'after applying',
+          'Your existing files',
+          'unchanged',
+        ]
+      : [
+          'Инструкции агента',
+          'в формате вашей среды',
+          'Память проекта',
+          'по желанию',
+          'Скиллы проекта',
+          'если полезны',
+          'MCP',
+          'если нужно',
+          '.tibicen/',
+          'после применения',
+          'Ваши файлы',
+          'без изменений',
+        ])
+      assert.ok(preview.includes(text), text);
+  });
+
   test(`${locale}: the home links to a secondary preset without adding form controls`, async () => {
     const html = await readFile(new URL(filename, site), 'utf8');
     assert.doesNotMatch(html, /id="preset-form"|id="install-controls"/);

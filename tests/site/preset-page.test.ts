@@ -49,10 +49,27 @@ for (const locale of ['en', 'ru'] as const) {
       assert.ok(link, `Missing ${language} builder language link.`);
       assert.equal(link.includes('aria-current="page"'), language === locale);
     }
-    assert.ok(html.includes('releases/tag/v1.4.1'));
-    assert.ok(html.includes(`href="${basePath}/maintenance/index.json"`));
-    assert.ok(html.includes(`href="${basePath}/licenses/astrowind.txt"`));
-    assert.ok(html.includes(`href="${basePath}/licenses/starwind.txt"`));
+    const footer = html.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/)?.[1];
+    assert.ok(footer);
+    assert.deepEqual(
+      [...footer.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map((link) => link[1]),
+      [
+        home,
+        'https://github.com/warbr1ng3r/tibicen',
+        'https://github.com/warbr1ng3r/tibicen/blob/main/README.md',
+        'https://github.com/warbr1ng3r/tibicen/blob/main/LICENSE',
+      ],
+    );
+    for (const name of ['astrowind', 'starwind']) {
+      const notice = await readFile(
+        new URL(`../../landing/public/licenses/${name}.txt`, import.meta.url),
+      );
+      assert.match(notice.toString(), /MIT License[\s\S]*Copyright/);
+      assert.deepEqual(
+        await readFile(new URL(`licenses/${name}.txt`, site)),
+        notice,
+      );
+    }
     assert.equal([...html.matchAll(/\bid="main"/g)].length, 1);
     assert.equal([...html.matchAll(/\bid="copy-status"/g)].length, 1);
     assert.doesNotMatch(html, /\.geometry-preview|class="geometry-preview/);

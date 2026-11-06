@@ -29,18 +29,22 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
           <li class="proposed-file">
             <div class="tree-row">
               <span class="tree-file" aria-hidden="true"></span>
-              <span class="tree-name">AGENTS.md</span>
+              <span class="tree-name">
+                {t('Agent instructions', 'Инструкции агента')}
+              </span>
               <span class="tree-annotation">
-                {t('clear instructions', 'ясные правила')}
+                {t('your host’s format', 'в формате вашей среды')}
               </span>
             </div>
           </li>
           <li>
             <div class="tree-row">
               <span class="tree-file" aria-hidden="true"></span>
-              <span class="tree-name">MEMORY.md</span>
+              <span class="tree-name">
+                {t('Project memory', 'Память проекта')}
+              </span>
               <span class="tree-annotation">
-                {t('your decisions', 'важные решения')}
+                {t('if you want it', 'по желанию')}
               </span>
             </div>
           </li>
@@ -48,12 +52,10 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
             <div class="tree-row">
               <span class="tree-folder" aria-hidden="true"></span>
               <span class="tree-name">
-                .agents/
-                <wbr />
-                skills/
+                {t('Project skills', 'Скиллы проекта')}
               </span>
               <span class="tree-annotation">
-                {t('only what you need', 'только нужное')}
+                {t('if useful', 'если полезны')}
               </span>
             </div>
           </li>
@@ -84,14 +86,16 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
               <span class="tree-folder" aria-hidden="true"></span>
               <span class="tree-name">.tibicen/</span>
               <span class="tree-annotation">
-                {t('setup history', 'история настройки')}
+                {t('after applying', 'после применения')}
               </span>
             </div>
           </li>
           <li class="project-work">
             <div class="tree-row">
               <span class="tree-folder" aria-hidden="true"></span>
-              <span class="tree-name">your-work/</span>
+              <span class="tree-name">
+                {t('Your existing files', 'Ваши файлы')}
+              </span>
               <span class="tree-annotation annotation-muted">
                 {t('unchanged', 'без изменений')}
               </span>

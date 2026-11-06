@@ -460,6 +460,7 @@
   }
   .tree-name {
     min-width: 0;
+    overflow-wrap: anywhere;
   }
   .tree-tool {
     width: 15px;

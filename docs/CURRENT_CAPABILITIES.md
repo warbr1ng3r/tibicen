@@ -13,6 +13,26 @@ Both can select the appropriate route from the actual project. A sufficient
 setup can stay unchanged, without creating a new session merely to record work.
 There is no Tibicen server, account, separate model or background service.
 
+## Implemented locally, Unreleased — optional project context evidence
+
+On 7 November the owner selected three additions to the existing read-only
+report: compare caller-selected instruction files, show byte changes in explicitly
+bound sources of remembered facts, and retain supplied version-impact assessments
+against local evidence. Implementation and integration are complete, alongside a
+clearer six-row landing illustration. These additions are **not in published
+1.4.1**. Offline, built-skill, browser and independent review checks passed; the
+[verification record](../openspec/changes/explain-project-context-changes/verification.md)
+retains actual results and limits.
+
+The [context-review guide](PROJECT_CONTEXT_REVIEW.md) describes the optional input
+and limits. Detailed acceptance stays in the
+[OpenSpec tasks](../openspec/changes/explain-project-context-changes/tasks.md),
+with ownership in the effort map (`../.scratch/project-context-review-20261107/map.md`; private development record; excluded from public source).
+Comparisons use the permitted current scan and supplied metadata. They add no
+store, source fetching, background service or automatic update, and prove no
+note truth, native loading or human benefit. The released workflows below remain
+the published baseline.
+
 ## Jobs it can handle
 
 Examples describe available workflows, not guaranteed outcomes on every project.

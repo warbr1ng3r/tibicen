@@ -78,7 +78,8 @@ tags, release assets and checksums retain their original bytes.
    release notes, compatibility/migration, update/recovery/removal instructions and
    supported/unverified limits. Identify the public checks still pending. Obtain
    explicit owner authorization for commit, push and publication on that concrete
-   packet; feature-plan approval does not authorize release actions.
+   packet. Reuse an existing explicit release-plan authorization within its stated
+   scope; feature-plan approval alone does not authorize release actions.
 8. After authorization, bind the public source commit and distribution SHA to the
    candidate. Pass normal public CI and the existing six macOS/Ubuntu/Windows ×
    Node 22.20/24.15 cells. Test installation from the actual public distribution
@@ -92,6 +93,30 @@ tags, release assets and checksums retain their original bytes.
 Record corrections in a new candidate. Preserve failed attempts and old sums.
 Published tags and bytes stay immutable; a published defect requires a new
 version. There is no background update of installed Tibicen or project setup.
+
+## Active preparation — 1.5.0, 7 November 2026
+
+1.5.0 is the intended compatible minor for optional instruction-source,
+memory-source and version-impact reports, plus clarified landing labels.
+It is **not published**; 1.4.1 remains the public baseline. Persisted schemas and
+approval/write boundaries are unchanged; no project migration is needed.
+Candidate-02 passed the versioned 1035-test gate/one existing skip, standalone
+3/3, layout 15/15 and independent Ship. The separate late landing overlay passed
+site 59/59 and copy/first-use browser checks 6/6 without changing skill bytes.
+Local exact 1.4.1→1.5.0 delivery/recovery/removal passed with independent Ship;
+all three fresh cases were accepted, with B3 missing-utility failure/same-session
+checksum recovery retained. Public gates remain pending.
+
+The owner explicitly approved the concrete preparation, fresh-session checks,
+delivery checks, commit/push, public CI, publication and Pages plan. Reuse that
+release authorization within its scope after successful gates; ordinary steps
+need no new approval. Paid API charges and credential changes remain outside it.
+The release effort (`../.scratch/release-1.5/map.md`; private development record; excluded from public source),
+dashboard (`../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) and
+[release report](evals/results/2026-11-07-release-1.5/README.md) retain identities,
+failed attempts, actual observations and limits. Earlier release facts below are
+unchanged; assisted synthetic guidance use is not implicit loading or broad
+harness/model compatibility.
 
 ## Published 1.4.1 — 2026-11-06 (Moscow)
 

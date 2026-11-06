@@ -1,6 +1,38 @@
 # Issue tracker
 
-## Current status — maintain 1.4.1 after the completed comparison
+## Current status — candidate-02 and three fresh cases accepted locally, 7 November
+
+The owner's “Поехали” approved the concrete four-step 1.5.0 release plan, including
+commit, push and publication after successful gates. Continue within that scope
+without routine approval pauses. The release map (`../../.scratch/release-1.5/map.md`; private development record; excluded from public source)
+owns ticket selection/integration; the
+dashboard (`../../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) owns actual status. Exact
+identities, failures and limits are in the
+[release report](../evals/results/2026-11-07-release-1.5/README.md).
+1.5.0 is not published; published skills remain 1.4.1. Paid API charges,
+credential changes and unrelated projects remain outside this authorization.
+
+Candidate-02 passed 1035 tests/one existing skip, standalone 3/3, layout 15/15
+and independent Ship. Candidate-01's obsolete footer-test failure is retained.
+The later landing-only overlay passed site 59/59 and copy/first-use 6/6, with
+unchanged skill bytes. Local delivery D01 passed four installer calls, two
+self-tests, complete edited-backup restoration/removal and preservation;
+independent actual-evidence review: Ship. Fresh B1/B2/B3 passed independent
+mechanical/semantic review and root acceptance. All three host-session slots are
+consumed; B3 preserves one missing-utility/exit 127 and successful same-session
+checksum recovery, with the generic stop-wording ambiguity disclosed.
+Public projection, CI/six platform cells, public full-SHA delivery, release/returned
+assets and separate Pages deployment/body comparison remain pending.
+
+The preceding context-review effort (`../../.scratch/project-context-review-20261107/map.md`; private development record; excluded from public source)
+and [OpenSpec tasks](../../openspec/changes/explain-project-context-changes/tasks.md)
+are complete. Its [pre-version verification](../../openspec/changes/explain-project-context-changes/verification.md)
+retains its own scope. Current assisted synthetic fresh sessions explicitly read
+the staged skill and use the real CLI on one requested Codex subscription route;
+no implicit loading, all-harness coverage or measured human benefit is inferred.
+Earlier outcomes are not regraded.
+
+## Prior decision — maintain 1.4.1 after the completed comparison
 
 The [repair comparison](../evals/results/2026-11-06-repair-comparison/README.md)
 completed eight single native launches. Direct Codex and Tibicen made the same
@@ -12,12 +44,13 @@ Task success without the repair was not tested.
 Equal task outputs do not make approval, preservation or history unnecessary.
 
 The bounded workflow review did not establish a required step removable without
-weakening supported behavior, or a measured bottleneck. Maintain 1.4.1; no new implementation, audit or
-benchmark round is selected. The
+weakening supported behavior, or a measured bottleneck. On 6 November, maintenance
+of 1.4.1 was selected without new implementation, audit or benchmark work. The
 [strategy study](../research/2026-11-06-product-strategy/README.md) supplies
-hypotheses. Reopen scope only for a concrete evidenced gap, allowing no change;
-the [roadmap](../DEVELOPMENT_PLAN.md) owns milestone order. These observations
-grant no additional native budget, implementation, commit or release.
+hypotheses. That decision left scope to reopen for a concrete evidenced gap,
+allowing no change; the separate 7 November selection is recorded above. The
+[roadmap](../DEVELOPMENT_PLAN.md) owns milestone order. Those observations
+themselves granted no additional native budget, implementation, commit or release.
 
 Evaluator source is public on main at
 [`542743c`](https://github.com/warbr1ng3r/tibicen/commit/542743cde5a133f3a2a23a10d38daebab85ac5bf)

@@ -12,7 +12,6 @@ const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 const home = `${basePath}/${locale === 'ru' ? 'ru/' : ''}`;
 const repository = 'https://github.com/warbr1ng3r/tibicen';
 const guide = `${repository}/blob/main/README.md`;
-const release = `${repository}/releases/tag/v1.4.1`;
 ---
 
 <!doctype html>
@@ -119,20 +118,8 @@ const release = `${repository}/releases/tag/v1.4.1`;
       <div class="project-links">
         <a href={repository}>GitHub</a>
         <a href={guide}>{t('Documentation', 'Документация')}</a>
-        <a href={release}>{t('Release notes', 'Описание релиза')}</a>
-        <a href={`${basePath}/maintenance/index.json`}>
-          {t('Advisories and checksums', 'Предупреждения и суммы')}
-        </a>
-        <a href={`${guide}#update-or-remove-an-installation`}>
-          {t('Update or remove', 'Обновить или удалить')}
-        </a>
         <a href={`${repository}/blob/main/LICENSE`}>MIT</a>
       </div>
-      <span>
-        {t('Sections adapted from', 'Секции на основе')} AstroWind ·{' '}
-        <a href={`${basePath}/licenses/astrowind.txt`}>AstroWind MIT</a> ·{' '}
-        <a href={`${basePath}/licenses/starwind.txt`}>Starwind MIT</a>
-      </span>
     </footer>
     <p
       id="copy-status"

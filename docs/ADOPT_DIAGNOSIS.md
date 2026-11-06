@@ -257,6 +257,13 @@ into a passed check. Reuse the reviewed context for verification and the first
 task, or disclose what changed. See [portable activation](HARNESS_PORTABILITY.md)
 and the [later memory check](PROJECT_MEMORY.md#check-the-first-task-and-later-memory-use--unreleased).
 
+## Optional project context review — Unreleased
+
+The development source also offers optional [project context review](PROJECT_CONTEXT_REVIEW.md)
+for explicitly selected instruction files, remembered-fact source changes and
+version-impact explanations. These additions are Unreleased, separate from the
+published 1.4.1 behavior described here.
+
 <a id="local-mcp-diagnosis-for-init-and-adopt--unreleased"></a>
 
 ## Local MCP diagnosis for init and adopt

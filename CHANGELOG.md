@@ -5,8 +5,15 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+### Added
+
+- Optional [project-context evidence](docs/PROJECT_CONTEXT_REVIEW.md) in the existing read-only report: caller-selected instruction hashes, explicit remembered-fact source comparisons and supplied version-impact assessments. Current permitted bytes are separate from caller claims, note truth and native loading; no new store or automatic update is introduced. Local checks and independent review passed; the additions remain Unreleased and published skills stay 1.4.1.
+
 ### Changed
 
+- Simplify the bilingual landing footer to GitHub, documentation and MIT; retain third-party notices in the static build. Use clearer first-time setup and existing-setup example labels.
+
+- Clarify optional memory/skills/tools, variable instruction paths and conditional setup history in the landing's six-row project illustration; the implementation is not a new skill release.
 - Refresh the capability inventory for published 1.4.1 and record the completed strategy study and assisted repair comparison, including equal task outcomes and unmeasured human benefit. Skill payloads and version are unchanged.
 - Restore the fuller project preview on the bilingual landing with memory, optional MCP and setup history; remove the redundant caption and keep the mobile layout compact.
 

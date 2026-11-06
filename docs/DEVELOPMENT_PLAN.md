@@ -1,8 +1,34 @@
 # Tibicen development plan
 
-Updated 6 November 2026 (Moscow). Product scope remains in the
+Updated 7 November 2026 (Moscow). Product scope remains in the
 [vision](PRODUCT_VISION.md) and [addendum](PRODUCT_VISION_ADDENDUM.md).
 This roadmap owns milestone order; detailed requirements and tasks stay in OpenSpec.
+
+## Current milestone — release 1.5.0 in preparation
+
+The owner authorized the concrete 1.5.0 plan, including commit, push and publication
+after successful gates. The release effort (`../.scratch/release-1.5/map.md`; private development record; excluded from public source) and
+dashboard (`../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) own execution; the
+[release report](evals/results/2026-11-07-release-1.5/README.md) retains exact
+identities, attempts and limits. Published skills remain 1.4.1.
+
+Compatible candidate-02 passed the versioned 1035-test gate/one existing skip,
+standalone 3/3, browser layout 15/15 and independent Ponytail review. A late
+landing-only overlay passed site 59/59 and browser copy/first-use 6/6 without
+changing skill bytes. Local exact 1.4.1→1.5.0 replacement/repeat, complete edited
+backup restoration/removal and preservation passed with independent Ship.
+Fresh B1/B2/B3 observations were accepted; B3 retained a missing-utility command
+and same-session checksum recovery. Public source, CI/platform
+matrix, full-SHA delivery, release/assets and separate Pages checks remain pending.
+
+The [context-review guide](PROJECT_CONTEXT_REVIEW.md) and
+[OpenSpec tasks](../openspec/changes/explain-project-context-changes/tasks.md)
+define the three optional additions; the
+[implementation verification](../openspec/changes/explain-project-context-changes/verification.md)
+retains earlier pre-version checks. Fresh observations explicitly request staged
+skill reading and real CLI use in synthetic fixtures on one requested route;
+they do not prove implicit loading, all-harness compatibility or human benefit.
+Routine work continues within the approved release scope without repeated approval.
 
 ## Published baseline
 
@@ -26,7 +52,7 @@ desktop/mobile and without JavaScript. See the exact
 That separate landing deployment retained skills 1.4.0. Broader native/model compatibility, actual MCP
 connection and measured human usefulness require their own observations.
 
-## Current work and next milestones
+## Completed milestones and prior decisions
 
 1. **Validate the first working session after 1.4 — complete locally.** Five
    controlled init/adopt, project-memory, MCP and no-change cases used the frozen
@@ -95,17 +121,17 @@ connection and measured human usefulness require their own observations.
    one-host/model case explicitly prompted instruction reading and tests;
    ordinary installation, human effort and monetary cost remain unknown.
    Task success without the repair was not tested.
-8. **Maintain 1.4.1; no new implementation selected.** The bounded workflow
+8. **Prior decision, 6 November — maintain 1.4.1.** The bounded workflow
    review did not establish a required step removable without weakening supported
    behavior, or a measured bottleneck. The
    [strategy study](research/2026-11-06-product-strategy/README.md)
-   remains a set of hypotheses. No further audit or benchmark round is queued.
-   Reopen scope only for a concrete evidenced gap; no change is a valid result.
-   Future behavior changes need a separate scoped plan. Versions follow actual
+   remained a set of hypotheses; no further audit or benchmark round was selected.
+   Scope was to reopen only for a concrete evidenced gap, allowing no change.
+   The separate 7 November selection is recorded above. Versions follow actual
    scope and normal SemVer: patch for compatible fixes, minor for compatible
    features and major for incompatible supported contracts. Follow
    [RELEASING](RELEASING.md) for separate publication authorization. These
-   observations grant no new native budget, implementation, commit or release.
+   observations themselves granted no new native budget, implementation, commit or release.
 
 ## Regular maintenance and later options
 
@@ -116,7 +142,8 @@ change with affected setup/improvement checks; this is an ongoing maintenance la
 
 Voluntary human usefulness research and rubric calibration remain optional
 postpublication work under the [pilot protocol](PILOT.md); measured benefit is unknown.
-Additional adapters, context maps, portable manifests and other future capabilities
+Beyond the selected context-review milestone, additional adapters, broader context
+maps, portable manifests and other future capabilities
 need a demonstrated user problem and a separate scoped decision. The
 [post-1.3 study](research/2026-11-05-post-1.3-priorities/README.md) records candidate
 opportunities rather than an approved implementation queue.

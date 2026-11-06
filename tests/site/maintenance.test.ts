@@ -331,17 +331,9 @@ test('warnings append without rewriting records and cannot use dangling or forwa
   assert.throws(() => validate(rewrite, next));
 });
 
-test('static maintenance bytes and both locale links survive the configured site base', async () => {
+test('static maintenance bytes are preserved in the site build', async () => {
   const built = await readFile(
     new URL('../../landing/dist/maintenance/index.json', import.meta.url),
   );
   assert.deepEqual(built, bytes);
-  const base = (process.env.TIBICEN_SITE_BASE ?? '/').replace(/\/$/, '');
-  for (const name of ['index.html', 'ru/index.html']) {
-    const html = await readFile(
-      new URL('../../landing/dist/' + name, import.meta.url),
-      'utf8',
-    );
-    assert.ok(html.includes('href="' + base + '/maintenance/index.json"'));
-  }
 });

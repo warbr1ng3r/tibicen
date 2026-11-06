@@ -146,6 +146,11 @@ and the exact release's compatibility notes.
 
 ## What a check proves
 
+The development source adds optional [source-change review](PROJECT_CONTEXT_REVIEW.md)
+when an agent retained a genuine earlier source hash for a remembered fact.
+This Unreleased report compares source bytes without changing notes or claiming
+that a fact is true/false; it is not part of published 1.4.1.
+
 Published 1.2 recognizes permitted existing nested `.cursorrules`
 and rule files under `.cursor/rules/` or `.claude/rules/` found by the bounded
 scan as structural connections when they contain the exact selected memory

@@ -10,7 +10,7 @@ const examples = [
   {
     id: 'init',
     skill: 'tibicen-init',
-    title: t('No instructions yet', 'Инструкций ещё нет'),
+    title: t('First-time setup', 'Настроить с нуля'),
     before: t(
       'task-board is a Node app for adding and completing tasks. Code and tests already exist; AGENTS.md does not.',
       'task-board — Node-приложение для добавления и выполнения задач. Код и тесты уже есть, AGENTS.md пока нет.',
@@ -42,7 +42,7 @@ const examples = [
   {
     id: 'adopt',
     skill: 'tibicen-adopt',
-    title: t('The instructions are outdated', 'Инструкции устарели'),
+    title: t('Review existing setup', 'Навести порядок'),
     before: t(
       'notes-api is a Node service for saving notes, with code and tests. AGENTS.md has an old test command and a useful dependency rule.',
       'notes-api — Node-сервис для хранения заметок, с кодом и тестами. В AGENTS.md старая команда тестов и полезное правило о зависимостях.',
@@ -99,7 +99,7 @@ const examples = [
     )}
   </p>
   <fieldset class="example-switcher">
-    <legend>{t('Choose an example', 'Выберите пример')}</legend>
+    <legend>{t('See how it works', 'Как это работает')}</legend>
     {examples.map((example) => (
       <>
         <input
