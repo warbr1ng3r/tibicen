@@ -94,29 +94,35 @@ Record corrections in a new candidate. Preserve failed attempts and old sums.
 Published tags and bytes stay immutable; a published defect requires a new
 version. There is no background update of installed Tibicen or project setup.
 
-## Active preparation — 1.5.0, 7 November 2026
+## Published 1.5.0 — 7 November 2026 (Moscow)
 
-1.5.0 is the intended compatible minor for optional instruction-source,
-memory-source and version-impact reports, plus clarified landing labels.
-It is **not published**; 1.4.1 remains the public baseline. Persisted schemas and
-approval/write boundaries are unchanged; no project migration is needed.
-Candidate-02 passed the versioned 1035-test gate/one existing skip, standalone
-3/3, layout 15/15 and independent Ship. The separate late landing overlay passed
-site 59/59 and copy/first-use browser checks 6/6 without changing skill bytes.
-Local exact 1.4.1→1.5.0 delivery/recovery/removal passed with independent Ship;
-all three fresh cases were accepted, with B3 missing-utility failure/same-session
-checksum recovery retained. Public gates remain pending.
+[1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0), release ID
+`437135839`, was published at `2026-11-06T22:43:22Z` (7 November Moscow).
+Source `1d0f8a0e65ee966cb3fbddef1bc0c128ed54d441` binds distribution
+`0706d7caf6a93b79a117379c1cd5f8cd95effb04` and candidate-02. Annotated tag object
+`fb43c8969cc1d384dc6204b1faa68d992ae09323` points to that exact distribution.
+The compatible minor adds optional instruction-source, memory-source and supplied
+version-impact reports. Persisted schemas, approval/write boundaries and the
+selected memory store remain compatible; no project migration is needed.
 
-The owner explicitly approved the concrete preparation, fresh-session checks,
-delivery checks, commit/push, public CI, publication and Pages plan. Reuse that
-release authorization within its scope after successful gates; ordinary steps
-need no new approval. Paid API charges and credential changes remain outside it.
-The release effort (`../.scratch/release-1.5/map.md`; private development record; excluded from public source),
-dashboard (`../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) and
-[release report](evals/results/2026-11-07-release-1.5/README.md) retain identities,
-failed attempts, actual observations and limits. Earlier release facts below are
-unchanged; assisted synthetic guidance use is not implicit loading or broad
-harness/model compatibility.
+The 1035-test local gate/one existing skip, standalone 3/3, six platform cells and
+three scoped fresh guidance observations passed; independent candidate and
+public-delivery reviews: Ship. [Source CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42305982054),
+[platform matrix](https://github.com/warbr1ng3r/tibicen/actions/runs/42306168341) and
+[publication](https://github.com/warbr1ng3r/tibicen/actions/runs/42306803755) passed
+on their first attempts. Public full-SHA replacement/repeat, complete edited-backup
+restoration/removal and both installed self-tests passed. All three returned
+assets and 111 archive files/modes match candidate-02; root accepted those bytes,
+and independent returned-asset review passed: Ship.
+Published 1.4.1 stable metadata, assets and tag were preserved; mutable download
+counters are outside the comparison.
+
+The [release report](evals/results/2026-11-07-release-1.5/README.md) retains exact
+checksums, candidate-01/preparation/grader failures and B3's missing-utility probe
+with same-session recovery and stop-wording ambiguity. Fresh sessions explicitly
+read the staged skill on one requested route; they do not establish implicit
+loading, all-harness compatibility or measured human benefit. Separate Pages
+metadata deployment and returned-body comparison remain **pending**.
 
 ## Published 1.4.1 — 2026-11-06 (Moscow)
 

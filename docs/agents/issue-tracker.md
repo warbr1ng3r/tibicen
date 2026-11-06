@@ -1,36 +1,30 @@
 # Issue tracker
 
-## Current status — candidate-02 and three fresh cases accepted locally, 7 November
+## Current status — 1.5.0 published; Pages pending, 7 November
 
-The owner's “Поехали” approved the concrete four-step 1.5.0 release plan, including
-commit, push and publication after successful gates. Continue within that scope
-without routine approval pauses. The release map (`../../.scratch/release-1.5/map.md`; private development record; excluded from public source)
-owns ticket selection/integration; the
-dashboard (`../../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) owns actual status. Exact
-identities, failures and limits are in the
-[release report](../evals/results/2026-11-07-release-1.5/README.md).
-1.5.0 is not published; published skills remain 1.4.1. Paid API charges,
-credential changes and unrelated projects remain outside this authorization.
+[Release 1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0), ID
+`437135839`, was published at `2026-11-06T22:43:22Z`. Source
+`1d0f8a0e65ee966cb3fbddef1bc0c128ed54d441` binds distribution
+`0706d7caf6a93b79a117379c1cd5f8cd95effb04`. Source CI, all six platform cells,
+public full-SHA delivery and returned assets passed; root accepted exact bytes.
+The [report](../evals/results/2026-11-07-release-1.5/README.md) records identities,
+attempts and limits. Published 1.4.1 remains immutable historical evidence.
+
+Continue the already authorized release plan without routine approval pauses.
+The map (`../../.scratch/release-1.5/map.md`; private development record; excluded from public source) and
+dashboard (`../../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) own remaining separate Pages
+metadata deployment/body comparison; these are pending. Paid APIs, credential
+changes and unrelated projects remain outside this scope.
 
 Candidate-02 passed 1035 tests/one existing skip, standalone 3/3, layout 15/15
-and independent Ship. Candidate-01's obsolete footer-test failure is retained.
-The later landing-only overlay passed site 59/59 and copy/first-use 6/6, with
-unchanged skill bytes. Local delivery D01 passed four installer calls, two
-self-tests, complete edited-backup restoration/removal and preservation;
-independent actual-evidence review: Ship. Fresh B1/B2/B3 passed independent
-mechanical/semantic review and root acceptance. All three host-session slots are
-consumed; B3 preserves one missing-utility/exit 127 and successful same-session
-checksum recovery, with the generic stop-wording ambiguity disclosed.
-Public projection, CI/six platform cells, public full-SHA delivery, release/returned
-assets and separate Pages deployment/body comparison remain pending.
-
-The preceding context-review effort (`../../.scratch/project-context-review-20261107/map.md`; private development record; excluded from public source)
-and [OpenSpec tasks](../../openspec/changes/explain-project-context-changes/tasks.md)
-are complete. Its [pre-version verification](../../openspec/changes/explain-project-context-changes/verification.md)
-retains its own scope. Current assisted synthetic fresh sessions explicitly read
-the staged skill and use the real CLI on one requested Codex subscription route;
-no implicit loading, all-harness coverage or measured human benefit is inferred.
-Earlier outcomes are not regraded.
+and independent Ship. Local/public delivery each passed four installer calls,
+two self-tests, complete edited-backup restoration/removal and preservation.
+Fresh B1/B2/B3 passed mechanical/independent semantic review and root acceptance;
+all three slots are consumed. B3 retained shasum/127 and successful same-session
+sha256sum, with generic stop-wording ambiguity disclosed. Explicit staged-skill
+reading and real CLI on one requested subscription route in synthetic fixtures
+do not prove implicit loading, all-harness behavior or human benefit. Earlier
+outcomes retain their original grading and scope.
 
 ## Prior decision — maintain 1.4.1 after the completed comparison
 

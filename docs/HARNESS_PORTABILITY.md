@@ -5,8 +5,8 @@ and invokes tools; its **model and provider** are your choices in that host.
 Tibicen does not connect to model APIs, select a model from an allowlist or ask
 you to create provider credentials for ordinary setup.
 
-The [installation guide](INSTALLATION.md) pins published **1.4.1**. Its
-[release report](evals/results/2026-11-06-release-1.4.1/README.md) records delivery
+The [installation guide](INSTALLATION.md) pins published **1.5.0**. Its
+[release report](evals/results/2026-11-07-release-1.5/README.md) records delivery
 checks and their limits; earlier working-session observations keep their original
 version bindings. The common `AGENTS.md` mechanism has been available since 1.2;
 1.3 added expanded stage guidance, uncatalogued preset hints and the explicit

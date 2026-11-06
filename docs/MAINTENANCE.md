@@ -1,5 +1,9 @@
 # Maintaining Tibicen rules and adapters
 
+## 1.5.0 published; Pages update pending
+
+[1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0) was published at `2026-11-06T22:43:22Z`. Its three returned assets and 111 archive files/modes match the frozen candidate; the prior 1.4.1 tag/assets remain unchanged. The maintenance index appends its eighth version without changing seven earlier records or warnings. The separate Pages deployment and returned-body audit are pending. Exact checks and limits are in the [release report](evals/results/2026-11-07-release-1.5/README.md).
+
 The confirmed core/adapter maintainer, [@warbr1ng3r](https://github.com/warbr1ng3r), owns the source review below. Existing security responsibility is recorded in [SECURITY](../SECURITY.md); it does not appoint a private conduct recipient.
 
 Review at least monthly and after a material supported-agent, instruction-loading, skill/MCP, process-tool, installer or security-advisory change. The [3 November 2026 review](evals/results/2026-11-03-maintenance-review/README.md) exercised this procedure for official documentation and local CLI metadata. The next monthly review is due by **3 December 2026**, or earlier on a material change. This document creates no automatic schedule.

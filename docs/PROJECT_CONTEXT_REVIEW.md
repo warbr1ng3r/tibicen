@@ -1,6 +1,6 @@
-# Review project context evidence — Unreleased
+# Review project context evidence
 
-These optional additions are in the development source, **not published 1.4.1**.
+These optional additions are included in **published 1.5.0**.
 They extend the existing `report --input` used by both init and adopt. Users keep
 the normal flow: describe the problem, review a recommendation, approve exact
 changes and receive a report. Agents collect evidence; there is no extra form.
@@ -15,7 +15,7 @@ node "SKILL_DIR/scripts/tibicen.ts" report --root "/actual/project" --input -
 ```
 
 Provide JSON on stdin and close it normally. Replace `SKILL_DIR` with the complete
-development skill directory and the root with the actual project. An existing
+installed skill directory and the root with the actual project. An existing
 JSON file can be read with `--input PATH`. No report is saved unless explicitly
 requested through the existing save option.
 

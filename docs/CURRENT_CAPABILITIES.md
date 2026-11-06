@@ -1,9 +1,9 @@
 # What Tibicen does today
 
-**Published skills: 1.4.1 · 6 November 2026.** Tibicen helps your existing coding
+**Published skills: 1.5.0 · 7 November 2026 (Moscow).** Tibicen helps your existing coding
 agent inspect, set up or repair project instructions and integrations, apply the
 changes you approve, and report what was checked. The
-[release report](evals/results/2026-11-06-release-1.4.1/README.md) defines the exact
+[release report](evals/results/2026-11-07-release-1.5/README.md) defines the exact
 published bytes and delivery evidence; the [product vision](PRODUCT_VISION.md)
 defines wider goals, not extra shipped capabilities.
 
@@ -13,25 +13,23 @@ Both can select the appropriate route from the actual project. A sufficient
 setup can stay unchanged, without creating a new session merely to record work.
 There is no Tibicen server, account, separate model or background service.
 
-## Implemented locally, Unreleased — optional project context evidence
+## Optional project context evidence — available in 1.5.0
 
-On 7 November the owner selected three additions to the existing read-only
-report: compare caller-selected instruction files, show byte changes in explicitly
-bound sources of remembered facts, and retain supplied version-impact assessments
-against local evidence. Implementation and integration are complete, alongside a
-clearer six-row landing illustration. These additions are **not in published
-1.4.1**. Offline, built-skill, browser and independent review checks passed; the
-[verification record](../openspec/changes/explain-project-context-changes/verification.md)
-retains actual results and limits.
+The existing read-only report can compare caller-selected instruction files,
+identify byte changes in explicitly bound sources of remembered facts, and retain
+supplied version-impact assessments against current local evidence. The
+[context-review guide](PROJECT_CONTEXT_REVIEW.md) gives inputs and limits.
+Comparisons use the permitted scan and supplied metadata; they add no memory
+store, source fetching, background service or automatic update. Byte agreement
+proves neither note truth nor native loading.
 
-The [context-review guide](PROJECT_CONTEXT_REVIEW.md) describes the optional input
-and limits. Detailed acceptance stays in the
-[OpenSpec tasks](../openspec/changes/explain-project-context-changes/tasks.md),
-with ownership in the effort map (`../.scratch/project-context-review-20261107/map.md`; private development record; excluded from public source).
-Comparisons use the permitted current scan and supplied metadata. They add no
-store, source fetching, background service or automatic update, and prove no
-note truth, native loading or human benefit. The released workflows below remain
-the published baseline.
+The [release report](evals/results/2026-11-07-release-1.5/README.md) records exact
+public delivery, six platform cells and three assisted fresh sessions on one
+requested Codex subscription route. The sessions explicitly read the staged
+skill and use its real CLI in synthetic fixtures. B3's missing checksum utility
+and successful same-session fallback are retained. These results establish no
+implicit loading, all-harness compatibility or measured human benefit. The
+separate Pages metadata deployment and returned-body audit remain pending.
 
 ## Jobs it can handle
 
@@ -100,7 +98,7 @@ requirements in [CONTRIBUTING](../CONTRIBUTING.md).
 
 | Evidence | What you can conclude |
 | --- | --- |
-| [1.4.1 release checks](evals/results/2026-11-06-release-1.4.1/README.md) | Exact candidate delivery, installation/update/recovery/removal and recorded platform cells passed within their stated scope. This is not every host/model combination. |
+| [1.5.0 release checks](evals/results/2026-11-07-release-1.5/README.md) | Exact candidate delivery, installation/update/recovery/removal and recorded platform cells passed within their stated scope. This is not every host/model combination. |
 | Structural checks and MCP format diagnosis | Inspected files/connections or parsed/caller-observed facts meet the reported checks. Native activation, connection and useful behavior remain separate. |
 | [Assisted fresh Codex observations](evals/results/2026-11-06-native-memory-recovery/README.md) | Some fixture sessions read, used and corrected memory. Explicit reading help, failed original grading and its separate after-observation assessment remain disclosed; automatic discovery and general behavior are unproven. |
 | [Repair comparison](evals/results/2026-11-06-repair-comparison/README.md) | Tibicen and direct Codex reached the same repair/task result and sufficient-setup no-op in one assisted case. Extra functional benefit, saved human work, ordinary installation effort and monetary cost were not established. |

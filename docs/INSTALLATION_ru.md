@@ -5,7 +5,7 @@ Tibicen предоставляет `tibicen-init` для первой настр
 читает файлы проекта, весь установленный скилл и запускает его Node CLI. Модель и
 провайдера выбирает среда; отдельный аккаунт модели или API-ключ Tibicen не нужен.
 
-Этот общий путь запуска входит в **опубликованную 1.4.1**. Команды и файлы ниже
+Этот общий путь запуска входит в **опубликованную 1.5.0**. Команды и файлы ниже
 закрепляют её точную поставку. Публичные механические установка/замена/повтор,
 восстановление полных изменённых копий в настоящие пути скиллов и удаление прошли
 для явной цели `universal`. Явное чтение не подтверждает нативное обнаружение,
@@ -14,7 +14,7 @@ Tibicen предоставляет `tibicen-init` для первой настр
 
 ## Требования
 
-- Опубликованной 1.4.1 нужен Node **≥22.20** для установленного CLI. Обычному
+- Опубликованной 1.5.0 нужен Node **≥22.20** для установленного CLI. Обычному
   установщику также нужны Git и npm, pnpm или Yarn 2+. Для архива не нужны Git,
   менеджер пакетов, исходный репозиторий и зависимости разработки.
 - Среде нужен доступ к целевому проекту и файлам скилла. Она должна запускать
@@ -31,7 +31,7 @@ Tibicen предоставляет `tibicen-init` для первой настр
 Выполните в терминале, независимо от пакетов проекта:
 
 ```sh
-npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/52c0769574e90d7d1a0438996df9da40621b0107 -g --agent universal --skill tibicen-init tibicen-adopt --copy
+npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0706d7caf6a93b79a117379c1cd5f8cd95effb04 -g --agent universal --skill tibicen-init tibicen-adopt --copy
 ```
 
 Для pnpm замените только `npx` на `pnpm dlx`, для Yarn 2+ — на `yarn dlx`.
@@ -89,16 +89,16 @@ npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/52c0769574e90d7d
 
 | Файл                                                                                                              | SHA256                                                             |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| [tibicen-1.4.1.tar.gz](https://github.com/warbr1ng3r/tibicen/releases/download/v1.4.1/tibicen-1.4.1.tar.gz)       | `c3302cf25284120d009ee7b01c9044cdc0193c8c658597e0f24fe7e65233dcb8` |
-| [distribution-SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.4.1/distribution-SHA256SUMS) | `1ddbe0968918ac22469dbe3c0d8cd8f85c8d23910d2f623451957f804a4238fd` |
-| [SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.4.1/SHA256SUMS)                           | `23c4ccc8243d2936a1e2782922fa17991cc4f8e182047c7d5f78e711e4ee2d6c` |
+| [tibicen-1.5.0.tar.gz](https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.0/tibicen-1.5.0.tar.gz)       | `f6d5aa6f8dda0aef5f51ded9e711f534490d27ebdc289505fed73eef18fc2b46` |
+| [distribution-SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.0/distribution-SHA256SUMS) | `58632f3a3505257768be7fd3219fd67357fccd1abc9d81efface633ce559587c` |
+| [SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.0/SHA256SUMS)                           | `2b854e4ae31622ec55a20879489bc62b93ed69c261861973f23be65da0efa920` |
 
 Например, на macOS/Linux после перехода в выбранную пустую папку:
 
 ```sh
-curl -fLO https://github.com/warbr1ng3r/tibicen/releases/download/v1.4.1/tibicen-1.4.1.tar.gz &&
-curl -fLO https://github.com/warbr1ng3r/tibicen/releases/download/v1.4.1/distribution-SHA256SUMS &&
-curl -fLO https://github.com/warbr1ng3r/tibicen/releases/download/v1.4.1/SHA256SUMS &&
+curl -fLO https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.0/tibicen-1.5.0.tar.gz &&
+curl -fLO https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.0/distribution-SHA256SUMS &&
+curl -fLO https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.0/SHA256SUMS &&
 shasum -a 256 SHA256SUMS
 ```
 
@@ -108,7 +108,7 @@ shasum -a 256 SHA256SUMS
 ```sh
 shasum -a 256 -c SHA256SUMS &&
 mkdir unpacked &&
-tar -xzf tibicen-1.4.1.tar.gz -C unpacked &&
+tar -xzf tibicen-1.5.0.tar.gz -C unpacked &&
 cd unpacked &&
 cmp ../distribution-SHA256SUMS SHA256SUMS &&
 shasum -a 256 -c SHA256SUMS
@@ -131,7 +131,7 @@ Get-Content .\SHA256SUMS | ForEach-Object {
   if ((Get-FileHash -LiteralPath $relative -Algorithm SHA256).Hash.ToLower() -ne $expected) { throw "Checksum mismatch: $relative" }
 }
 New-Item -ItemType Directory unpacked
-tar -xzf tibicen-1.4.1.tar.gz -C unpacked
+tar -xzf tibicen-1.5.0.tar.gz -C unpacked
 if ($LASTEXITCODE -ne 0) { throw 'Archive extraction failed' }
 if ((Get-FileHash .\distribution-SHA256SUMS).Hash -ne (Get-FileHash .\unpacked\SHA256SUMS).Hash) { throw 'Payload manifest mismatch' }
 Set-Location unpacked
@@ -147,21 +147,21 @@ Get-Content .\SHA256SUMS | ForEach-Object {
 целиком скопировать в другое выбранное место. Если среда документирует нативную
 папку, следуйте её документации; эта инструкция не угадывает такой путь.
 
-Для папки `/Users/me/Tibicen 1.4.1/unpacked` явные файлы входа:
+Для папки `/Users/me/Tibicen 1.5.0/unpacked` явные файлы входа:
 
 ```text
-/Users/me/Tibicen 1.4.1/unpacked/tibicen-init/SKILL.md
-/Users/me/Tibicen 1.4.1/unpacked/tibicen-adopt/SKILL.md
+/Users/me/Tibicen 1.5.0/unpacked/tibicen-init/SKILL.md
+/Users/me/Tibicen 1.5.0/unpacked/tibicen-adopt/SKILL.md
 ```
 
 Подставьте фактические пути в [запросы первой сессии](INSTALLATION.md#first-project-session).
 На Windows укажите свой путь, например
-`C:\Users\me\Tibicen 1.4.1\unpacked\tibicen-init\SKILL.md`. При вызове CLI в
+`C:\Users\me\Tibicen 1.5.0\unpacked\tibicen-init\SKILL.md`. При вызове CLI в
 терминале заключайте пути с пробелами в кавычки:
 
 ```sh
-node "/Users/me/Tibicen 1.4.1/unpacked/tibicen-init/scripts/tibicen.ts" self-test
-node "/Users/me/Tibicen 1.4.1/unpacked/tibicen-adopt/scripts/tibicen.ts" self-test
+node "/Users/me/Tibicen 1.5.0/unpacked/tibicen-init/scripts/tibicen.ts" self-test
+node "/Users/me/Tibicen 1.5.0/unpacked/tibicen-adopt/scripts/tibicen.ts" self-test
 ```
 
 Эти локальные самопроверки проверяют установленное ядро и ресурсы. Они не

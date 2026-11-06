@@ -1,9 +1,11 @@
-# Tibicen 1.5.0 release preparation
+# Tibicen 1.5.0 release report
 
-**In progress, 7 November 2026 (Moscow); not published.** Published skills remain
-[1.4.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.1). Candidate-02,
-local delivery and all three fresh observations are accepted within the
-limits below. Public gates remain open.
+**Published at `2026-11-06T22:43:22Z` (7 November 2026, Moscow).**
+[Release 1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0), ID
+`437135839`, passed source CI, all six platform cells, exact public full-SHA
+delivery and returned-asset comparison. Candidate-02 and three scoped fresh
+observations were accepted. Separate Pages metadata deployment and returned-body
+comparison remain **pending**.
 
 ## Scope and authorization
 
@@ -44,7 +46,7 @@ This local source identity is not a public source commit.
 
 | Item | Actual status |
 | --- | --- |
-| Version/tag | Candidate packages 1.5.0; intended `v1.5.0` unpublished |
+| Version/tag | 1.5.0 published; verified annotated `v1.5.0` points to exact distribution |
 | Frozen-lock install, versioned gate and build | Passed; gate-02: 1035 passed, zero failed, one existing manual portable skip |
 | Exact built standalone checks | 3/3 passed separately |
 | Browser layout | 15/15 passed |
@@ -52,17 +54,18 @@ This local source identity is not a public source commit.
 | Independent candidate code review | Ship, no open P1/P2; behavioral/public acceptance remains separate |
 | Local delivery D01 | Passed: four installer calls, two installed self-tests, complete edited-backup restoration/removal and preservation; independent Ship |
 | Fresh B1 / B2 / B3 | Passed deterministic and independent semantic review; root accepted all three; B3 ordinary-command failure retained |
-| Distribution branch | Pushed at `0706d7caf6a93b79a117379c1cd5f8cd95effb04`; blob/full-SHA delivery verification pending |
-| Curated public source commit, CI and six platform cells | Pending |
-| Public full-SHA installation/update and preservation | Pending |
-| Release publication and returned-asset comparison | Pending |
+| Distribution branch | `0706d7caf6a93b79a117379c1cd5f8cd95effb04`; all 111 public blob bytes/modes matched candidate-02 |
+| Curated public source commit, CI and six platform cells | Source `1d0f8a0e65ee966cb3fbddef1bc0c128ed54d441`; [CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42305982054) and [all six cells](https://github.com/warbr1ng3r/tibicen/actions/runs/42306168341) passed first attempts |
+| Public full-SHA installation/update and preservation | P01 passed: four installer calls/two self-tests, full edited-backup restoration/removal and preservation; independent Ship |
+| Release publication and returned-asset comparison | [Publication](https://github.com/warbr1ng3r/tibicen/actions/runs/42306803755) passed first attempt; all three returned assets and 111 archive files/modes match; root accepted bytes |
 | Separate Pages deployment and returned-body comparison | Pending |
 
 The separate late landing overlay retains the three footer links and uses the
 Russian first-use labels “Как это работает”, “Настроить с нуля” and “Навести
 порядок”. Its focused checks are separate from the frozen candidate source gate;
-it changes no skill-distribution bytes. Public source/metadata must retain that
-separate binding.
+it changes no skill-distribution bytes. Public source `1d0f8a0…` retains that
+separate binding; its 62 projected files matched reviewed bytes/modes without
+pushing private root history.
 
 ## Fresh guidance observations
 
@@ -136,6 +139,42 @@ root acceptance is
 `d11ba8119ca98c176e5a0fc93c8479be93c6414e77f7885657be353c44a05e6a`.
 No public acceptance follows from prepared operational drafts.
 
+## Public delivery and returned assets
+
+Public source `1d0f8a0e65ee966cb3fbddef1bc0c128ed54d441` binds distribution
+`0706d7caf6a93b79a117379c1cd5f8cd95effb04`. Verified annotated tag object
+`fb43c8969cc1d384dc6204b1faa68d992ae09323` resolves to that distribution.
+The platform run passed macOS 15, Ubuntu 24.04 and Windows 2022 with Node
+22.20.0/24.15.0 in all six cells. This is portable package/runtime coverage,
+not project-command support or every host/model combination.
+
+P01 separately installed public 1.4.1, replaced it from actual full-SHA 1.5.0,
+repeated, restored complete edited backups into actual installed directories and
+removed them. Four installer calls/two installed self-tests passed in 10.669
+seconds; old 100/new 110 payload bytes/modes, exact fetch/checkout/lock refs,
+project/later memory/sibling/settings and original inputs matched. Independent
+review: Ship. Trusted Git children had ordinary OS capabilities, without child
+network/OS sandboxing. `skills update`, lock-byte stability, application lifecycle/
+tests and native loading were not checked by P01.
+
+| Returned asset | Bytes | SHA-256 |
+| --- | ---: | --- |
+| [tibicen-1.5.0.tar.gz](https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.0/tibicen-1.5.0.tar.gz) | 277991 | `f6d5aa6f8dda0aef5f51ded9e711f534490d27ebdc289505fed73eef18fc2b46` |
+| [distribution-SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.0/distribution-SHA256SUMS) | 11559 | `58632f3a3505257768be7fd3219fd67357fccd1abc9d81efface633ce559587c` |
+| [SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.0/SHA256SUMS) | 177 | `2b854e4ae31622ec55a20879489bc62b93ed69c261861973f23be65da0efa920` |
+
+Root accepted all returned assets, 111 archive files/modes and tag binding.
+Published 1.4.1 stable metadata, assets and tag were unchanged; mutable download
+counters were explicitly ignored. Public P01 review SHA-256:
+`9c667f8edefca3c1100cfa08e90392b1ec1f85372227ea6f2e8358cb410aea6d`.
+Root returned-release acceptance SHA-256:
+`30069b33ff85c2b1130a7e69d547bb78e292e0a76ebe3e1dbb82097d351592e6`.
+Independent returned-asset review: Ship, no open P1/P2; review SHA-256:
+`6b1e00ee99b17475d272bb119aa891dcb12ac3eb2d3c7f8b50398bf6ad243a77`. The tag is unsigned and GitHub reports
+`immutable: false`: observed preservation is not signing or server-enforced
+immutability. Release/asset checks do not establish Pages deployment; metadata
+CI/deployment and returned-body comparison remain open.
+
 ## Earlier evidence and remaining limits
 
 The [pre-version verification](../../../../openspec/changes/explain-project-context-changes/verification.md)
@@ -149,5 +188,5 @@ File/hash comparisons do not establish fact truth, supplied historical baseline
 origin, installed versions, compatibility or actual native loading/use. Supplied
 upstream assessments remain caller-supplied; the report fetches no upstream
 content and installs nothing. Broad harness/model compatibility, MCP connection
-and measured human usefulness remain unverified. Public gates are open until
-actual source/distribution identities, results and returned bytes are recorded.
+and measured human usefulness remain unverified. Pages metadata deployment and returned-body comparison remain open; no Pages
+success is inferred from release publication.

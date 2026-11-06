@@ -14,7 +14,7 @@ test('all command runners keep the exact published distribution and universal ta
   ] as const) {
     assert.equal(
       installationCommand(manager as Manager),
-      `${runner} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/52c0769574e90d7d1a0438996df9da40621b0107 -g --agent universal --skill tibicen-init tibicen-adopt --copy`,
+      `${runner} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0706d7caf6a93b79a117379c1cd5f8cd95effb04 -g --agent universal --skill tibicen-init tibicen-adopt --copy`,
     );
   }
 });

@@ -135,6 +135,25 @@
         }
       ],
       "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.1"
+    },
+    {
+      "version": "1.5.0",
+      "publishedAtUtc": "2026-11-06T22:43:22Z",
+      "sourceCommit": "1d0f8a0e65ee966cb3fbddef1bc0c128ed54d441",
+      "distributionCommit": "0706d7caf6a93b79a117379c1cd5f8cd95effb04",
+      "scope": "Compatible optional read-only project-context reports: caller-selected instruction hashes, remembered-fact source comparisons and supplied version-impact assessments. No new store, automatic update, persisted schema or write/approval change. Candidate offline checks, three assisted synthetic fresh Codex sessions, six platform cells and full-SHA universal installation/replacement/recovery/removal passed within their stated scope. One missing checksum utility recovered in the same session; not a clean all-command pass. Native discovery/loading across hosts, actual MCP connections and human benefit remain unverified. Installer Git children retain ordinary OS permissions.",
+      "payloadManifest": {
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.0/distribution-SHA256SUMS",
+        "sha256": "58632f3a3505257768be7fd3219fd67357fccd1abc9d81efface633ce559587c"
+      },
+      "archives": [
+        {
+          "name": "tibicen-1.5.0.tar.gz",
+          "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.0/tibicen-1.5.0.tar.gz",
+          "sha256": "f6d5aa6f8dda0aef5f51ded9e711f534490d27ebdc289505fed73eef18fc2b46"
+        }
+      ],
+      "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0"
     }
   ],
   "warnings": []

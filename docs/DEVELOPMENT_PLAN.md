@@ -4,33 +4,31 @@ Updated 7 November 2026 (Moscow). Product scope remains in the
 [vision](PRODUCT_VISION.md) and [addendum](PRODUCT_VISION_ADDENDUM.md).
 This roadmap owns milestone order; detailed requirements and tasks stay in OpenSpec.
 
-## Current milestone — release 1.5.0 in preparation
+## Current milestone — 1.5.0 published; Pages follow-up pending
 
-The owner authorized the concrete 1.5.0 plan, including commit, push and publication
-after successful gates. The release effort (`../.scratch/release-1.5/map.md`; private development record; excluded from public source) and
-dashboard (`../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) own execution; the
-[release report](evals/results/2026-11-07-release-1.5/README.md) retains exact
-identities, attempts and limits. Published skills remain 1.4.1.
+[Skills 1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0) were
+published at `2026-11-06T22:43:22Z` (7 November Moscow). Candidate-02, three scoped
+fresh observations, exact local/public update/recovery/removal, source CI, six
+platform cells and all three returned assets passed. The
+[release report](evals/results/2026-11-07-release-1.5/README.md) binds actual source,
+distribution/tag, checksums, failed attempts and limits. The
+release effort (`../.scratch/release-1.5/map.md`; private development record; excluded from public source) and
+dashboard (`../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) track the remaining separate
+Pages metadata deployment and returned-body comparison. Publication alone does
+not establish those Pages results.
 
-Compatible candidate-02 passed the versioned 1035-test gate/one existing skip,
-standalone 3/3, browser layout 15/15 and independent Ponytail review. A late
-landing-only overlay passed site 59/59 and browser copy/first-use 6/6 without
-changing skill bytes. Local exact 1.4.1→1.5.0 replacement/repeat, complete edited
-backup restoration/removal and preservation passed with independent Ship.
-Fresh B1/B2/B3 observations were accepted; B3 retained a missing-utility command
-and same-session checksum recovery. Public source, CI/platform
-matrix, full-SHA delivery, release/assets and separate Pages checks remain pending.
-
-The [context-review guide](PROJECT_CONTEXT_REVIEW.md) and
-[OpenSpec tasks](../openspec/changes/explain-project-context-changes/tasks.md)
-define the three optional additions; the
-[implementation verification](../openspec/changes/explain-project-context-changes/verification.md)
-retains earlier pre-version checks. Fresh observations explicitly request staged
-skill reading and real CLI use in synthetic fixtures on one requested route;
-they do not prove implicit loading, all-harness compatibility or human benefit.
-Routine work continues within the approved release scope without repeated approval.
+The [context-review guide](PROJECT_CONTEXT_REVIEW.md) describes the three optional
+additions. Persisted schemas and write/approval boundaries are unchanged. Fresh
+sessions explicitly read the staged skill and use the real CLI in synthetic
+fixtures on one requested subscription route; B3's missing-utility command and
+successful same-session checksum recovery remain disclosed. No implicit loading,
+all-harness compatibility or human benefit is established. Routine work continues
+within the already approved release plan; no new native sessions are included.
 
 ## Published baseline
+
+The following earlier 1.4.1 baseline retains its original evidence; the current
+1.5.0 release is recorded above.
 
 **Skills 1.4.1 are published.** The compatible proposal-preview correction retains
 full approved bytes and existing plans. Candidate acceptance, public source CI,

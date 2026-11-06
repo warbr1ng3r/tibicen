@@ -1,13 +1,15 @@
 # Changelog
 
-Version 1.4.1 is public. See [release details](docs/RELEASING.md) for
+Version 1.5.0 is public. See [release details](docs/RELEASING.md) for
 immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+## [1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0) — 2026-11-06
+
 ### Added
 
-- Optional [project-context evidence](docs/PROJECT_CONTEXT_REVIEW.md) in the existing read-only report: caller-selected instruction hashes, explicit remembered-fact source comparisons and supplied version-impact assessments. Current permitted bytes are separate from caller claims, note truth and native loading; no new store or automatic update is introduced. Local checks and independent review passed; the additions remain Unreleased and published skills stay 1.4.1.
+- Optional [project-context evidence](docs/PROJECT_CONTEXT_REVIEW.md) in the existing read-only report: caller-selected instruction hashes, explicit remembered-fact source comparisons and supplied version-impact assessments. Current permitted bytes are separate from caller claims, note truth and native loading; no new store or automatic update is introduced. Candidate-bound checks, assisted fresh-session observations, public delivery and independent review passed; see the 1.5.0 release report for exact scope and limits.
 
 ### Changed
 
