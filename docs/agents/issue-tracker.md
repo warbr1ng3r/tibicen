@@ -1,6 +1,31 @@
 # Issue tracker
 
-## Latest completed effort — bounded native working and memory cycle
+## Current status — maintain 1.4.1 after the completed comparison
+
+The [repair comparison](../evals/results/2026-11-06-repair-comparison/README.md)
+completed eight single native launches. Direct Codex and Tibicen made the same
+repair, completed the same fresh useful task and both left sufficient setup
+unchanged. No incremental useful result or human-time benefit was demonstrated.
+This assisted one-fixture/host/model case explicitly prompted instruction reading
+and tests; normal installation, human effort and monetary cost remain unknown.
+Task success without the repair was not tested.
+Equal task outputs do not make approval, preservation or history unnecessary.
+
+The bounded workflow review did not establish a required step removable without
+weakening supported behavior, or a measured bottleneck. Maintain 1.4.1; no new implementation, audit or
+benchmark round is selected. The
+[strategy study](../research/2026-11-06-product-strategy/README.md) supplies
+hypotheses. Reopen scope only for a concrete evidenced gap, allowing no change;
+the [roadmap](../DEVELOPMENT_PLAN.md) owns milestone order. These observations
+grant no additional native budget, implementation, commit or release.
+
+Evaluator source is public on main at
+[`542743c`](https://github.com/warbr1ng3r/tibicen/commit/542743cde5a133f3a2a23a10d38daebab85ac5bf)
+with [successful CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42272604247).
+Published skills remain 1.4.1. Earlier packet outcomes below retain their
+historical failures, after-observation labels and original validation timing.
+
+## Completed effort — bounded native working and memory cycle
 
 The [completed effort](../../.scratch/native-memory-recovery/map.md) has one actual
 R1 native pass in 50 seconds: complete memory output before implementation,
@@ -24,9 +49,9 @@ Source fixes passed independent Ponytail review and 1002 tests/one existing skip
 published payloads remain 1.4.1. The [dashboard](../../.scratch/native-memory-recovery/dashboard.md)
 owns actual status. No paid API, credential change, host writeback, source commit
 or publication is included; internal review is not human usefulness scoring.
-The next roadmap item selects source integration/release scope for these
-development evaluator changes; this observation does not isolate memory causality
-because README and code also retain the cap.
+At that packet's closeout, source integration/release scope was the next roadmap
+decision; the later source publication is recorded above. This observation does
+not isolate memory causality because README and code also retain the cap.
 
 ## Completed packet — native work and evaluator recovery
 
@@ -62,8 +87,8 @@ later native phases stopped. A bounded offline diagnostic fix passed independent
 Ponytail/evidence review and the 954-pass/one-skip gate for its five-file source
 freeze; that gate does not validate the current recovery change. All five tickets
 are resolved, with skills unchanged; the [report](../evals/results/2026-11-06-native-first-use/README.md)
-retains the failed task and unverified memory cycle. Local corrections have no
-new source commit or publication.
+retains the failed task and unverified memory cycle. At that packet's closeout,
+local corrections had no new source commit or publication.
 
 ## Completed release 1.4.1
 

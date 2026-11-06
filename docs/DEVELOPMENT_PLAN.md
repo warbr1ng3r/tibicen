@@ -82,13 +82,30 @@ connection and measured human usefulness require their own observations.
    [report](evals/results/2026-11-06-native-memory-recovery/README.md) keeps actual
    evidence, original failures and revised assessments separate. Earlier failed
    S1/M1 packets are not retried or regraded.
-6. **Select source integration and release scope.** These fixes affect development
-   evaluators; published 1.4.1 skill payloads remain unchanged. Decide whether a
-   product release is needed from the actual changes. Apply normal SemVer:
-   compatible fixes use patch, compatible features minor, and incompatible supported
-   contracts major. The actual changes determine the next version. Follow
-   [RELEASING](RELEASING.md) for candidate evidence and separate publication
-   authorization; this roadmap does not select or approve a release.
+6. **Evaluator source integration — complete.** Public source
+   [`542743c`](https://github.com/warbr1ng3r/tibicen/commit/542743cde5a133f3a2a23a10d38daebab85ac5bf)
+   passed [CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42272604247).
+   Published skill payloads remain 1.4.1; no new skill release was made.
+   Earlier native outcomes retain their original scope.
+7. **Repair/native comparison — complete.** The
+   [comparison](evals/results/2026-11-06-repair-comparison/README.md) completed
+   eight single launches. Both approaches made the same repair, completed the
+   same useful task and left sufficient setup unchanged. No incremental useful
+   result or human-time benefit was demonstrated. This assisted one-fixture,
+   one-host/model case explicitly prompted instruction reading and tests;
+   ordinary installation, human effort and monetary cost remain unknown.
+   Task success without the repair was not tested.
+8. **Maintain 1.4.1; no new implementation selected.** The bounded workflow
+   review did not establish a required step removable without weakening supported
+   behavior, or a measured bottleneck. The
+   [strategy study](research/2026-11-06-product-strategy/README.md)
+   remains a set of hypotheses. No further audit or benchmark round is queued.
+   Reopen scope only for a concrete evidenced gap; no change is a valid result.
+   Future behavior changes need a separate scoped plan. Versions follow actual
+   scope and normal SemVer: patch for compatible fixes, minor for compatible
+   features and major for incompatible supported contracts. Follow
+   [RELEASING](RELEASING.md) for separate publication authorization. These
+   observations grant no new native budget, implementation, commit or release.
 
 ## Regular maintenance and later options
 

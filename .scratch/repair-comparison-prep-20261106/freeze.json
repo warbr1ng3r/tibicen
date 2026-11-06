@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "sourceCommit": "331886e47031506c7b2e043368581f9790f50473",
+  "tibicenRelease": "1.4.1",
+  "sources": {
+    "scripts/evals/fixtures/diagnostic-conflicts.json": "ab003fb81888dabf3dec4c01c95210b25dbccf6a89dafbc79ee520307ff0c539",
+    "scripts/evals/fixtures/oracles/diagnostic-conflicts.json": "28e62d991af72f8290df340ab3d4d4a7e21865660381ca757779851b2b496b5f",
+    "scripts/evals/fixtures.ts": "997be0c266aaf94b1d9d07611fc0c7a43b7dd9f2a16439234649f4be7807d1b8",
+    "scripts/evals/contracts.ts": "6d25a1f63c8c621dacff25c2908cfb99a3be828fcd385567865111070aaa84b2",
+    "scripts/core/contracts.ts": "109d31a36b6698d58bc53c6f1d2b5788e708a178bdc0f00057c77e683248dabf"
+  },
+  "inputs": {
+    "inputs/repair.json": "5b6d7d31a700e68892d27ea26afda7d8ae6b9a7ff9a2c76f7ed449eda70b6408",
+    "oracles/repair.json": "32b3a21733a072fca5b4ad4ee7538b8ac4bd1c6d00dec684372a6ebce86ed9ba",
+    "inputs/sufficient.json": "6de27e4a2b8dd1b14bb10358c76d1090290a0ddaefa23ed802c3636d5aa5aa81",
+    "oracles/sufficient.json": "5af02466fc037bc14084779fc555bbe8e6839cf08645ed1c1f1bf24f02c5b1ba"
+  }
+}

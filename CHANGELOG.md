@@ -7,6 +7,7 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ### Changed
 
+- Refresh the capability inventory for published 1.4.1 and record the completed strategy study and assisted repair comparison, including equal task outcomes and unmeasured human benefit. Skill payloads and version are unchanged.
 - Restore the fuller project preview on the bilingual landing with memory, optional MCP and setup history; remove the redundant caption and keep the mobile layout compact.
 
 ### Fixed
