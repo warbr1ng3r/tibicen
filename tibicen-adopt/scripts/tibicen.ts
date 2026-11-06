@@ -262,6 +262,8 @@ export async function main(argv = process.argv.slice(2)) {
         scan,
         infrastructure,
         context,
+        forbiddenPaths: current.state?.proposal.forbiddenPaths ?? [],
+        registeredMemoryPath: memory?.path,
         session: session?.id
           ? { id: session.id, status: current.status }
           : null,

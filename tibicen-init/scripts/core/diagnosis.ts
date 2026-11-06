@@ -8,12 +8,30 @@ import {
 } from '../agents/profiles.ts';
 import { assert } from './contracts.ts';
 import { validateRelativePath } from './paths.ts';
+import {
+  type InstructionSource,
+  summarizeInstructionSources,
+  validateInstructionSources,
+} from './instruction-sources.ts';
+import {
+  type MemorySource,
+  summarizeMemorySources,
+  validateMemorySources,
+} from './memory-sources.ts';
+import {
+  type VersionImpact,
+  summarizeVersionImpacts,
+  validateVersionImpacts,
+} from './version-impact.ts';
 
 export interface TaskContext {
   agent: string;
   agentVersion?: string;
   cwd: string;
   targetPath?: string;
+  instructionSources?: InstructionSource[];
+  memorySources?: MemorySource[];
+  versionImpacts?: VersionImpact[];
 }
 
 const printable = (value: string) => !/[\p{C}\u2028\u2029]/u.test(value);
@@ -50,13 +68,21 @@ export function validateTaskContext(input: unknown): TaskContext {
     Reflect.ownKeys(context).every(
       (key) =>
         typeof key === 'string' &&
-        ['agent', 'agentVersion', 'cwd', 'targetPath'].includes(key),
+        [
+          'agent',
+          'agentVersion',
+          'cwd',
+          'targetPath',
+          'instructionSources',
+          'memorySources',
+          'versionImpacts',
+        ].includes(key),
     ) &&
       Object.hasOwn(context, 'agent') &&
       Object.hasOwn(context, 'cwd') &&
       isHarnessId(context.agent),
     'invalid-task-context',
-    'Provide only agent, optional agentVersion, cwd and optional targetPath; agent must be a valid harness ID.',
+    'Provide agent, cwd and only supported optional task/evidence fields; agent must be a valid harness ID.',
   );
   if (Object.hasOwn(context, 'agentVersion'))
     assert(
@@ -77,6 +103,19 @@ export function validateTaskContext(input: unknown): TaskContext {
     ...(Object.hasOwn(context, 'targetPath')
       ? { targetPath: contextPath(context.targetPath) }
       : {}),
+    ...(Object.hasOwn(context, 'instructionSources')
+      ? {
+          instructionSources: validateInstructionSources(
+            context.instructionSources,
+          ),
+        }
+      : {}),
+    ...(Object.hasOwn(context, 'memorySources')
+      ? { memorySources: validateMemorySources(context.memorySources) }
+      : {}),
+    ...(Object.hasOwn(context, 'versionImpacts')
+      ? { versionImpacts: validateVersionImpacts(context.versionImpacts) }
+      : {}),
   };
 }
 
@@ -88,7 +127,18 @@ const directoryRelation = (directory: string, target: string) =>
     : 'other-subtree';
 
 function summarizeTaskScope(scan: ScanResult, input: TaskContext) {
-  const context = validateTaskContext(input);
+  const validated = validateTaskContext(input);
+  // Evidence arrays have separate privacy-filtered summaries, never a raw echo.
+  const context = {
+    agent: validated.agent,
+    ...(validated.agentVersion !== undefined
+      ? { agentVersion: validated.agentVersion }
+      : {}),
+    cwd: validated.cwd,
+    ...(validated.targetPath !== undefined
+      ? { targetPath: validated.targetPath }
+      : {}),
+  };
   const profile = getHarnessProfile(context.agent);
   return {
     context,
@@ -147,6 +197,8 @@ interface DiagnosisInput {
   session?: { id: string; status: string } | null;
   continuationAvailable?: boolean;
   context?: TaskContext;
+  forbiddenPaths?: string[];
+  registeredMemoryPath?: string;
 }
 
 const orderedReasons = (items: PathReason[]) =>
@@ -164,6 +216,8 @@ export function summarizeDiagnosis({
   session,
   continuationAvailable = false,
   context,
+  forbiddenPaths = [],
+  registeredMemoryPath,
 }: DiagnosisInput) {
   const issues = orderedReasons(infrastructure.issues ?? []);
   const gaps = orderedReasons(scan.gaps);
@@ -218,6 +272,15 @@ export function summarizeDiagnosis({
     },
     instructions: {
       basis: 'project-file-inventory',
+      ...(context?.instructionSources !== undefined
+        ? {
+            sources: summarizeInstructionSources(
+              scan,
+              context.instructionSources,
+              forbiddenPaths,
+            ),
+          }
+        : {}),
       ...(context !== undefined
         ? { taskScope: summarizeTaskScope(scan, context) }
         : {}),
@@ -263,6 +326,25 @@ export function summarizeDiagnosis({
         reason: 'no-current-behavioral-observation',
       },
     },
+    ...(context?.memorySources !== undefined
+      ? {
+          memorySources: summarizeMemorySources(
+            scan,
+            context.memorySources,
+            forbiddenPaths,
+            registeredMemoryPath,
+          ),
+        }
+      : {}),
+    ...(context?.versionImpacts !== undefined
+      ? {
+          versionImpacts: summarizeVersionImpacts(
+            scan,
+            context.versionImpacts,
+            forbiddenPaths,
+          ),
+        }
+      : {}),
     recordedSession: session
       ? { id: session.id, status: session.status, basis: 'saved-session' }
       : null,
