@@ -3,7 +3,7 @@
 **Published 6 November 2026 at 08:37:35 Europe/Moscow (`2026-11-06T05:37:35Z`).**
 [Release 1.4.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.1),
 ID `436136601`, passed public CI, all six platform cells, exact public delivery
-and returned-asset verification. Pages deployment and returned-body verification remain pending.
+and returned-asset verification. Separate Pages deployment and returned-body verification also passed.
 
 ## Patch scope and compatibility
 
@@ -45,7 +45,10 @@ Source remained unchanged from capture through build. Inventory SHA-256 values:
 | Six macOS/Ubuntu/Windows × Node 22.20.0/24.15.0 cells | [42168790859](https://github.com/warbr1ng3r/tibicen/actions/runs/42168790859): all passed |
 | Public full-SHA installation/update/recovery/removal | P01 passed; four installer calls and two installed self-tests in 26.471 seconds; independent Ship |
 | v1.4.1 tag, publication and returned assets | [42169510847](https://github.com/warbr1ng3r/tibicen/actions/runs/42169510847) published; all three downloads and 101 archive files/modes match candidate-01 |
-| Pages metadata, deployment and separate returned-body comparison | Pending |
+| Metadata local gate and separate browser checks | 930 passed / one default manual skip; browser 101 passed / one existing skip |
+| Public metadata CI | [42171623358](https://github.com/warbr1ng3r/tibicen/actions/runs/42171623358) passed on metadata `afaceb9…` |
+| Pages deployment | [42171937053](https://github.com/warbr1ng3r/tibicen/actions/runs/42171937053) passed; deployment `7593591037`, success status `21550644549` |
+| Separate returned-body audit A2 | [42174015591](https://github.com/warbr1ng3r/tibicen/actions/runs/42174015591) passed: all 20 HTTP 200 bodies exactly match the official artifact |
 
 All three actual public downloads matched the frozen candidate, sizes and API digests:
 
@@ -94,6 +97,38 @@ both installed self-tests and protected files passed. Trusted Git children had
 ordinary OS permissions; no OS isolation is claimed. Returned release notes,
 three assets, 101 archive files/modes and 100 payload sums matched; the previous
 1.4.0 release, assets and annotated tag were preserved. Returned-byte review: Ship.
+
+## Pages delivery and retained attempts
+
+Metadata `afaceb93209bd3e2e6158f18df94cd0a933f1f47` passed CI and the separate
+Pages deployment above. Official artifact `13482040631` contains 20 regular files;
+its 77,706-byte ZIP SHA-256 is
+`8fcfae59047d6795cb23fccb09f1a72619b957d9c04bd99c52bcf27ca2bb7faf`.
+Audit A2 at operations commit `169577bcd3d99f4586fad91ca331322f6c1cafb6`
+used exact config SHA-256 `330f4de9ffb1ea3c296e23cd237a254fd9f4cdcacedc4f4352d02e676be56fa8`.
+It downloaded that official artifact once, unpacked it safely without rebuilding,
+and compared all 20 actual HTTP 200 response bodies over normal TLS. EN/RU home
+and preset routes, three exact static install commands and their copy targets,
+six older maintenance objects/warnings and the exact seventh record passed.
+Returned index SHA-256: `3fc9d24fa013dd4da6d39ed13807b24156f413d3309d9421280599d8d394212b`.
+
+Earlier Pages [A1](https://github.com/warbr1ng3r/tibicen/actions/runs/42172383940)
+failed because the old static preflight required the install URL inside JavaScript.
+Read-only diagnosis [D1](https://github.com/warbr1ng3r/tibicen/actions/runs/42173395879)
+also failed; its exact cause remains unattributed. [D2](https://github.com/warbr1ng3r/tibicen/actions/runs/42173624529)
+completed its courier job, but the CLI terminal-escape guard blocked log output.
+[D3](https://github.com/warbr1ng3r/tibicen/actions/runs/42173841713) retrieved the
+original traceback: verifier line 49 failed before public-body fetching. These
+diagnostic couriers were not body audits. A2 corrected only the static checks for
+the three exact commands/copy targets; HTTP, hash and history guards were retained.
+The audit helper, config, site source, release and deployment were unchanged.
+
+Root recovered the original 10,563-byte A2 summary from five bounded annotation
+parts; SHA-256 `b8984d19004bf97c3f64a2b347903349e15474cb077b9a88963c74b6494943fa`.
+Official ZIP/body downloads and comparisons occurred inside Actions. Root retained
+the original structured results, not a local full audit-bundle/body download.
+The three release-asset downloads above are separate actual file comparisons.
+No native/model/MCP behavior or measured human benefit follows from these checks.
 
 ## Earlier evidence retains its identity
 

@@ -114,8 +114,14 @@ files/modes and 100 payload sums. Independent review: Ship. Published 1.4.0 is p
 
 The [report](evals/results/2026-11-06-release-1.4.1/README.md) retains exact hashes,
 G01/A01 failures, corrective observations and synthetic-consent limits. Earlier
-working-session cases remain bound to 1.4.0. Pages deployment and returned-body
-verification are pending separately; native/model/MCP behavior and human benefit remain unverified.
+working-session cases remain bound to 1.4.0. [Metadata CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42171623358)
+and [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42171937053) passed on
+`afaceb93209bd3e2e6158f18df94cd0a933f1f47` (deployment `7593591037`). The separate
+[A2 body audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42174015591) matched all 20 HTTP 200 bodies to
+official artifact `13482040631` without rebuilding; six old maintenance objects
+and warnings were preserved. Root retained the exact original 10,563-byte structured
+summary, not a local full bundle/body download. The report preserves Pages A1 and
+its read-only diagnostic courier outcomes. Native/model/MCP behavior and human benefit remain unverified.
 
 ## Published 1.4.0 — 2026-11-06 (Moscow)
 

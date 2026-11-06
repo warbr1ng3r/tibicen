@@ -13,8 +13,10 @@ returned release assets passed; 101 archive files/modes match the candidate.
 The [1.4.1 release report](evals/results/2026-11-06-release-1.4.1/README.md) retains
 exact source/distribution identities, failed attempts and coverage limits.
 The [published 1.4.0 records](evals/results/2026-11-06-release-1.4/README.md) remain unchanged.
-The 1.4.1 metadata/Pages follow-up is still in progress; deployment and the separate
-returned-body comparison are pending.
+Metadata CI and Pages deployment passed. The separate Actions audit matched all
+20 returned bodies to the official artifact, preserving six earlier maintenance
+records and warnings; root retained its exact structured summary. See
+[maintenance receipts](MAINTENANCE.md) for scope and failed-attempt accounting.
 
 **The simpler first-use landing is published.** Public source
 [`a6d54bc`](https://github.com/warbr1ng3r/tibicen/commit/a6d54bc6901bbf212cbfd889385d77b82e4b2f4f)
@@ -34,9 +36,9 @@ connection and measured human usefulness require their own observations.
    retains assistance, runtime and consent limits. Ownership remains in the
    working-path packet (`../.scratch/working-path/map.md`; private development record; excluded from public source), detailed tasks in
    [validate-first-working-session](../openspec/changes/validate-first-working-session/tasks.md).
-2. **Publish the compatible 1.4.1 patch — release published; Pages pending.**
-   Candidate and public delivery/returned-asset reviews are Ship. The remaining
-   metadata checks, Pages deployment and returned-body comparison are tracked in the
+2. **Publish the compatible 1.4.1 patch — complete.** Candidate, public delivery,
+   returned assets, metadata CI, Pages deployment and the 20-body official-artifact
+   comparison are complete. Actual results and retained failures are tracked in the
    release effort (`../.scratch/release-1.4.1/map.md`; private development record; excluded from public source) and
    [release report](evals/results/2026-11-06-release-1.4.1/README.md).
    Frozen published 1.4 artifacts remain unchanged.

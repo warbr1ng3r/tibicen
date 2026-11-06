@@ -26,7 +26,7 @@ Each dated review records:
 
 Reporting follows the [CoC](../CODE_OF_CONDUCT.md): nonsensitive project matters use public issues/PRs; private GitHub Support reports cover platform-rule violations on GitHub; vulnerabilities go privately to the confirmed recipient in [SECURITY](../SECURITY.md). The former unfulfilled general private conduct-inbox promise is replaced, not declared satisfied. No alternate is appointed; an implicated maintainer must not decide a complaint about their own conduct. Do not post sensitive details publicly. Form/notification delivery has not been newly tested.
 
-**1.4.1 release published — Pages update pending.**
+**1.4.1 channel update — deployed and returned bytes verified.**
 [1.4.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.1) was published at
 `2026-11-06T05:37:35Z`. Release source `319845f1f1597817807c81579b42250a1f189e7d`
 binds distribution `52c0769574e90d7d1a0438996df9da40621b0107` through annotated tag
@@ -35,16 +35,29 @@ binds distribution `52c0769574e90d7d1a0438996df9da40621b0107` through annotated 
 [all six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/42168790859)
 and [release publication](https://github.com/warbr1ng3r/tibicen/actions/runs/42169510847) passed.
 All three returned release assets and 101 archive files/modes match the frozen
-candidate; the published 1.4.0 tag, release and asset records remain unchanged.
-Public full-SHA universal installation/replacement/repeat, complete edited-backup
-restoration into actual installed paths, removal and both installed self-tests
-passed with all 100 payloads and protected project/memory/sibling/settings preserved.
+candidate; published 1.4.0 is unchanged. Public full-SHA universal delivery,
+complete edited-backup restoration/removal and both installed self-tests passed
+with all 100 payloads and protected project/memory/sibling/settings preserved.
 Independent delivery and returned-asset reviews: Ship.
-The 1.4.1 metadata update is prepared locally; Pages deployment and its separate
-official-artifact/returned-body comparison are pending. The six older maintenance
-objects and warnings are preserved. This release establishes no new native
-loading, MCP connection, model behavior or measured human benefit. Exact bindings,
-retained failures and limits are in the [release report](evals/results/2026-11-06-release-1.4.1/README.md).
+
+[Metadata CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42171623358) passed on
+`afaceb93209bd3e2e6158f18df94cd0a933f1f47`.
+[Pages 42171937053](https://github.com/warbr1ng3r/tibicen/actions/runs/42171937053)
+deployed that source; deployment `7593591037`, status `21550644549`, succeeded.
+[Audit A2](https://github.com/warbr1ng3r/tibicen/actions/runs/42174015591), operations
+`169577bcd3d99f4586fad91ca331322f6c1cafb6`, matched all 20 actual HTTP 200 bodies
+with normal TLS to official artifact `13482040631` (77,706-byte ZIP, SHA-256
+`8fcfae59047d6795cb23fccb09f1a72619b957d9c04bd99c52bcf27ca2bb7faf`).
+Returned index SHA-256: `3fc9d24fa013dd4da6d39ed13807b24156f413d3309d9421280599d8d394212b`.
+All six older maintenance objects and warnings were preserved, with one exact
+1.4.1 append. Root retained the original 10,563-byte structured summary through
+five annotations, SHA-256 `b8984d19004bf97c3f64a2b347903349e15474cb077b9a88963c74b6494943fa`.
+The ZIP/body checks ran inside Actions; the full bundle was not downloaded locally.
+A1 and the log-courier outcomes remain recorded; A2 corrected only the verifier's
+obsolete JavaScript-pin assumption. Distribution bytes remain unchanged.
+This establishes no native loading, MCP connection, model behavior or measured
+human benefit. Exact receipts, retained failures and limits are in the
+[release report](evals/results/2026-11-06-release-1.4.1/README.md).
 
 **1.4.0 channel update — deployed and returned bytes verified.**
 [1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0) was published at

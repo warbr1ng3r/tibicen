@@ -1,6 +1,6 @@
 # Issue tracker
 
-## Current effort — published 1.4.1 and Pages follow-up
+## Completed release 1.4.1
 
 The owner directed uninterrupted autonomous delivery after the working-session commit.
 [1.4.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.1) was published at
@@ -16,10 +16,16 @@ replacement/repeat, complete edited-backup restoration into actual installed pat
 removal and preservation. All three returned assets and 101 archive files/modes
 match the candidate; published 1.4.0 remains unchanged. Independent candidate,
 delivery and returned-asset reviews: Ship. Original G01/A01 failures remain recorded.
-The release effort (`../../.scratch/release-1.4.1/map.md`; private development record; excluded from public source) still owns the pending
-metadata checks, Pages deployment and separate returned-body comparison. The
-[report](../evals/results/2026-11-06-release-1.4.1/README.md) retains exact bindings
-and limits; native loading, MCP connection and human usefulness remain unverified.
+[Metadata CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42171623358) passed on
+`afaceb93209bd3e2e6158f18df94cd0a933f1f47`; [Pages 42171937053](https://github.com/warbr1ng3r/tibicen/actions/runs/42171937053)
+deployed that source. [Audit A2 42174015591](https://github.com/warbr1ng3r/tibicen/actions/runs/42174015591)
+matched all 20 actual bodies to the official artifact with normal TLS and preserved
+all six earlier maintenance records/warnings. Root retained the exact original
+structured summary; ZIP/body checks ran inside Actions, without local full-bundle
+retrieval. The release effort (`../../.scratch/release-1.4.1/map.md`; private development record; excluded from public source) and all three
+tickets are resolved. The [report](../evals/results/2026-11-06-release-1.4.1/README.md)
+retains the failed first auditor, courier outcomes and limits; native loading,
+MCP connection and human usefulness remain unverified.
 
 ## Completed local work — first working session
 
