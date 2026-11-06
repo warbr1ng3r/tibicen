@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "distributionCommit": "0706d7caf6a93b79a117379c1cd5f8cd95effb04",
+  "candidateArchiveSha256": "f6d5aa6f8dda0aef5f51ded9e711f534490d27ebdc289505fed73eef18fc2b46",
+  "payloadFiles": 110,
+  "calls": {
+    "installer": 4,
+    "standalone": 2
+  },
+  "preservationPassed": true,
+  "rawReceiptSha256": "fbca8c1ce6a8fc1472c5f98e1665e92e384c00e6d9e3b6e6cf3c6e467b249436",
+  "limits": [
+    "Owned macOS arm64 fixture and Node24.15.0; no native loading, all-harness or human-usefulness claim.",
+    "Full-SHA anonymous HTTPS Git with normal TLS and fixed freshly resolved repository endpoint; trusted child Git is not OS sandboxed.",
+    "Four pinned installer1.7.4 add/remove calls; complete edited-backup restoration and removal; no skills update-command or lock-byte-stability claim."
+  ]
+}
