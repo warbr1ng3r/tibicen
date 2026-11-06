@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "distributionCommit": "7b3b08f58276034b1609e44ef393e5f7c0e01a1b",
+  "candidateArchiveSha256": "0b1df51d33c2e3b43cc5041ece30b397039d0b1c3f7f20c706014eb9b38e38d8",
+  "payloadFiles": 100,
+  "calls": {
+    "installer": 4,
+    "standalone": 2
+  },
+  "preservationPassed": true,
+  "rawReceiptSha256": "769812c7881ccb39149b76421e4ff480c237e64f8181ef0478ea1c063d4b7294",
+  "limits": [
+    "Mechanical universal installation on macOS arm64 with Node24.15 and skills1.7.4; not native loading, model behavior or human usefulness.",
+    "Trusted Git children had ordinary OS permissions; anonymous TLS and fixed repository/IP did not constitute an OS sandbox.",
+    "Replacement and identical add were checked; skills update and lock-byte stability were not checked.",
+    "Historical synthetic application and later owner memory were protected without rerunning application lifecycle tests."
+  ]
+}
