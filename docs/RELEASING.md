@@ -122,7 +122,15 @@ checksums, candidate-01/preparation/grader failures and B3's missing-utility pro
 with same-session recovery and stop-wording ambiguity. Fresh sessions explicitly
 read the staged skill on one requested route; they do not establish implicit
 loading, all-harness compatibility or measured human benefit. Separate Pages
-metadata deployment and returned-body comparison remain **pending**.
+metadata [CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42308227689) and
+[Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42308799044) passed on
+`49b41f02fd2cbe8a8fadf2b23cafade97f99739f` (deployment `7612782384`). The
+[separate audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42309686805)
+matched all 20 HTTP 200 bodies to official artifact `13547711254` without rebuilding.
+Root retained the full structured summary; the raw ZIP/body bundle remains in
+Actions. Seven locally retained direct bodies agree with the audit. Seven earlier
+maintenance objects/warnings remain intact; exact collection/review limits are in
+the release report.
 
 ## Published 1.4.1 — 2026-11-06 (Moscow)
 

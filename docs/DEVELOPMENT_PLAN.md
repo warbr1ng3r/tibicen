@@ -4,26 +4,28 @@ Updated 7 November 2026 (Moscow). Product scope remains in the
 [vision](PRODUCT_VISION.md) and [addendum](PRODUCT_VISION_ADDENDUM.md).
 This roadmap owns milestone order; detailed requirements and tasks stay in OpenSpec.
 
-## Current milestone — 1.5.0 published; Pages follow-up pending
+## Current milestone — 1.5.0 and Pages delivered
 
 [Skills 1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0) were
 published at `2026-11-06T22:43:22Z` (7 November Moscow). Candidate-02, three scoped
 fresh observations, exact local/public update/recovery/removal, source CI, six
-platform cells and all three returned assets passed. The
-[release report](evals/results/2026-11-07-release-1.5/README.md) binds actual source,
-distribution/tag, checksums, failed attempts and limits. The
-release effort (`../.scratch/release-1.5/map.md`; private development record; excluded from public source) and
-dashboard (`../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) track the remaining separate
-Pages metadata deployment and returned-body comparison. Publication alone does
-not establish those Pages results.
+platform cells and all three returned assets passed. Separate metadata CI and
+Pages deployed source `49b41f02fd2cbe8a8fadf2b23cafade97f99739f`; the
+[20-body audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42309686805)
+matched the official artifact without rebuilding. The
+[release report](evals/results/2026-11-07-release-1.5/README.md) retains exact
+identities, original failures, the full-summary/local-seven-body collection scope
+and independent review. The effort (`../.scratch/release-1.5/map.md`; private development record; excluded from public source) and
+dashboard (`../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) track final documentation closeout;
+document-only updates do not change the already deployed site.
 
 The [context-review guide](PROJECT_CONTEXT_REVIEW.md) describes the three optional
-additions. Persisted schemas and write/approval boundaries are unchanged. Fresh
-sessions explicitly read the staged skill and use the real CLI in synthetic
-fixtures on one requested subscription route; B3's missing-utility command and
-successful same-session checksum recovery remain disclosed. No implicit loading,
-all-harness compatibility or human benefit is established. Routine work continues
-within the already approved release plan; no new native sessions are included.
+additions. Schemas and write/approval boundaries are unchanged. Fresh sessions
+explicitly read the staged skill and use the CLI in synthetic fixtures on one
+requested route; B3's missing-utility command and same-session recovery remain
+disclosed. No implicit loading, all-harness compatibility or measured human
+benefit is established. No further native session is included. Routine maintenance
+and later scope follow the existing plan below.
 
 ## Published baseline
 

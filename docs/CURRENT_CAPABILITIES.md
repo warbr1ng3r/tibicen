@@ -29,7 +29,8 @@ requested Codex subscription route. The sessions explicitly read the staged
 skill and use its real CLI in synthetic fixtures. B3's missing checksum utility
 and successful same-session fallback are retained. These results establish no
 implicit loading, all-harness compatibility or measured human benefit. The
-separate Pages metadata deployment and returned-body audit remain pending.
+separate Pages metadata deployment and official-artifact comparison passed for
+all 20 returned bodies; exact identities and collection limits are in that report.
 
 ## Jobs it can handle
 

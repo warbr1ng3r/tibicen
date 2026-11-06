@@ -4,8 +4,8 @@
 [Release 1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0), ID
 `437135839`, passed source CI, all six platform cells, exact public full-SHA
 delivery and returned-asset comparison. Candidate-02 and three scoped fresh
-observations were accepted. Separate Pages metadata deployment and returned-body
-comparison remain **pending**.
+observations were accepted. Separate Pages metadata deployment and official-artifact
+comparison passed for all 20 returned bodies.
 
 ## Scope and authorization
 
@@ -58,7 +58,7 @@ This local source identity is not a public source commit.
 | Curated public source commit, CI and six platform cells | Source `1d0f8a0e65ee966cb3fbddef1bc0c128ed54d441`; [CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42305982054) and [all six cells](https://github.com/warbr1ng3r/tibicen/actions/runs/42306168341) passed first attempts |
 | Public full-SHA installation/update and preservation | P01 passed: four installer calls/two self-tests, full edited-backup restoration/removal and preservation; independent Ship |
 | Release publication and returned-asset comparison | [Publication](https://github.com/warbr1ng3r/tibicen/actions/runs/42306803755) passed first attempt; all three returned assets and 111 archive files/modes match; root accepted bytes |
-| Separate Pages deployment and returned-body comparison | Pending |
+| Separate Pages deployment and returned-body comparison | [Metadata CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42308227689), [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42308799044) and [20-body audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42309686805) passed |
 
 The separate late landing overlay retains the three footer links and uses the
 Russian first-use labels “Как это работает”, “Настроить с нуля” and “Навести
@@ -172,8 +172,45 @@ Root returned-release acceptance SHA-256:
 Independent returned-asset review: Ship, no open P1/P2; review SHA-256:
 `6b1e00ee99b17475d272bb119aa891dcb12ac3eb2d3c7f8b50398bf6ad243a77`. The tag is unsigned and GitHub reports
 `immutable: false`: observed preservation is not signing or server-enforced
-immutability. Release/asset checks do not establish Pages deployment; metadata
-CI/deployment and returned-body comparison remain open.
+immutability. The separate Pages observations below have their own source,
+deployment and body bindings.
+
+## Pages deployment and returned bytes
+
+Metadata source `49b41f02fd2cbe8a8fadf2b23cafade97f99739f` passed
+[CI 42308227689](https://github.com/warbr1ng3r/tibicen/actions/runs/42308227689) and
+[Pages 42308799044](https://github.com/warbr1ng3r/tibicen/actions/runs/42308799044)
+on their first attempts; deployment `7612782384` succeeded. Official artifact
+`13547711254` has 20 regular files; its 77,813-byte ZIP SHA-256 is
+`f96196dfe296b5d6a0be6843ff47fce09cb0a6ed141085a691f5ab77bfd60664`.
+[Audit 42309686805](https://github.com/warbr1ng3r/tibicen/actions/runs/42309686805),
+job `128207751601`, used operations source
+`b7f7b588096b3d1d75648dc3f859179e150b4bac` and compared all 20 HTTP 200 response
+bodies against that exact official artifact without rebuilding. Expected/actual
+sizes and hashes matched. All seven earlier maintenance objects/warnings were
+preserved alongside the exact eighth 1.5.0 record. Returned index SHA-256:
+`bdb1b864823f51870d369a4dd9cce5dd4e14677a96061ad294e08aadaf10b789`.
+
+Root retained the full 10,905-byte structured summary, reconstructed from five
+public annotation parts and their manifest; SHA-256:
+`82df71290ac5eaf0f55167c81d5edbf7ab19664ff8828c1ffa964a6f2b524ce5`.
+It includes all 20 comparison rows. Raw artifact ZIP/body downloads and the
+full body bundle remain in Actions, not a locally downloaded audit bundle.
+Separate H01 retains seven actual direct bodies locally: four EN/RU home/preset
+HTML pages, both notices and the maintenance index. Its independent review:
+Ship. New labels, three-link footers, exact pins and retained notices passed;
+all seven H01 sizes/hashes also match the corresponding full-audit rows.
+Independent final audit review: Ship, no open P1/P2; SHA-256
+`1da32cb885e3d185720bdef49b3a4094fa898ce1f4eb402553da5d6ef59c0e21`.
+Root accepted the Pages closure; acceptance SHA-256
+`ec4994e0d2f1b847a14c0e4b50b59963ccc8676e30f5077f98618fca8121abc3`.
+
+The first audit MCP push had a transport send failure; the observed branch stayed
+at `f9a84bcd841b316d11bfd35542e6d97c78bb390b` and no new audit run was observed.
+The retained `publication/audit-push-attempt-01.json` records that limit. A later
+controlled send produced `b7f7b5…` and the successful audit. This was neither a
+failed audit workflow nor a model retry. No second deployment is needed for the
+following documentation-only closeout.
 
 ## Earlier evidence and remaining limits
 
@@ -188,5 +225,6 @@ File/hash comparisons do not establish fact truth, supplied historical baseline
 origin, installed versions, compatibility or actual native loading/use. Supplied
 upstream assessments remain caller-supplied; the report fetches no upstream
 content and installs nothing. Broad harness/model compatibility, MCP connection
-and measured human usefulness remain unverified. Pages metadata deployment and returned-body comparison remain open; no Pages
-success is inferred from release publication.
+and measured human usefulness remain unverified. Pages success is established by its separate deployment/body observations, not
+by release publication. These checks establish no model/native/application
+behavior or measured human usefulness.

@@ -1,8 +1,8 @@
 # Maintaining Tibicen rules and adapters
 
-## 1.5.0 published; Pages update pending
+## 1.5.0 published; Pages verified
 
-[1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0) was published at `2026-11-06T22:43:22Z`. Its three returned assets and 111 archive files/modes match the frozen candidate; the prior 1.4.1 tag/assets remain unchanged. The maintenance index appends its eighth version without changing seven earlier records or warnings. The separate Pages deployment and returned-body audit are pending. Exact checks and limits are in the [release report](evals/results/2026-11-07-release-1.5/README.md).
+[1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0) was published at `2026-11-06T22:43:22Z`. Its three returned assets and 111 archive files/modes match the frozen candidate; the prior 1.4.1 tag/assets remain unchanged. [Metadata CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42308227689) and [Pages deployment](https://github.com/warbr1ng3r/tibicen/actions/runs/42308799044) passed at `49b41f02fd2cbe8a8fadf2b23cafade97f99739f`. The separate [audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42309686805) matched all 20 public bodies to official artifact `13547711254` without rebuilding; seven earlier maintenance records and warnings are preserved in the eight-record index. Root retained the complete structured summary, SHA-256 `82df71290ac5eaf0f55167c81d5edbf7ab19664ff8828c1ffa964a6f2b524ce5`, through five checked public annotations; the full raw bundle remains in Actions. Seven additional direct responses confirm the localized labels/footer, notices and index. Exact failures and coverage limits remain in the [release report](evals/results/2026-11-07-release-1.5/README.md).
 
 The confirmed core/adapter maintainer, [@warbr1ng3r](https://github.com/warbr1ng3r), owns the source review below. Existing security responsibility is recorded in [SECURITY](../SECURITY.md); it does not appoint a private conduct recipient.
 

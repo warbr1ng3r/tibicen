@@ -1,6 +1,6 @@
 # Issue tracker
 
-## Current status — 1.5.0 published; Pages pending, 7 November
+## Current status — 1.5.0 and Pages verified, 7 November
 
 [Release 1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0), ID
 `437135839`, was published at `2026-11-06T22:43:22Z`. Source
@@ -12,9 +12,14 @@ attempts and limits. Published 1.4.1 remains immutable historical evidence.
 
 Continue the already authorized release plan without routine approval pauses.
 The map (`../../.scratch/release-1.5/map.md`; private development record; excluded from public source) and
-dashboard (`../../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) own remaining separate Pages
-metadata deployment/body comparison; these are pending. Paid APIs, credential
-changes and unrelated projects remain outside this scope.
+dashboard (`../../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) track final document closeout.
+Metadata CI 42308227689 and Pages 42308799044 passed on `49b41f0…`; audit
+42309686805 matched all 20 returned bodies to the official artifact without
+rebuilding. Seven local direct bodies agree; the full structured summary is
+retained locally, raw ZIP/20-body bundle in Actions. Seven earlier maintenance
+objects/warnings remain intact. A documentation-only closeout does not redeploy
+the unchanged site. Paid APIs, credential changes and unrelated projects remain
+outside this scope.
 
 Candidate-02 passed 1035 tests/one existing skip, standalone 3/3, layout 15/15
 and independent Ship. Local/public delivery each passed four installer calls,
