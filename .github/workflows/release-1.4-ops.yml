@@ -12,7 +12,7 @@ concurrency:
 
 env:
   SOURCE_SHA: dfc85d75698094d614ac66511c0b0c13fa54c0bf
-  PAGES_SOURCE_SHA: e1487697d264eb9e14a03466550342f1ddd105dc
+  PAGES_SOURCE_SHA: a6d54bc6901bbf212cbfd889385d77b82e4b2f4f
 
 jobs:
   checks:
