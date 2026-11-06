@@ -562,3 +562,53 @@ jobs:
             ${{ runner.temp }}/tibicen-1.4-pages-audit-${{ github.run_id }}/returned-check/
           retention-days: 7
           if-no-files-found: warn
+
+  retain-audit:
+    if: >-
+      github.event_name == 'push' &&
+      github.repository == 'warbr1ng3r/tibicen' &&
+      github.ref == 'refs/heads/codex/release-1.4-ops' &&
+      github.run_attempt == 1 &&
+      github.event.head_commit.message == 'release-1.4-ops: retain-audit'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    permissions:
+      contents: read
+      actions: read
+    env:
+      RETAIN_SCRIPT_SHA256: 33e737d0d0a95b9a9def02cc870e81c543d12ac9da7444551ed54b05898af582
+    steps:
+      - name: Read only the exact operations commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Retain the existing audit summary without rerunning its checks
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          umask 077
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, os
+          file = Path('.release-1.4/retain-audit.py')
+          assert file.is_file() and not file.is_symlink()
+          assert hashlib.sha256(file.read_bytes()).hexdigest() == os.environ['RETAIN_SCRIPT_SHA256']
+          PY
+          python3 .release-1.4/retain-audit.py "$RUNNER_TEMP/tibicen-1.4-audit-courier-$GITHUB_RUN_ID"
+
+      - name: Retain the exact original summary and courier receipts
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: tibicen-1.4-audit-courier-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/tibicen-1.4-audit-courier-${{ github.run_id }}/summary.json
+            ${{ runner.temp }}/tibicen-1.4-audit-courier-${{ github.run_id }}/notice-manifest.json
+            ${{ runner.temp }}/tibicen-1.4-audit-courier-${{ github.run_id }}/courier-receipt.json
+          retention-days: 7
+          if-no-files-found: warn
