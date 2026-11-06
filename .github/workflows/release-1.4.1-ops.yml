@@ -582,3 +582,51 @@ jobs:
             ${{ runner.temp }}/tibicen-1.4.1-pages-audit-${{ github.run_id }}/returned-check/
           retention-days: 7
           if-no-files-found: warn
+
+  audit-diagnosis:
+    if: >-
+      github.event_name == 'push' &&
+      github.repository == 'warbr1ng3r/tibicen' &&
+      github.ref == 'refs/heads/codex/release-1.4.1-ops' &&
+      github.run_attempt == 1 &&
+      github.event.head_commit.message == 'release-1.4.1-ops: audit-diagnosis'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    permissions:
+      contents: read
+      actions: read
+    env:
+      DIAGNOSIS_SCRIPT_SHA256: 78288d2968373c2fd28566552e499b83463824033be420256f3dd7ee6cfe12c2
+    steps:
+      - name: Read only the exact operations commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Retain only existing failed audit evidence
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          umask 077
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          python3 - <<'PYCODE'
+          from pathlib import Path
+          import hashlib, os
+          file = Path('.release-1.4.1/retain-failed-audit.py')
+          assert file.is_file() and not file.is_symlink()
+          assert hashlib.sha256(file.read_bytes()).hexdigest() == os.environ['DIAGNOSIS_SCRIPT_SHA256']
+          PYCODE
+          python3 .release-1.4.1/retain-failed-audit.py "$RUNNER_TEMP/tibicen-1.4.1-audit-diagnosis-$GITHUB_RUN_ID"
+
+      - name: Retain sanitized diagnosis and courier receipts
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: tibicen-1.4.1-audit-diagnosis-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/tibicen-1.4.1-audit-diagnosis-${{ github.run_id }}/*.json
+          retention-days: 7
+          if-no-files-found: warn
