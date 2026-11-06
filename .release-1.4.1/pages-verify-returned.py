@@ -38,16 +38,18 @@ def check_record(index, previous, expected):
 def check_pages(bodies, version, distribution_commit):
     release = REPOSITORY + "/releases/tag/v" + version
     install = REPOSITORY + "/tree/" + distribution_commit
-    external_scripts = b"\n".join(body for path, body in bodies.items() if path.endswith(".js"))
     for path, locale in [("index.html", "en"), ("ru/index.html", "ru")]:
         body = bodies[path]
         assert re.search(rb'<html\b[^>]*lang="' + locale.encode() + rb'"', body)
         assert ("Tibicen " + version).encode() in body
         assert release.encode() in body
         assert install.encode() in body
-        inline_scripts = b"\n".join(re.findall(rb"<script\b[^>]*>([\s\S]*?)</script>", body))
-        assert install.encode() in external_scripts + inline_scripts, "Interactive installer has a different pin"
-        assert b"skills@1.7.4" in body
+        for element, runner in [("install-command", "npx"), ("install-command-pnpm", "pnpm dlx"), ("install-command-yarn", "yarn dlx")]:
+            expected = f"{runner} skills@1.7.4 add {install} -g --agent universal --skill tibicen-init tibicen-adopt --copy"
+            commands = re.findall(rb'<code\b[^>]*id="' + element.encode() + rb'"[^>]*>([\s\S]*?)</code>', body)
+            assert commands == [expected.encode()], "Static installer has a different pin or flags"
+            buttons = re.findall(rb'<button\b[^>]*data-copy-target="' + element.encode() + rb'"[^>]*>', body)
+            assert len(buttons) == 1, "Static installer copy target is missing or duplicated"
 
 
 def self_test():
@@ -82,19 +84,22 @@ def self_test():
     commit = "a" * 40
     install = REPOSITORY + "/tree/" + commit
     release = REPOSITORY + "/releases/tag/v" + version
+    suffix = f"skills@1.7.4 add {install} -g --agent universal --skill tibicen-init tibicen-adopt --copy"
+    commands = "".join(f'<button data-copy-target="{element}"></button><code id="{element}">{runner} {suffix}</code>' for element, runner in [("install-command", "npx"), ("install-command-pnpm", "pnpm dlx"), ("install-command-yarn", "yarn dlx")])
     bodies = {
-        path: f'<html lang="{locale}">Tibicen {version} {install} {release} skills@1.7.4<script>const pin="{install}"</script></html>'.encode()
+        path: f'<html lang="{locale}">Tibicen {version} {release}{commands}</html>'.encode()
         for path, locale in [("index.html", "en"), ("ru/index.html", "ru")]
     }
     check_pages(bodies, version, commit)
-    bodies["ru/index.html"] = bodies["ru/index.html"].replace(f'const pin="{install}"'.encode(), b'const pin="wrong"')
-    try:
-        check_pages(bodies, version, commit)
-    except AssertionError:
-        pass
-    else:
-        raise AssertionError("Wrong inline installer pin was accepted")
-    print("PASS: routes, six immutable records/warnings, one append, installer pin and rejection")
+    for before, after in [(f"pnpm dlx {suffix}".encode(), b"pnpm dlx wrong"), (b'data-copy-target="install-command"', b'data-copy-target="wrong"')]:
+        changed = {**bodies, "ru/index.html": bodies["ru/index.html"].replace(before, after, 1)}
+        try:
+            check_pages(changed, version, commit)
+        except AssertionError:
+            pass
+        else:
+            raise AssertionError("Wrong static installer command or copy target was accepted")
+    print("PASS: routes, six immutable records/warnings, one append, static commands/copy targets and rejection")
 
 
 def main(config_path, output_path):

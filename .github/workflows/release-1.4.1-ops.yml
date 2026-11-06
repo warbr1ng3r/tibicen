@@ -532,7 +532,7 @@ jobs:
     env:
       AUDIT_CONFIG_SHA256: 330f4de9ffb1ea3c296e23cd237a254fd9f4cdcacedc4f4352d02e676be56fa8
       AUDIT_SCRIPT_SHA256: 49559f7433d995887e2aff986098480ccd016cff804e204a0cc7ff4b35bd60a1
-      RETURNED_VERIFIER_SHA256: 9107136855ed9a46ebdfe862bda0cb44902f8defcb2a522da2018950a1d8169b
+      RETURNED_VERIFIER_SHA256: e5a97a4508f535e767c5391bd80a20fb64994db2ec2e3f8b87389b3e0abd25c1
     steps:
       - name: Require exact reviewed hashes
         shell: bash
