@@ -13,14 +13,13 @@ Two entry points:
 - `tibicen-init` — “Set up agent infrastructure.” For an empty directory or an existing application without an agent setup.
 - `tibicen-adopt` — “Review and update agent infrastructure.” For fixing, extending, and updating existing instructions and integrations.
 
-[**1.3.0 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0):
-universal installation, explicit skill-file reading, custom harness hints and
-one common project instruction/memory route. Your host reads files and runs the
-required Node operations; you choose its model and provider. Public installation,
-replacement, recovery and removal passed for the explicit `universal` target;
-this does not establish native loading or compatibility with every model. See
-the [release report](docs/evals/results/2026-11-05-release-1.3/README.md) and
-[configuration page](https://warbr1ng3r.github.io/tibicen/).
+[**1.4.0 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0):
+next-task context in init/adopt and local MCP diagnosis for any valid harness ID
+through a known format or source-hash-bound observations. Eight reader contracts
+supplement the common route; your model and provider remain your choice. Native
+activation, connection and compatibility with every model remain unverified.
+Public delivery and exact limits are in the
+[release report](docs/evals/results/2026-11-06-release-1.4/README.md).
 Project memory was introduced in 1.1.0; its [assisted fresh-task observations](docs/evals/results/2026-11-04-project-memory/README.md)
 retain their original scope. Earlier releases remain in [CHANGELOG](CHANGELOG.md).
 
@@ -30,8 +29,8 @@ Application source code, existing package manifests, CI, and data are preserved 
 
 ## Install Tibicen
 
-The command below pins the 1.3.0 distribution at its full commit. The
-[release report](docs/evals/results/2026-11-05-release-1.3/README.md) records exact
+The command below pins the 1.4.0 distribution at its full commit. The
+[release report](docs/evals/results/2026-11-06-release-1.4/README.md) records exact
 checks, retained earlier failures and source-assisted observation limits.
 Publication and public delivery are tracked in [release details](docs/RELEASING.md).
 The source branch is not an installation target.
@@ -43,7 +42,7 @@ The explicit `universal` target puts both complete skills in `~/.agents/skills/`
 it does not require your host, model or provider to be in Tibicen's catalog.
 
 ```sh
-npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/b61a19583dc91ee9e3e795250d733d2cc99e6569 -g --agent universal --skill tibicen-init tibicen-adopt --copy
+npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7b3b08f58276034b1609e44ef393e5f7c0e01a1b -g --agent universal --skill tibicen-init tibicen-adopt --copy
 ```
 
 Use the full distribution SHA from the release notes when an exact commit is
@@ -152,8 +151,8 @@ separately supported request; missing automatic task/quiz/loading probes remain
 the specific missing operation and a local/manual next step, not an invented
 scan or completed application.
 
-The expanded portable guidance and uncatalogued preset hints in this checkout
-are **Unreleased**; the pinned 1.2 distribution keeps its published bytes.
+Task-aware setup and local MCP diagnosis are available in 1.4.0; earlier
+distributions retain their published bytes.
 
 ## Capabilities and verification limits
 
@@ -209,7 +208,7 @@ The build uses an ordinary `dist/` directory. Custom output is allowed under `di
 
 Source code and tests use TypeScript with strict type checking. The CLI runs directly on Node ≥22.20. Landing page development and builds require Node ≥22.23.4; TypeScript, Astro, and type checking tools remain development and site dependencies. There are no runtime dependencies. `scripts/tibicen.ts` outputs structured JSON. Discovery and proposal generation do not save files; the completed proposal and its digest are passed through stdin. `--approve` binds actual human approval to a specific plan; it does not authorize a script or agent to approve its own input.
 
-Main commands: `scan`, `discover`, `practices`, `proposal`, `apply`, `resume`, `status`, `verify`, `report`, `preset-load`, `preset-save`. The Unreleased checkout also provides read-only `harnesses` for documented and unknown profiles; see the [profile guide](docs/HARNESS_CAPABILITIES.md). Used on its own, `verify` performs structural checks only. Executable checks are specified in the approved proposal. Input format and example: [proposal-format.md](references/proposal-format.md).
+Main commands: `scan`, `discover`, `practices`, `proposal`, `apply`, `resume`, `status`, `verify`, `report`, `preset-load`, `preset-save`. Read-only `harnesses` and `mcp-diagnose` are available in 1.4.0; see the [profile guide](docs/HARNESS_CAPABILITIES.md). Used on its own, `verify` performs structural checks only. Executable checks are specified in the approved proposal. Input format and example: [proposal-format.md](references/proposal-format.md).
 
 The landing page is a separate Astro workspace in `landing/`, with adapted AstroWind sections, Tailwind CSS, client-side TypeScript, and local assets. Section provenance and the MIT notice are documented in [landing/README.md](landing/README.md). Install dependencies for all parts with a single `pnpm install --frozen-lockfile` from the root. Start the development server with `pnpm dev:site` (http://127.0.0.1:8371/). Build with `pnpm build:site` and preview with `pnpm preview:site`. The static output in the ignored `landing/dist/` directory can be deployed to ordinary static hosting; the page requires neither an application server nor external assets. The landing page and its dependencies are excluded from installed skills.
 
@@ -224,14 +223,15 @@ English is canonical for project documentation. Russian translations live beside
 - [Development plan and work allocation](docs/DEVELOPMENT_PLAN.md).
 - [Project memory — available since 1.1.0](docs/PROJECT_MEMORY.md).
 - [Understanding an adopt result — available in 1.2.0](docs/ADOPT_DIAGNOSIS.md).
-- [Harness profiles and evidence limits — Unreleased](docs/HARNESS_CAPABILITIES.md).
+- [Harness profiles and evidence limits — 1.4.0](docs/HARNESS_CAPABILITIES.md).
+- [MCP formats and common observation route — 1.4.0](docs/MCP_FORMATS.md).
 - [Installation and manual recovery](docs/INSTALLATION.md).
-- [Portable workflow across hosts and models — updated guidance Unreleased](docs/HARNESS_PORTABILITY.md).
+- [Portable workflow across hosts and models — 1.4.0](docs/HARNESS_PORTABILITY.md).
 - [Versioning and release procedure](docs/RELEASING.md).
 - [Voluntary postpublication usefulness protocol](docs/PILOT.md).
 - [Security boundaries and vulnerability reporting](SECURITY.md).
 
-Core/adapter ownership and the private security route are recorded in [SECURITY](SECURITY.md). The [maintenance procedure](docs/MAINTENANCE.md) now records source review, scope and follow-up; its [latest review](docs/evals/results/2026-11-03-maintenance-review/README.md) covers documentation and CLI metadata. Reporting now follows the scoped [code of conduct](CODE_OF_CONDUCT.md), which replaces the former general private conduct-inbox promise. The separate Pages [checksum index](landing/public/maintenance/index.json) includes the verified 1.2 record; deployment succeeded and all 18 returned site bodies matched the official artifact, preserving the earlier records. Candidate-specific behavior keeps its separate evidence and limits in the [maintenance guide](docs/MAINTENANCE.md). GitHub administration is shared. Voluntary pilot parameters belong to the separate postpublication study. The core and adapters are reviewed at least monthly and when supported tools change significantly. Updating an installed Tibicen is an explicit user action; there is no background self-update.
+Core/adapter ownership and the private security route are recorded in [SECURITY](SECURITY.md). The [maintenance procedure](docs/MAINTENANCE.md) now records source review, scope and follow-up; its [latest review](docs/evals/results/2026-11-03-maintenance-review/README.md) covers documentation and CLI metadata. Reporting now follows the scoped [code of conduct](CODE_OF_CONDUCT.md), which replaces the former general private conduct-inbox promise. The separate Pages [checksum index](landing/public/maintenance/index.json) appends the published 1.4 record; separate Pages deployment and returned-byte checks are recorded in the maintenance guide. All five older records are preserved. Candidate-specific behavior keeps its separate evidence and limits in the [maintenance guide](docs/MAINTENANCE.md). GitHub administration is shared. Voluntary pilot parameters belong to the separate postpublication study. The core and adapters are reviewed at least monthly and when supported tools change significantly. Updating an installed Tibicen is an explicit user action; there is no background self-update.
 
 License: MIT.
 

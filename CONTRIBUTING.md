@@ -1,9 +1,9 @@
 # Contributing to Tibicen
 
-Tibicen [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) is published.
+Tibicen [1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0) is published.
 The repository is [warbr1ng3r/tibicen](https://github.com/warbr1ng3r/tibicen).
 Release CI, six platform cells and public delivery are recorded in the
-[release follow-up](docs/evals/results/2026-11-05-release-1.3/README.md).
+[release follow-up](docs/evals/results/2026-11-06-release-1.4/README.md).
 The maintainer/private security route is in [SECURITY](SECURITY.md); reporting scope
 is in the [code of conduct](CODE_OF_CONDUCT.md). Pages has separate deployment
 and returned-byte evidence in [MAINTENANCE](docs/MAINTENANCE.md).

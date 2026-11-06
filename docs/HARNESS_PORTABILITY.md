@@ -66,9 +66,11 @@ supported contracts and approval. Existing registered copy links remain intact;
 choosing the common route does not silently remove them. Explicit reading is an
 activation step, not evidence of automatic discovery or later task behavior.
 
-## Diagnose MCP without changing hosts — Unreleased
+<a id="diagnose-mcp-without-changing-hosts--unreleased"></a>
 
-The development MCP workflow accepts any valid harness ID: choose an explicit
+## Diagnose MCP without changing hosts
+
+The MCP workflow in 1.4.0 accepts any valid harness ID: choose an explicit
 supported format, or supply hash-bound redacted `stdio-observation` facts for
 another language or application. For example, an agent inspecting DeepSeek
 Harness YAML or a GigaChat application's Python can report the observed server
@@ -79,9 +81,11 @@ connection/use stay separate. A missing native parser therefore does not force
 a model/provider switch, a new configuration file or a copied vendor setup.
 See [formats and evidence](MCP_FORMATS.md) and the [init/adopt workflow](ADOPT_DIAGNOSIS.md#local-mcp-diagnosis-for-init-and-adopt--unreleased).
 
-## Carry the same context into the first task — Unreleased
+<a id="carry-the-same-context-into-the-first-task--unreleased"></a>
 
-The development workflow adds optional [task context in the report](ADOPT_DIAGNOSIS.md#task-context-for-init-and-adopt--unreleased).
+## Carry the same context into the first task
+
+Tibicen 1.4.0 adds optional [task context in the report](ADOPT_DIAGNOSIS.md#task-context-for-init-and-adopt--unreleased).
 It records the selected host, working directory and intended task path without
 making a catalog entry or native adapter mandatory. Published 1.3 retains the
 common-file workflow above; it does not include this new report input.

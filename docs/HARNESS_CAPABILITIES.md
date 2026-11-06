@@ -1,6 +1,6 @@
 # Harness capabilities
 
-This guide describes the **Tibicen 1.3.0** portable workflow and catalog.
+This guide describes the **Tibicen 1.4.0** portable workflow and catalog.
 Earlier 1.2.0 keeps its original scope; a catalog entry does not add installer
 targets or native capabilities. See [release details](RELEASING.md).
 A harness is the application that runs the agent, such as Gemini CLI or Cline.
@@ -108,9 +108,11 @@ store or authorize a server launch. Keep one suitable existing store and verify
 reading, task use and updates separately in an authorized fresh session. See the
 [project memory guide](PROJECT_MEMORY.md) and [adopt diagnosis](ADOPT_DIAGNOSIS.md).
 
-## Local MCP readers — Unreleased
+<a id="local-mcp-readers--unreleased"></a>
 
-The development `mcp-diagnose` command accepts any valid harness ID. Explicitly
+## Local MCP readers
+
+The `mcp-diagnose` command in 1.4.0 accepts any valid harness ID. Explicitly
 select a known format, or use `stdio-observation` for safe redacted facts bound to
 an inspected project source hash. This common route covers unsupported languages
 without evaluating their code; its `reported-stdio` result remains a caller
@@ -136,4 +138,4 @@ effective native precedence, connection or task use. The command does not run
 native diagnostics or start a server. See the
 [paired workflow and command example](ADOPT_DIAGNOSIS.md#local-mcp-diagnosis-for-init-and-adopt--unreleased)
 for repair, no-change and native follow-up outcomes and dated official contracts.
-This feature is local Unreleased work and is absent from published 1.3.0.
+This feature is included in published 1.4.0.

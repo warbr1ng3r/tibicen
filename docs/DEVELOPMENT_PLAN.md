@@ -1,14 +1,19 @@
 # Tibicen development plan
 
+**Current status — 6 November 2026 (Moscow):** [1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0) was published at `2026-11-06T00:10:57Z`. Task-aware init/adopt and MCP diagnosis for any valid harness ID are included. The 891-test local gate, separate standalone 3/3, exact public-source CI, all six platform cells and public 1.3→1.4 replacement/recovery/removal passed. Independent review: Ship. All three returned release assets and 101 archive files/modes match the candidate; 1.3 is preserved. The [report](evals/results/2026-11-06-release-1.4/README.md) records exact SHAs and limits. Metadata and the separate Pages deployment/returned-body check are in progress on the [dashboard](../.scratch/release-1.4/dashboard.md); native activation, MCP connection and human usefulness remain unverified.
+
+## Previous release snapshot — 1.3.0
+
 **Current status — 5 November 2026 (Moscow):** [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) was published at `2026-11-05T19:34:40Z`. The [release report](evals/results/2026-11-05-release-1.3/README.md) records exact source/distribution bindings, 843/843 offline tests, 42 browser checks, successful exact-source CI and six fresh platform cells. Public universal 1.2→1.3 replacement/repeat, installed self-tests, complete backup restoration and removal passed with 94 payloads. All three returned release assets and 95 archive files/modes match the accepted candidate; 1.2 is unchanged. The owner authorized commit, push and publication. Metadata is public; Pages run 42096956053 deployed source `606f5b25f83831c3d9c5e29709d85c32ae0cf7a9`. Audit 42097697236 verified all 18 returned bodies against the official artifact and preserved the four older maintenance records. Broad native/model compatibility and human benefit remain unverified.
 
-## Active release — 1.4.0
+## Release 1.4.0 — metadata and Pages
 
-The owner authorized work through release on 6 November: candidate preparation,
-review, commits, push, public gates and publication. The [release dashboard](../.scratch/release-1.4/dashboard.md)
-owns current progress; [release notes](evals/results/2026-11-06-release-1.4/README.md)
-are drafted and unpublished. Root version1.4.0 prepares a compatible minor;
-installation links remain published1.3 until the new public gates pass.
+Public source `dfc85d75698094d614ac66511c0b0c13fa54c0bf`, distribution
+`7b3b08f58276034b1609e44ef393e5f7c0e01a1b` and the release passed publication gates.
+The owner authorized commits, push and publication. Metadata deployment and
+returned Pages bodies are the remaining separate step; the [dashboard](../.scratch/release-1.4/dashboard.md)
+owns current responsibility. The local stage records below retain their
+pre-1.4 preparation context; their Unreleased wording describes that time.
 
 ## Completed local effort — MCP portability for arbitrary harnesses
 

@@ -33,3 +33,7 @@ outside the autonomous scope. Preserve curated public history and old releases.
 - Curated public export preserves all 305 historical omissions and four public
   history projections; its local full gate also passed 891 tests.
 
+- Public source CI, six fresh platform cells and exact full-SHA P01 delivery
+  passed. [Publication](issues/03-publication.md) created release435921093;
+  all three returned assets/101 archive files matched independently. Metadata
+  and Pages deployment/audit remain the final separate step.

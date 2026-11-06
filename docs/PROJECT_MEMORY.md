@@ -75,9 +75,11 @@ The notes are readable Markdown. There is no mandatory entry schema, timestamp
 format or separate questionnaire, and the full history need not be copied into
 every instruction file.
 
-## Check the first task and later memory use — Unreleased
+<a id="check-the-first-task-and-later-memory-use--unreleased"></a>
 
-The development handoff reuses the reviewed host, working directory and target
+## Check the first task and later memory use
+
+The handoff in 1.4.0 reuses the reviewed host, working directory and target
 path from [task-context diagnosis](ADOPT_DIAGNOSIS.md#task-context-for-init-and-adopt--unreleased),
 or explains what changed. This adds a scoped check to the memory workflow
 available since 1.1; it adds no store, schema or background memory service.

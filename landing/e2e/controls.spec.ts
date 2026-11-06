@@ -97,7 +97,7 @@ test('catalog hints stay local preferences in English and Russian on a narrow vi
       answers: { agents: ['opencode', 'gemini-cli'] },
     });
     await expect(page.locator('#install-command')).toContainText(
-      '0656f12e00ea83d84229180d331f3178bf253407',
+      '7b3b08f58276034b1609e44ef393e5f7c0e01a1b',
     );
   }
   expect(
@@ -121,7 +121,7 @@ test('universal installation runners update immediately after selection', async 
     ]) {
       await choose(page, 'install-manager', manager);
       await expect(page.locator('#install-command')).toHaveText(
-        `${runner} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0656f12e00ea83d84229180d331f3178bf253407 -g --agent universal --skill tibicen-init tibicen-adopt --copy`,
+        `${runner} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7b3b08f58276034b1609e44ef393e5f7c0e01a1b -g --agent universal --skill tibicen-init tibicen-adopt --copy`,
       );
     }
     const runner = page.locator('#install-manager');
@@ -428,7 +428,7 @@ test('without JavaScript English stays default in a Russian browser and language
     await expect(page.locator('#name')).toBeDisabled();
     await expect(page.locator('#download-preset')).toBeDisabled();
     await expect(page.locator('#install-command')).toHaveText(
-      'npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0656f12e00ea83d84229180d331f3178bf253407 -g --agent universal --skill tibicen-init tibicen-adopt --copy',
+      'npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7b3b08f58276034b1609e44ef393e5f7c0e01a1b -g --agent universal --skill tibicen-init tibicen-adopt --copy',
     );
     await expect(
       page.locator('a[href$="INSTALLATION.md#manual-archive-installation"]'),

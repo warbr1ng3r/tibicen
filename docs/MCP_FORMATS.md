@@ -1,9 +1,8 @@
-# MCP formats and evidence — Unreleased
+# MCP formats and evidence
 
 Any valid harness ID can use `mcp-diagnose` by explicitly selecting a known
 format or the common observation route. Catalog entries, models and providers
-do not restrict that choice. This is development behavior, absent from published
-1.3.0. See [the workflow](ADOPT_DIAGNOSIS.md#local-mcp-diagnosis-for-init-and-adopt--unreleased)
+do not restrict that choice. This behavior is included in published 1.4.0. See [the workflow](ADOPT_DIAGNOSIS.md#local-mcp-diagnosis-for-init-and-adopt--unreleased)
 for command input, inspection limits and the next action.
 
 ## Common route

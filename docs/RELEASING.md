@@ -93,6 +93,21 @@ Record corrections in a new candidate. Preserve failed attempts and old sums.
 Published tags and bytes stay immutable; a published defect requires a new
 version. There is no background update of installed Tibicen or project setup.
 
+## Published 1.4.0 — 2026-11-06 (Moscow)
+
+[1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0) was published at `2026-11-06T00:10:57Z`.
+Source `dfc85d75698094d614ac66511c0b0c13fa54c0bf` binds distribution `7b3b08f58276034b1609e44ef393e5f7c0e01a1b` and candidate-01.
+Task-aware init/adopt and format-independent local MCP diagnosis are compatible
+additions; persisted schemas and existing write/approval boundaries are unchanged.
+The 891-pass local gate, [public CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42133771601) and
+[six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/42134245813) passed. Public universal installation/update/
+backup restoration/removal and all three returned assets matched the candidate.
+Fresh I1/A1 observations are read-only, source-assisted recommendations, not native
+sessions or applied setup. Native activation/connection, model behavior and human
+benefit remain unverified. Pages metadata deployment and returned-body verification
+are separate. Exact identities, assets and limits are in the
+[release report](evals/results/2026-11-06-release-1.4/README.md).
+
 ## Published 1.3.0 — 2026-11-05 (Moscow)
 
 [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0) was published at `2026-11-05T19:34:40Z`.

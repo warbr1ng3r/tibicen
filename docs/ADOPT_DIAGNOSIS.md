@@ -213,14 +213,15 @@ a report file still requires an explicit request. Check scope, supported
 versions and native execution limits remain in the [agent matrix](../references/agent-matrix.md)
 and the [current published capabilities](CURRENT_CAPABILITIES.md).
 
-## Task context for init and adopt — Unreleased
+<a id="task-context-for-init-and-adopt--unreleased"></a>
 
-The development version can attach the selected host, working directory and
-intended task path to the same read-only report used by both skills. Published
-1.3 does not include this optional input. The agent derives available context
+## Task context for init and adopt
+
+Tibicen 1.4.0 can attach the selected host, working directory and
+intended task path to the same read-only report used by both skills. The agent derives available context
 from the session; you do not need to fill in another questionnaire.
 
-Replace `SKILL_DIR` with the absolute directory of the complete development
+Replace `SKILL_DIR` with the absolute directory of the complete installed
 skill and `/actual/project` with the project root:
 
 ```sh
@@ -256,10 +257,11 @@ into a passed check. Reuse the reviewed context for verification and the first
 task, or disclose what changed. See [portable activation](HARNESS_PORTABILITY.md)
 and the [later memory check](PROJECT_MEMORY.md#check-the-first-task-and-later-memory-use--unreleased).
 
-## Local MCP diagnosis for init and adopt — Unreleased
+<a id="local-mcp-diagnosis-for-init-and-adopt--unreleased"></a>
 
-The development version adds `mcp-diagnose` for one named server. Published 1.3
-does not include this command. It reads explicitly selected project settings
+## Local MCP diagnosis for init and adopt
+
+Tibicen 1.4.0 includes `mcp-diagnose` for one named server. It reads explicitly selected project settings
 without starting a server, writing state or returning settings contents. The
 existing `mcp-verify` command and supported write paths remain unchanged.
 

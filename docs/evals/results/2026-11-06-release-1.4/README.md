@@ -1,13 +1,13 @@
-# Tibicen 1.4.0 release preparation
+# Tibicen 1.4.0 release report
 
-**Unpublished draft — 6 November 2026, Europe/Moscow.** The owner authorized
-work through commit, push and publication. Published 1.3.0 remains the current
-release until the public candidate gates and returned-asset checks are complete.
-This report records preparation; it does not establish publication.
+**Published 6 November 2026 at 03:10:57 Europe/Moscow (00:10:57Z).**
+[Release 1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0),
+ID `435921093`, passed public source CI, all six platform cells, exact public
+delivery and returned-asset verification. Pages remains a separate pending deployment.
 
 ## Scope and compatibility
 
-The intended version is **1.4.0**, a compatible minor release:
+Version **1.4.0** is a compatible minor release:
 
 - Optional selected-harness/version, working-directory and task-path context
   makes init/adopt reports and handoffs specific to the next task. Lexical
@@ -33,42 +33,45 @@ See [MCP formats](../../../MCP_FORMATS.md),
 
 ## Candidate identity and public gates
 
-| Item | Current status |
+| Item | Actual status |
 | --- | --- |
-| Intended version/tag | 1.4.0 / `v1.4.0`; not published |
+| Published version/tag | [1.4.0 / v1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0), release ID 435921093 |
 | Frozen candidate | `1.4-candidate-01`: 1,269 source files; 100 payloads / 101 archive files; generated skills report 1.4.0 |
 | Fresh local gate and standalone | 891 tests passed / one manual standalone skip; exact standalone lifecycle 3/3, both self-tests, 12 MCP CLI cases and task-aware/legacy reports passed |
 | Local update/recovery/removal | D01 passed independent acceptance; four installer calls and two installed self-tests in 1.501 seconds |
 | Fresh affected guidance observations | I1 recommendation-only and A1 read-only proposal accepted independently; neither applied |
-| Independent engineering review | Source, frozen candidate, I1/A1, D01 and exact distribution commit: Ship for the local release packet; public gates remain pending |
-| Public source CI and six platform cells | Pending |
-| Public full-SHA installation, update/recovery/removal | Pending |
-| Returned release assets and checksum comparison | Pending |
+| Independent engineering review | Source, frozen candidate, I1/A1, D01, exact distribution and P01: Ship within their stated scopes |
+| Public source CI | [42133771601](https://github.com/warbr1ng3r/tibicen/actions/runs/42133771601) passed on source `dfc85d7…` |
+| Six platform cells | [42134245813](https://github.com/warbr1ng3r/tibicen/actions/runs/42134245813): macOS 15 / Ubuntu 24.04 / Windows 2022 × Node 22.20.0 / 24.15.0, all passed |
+| Public full-SHA installation, update/recovery/removal | P01 passed; four installer calls and two installed self-tests in 10.330 seconds |
+| Publication | [42134902094](https://github.com/warbr1ng3r/tibicen/actions/runs/42134902094) passed; release published at 2026-11-06T00:10:57Z |
+| Returned release assets and checksum comparison | All three actual downloads match candidate bytes and API hashes; 101 archive files/modes match |
 | Pages deployment and returned-body comparison | Pending, separate from skill publication |
 
-The frozen working-tree snapshot is based on local commit
+The frozen working-tree snapshot was based on local commit
 `e73551082655449fcde668ecf7e42342f892e374`. Source inventory SHA-256:
 `00f4914a163b8490bf2f934e7686e207875a0dbd395e533e823d7ebb4fe4c2dd`;
 distribution inventory SHA-256:
 `e2aac1e70ad092ba4cb2f0f441b3a75fe54a999a43a9ad54bc6ec39cb8a3161e`.
-These identify local frozen inputs, not a final public source/distribution commit.
+Those are the original local freeze identities. The curated public source is
+`dfc85d75698094d614ac66511c0b0c13fa54c0bf`; publication operations ran at
+`e114edcd6d6a31b693013ddae911ba6c6f1ac425`. Neither replaces the historical
+working-tree snapshot or its inventory.
 
-The three prepared assets are local and have not been downloaded from a release:
+Annotated tag `d7a49b1cfc9c604daa08d4101a320a3bb2e59052` points to distribution
+`7b3b08f58276034b1609e44ef393e5f7c0e01a1b`, whose 101 Git blobs match the exact
+candidate. The same distribution was installed from its actual public full SHA.
+Both the curated export's local gate and the separate public source CI passed;
+they are distinct observations. Earlier development candidates below retain
+their original identities.
 
-| Prepared asset | Bytes | SHA-256 |
+All three published assets were downloaded and verified:
+
+| Published asset | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `tibicen-1.4.0.tar.gz` | 264376 | `0b1df51d33c2e3b43cc5041ece30b397039d0b1c3f7f20c706014eb9b38e38d8` |
-| `distribution-SHA256SUMS` | 10428 | `ec1b4c75a0cef2dde8d4d12a29dc75de1ee1f8c01d16d72efec82a4891fb58ef` |
-| `SHA256SUMS` | 177 | `272b8c4709b04cc4ca06ae9bbb5624135dd3b2b3c47f7a36ec6fb84e97768c93` |
-
-The final public source/distribution SHAs and workflow URLs remain pending.
-Earlier development candidates below keep their original identities.
-Distribution commit `7b3b08f58276034b1609e44ef393e5f7c0e01a1b` is prepared
-locally over the published 1.3 distribution, with the exact 101 candidate files;
-it has not been pushed or publicly installed yet.
-Independent review matched all 101 Git blobs to the exact candidate. The curated
-public-source export's local gate also passed 891 tests / one manual standalone
-skip, with zero failures; this is not a public GitHub CI run.
+| [tibicen-1.4.0.tar.gz](https://github.com/warbr1ng3r/tibicen/releases/download/v1.4.0/tibicen-1.4.0.tar.gz) | 264376 | `0b1df51d33c2e3b43cc5041ece30b397039d0b1c3f7f20c706014eb9b38e38d8` |
+| [distribution-SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.4.0/distribution-SHA256SUMS) | 10428 | `ec1b4c75a0cef2dde8d4d12a29dc75de1ee1f8c01d16d72efec82a4891fb58ef` |
+| [SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.4.0/SHA256SUMS) | 177 | `272b8c4709b04cc4ca06ae9bbb5624135dd3b2b3c47f7a36ec6fb84e97768c93` |
 
 ## Exact 1.4 candidate checks
 
@@ -89,16 +92,49 @@ The seven-file synthetic application, later owner memory, sibling skills,
 external settings and original inputs were preserved. Application tests were
 not run; this is installation lifecycle evidence. The trusted installer retained
 ambient read capability, with writes limited to owned paths; OS isolation or an
-OS firewall is not claimed. Public pinned delivery and `skills update` were not
-observed. Independent D01 acceptance does not replace the pending guidance cases.
+OS firewall is not claimed. D01 was local-path evidence: it did not observe
+public delivery or `skills update`. Public delivery was subsequently observed
+in P01 below; guidance observations remain separate.
 
 Raw receipts are retained locally under `release-1.4-20261106`: candidate-01,
 its standalone record and delivery attempt D01. No paid API or native application
-was used. Public delivery, asset download and Pages remain separate gates.
+was used. Public delivery and asset downloads were subsequently checked below;
+Pages remains separate.
 Receipt SHA-256 bindings: candidate
 `2e17e92744432dde5f818ebe9411a4c4a7b884c151220b594febf001affb44b9`,
 standalone `ba7be87da74ae10cd2a6b2ae1b7f4b9922756388661e8b1e2c1f4ef2f3f3d672`,
 D01 `45bc1902e4c2b10b30e38fba55ad16a409323f129b4ffb83f6bda412dbf58f5e`.
+
+## Public delivery and returned assets
+
+P01 used the pinned `skills@1.7.4` installer with the explicit universal target
+and full public SHAs: published 1.3 `b61a19583dc91ee9e3e795250d733d2cc99e6569`
+then 1.4 `7b3b08f58276034b1609e44ef393e5f7c0e01a1b`. Four installer calls and
+two installed self-tests all exited zero, without timeouts or outer retries.
+Three Git traces confirmed exact fetch/checkout and the expected remote; locks
+retained full refs. Replacement and repeat matched all 100 candidate payloads and
+modes. Both installed self-tests passed at 1.4.0 with Git absent from PATH.
+
+The complete 96-file edited 1.3 backup was restored into the actual two installed
+skill directories before removal. Both installed roots were then absent; the
+backup, seven-file application, later owner memory, sibling skill, settings and
+all bound original inputs retained exact bytes/modes. Independent result review:
+Ship. Receipt SHA-256:
+`769812c7881ccb39149b76421e4ff480c237e64f8181ef0478ea1c063d4b7294`.
+This is explicit replacement/repeat, not `skills update`; lock-byte stability was
+not checked. Trusted Git children had normal OS permissions and were not
+constrained by Node's permission grants. No native or application work ran.
+
+Actual release JSON, annotated tag/commit, previous 1.3 release/tag and all three
+asset responses were received over normal TLS. The release body exactly matched
+the publication notes. All three downloaded files matched frozen candidate bytes,
+sizes and API SHA-256 digests; the archive's 101 files and modes matched its
+inventory. Published 1.3's body, tag and asset identities remained unchanged.
+Verification receipt SHA-256:
+`d8e4db1cd0f97278cfcb7925fdee69741ab63e48184b7ebd83da05632eb10f01`.
+GitHub reports `immutable: false`; server-enforced immutability is not claimed.
+Raw P01 and returned-response records remain local under `release-1.4-20261106`.
+Pages deployment and returned-body comparison remain a separate pending check.
 
 ## Fresh guidance observations
 
@@ -154,8 +190,7 @@ behavior or human usefulness was observed in these packets. Hash binding proves
 which source an observation describes, not that its interpretation is correct,
 safe or effective in the native client. Parsed configuration and caller-supplied
 observations retain distinct results. Personal settings, credentials and paid API
-calls are outside this release work. Public delivery and Pages remain separate
-checks until their actual receipts are recorded.
+calls were not used in these checks. Public delivery and returned assets are
+verified above; Pages remains separate.
 
-The [release-note draft](release-notes.md) is prepared for publication only after
-the pending gates pass.
+See the [release notes](release-notes.md) and [installation guide](../../../INSTALLATION.md).

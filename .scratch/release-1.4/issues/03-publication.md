@@ -13,4 +13,9 @@ Follow [release procedure](../../../docs/RELEASING.md).
 
 ## Answer
 
-Candidate and delivery dependencies resolved; existing SSH access works. Curated source export and exact distribution commit passed independent review. Public push and gates pending.
+Source main `dfc85d75698094d614ac66511c0b0c13fa54c0bf` and distribution
+`7b3b08f58276034b1609e44ef393e5f7c0e01a1b` are public. CI 42133771601 and
+all six cells of 42134245813 passed. Public P01 replacement/repeat/recovery/removal
+passed independent review. Release 435921093 was published at 2026-11-06T00:10:57Z;
+all three returned assets and 101 archive files/modes match, old1.3 unchanged.
+Metadata source, CI and the separate Pages deployment/audit remain in progress.
