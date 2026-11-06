@@ -5,6 +5,10 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+### Changed
+
+- Restore the fuller project preview on the bilingual landing with memory, optional MCP and setup history; remove the redundant caption and keep the mobile layout compact.
+
 ## [1.4.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.1) — 2026-11-06
 
 ### Changed
