@@ -6,8 +6,9 @@ import { HARNESS_PROFILES } from '../../../scripts/agents/profiles';
 
 interface Props {
   locale?: Locale;
+  expanded?: boolean;
 }
-const { locale = 'en' } = Astro.props;
+const { locale = 'en', expanded = false } = Astro.props;
 const t = (en: string, ru: string) => localize(locale, en, ru);
 
 const languages = [
@@ -26,7 +27,7 @@ const kinds = [
 ];
 ---
 
-<details class="preset-details">
+<details class="preset-details" open={expanded}>
   <summary>
     <span>
       <strong>{t('Build your preset', 'Собрать свой пресет')}</strong>

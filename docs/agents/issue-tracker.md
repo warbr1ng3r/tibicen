@@ -1,5 +1,9 @@
 # Issue tracker
 
+## Completed local work — simpler first use
+
+The owner approved the [first-use packet](../../.scratch/landing-first-use/map.md) after the dated installation review. Parallel installation/examples/preset lanes and root integration completed the [change](../../openspec/changes/simplify-first-use-landing/tasks.md). Local implementation and independent Ponytail review are complete: full gate 900 passed/1 existing skip; site 57/57 and browser 101 passed/1 existing skip at both bases. All 101 skill files remain unchanged. See [verification](../../openspec/changes/simplify-first-use-landing/verification.md) for checks and limits. Those local checks preceded commit/push. The owner has now authorized the source handoff; Pages deployment remains separate.
+
 **Current status — 6 November 2026 (Moscow):** [1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0) was published at `2026-11-06T00:10:57Z`. Task-aware init/adopt and MCP diagnosis for any valid harness ID are included. The 891-test local gate, separate standalone 3/3, exact public-source CI, all six platform cells and public 1.3→1.4 replacement/recovery/removal passed. Independent review: Ship. All three returned release assets and 101 archive files/modes match the candidate; 1.3 is preserved. The [report](../evals/results/2026-11-06-release-1.4/README.md) records exact SHAs and limits. Metadata CI and the separate Pages deployment/returned-body checks passed; see the [dashboard](../../.scratch/release-1.4/dashboard.md); native activation, MCP connection and human usefulness remain unverified.
 
 ## Previous release snapshot — 1.3.0

@@ -2,8 +2,15 @@ import { test, expect, type Download, type Page } from '@playwright/test';
 import { HARNESS_PROFILES } from '../../scripts/agents/profiles.ts';
 
 async function openPreset(page: Page) {
+  const target = new URL('preset/', page.url()).href;
+  await page.locator('#preset a').click();
+  await expect(page).toHaveURL(target);
+  await expect(page.locator('.preset-details')).toHaveAttribute('open', '');
   await expect(page.locator('#download-preset')).toBeEnabled();
-  await page.locator('.preset-details > summary').click();
+  await expect(page.locator('#language')).toHaveAttribute(
+    'aria-controls',
+    /.+/,
+  );
 }
 
 async function openAdvanced(page: Page) {
@@ -30,10 +37,8 @@ async function choose(page: Page, id: string, label: string) {
 
 test.beforeEach(async ({ page }) => {
   await page.goto('./');
-  await expect(page.locator('#language')).toHaveAttribute(
-    'aria-controls',
-    /.+/,
-  );
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await expect(page.locator('#preset-form')).toHaveCount(0);
 });
 
 test('catalog hints stay local preferences in English and Russian on a narrow viewport', async ({
@@ -46,6 +51,9 @@ test('catalog hints stay local preferences in English and Russian on a narrow vi
   );
   for (const route of ['./', 'ru/']) {
     await page.goto(route);
+    await expect(page.locator('#install-command')).toContainText(
+      '7b3b08f58276034b1609e44ef393e5f7c0e01a1b',
+    );
     await openPreset(page);
     await openAdvanced(page);
     const russian = route === 'ru/';
@@ -96,9 +104,6 @@ test('catalog hints stay local preferences in English and Russian on a narrow vi
       name: 'private-catalog-preference',
       answers: { agents: ['opencode', 'gemini-cli'] },
     });
-    await expect(page.locator('#install-command')).toContainText(
-      '7b3b08f58276034b1609e44ef393e5f7c0e01a1b',
-    );
   }
   expect(
     requests.filter((request) =>
@@ -107,38 +112,45 @@ test('catalog hints stay local preferences in English and Russian on a narrow vi
   ).toEqual([]);
 });
 
-test('universal installation runners update immediately after selection', async ({
+test('one universal command stays primary while native alternatives are optional', async ({
   page,
 }) => {
   for (const route of ['./', 'ru/']) {
     await page.goto(route);
-    await expect(page.locator('#install-controls')).toBeEnabled();
-    await expect(page.locator('#install-agent')).toHaveCount(0);
+    await expect(
+      page.locator('#install-controls, #install-manager, #install-agent'),
+    ).toHaveCount(0);
+    const primary = page.locator('#install-command');
+    const suffix =
+      'skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7b3b08f58276034b1609e44ef393e5f7c0e01a1b -g --agent universal --skill tibicen-init tibicen-adopt --copy';
+    await expect(primary).toHaveText(`npx ${suffix}`);
+    const alternatives = page.locator('.installation-alternatives');
+    await expect(alternatives).not.toHaveAttribute('open');
+    await expect(page.locator('#install-command-pnpm')).toBeHidden();
+    const summary = alternatives.locator('summary');
+    await summary.focus();
+    await page.keyboard.press('Enter');
+    await expect(alternatives).toHaveAttribute('open', '');
     for (const [manager, runner] of [
-      ['npm', 'npx'],
       ['pnpm', 'pnpm dlx'],
-      ['Yarn 2+', 'yarn dlx'],
+      ['yarn', 'yarn dlx'],
     ]) {
-      await choose(page, 'install-manager', manager);
-      await expect(page.locator('#install-command')).toHaveText(
-        `${runner} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7b3b08f58276034b1609e44ef393e5f7c0e01a1b -g --agent universal --skill tibicen-init tibicen-adopt --copy`,
+      await expect(page.locator(`#install-command-${manager}`)).toBeVisible();
+      await expect(page.locator(`#install-command-${manager}`)).toHaveText(
+        `${runner} ${suffix}`,
       );
+      await expect(
+        page.locator(`[data-copy-target="install-command-${manager}"]`),
+      ).toBeVisible();
     }
-    const runner = page.locator('#install-manager');
-    await runner.focus();
-    await page.keyboard.press('Enter');
-    await expect(
-      page.getByRole('option', { name: 'Yarn 2+', exact: true }),
-    ).toBeFocused();
-    await page.keyboard.press('Home');
-    await expect(
-      page.getByRole('option', { name: 'npm', exact: true }),
-    ).toBeFocused();
-    await page.keyboard.press('Enter');
-    await expect(runner).toBeFocused();
-    await expect(page.locator('#install-command')).toHaveText(
-      /^npx .*--agent universal /,
+    await expect(alternatives.locator('a')).toHaveAttribute(
+      'href',
+      /INSTALLATION\.md#manual-archive-installation$/,
     );
+    await summary.focus();
+    await page.keyboard.press('Enter');
+    await expect(alternatives).not.toHaveAttribute('open');
+    await expect(primary).toHaveText(`npx ${suffix}`);
   }
 });
 
@@ -356,7 +368,7 @@ for (const width of [320, 390, 768, 1024, 1440]) {
           value.textContent === 'Detect in project' &&
           value.scrollWidth <= value.clientWidth,
         fontSizes: [
-          ...document.querySelectorAll('#preset small, .form-footnote'),
+          ...document.querySelectorAll('.preset-details small, .form-footnote'),
         ].map((el) => parseFloat(getComputedStyle(el).fontSize)),
         targets: [
           ...document.querySelectorAll('.agent-choices label, .choice'),
@@ -415,7 +427,10 @@ test('without JavaScript English stays default in a Russian browser and language
   for (const [index, locale] of ['en', 'ru', 'en'].entries()) {
     await expect(page.locator('html')).toHaveAttribute('lang', locale);
     await expect(page).toHaveURL(
-      new URL(locale === 'en' ? './' : 'ru/', baseURL).href,
+      new URL(
+        `${locale === 'en' ? './' : 'ru/'}${index ? '#start' : ''}`,
+        baseURL,
+      ).href,
     );
     const nextLocale = locale === 'en' ? 'ru' : 'en';
     const switchLink = page.locator(`header a[hreflang="${nextLocale}"]`);
@@ -424,12 +439,20 @@ test('without JavaScript English stays default in a Russian browser and language
       'hreflang',
       locale,
     );
-    await page.locator('.preset-details > summary').click();
-    await expect(page.locator('#name')).toBeDisabled();
-    await expect(page.locator('#download-preset')).toBeDisabled();
+    await expect(page.locator('#preset-form')).toHaveCount(0);
     await expect(page.locator('#install-command')).toHaveText(
       'npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7b3b08f58276034b1609e44ef393e5f7c0e01a1b -g --agent universal --skill tibicen-init tibicen-adopt --copy',
     );
+    await page.locator('.installation-alternatives > summary').click();
+    for (const [manager, runner] of [
+      ['pnpm', 'pnpm dlx'],
+      ['yarn', 'yarn dlx'],
+    ]) {
+      await expect(page.locator(`#install-command-${manager}`)).toBeVisible();
+      await expect(page.locator(`#install-command-${manager}`)).toHaveText(
+        `${runner} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7b3b08f58276034b1609e44ef393e5f7c0e01a1b -g --agent universal --skill tibicen-init tibicen-adopt --copy`,
+      );
+    }
     await expect(
       page.locator('a[href$="INSTALLATION.md#manual-archive-installation"]'),
     ).toBeVisible();
@@ -437,6 +460,13 @@ test('without JavaScript English stays default in a Russian browser and language
       await expect(page.locator(`#prompt-scenarios-${scenario}`)).toContainText(
         `~/.agents/skills/${skill}/SKILL.md`,
       );
+    await page.locator('#preset a').click();
+    await expect(page).toHaveURL(
+      new URL(locale === 'en' ? 'preset/' : 'ru/preset/', baseURL).href,
+    );
+    await expect(page.locator('.preset-details')).toHaveAttribute('open', '');
+    await expect(page.locator('#name')).toBeDisabled();
+    await expect(page.locator('#download-preset')).toBeDisabled();
     await page
       .locator('#name')
       .evaluate((field: HTMLInputElement) => (field.value = 'private-answer'));
@@ -456,6 +486,11 @@ test('without JavaScript English stays default in a Russian browser and language
     await page.waitForLoadState('domcontentloaded');
     if (index < 2) {
       await page.locator(`header a[hreflang="${nextLocale}"]`).click();
+      await expect(page).toHaveURL(
+        new URL(nextLocale === 'en' ? 'preset/' : 'ru/preset/', baseURL).href,
+      );
+      await expect(page.locator('html')).toHaveAttribute('lang', nextLocale);
+      await page.locator('.preset-intro a').click();
     }
   }
   expect(
@@ -486,8 +521,10 @@ test('touch selection and repeated taps work on a mobile viewport', async ({
   });
   const page = await context.newPage();
   await page.goto('./');
+  await page.locator('#preset a').tap();
+  await expect(page).toHaveURL(new URL('preset/', baseURL).href);
   await expect(page.locator('#download-preset')).toBeEnabled();
-  await page.locator('.preset-details > summary').tap();
+  await expect(page.locator('.preset-details')).toHaveAttribute('open', '');
   await page.locator('.advanced > summary').tap();
   const trigger = page.getByRole('combobox', { name: 'Programming language' });
   await trigger.tap();
@@ -523,8 +560,13 @@ for (const locale of ['en', 'ru'] as const) {
       });
     });
     await page.goto(locale === 'en' ? './' : 'ru/');
-    await expect(page.locator('#download-preset')).toBeEnabled();
-    for (const id of ['install-command', 'prompt-scenarios-0']) {
+    await page.locator('.installation-alternatives > summary').click();
+    for (const id of [
+      'install-command',
+      'install-command-pnpm',
+      'install-command-yarn',
+      'prompt-scenarios-0',
+    ]) {
       const button = page.locator(`[data-copy-target="${id}"]`);
       const originalName = await button.getAttribute('aria-label');
       await button.click();

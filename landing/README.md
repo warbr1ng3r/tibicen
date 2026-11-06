@@ -16,14 +16,13 @@ The home page uses a flat graph with moving vertices. Alternative geometry is av
 
 The local address is http://127.0.0.1:8371/. Stop the development server on that port before using preview. Build output goes to `landing/dist/`.
 
-
 ## Languages and first use
 
-The current source serves English at the configured base route (`/` locally) and Russian at `ru/` (`/ru/` locally). The EN/RU links remain visible on mobile and work without JavaScript. Switching languages navigates to another static page and resets unsaved preset answers; it does not change the project's programming-language hint.
+The current source serves English at the configured base route (`/` locally) and Russian at `ru/` (`/ru/` locally). The optional preset builder has separate `preset/` and `ru/preset/` routes. Language links preserve whether you are on the home page or builder. The EN/RU links remain visible on mobile and work without JavaScript. Switching languages navigates to another static page and resets unsaved preset answers; it does not change the project's programming-language hint.
 
-Both pages share one layout and components. Installation and both first prompts are together after the hero, followed by a compact workflow and a clearly illustrative before/after report. Source, release and installation/update/removal links target the canonical English project guides. The optional preset starts collapsed; inferable stack/type/agent hints are in advanced settings. Commands and serialized preset values remain identical between languages. No translation service or new dependency is used.
+All four pages share one layout and components. After the hero, first use has two steps: one pinned npx installation command, then a request for a new or existing setup. Equivalent pnpm/Yarn commands and the manual archive guide are in a native disclosure. The walkthrough shows one illustrative case at a time through native radio selection, including the starting project, request, inspection, proposal, approval and bounded result; trees and exact diffs expand on demand. These controls work without JavaScript. Source, release and installation/update/removal links target the canonical English project guides. The home links to the separate, expanded preset builder; inferable stack/type/agent hints remain in advanced settings. Without JavaScript, builder submission stays disabled. Copying commands initializes even when no preset form exists. Commands and serialized preset values remain identical between languages. No translation service or new dependency is used.
 
-The bilingual iteration was published on 28 October 2026 from [`31694d4`](https://github.com/warbr1ng3r/tibicen/commit/31694d4b234efc82064b8a1799f7a179a6541041). [Ubuntu CI](https://github.com/warbr1ng3r/tibicen/actions/runs/40689855224) and [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/40690279699) passed for that commit. The live English root and Russian `ru/`, eight assets, language switching with/without JavaScript and identical local preset downloads passed; see [verification](../openspec/changes/localize-and-simplify-landing/verification.md#publication). The earlier deployment receipt below is historical.
+This first-use simplification is locally complete and has not been deployed. Its checks are recorded in the [change verification](../openspec/changes/simplify-first-use-landing/verification.md). The original bilingual iteration was published on 28 October 2026 from [`31694d4`](https://github.com/warbr1ng3r/tibicen/commit/31694d4b234efc82064b8a1799f7a179a6541041). [Ubuntu CI](https://github.com/warbr1ng3r/tibicen/actions/runs/40689855224) and [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/40690279699) passed for that commit. The live English root and Russian `ru/`, eight assets, language switching with/without JavaScript and identical local preset downloads passed; see [verification](../openspec/changes/localize-and-simplify-landing/verification.md#publication). The earlier deployment receipt below is historical.
 
 ## GitHub Pages
 
@@ -51,13 +50,13 @@ The [landing page](https://warbr1ng3r.github.io/tibicen/) was published on 27 Oc
 
 ## AstroWind
 
-Sections in `src/components/astrowind/` are adapted from [AstroWind](https://github.com/arthelokyo/astrowind/tree/14e1a691f80548dcc36370847b1a02c0d0b12821): `Features2`, `Steps2`, `FAQs`, `Headline` and `WidgetWrapper`. Widget composition, typed props, Tailwind grids and native details are retained. Unused variants, integrations and reveal animations were removed; Tibicen colors and prompt-copying were added. The full blog/CMS/analytics template was not imported.
+Sections in `src/components/astrowind/` are adapted from [AstroWind](https://github.com/arthelokyo/astrowind/tree/14e1a691f80548dcc36370847b1a02c0d0b12821): `Features2`, `FAQs`, `Headline` and `WidgetWrapper`. Widget composition, typed props, Tailwind grids and native details are retained. Unused variants, integrations and reveal animations were removed; Tibicen colors and prompt-copying were added. The full blog/CMS/analytics template was not imported.
 
 The upstream MIT notice is preserved in `public/licenses/astrowind.txt` and linked from the page. The custom `ProjectPreview`, preset builder and background graphics remain separate Tibicen components.
 
 ## UI components and browser checks
 
-AstroWind is not installed as a package; its adapted sections are stored in the repository. Five selection fields share `src/components/ui/Select.astro`, built on `@starwind-ui/astro/select` with local styles. The full Starwind template, styled registry, React and global theme are not included. `Field.astro` connects labels, descriptions and errors to each field. All answers remain in the browser.
+AstroWind is not installed as a package; its adapted sections are stored in the repository. Three preset selection fields share `src/components/ui/Select.astro`, built on `@starwind-ui/astro/select` with local styles. The full Starwind template, styled registry, React and global theme are not included. `Field.astro` connects labels, descriptions and errors to each field. All answers remain in the browser.
 
 The Starwind UI MIT notice is preserved in `public/licenses/starwind.txt` and included in the static build.
 
@@ -68,15 +67,15 @@ pnpm exec playwright install chromium firefox webkit
 pnpm test:site
 ```
 
-Checks serve the built page on port 8372 without stopping the development server on 8371. They cover mouse and keyboard selection, nine installation commands, errors and local preset downloads, JavaScript disabled, and widths of 320/390/768/1024/1440 px. Touch checks also run in Chromium and WebKit mobile emulation; Firefox skips that scenario because it lacks the required emulation. Chromium reference screenshots are stored in `e2e/controls.spec.ts-snapshots/`; update them deliberately with `pnpm test:site --update-snapshots` after reviewing the changes. Results and failure traces go into the ignored `test-results/landing/` directory. WebKit checks the engine and does not replace testing on a real iPhone.
+Checks serve the built page on port 8372 without stopping the development server on 8371. They cover mouse and keyboard selection, one recommended installation command and two equivalent alternatives, errors and local preset downloads, JavaScript disabled, and widths of 320/390/768/1024/1440 px. Touch checks also run in Chromium and WebKit mobile emulation; Firefox skips that scenario because it lacks the required emulation. Chromium reference screenshots are stored in `e2e/controls.spec.ts-snapshots/`; update them deliberately with `pnpm test:site --update-snapshots` after reviewing the changes. Results and failure traces go into the ignored `test-results/landing/` directory. WebKit checks the engine and does not replace testing on a real iPhone.
 
 Current references were recorded on macOS. Playwright uses separate references for another OS; generate and inspect them in that environment.
 
-`e2e/responsive.spec.ts` checks the whole page at 31 widths from 280 to 5120 px, including media-query boundaries, four short windows, all FAQ answers, graph motion/pause, and layout at CSS viewports equivalent to 200% and 400% zoom in a 1280×900 window. This emulation checks layout and pixel density; it does not replace manually changing browser zoom. In the narrow illustration, explanations move below filenames and long menus scroll within their frame.
+`e2e/responsive.spec.ts` checks home and preset pages at 31 widths from 280 to 5120 px, including media-query boundaries, four short windows, all FAQ answers, graph motion/pause, and layout at CSS viewports equivalent to 200% and 400% zoom in a 1280×900 window. This emulation checks layout and pixel density; it does not replace manually changing browser zoom. In the narrow illustration, explanations move below filenames and long menus scroll within their frame.
 
 ## Product installation and site development
 
-The visitor command pins the 1.1.0 distribution commit `7bbd953a020ac4ac4c7dfb99efa59f6e4b195026` through skills 1.7.4 and npm, pnpm or Yarn 2+. Site source and dependencies are unnecessary. See [release details](../docs/RELEASING.md) for publication and candidate-bound coverage; [maintenance](../docs/MAINTENANCE.md) records the separately verified Pages deployment and returned bytes. Native discovery/loading remains separately experimental.
+The visitor command pins the 1.4.0 distribution commit `7b3b08f58276034b1609e44ef393e5f7c0e01a1b` through skills 1.7.4. npx is recommended; equivalent pnpm and Yarn 2+ commands are optional. Site source and dependencies are unnecessary. See [release details](../docs/RELEASING.md) for publication and candidate-bound coverage; [maintenance](../docs/MAINTENANCE.md) records the separately verified Pages deployment and returned bytes. Native discovery/loading remains separately experimental.
 
 Historically, public full-SHA installation of 1.0.0 (`e8532bba0582564c93e50de1f55174daaa9bbd34`) for Codex, Claude Code and Cursor matched all 86 payload files, with matching release asset hashes and deployed Pages metadata. The alpha tag `v0.1.0-alpha.1` and page were published on 27 October 2026 after Git delivery checks: full-SHA and tag installations matched all 86 distribution files, and resume/removal checks passed. Alpha native observations cover macOS, Node 24 and Codex.
 

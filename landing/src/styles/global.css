@@ -625,9 +625,6 @@
     font-size: 15px;
     margin-bottom: 16px;
   }
-  .installation > .install-run {
-    margin-block: 24px 0;
-  }
   .start-help {
     margin-top: 14px;
     color: var(--muted);
@@ -662,13 +659,7 @@
     text-underline-offset: 3px;
   }
   .first-session {
-    padding-top: 36px;
-  }
-  .first-session > p + p {
-    margin-top: 8px;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.8;
+    padding-bottom: 24px;
   }
   .project-links {
     display: flex;
@@ -841,8 +832,28 @@
   .preset-intro {
     min-width: 0;
   }
-  .preset-intro h2 {
+  .preset-intro h1 {
+    font-size: clamp(32px, 4vw, 47px);
+    line-height: 1.2;
     margin-bottom: 22px;
+  }
+  .preset-link {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-block: 48px;
+    border-top: 1px solid var(--line);
+  }
+  .preset-link h2 {
+    margin-bottom: 12px;
+    font-size: clamp(26px, 3vw, 36px);
+  }
+  .preset-link p:not(.eyebrow) {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
   }
   .preset-intro > p:not(.eyebrow) {
     max-width: 335px;
@@ -1207,7 +1218,7 @@
       grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
       gap: 30px;
     }
-    .preset-intro h2 {
+    .preset-intro h1 {
       font-size: 34px;
     }
     .choice-grid {
@@ -1393,10 +1404,7 @@
       grid-template-columns: minmax(0, 1fr);
       gap: 25px;
     }
-    .preset-intro h2 br {
-      display: none;
-    }
-    .preset-intro h2 {
+    .preset-intro h1 {
       font-size: 34px;
     }
     .preset-intro > p:not(.eyebrow) {
@@ -1481,23 +1489,6 @@
     .hero-surface::before {
       transform: none;
       will-change: auto;
-    }
-  }
-  .install-options {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
-    gap: 16px;
-    margin-block: 24px 0;
-  }
-  .install-options label {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--muted);
-    font-size: 13px;
-  }
-  @media (max-width: 360px) {
-    .install-options {
-      grid-template-columns: 1fr;
     }
   }
 }
@@ -1612,4 +1603,9 @@
       transition: none;
     }
   }
+}
+
+/* Override the shared widget's utility spacing for the continuous first-use flow. */
+#start #scenarios > .page-width {
+  padding-block: 48px 24px;
 }

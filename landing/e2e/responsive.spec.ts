@@ -61,25 +61,44 @@ async function expectPageToFit(page: Page) {
 
 test.beforeEach(async ({ page }) => {
   await page.goto('./');
-  await expect(page.locator('#language')).toHaveAttribute(
-    'aria-controls',
-    /.+/,
-  );
+  await expect(page.locator('#install-command')).toBeVisible();
 });
 
-test('whole page fits 31 widths, including both sides of layout breakpoints', async ({
-  page,
-}) => {
-  const errors: string[] = [];
-  page.on('pageerror', (error) => errors.push(error.message));
-  await page.locator('.preset-details > summary').click();
-  await page.locator('.advanced > summary').click();
-  for (const width of widths) {
-    await page.setViewportSize({ width, height: 900 });
-    await expectPageToFit(page);
-  }
-  expect(errors).toEqual([]);
-});
+for (const route of ['./', 'preset/']) {
+  test(`${route} fits 31 widths, including both sides of layout breakpoints`, async ({
+    page,
+  }) => {
+    const errors: string[] = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    await page.goto(route);
+    if (route === 'preset/') {
+      await expect(page.locator('#download-preset')).toBeEnabled();
+      await expect(page.locator('.preset-details')).toHaveAttribute('open', '');
+      await page.locator('.advanced > summary').click();
+    } else {
+      await page.locator('.installation-alternatives > summary').click();
+      for (const kind of ['init', 'adopt']) {
+        await page.locator(`label[for="example-choice-${kind}"]`).click();
+        for (const summary of await page
+          .locator(`#walkthrough-${kind} details > summary`)
+          .all())
+          await summary.click();
+      }
+    }
+    for (const width of widths) {
+      await page.setViewportSize({ width, height: 900 });
+      if (route === './') {
+        for (const kind of ['init', 'adopt']) {
+          await page.locator(`label[for="example-choice-${kind}"]`).click();
+          await expectPageToFit(page);
+        }
+      } else {
+        await expectPageToFit(page);
+      }
+    }
+    expect(errors).toEqual([]);
+  });
+}
 
 for (const [width, height] of [
   [568, 320],
@@ -91,10 +110,12 @@ for (const [width, height] of [
     page,
   }) => {
     await page.setViewportSize({ width, height });
-    await page.locator('.preset-details > summary').click();
+    await page.goto('preset/');
+    await expect(page.locator('#download-preset')).toBeEnabled();
     await page.locator('.advanced > summary').click();
-    for (const id of ['install-manager', 'language', 'kind', 'style']) {
+    for (const id of ['language', 'kind', 'style']) {
       const trigger = page.locator(`#${id}`);
+      await expect(trigger).toHaveAttribute('aria-controls', /.+/);
       await trigger.click();
       const popup = page.getByRole('listbox');
       await expect(popup.locator('[data-highlighted]')).toBeFocused();
@@ -135,13 +156,18 @@ for (const scale of [2, 4]) {
       reducedMotion: 'reduce',
     });
     const page = await context.newPage();
-    await page.goto('./');
-    await expect(page.locator('#download-preset')).toBeEnabled();
-    await page.locator('.preset-details > summary').click();
-    await page.locator('.advanced > summary').click();
-    await expectPageToFit(page);
-    await page.locator('#download-preset').scrollIntoViewIfNeeded();
-    await expect(page.locator('#download-preset')).toBeInViewport();
+    for (const route of ['./', 'preset/']) {
+      await page.goto(route);
+      if (route === 'preset/') {
+        await expect(page.locator('#download-preset')).toBeEnabled();
+        await page.locator('.advanced > summary').click();
+        await page.locator('#download-preset').scrollIntoViewIfNeeded();
+        await expect(page.locator('#download-preset')).toBeInViewport();
+      } else {
+        await page.locator('.installation-alternatives > summary').click();
+      }
+      await expectPageToFit(page);
+    }
     await context.close();
   });
 }
@@ -208,21 +234,26 @@ test('graph animates, resizes and stops for reduced motion', async ({
 test('Russian layout and mobile language switch fit phone and desktop', async ({
   page,
 }) => {
-  await page.goto('ru/');
-  await expect(page.locator('#download-preset')).toBeEnabled();
-  await page.locator('.preset-details > summary').click();
-  await page.locator('.advanced > summary').click();
-  for (const width of [390, 1440]) {
-    await page.setViewportSize({ width, height: 900 });
-    await page.evaluate(() => window.scrollTo(0, 0));
-    await expect(page.locator('header a[hreflang="en"]')).toBeInViewport();
-    await expect(page.locator('header a[hreflang="en"]')).toBeVisible();
-    await expectPageToFit(page);
-    for (const question of await page.locator('#faq details').all()) {
-      if (!(await question.evaluate((el: HTMLDetailsElement) => el.open)))
-        await question.locator('summary').click();
-      await expect(question.locator('p')).toBeVisible();
+  for (const route of ['ru/', 'ru/preset/']) {
+    await page.goto(route);
+    if (route === 'ru/preset/') {
+      await expect(page.locator('#download-preset')).toBeEnabled();
+      await page.locator('.advanced > summary').click();
+    }
+    for (const width of [390, 1440]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await expect(page.locator('header a[hreflang="en"]')).toBeInViewport();
+      await expect(page.locator('header a[hreflang="en"]')).toBeVisible();
       await expectPageToFit(page);
+      if (route === 'ru/') {
+        for (const question of await page.locator('#faq details').all()) {
+          if (!(await question.evaluate((el: HTMLDetailsElement) => el.open)))
+            await question.locator('summary').click();
+          await expect(question.locator('p')).toBeVisible();
+          await expectPageToFit(page);
+        }
+      }
     }
   }
 });

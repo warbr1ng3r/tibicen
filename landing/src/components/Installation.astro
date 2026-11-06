@@ -1,6 +1,5 @@
 ---
-import { managers, installationCommand } from '../scripts/install';
-import Select from './ui/Select.astro';
+import { installationCommand, type Manager } from '../scripts/install';
 import { localize, type Locale } from '../i18n';
 
 interface Props {
@@ -8,11 +7,15 @@ interface Props {
 }
 const { locale = 'en' } = Astro.props;
 const t = (en: string, ru: string) => localize(locale, en, ru);
+const alternatives: { manager: Manager; label: string }[] = [
+  { manager: 'pnpm', label: 'pnpm' },
+  { manager: 'yarn', label: 'Yarn 2+' },
+];
 ---
 
 <div class="installation">
   <p class="start-step">
-    {t('1. Choose a command runner', '1. Выберите способ запуска')}
+    {t('1. Run this in your terminal', '1. Выполните в терминале')}
   </p>
   <div class="installation-head">
     <span>Tibicen 1.4.0</span>
@@ -39,40 +42,38 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
       <span data-copy-label>{t('Copy', 'Копировать')}</span>
     </button>
   </div>
-  <fieldset
-    id="install-controls"
-    class="install-options"
-    aria-label={t('Installation options', 'Настройки установки')}
-    disabled
-  >
-    <div>
-      <label for="install-manager">
-        {t('Command runner', 'Чем запустить команду')}
-      </label>
-      <Select
-        id="install-manager"
-        label={t('Command runner', 'Чем запустить команду')}
-        value="npm"
-        options={Object.keys(managers).map((value) => ({
-          value,
-          label: value === 'yarn' ? 'Yarn 2+' : value,
-        }))}
-      />
-    </div>
-  </fieldset>
-  <p class="start-step install-run">
-    {t('2. Run this in your terminal', '2. Выполните в терминале')}
-  </p>
   <pre><code id="install-command">{installationCommand('npm')}</code></pre>
   <p>
-    {t('Installs both complete skills in', 'Установит оба скилла целиком в')}{' '}
+    {t('Installs both skills in', 'Установит оба скилла в')}{' '}
     <code>~/.agents/skills/</code>.
     {t(
-      ' Open the entry file explicitly in your agent. Back up local skill edits before reinstalling.',
-      ' Явно откройте файл скилла в своём агенте. Перед переустановкой сохраните локальные правки скиллов.',
+      ' Back up local skill edits before reinstalling.',
+      ' Перед переустановкой сохраните локальные правки скиллов.',
     )}
   </p>
-  <p>
+  <details class="installation-alternatives">
+    <summary>
+      {t('Other installation methods', 'Другие способы установки')}
+    </summary>
+    {alternatives.map(({ manager, label }) => (
+      <div class="installation-alternative">
+        <div class="installation-head">
+          <span>{label}</span>
+          <button
+            class="copy-button"
+            type="button"
+            data-copy-target={`install-command-${manager}`}
+            aria-label={t(
+              `Copy ${label} installation command`,
+              `Скопировать команду установки для ${label}`,
+            )}
+          >
+            <span data-copy-label>{t('Copy', 'Копировать')}</span>
+          </button>
+        </div>
+        <pre><code id={`install-command-${manager}`}>{installationCommand(manager)}</code></pre>
+      </div>
+    ))}
     <a href="https://github.com/warbr1ng3r/tibicen/blob/main/docs/INSTALLATION.md#manual-archive-installation">
       {t(
         'Manual archive installation and checksums',
@@ -80,21 +81,24 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
       )}{' '}
       ↗
     </a>
-  </p>
-  <noscript>
-    <p>
-      {t(
-        'Without JavaScript, the command uses npm and the universal folder. For pnpm use',
-        'Без JavaScript показана команда для npm и общей папки. Для pnpm используйте',
-      )}{' '}
-      <code>pnpm dlx</code>
-      {t(', for Yarn 2+ use', ', для Yarn 2+ —')} <code>yarn dlx</code>{' '}
-      {t('instead of', 'вместо')} <code>npx</code>.{t(' Keep', ' Сохраните')}{' '}
-      <code>--agent universal</code>.
-    </p>
-  </noscript>
+  </details>
 </div>
-<script>
-  import { mountInstallation } from '../scripts/install';
-  mountInstallation();
-</script>
+
+<style>
+  .installation-alternatives {
+    margin-top: 18px;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+    font-size: 12px;
+    line-height: 1.85;
+  }
+  .installation-alternatives > summary {
+    cursor: pointer;
+    color: var(--ink);
+    min-height: 44px;
+    padding-block: 10px;
+  }
+  .installation-alternative {
+    margin-top: 18px;
+  }
+</style>

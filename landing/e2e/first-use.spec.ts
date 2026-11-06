@@ -7,7 +7,7 @@ for (const locale of ['en', 'ru'] as const) {
     }) => {
       await page.setViewportSize({ width, height: 844 });
       await page.goto(locale === 'en' ? './' : 'ru/');
-      await expect(page.locator('#install-controls')).toBeEnabled();
+      await expect(page.locator('#install-command')).toBeVisible();
       const measurements = await page.evaluate(() => {
         const top = (selector: string) =>
           document.querySelector(selector)!.getBoundingClientRect().top +
@@ -47,13 +47,67 @@ for (const locale of ['en', 'ru'] as const) {
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth),
       ).toBe(width);
-      await expect(page.locator('.preset-details')).not.toHaveAttribute('open');
+      await expect(page.locator('#preset-form')).toHaveCount(0);
+      await expect(page.locator('#preset a')).toHaveAttribute(
+        'href',
+        /\/(?:ru\/)?preset\/$/,
+      );
       await expect(
         page.locator('#walkthrough-init [data-step="proposal"]'),
       ).toBeVisible();
+      await expect(page.locator('#walkthrough-adopt')).toBeHidden();
+      await page.locator('#example-choice-init').focus();
+      await page.keyboard.press('ArrowRight');
+      await expect(page.locator('#example-choice-adopt')).toBeChecked();
+      await expect(page.locator('#walkthrough-init')).toBeHidden();
       await expect(
         page.locator('#walkthrough-adopt [data-step="approval"]'),
       ).toBeVisible();
+      const proposed = page.locator(
+        '#walkthrough-adopt [data-step="proposal"]',
+      );
+      await proposed.locator('summary').click();
+      await expect(proposed.locator('.proposal-diff')).toBeVisible();
     });
   }
+
+  test(`${locale}: the installation and both examples work without JavaScript`, async ({
+    browser,
+    baseURL,
+  }) => {
+    const context = await browser.newContext({
+      javaScriptEnabled: false,
+      baseURL,
+    });
+    const page = await context.newPage();
+    await page.goto(locale === 'en' ? './' : 'ru/');
+    await expect(page.locator('#install-command')).toBeVisible();
+    await page.locator('.installation-alternatives > summary').click();
+    await expect(page.locator('#install-command-pnpm')).toBeVisible();
+    await expect(page.locator('#install-command-yarn')).toBeVisible();
+    await expect(page.locator('#walkthrough-init')).toBeVisible();
+    await expect(page.locator('#walkthrough-adopt')).toBeHidden();
+    await page.locator('label[for="example-choice-adopt"]').click();
+    await expect(page.locator('#walkthrough-init')).toBeHidden();
+    await expect(page.locator('#walkthrough-adopt')).toBeVisible();
+    await page
+      .locator('#walkthrough-adopt [data-step="before"] summary')
+      .click();
+    await expect(
+      page.locator('#walkthrough-adopt [data-step="before"] pre').first(),
+    ).toContainText('notes-api/');
+    await page.locator('#preset a').click();
+    await expect(page).toHaveURL(/\/(?:ru\/)?preset\/$/);
+    await expect(page.locator('#download-preset')).toBeDisabled();
+    await page
+      .locator(
+        `.language-switch a[hreflang="${locale === 'en' ? 'ru' : 'en'}"]`,
+      )
+      .click();
+    await expect(page).toHaveURL(
+      locale === 'en' ? /\/ru\/preset\/$/ : /(?<!\/ru)\/preset\/$/,
+    );
+    await expect(page.locator('#download-preset')).toBeDisabled();
+    await context.close();
+  });
 }

@@ -8,9 +8,6 @@ import { localize, type Locale } from '../i18n.ts';
 const locale: Locale = document.documentElement.lang === 'ru' ? 'ru' : 'en';
 const t = (en: string, ru: string) => localize(locale, en, ru);
 
-const form = document.querySelector<HTMLFormElement>('#preset-form')!;
-const error = document.querySelector<HTMLElement>('#form-error')!;
-const status = document.querySelector<HTMLElement>('#download-status')!;
 const copyStatus = document.querySelector<HTMLElement>('#copy-status')!;
 let latestCopy = 0;
 
@@ -79,90 +76,101 @@ for (const button of document.querySelectorAll<HTMLButtonElement>(
   });
 }
 
-function clearFieldError(field: Element) {
-  field
-    .querySelectorAll('[aria-invalid]')
-    .forEach((control) => control.removeAttribute('aria-invalid'));
-  const message = field.querySelector<HTMLElement>('[data-field-error]');
-  if (message) {
-    message.hidden = true;
-    message.textContent = '';
+function initializePreset() {
+  const form = document.querySelector<HTMLFormElement>('#preset-form');
+  if (!form) return;
+  const error = document.querySelector<HTMLElement>('#form-error')!;
+  const status = document.querySelector<HTMLElement>('#download-status')!;
+
+  function clearFieldError(field: Element) {
+    field
+      .querySelectorAll('[aria-invalid]')
+      .forEach((control) => control.removeAttribute('aria-invalid'));
+    const message = field.querySelector<HTMLElement>('[data-field-error]');
+    if (message) {
+      message.hidden = true;
+      message.textContent = '';
+    }
   }
+
+  form.addEventListener('input', (event) => {
+    const field = (event.target as Element).closest('[data-field]');
+    if (field) clearFieldError(field);
+  });
+  form.addEventListener('starwind:value-change', (event) => {
+    const field = (event.target as Element).closest('[data-field]');
+    if (field) clearFieldError(field);
+  });
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    form.querySelectorAll('[data-field]').forEach(clearFieldError);
+    error.hidden = true;
+    status.textContent = '';
+    try {
+      const data = new FormData(form);
+      const preset = buildPreset(
+        {
+          name: data.get('name'),
+          language: data.get('language'),
+          kind: data.get('kind'),
+          process: data.get('process'),
+          style: data.get('style'),
+          agents: data.getAll('agents'),
+          customAgents: data.get('customAgents'),
+          forbiddenPaths: data.get('forbiddenPaths'),
+        },
+        locale,
+      );
+      const blob = new Blob([serializePreset(preset)], {
+        type: 'application/yaml;charset=utf-8',
+      });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'preset.yaml';
+      document.body.append(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      status.textContent = t(
+        'File prepared for download. Give it to your agent in the target project.',
+        'Файл подготовлен к скачиванию. Передайте его агенту в нужном проекте.',
+      );
+    } catch (cause) {
+      if (cause instanceof PresetValidationError) {
+        const field = form.querySelector(`[data-field="${cause.field}"]`);
+        const control = field?.querySelector<HTMLElement>(
+          'input:not([type="hidden"]), textarea, [role="combobox"]',
+        );
+        const message = field?.querySelector<HTMLElement>('[data-field-error]');
+        if (control && message) {
+          const details =
+            control.closest<HTMLDetailsElement>('details.advanced');
+          if (details) details.open = true;
+          control.setAttribute('aria-invalid', 'true');
+          message.textContent = cause.message;
+          message.hidden = false;
+          control.focus();
+          return;
+        }
+      }
+      error.textContent =
+        cause instanceof PresetValidationError
+          ? cause.message
+          : t(
+              'Could not prepare the file. Try downloading it again.',
+              'Не удалось подготовить файл. Попробуйте скачать его ещё раз.',
+            );
+      error.hidden = false;
+    }
+  });
+
+  // Keep native submission disabled until the local download handler is installed.
+  document.querySelector<HTMLButtonElement>('#download-preset')!.disabled =
+    false;
+  document.querySelector<HTMLFieldSetElement>('#preset-controls')!.disabled =
+    false;
 }
 
-form.addEventListener('input', (event) => {
-  const field = (event.target as Element).closest('[data-field]');
-  if (field) clearFieldError(field);
-});
-form.addEventListener('starwind:value-change', (event) => {
-  const field = (event.target as Element).closest('[data-field]');
-  if (field) clearFieldError(field);
-});
-
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  form.querySelectorAll('[data-field]').forEach(clearFieldError);
-  error.hidden = true;
-  status.textContent = '';
-  try {
-    const data = new FormData(form);
-    const preset = buildPreset(
-      {
-        name: data.get('name'),
-        language: data.get('language'),
-        kind: data.get('kind'),
-        process: data.get('process'),
-        style: data.get('style'),
-        agents: data.getAll('agents'),
-        customAgents: data.get('customAgents'),
-        forbiddenPaths: data.get('forbiddenPaths'),
-      },
-      locale,
-    );
-    const blob = new Blob([serializePreset(preset)], {
-      type: 'application/yaml;charset=utf-8',
-    });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'preset.yaml';
-    document.body.append(link);
-    link.click();
-    link.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    status.textContent = t(
-      'File prepared for download. Give it to your agent in the target project.',
-      'Файл подготовлен к скачиванию. Передайте его агенту в нужном проекте.',
-    );
-  } catch (cause) {
-    if (cause instanceof PresetValidationError) {
-      const field = form.querySelector(`[data-field="${cause.field}"]`);
-      const control = field?.querySelector<HTMLElement>(
-        'input:not([type="hidden"]), textarea, [role="combobox"]',
-      );
-      const message = field?.querySelector<HTMLElement>('[data-field-error]');
-      if (control && message) {
-        const details = control.closest<HTMLDetailsElement>('details.advanced');
-        if (details) details.open = true;
-        control.setAttribute('aria-invalid', 'true');
-        message.textContent = cause.message;
-        message.hidden = false;
-        control.focus();
-        return;
-      }
-    }
-    error.textContent =
-      cause instanceof PresetValidationError
-        ? cause.message
-        : t(
-            'Could not prepare the file. Try downloading it again.',
-            'Не удалось подготовить файл. Попробуйте скачать его ещё раз.',
-          );
-    error.hidden = false;
-  }
-});
-
-// Keep native submission disabled until the local download handler is installed.
-document.querySelector<HTMLButtonElement>('#download-preset')!.disabled = false;
-document.querySelector<HTMLFieldSetElement>('#preset-controls')!.disabled =
-  false;
+initializePreset();

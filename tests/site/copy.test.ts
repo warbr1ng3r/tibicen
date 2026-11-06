@@ -22,7 +22,12 @@ const source = ts
 function page({
   clipboard,
   fallback = true,
-}: { clipboard?: Pick<Clipboard, 'writeText'>; fallback?: boolean } = {}) {
+  preset = true,
+}: {
+  clipboard?: Pick<Clipboard, 'writeText'>;
+  fallback?: boolean;
+  preset?: boolean;
+} = {}) {
   const status = { textContent: '' };
   const form = { addEventListener() {} };
   const download = { disabled: true };
@@ -52,7 +57,9 @@ function page({
     activeElement: focused as unknown,
     querySelector(selector: string) {
       return selector === '#preset-form'
-        ? form
+        ? preset
+          ? form
+          : null
         : selector === '#download-preset'
           ? download
           : status;
@@ -157,6 +164,14 @@ test('selection fallback restores focus and removes its temporary element', asyn
   assert.equal(view.document.activeElement, view.focused);
   assert.equal(view.pendingElements.size, 0);
   assert.equal(view.labels[0].textContent, 'Скопировано');
+});
+
+test('home copy controls work when no preset form exists', async () => {
+  const view = page({ preset: false });
+  await view.buttons[0].click();
+  assert.equal(view.copied, 'text:command-0');
+  assert.equal(view.labels[0].textContent, 'Скопировано');
+  assert.equal(view.status.textContent, 'Скопировано в буфер обмена.');
 });
 
 test('an outdated clipboard rejection cannot overwrite a newer copy through fallback', async () => {

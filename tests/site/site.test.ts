@@ -32,17 +32,10 @@ async function localFile(url: URL) {
 }
 
 for (const { filename, route, locale, other } of pages) {
-  test(`${locale}: preset answers cannot be submitted without JavaScript`, async () => {
+  test(`${locale}: the home links to a secondary preset without adding form controls`, async () => {
     const html = await readFile(new URL(filename, site), 'utf8');
-    const form = html.match(
-      /<form\b[^>]*id="preset-form"[^>]*>([\s\S]*?)<\/form>/,
-    )?.[1];
-    assert.ok(form, 'Preset form must exist.');
-    const submit = form.match(/<button\b[^>]*type="submit"[^>]*>/g);
-    assert.equal(submit?.length, 1);
-    assert.match(submit![0], /\bdisabled(?:[\s=>])/);
-    assert.match(form, /<fieldset\b[^>]*id="preset-controls"[^>]*\bdisabled/);
-    assert.match(html, /<details\s+class="preset-details"\s*>/);
+    assert.doesNotMatch(html, /id="preset-form"|id="install-controls"/);
+    assert.ok(html.includes(`href="${basePath}${route}preset/"`));
   });
 
   test(`${locale}: static page language, first use and project exits are complete`, async () => {
@@ -82,8 +75,8 @@ for (const { filename, route, locale, other } of pages) {
       assert.match(html, /Учебные примеры/);
     }
     assert.match(html, new RegExp(`<a\\b[^>]*hreflang="${other}"`));
-    const sections = ['start', 'workflow', 'result', 'faq', 'preset'].map(
-      (id) => html.indexOf(`id="${id}"`),
+    const sections = ['start', 'result', 'faq', 'preset'].map((id) =>
+      html.indexOf(`id="${id}"`),
     );
     assert.ok(sections.every((offset) => offset > 0));
     assert.deepEqual(
@@ -123,19 +116,12 @@ for (const { filename, route, locale, other } of pages) {
     const html = await readFile(new URL(filename, site), 'utf8');
     const start = html.slice(
       html.indexOf('id="start"'),
-      html.indexOf('id="workflow"'),
+      html.indexOf('id="result"'),
     );
-    const route = [
-      '1. Choose a command runner',
-      '2. Run this in your terminal',
-      '3. Open the skill in your project session',
-      '4. Send your first request',
-    ];
+    const route = ['1. Run this in your terminal', '2. Send one request'];
     const translatedRoute = [
-      '1. Выберите способ запуска',
-      '2. Выполните в терминале',
-      '3. Откройте скилл в сессии проекта',
-      '4. Отправьте первый запрос',
+      '1. Выполните в терминале',
+      '2. Отправьте один запрос',
     ];
     const positions = (locale === 'en' ? route : translatedRoute).map((label) =>
       start.indexOf(label),
@@ -217,8 +203,14 @@ for (const { filename, route, locale, other } of pages) {
     }
     assert.doesNotMatch(result, /project-memory|\.agents\/memory\.md|1\.1\.0/);
   });
+}
 
-  test(`${locale}: IDs, accessible associations, local resources and destination fragments resolve`, async () => {
+for (const { filename, route } of [
+  ...pages,
+  { filename: 'preset/index.html', route: '/preset/' },
+  { filename: 'ru/preset/index.html', route: '/ru/preset/' },
+]) {
+  test(`${route}: IDs, accessible associations, local resources and destination fragments resolve`, async () => {
     const html = await readFile(new URL(filename, site), 'utf8');
     const ids = idsIn(html);
     assert.equal(

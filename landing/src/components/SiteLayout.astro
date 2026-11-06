@@ -1,0 +1,152 @@
+---
+import { localize, type Locale } from '../i18n';
+import '../styles/global.css';
+
+interface Props {
+  locale: Locale;
+  preset?: boolean;
+}
+const { locale, preset = false } = Astro.props;
+const t = (en: string, ru: string) => localize(locale, en, ru);
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const home = `${basePath}/${locale === 'ru' ? 'ru/' : ''}`;
+const repository = 'https://github.com/warbr1ng3r/tibicen';
+const guide = `${repository}/blob/main/README.md`;
+const release = `${repository}/releases/tag/v1.4.0`;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#1c1c1c" />
+    <meta
+      name="description"
+      content={
+        preset
+          ? t(
+              'Save reusable preferences for your coding agent. Build and download a Tibicen preset locally in your browser.',
+              'Сохраните предпочтения для агента. Соберите и скачайте пресет Tibicen локально в браузере.',
+            )
+          : t(
+              'Set up project instructions and only the tools your coding agent needs. Review the exact plan before changes and receive a clear verification report.',
+              'Настройте инструкции проекта и только нужные агенту инструменты. Сначала согласуйте точный план, затем получите изменения и понятный отчёт о проверках.',
+            )
+      }
+    />
+    <title>{preset
+      ? t('Tibicen — save your preferences', 'Tibicen — сохраните предпочтения')
+      : t('Tibicen — set up your project for AI coding', 'Tibicen — подготовьте проект к работе с агентом')}</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href={`${basePath}/assets/favicon.svg`}
+    />
+    <script src="../scripts/app.ts"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      {t('Skip to content', 'К содержимому')}
+    </a>
+    <header class="header page-width">
+      <a
+        class="wordmark"
+        href={home}
+        aria-label={t('Tibicen — home', 'Tibicen — главная')}
+      >
+        <img
+          class="brand-mark"
+          src={`${basePath}/assets/logo.svg`}
+          width="36"
+          height="36"
+          alt=""
+        />
+        tibicen
+      </a>
+      <nav aria-label={t('Main navigation', 'Основная навигация')}>
+        <a href={`${home}#start`}>{t('Get started', 'Начать')}</a>
+        <a href={`${home}#result`}>{t('Example', 'Пример')}</a>
+        <a href={`${home}#faq`}>{t('Questions', 'Вопросы')}</a>
+      </nav>
+      <div
+        class="language-switch"
+        role="group"
+        aria-label={t('Page language', 'Язык страницы')}
+      >
+        <a
+          href={`${basePath}/${preset ? 'preset/' : ''}`}
+          hreflang="en"
+          lang="en"
+          aria-label="English"
+          aria-current={locale === 'en' ? 'page' : undefined}
+        >
+          EN
+        </a>
+        <a
+          href={`${basePath}/ru/${preset ? 'preset/' : ''}`}
+          hreflang="ru"
+          lang="ru"
+          aria-label="Русский"
+          aria-current={locale === 'ru' ? 'page' : undefined}
+        >
+          RU
+        </a>
+      </div>
+      <a class="header-start" href={`${home}#start`}>
+        {t('Install', 'Установить')} <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="footer page-width">
+      <a
+        class="wordmark"
+        href={home}
+        aria-label={t('Tibicen — home', 'Tibicen — главная')}
+      >
+        <img
+          class="brand-mark"
+          src={`${basePath}/assets/logo.svg`}
+          width="28"
+          height="28"
+          alt=""
+        />
+        tibicen
+      </a>
+      <div class="project-links">
+        <a href={repository}>GitHub</a>
+        <a href={guide}>{t('Documentation', 'Документация')}</a>
+        <a href={release}>{t('Release notes', 'Описание релиза')}</a>
+        <a href={`${basePath}/maintenance/index.json`}>
+          {t('Advisories and checksums', 'Предупреждения и суммы')}
+        </a>
+        <a href={`${guide}#update-or-remove-an-installation`}>
+          {t('Update or remove', 'Обновить или удалить')}
+        </a>
+        <a href={`${repository}/blob/main/LICENSE`}>MIT</a>
+      </div>
+      <span>
+        {t('Sections adapted from', 'Секции на основе')} AstroWind ·{' '}
+        <a href={`${basePath}/licenses/astrowind.txt`}>AstroWind MIT</a> ·{' '}
+        <a href={`${basePath}/licenses/starwind.txt`}>Starwind MIT</a>
+      </span>
+    </footer>
+    <p
+      id="copy-status"
+      class="copy-status"
+      role="status"
+      aria-live="polite"
+    ></p>
+    <noscript>
+      <p class="noscript-note">
+        {t(
+          'Installation commands, prompts and language links work without JavaScript. Enable JavaScript to copy text or download a preset.',
+          'Команды установки, запросы и ссылки языка работают без JavaScript. Для копирования и скачивания пресета включите JavaScript.',
+        )}
+      </p>
+    </noscript>
+  </body>
+</html>
