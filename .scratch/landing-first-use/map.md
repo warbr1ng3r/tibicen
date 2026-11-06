@@ -35,3 +35,7 @@ All four tickets and six change tasks are complete. [Verification](../../openspe
 ## Source handoff authorization
 
 After local acceptance the owner asked to push the reviewed result. Root prepares the local commit and curated public-source commit, preserving historical private omissions. Public CI is checked after push; separate Pages deployment is outside this handoff.
+
+## Publication complete
+
+Public source `a6d54bc` passed CI 42154948265. Owner-authorized Pages 42156035977 deployed the same source successfully; four live EN/RU routes and identical 204-byte presets passed desktop/mobile/no-JS checks. See the change verification for actual limits. Skill release 1.4.0 is unchanged.

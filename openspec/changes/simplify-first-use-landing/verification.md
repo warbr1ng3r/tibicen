@@ -1,6 +1,6 @@
 # Verification — simpler first use
 
-Date: 6 November 2026. Local implementation only; no commit, push or deployment.
+Date: 6 November 2026. Local acceptance snapshot below; subsequent source publication and Pages delivery are recorded in Publication.
 
 ## Result
 
@@ -33,3 +33,11 @@ This packet has not changed the public site or performed a real installation, pa
 ## Source handoff
 
 After local acceptance, the owner authorized preparing a commit and pushing this checked packet. The handoff preserves private omissions and public history. This does not authorize the separate Pages deployment or create a new skill release; network delivery and CI outcomes are recorded separately from the local observations above.
+
+## Publication
+
+The owner subsequently authorized the source push and explicitly requested the site update. Public source [`a6d54bc`](https://github.com/warbr1ng3r/tibicen/commit/a6d54bc6901bbf212cbfd889385d77b82e4b2f4f) passed [CI 42154948265](https://github.com/warbr1ng3r/tibicen/actions/runs/42154948265). Existing [Pages workflow 42156035977](https://github.com/warbr1ng3r/tibicen/actions/runs/42156035977) built and deployed that exact source successfully; the one-line dispatcher source binding passed independent Ponytail review and invoked no release/maintenance mutation.
+
+Post-deploy Chromium checked the four public routes (`/tibicen/`, `/tibicen/ru/`, `/tibicen/preset/`, `/tibicen/ru/preset/`) at 1440×1000 and 390×1000. Checked one default command/closed alternatives, one native-switchable example, locale/page-kind navigation, expanded builder, no horizontal overflow and two identical 204-byte preset downloads (SHA-256 `0b53cd3165875f98327843dc4524ff7e115e3e458a31f4f3fd8603563f38122e`). Both no-JavaScript language flows passed, including disabled form controls. The monitored desktop/mobile JavaScript pass had no page errors, HTTP error responses or unexpected external/non-GET requests. Rendered pages were inspected. The first live-check attempt stopped on a fieldset-specific Playwright matcher assertion; the disabled attribute was present, the assertion was corrected and the failed local receipt retained before the successful rerun.
+
+Live checks used normal TLS with a fixed GitHub Pages hostname resolution. They did not download the official Actions artifact, establish full returned-byte equality, install skills or repeat the offline/platform matrix. The deployed maintenance index and frozen 1.4.0 distribution were not changed by this packet.
