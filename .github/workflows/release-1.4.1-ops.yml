@@ -603,7 +603,7 @@ jobs:
           python3 - <<'PYCODE'
           import base64,hashlib,json,os,re,subprocess
           token=os.environ['GH_TOKEN']
-          result=subprocess.run(['gh','api','--method','GET','repos/warbr1ng3r/tibicen/actions/jobs/127742966717/logs','-H','X-GitHub-Api-Version: 2026-03-10'],capture_output=True,timeout=45)
+          result=subprocess.run(['gh','api','--allow-escape-sequences','--method','GET','repos/warbr1ng3r/tibicen/actions/jobs/127742966717/logs','-H','X-GitHub-Api-Version: 2026-03-10'],capture_output=True,timeout=45)
           raw=result.stdout if result.returncode==0 else result.stderr
           text=raw.decode('utf-8',errors='replace').replace(token,'[token-redacted]')
           text=re.sub(r'\x1b\[[0-?]*[ -/]*[@-~]','',text)
