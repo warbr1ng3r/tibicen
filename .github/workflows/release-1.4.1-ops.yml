@@ -591,42 +591,36 @@ jobs:
       github.run_attempt == 1 &&
       github.event.head_commit.message == 'release-1.4.1-ops: audit-diagnosis'
     runs-on: ubuntu-24.04
-    timeout-minutes: 8
+    timeout-minutes: 2
     permissions:
-      contents: read
       actions: read
-    env:
-      DIAGNOSIS_SCRIPT_SHA256: 78288d2968373c2fd28566552e499b83463824033be420256f3dd7ee6cfe12c2
     steps:
-      - name: Read only the exact operations commit
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          ref: ${{ github.sha }}
-          persist-credentials: false
-
-      - name: Retain only existing failed audit evidence
-        shell: bash
+      - name: Read the original failed job log once
         env:
           GH_TOKEN: ${{ github.token }}
+        shell: bash
         run: |
-          set -euo pipefail
-          umask 077
-          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           python3 - <<'PYCODE'
-          from pathlib import Path
-          import hashlib, os
-          file = Path('.release-1.4.1/retain-failed-audit.py')
-          assert file.is_file() and not file.is_symlink()
-          assert hashlib.sha256(file.read_bytes()).hexdigest() == os.environ['DIAGNOSIS_SCRIPT_SHA256']
+          import base64,hashlib,json,os,re,subprocess
+          token=os.environ['GH_TOKEN']
+          result=subprocess.run(['gh','api','--method','GET','repos/warbr1ng3r/tibicen/actions/jobs/127742966717/logs','-H','X-GitHub-Api-Version: 2026-03-10'],capture_output=True,timeout=45)
+          raw=result.stdout if result.returncode==0 else result.stderr
+          text=raw.decode('utf-8',errors='replace').replace(token,'[token-redacted]')
+          text=re.sub(r'\x1b\[[0-?]*[ -/]*[@-~]','',text)
+          text=re.sub(r'(?i)(authorization\s*:\s*(?:bearer|token)\s+)\S+',r'\1[redacted]',text)
+          text=re.sub(r'\b(?:github_pat_|gh[pousr]_)[A-Za-z0-9_]+','[token-redacted]',text)
+          text=re.sub(r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}','[contact-redacted]',text)
+          text=re.sub(r'(?<![A-Za-z0-9:/])/(?:Users|private|var|home|tmp|opt|root|usr)(?:/[^\s"\'<>]*)?','[absolute-path-redacted]',text)
+          lines=text.splitlines()
+          stop=next((i+1 for i,line in enumerate(lines) if 'Process completed with exit code 1' in line),len(lines))
+          chosen=[line[:250] for line in lines[max(0,stop-22):stop]]
+          value={'sourceJobId':127742966717,'sourceAuditRunId':42172383940,'sourceAuditCommit':'ef7f819ba8be7953d21efa4df09dd6e6ad2eb006','sourceAuditConclusion':'failure','logGetAttempts':1,'logGetExitCode':result.returncode,'rawBytes':len(raw),'rawSha256':hashlib.sha256(raw).hexdigest(),'excerptLines':chosen,'courierCommit':os.environ['GITHUB_SHA'],'courierRunId':os.environ['GITHUB_RUN_ID'],'newAuditOrDeployment':False}
+          data=json.dumps(value,separators=(',',':')).encode()
+          assert token.encode() not in data
+          encoded=base64.b64encode(data).decode()
+          parts=[encoded[i:i+3000] for i in range(0,len(encoded),3000)]
+          assert 1<=len(parts)<=5
+          manifest={'sha256':hashlib.sha256(data).hexdigest(),'bytes':len(data),'parts':len(parts),'courierCommit':os.environ['GITHUB_SHA'],'courierRunId':os.environ['GITHUB_RUN_ID']}
+          print('::notice title=Tibicen failed log manifest::'+json.dumps(manifest,separators=(',',':')))
+          for i,part in enumerate(parts,1):print(f'::notice title=Tibicen failed log part {i}/{len(parts)}::'+part)
           PYCODE
-          python3 .release-1.4.1/retain-failed-audit.py "$RUNNER_TEMP/tibicen-1.4.1-audit-diagnosis-$GITHUB_RUN_ID"
-
-      - name: Retain sanitized diagnosis and courier receipts
-        if: always()
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
-        with:
-          name: tibicen-1.4.1-audit-diagnosis-${{ github.run_id }}
-          path: |
-            ${{ runner.temp }}/tibicen-1.4.1-audit-diagnosis-${{ github.run_id }}/*.json
-          retention-days: 7
-          if-no-files-found: warn
