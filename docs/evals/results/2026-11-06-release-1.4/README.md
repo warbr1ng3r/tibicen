@@ -3,7 +3,8 @@
 **Published 6 November 2026 at 03:10:57 Europe/Moscow (00:10:57Z).**
 [Release 1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0),
 ID `435921093`, passed public source CI, all six platform cells, exact public
-delivery and returned-asset verification. Pages remains a separate pending deployment.
+delivery and returned-asset verification. The separate Pages deployment and
+returned-body audit also passed, as recorded below.
 
 ## Scope and compatibility
 
@@ -46,7 +47,7 @@ See [MCP formats](../../../MCP_FORMATS.md),
 | Public full-SHA installation, update/recovery/removal | P01 passed; four installer calls and two installed self-tests in 10.330 seconds |
 | Publication | [42134902094](https://github.com/warbr1ng3r/tibicen/actions/runs/42134902094) passed; release published at 2026-11-06T00:10:57Z |
 | Returned release assets and checksum comparison | All three actual downloads match candidate bytes and API hashes; 101 archive files/modes match |
-| Pages deployment and returned-body comparison | Pending, separate from skill publication |
+| Pages deployment and returned-body comparison | [42136931904](https://github.com/warbr1ng3r/tibicen/actions/runs/42136931904) deployed metadata `e148769…`; [audit 42137552667](https://github.com/warbr1ng3r/tibicen/actions/runs/42137552667) matched all 18 actual HTTP 200 bodies to the official artifact |
 
 The frozen working-tree snapshot was based on local commit
 `e73551082655449fcde668ecf7e42342f892e374`. Source inventory SHA-256:
@@ -99,7 +100,7 @@ in P01 below; guidance observations remain separate.
 Raw receipts are retained locally under `release-1.4-20261106`: candidate-01,
 its standalone record and delivery attempt D01. No paid API or native application
 was used. Public delivery and asset downloads were subsequently checked below;
-Pages remains separate.
+The separate Pages result is recorded below.
 Receipt SHA-256 bindings: candidate
 `2e17e92744432dde5f818ebe9411a4c4a7b884c151220b594febf001affb44b9`,
 standalone `ba7be87da74ae10cd2a6b2ae1b7f4b9922756388661e8b1e2c1f4ef2f3f3d672`,
@@ -134,7 +135,49 @@ Verification receipt SHA-256:
 `d8e4db1cd0f97278cfcb7925fdee69741ab63e48184b7ebd83da05632eb10f01`.
 GitHub reports `immutable: false`; server-enforced immutability is not claimed.
 Raw P01 and returned-response records remain local under `release-1.4-20261106`.
-Pages deployment and returned-body comparison remain a separate pending check.
+The separate Pages deployment and returned-body comparison are recorded below.
+
+## Postpublication site checks and Pages
+
+The metadata update retained the released skill bytes and installation SHA.
+Site unit tests passed 48/48 at both the default and `/tibicen/` production bases.
+The full browser matrix passed 62 scenarios, with one pre-existing Firefox skip.
+The initial 63-scenario attempt remains recorded: 48 passed, 14 failed and one
+skipped. Three stale SHA assertions caused nine failures across browsers; five
+visual expectations were older baselines predating the released 1.3 form/copy.
+The assertions
+were corrected and the five images reviewed and refreshed; geometry, accessibility,
+functional assertions and tolerances were retained. No product layout change or
+test relaxation was used to obtain the pass.
+
+[Metadata CI 42136249664](https://github.com/warbr1ng3r/tibicen/actions/runs/42136249664)
+passed on `e1487697d264eb9e14a03466550342f1ddd105dc`.
+[Pages 42136931904](https://github.com/warbr1ng3r/tibicen/actions/runs/42136931904)
+deployed that source; deployment `7588966676` reached success at
+2026-11-06T00:28:15Z (03:28:15 Europe/Moscow). Official artifact `13465038486`
+ZIP SHA-256 is `fc5f717f1278308aa7c08efa55a7b6990fc7d4c78872ad429b14b1623b36f6e4`.
+The body audit used this actual official artifact, without a local rebuild.
+
+[Audit 42137552667](https://github.com/warbr1ng3r/tibicen/actions/runs/42137552667),
+commit `5ef7100f453cf96f3be90f3c2f5200ec662455e6`, matched all 18 actual HTTP 200
+bodies to that artifact, including EN/RU pages and the maintenance index. The
+initial check annotation was truncated at 4,096 bytes, so it could not retain the
+complete parsed summary. That incomplete retention attempt remains recorded.
+The audit itself succeeded; only that first local summary-retention step was
+incomplete. A read-only courier extracted the complete saved summary from the
+original Actions artifact and exposed it through chunked annotations; it did not
+rerun the HTTP audit. The complete summary is retained locally; the raw returned-
+body bundle remains in the Actions artifact and was not downloaded locally.
+[Courier 42138732232](https://github.com/warbr1ng3r/tibicen/actions/runs/42138732232),
+commit `72c695ea3c9c2ecae2564d91ee4fb68dd7e9f1ca`, check run `127633359167`,
+retained the exact 9,709-byte summary. Full retained-summary SHA-256:
+`a4a4d6e69500c88b806ffca385f1b41de9a03941875da4b678f402912dfa63c1`.
+Original returned-body receipt SHA-256:
+`0dc336846bb10cbab652fd0801d4e89da0511dfe74ff72a09541ffbdc4459af7`.
+The returned maintenance index SHA-256 is
+`fb835f18db1717ee3222fa7c6f6972b64e635bfba1040ed35c91e8113c5278e5`.
+The previous maintenance records and warnings were preserved. This separate site
+check does not expand native-harness, model or human-usefulness evidence.
 
 ## Fresh guidance observations
 
@@ -191,6 +234,6 @@ which source an observation describes, not that its interpretation is correct,
 safe or effective in the native client. Parsed configuration and caller-supplied
 observations retain distinct results. Personal settings, credentials and paid API
 calls were not used in these checks. Public delivery and returned assets are
-verified above; Pages remains separate.
+verified above, including the separate Pages result.
 
 See the [release notes](release-notes.md) and [installation guide](../../../INSTALLATION.md).

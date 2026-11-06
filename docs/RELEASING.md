@@ -104,8 +104,15 @@ The 891-pass local gate, [public CI](https://github.com/warbr1ng3r/tibicen/actio
 backup restoration/removal and all three returned assets matched the candidate.
 Fresh I1/A1 observations are read-only, source-assisted recommendations, not native
 sessions or applied setup. Native activation/connection, model behavior and human
-benefit remain unverified. Pages metadata deployment and returned-body verification
-are separate. Exact identities, assets and limits are in the
+benefit remain unverified.
+
+[Metadata CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42136249664) passed on `e1487697d264eb9e14a03466550342f1ddd105dc`;
+[Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42136931904) deployed the same source (deployment `7588966676`,
+`2026-11-06T00:28:15Z`). The [separate audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42137552667) matched all 18 HTTP 200 bodies to
+official artifact `13465038486`; official artifact ZIP SHA-256 (78,852 bytes): `fc5f717f1278308aa7c08efa55a7b6990fc7d4c78872ad429b14b1623b36f6e4`.
+The returned index SHA-256 is `fb835f18db1717ee3222fa7c6f6972b64e635bfba1040ed35c91e8113c5278e5`; five older records and warnings remain
+unchanged. Exact deployment/byte scope is in [MAINTENANCE](MAINTENANCE.md);
+identities, assets and limits are in the
 [release report](evals/results/2026-11-06-release-1.4/README.md).
 
 ## Published 1.3.0 — 2026-11-05 (Moscow)

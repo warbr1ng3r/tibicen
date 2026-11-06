@@ -1,8 +1,8 @@
 # Release 1.4.0
 
 Labels: wayfinder:map
-Status: claimed
-Assignee: /root
+Status: resolved
+Assignee: none
 
 ## Destination
 
@@ -37,3 +37,4 @@ outside the autonomous scope. Preserve curated public history and old releases.
   passed. [Publication](issues/03-publication.md) created release435921093;
   all three returned assets/101 archive files matched independently. Metadata
   and Pages deployment/audit remain the final separate step.
+- [Publication closed](issues/03-publication.md): metadata CI, Pages deployment and all 18 returned bodies passed; five older records/warnings preserved. The courier retained the original audit summary without rerunning site checks.

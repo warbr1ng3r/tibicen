@@ -26,12 +26,25 @@ Each dated review records:
 
 Reporting follows the [CoC](../CODE_OF_CONDUCT.md): nonsensitive project matters use public issues/PRs; private GitHub Support reports cover platform-rule violations on GitHub; vulnerabilities go privately to the confirmed recipient in [SECURITY](../SECURITY.md). The former unfulfilled general private conduct-inbox promise is replaced, not declared satisfied. No alternate is appointed; an implicated maintainer must not decide a complaint about their own conduct. Do not post sensitive details publicly. Form/notification delivery has not been newly tested.
 
-**1.4.0 published; channel metadata prepared, deployment/returned bytes pending.**
-[1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0) was published at `2026-11-06T00:10:57Z`. Source `dfc85d75698094d614ac66511c0b0c13fa54c0bf` binds
-distribution `7b3b08f58276034b1609e44ef393e5f7c0e01a1b`. The sixth index record preserves all five older version
-objects and warnings. Release assets match the accepted candidate; deployment
-and returned-body verification for this metadata remain pending. See the
-[release report](evals/results/2026-11-06-release-1.4/README.md).
+**1.4.0 channel update — deployed and returned bytes verified.**
+[1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0) was published at
+`2026-11-06T00:10:57Z`. Release source `dfc85d75698094d614ac66511c0b0c13fa54c0bf`
+binds distribution `7b3b08f58276034b1609e44ef393e5f7c0e01a1b`.
+[Metadata CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42136249664) passed on `e1487697d264eb9e14a03466550342f1ddd105dc`.
+[Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42136931904) deployed that metadata source; deployment `7588966676`
+succeeded at `2026-11-06T00:28:15Z`. The [returned-body audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42137552667) matched all
+18 actual HTTP 200 bodies to official artifact `13465038486`;
+official artifact ZIP SHA-256 (78,852 bytes): `fc5f717f1278308aa7c08efa55a7b6990fc7d4c78872ad429b14b1623b36f6e4`. Returned index SHA-256:
+`fb835f18db1717ee3222fa7c6f6972b64e635bfba1040ed35c91e8113c5278e5`. EN/RU, universal installation and maintenance assertions passed;
+the five older version objects and warnings were preserved. Release-asset bytes
+remain the exact accepted candidate.
+The [receipt courier](https://github.com/warbr1ng3r/tibicen/actions/runs/42138732232) recovered the original 9709-byte
+summary (SHA-256 `a4a4d6e69500c88b806ffca385f1b41de9a03941875da4b678f402912dfa63c1`) without another deployment or body audit.
+The raw audit bundle remains in Actions artifacts; the recovered full summary is
+the locally read receipt.
+This comparison establishes no native
+loading, MCP connection, model behavior or measured human benefit. Exact receipts
+and limits are in the [release report](evals/results/2026-11-06-release-1.4/README.md).
 
 **1.3.0 channel update — deployed and returned bytes verified.**
 [1.3.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.3.0), published at `2026-11-05T19:34:40Z`, binds

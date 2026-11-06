@@ -61,8 +61,13 @@ Project data and later memory were preserved. `skills update` and lock-byte stab
 were not checked; trusted Git children had ordinary OS permissions.
 All three returned assets match candidate bytes and API hashes; all 101 archive
 files/modes match. Published 1.3 remains unchanged. GitHub reports `immutable: false`;
-server-enforced immutability is not claimed. Pages remains a separate pending
-check in the [release report](README.md).
+server-enforced immutability is not claimed. The separate metadata CI and
+[Pages deployment](https://github.com/warbr1ng3r/tibicen/actions/runs/42136931904)
+passed; the [body audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42137552667)
+matched all 18 HTTP 200 bodies to the actual official artifact. Site checks passed
+48/48 at both bases and 62 browser scenarios with one existing Firefox skip.
+The initial failed browser run and truncated audit-summary retention attempt
+remain recorded, alongside their corrections, in the [release report](README.md).
 
 MCP parsing and source-bound observations do not establish native activation,
 connection, tool discovery, model behavior or safety. Native applications and
