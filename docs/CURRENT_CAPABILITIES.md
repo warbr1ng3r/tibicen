@@ -1,8 +1,16 @@
 # What Tibicen does today
 
-The snapshot below preserves the published 1.1 baseline. [1.2 release results](evals/results/2026-11-05-release-1.2/README.md) record the later published adopt diagnosis, version context and nested-memory recognition.
+**Current release: [1.4.1](evals/results/2026-11-06-release-1.4.1/README.md).**
+Use the [installation guide](INSTALLATION.md), [portable workflow](HARNESS_PORTABILITY.md),
+[harness profiles](HARNESS_CAPABILITIES.md) and [MCP formats](MCP_FORMATS.md) for
+current guidance. These do not establish native loading or use in every host.
 
-Local Unreleased development adds [descriptive harness profiles](HARNESS_CAPABILITIES.md), shared preference hints and bounded read-only observation/discovery. It does not expand published 1.2, installer targets or native loading/use claims. Implementation checks and review belong to the [current change](../openspec/changes/archive/2026-11-05-catalog-harness-capabilities/tasks.md).
+The snapshot below preserves the published 1.1 baseline and its original evidence;
+it is not a current release inventory. [1.2 release results](evals/results/2026-11-05-release-1.2/README.md)
+record the later published adopt diagnosis, version context and nested-memory
+recognition. Harness profiles and the common installation route were published
+in [1.3](evals/results/2026-11-05-release-1.3/README.md); task context and local MCP
+diagnosis were published in [1.4](evals/results/2026-11-06-release-1.4/README.md).
 
 **Snapshot: 5 November 2026 (Moscow), published version 1.1.0.** This describes the
 released product, rather than the target scope in the [product vision](PRODUCT_VISION.md).

@@ -42,7 +42,49 @@ connection and measured human usefulness require their own observations.
    release effort (`../.scratch/release-1.4.1/map.md`; private development record; excluded from public source) and
    [release report](evals/results/2026-11-06-release-1.4.1/README.md).
    Frozen published 1.4 artifacts remain unchanged.
-3. **Decide release scope and version after integration.** Apply normal SemVer:
+3. **Record the native first-use cycle after 1.4.1 — packet complete.** The owner
+   approved reviewed-landing deployment, bounded subscription-backed native
+   observations and correction of current-guide version drift. The
+   [native first-use packet](../.scratch/native-first-use/map.md) owns tasks,
+   source/input freezes and [actual outcomes](evals/results/2026-11-06-native-first-use/README.md). Internal assistance, structural
+   checks, native reading/use and unperformed phases retain separate results.
+   Pages and current-guide fixes passed. S0 passed; S1 failed, stopping later
+   phases. The offline diagnostic follow-up passed review and 954 tests/one skip
+   for its five-file source freeze, without changing the published skill payloads.
+   That gate does not validate the later recovery change.
+4. **Repair evaluator recovery — verified locally; native task and memory phases stopped.**
+   The [follow-up packet](../.scratch/native-memory-followup/map.md) attempted M1
+   once: two commands succeeded before an accepted process exited 127. Its command
+   and cause remain unknown. M2/M3 did not run; no retry occurred. Memory use,
+   task completion and container changes remain unverified; see the
+   [actual observations](evals/results/2026-11-06-native-memory-followup/README.md).
+   A separate [offline recovery change](../openspec/changes/preserve-recoverable-command-results/tasks.md)
+   lets ordinary command results reach Codex while retaining terminal evaluator
+   failures and containment. Independent source review: Ship; the full gate passed
+   981 tests with no failures and one existing skip. The same model-free
+   owner-socket driver failed before the fix and completed a later command after
+   the fix; both runs verified cleanup. All 100 distributed payloads remain
+   unchanged. These results do not establish native task or memory success.
+5. **Finite native memory observations — complete.** The
+   [recovery observation packet](../.scratch/native-memory-recovery/map.md) caught
+   a second CLI stop before launch. The
+   [caller repair](../openspec/changes/preserve-cli-command-results/tasks.md)
+   passed independent review and 1002 tests/one existing skip. R1 then completed,
+   but its frozen grade failed on a measurement proxy; original R2/R3 stopped.
+   A separate declared amendment passed 32 controls and accepted a corrected R1
+   assessment after observation on the same bytes, without a model retry. C1
+   completed the correction and passed deterministic grading and independent
+   semantic review; root accepted the result. C2 completed once in 35.98 seconds,
+   read current memory, executed the actual function and returned `[4,4,4,1]`
+   without file changes; deterministic grading and final independent review
+   passed, and root accepted the result. All three sessions were used once within the original
+   three-session/420-second cap; no further native runs are planned here. The
+   [report](evals/results/2026-11-06-native-memory-recovery/README.md) keeps actual
+   evidence, original failures and revised assessments separate. Earlier failed
+   S1/M1 packets are not retried or regraded.
+6. **Select source integration and release scope.** These fixes affect development
+   evaluators; published 1.4.1 skill payloads remain unchanged. Decide whether a
+   product release is needed from the actual changes. Apply normal SemVer:
    compatible fixes use patch, compatible features minor, and incompatible supported
    contracts major. The actual changes determine the next version. Follow
    [RELEASING](RELEASING.md) for candidate evidence and separate publication

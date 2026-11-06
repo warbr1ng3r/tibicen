@@ -8,6 +8,7 @@ import { containedCodexImage } from '../../scripts/evals/profiles/codex/containe
 import {
   containedSetupFixtures,
   createContainedTibicenSetup,
+  setupCollection,
   setupCommand,
   setupCommandKind,
   setupHome,
@@ -45,6 +46,58 @@ const output = (commands: NativeOutput['commands']): NativeOutput => ({
   records: [],
   messages: ['done'],
   usage: { inputTokens: 0, outputTokens: 0 },
+});
+
+test('setup collection preserves failed-child context and file hashes without upgrading failure', () => {
+  const failure = {
+    kind: 'process-exit' as const,
+    exitCode: 1,
+    context: {
+      operation: 'process/start' as const,
+      requestIdHash: 'a'.repeat(64),
+      processIdHash: 'b'.repeat(64),
+      startResponseObserved: true,
+      sequence: 2,
+      sandboxDenied: false,
+    },
+  };
+  const bytes = Buffer.from('private-file-body');
+  const child: Parameters<typeof setupCollection>[0] = {
+    pass: false,
+    freezeHash: 'c'.repeat(64),
+    receipt: {
+      cid: 'd'.repeat(64),
+      reason: 'tool-failure',
+      stopped: true,
+      removed: true,
+      files: { 'project/file': bytes },
+      modes: { 'project/file': 0o644 },
+      toolFailure: failure,
+    },
+    parsed: {
+      started: true,
+      completed: false,
+      records: [],
+      messages: [],
+      commands: [],
+      usage: { inputTokens: null, outputTokens: null },
+    },
+  };
+  const collection = setupCollection(child);
+  assert.equal(collection.pass, false);
+  assert.equal(collection.reason, 'tool-failure');
+  assert.deepEqual(collection.toolFailure, failure);
+  assert.deepEqual(collection.files, {
+    'project/file': { hash: hashContent(bytes), mode: 0o644 },
+  });
+  assert.equal(JSON.stringify(collection).includes('private-file-body'), false);
+  const success = setupCollection({
+    ...child,
+    pass: true,
+    receipt: { ...child.receipt, reason: 'completed', toolFailure: null },
+  });
+  assert.equal(success.pass, true);
+  assert.equal(success.toolFailure, null);
 });
 
 test('contained first vertical is fixed init/adopt, AGENTS-only and has no application commands', async () => {
@@ -402,6 +455,13 @@ test('metadata-only batch freeze binds runtime/order/caps and cancellation prece
     },
   });
   assert.equal(Object.keys(driver.freeze.runtime).length, 100);
+  const profileSource = 'scripts/evals/profiles/codex/tibicen-setup.ts';
+  assert.equal(
+    driver.freeze.sourceHashes[profileSource],
+    hashContent(
+      await readFile(new URL('../../' + profileSource, import.meta.url)),
+    ),
+  );
   for (const name of ['tibicen-init', 'tibicen-adopt'])
     for (const relative of [
       'scripts/agents/profiles.ts',

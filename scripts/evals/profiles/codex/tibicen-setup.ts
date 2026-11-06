@@ -533,6 +533,32 @@ export function validateSetupReports(
   return captures;
 }
 
+export function setupCollection(
+  output: Pick<
+    Awaited<ReturnType<typeof runContainedCodexSession>>,
+    'pass' | 'freezeHash' | 'receipt' | 'parsed'
+  >,
+) {
+  return {
+    pass: output.pass,
+    freezeHash: output.freezeHash,
+    cid: output.receipt.cid,
+    stopped: output.receipt.stopped,
+    removed: output.receipt.removed,
+    reason: output.receipt.reason,
+    toolFailure: output.receipt.toolFailure,
+    files: Object.fromEntries(
+      Object.entries(output.receipt.files).map(([name, bytes]) => [
+        name,
+        { hash: hashContent(bytes), mode: output.receipt.modes[name] },
+      ]),
+    ),
+    diagnostics:
+      'diagnostics' in output.parsed ? output.parsed.diagnostics : null,
+    parsed: output.parsed,
+  };
+}
+
 export async function createContainedTibicenSetup(
   input: ContainedTibicenSetupInput,
 ) {
@@ -724,23 +750,7 @@ export async function createContainedTibicenSetup(
       ...child,
       expectedFreezeHash: description.freezeHash,
     });
-    await args.record('collection', {
-      pass: output.pass,
-      freezeHash: output.freezeHash,
-      cid: output.receipt.cid,
-      stopped: output.receipt.stopped,
-      removed: output.receipt.removed,
-      reason: output.receipt.reason,
-      files: Object.fromEntries(
-        Object.entries(output.receipt.files).map(([name, bytes]) => [
-          name,
-          { hash: hashContent(bytes), mode: output.receipt.modes[name] },
-        ]),
-      ),
-      diagnostics:
-        'diagnostics' in output.parsed ? output.parsed.diagnostics : null,
-      parsed: output.parsed,
-    });
+    await args.record('collection', setupCollection(output));
     remaining();
     assert(
       output.pass && output.parsed.messages.at(-1)?.trim(),

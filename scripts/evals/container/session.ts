@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import path from 'node:path';
-import { randomUUID } from 'node:crypto';
+import { createHmac, randomBytes, randomUUID } from 'node:crypto';
 import { spawn } from 'node:child_process';
+import { StringDecoder } from 'node:string_decoder';
 import {
   encodeFiles,
   decodeArchive,
@@ -57,9 +58,194 @@ export interface ContainerInput {
   deadlineMs: number;
 }
 
-type ToolFailure =
+interface FailureContext {
+  operation: 'process/start' | null;
+  requestIdHash: string | null;
+  processIdHash: string | null;
+  startResponseObserved: boolean;
+  sequence: number | null;
+  sandboxDenied: boolean | null;
+}
+
+type ToolFailure = (
   | { kind: 'rpc-error'; code: number | null }
-  | { kind: 'process-exit'; exitCode: number | null };
+  | { kind: 'process-exit'; exitCode: number | null }
+) & { context: FailureContext };
+
+function ordinaryProcessExit(params: unknown) {
+  if (!params || typeof params !== 'object' || Array.isArray(params))
+    return false;
+  const { processId, seq, exitCode, sandboxDenied } = params as Record<
+    string,
+    unknown
+  >;
+  // Pinned executor schema: String, u64, i32, Option<bool>. Correlation is optional.
+  return (
+    typeof processId === 'string' &&
+    Number.isSafeInteger(seq) &&
+    Number(seq) >= 0 &&
+    Number.isInteger(exitCode) &&
+    Number(exitCode) >= -2147483648 &&
+    Number(exitCode) <= 2147483647 &&
+    (sandboxDenied === undefined ||
+      sandboxDenied === null ||
+      sandboxDenied === false)
+  );
+}
+
+function failureCorrelation() {
+  const key = randomBytes(32),
+    buffer = Buffer.alloc(65536),
+    responseDecoder = new TextDecoder('utf-8', { fatal: true }),
+    requests = new Map<
+      string,
+      { process: string | null; responded: boolean; accepted: boolean }
+    >(),
+    processes = new Map<string, string>();
+  let enabled = true,
+    size = 0,
+    total = 0;
+  const object = (value: unknown): value is Record<string, unknown> =>
+    value !== null && typeof value === 'object' && !Array.isArray(value);
+  const identity = (value: unknown, domain: 'request' | 'process') => {
+    if (typeof value === 'string') {
+      const bytes = Buffer.from(value);
+      if (!bytes.length || bytes.length > 256 || bytes.toString() !== value)
+        return null;
+    } else if (
+      domain !== 'request' ||
+      !Number.isSafeInteger(value) ||
+      Object.is(value, -0)
+    )
+      return null;
+    return createHmac('sha256', key)
+      .update(domain + '\0' + typeof value + '\0')
+      .update(String(value))
+      .digest('hex');
+  };
+  const disable = () => {
+    enabled = false;
+    buffer.fill(0);
+    size = 0;
+    requests.clear();
+    processes.clear();
+  };
+  const observeRequest = (chunk: Buffer) => {
+    if (!enabled) return;
+    total += chunk.length;
+    if (total > 1024 * 1024) return disable();
+    for (let offset = 0; offset < chunk.length && enabled;) {
+      const newline = chunk.indexOf(10, offset),
+        end = newline < 0 ? chunk.length : newline,
+        length = end - offset;
+      if (size + length > buffer.length) return disable();
+      chunk.copy(buffer, size, offset, end);
+      size += length;
+      offset = end + 1;
+      if (newline < 0) break;
+      try {
+        const request: unknown = JSON.parse(
+          new TextDecoder('utf-8', { fatal: true }).decode(
+            buffer.subarray(0, size),
+          ),
+        );
+        if (
+          !object(request) ||
+          typeof request.method !== 'string' ||
+          !request.method
+        )
+          return disable();
+        if (!Object.hasOwn(request, 'id')) {
+          if (request.method === 'process/start') return disable();
+          continue;
+        }
+        const id = identity(request.id, 'request');
+        if (!id || requests.has(id) || requests.size >= 128) return disable();
+        let process: string | null = null;
+        if (request.method === 'process/start') {
+          process = object(request.params)
+            ? identity(request.params.processId, 'process')
+            : null;
+          if (!process || processes.has(process) || processes.size >= 128)
+            return disable();
+          processes.set(process, id);
+        }
+        requests.set(id, { process, responded: false, accepted: false });
+      } catch {
+        return disable();
+      } finally {
+        buffer.fill(0, 0, size);
+        size = 0;
+      }
+    }
+  };
+  const observeResponse = (event: unknown) => {
+    if (!enabled || !object(event) || !Object.hasOwn(event, 'id')) return;
+    const id = identity(event.id, 'request'),
+      request = id ? requests.get(id) : undefined;
+    if (
+      !request ||
+      request.responded ||
+      Object.hasOwn(event, 'method') ||
+      Object.hasOwn(event, 'result') === Object.hasOwn(event, 'error')
+    )
+      return disable();
+    request.responded = true;
+    if (Object.hasOwn(event, 'error')) return;
+    if (request.process) {
+      if (
+        !object(event.result) ||
+        identity(event.result.processId, 'process') !== request.process
+      )
+        return disable();
+      request.accepted = true;
+    }
+  };
+  return {
+    disable,
+    observeRequest,
+    observeResponse,
+    responseBytes(chunk: Buffer) {
+      if (enabled)
+        try {
+          responseDecoder.decode(chunk, { stream: true });
+        } catch {
+          disable();
+        }
+    },
+    context(event: Record<string, unknown>, exit: boolean): FailureContext {
+      const params = object(event.params) ? event.params : {},
+        process = exit ? identity(params.processId, 'process') : null,
+        id = exit
+          ? process && enabled
+            ? processes.get(process)
+            : null
+          : enabled
+            ? identity(event.id, 'request')
+            : null,
+        request = id ? requests.get(id) : undefined,
+        matched = Boolean(request && (!exit || request.accepted));
+      return {
+        operation: matched && request?.process ? 'process/start' : null,
+        requestIdHash: matched ? (id ?? null) : null,
+        processIdHash: exit
+          ? process
+          : matched
+            ? (request?.process ?? null)
+            : null,
+        startResponseObserved: matched && request?.accepted === true,
+        sequence:
+          exit && Number.isSafeInteger(params.seq) && Number(params.seq) >= 0
+            ? Number(params.seq)
+            : null,
+        sandboxDenied:
+          exit && typeof params.sandboxDenied === 'boolean'
+            ? params.sandboxDenied
+            : null,
+      };
+    },
+  };
+}
 
 export function validateContainerInput(input: ContainerInput) {
   assert(
@@ -96,6 +282,7 @@ export function validateContainerInput(input: ContainerInput) {
 
 export async function startContainerSession(input: ContainerInput) {
   validateContainerInput(input);
+  const correlation = failureCorrelation();
   const name = 'tibicen-eval-' + randomUUID(),
     owner = randomUUID();
   let cid = '',
@@ -150,6 +337,7 @@ export async function startContainerSession(input: ContainerInput) {
   };
   async function stop(allowed: readonly string[] = [], reason = 'completed') {
     if (stopPromise) return stopPromise;
+    correlation.disable();
     if (!['completed', 'host-finished', 'owner-end'].includes(reason))
       notifyFailure(reason);
     stopPromise = (async () => {
@@ -283,6 +471,7 @@ export async function startContainerSession(input: ContainerInput) {
       child.once('close', () => resolve()),
     );
     child.stdin.on('error', () => {});
+    const decoder = new StringDecoder('utf8');
     let bytes = 0,
       line = '';
     child.stdout.on('data', (chunk: Buffer) => {
@@ -293,7 +482,8 @@ export async function startContainerSession(input: ContainerInput) {
         void stop([], 'output-cap').catch(() => {});
         return;
       }
-      line += chunk.toString();
+      correlation.responseBytes(chunk);
+      line += decoder.write(chunk);
       if (line.length > transferLimits.file) {
         child.stdout.pause();
         child.stderr.pause();
@@ -306,9 +496,11 @@ export async function startContainerSession(input: ContainerInput) {
         line = line.slice(next + 1);
         try {
           const event = JSON.parse(text);
+          if (!stopPromise) correlation.observeResponse(event);
           if (
             (event.error && event.error.code !== -32004) ||
-            (event.method === 'process/exited' && event.params?.exitCode !== 0)
+            (event.method === 'process/exited' &&
+              !ordinaryProcessExit(event.params))
           ) {
             if (!stopPromise)
               toolFailure =
@@ -318,12 +510,14 @@ export async function startContainerSession(input: ContainerInput) {
                       code: Number.isSafeInteger(event.error.code)
                         ? event.error.code
                         : null,
+                      context: correlation.context(event, false),
                     }
                   : {
                       kind: 'process-exit',
                       exitCode: Number.isSafeInteger(event.params?.exitCode)
                         ? event.params.exitCode
                         : null,
+                      context: correlation.context(event, true),
                     };
             void stop([], 'tool-failure').catch(() => {});
           }
@@ -349,7 +543,16 @@ export async function startContainerSession(input: ContainerInput) {
     timer = setTimeout(() => {
       void stop([], 'deadline').catch(() => {});
     }, input.deadlineMs + 1000);
-    return { cid, child, finished, failure, stop };
+    return {
+      cid,
+      child,
+      finished,
+      failure,
+      stop,
+      observeRequest(chunk: Buffer) {
+        if (!stopPromise) correlation.observeRequest(chunk);
+      },
+    };
   } catch (error) {
     const id = await owned();
     if (id) {

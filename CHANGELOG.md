@@ -9,6 +9,13 @@ immutable source/distribution references, checks and remaining scope limits.
 
 - Restore the fuller project preview on the bilingual landing with memory, optional MCP and setup history; remove the redundant caption and keep the mobile layout compact.
 
+### Fixed
+
+- Point current portability and capability guides to published 1.4.1 while preserving dated release observations and the installed skill's Node requirement.
+- Preserve bounded, hashed request/process correlation in development-only executor failure diagnostics without reconstructing command text or the underlying cause, or regrading earlier native outcomes.
+- Forward ordinary executor command results, including nonzero exits, unchanged to Codex so the session can recover. Explicit sandbox denials, malformed exits and evaluator faults remain terminal; containment is unchanged. [Local validation](docs/evals/results/2026-11-06-native-memory-followup/README.md) includes a model-free red→green owner-socket regression; earlier native outcomes remain unchanged.
+- Preserve ordinary completed command results through the native CLI event handler as well, including failed commands with concrete exit codes. The [full-caller regression](docs/evals/results/2026-11-06-native-memory-recovery/README.md) keeps terminal faults and cleanup intact without claiming native task acceptance.
+
 ## [1.4.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.1) — 2026-11-06
 
 ### Changed

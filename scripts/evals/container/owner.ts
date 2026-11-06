@@ -41,6 +41,7 @@ export async function createContainerOwner(
     socket.on('error', () => {
       void stop(resultPaths, 'owner-error').catch(() => {});
     });
+    socket.on('data', (chunk: Buffer) => session.observeRequest(chunk));
     socket.pipe(session.child.stdin);
     session.child.stdout.pipe(socket);
   });

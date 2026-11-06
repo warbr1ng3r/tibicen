@@ -34,14 +34,20 @@ export interface ContainedCodexRunInput extends ContainedCodexProfileInput {
 
 export function containedCodexFailure(record: Record<string, unknown>) {
   const item = record.item as Record<string, unknown> | undefined;
+  if (record.type === 'item.completed' && item?.type === 'command_execution')
+    return !(
+      typeof item.command === 'string' &&
+      typeof item.aggregated_output === 'string' &&
+      (item.status === 'completed' || item.status === 'failed') &&
+      Number.isInteger(item.exit_code) &&
+      Number(item.exit_code) >= -2147483648 &&
+      Number(item.exit_code) <= 2147483647
+    );
   return (
     typeof record.type !== 'string' ||
     ['error', 'turn.failed'].includes(record.type) ||
     (record.type === 'item.completed' &&
-      (['failed', 'declined', 'cancelled'].includes(String(item?.status)) ||
-        (item?.type === 'command_execution' &&
-          typeof item.exit_code === 'number' &&
-          item.exit_code !== 0)))
+      ['failed', 'declined', 'cancelled'].includes(String(item?.status)))
   );
 }
 

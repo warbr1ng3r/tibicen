@@ -5,12 +5,13 @@ and invokes tools; its **model and provider** are your choices in that host.
 Tibicen does not connect to model APIs, select a model from an allowlist or ask
 you to create provider credentials for ordinary setup.
 
-The common `AGENTS.md` mechanism already existed in 1.2. Published 1.3 includes
-expanded stage guidance, uncatalogued preset hints and the explicit common
-installation route. The [installation guide](INSTALLATION.md) pins 1.3; the
-[release report](evals/results/2026-11-05-release-1.3/README.md) separates mechanical
-delivery and source-assisted reasoning from native loading and model
-compatibility. Earlier observations retain their original limits.
+The [installation guide](INSTALLATION.md) pins published **1.4.1**. Its
+[release report](evals/results/2026-11-06-release-1.4.1/README.md) records delivery
+checks and their limits; earlier working-session observations keep their original
+version bindings. The common `AGENTS.md` mechanism has been available since 1.2;
+1.3 added expanded stage guidance, uncatalogued preset hints and the explicit
+common installation route. None of these establishes native loading or model
+compatibility in every host.
 
 ## Start in your project
 
@@ -51,6 +52,10 @@ checks still require the displayed commands, trust and approval. Windows command
 execution currently stops with `process-tree-unavailable`; read-only operations
 remain available. A temporary copy does not by itself isolate a command's OS
 permissions.
+
+The installed skills require Node ≥22.20. Developing the whole repository and
+landing uses the higher tooling requirement in [package.json](../package.json)
+and the pinned environment in [CONTRIBUTING](../CONTRIBUTING.md).
 
 ## One shared instruction file can be sufficient
 

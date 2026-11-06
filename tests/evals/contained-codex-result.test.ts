@@ -12,6 +12,49 @@ import {
   writeFile,
 } from 'node:fs/promises';
 
+const ordinaryCommands = {
+  'ordinary-command-recovery': { status: 'failed', exit_code: 1 },
+  'ordinary-completed-command-recovery': {
+    status: 'completed',
+    exit_code: 127,
+  },
+  'ordinary-failed-zero-recovery': { status: 'failed', exit_code: 0 },
+  'ordinary-minimum-i32-recovery': {
+    status: 'failed',
+    exit_code: -2147483648,
+  },
+  'ordinary-maximum-i32-recovery': {
+    status: 'failed',
+    exit_code: 2147483647,
+  },
+};
+const commandItem = {
+  id: 'cmd-1',
+  type: 'command_execution',
+  command: 'node --test',
+  aggregated_output: 'synthetic red test',
+  exit_code: 1,
+  status: 'failed',
+};
+const terminalItems = {
+  'failed-file-change': { type: 'file_change', status: 'failed', changes: [] },
+  'declined-command': { ...commandItem, status: 'declined' },
+  'cancelled-command': { ...commandItem, status: 'cancelled' },
+  'null-command-outcome': { ...commandItem, exit_code: null },
+  'missing-command-outcome': { ...commandItem, exit_code: undefined },
+  'missing-command-text': { ...commandItem, command: undefined },
+  'nonstr-command-text': { ...commandItem, command: 17 },
+  'missing-command-output': { ...commandItem, aggregated_output: undefined },
+  'nonstr-command-output': { ...commandItem, aggregated_output: {} },
+  'nonnumeric-command-exit': { ...commandItem, exit_code: '1' },
+  'fractional-command-exit': { ...commandItem, exit_code: 1.5 },
+  'command-exit-below-i32': { ...commandItem, exit_code: -2147483649 },
+  'command-exit-above-i32': { ...commandItem, exit_code: 2147483648 },
+  'missing-command-status': { ...commandItem, status: undefined },
+  'unknown-command-status': { ...commandItem, status: 'unknown' },
+  'in-progress-completed-item': { ...commandItem, status: 'in_progress' },
+};
+
 test('native caller preserves validation, terminal failure and cleanup results', async (t) => {
   for (const mode of [
     'completed',
@@ -20,8 +63,12 @@ test('native caller preserves validation, terminal failure and cleanup results',
     'error-first',
     'turn-failed-first',
     'callback-throws',
+    ...Object.keys(ordinaryCommands),
+    ...Object.keys(terminalItems),
   ]) {
     await t.test(mode, async (t) => {
+      const ordinary = ordinaryCommands[mode as keyof typeof ordinaryCommands];
+      const terminalItem = terminalItems[mode as keyof typeof terminalItems];
       const root = await realpath(await mkdtemp('/tmp/tibicen-caller-result-'));
       t.after(() => rm(root, { recursive: true, force: true }));
       const runner = path.join(root, 'scripts/evals/contained-codex.ts');
@@ -29,6 +76,8 @@ test('native caller preserves validation, terminal failure and cleanup results',
         import assert from 'node:assert/strict';
         const mode = ${JSON.stringify(mode)};
         const terminalFailure = ['error-first', 'turn-failed-first', 'callback-throws'].includes(mode);
+        const ordinary = ${JSON.stringify(ordinary ?? null)};
+        const terminalItem = ${JSON.stringify(terminalItem ?? null)};
         const privateMarker = 'SYNTHETIC PRIVATE TERMINAL DETAILS';
         export const fixtureState = { stops: 0, stopReasons: [], disposed: false };
         export { assert };
@@ -55,7 +104,14 @@ test('native caller preserves validation, terminal failure and cleanup results',
               const records = [
                 { type: 'thread.started', thread_id: 'inert-fixture' },
                 { type: 'turn.started' },
-                ...(terminalFailure
+                ...(ordinary
+                  ? [
+                      { type: 'item.completed', item: { id: 'cmd-1', type: 'command_execution', command: 'node --test', aggregated_output: 'synthetic red test', ...ordinary } },
+                      { type: 'item.completed', item: { id: 'cmd-2', type: 'command_execution', command: 'node --test', aggregated_output: 'synthetic recovered test', exit_code: 0, status: 'completed' } },
+                    ]
+                  : terminalItem
+                  ? [{ type: 'item.completed', item: terminalItem }]
+                  : terminalFailure
                   ? mode === 'turn-failed-first' ? [failed, error] : [error, failed]
                   : [{ type: 'item.completed', item: { type: 'agent_message', text: 'offline completion' } }]),
                 { type: 'turn.completed', usage: { input_tokens: 0, output_tokens: 0 } },
@@ -156,7 +212,7 @@ test('native caller preserves validation, terminal failure and cleanup results',
         result.sourceUnchanged,
         ['tool-failure', 'validation-unavailable'].includes(mode) ? null : true,
       );
-      assert.equal(result.pass, mode === 'completed');
+      assert.equal(result.pass, mode === 'completed' || Boolean(ordinary));
       assert.equal(result.parsed.completed, true);
       const terminal = observed.filter(({ record }) =>
         ['error', 'turn.failed'].includes(String(record.type)),
@@ -185,6 +241,12 @@ test('native caller preserves validation, terminal failure and cleanup results',
           'type',
         ]);
         assert(fixtureState.stops >= 1);
+      } else if (terminalItem) {
+        assert(fixtureState.stops >= 1);
+        assert.deepEqual(
+          observed.map(({ record }) => record.type),
+          ['thread.started', 'turn.started'],
+        );
       } else {
         assert.equal(terminal.length, 0);
         assert.equal(fixtureState.stops, 0);
@@ -194,9 +256,55 @@ test('native caller preserves validation, terminal failure and cleanup results',
             'thread.started',
             'turn.started',
             'item.completed',
+            ...(ordinary ? ['item.completed'] : []),
             'turn.completed',
           ],
         );
+        if (ordinary) {
+          assert.deepEqual(result.parsed.commands, [
+            {
+              toolUseId: 'cmd-1',
+              command: 'node --test',
+              output: 'synthetic red test',
+              exitCode: ordinary.exit_code,
+            },
+            {
+              toolUseId: 'cmd-2',
+              command: 'node --test',
+              output: 'synthetic recovered test',
+              exitCode: 0,
+            },
+          ]);
+          assert.deepEqual(
+            observed
+              .filter(({ record }) => record.type === 'item.completed')
+              .map(({ record }) => record),
+            [
+              {
+                type: 'item.completed',
+                item: {
+                  id: 'cmd-1',
+                  type: 'command_execution',
+                  command: 'node --test',
+                  aggregated_output: 'synthetic red test',
+                  exit_code: ordinary.exit_code,
+                  status: ordinary.status,
+                },
+              },
+              {
+                type: 'item.completed',
+                item: {
+                  id: 'cmd-2',
+                  type: 'command_execution',
+                  command: 'node --test',
+                  aggregated_output: 'synthetic recovered test',
+                  exit_code: 0,
+                  status: 'completed',
+                },
+              },
+            ],
+          );
+        }
       }
       assert.deepEqual(fixtureState.stopReasons, [
         'host-finished',

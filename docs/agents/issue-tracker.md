@@ -1,5 +1,70 @@
 # Issue tracker
 
+## Latest completed effort — bounded native working and memory cycle
+
+The [completed effort](../../.scratch/native-memory-recovery/map.md) has one actual
+R1 native pass in 50 seconds: complete memory output before implementation,
+limit-seven batching, tests and preserved files. Its original automated grade
+failed on an exit0-only proxy after a trailing git failure. The original grade
+and stopped R2/R3 remain unchanged; the [report](../evals/results/2026-11-06-native-memory-recovery/README.md)
+separates native completion, observed reading and frozen grading.
+
+An explicitly declared after-observation instrument amendment passed 32 controls
+and accepted the corrected assessment of those same immutable R1 bytes/events,
+without a model retry or changing the original failed grade. Its prospectively
+frozen C1 correction completed once in about 50 seconds, passed deterministic
+grading and independent semantic/read-order review, and received root acceptance.
+C2 completed once in 35.98 seconds: current memory was read before actual function
+execution returned `[4,4,4,1]`; all seven files stayed unchanged. Deterministic
+grading and final independent review passed; root accepted the result. This
+finite observation effort is complete. All three configured
+sessions were used once within the original three-session/420-second cap; no
+further native runs are planned by this packet and no budget was added.
+Source fixes passed independent Ponytail review and 1002 tests/one existing skip;
+published payloads remain 1.4.1. The [dashboard](../../.scratch/native-memory-recovery/dashboard.md)
+owns actual status. No paid API, credential change, host writeback, source commit
+or publication is included; internal review is not human usefulness scoring.
+The next roadmap item selects source integration/release scope for these
+development evaluator changes; this observation does not isolate memory causality
+because README and code also retain the cap.
+
+## Completed packet — native work and evaluator recovery
+
+The owner explicitly directed autonomous continuation without routine approval
+pauses. The [follow-up packet](../../.scratch/native-memory-followup/map.md) made
+one M1 attempt: two commands succeeded before an accepted process exited 127 with
+no reported sandbox denial. Its command and cause remain unknown. M2/M3 stopped
+without running; no retry occurred. The [report](../evals/results/2026-11-06-native-memory-followup/README.md)
+retains the failure, unobserved memory use and unverified container changes.
+The [dashboard](../../.scratch/native-memory-followup/dashboard.md) tracks a
+separate [offline recovery change](../../openspec/changes/preserve-recoverable-command-results/tasks.md):
+ordinary command results reach Codex without killing the session; evaluator
+faults and containment limits remain terminal. Independent source review: Ship;
+the full gate passed 981 tests with no failures and one existing skip. The same
+model-free owner-socket driver failed before the fix and completed the next
+command afterward, with cleanup verified in both runs. All 100 distributed
+payloads are unchanged. Subsequent native observations are recorded separately
+in the current effort; this offline fix alone does not establish their results.
+The closed first-use packet and its failed S1 remain intact. No paid API,
+credential change, source commit or publication follows from this work. Internal
+review does not fill a human usefulness record.
+
+## Completed packet — native first use after 1.4.1
+
+The owner approved the [native first-use packet](../../.scratch/native-first-use/map.md):
+deploy the reviewed landing, establish bounded subscription-backed native routes,
+correct current-guide version drift, and observe the available working cycle.
+The [dashboard](../../.scratch/native-first-use/dashboard.md) owns lane status.
+Paid APIs, credential changes, a new skill release and additional source commits
+are outside this packet. Native execution is not inferred from internal agents.
+Pages deployed the reviewed preview. S0 recommendation passed; S1 failed, so
+later native phases stopped. A bounded offline diagnostic fix passed independent
+Ponytail/evidence review and the 954-pass/one-skip gate for its five-file source
+freeze; that gate does not validate the current recovery change. All five tickets
+are resolved, with skills unchanged; the [report](../evals/results/2026-11-06-native-first-use/README.md)
+retains the failed task and unverified memory cycle. Local corrections have no
+new source commit or publication.
+
 ## Completed release 1.4.1
 
 The owner directed uninterrupted autonomous delivery after the working-session commit.
