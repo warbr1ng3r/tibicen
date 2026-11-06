@@ -75,7 +75,7 @@ Current references were recorded on macOS. Playwright uses separate references f
 
 ## Product installation and site development
 
-The visitor command pins the 1.4.0 distribution commit `7b3b08f58276034b1609e44ef393e5f7c0e01a1b` through skills 1.7.4. npx is recommended; equivalent pnpm and Yarn 2+ commands are optional. Site source and dependencies are unnecessary. See [release details](../docs/RELEASING.md) for publication and candidate-bound coverage; [maintenance](../docs/MAINTENANCE.md) records the separately verified Pages deployment and returned bytes. Native discovery/loading remains separately experimental.
+The visitor command pins the 1.4.1 distribution commit `52c0769574e90d7d1a0438996df9da40621b0107` through skills 1.7.4. npx is recommended; equivalent pnpm and Yarn 2+ commands are optional. Site source and dependencies are unnecessary. See [release details](../docs/RELEASING.md) for publication and candidate-bound coverage; [maintenance](../docs/MAINTENANCE.md) records the separately verified Pages deployment and returned bytes. Native discovery/loading remains separately experimental.
 
 Historically, public full-SHA installation of 1.0.0 (`e8532bba0582564c93e50de1f55174daaa9bbd34`) for Codex, Claude Code and Cursor matched all 86 payload files, with matching release asset hashes and deployed Pages metadata. The alpha tag `v0.1.0-alpha.1` and page were published on 27 October 2026 after Git delivery checks: full-SHA and tag installations matched all 86 distribution files, and resume/removal checks passed. Alpha native observations cover macOS, Node 24 and Codex.
 

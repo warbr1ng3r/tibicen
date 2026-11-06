@@ -116,6 +116,25 @@
         }
       ],
       "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0"
+    },
+    {
+      "version": "1.4.1",
+      "publishedAtUtc": "2026-11-06T05:37:35Z",
+      "sourceCommit": "319845f1f1597817807c81579b42250a1f189e7d",
+      "distributionCommit": "52c0769574e90d7d1a0438996df9da40621b0107",
+      "scope": "Compatible bounded proposal-preview correction: one combined changed region with up to three context lines, without normalizing approved bytes. Existing approved whole-file proposals, persisted schemas and approval boundaries remain compatible. Exact candidate affected CLI checks passed four synthetic mechanical cases; project verification remained unverified/no-project-checks. Public full-SHA universal installation/replacement/repeat, complete actual-path edited-backup restoration/removal, both installed self-tests and 100 payload checks passed. Synthetic approval is not end-user consent. Native loading, MCP activation/connection, broad model compatibility and human benefit remain unverified. Trusted installer Git children retain ordinary OS permissions; no OS isolation claim. Windows project-command launch remains unsupported; read-only operations are available.",
+      "payloadManifest": {
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.4.1/distribution-SHA256SUMS",
+        "sha256": "1ddbe0968918ac22469dbe3c0d8cd8f85c8d23910d2f623451957f804a4238fd"
+      },
+      "archives": [
+        {
+          "name": "tibicen-1.4.1.tar.gz",
+          "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.4.1/tibicen-1.4.1.tar.gz",
+          "sha256": "c3302cf25284120d009ee7b01c9044cdc0193c8c658597e0f24fe7e65233dcb8"
+        }
+      ],
+      "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.1"
     }
   ],
   "warnings": []

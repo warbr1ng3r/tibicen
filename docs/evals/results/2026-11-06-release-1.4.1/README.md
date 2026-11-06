@@ -1,8 +1,9 @@
-# Tibicen 1.4.1 candidate report
+# Tibicen 1.4.1 release report
 
-**Unpublished candidate — 6 November 2026.** Candidate-01 passed the versioned
-local gate, affected CLI checks and local delivery checks below. Public source CI,
-platform cells, public delivery, publication and Pages verification remain pending.
+**Published 6 November 2026 at 08:37:35 Europe/Moscow (`2026-11-06T05:37:35Z`).**
+[Release 1.4.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.1),
+ID `436136601`, passed public CI, all six platform cells, exact public delivery
+and returned-asset verification. Pages deployment and returned-body verification remain pending.
 
 ## Patch scope and compatibility
 
@@ -40,26 +41,29 @@ Source remained unchanged from capture through build. Inventory SHA-256 values:
 | Exact-candidate affected CLI checks A02 | 22 calls, four cases passed; original A01 retained |
 | Local delivery D01 | Four installer calls and two installed self-tests passed |
 | Independent exact-candidate engineering review | Ship; zero open P1/P2 findings; frozen A02/D01 and curated projection verified |
-| Public source commit and CI | Pending |
-| Six macOS/Ubuntu/Windows × Node 22.20.0/24.15.0 cells | Pending |
-| Public full-SHA installation/update/recovery/removal | Pending |
-| Immutable v1.4.1 tag, release and three returned asset comparisons | Pending |
+| Public source commit and CI | [42168629099](https://github.com/warbr1ng3r/tibicen/actions/runs/42168629099) passed on `319845f…` |
+| Six macOS/Ubuntu/Windows × Node 22.20.0/24.15.0 cells | [42168790859](https://github.com/warbr1ng3r/tibicen/actions/runs/42168790859): all passed |
+| Public full-SHA installation/update/recovery/removal | P01 passed; four installer calls and two installed self-tests in 26.471 seconds; independent Ship |
+| v1.4.1 tag, publication and returned assets | [42169510847](https://github.com/warbr1ng3r/tibicen/actions/runs/42169510847) published; all three downloads and 101 archive files/modes match candidate-01 |
 | Pages metadata, deployment and separate returned-body comparison | Pending |
 
-These are **local candidate assets**, not verified public downloads:
+All three actual public downloads matched the frozen candidate, sizes and API digests:
 
 | Asset | Bytes | SHA-256 |
 | --- | ---: | --- |
-| tibicen-1.4.1.tar.gz | 265489 | `c3302cf25284120d009ee7b01c9044cdc0193c8c658597e0f24fe7e65233dcb8` |
-| distribution-SHA256SUMS | 10428 | `1ddbe0968918ac22469dbe3c0d8cd8f85c8d23910d2f623451957f804a4238fd` |
-| SHA256SUMS | 177 | `23c4ccc8243d2936a1e2782922fa17991cc4f8e182047c7d5f78e711e4ee2d6c` |
+| [tibicen-1.4.1.tar.gz](https://github.com/warbr1ng3r/tibicen/releases/download/v1.4.1/tibicen-1.4.1.tar.gz) | 265489 | `c3302cf25284120d009ee7b01c9044cdc0193c8c658597e0f24fe7e65233dcb8` |
+| [distribution-SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.4.1/distribution-SHA256SUMS) | 10428 | `1ddbe0968918ac22469dbe3c0d8cd8f85c8d23910d2f623451957f804a4238fd` |
+| [SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.4.1/SHA256SUMS) | 177 | `23c4ccc8243d2936a1e2782922fa17991cc4f8e182047c7d5f78e711e4ee2d6c` |
 
-The local curated export contains 25 selected paths and preserves 317 prior omissions.
-Its build matched all 101 frozen distribution files/modes. Independent review rehashed
-the source, distribution, three assets and complete edited backups. This is neither
-a push nor publication; final public commits remain unbound. Follow [RELEASING](../../../RELEASING.md).
+Public source `319845f1f1597817807c81579b42250a1f189e7d` binds distribution
+`52c0769574e90d7d1a0438996df9da40621b0107`. Annotated tag object
+`4c65b9d0fbb901598bcc7e88a974a54019e583a0` resolves to that distribution;
+the actual ref/object was verified separately from release creation metadata.
+The original 25-path curated export preserved 317 prior omissions and rebuilt
+all 101 frozen files/modes. Independent review rehashed the source, assets and
+complete edited backups. See [RELEASING](../../../RELEASING.md).
 
-## Local attempts and preservation
+## Attempts, public delivery and preservation
 
 Original gate G01 remains **929 passed / one failed / one default skip**.
 `process-skip-unexplained` failed before offline protocol arms launched. A boundary
@@ -83,6 +87,14 @@ All 100 payloads matched; application files, later owner memory, sibling skills,
 external settings and original inputs were preserved. The trusted installer had
 ambient read capability and owned-only writes; no OS sandbox/firewall is claimed. Private receipts retain attempts, inputs, outputs, inventories and hashes.
 
+P01 separately installed published 1.4.0 and replaced it from the actual public
+1.4.1 full SHA, then repeated, restored the complete edited backups into actual
+installed paths and removed them. Exact fetch/checkout/lock/payload bindings,
+both installed self-tests and protected files passed. Trusted Git children had
+ordinary OS permissions; no OS isolation is claimed. Returned release notes,
+three assets, 101 archive files/modes and 100 payload sums matched; the previous
+1.4.0 release, assets and annotated tag were preserved. Returned-byte review: Ship.
+
 ## Earlier evidence retains its identity
 
 The [first working-session report](../2026-11-06-first-working-session/README.md)
@@ -103,7 +115,7 @@ does not run adopt or migrate project infrastructure. The
 [installation guide](../../../INSTALLATION.md) covers replacement and removal;
 local-path evidence alone does not establish public delivery.
 
-There is no background updater. This preparation establishes no native host/model session,
+There is no background updater. This release establishes no new native host/model session,
 automatic loading, MCP activation/connection or broad model compatibility.
 Windows project-command launch remains unsupported; read-only operations remain available.
 Synthetic assisted checks do not measure human usefulness, comparative effort savings or unassisted behavior.

@@ -1,8 +1,25 @@
 # Issue tracker
 
-## Current effort — compatible 1.4.1 patch
+## Current effort — published 1.4.1 and Pages follow-up
 
-The owner directed uninterrupted autonomous work after the working-session commit. The 1.4.1 release effort (`../../.scratch/release-1.4.1/map.md`; private development record; excluded from public source) now owns candidate acceptance, curated publication, public gates, delivery and Pages. The preview correction is compatible; published 1.4 artifacts remain immutable. This section records preparation, not publication.
+The owner directed uninterrupted autonomous delivery after the working-session commit.
+[1.4.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.1) was published at
+`2026-11-06T05:37:35Z` (08:37 Moscow). Source `319845f1f1597817807c81579b42250a1f189e7d`
+binds distribution `52c0769574e90d7d1a0438996df9da40621b0107` and annotated tag
+`4c65b9d0fbb901598bcc7e88a974a54019e583a0`.
+[Source CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42168629099),
+[six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/42168790859)
+and [publication](https://github.com/warbr1ng3r/tibicen/actions/runs/42169510847) passed.
+
+Public P01 passed four installer calls and two installed self-tests: exact 1.4→1.4.1
+replacement/repeat, complete edited-backup restoration into actual installed paths,
+removal and preservation. All three returned assets and 101 archive files/modes
+match the candidate; published 1.4.0 remains unchanged. Independent candidate,
+delivery and returned-asset reviews: Ship. Original G01/A01 failures remain recorded.
+The release effort (`../../.scratch/release-1.4.1/map.md`; private development record; excluded from public source) still owns the pending
+metadata checks, Pages deployment and separate returned-body comparison. The
+[report](../evals/results/2026-11-06-release-1.4.1/README.md) retains exact bindings
+and limits; native loading, MCP connection and human usefulness remain unverified.
 
 ## Completed local work — first working session
 
@@ -11,6 +28,8 @@ The first working-session packet (`../../.scratch/working-path/map.md`; private 
 ## Completed local work — simpler first use
 
 The owner approved the [first-use packet](../../.scratch/landing-first-use/map.md) after the dated installation review. Parallel installation/examples/preset lanes and root integration completed the [change](../../openspec/changes/simplify-first-use-landing/tasks.md). Local implementation and independent Ponytail review are complete: full gate 900 passed/1 existing skip; site 57/57 and browser 101 passed/1 existing skip at both bases. All 101 skill files remain unchanged. See [verification](../../openspec/changes/simplify-first-use-landing/verification.md) for checks and limits. Source `a6d54bc` is public and passed CI; [Pages 42156035977](https://github.com/warbr1ng3r/tibicen/actions/runs/42156035977) deployed that same source. Live EN/RU home/preset routes, desktop/mobile and no-JavaScript flows passed; skill version remains 1.4.0.
+
+## Previous release snapshot — 1.4.0
 
 **Current status — 6 November 2026 (Moscow):** [1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0) was published at `2026-11-06T00:10:57Z`. Task-aware init/adopt and MCP diagnosis for any valid harness ID are included. The 891-test local gate, separate standalone 3/3, exact public-source CI, all six platform cells and public 1.3→1.4 replacement/recovery/removal passed. Independent review: Ship. All three returned release assets and 101 archive files/modes match the candidate; 1.3 is preserved. The [report](../evals/results/2026-11-06-release-1.4/README.md) records exact SHAs and limits. Metadata CI and the separate Pages deployment/returned-body checks passed; see the [dashboard](../../.scratch/release-1.4/dashboard.md); native activation, MCP connection and human usefulness remain unverified.
 

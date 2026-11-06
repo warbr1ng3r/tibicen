@@ -52,7 +52,7 @@ test('catalog hints stay local preferences in English and Russian on a narrow vi
   for (const route of ['./', 'ru/']) {
     await page.goto(route);
     await expect(page.locator('#install-command')).toContainText(
-      '7b3b08f58276034b1609e44ef393e5f7c0e01a1b',
+      '52c0769574e90d7d1a0438996df9da40621b0107',
     );
     await openPreset(page);
     await openAdvanced(page);
@@ -122,7 +122,7 @@ test('one universal command stays primary while native alternatives are optional
     ).toHaveCount(0);
     const primary = page.locator('#install-command');
     const suffix =
-      'skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7b3b08f58276034b1609e44ef393e5f7c0e01a1b -g --agent universal --skill tibicen-init tibicen-adopt --copy';
+      'skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/52c0769574e90d7d1a0438996df9da40621b0107 -g --agent universal --skill tibicen-init tibicen-adopt --copy';
     await expect(primary).toHaveText(`npx ${suffix}`);
     const alternatives = page.locator('.installation-alternatives');
     await expect(alternatives).not.toHaveAttribute('open');
@@ -441,7 +441,7 @@ test('without JavaScript English stays default in a Russian browser and language
     );
     await expect(page.locator('#preset-form')).toHaveCount(0);
     await expect(page.locator('#install-command')).toHaveText(
-      'npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7b3b08f58276034b1609e44ef393e5f7c0e01a1b -g --agent universal --skill tibicen-init tibicen-adopt --copy',
+      'npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/52c0769574e90d7d1a0438996df9da40621b0107 -g --agent universal --skill tibicen-init tibicen-adopt --copy',
     );
     await page.locator('.installation-alternatives > summary').click();
     for (const [manager, runner] of [
@@ -450,7 +450,7 @@ test('without JavaScript English stays default in a Russian browser and language
     ]) {
       await expect(page.locator(`#install-command-${manager}`)).toBeVisible();
       await expect(page.locator(`#install-command-${manager}`)).toHaveText(
-        `${runner} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7b3b08f58276034b1609e44ef393e5f7c0e01a1b -g --agent universal --skill tibicen-init tibicen-adopt --copy`,
+        `${runner} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/52c0769574e90d7d1a0438996df9da40621b0107 -g --agent universal --skill tibicen-init tibicen-adopt --copy`,
       );
     }
     await expect(

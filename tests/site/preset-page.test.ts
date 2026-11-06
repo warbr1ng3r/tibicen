@@ -49,7 +49,7 @@ for (const locale of ['en', 'ru'] as const) {
       assert.ok(link, `Missing ${language} builder language link.`);
       assert.equal(link.includes('aria-current="page"'), language === locale);
     }
-    assert.ok(html.includes('releases/tag/v1.4.0'));
+    assert.ok(html.includes('releases/tag/v1.4.1'));
     assert.ok(html.includes(`href="${basePath}/maintenance/index.json"`));
     assert.ok(html.includes(`href="${basePath}/licenses/astrowind.txt"`));
     assert.ok(html.includes(`href="${basePath}/licenses/starwind.txt"`));

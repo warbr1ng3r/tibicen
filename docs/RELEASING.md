@@ -93,6 +93,30 @@ Record corrections in a new candidate. Preserve failed attempts and old sums.
 Published tags and bytes stay immutable; a published defect requires a new
 version. There is no background update of installed Tibicen or project setup.
 
+## Published 1.4.1 — 2026-11-06 (Moscow)
+
+[1.4.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.1), release ID
+`436136601`, was published at `2026-11-06T05:37:35Z`.
+Source `319845f1f1597817807c81579b42250a1f189e7d` binds distribution
+`52c0769574e90d7d1a0438996df9da40621b0107` and `1.4.1-candidate-01`.
+Verified annotated tag object `4c65b9d0fbb901598bcc7e88a974a54019e583a0`
+points to that distribution. The compatible patch shows one changed proposal
+region with up to three context lines; full approved bytes, existing approvals
+and persisted schemas remain compatible, without migration.
+
+The 930-pass versioned local gate (one default skip), separate standalone 3/3,
+22-call affected CLI check, [public CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42168629099) and
+[six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/42168790859) passed.
+Public full-SHA replacement/repeat, complete actual-path edited-backup
+restoration/removal and both installed self-tests passed. [Publication](https://github.com/warbr1ng3r/tibicen/actions/runs/42169510847)
+passed; all three returned assets matched the frozen candidate: 101 archive
+files/modes and 100 payload sums. Independent review: Ship. Published 1.4.0 is preserved.
+
+The [report](evals/results/2026-11-06-release-1.4.1/README.md) retains exact hashes,
+G01/A01 failures, corrective observations and synthetic-consent limits. Earlier
+working-session cases remain bound to 1.4.0. Pages deployment and returned-body
+verification are pending separately; native/model/MCP behavior and human benefit remain unverified.
+
 ## Published 1.4.0 — 2026-11-06 (Moscow)
 
 [1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0) was published at `2026-11-06T00:10:57Z`.

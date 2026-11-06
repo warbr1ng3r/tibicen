@@ -13,13 +13,13 @@ Two entry points:
 - `tibicen-init` — “Set up agent infrastructure.” For an empty directory or an existing application without an agent setup.
 - `tibicen-adopt` — “Review and update agent infrastructure.” For fixing, extending, and updating existing instructions and integrations.
 
-[**1.4.0 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0):
-next-task context in init/adopt and local MCP diagnosis for any valid harness ID
-through a known format or source-hash-bound observations. Eight reader contracts
-supplement the common route; your model and provider remain your choice. Native
-activation, connection and compatibility with every model remain unverified.
-Public delivery and exact limits are in the
-[release report](docs/evals/results/2026-11-06-release-1.4/README.md).
+[**1.4.1 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.1):
+proposal previews show the changed region with three context lines instead
+of removing and adding the whole file. Full approved bytes and existing
+approved plans are preserved. Task context and portable MCP diagnosis,
+introduced in 1.4.0, remain available; your model and provider stay your choice.
+Native loading, MCP activation and broad model compatibility remain unverified.
+Exact checks and limits are in the [release report](docs/evals/results/2026-11-06-release-1.4.1/README.md).
 Project memory was introduced in 1.1.0; its [assisted fresh-task observations](docs/evals/results/2026-11-04-project-memory/README.md)
 retain their original scope. Earlier releases remain in [CHANGELOG](CHANGELOG.md).
 
@@ -29,9 +29,9 @@ Application source code, existing package manifests, CI, and data are preserved 
 
 ## Install Tibicen
 
-The command below pins the 1.4.0 distribution at its full commit. The
-[release report](docs/evals/results/2026-11-06-release-1.4/README.md) records exact
-checks, retained earlier failures and source-assisted observation limits.
+The command below pins the 1.4.1 distribution at its full commit. The
+[release report](docs/evals/results/2026-11-06-release-1.4.1/README.md) records exact
+checks, retained earlier failures and candidate-bound limits.
 Publication and public delivery are tracked in [release details](docs/RELEASING.md).
 The source branch is not an installation target.
 
@@ -42,7 +42,7 @@ The explicit `universal` target puts both complete skills in `~/.agents/skills/`
 it does not require your host, model or provider to be in Tibicen's catalog.
 
 ```sh
-npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/7b3b08f58276034b1609e44ef393e5f7c0e01a1b -g --agent universal --skill tibicen-init tibicen-adopt --copy
+npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/52c0769574e90d7d1a0438996df9da40621b0107 -g --agent universal --skill tibicen-init tibicen-adopt --copy
 ```
 
 Use the full distribution SHA from the release notes when an exact commit is
@@ -188,13 +188,13 @@ node scripts/tibicen.ts help
 
 Use focused checks while editing; run `pnpm test` before integrating changes.
 
-| Command | Scope |
-|---|---|
-| `pnpm typecheck:core` | Root TypeScript code and tests, including evals, without Astro checks |
-| `pnpm test:core` | Product lifecycle, adapters, verification and standalone skills; no site build |
-| `pnpm test:evals` | Offline harness and fake drivers; no site build or model calls |
-| `pnpm test:site:unit` | Site build and Node tests for page structure and client logic |
-| `pnpm test:site` | Site build and Chromium, Firefox and WebKit browser tests |
+| Command               | Scope                                                                          |
+| --------------------- | ------------------------------------------------------------------------------ |
+| `pnpm typecheck:core` | Root TypeScript code and tests, including evals, without Astro checks          |
+| `pnpm test:core`      | Product lifecycle, adapters, verification and standalone skills; no site build |
+| `pnpm test:evals`     | Offline harness and fake drivers; no site build or model calls                 |
+| `pnpm test:site:unit` | Site build and Node tests for page structure and client logic                  |
+| `pnpm test:site`      | Site build and Chromium, Firefox and WebKit browser tests                      |
 
 The full `pnpm test` gate still runs lint, formatting, all type checks, the site build, strict OpenSpec validation and every Node test. Browser tests remain the separate `pnpm test:site` command.
 
