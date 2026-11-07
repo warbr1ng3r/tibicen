@@ -13,6 +13,16 @@ Both can select the appropriate route from the actual project. A sufficient
 setup can stay unchanged, without creating a new session merely to record work.
 There is no Tibicen server, account, separate model or background service.
 
+## Unreleased correction — first setup after project-local installation
+
+The [local change](../openspec/changes/distinguish-self-installed-tibicen/proposal.md)
+selects initial setup when exact canonical Tibicen skill folders are the only
+infrastructure. Other instructions, skills or a recorded setup still select
+improvement. All files remain inventoried; folder names prove neither trust nor
+upstream provenance. An installed skill still makes the directory nonempty, so
+initial routing grants no application-scaffolding permission. This correction is
+not included in the published 1.5.1 archive.
+
 ## Optional project context evidence — available in 1.5.0
 
 The existing read-only report can compare caller-selected instruction files,

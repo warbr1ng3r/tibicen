@@ -5,6 +5,11 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+### Fixed
+
+- Keep first-time setup routing when the only project infrastructure is canonical installed Tibicen skill folders. Preserve the complete inventory, existing user-setup detection and all nonempty-project/approval/write guards; folder recognition does not establish provenance or trust.
+
+
 ## [1.5.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.1) — 2026-11-07
 
 ### Fixed

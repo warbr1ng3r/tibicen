@@ -56,6 +56,25 @@ export function infrastructurePath(relative: string) {
   );
 }
 
+function installedTibicenSkill(relative: string) {
+  for (const match of relative.matchAll(
+    /(?:^|\/)(\.[^/]+\/skills(?:-[a-zA-Z0-9_-]+)?\/([^/]+))(?=\/)/g,
+  )) {
+    const [, root, name] = match;
+    const parent = relative.slice(0, match.index);
+    if (
+      parent &&
+      ['example.instructions.md', 'example.json'].some((leaf) =>
+        infrastructurePath(`${parent}/${leaf}`),
+      )
+    )
+      return false;
+    if (harnessInfrastructurePath(`${root}/SKILL.md`))
+      return ['tibicen-init', 'tibicen-adopt'].includes(name);
+  }
+  return false;
+}
+
 export function exclusionReason(
   relative: string,
   forbiddenPaths: string[] = [],
@@ -311,7 +330,11 @@ export async function scanProject(
     schema: 1,
     root: base,
     kind: existing || gaps.length ? 'existing' : 'empty',
-    mode: files.some((file) => file.infrastructure) ? 'improve' : 'init',
+    mode: files.some(
+      (file) => file.infrastructure && !installedTibicenSkill(file.path),
+    )
+      ? 'improve'
+      : 'init',
     files,
     memoryCandidates: files
       .filter((file) => MEMORY_PATHS.includes(file.path))

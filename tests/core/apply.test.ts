@@ -13,10 +13,11 @@ import {
 } from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
-import { createProposal } from '../../scripts/core/plan.ts';
+import { createProposal, isEmptyProject } from '../../scripts/core/plan.ts';
 import { applyPlan, getStatus } from '../../scripts/core/apply.ts';
 import { digest } from '../../scripts/core/contracts.ts';
 import { runCommand } from '../../scripts/core/execute.ts';
+import { scanProject } from '../../scripts/scan/index.ts';
 import {
   createSnapshot,
   prepareFinalSnapshot,
@@ -55,6 +56,72 @@ test('proposal and missing/wrong consent leave project and user profile untouche
     { code: 'consent-required' },
   );
   assert.deepEqual(await readdir(root), []);
+  assert.deepEqual(await readdir(home), []);
+});
+
+test('init routing for an installed utility never grants empty-project writes or setup execution', async (t) => {
+  const { root, home } = await fixture(t);
+  const starter = await createProposal(
+    root,
+    {
+      mode: 'init',
+      changes: [
+        { path: 'app.js', content: 'starter\n', reason: 'An empty starter.' },
+      ],
+    },
+    { home },
+  );
+  const skill = '.agents/skills/tibicen-init/SKILL.md';
+  await mkdir(path.dirname(path.join(root, skill)), { recursive: true });
+  await writeFile(path.join(root, skill), '# Installed utility\n');
+  const before = await readdir(root, { recursive: true });
+  assert.equal((await scanProject(root)).mode, 'init');
+  assert.equal(await isEmptyProject(root), false);
+  await assert.rejects(
+    createProposal(
+      root,
+      { mode: 'init', changes: starter.proposal.changes },
+      { home },
+    ),
+    { code: 'application-protected' },
+  );
+  await assert.rejects(
+    applyPlan(root, starter, { home, approvedDigest: starter.digest }),
+    { code: 'application-protected' },
+  );
+  for (const [kind, executable, argv] of [
+    ['install', 'npm', ['install', '--ignore-scripts']],
+    ['git-init', 'git', ['init']],
+  ] as const) {
+    const plan = await createProposal(
+      root,
+      {
+        mode: 'init',
+        commands: [
+          {
+            id: kind,
+            kind,
+            executable,
+            argv: [...argv],
+            cwd: '.',
+            envNames: [],
+            trusted: true,
+          },
+        ],
+      },
+      { home },
+    );
+    assert.equal(plan.proposal.emptyProject, false);
+    await assert.rejects(
+      applyPlan(root, plan, { home, approvedDigest: plan.digest }),
+      { code: 'application-protected' },
+    );
+  }
+  assert.deepEqual(await readdir(root, { recursive: true }), before);
+  assert.equal(
+    await readFile(path.join(root, skill), 'utf8'),
+    '# Installed utility\n',
+  );
   assert.deepEqual(await readdir(home), []);
 });
 

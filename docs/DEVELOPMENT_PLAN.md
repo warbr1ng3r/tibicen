@@ -1,8 +1,16 @@
 # Tibicen development plan
 
-Updated 7 November 2026 (Moscow). Product scope remains in the
-[vision](PRODUCT_VISION.md) and [addendum](PRODUCT_VISION_ADDENDUM.md).
-This roadmap owns milestone order; detailed requirements and tasks stay in OpenSpec.
+## Current work — compatible patch and practical acceptance
+
+The 8 November effort (`../.scratch/release-and-working-cycles-20261108/map.md`; private development record; excluded from public source) owns patch 1.5.2, fresh useful working cycles and a truthful screenshot preview before landing implementation. The scanner fix, including outer user-infrastructure ownership, is complete and independently reviewed. Candidate-01 is accepted: the versioned full gate passed 1048 tests with one existing skip, built standalone checks passed 3/3, and rebuilding the frozen source reproduced all 111 distribution files exactly. Local installation, replacement, identical repeat, edited-backup restoration and removal passed. Fresh native observations are running; their results, public CI/platform checks, public delivery and publication remain pending. Published 1.5.1 remains current. The [release report](evals/results/2026-11-08-release-1.5.2/README.md) records acceptance and limits; detailed work stays in the effort dashboard. Every earlier observation remains unchanged.
+
+## Latest local correction — first setup after installing Tibicen
+
+Canonical installed Tibicen skill folders alone now select init; other user infrastructure still selects improve. All files remain inventoried and the nonempty-project/write guards are unchanged. The [change verification](../openspec/changes/distinguish-self-installed-tibicen/verification.md) records independent Ponytail Ship, 1047 passing tests/one existing skip, both built skills and 110 checksums. The correction is Unreleased; published 1.5.1 remains unchanged.
+
+The [ordinary-cycle report](evals/results/2026-11-07-ordinary-working-cycles/README.md) retains two accepted proposals, a native error before apply and the closed three-call packet. A separate offline check applied both approved plans successfully; this does not establish a complete fresh-agent working cycle. That observation remains the next evidence gap. The effort (`../.scratch/ordinary-cycle-20261107/map.md`; private development record; excluded from public source) owns detailed tasks and limits. Landing naming/icons have a separate private screenshot preview pending the owner's choice. Agensi remains parked.
+
+Updated 7 November 2026 (Moscow). Product scope remains in the [vision](PRODUCT_VISION.md) and [addendum](PRODUCT_VISION_ADDENDUM.md). This roadmap owns milestone order; detailed requirements and tasks stay in OpenSpec.
 
 ## Current milestone — 1.5.1 published; Pages verified
 

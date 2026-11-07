@@ -10,13 +10,14 @@ import {
   symlink,
   rm,
   chmod,
+  stat,
 } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
 import { scanProject } from '../../scripts/scan/index.ts';
-import { MAX_DATA_BYTES } from '../../scripts/core/contracts.ts';
+import { hashContent, MAX_DATA_BYTES } from '../../scripts/core/contracts.ts';
 
 async function fixture(t: TestContext, files: Record<string, string> = {}) {
   const root = await mkdtemp(path.join(tmpdir(), 'tibicen-scan-test-'));
@@ -140,6 +141,144 @@ test('shared instruction and skill files do not identify a particular harness', 
   assert.deepEqual(scan.agents, []);
   assert.deepEqual(scan.gaps, []);
   assert(scan.files.every((file) => file.infrastructure));
+});
+
+test('canonical Tibicen skill installs retain init routing and their full read-only inventory', async (t) => {
+  for (const prefix of [
+    '.agents/skills',
+    '.claude/skills',
+    '.cursor/skills',
+    '.codex/skills',
+    '.opencode/skills',
+    '.gemini/skills',
+    '.cline/skills',
+    '.devin/skills',
+    '.windsurf/skills',
+    '.clinerules/skills',
+    '.roo/skills',
+    '.roo/skills-code',
+    '.github/skills',
+    'packages/ui/.agents/skills',
+    'packages/ui/.gemini/skills',
+  ]) {
+    for (const withApplication of [false, true]) {
+      const files: Record<string, string> = {
+        [`${prefix}/tibicen-init/SKILL.md`]: '# Installed setup utility\n',
+        [`${prefix}/tibicen-init/helper.sh`]: '#!/bin/sh\nexit 1\n',
+        [`${prefix}/tibicen-adopt/package.json`]: JSON.stringify({
+          scripts: { test: 'touch MUST_NOT_RUN' },
+        }),
+        ...(withApplication
+          ? {
+              'package.json': JSON.stringify({
+                scripts: { test: 'touch MUST_NOT_RUN' },
+              }),
+              'src/app.js': 'throw new Error("Do not execute");\n',
+            }
+          : {}),
+      };
+      const root = await fixture(t, files);
+      await chmod(path.join(root, `${prefix}/tibicen-init/helper.sh`), 0o755);
+      const before = await readdir(root, { recursive: true });
+      const expected = await Promise.all(
+        Object.entries(files).map(async ([name, content]) => ({
+          path: name,
+          hash: hashContent(content),
+          size: Buffer.byteLength(content),
+          mode: (await stat(path.join(root, name))).mode & 0o777,
+          infrastructure: name.startsWith(`${prefix}/`),
+        })),
+      );
+      const scan = await scanProject(root);
+      assert.equal(scan.mode, 'init', prefix);
+      assert.equal(scan.kind, 'existing', prefix);
+      assert.deepEqual(
+        scan.files,
+        expected.sort((a, b) => a.path.localeCompare(b.path)),
+      );
+      assert.deepEqual(scan.languages, withApplication ? ['javascript'] : []);
+      assert.equal(scan.commands.length, withApplication ? 1 : 0);
+      assert(scan.commands.every((command) => !command.trusted));
+      assert.deepEqual(await readdir(root, { recursive: true }), before);
+      for (const [name, content] of Object.entries(files))
+        assert.equal(await readFile(path.join(root, name), 'utf8'), content);
+    }
+  }
+});
+
+test('user infrastructure and noncanonical Tibicen lookalikes still select improve', async (t) => {
+  for (const extra of [
+    'AGENTS.md',
+    'packages/ui/AGENTS.md',
+    '.agents/skills/review/SKILL.md',
+    '.agents/skills/tibicen-init-extra/SKILL.md',
+    'packages/ui/.agents/skills/Tibicen-init/SKILL.md',
+    '.agents/skills/renamed/SKILL.md',
+    '.claude/rules/skills/tibicen-init/rule.md',
+    '.agents/skills/other/references/.agents/skills/tibicen-init/example.md',
+    '.custom/skills/tibicen-init/AGENTS.md',
+    '.tibicen/manifest.yml',
+  ]) {
+    const files = {
+      '.agents/skills/tibicen-init/SKILL.md': '# Installed utility\n',
+      [extra]:
+        extra === '.tibicen/manifest.yml'
+          ? JSON.stringify({ schema: 1, installed: [], sessions: [] })
+          : '---\nname: tibicen-init\n---\nKeep this user setup.\n',
+    };
+    const root = await fixture(t, files);
+    const scan = await scanProject(root);
+    assert.equal(scan.mode, 'improve', extra);
+    assert.equal(scan.files.length, 2);
+    assert(scan.files.every((file) => file.infrastructure));
+    for (const [name, content] of Object.entries(files))
+      assert.equal(await readFile(path.join(root, name), 'utf8'), content);
+  }
+});
+
+test('self-install routing leaves bare memory candidates and explicit memory bindings unchanged', async (t) => {
+  const root = await fixture(t, {
+    '.agents/skills/tibicen-init/SKILL.md': '# Installed utility\n',
+    'MEMORY.md': '# Existing owner notes\n',
+  });
+  const bare = await scanProject(root);
+  assert.equal(bare.mode, 'init');
+  assert.deepEqual(bare.memoryCandidates, ['MEMORY.md']);
+  assert.equal(
+    bare.files.find((file) => file.path === 'MEMORY.md')!.infrastructure,
+    false,
+  );
+  const bound = await scanProject(root, {
+    memory: { path: 'MEMORY.md', ownership: 'user-memory' },
+  });
+  assert.equal(bound.mode, 'improve');
+  assert.deepEqual(bound.memoryCandidates, bare.memoryCandidates);
+  assert.equal(
+    bound.files.find((file) => file.path === 'MEMORY.md')!.infrastructure,
+    true,
+  );
+});
+
+test('outer user infrastructure owns nested canonical Tibicen examples', async (t) => {
+  for (const extra of [
+    '.claude/rules/examples/.agents/skills/tibicen-init/rule.md',
+    '.claude/commands/examples/.agents/skills/tibicen-adopt/command.md',
+    '.cursor/rules/examples/.agents/skills/tibicen-init/rule.mdc',
+    '.github/instructions/examples/.agents/skills/tibicen-init/review.instructions.md',
+    '.continue/mcpServers/examples/.agents/skills/tibicen-init/server.json',
+  ]) {
+    const files = {
+      '.agents/skills/tibicen-init/SKILL.md': '# Installed utility\n',
+      [extra]: 'Keep this user-owned example.\n',
+    };
+    const root = await fixture(t, files);
+    const scan = await scanProject(root);
+    assert.equal(scan.mode, 'improve', extra);
+    assert.equal(scan.files.length, 2);
+    assert(scan.files.every((file) => file.infrastructure));
+    for (const [name, content] of Object.entries(files))
+      assert.equal(await readFile(path.join(root, name), 'utf8'), content);
+  }
 });
 
 test('new native markers retain forbidden, sensitive, metadata and symlink exclusions', async (t) => {
