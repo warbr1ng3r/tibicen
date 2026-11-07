@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "distributionCommit": "287ef7b22630482aca7996e5a0faad601cede778",
+  "candidateArchiveSha256": "eb2d256d2e30677e1c34476a5c52ab14ebc69bff0fc01577e3c3e9dc3ba2e9b9",
+  "payloadFiles": 110,
+  "calls": {
+    "installer": 4,
+    "standalone": 2
+  },
+  "preservationPassed": true,
+  "rawReceiptSha256": "d3f02e9186d764eaebff8deb47d15996ee70039bfefff206a01607a9fbce94b0",
+  "limits": [
+    "Owned macOS arm64/Node24.15.0 universal-target fixture; no native loading, model use, human benefit or application lifecycle/test rerun.",
+    "Installer Node reads ambient and trusted Git children retain ordinary OS permissions; owned Node writes and the known-flow hook are not a child sandbox or OS firewall.",
+    "Anonymous fixed-GitHub full-SHA fetch/checkout and installed byte/mode checks passed with normal TLS and root-bound IPv4. Known clone-SHA probes exited128 before successful exact fetch within each invocation; Node child-permission warnings remain retained.",
+    "No skills update or lock-byte-stability assertion. Complete edited-backup restoration/removal and protected-data checks passed; retained temporary evidence is not claimed deleted."
+  ]
+}
