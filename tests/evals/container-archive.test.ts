@@ -42,6 +42,78 @@ test('container collection observes ordinary file permissions without changing b
   }
 });
 
+test('container restaging retains declared file modes and legacy defaults', () => {
+  const files = {
+    'AGENTS.md': Buffer.from('private instructions'),
+    'README.md': Buffer.from('public instructions'),
+    'bin/check': Buffer.from('#!/bin/sh\nexit 0\n'),
+    constructor: Buffer.from('ordinary filename'),
+    toString: Buffer.from('another ordinary filename'),
+  };
+  const modes = {
+    'AGENTS.md': 0o600,
+    'README.md': 0o644,
+    'bin/check': 0o755,
+    constructor: 0o644,
+    toString: 0o644,
+  };
+  const decoded = decodeArchive(
+    encodeFiles(files, '', modes),
+    Object.keys(files),
+  );
+  assert.deepEqual({ ...decoded.files }, files);
+  assert.deepEqual({ ...decoded.modes }, modes);
+  assert.deepEqual(
+    encodeFiles(files),
+    encodeFiles(
+      files,
+      '',
+      Object.fromEntries(Object.keys(files).map((name) => [name, 0o644])),
+    ),
+  );
+  const partial = decodeArchive(
+    encodeFiles(files, '', { 'AGENTS.md': 0o600 }),
+    Object.keys(files),
+  );
+  assert.equal(partial.modes['README.md'], 0o644);
+  assert.equal(partial.modes.constructor, 0o644);
+  assert.equal(partial.modes.toString, 0o644);
+});
+
+test('container input modes reject unsafe values, unknown paths and invalid maps', () => {
+  const files = { file: Buffer.from('fixed bytes') };
+  const invalid = [
+    null,
+    [],
+    '0644',
+    Object.create({ file: 0o600 }),
+    { absent: 0o644 },
+    { '../file': 0o644 },
+    ...[
+      -1,
+      0o1000,
+      0o4755,
+      0o100644,
+      1.5,
+      NaN,
+      Infinity,
+      '0600',
+      undefined,
+    ].map((file) => ({ file })),
+    { [Symbol('file')]: 0o644 },
+    {
+      get file() {
+        return 0o600;
+      },
+    },
+  ];
+  for (const modes of invalid)
+    assert.throws(
+      () => encodeFiles(files, '', modes as Record<string, number>),
+      /invalid-container-file-modes/,
+    );
+});
+
 test('container archive rejects malformed and special file or directory modes', () => {
   for (const mode of [
     '0004755\0',

@@ -16,7 +16,7 @@ matched the official artifact without rebuilding. The
 [release report](evals/results/2026-11-07-release-1.5/README.md) retains exact
 identities, original failures, the full-summary/local-seven-body collection scope
 and independent review. The effort (`../.scratch/release-1.5/map.md`; private development record; excluded from public source) and
-dashboard (`../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) track final documentation closeout;
+dashboard (`../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) record completed final documentation closeout;
 document-only updates do not change the already deployed site.
 
 The [context-review guide](PROJECT_CONTEXT_REVIEW.md) describes the three optional
@@ -24,8 +24,39 @@ additions. Schemas and write/approval boundaries are unchanged. Fresh sessions
 explicitly read the staged skill and use the CLI in synthetic fixtures on one
 requested route; B3's missing-utility command and same-session recovery remain
 disclosed. No implicit loading, all-harness compatibility or measured human
-benefit is established. No further native session is included. Routine maintenance
-and later scope follow the existing plan below.
+benefit is established. That release packet includes no further native session. Routine maintenance
+and the separately selected investigation follow below.
+
+## Completed local maintenance — consent guidance and faithful restaging
+
+Completed the two narrow follow-ups from the first-run observation: explicit
+generated-service consent presentation and preservation of ordinary file modes
+through the evaluator. The current effort (`../.scratch/first-run-fixes-20261107/map.md`; private development record; excluded from public source)
+owns parallel work; [OpenSpec](../openspec/changes/preserve-first-run-consent-and-modes/proposal.md)
+owns detailed tasks. Focused 130/130, full gate 1043 passes / 1 skip and independent
+Ponytail Ship are recorded in [verification](../openspec/changes/preserve-first-run-consent-and-modes/verification.md).
+Keep published 1.5.0 and all historical outcomes unchanged. No new engine,
+native rerun, version bump, commit or release is included.
+
+## Latest observation — setup applied; second useful task incomplete
+
+The renewed [first-run observation](research/2026-11-07-first-run-value/README.md)
+used published 1.5.0 without product changes. The native agent applied both exact
+setup proposals and reported their verification limits. Initial setup then passed
+a fresh useful task and independent checks (5/5 tests). Its proposal required one
+extra operator correction to keep the Tibicen route. Improvement preserved existing
+memory and decisions; its later search task returned code and a successful test
+command but ended with a terminal native error before completion. That task was
+not accepted or independently graded, and no retry followed.
+
+Six native calls and two model-free containers ran; all containers were removed.
+Both repeat checks were prospectively omitted because evaluator restaging changes
+file modes and would confound the result. Earlier preparation failures remain
+closed historical records. The execution effort (`../.scratch/first-run-execution-20261107/map.md`; private development record; excluded from public source)
+owns exact outcomes and limits. This is assisted technical evidence on one route;
+human benefit and other harness behavior remain unknown. The narrow follow-ups
+are clearer generated-record consent guidance and faithful evaluator file modes,
+not a new product engine. Neither change nor a new release is included here.
 
 ## Published baseline
 
@@ -71,7 +102,7 @@ connection and measured human usefulness require their own observations.
 3. **Record the native first-use cycle after 1.4.1 — packet complete.** The owner
    approved reviewed-landing deployment, bounded subscription-backed native
    observations and correction of current-guide version drift. The
-   [native first-use packet](../.scratch/native-first-use/map.md) owns tasks,
+   native first-use packet (`../.scratch/native-first-use/map.md`; private development record; excluded from public source) owns tasks,
    source/input freezes and [actual outcomes](evals/results/2026-11-06-native-first-use/README.md). Internal assistance, structural
    checks, native reading/use and unperformed phases retain separate results.
    Pages and current-guide fixes passed. S0 passed; S1 failed, stopping later
@@ -79,7 +110,7 @@ connection and measured human usefulness require their own observations.
    for its five-file source freeze, without changing the published skill payloads.
    That gate does not validate the later recovery change.
 4. **Repair evaluator recovery — verified locally; native task and memory phases stopped.**
-   The [follow-up packet](../.scratch/native-memory-followup/map.md) attempted M1
+   The follow-up packet (`../.scratch/native-memory-followup/map.md`; private development record; excluded from public source) attempted M1
    once: two commands succeeded before an accepted process exited 127. Its command
    and cause remain unknown. M2/M3 did not run; no retry occurred. Memory use,
    task completion and container changes remain unverified; see the
@@ -92,7 +123,7 @@ connection and measured human usefulness require their own observations.
    the fix; both runs verified cleanup. All 100 distributed payloads remain
    unchanged. These results do not establish native task or memory success.
 5. **Finite native memory observations — complete.** The
-   [recovery observation packet](../.scratch/native-memory-recovery/map.md) caught
+   recovery observation packet (`../.scratch/native-memory-recovery/map.md`; private development record; excluded from public source) caught
    a second CLI stop before launch. The
    [caller repair](../openspec/changes/preserve-cli-command-results/tasks.md)
    passed independent review and 1002 tests/one existing skip. R1 then completed,

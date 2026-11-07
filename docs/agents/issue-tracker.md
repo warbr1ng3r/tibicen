@@ -1,5 +1,48 @@
 # Issue tracker
 
+## Local fixes complete — first-run consent and file modes, 7 November
+
+The owner requested implementation of the two recorded follow-ups. The
+effort (`../../.scratch/first-run-fixes-20261107/map.md`; private development record; excluded from public source) and
+dashboard (`../../.scratch/first-run-fixes-20261107/dashboard.md`; private development record; excluded from public source) own parallel mode
+and guidance lanes. Detailed requirements/tasks are in the
+[change](../../openspec/changes/preserve-first-run-consent-and-modes/proposal.md).
+Local guidance/evaluator corrections passed 130/130 focused tests, the full gate
+(1043 passes / 1 skip) and independent Ponytail Ship; [verification](../../openspec/changes/preserve-first-run-consent-and-modes/verification.md) records exact scope. No native retry, historical regrade, commit or publication follows;
+published 1.5.0 and the preceding observation remain unchanged.
+
+## Execution closed — renewed first-run observation, 7 November
+
+The new effort (`../../.scratch/first-run-execution-20261107/map.md`; private development record; excluded from public source),
+dashboard (`../../.scratch/first-run-execution-20261107/dashboard.md`; private development record; excluded from public source) and
+[report](../research/2026-11-07-first-run-value/README.md) retain actual native
+application of both proposals, the accepted initial-setup useful task (5/5),
+one extra init route correction and the incomplete improvement useful task.
+The last session returned code and a successful test command, then a terminal
+error; no task acceptance, independent grade or retry followed. Exact cause is
+unknown. Six native calls/two model-free containers ran and were cleaned up.
+Two repeats were omitted prospectively because restaging modes would confound
+them. Earlier closed failures remain unchanged. No comparative human benefit,
+automatic discovery, other-harness claim, product patch, commit or release follows.
+The narrow recorded follow-ups are generated-record consent wording and faithful
+evaluator modes; neither was implemented by this observation.
+
+## Closed investigation — first-run observations not obtained, 7 November
+
+The [report](../research/2026-11-07-first-run-value/README.md),
+effort (`../../.scratch/first-run-value-20261107/map.md`; private development record; excluded from public source) and
+dashboard (`../../.scratch/first-run-value-20261107/dashboard.md`; private development record; excluded from public source) retain both
+pre-model preparation failures. Actual totals: one failed native caller before
+model/auth/container, no later native callers or model observations; two task
+control attempts, one created/removed container and one input rejection before
+creation. The prospective correction explicitly permitted up to 15 callers overall
+including the original failure, not a claim of globally no repeated caller.
+No third correction or further launch is included. Source/workflow/method review
+and offline path diagnosis are complete; no new product behavior was observed.
+A later packet needs an actually owned compact workspace and pure validation of
+all staged inputs. Human benefit remains unmeasured. Product/runtime, published
+1.5.0, unrelated Agensi work, Git history and publication remain unchanged.
+
 ## Current status — 1.5.0 and Pages verified, 7 November
 
 [Release 1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0), ID
@@ -10,9 +53,9 @@ public full-SHA delivery and returned assets passed; root accepted exact bytes.
 The [report](../evals/results/2026-11-07-release-1.5/README.md) records identities,
 attempts and limits. Published 1.4.1 remains immutable historical evidence.
 
-Continue the already authorized release plan without routine approval pauses.
+Release and final documentation closeout are complete.
 The map (`../../.scratch/release-1.5/map.md`; private development record; excluded from public source) and
-dashboard (`../../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) track final document closeout.
+dashboard (`../../.scratch/release-1.5/dashboard.md`; private development record; excluded from public source) record completed final document closeout.
 Metadata CI 42308227689 and Pages 42308799044 passed on `49b41f0…`; audit
 42309686805 matched all 20 returned bodies to the official artifact without
 rebuilding. Seven local direct bodies agree; the full structured summary is
@@ -59,7 +102,7 @@ historical failures, after-observation labels and original validation timing.
 
 ## Completed effort — bounded native working and memory cycle
 
-The [completed effort](../../.scratch/native-memory-recovery/map.md) has one actual
+The completed effort (`../../.scratch/native-memory-recovery/map.md`; private development record; excluded from public source) has one actual
 R1 native pass in 50 seconds: complete memory output before implementation,
 limit-seven batching, tests and preserved files. Its original automated grade
 failed on an exit0-only proxy after a trailing git failure. The original grade
@@ -78,7 +121,7 @@ finite observation effort is complete. All three configured
 sessions were used once within the original three-session/420-second cap; no
 further native runs are planned by this packet and no budget was added.
 Source fixes passed independent Ponytail review and 1002 tests/one existing skip;
-published payloads remain 1.4.1. The [dashboard](../../.scratch/native-memory-recovery/dashboard.md)
+published payloads remain 1.4.1. The dashboard (`../../.scratch/native-memory-recovery/dashboard.md`; private development record; excluded from public source)
 owns actual status. No paid API, credential change, host writeback, source commit
 or publication is included; internal review is not human usefulness scoring.
 At that packet's closeout, source integration/release scope was the next roadmap
@@ -88,12 +131,12 @@ not isolate memory causality because README and code also retain the cap.
 ## Completed packet — native work and evaluator recovery
 
 The owner explicitly directed autonomous continuation without routine approval
-pauses. The [follow-up packet](../../.scratch/native-memory-followup/map.md) made
+pauses. The follow-up packet (`../../.scratch/native-memory-followup/map.md`; private development record; excluded from public source) made
 one M1 attempt: two commands succeeded before an accepted process exited 127 with
 no reported sandbox denial. Its command and cause remain unknown. M2/M3 stopped
 without running; no retry occurred. The [report](../evals/results/2026-11-06-native-memory-followup/README.md)
 retains the failure, unobserved memory use and unverified container changes.
-The [dashboard](../../.scratch/native-memory-followup/dashboard.md) tracks a
+The dashboard (`../../.scratch/native-memory-followup/dashboard.md`; private development record; excluded from public source) tracks a
 separate [offline recovery change](../../openspec/changes/preserve-recoverable-command-results/tasks.md):
 ordinary command results reach Codex without killing the session; evaluator
 faults and containment limits remain terminal. Independent source review: Ship;
@@ -108,10 +151,10 @@ review does not fill a human usefulness record.
 
 ## Completed packet — native first use after 1.4.1
 
-The owner approved the [native first-use packet](../../.scratch/native-first-use/map.md):
+The owner approved the native first-use packet (`../../.scratch/native-first-use/map.md`; private development record; excluded from public source):
 deploy the reviewed landing, establish bounded subscription-backed native routes,
 correct current-guide version drift, and observe the available working cycle.
-The [dashboard](../../.scratch/native-first-use/dashboard.md) owns lane status.
+The dashboard (`../../.scratch/native-first-use/dashboard.md`; private development record; excluded from public source) owns lane status.
 Paid APIs, credential changes, a new skill release and additional source commits
 are outside this packet. Native execution is not inferred from internal agents.
 Pages deployed the reviewed preview. S0 recommendation passed; S1 failed, so
@@ -155,11 +198,11 @@ The first working-session packet (`../../.scratch/working-path/map.md`; private 
 
 ## Completed local work — simpler first use
 
-The owner approved the [first-use packet](../../.scratch/landing-first-use/map.md) after the dated installation review. Parallel installation/examples/preset lanes and root integration completed the [change](../../openspec/changes/simplify-first-use-landing/tasks.md). Local implementation and independent Ponytail review are complete: full gate 900 passed/1 existing skip; site 57/57 and browser 101 passed/1 existing skip at both bases. All 101 skill files remain unchanged. See [verification](../../openspec/changes/simplify-first-use-landing/verification.md) for checks and limits. Source `a6d54bc` is public and passed CI; [Pages 42156035977](https://github.com/warbr1ng3r/tibicen/actions/runs/42156035977) deployed that same source. Live EN/RU home/preset routes, desktop/mobile and no-JavaScript flows passed; skill version remains 1.4.0.
+The owner approved the first-use packet (`../../.scratch/landing-first-use/map.md`; private development record; excluded from public source) after the dated installation review. Parallel installation/examples/preset lanes and root integration completed the [change](../../openspec/changes/simplify-first-use-landing/tasks.md). Local implementation and independent Ponytail review are complete: full gate 900 passed/1 existing skip; site 57/57 and browser 101 passed/1 existing skip at both bases. All 101 skill files remain unchanged. See [verification](../../openspec/changes/simplify-first-use-landing/verification.md) for checks and limits. Source `a6d54bc` is public and passed CI; [Pages 42156035977](https://github.com/warbr1ng3r/tibicen/actions/runs/42156035977) deployed that same source. Live EN/RU home/preset routes, desktop/mobile and no-JavaScript flows passed; skill version remains 1.4.0.
 
 ## Previous release snapshot — 1.4.0
 
-**Current status — 6 November 2026 (Moscow):** [1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0) was published at `2026-11-06T00:10:57Z`. Task-aware init/adopt and MCP diagnosis for any valid harness ID are included. The 891-test local gate, separate standalone 3/3, exact public-source CI, all six platform cells and public 1.3→1.4 replacement/recovery/removal passed. Independent review: Ship. All three returned release assets and 101 archive files/modes match the candidate; 1.3 is preserved. The [report](../evals/results/2026-11-06-release-1.4/README.md) records exact SHAs and limits. Metadata CI and the separate Pages deployment/returned-body checks passed; see the [dashboard](../../.scratch/release-1.4/dashboard.md); native activation, MCP connection and human usefulness remain unverified.
+**Current status — 6 November 2026 (Moscow):** [1.4.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.4.0) was published at `2026-11-06T00:10:57Z`. Task-aware init/adopt and MCP diagnosis for any valid harness ID are included. The 891-test local gate, separate standalone 3/3, exact public-source CI, all six platform cells and public 1.3→1.4 replacement/recovery/removal passed. Independent review: Ship. All three returned release assets and 101 archive files/modes match the candidate; 1.3 is preserved. The [report](../evals/results/2026-11-06-release-1.4/README.md) records exact SHAs and limits. Metadata CI and the separate Pages deployment/returned-body checks passed; see the dashboard (`../../.scratch/release-1.4/dashboard.md`; private development record; excluded from public source); native activation, MCP connection and human usefulness remain unverified.
 
 ## Previous release snapshot — 1.3.0
 
@@ -186,7 +229,7 @@ readers are additional coverage, not a host/model allowlist. Three parallel lane
 and independent Ponytail review are integrated: 891 full-gate tests passed,
 standalone 3/3, both self-tests, 12 CLI cases and all 101 frozen hashes/modes.
 All six [tasks](../../openspec/changes/decouple-mcp-formats-from-harnesses/tasks.md)
-and four [dashboard tickets](../../.scratch/mcp-portability/dashboard.md) are closed.
+and four dashboard tickets (`../../.scratch/mcp-portability/dashboard.md`; private development record; excluded from public source) are closed.
 [Verification](../../openspec/changes/decouple-mcp-formats-from-harnesses/verification.md)
 retains corrections, exact candidate and native/model limits. Work is Unreleased
 alongside the previous two packets; the next milestone is normal compatible
@@ -198,7 +241,7 @@ No version bump, commit or public action occurred in this implementation packet.
 The owner-authorized uninterrupted packet is complete: four bounded readers,
 metadata-only redacted CLI, both entry flows and the existing exact repair/native
 follow-up path. All six [OpenSpec tasks](../../openspec/changes/diagnose-local-mcp-context/tasks.md)
-and four [dashboard tickets](../../.scratch/mcp-diagnosis/dashboard.md) are closed.
+and four dashboard tickets (`../../.scratch/mcp-diagnosis/dashboard.md`; private development record; excluded from public source) are closed.
 [Verification](../../openspec/changes/diagnose-local-mcp-context/verification.md)
 records the fixed sensitive-inspection finding, preserved earlier failures,
 872 passing full-gate tests / 1 manual skip, standalone 3/3, 15 CLI cases and one
@@ -211,8 +254,8 @@ No new writer, version bump, commit or publication.
 
 The owner-approved 6 November packet is complete: three parallel lanes,
 integration and all seven [OpenSpec tasks](../../openspec/changes/explain-task-aware-setup/tasks.md).
-The [map](../../.scratch/task-aware-setup/map.md) and
-[dashboard](../../.scratch/task-aware-setup/dashboard.md) record resolved ownership;
+The map (`../../.scratch/task-aware-setup/map.md`; private development record; excluded from public source) and
+dashboard (`../../.scratch/task-aware-setup/dashboard.md`; private development record; excluded from public source) record resolved ownership;
 [verification](../../openspec/changes/explain-task-aware-setup/verification.md)
 records the full gate (849 pass / 1 skip), exact standalone 3/3, four fresh assisted
 sessions and independent Ponytail Ship after one guide correction. Init and adopt
@@ -223,7 +266,7 @@ local stdio MCP diagnosis is the next separate milestone.
 
 ## Completed research — next priorities after 1.3
 
-The [research map](../../.scratch/post-1.3-priorities-research/map.md) owns the
+The research map (`../../.scratch/post-1.3-priorities-research/map.md`; private development record; excluded from public source) owns the
 owner-requested fresh internet investigation of user problems, native remedies
 and concrete gaps after published 1.3. Three source lanes, root synthesis and focused evidence review are complete in
 the [study](../research/2026-11-05-post-1.3-priorities/README.md). The candidates
@@ -243,8 +286,8 @@ or portable manifest is not justified yet. No implementation or publication foll
 
 ## Completed local effort — harness and model portability
 
-The [portability map](../../.scratch/harness-portability/map.md) and
-[dashboard](../../.scratch/harness-portability/dashboard.md) own the completed
+The portability map (`../../.scratch/harness-portability/map.md`; private development record; excluded from public source) and
+dashboard (`../../.scratch/harness-portability/dashboard.md`; private development record; excluded from public source) own the completed
 three-lane implementation and local integration. Actual results: 843/843 offline
 tests, 42 affected browser checks, independent source review, universal local
 delivery and the mechanical init/adopt U02 route. U01 remains failed; no native or
@@ -253,7 +296,7 @@ retain their original scope. Release metadata and Pages follow-up remains below.
 
 ## Completed effort — 1.3 release metadata and Pages
 
-The [release map](../../.scratch/release-1.3/map.md) owns the next packet. Fresh
+The release map (`../../.scratch/release-1.3/map.md`; private development record; excluded from public source) owns the next packet. Fresh
 source-assisted init/adopt cases and exact candidate-02 update/recovery/removal
 passed independent review. The [candidate report](../evals/results/2026-11-05-release-1.3/README.md)
 records actual results and unverified native/model scope. The owner authorized the concrete packet. Source commit/push, public gates,
@@ -262,16 +305,16 @@ release publication, returned assets and separate Pages verification passed.
 ## Retained intermediate 1.3.0 preparation
 
 The owner authorized the reviewed feature commit/push and autonomous candidate
-preparation. Use the [release map](../../.scratch/release-1.3/map.md) and
-[dashboard](../../.scratch/release-1.3/dashboard.md). Candidate, affected guidance
+preparation. Use the release map (`../../.scratch/release-1.3/map.md`; private development record; excluded from public source) and
+dashboard (`../../.scratch/release-1.3/dashboard.md`; private development record; excluded from public source). Candidate, affected guidance
 observations and exact local delivery have separate scopes. New public release
 actions require the concrete packet and authorization in [RELEASING](../RELEASING.md).
 Feature public commit: `93d9305380ee24deb7ffca88f6d62fb48250f2f2`.
 
 ## Completed local effort — descriptive harness profiles (Unreleased)
 
-The owner's autonomous continuation activated the [coverage map](../../.scratch/harness-coverage/map.md)
-and [dashboard](../../.scratch/harness-coverage/dashboard.md). The strictly validated
+The owner's autonomous continuation activated the coverage map (`../../.scratch/harness-coverage/map.md`; private development record; excluded from public source)
+and dashboard (`../../.scratch/harness-coverage/dashboard.md`; private development record; excluded from public source). The strictly validated
 [change](../../openspec/changes/archive/2026-11-05-catalog-harness-capabilities/proposal.md) owns
 requirements/tasks; three disjoint lanes own core/catalog, read-only observation
 and rules/docs/preset UI. Root integrated the lanes: 835/835 offline tests without skips, both portable lifecycles and independent code/source Ship.
@@ -281,19 +324,19 @@ The work is local Unreleased; [verification](../../openspec/changes/archive/2026
 ## Completed effort — 1.2.0 release and Pages
 
 The owner delegated the release after the reviewed feature packet. The
-[release map](../../.scratch/release-1.2/map.md) and
-[dashboard](../../.scratch/release-1.2/dashboard.md) retain actual attempt accounting,
+release map (`../../.scratch/release-1.2/map.md`; private development record; excluded from public source) and
+dashboard (`../../.scratch/release-1.2/dashboard.md`; private development record; excluded from public source) retain actual attempt accounting,
 completed publication checks and integration results. Version-aware practice
 evidence, adopt diagnosis and nested memory-pointer recognition are included;
-broader harness coverage is now the separate [completed local effort](../../.scratch/harness-coverage/map.md).
+broader harness coverage is now the separate completed local effort (`../../.scratch/harness-coverage/map.md`; private development record; excluded from public source).
 Paid APIs, credential changes and rewriting published tags/assets remain outside scope.
 
 ## Latest completed local effort — version-bound practice evidence
 
 The owner's “Поехали” approved the next implementation packet described after
 the technology-refresh study: requirements, parallel core/rules/docs work,
-integration and independent Ponytail review. The [map](../../.scratch/practice-evidence/map.md),
-[dashboard](../../.scratch/practice-evidence/dashboard.md) and
+integration and independent Ponytail review. The map (`../../.scratch/practice-evidence/map.md`; private development record; excluded from public source),
+dashboard (`../../.scratch/practice-evidence/dashboard.md`; private development record; excluded from public source) and
 [change tasks](../../openspec/changes/archive/2026-11-05-bind-practice-evidence-to-agent-versions/tasks.md)
 own the scope and actual progress. All tickets and six change tasks are complete.
 [Verification](../../openspec/changes/archive/2026-11-05-bind-practice-evidence-to-agent-versions/verification.md)
@@ -308,8 +351,8 @@ new native/model budget, push or publication.
 The owner requested another public-source study of SDD, mem0, Ponytail, an
 uncertain Netflix-related context tool and other current tools, including whether
 self-updating recommendations would improve Tibicen. The
-[map](../../.scratch/technology-refresh-research/map.md) and
-[dashboard](../../.scratch/technology-refresh-research/dashboard.md) separate three
+map (`../../.scratch/technology-refresh-research/map.md`; private development record; excluded from public source) and
+dashboard (`../../.scratch/technology-refresh-research/dashboard.md`; private development record; excluded from public source) separate three
 research lanes and root synthesis. All lanes and independent evidence/synthesis
 review are complete in the [study](../research/2026-11-05-technology-refresh/README.md).
 It recommends bounded version-aware evidence refresh before new integrations.
@@ -320,8 +363,8 @@ installation, native evaluation or publication.
 
 The owner's 5 November instruction authorized this packet with parallel
 core/rules/docs agents. Implementation and independent review are complete;
-the work is Unreleased. Use the [map](../../.scratch/adopt-diagnosis/map.md),
-[dashboard](../../.scratch/adopt-diagnosis/dashboard.md) and
+the work is Unreleased. Use the map (`../../.scratch/adopt-diagnosis/map.md`; private development record; excluded from public source),
+dashboard (`../../.scratch/adopt-diagnosis/dashboard.md`; private development record; excluded from public source) and
 [change tasks](../../openspec/changes/archive/2026-11-05-clarify-adopt-diagnosis/tasks.md). Scope is
 existing report/current structure, instruction-scope explanation and clear
 repair/no-change handoff. It includes offline checks and independent Ponytail
@@ -331,9 +374,9 @@ Actual checks and retained correction history are in [verification](../../opensp
 The owner's autonomous continuation closed that change and extended offline
 lifecycle acceptance. It also reproduced a false missing-memory-connection in
 permitted existing nested native rules. The [bounded correction](../../openspec/changes/archive/2026-11-05-detect-nested-memory-connections/proposal.md)
-is complete through [core](../../.scratch/adopt-diagnosis/issues/07-nested-memory-connections.md),
-[docs](../../.scratch/adopt-diagnosis/issues/08-nested-memory-docs.md) and
-[integration](../../.scratch/adopt-diagnosis/issues/09-nested-memory-integration.md).
+is complete through core (`../../.scratch/adopt-diagnosis/issues/07-nested-memory-connections.md`; private development record; excluded from public source),
+docs (`../../.scratch/adopt-diagnosis/issues/08-nested-memory-docs.md`; private development record; excluded from public source) and
+integration (`../../.scratch/adopt-diagnosis/issues/09-nested-memory-integration.md`; private development record; excluded from public source).
 It changes structural recognition only. All tasks/tickets and sync/archive are
 complete; [verification](../../openspec/changes/archive/2026-11-05-detect-nested-memory-connections/verification.md)
 records independent Ship, 798/798 tests without skips and changed-byte standalone
@@ -342,8 +385,8 @@ checks. No release or commit is implied by local completion.
 ## Completed research — current capabilities and public user problems
 
 The owner requested a factual snapshot and public-source research on 5 November.
-The [research map](../../.scratch/user-problems-20261105/map.md) and
-[dashboard](../../.scratch/user-problems-20261105/dashboard.md) record three completed parallel
+The research map (`../../.scratch/user-problems-20261105/map.md`; private development record; excluded from public source) and
+dashboard (`../../.scratch/user-problems-20261105/dashboard.md`; private development record; excluded from public source) record three completed parallel
 source lanes, root synthesis and independent review. The deliverables are the
 [current-capability snapshot](../CURRENT_CAPABILITIES.md) and
 [opportunity study](../research/2026-11-05-user-problems/README.md). Scope is

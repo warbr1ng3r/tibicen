@@ -55,6 +55,7 @@ export interface ContainerInput {
   imageId: string;
   workspace: string;
   files: Record<string, Buffer>;
+  fileModes?: Record<string, number>;
   deadlineMs: number;
 }
 
@@ -277,11 +278,11 @@ export function validateContainerInput(input: ContainerInput) {
     ),
     'unsupported-container-project-config',
   );
-  encodeFiles(input.files, input.workspace.slice(1));
+  return encodeFiles(input.files, input.workspace.slice(1), input.fileModes);
 }
 
 export async function startContainerSession(input: ContainerInput) {
-  validateContainerInput(input);
+  const archive = validateContainerInput(input);
   const correlation = failureCorrelation();
   const name = 'tibicen-eval-' + randomUUID(),
     owner = randomUUID();
@@ -457,7 +458,6 @@ export async function startContainerSession(input: ContainerInput) {
         configuration.StdinOnce,
       'container-lease-required',
     );
-    const archive = encodeFiles(input.files, input.workspace.slice(1));
     assert(
       (await command(['cp', '-', cid + ':/'], archive, 1024)).status === 0,
       'container-input-copy-failed',

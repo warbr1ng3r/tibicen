@@ -437,8 +437,7 @@ export function validateSetupCollection(
       'Unexpected returned path.',
     );
     assert(
-      files[name] &&
-        modes[name] === (plan && services.includes(name) ? 0o600 : 0o644),
+      files[name] && modes[name] === (services.includes(name) ? 0o600 : 0o644),
       'contained-setup-collection',
       'Missing file or changed mode.',
     );
@@ -677,7 +676,12 @@ export async function createContainedTibicenSetup(
           'contained-setup-runtime-changed',
           'Trusted runtime changed.',
         );
-    return files;
+    return {
+      files,
+      fileModes: Object.fromEntries(
+        snapshot.files.map((file) => [file.path, file.fileMode]),
+      ),
+    };
   }
   async function run(args: {
     root: string;
@@ -701,6 +705,17 @@ export async function createContainedTibicenSetup(
       return Math.min(90000, args.deadlineAt - performance.now());
     };
     remaining();
+    if (args.plan) {
+      const proposal = (args.kernel?.proposal ?? args.kernel) as
+        { changes?: { path?: unknown; fileMode?: unknown }[] } | undefined;
+      assert(
+        proposal?.changes?.length === 1 &&
+          proposal.changes[0].path === 'AGENTS.md' &&
+          proposal.changes[0].fileMode === 0o644,
+        'contained-setup-plan',
+        'This slice requires an approved AGENTS.md mode of 0644.',
+      );
+    }
     await validate();
     remaining();
     assert(
@@ -709,7 +724,7 @@ export async function createContainedTibicenSetup(
       'contained-setup-freeze-required',
       'Freeze and approve the exact prospective batch before auth.',
     );
-    const files = await collectSeed(args.root);
+    const { files, fileModes } = await collectSeed(args.root);
     if (args.kernel) files[setupPlan] = Buffer.from(serializeData(args.kernel));
     const child: ContainedCodexRunInput = {
       binary: input.binary,
@@ -718,6 +733,7 @@ export async function createContainedTibicenSetup(
       workspace: setupLayout(args.root).workspace,
       home: args.home,
       files,
+      fileModes,
       resultPaths: [
         ...new Set([...Object.keys(files), 'project/AGENTS.md', ...services]),
       ],
@@ -786,6 +802,7 @@ export async function createContainedTibicenSetup(
             setupLayout(args.root).workspace,
             name,
             output.receipt.files[name],
+            output.receipt.modes[name],
           );
         else
           await rm(await safePath(setupLayout(args.root).workspace, name), {
@@ -823,12 +840,13 @@ export async function createContainedTibicenSetup(
     );
     await validate();
     remaining();
-    const files = await collectSeed(root),
-      supervisor = createProcessSupervisor();
+    const { files, fileModes } = await collectSeed(root);
+    const supervisor = createProcessSupervisor();
     const session = await startContainerSession({
       imageId: input.imageId,
       workspace: setupLayout(root).workspace,
       files,
+      fileModes,
       deadlineMs: Math.floor(remaining()),
     }).catch((error) => {
       supervisor.dispose();
@@ -939,13 +957,18 @@ export async function createContainedTibicenSetup(
       permissionsHash: digest({
         image: input.imageId,
         scope: 'closed-workspace',
-        mode: 0o644,
+        modes: { ordinary: 0o644, services: 0o600 },
       }),
     },
   };
 }
 
-async function put(root: string, name: string, bytes: Buffer) {
+async function put(
+  root: string,
+  name: string,
+  bytes: Buffer,
+  mode = services.includes(name) ? 0o600 : 0o644,
+) {
   const filename = await safePath(root, name);
   await mkdir(path.dirname(filename), { recursive: true });
   const old = await lstat(filename).catch(() => null);
@@ -954,8 +977,8 @@ async function put(root: string, name: string, bytes: Buffer) {
     'contained-setup-reconcile',
     'Only fixed regular files can be reconciled.',
   );
-  await writeFile(filename, bytes, { mode: 0o644 });
-  await chmod(filename, services.includes(name) ? 0o600 : 0o644);
+  await writeFile(filename, bytes, { mode });
+  await chmod(filename, mode);
 }
 
 export type ContainedTibicenSetup = Awaited<

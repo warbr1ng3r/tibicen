@@ -36,13 +36,45 @@ function checksum(header: Buffer) {
 }
 
 // Fixed ustar subset. No archive is extracted into the host filesystem.
-export function encodeFiles(files: Record<string, Buffer>, prefix = '') {
+export function encodeFiles(
+  files: Record<string, Buffer>,
+  prefix = '',
+  fileModes?: Record<string, number>,
+) {
+  const modes: Record<string, number> = Object.create(null);
+  if (fileModes !== undefined) {
+    assert(
+      fileModes !== null &&
+        typeof fileModes === 'object' &&
+        [Object.prototype, null].includes(Object.getPrototypeOf(fileModes)),
+      'invalid-container-file-modes',
+    );
+    for (const name of Reflect.ownKeys(fileModes)) {
+      const descriptor = Object.getOwnPropertyDescriptor(fileModes, name)!;
+      const mode = descriptor.value;
+      assert(
+        typeof name === 'string' &&
+          Object.hasOwn(files, name) &&
+          'value' in descriptor &&
+          Number.isInteger(mode) &&
+          mode >= 0 &&
+          mode <= 0o777,
+        'invalid-container-file-modes',
+      );
+      modes[name] = mode;
+    }
+  }
   const parts: Buffer[] = [],
     dirs = new Set<string>(),
     written = new Set<string>();
   let total = 0,
     entries = 0;
-  const add = (name: string, bytes: Buffer, directory = false) => {
+  const add = (
+    name: string,
+    bytes: Buffer,
+    directory = false,
+    mode = 0o644,
+  ) => {
     relativeFile(name);
     assert(!written.has(name), 'duplicate-container-input-path');
     written.add(name);
@@ -71,7 +103,7 @@ export function encodeFiles(files: Record<string, Buffer>, prefix = '') {
       assert(text.length === width);
       h.write(text, offset, width, 'ascii');
     };
-    octal(directory ? 0o755 : 0o644, 100, 8);
+    octal(directory ? 0o755 : mode, 100, 8);
     octal(1000, 108, 8);
     octal(1000, 116, 8);
     octal(bytes.length, 124, 12);
@@ -96,7 +128,7 @@ export function encodeFiles(files: Record<string, Buffer>, prefix = '') {
         dirs.add(dir);
       }
     }
-    add(full, files[name]);
+    add(full, files[name], false, modes[name] ?? 0o644);
   }
   parts.push(Buffer.alloc(1024));
   return Buffer.concat(parts);

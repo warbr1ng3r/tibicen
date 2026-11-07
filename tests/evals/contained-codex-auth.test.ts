@@ -173,6 +173,34 @@ test('native caller refuses unsupported seed before credential access or Docker'
   );
 });
 
+test('native caller rejects invalid mode maps before metadata, auth or container work', async () => {
+  for (const fileModes of [
+    null,
+    [],
+    Object.create({ 'seed.txt': 0o600 }),
+    { missing: 0o600 },
+    { 'seed.txt': 0o4755 },
+  ])
+    await assert.rejects(
+      runContainedCodexSession({
+        binary: '/missing-binary',
+        binaryHash: '0'.repeat(64),
+        imageId: 'sha256:' + '0'.repeat(64),
+        workspace: '/tmp/closed-workspace',
+        files: { 'seed.txt': Buffer.from('fixed') },
+        fileModes: fileModes as Record<string, number>,
+        resultPaths: ['seed.txt'],
+        deadlineMs: 1000,
+        model: 'gpt-6-astra',
+        home: '/tmp/closed-home',
+        prompt: 'synthetic',
+        route: { kind: 'subscription', authPath: '/never-read-this-auth' },
+        expectedFreezeHash: 'not-ready',
+      }),
+      /invalid-container-file-modes/,
+    );
+});
+
 test('parent cancellation prevents credential reads and metadata launch', async () => {
   const controller = new AbortController();
   controller.abort();

@@ -5,6 +5,11 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+### Fixed
+
+- Clarify approval of generated service records separately from exact user-file diffs, with explicit clarification when future journal bytes are required. The unchanged CLI plan still gates application.
+- Preserve declared ordinary file permissions through contained evaluation staging, input freezes, setup continuations and independent checks; omitted modes retain the 0644 default. This development-tool correction does not regrade earlier observations.
+
 ## [1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0) — 2026-11-06
 
 ### Added

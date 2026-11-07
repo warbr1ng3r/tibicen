@@ -6,6 +6,7 @@ import {
   validateContainerOutputSchema,
 } from './container/codex-config.ts';
 import { createContainerOwner } from './container/owner.ts';
+import { validateContainerInput } from './container/session.ts';
 import {
   accessOnlySubscriptionAuth,
   readAccessOnlySubscriptionAuth,
@@ -138,6 +139,7 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
     'Expected an AbortSignal.',
   );
   const parentSignal = input.signal;
+  validateContainerInput(input);
   // Capture bytes before inspection; neither caller nor model supplies later paths.
   input = {
     ...input,
@@ -148,6 +150,16 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
       ]),
     ),
     resultPaths: [...input.resultPaths],
+    ...(input.fileModes === undefined
+      ? {}
+      : {
+          fileModes: Object.fromEntries(
+            Object.getOwnPropertyNames(input.fileModes).map((name) => [
+              name,
+              input.fileModes![name],
+            ]),
+          ),
+        }),
   };
   const supervisor = createProcessSupervisor();
   const abort = () => supervisor.cancel();

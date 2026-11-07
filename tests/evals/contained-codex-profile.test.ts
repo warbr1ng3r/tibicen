@@ -350,6 +350,58 @@ test('metadata profile freezes exact sources and scope without a ready/auth clai
   }
 });
 
+test('effective file modes bind the profile freeze and reject later mode drift', async (t) => {
+  const f = await fixture(t);
+  for (const name of ['constructor', 'toString'])
+    f.input.files[name] = Buffer.from('ordinary filename');
+  const implicit = await f.module.inspectTrustedContainedCodexFixture(
+    f.input,
+    f.command,
+  );
+  const explicit = await f.module.inspectTrustedContainedCodexFixture(
+    { ...f.input, fileModes: { 'AGENTS.md': 0o644 } },
+    f.command,
+  );
+  assert.equal(implicit.filesHash, explicit.filesHash);
+  assert.equal(
+    implicit.specification.startupHash,
+    explicit.specification.startupHash,
+  );
+  const fileModes = { 'AGENTS.md': 0o600 };
+  const privateInput = await f.module.inspectTrustedContainedCodexFixture(
+    { ...f.input, fileModes },
+    f.command,
+  );
+  assert.notEqual(implicit.filesHash, privateInput.filesHash);
+  assert.notEqual(
+    implicit.specification.startupHash,
+    privateInput.specification.startupHash,
+  );
+  const before = f.observed.length;
+  fileModes['AGENTS.md'] = 0o755;
+  await assert.rejects(
+    privateInput.validate(),
+    /contained-codex-input-changed/,
+  );
+  assert.equal(f.observed.length, before);
+});
+
+test('invalid file modes fail before metadata execution', async (t) => {
+  const f = await fixture(t);
+  for (const fileModes of [{ absent: 0o600 }, { 'AGENTS.md': 0o4755 }, []])
+    await assert.rejects(
+      f.module.inspectTrustedContainedCodexFixture(
+        {
+          ...f.input,
+          fileModes: fileModes as unknown as Record<string, number>,
+        },
+        f.command,
+      ),
+      /invalid-container-file-modes/,
+    );
+  assert.deepEqual(f.observed, []);
+});
+
 test('host project configuration and links fail before version or Docker', async (t) => {
   const f = await fixture(t);
   for (const name of ['.codex', '.mcp.json']) {

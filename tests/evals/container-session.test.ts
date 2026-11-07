@@ -16,7 +16,10 @@ import {
 } from '../../scripts/evals/container/session.ts';
 import type { ContainerInput } from '../../scripts/evals/container/session.ts';
 import { createContainerOwner } from '../../scripts/evals/container/owner.ts';
-import { transferLimits } from '../../scripts/evals/container/archive.ts';
+import {
+  decodeArchive,
+  transferLimits,
+} from '../../scripts/evals/container/archive.ts';
 
 test('container inputs fix image, cwd, lifetime and bounded bytes before Docker', () => {
   const input = {
@@ -66,6 +69,7 @@ function mockDocker(
     calls: string[] = [];
   let owner = '',
     removed = false;
+  const copied: Buffer[] = [];
   let attached: ChildProcess | undefined;
   t.mock.method(
     childProcess,
@@ -82,6 +86,8 @@ function mockDocker(
       });
       const [command] = args;
       calls.push(command);
+      if (command === 'cp')
+        child.stdin.on('data', (bytes: Buffer) => copied.push(bytes));
       queueMicrotask(() => {
         let status = 0;
         if (command === 'create') {
@@ -121,8 +127,46 @@ function mockDocker(
     t.mock.restoreAll();
     syncBuiltinESMExports();
   });
-  return { calls, removed: () => removed, attached: () => attached };
+  return { calls, copied, removed: () => removed, attached: () => attached };
 }
+
+test('container session stages the validated file modes before caller mutation', async (t) => {
+  const docker = mockDocker(t, {});
+  const fileModes = { file: 0o600 };
+  const pending = startContainerSession({
+    imageId: 'sha256:' + 'b'.repeat(64),
+    workspace: '/tmp/project',
+    files: { file: Buffer.from('private') },
+    fileModes,
+    deadlineMs: 10000,
+  });
+  fileModes.file = 0o755;
+  const session = await pending;
+  try {
+    const decoded = decodeArchive(Buffer.concat(docker.copied), [
+      'tmp/project/file',
+    ]);
+    assert.equal(decoded.modes['tmp/project/file'], 0o600);
+  } finally {
+    await session.stop();
+  }
+  assert(docker.removed());
+});
+
+test('invalid input modes fail before any Docker invocation', async (t) => {
+  const docker = mockDocker(t, {});
+  await assert.rejects(async () => {
+    const session = await startContainerSession({
+      imageId: 'sha256:' + 'b'.repeat(64),
+      workspace: '/tmp/project',
+      files: { file: Buffer.from('fixed') },
+      fileModes: { unknown: 0o600 },
+      deadlineMs: 10000,
+    });
+    await session.stop();
+  }, /invalid-container-file-modes/);
+  assert.deepEqual(docker.calls, []);
+});
 
 for (const options of [
   { waitStatus: 1 },

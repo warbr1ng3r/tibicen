@@ -17,7 +17,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
-import { hashContent } from '../../scripts/core/contracts.ts';
+import { digest, hashContent } from '../../scripts/core/contracts.ts';
 
 const script = path.resolve('scripts/tibicen.ts');
 test('CLI stdin flow applies only after consent, preserves app and creates no Git history', async (t) => {
@@ -51,12 +51,36 @@ test('CLI stdin flow applies only after consent, preserves app and creates no Gi
       },
     ],
   }).result;
+  assert.deepEqual(proposal.proposal.serviceWrites, [
+    '.tibicen/manifest.yml',
+    '.tibicen/state/session.json',
+  ]);
+  assert.equal(
+    proposal.proposal.usageFile,
+    path.join(await realpath(home), '.tibicen/usage.json'),
+  );
   assert.deepEqual(await readdir(root), ['index.js']);
+  assert.deepEqual(await readdir(home), []);
   assert.equal(
     execute(['apply', '--root', root, '--plan', '-'], proposal).result.error
       .code,
     'consent-required',
   );
+  for (const serviceMetadata of [
+    { serviceWrites: [] },
+    { usageFile: path.join(home, 'unexpected-usage.json') },
+  ]) {
+    const forged = { ...proposal.proposal, ...serviceMetadata };
+    assert.equal(
+      execute(
+        ['apply', '--root', root, '--plan', '-', '--approve', digest(forged)],
+        forged,
+      ).result.error.code,
+      'invalid-plan',
+    );
+  }
+  assert.deepEqual(await readdir(root), ['index.js']);
+  assert.deepEqual(await readdir(home), []);
   const applied = execute(
     ['apply', '--root', root, '--plan', '-', '--approve', proposal.digest],
     proposal,
@@ -65,6 +89,25 @@ test('CLI stdin flow applies only after consent, preserves app and creates no Gi
   assert.equal(applied.result.status, 'complete');
   assert.equal(applied.result.checks.infrastructure.status, 'passed');
   assert.equal(applied.result.checks.verify.status, 'unverified');
+  assert.equal(
+    JSON.parse(await readFile(path.join(root, '.tibicen/manifest.yml'), 'utf8'))
+      .sessions[0].id,
+    applied.result.id,
+  );
+  assert.deepEqual(await readdir(path.join(root, '.tibicen')), [
+    'manifest.yml',
+  ]);
+  assert.deepEqual(
+    JSON.parse(await readFile(proposal.proposal.usageFile, 'utf8')).sessions,
+    [
+      {
+        id: applied.result.id,
+        project: hashContent(proposal.proposal.root),
+        mode: 'init',
+        status: 'complete',
+      },
+    ],
+  );
   assert.equal(
     await readFile(path.join(root, 'index.js'), 'utf8'),
     'existing application',

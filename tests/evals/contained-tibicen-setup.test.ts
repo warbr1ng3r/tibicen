@@ -1,6 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, realpath, rm, writeFile } from 'node:fs/promises';
+import {
+  lstat,
+  mkdtemp,
+  readFile,
+  realpath,
+  rm,
+  writeFile,
+} from 'node:fs/promises';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
 import os from 'node:os';
 import { digest, hashContent } from '../../scripts/core/contracts.ts';
@@ -266,6 +274,25 @@ test('closed proposal collection rejects writes, deletion, mode changes, extra o
   );
 });
 
+test('independent collection retains already applied private service permissions', () => {
+  const seed = {
+    'project/AGENTS.md': Buffer.from('approved'),
+    'project/.tibicen/manifest.yml': Buffer.from('{}'),
+    [setupUsage]: Buffer.from('{}'),
+  };
+  const modes = {
+    'project/AGENTS.md': 0o644,
+    'project/.tibicen/manifest.yml': 0o600,
+    [setupUsage]: 0o600,
+  };
+  validateSetupCollection(seed, { ...seed }, modes);
+  for (const name of ['project/.tibicen/manifest.yml', setupUsage])
+    assert.throws(
+      () => validateSetupCollection(seed, seed, { ...modes, [name]: 0o644 }),
+      { code: 'contained-setup-collection' },
+    );
+});
+
 test('apply collection accepts only reviewed AGENTS plus completed 0600 services and protected plan', () => {
   const seed = {
     [setupPlan]: Buffer.from('exact plan'),
@@ -495,6 +522,31 @@ test('metadata-only batch freeze binds runtime/order/caps and cancellation prece
     code: 'contained-setup-source-changed',
   });
   driver.freeze.runtime[catalog] = catalogHash;
+  for (const fileMode of [0o600, 0o755])
+    await assert.rejects(
+      driver.run({
+        root: directory,
+        home: path.join(directory, 'never-home'),
+        skill,
+        prompt: 'never',
+        deadlineAt: performance.now() + 90000,
+        signal: new AbortController().signal,
+        plan: {
+          changes: [
+            { path: 'AGENTS.md', beforeHash: null, afterHash: 'a'.repeat(64) },
+          ],
+          commandHashes: [],
+        },
+        kernel: { proposal: { changes: [{ path: 'AGENTS.md', fileMode }] } },
+        onStart() {
+          throw Error('never');
+        },
+        async record() {
+          throw Error('never');
+        },
+      }),
+      { code: 'contained-setup-plan' },
+    );
   const controller = new AbortController();
   controller.abort();
   await assert.rejects(
@@ -596,4 +648,129 @@ test('fixed sibling support survives real product finalization and is absent fro
     false,
   );
   assert.equal(digest(plan.proposal), plan.digest);
+
+  const stubPath = path.join(directory, 'mode-transport.mjs');
+  await writeFile(
+    stubPath,
+    `
+    export const state = {};
+    export async function describeContainedCodexRun(input) {
+      state.describedModes = input.fileModes;
+      return { freezeHash: 'offline', freeze: {} };
+    }
+    const receipt = input => ({
+      cid: 'mocked-offline', stopped: true, removed: true, reason: 'completed', toolFailure: null,
+      files: input.files,
+      modes: Object.fromEntries(Object.keys(input.files).map(name => [name, input.fileModes?.[name] ?? 420])),
+    });
+    export async function runContainedCodexSession(input) {
+      state.nativeModes = input.fileModes;
+      return { pass: true, freezeHash: 'offline', receipt: receipt(input),
+        parsed: { commands: state.commands, messages: ['offline fixture'], records: [] } };
+    }
+    export async function startContainerSession(input) {
+      state.checkModes = input.fileModes;
+      return { cid: 'mocked-offline', stop: async () => receipt(input) };
+    }
+    export function createProcessSupervisor() {
+      return { cancel() {}, dispose() {}, run: async () => ({ status: 0, timedOut: false,
+        stdout: JSON.stringify({ verify: { status: 'passed' }, status: { status: 'complete' }, report: { status: 'complete' } }) }) };
+    }
+  `,
+  );
+  const moduleUrl = new URL(
+    '../../scripts/evals/profiles/codex/tibicen-setup.ts',
+    import.meta.url,
+  );
+  const stubUrl = pathToFileURL(stubPath).href;
+  const mockImports = new Set([
+    '../../contained-codex.ts',
+    '../../container/session.ts',
+    '../../process-supervisor.ts',
+  ]);
+  const source = (await readFile(moduleUrl, 'utf8'))
+    .replace(
+      /from\s+(['"])(\.\.?\/[^'"]+)\1/g,
+      (_match, _quote, specifier) =>
+        'from ' +
+        JSON.stringify(
+          mockImports.has(specifier)
+            ? stubUrl
+            : new URL(specifier, moduleUrl).href,
+        ),
+    )
+    .replace(
+      "const repository = fileURLToPath(new URL('../../../../', import.meta.url));",
+      'const repository = ' +
+        JSON.stringify(fileURLToPath(new URL('../../', import.meta.url))) +
+        ';',
+    );
+  const copiedModule = path.join(directory, 'setup-fixture.ts');
+  await writeFile(copiedModule, source);
+  const mocked = (await import(
+    pathToFileURL(copiedModule).href
+  )) as typeof import('../../scripts/evals/profiles/codex/tibicen-setup.ts');
+  const { state } = await import(stubUrl);
+  state.commands = [
+    item(
+      setupCommand(project, 'tibicen-init', 'apply', [
+        '--plan',
+        layout.plan,
+        '--approve',
+        plan.digest,
+      ]),
+      '',
+    ),
+    ...['verify', 'status', 'report'].map((verb) =>
+      item(setupCommand(project, 'tibicen-init', verb), ''),
+    ),
+    item(`cat '${path.join(project, 'AGENTS.md')}'`, ''),
+  ];
+  const continuation = await mocked.createContainedTibicenSetup({
+    binary,
+    binaryHash: hashContent(await readFile(binary)),
+    imageId: containedCodexImage,
+    route: { kind: 'synthetic', baseUrl: 'http://127.0.0.1:9/v1' },
+  });
+  const continued = await continuation.run({
+    root: project,
+    home: path.join(directory, 'unused-host-home'),
+    skill: 'tibicen-init',
+    prompt: 'offline',
+    deadlineAt: performance.now() + 90000,
+    signal: new AbortController().signal,
+    onStart() {},
+    async record() {},
+    kernel: plan,
+    plan: {
+      changes: [
+        {
+          path: 'AGENTS.md',
+          beforeHash: null,
+          afterHash: hashContent(
+            await readFile(path.join(project, 'AGENTS.md')),
+          ),
+        },
+      ],
+      commandHashes: [],
+    },
+  });
+  await continuation.check(
+    project,
+    'tibicen-init',
+    continued.parsed,
+    plan.digest,
+    new AbortController().signal,
+    performance.now() + 90000,
+    90000,
+  );
+  for (const name of ['project/.tibicen/manifest.yml', setupUsage]) {
+    assert.equal(state.describedModes[name], 0o600);
+    assert.equal(state.nativeModes[name], 0o600);
+    assert.equal(state.checkModes[name], 0o600);
+    assert.equal(
+      (await lstat(path.join(layout.workspace, name))).mode & 0o777,
+      0o600,
+    );
+  }
 });

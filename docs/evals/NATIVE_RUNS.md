@@ -92,6 +92,23 @@ In the judge packet, identical reading of the same content within setup/task is 
 
 Offline controls are in [native-workflow.test.ts](../../tests/evals/native-workflow.test.ts). They explicitly select `runTrustedNativeFixtureAcceptance` / `runTrustedCodexFixtureDiagnostics`, rather than a JSON or CLI parameter. These code-only entries are only for trusted fixtures and do not bypass the production gate. The fake CLI checks the protocol and real independent Node/OpenSpec checks; its synthetic boundary result does not confirm OS isolation or a live model's ability. Item 3.6 remains open until an observed series and assessment.
 
+## Contained file permissions — Unreleased
+
+The contained run input accepts optional `fileModes`, keyed by the same relative
+paths as `files`. Pass collected `receipt.modes` alongside collected bytes when
+restaging a project. Unspecified files default to `0644`; directories stay `0755`.
+Only declared regular-file paths and integer ordinary permission bits (`0000` to
+`0777`) are accepted. Invalid maps fail before metadata, auth or container work.
+Effective modes enter the existing `filesHash`: a mode-only change needs a new
+prospective freeze, while omitted and explicit `0644` defaults are equivalent.
+The maintained setup continuation and independent check preserve captured modes.
+Its fixed setup fixture still requires `AGENTS.md` `0644` and private service files `0600`;
+this generic input option does not expand its approved file scope.
+
+These are development-tool changes, not a new skill release or proof that an
+agent followed guidance. Earlier failed/omitted observations keep their original
+outcomes. Fresh native work requires its own bounded protocol.
+
 ## Safe session diagnostics
 
 Contained direct-run receipts now retain `toolFailure` as null or a fixed RPC/process-exit kind with a safe integer code (null if unavailable). Only the failure that starts stopping is recorded; arbitrary method names, IDs, messages, command arguments and output are excluded. Rejected post-run profile validation returns `sourceUnchanged: null` (unverified); success requires true. [Offline regression and limits](../../openspec/changes/containerize-native-evaluation-execution/diagnostics-verification.md). Historical outcomes are unchanged; diagnostics do not authorize a retry.

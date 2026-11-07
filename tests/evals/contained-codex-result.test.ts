@@ -89,6 +89,7 @@ test('native caller preserves validation, terminal failure and cleanup results',
         export const readAccessOnlySubscriptionAuth = () => { throw Error('Must not read auth'); };
         export const accessOnlySubscriptionAuth = readAccessOnlySubscriptionAuth;
         export const validateContainerOutputSchema = value => value;
+        export function validateContainerInput() {}
         export const generateContainerCodexHome = async () => ({
           argv: [], env: {}, validate: async () => {},
         });
@@ -127,6 +128,10 @@ test('native caller preserves validation, terminal failure and cleanup results',
         }
         export async function inspectContainedCodexProfile(input) {
           let checks = 0;
+          if (mode === 'completed') {
+            fixtureState.originalModes['seed.txt'] = 0o755;
+            fixtureState.capturedMode = input.fileModes['seed.txt'];
+          }
           return {
             specification: {}, imageId: input.imageId, imageHash: 'image', binaryHash: input.binaryHash,
             sourceHashes: {}, workspace: input.workspace, filesHash: 'files', resultPaths: input.resultPaths,
@@ -160,6 +165,7 @@ test('native caller preserves validation, terminal failure and cleanup results',
         ...Object.fromEntries(
           [
             'container/codex-config',
+            'container/session',
             'container/owner',
             'container/subscription',
             'container/code-mode',
@@ -190,6 +196,9 @@ test('native caller preserves validation, terminal failure and cleanup results',
       ].includes(mode);
       const observed: { record: Record<string, unknown>; stopped: boolean }[] =
         [];
+      const fileModes = { 'seed.txt': 0o600 };
+      Object.defineProperty(fileModes, 'seed.txt', { enumerable: false });
+      fixtureState.originalModes = fileModes;
       const result = await module.runContainedCodexSession({
         binary: '/never-execute',
         binaryHash: 'a'.repeat(64),
@@ -197,6 +206,7 @@ test('native caller preserves validation, terminal failure and cleanup results',
         workspace: path.join(root, 'project'),
         home: path.join(root, 'home'),
         files: { 'seed.txt': Buffer.from('seed') },
+        fileModes,
         resultPaths: ['seed.txt'],
         model: 'gpt-5.5',
         deadlineMs: 10000,
@@ -208,6 +218,10 @@ test('native caller preserves validation, terminal failure and cleanup results',
             throw new Error('SYNTHETIC PRIVATE CALLBACK DETAILS');
         },
       });
+      if (mode === 'completed') {
+        assert.equal(fileModes['seed.txt'], 0o755);
+        assert.equal(fixtureState.capturedMode, 0o600);
+      }
       assert.equal(
         result.sourceUnchanged,
         ['tool-failure', 'validation-unavailable'].includes(mode) ? null : true,

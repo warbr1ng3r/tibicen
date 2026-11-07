@@ -17,6 +17,7 @@ export interface ContainedCodexProfileInput {
   imageId: string;
   workspace: string;
   files: Record<string, Buffer>;
+  fileModes?: Record<string, number>;
   resultPaths: string[];
   deadlineMs: number;
   model: string;
@@ -173,15 +174,22 @@ async function inspect(
       /^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(model),
     'invalid-contained-codex-model',
   );
-  const { imageId, workspace, files, deadlineMs, binaryHash } = input;
+  const { imageId, workspace, files, fileModes, deadlineMs, binaryHash } =
+    input;
   const binaryPath = input.binary;
-  const scope = { imageId, workspace, files, deadlineMs };
+  const scope = { imageId, workspace, files, fileModes, deadlineMs };
   const filesHash = () =>
     hash(
       JSON.stringify(
         Object.keys(files)
           .sort()
-          .map((name) => [name, hash(files[name])]),
+          .map((name) => [
+            name,
+            hash(files[name]),
+            fileModes && Object.hasOwn(fileModes, name)
+              ? fileModes[name]
+              : 0o644,
+          ]),
       ),
     );
   async function validateWorkspace() {
