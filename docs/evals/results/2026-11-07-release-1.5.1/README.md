@@ -1,11 +1,11 @@
 # Tibicen 1.5.1 release report
 
-**Published at `2026-11-07T17:33:16Z`; separate Pages update pending.**
+**Published at `2026-11-07T17:33:16Z`; Pages and all 20 returned bodies verified.**
 [Release 1.5.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.1), ID
 `437729870`, passed exact-source CI, all six platform cells, full-SHA public
 delivery and returned-asset comparison. Candidate-bound guidance, local delivery
-and independent reviews were accepted. Pages deployment/body acceptance remains
-a separate unfinished gate. Published [1.5.0](../2026-11-07-release-1.5/README.md)
+and independent reviews were accepted. The separate Pages deployment and
+all 20 returned-body comparisons were accepted. Published [1.5.0](../2026-11-07-release-1.5/README.md)
 stable metadata, assets and tag remain unchanged.
 
 ## Current scope
@@ -47,7 +47,7 @@ Later report/metadata updates do not change those frozen skill bytes.
 | Public source CI and six platform cells | Passed: [CI 42395772435](https://github.com/warbr1ng3r/tibicen/actions/runs/42395772435) and [six-cell run 42396159346](https://github.com/warbr1ng3r/tibicen/actions/runs/42396159346) |
 | Public full-SHA delivery/update/recovery/removal P01 | Accepted separately: four installer calls/two self-tests, exact public bytes/modes, edited-backup restoration/removal and preservation; independent Ship |
 | New annotated tag/release and three returned assets | [Publication 42396865336](https://github.com/warbr1ng3r/tibicen/actions/runs/42396865336) passed; root accepted exact returned candidate bytes and 111 archive files/modes |
-| Separate Pages metadata/deployment/returned-body verification | Pending |
+| Separate Pages metadata/deployment/returned-body verification | Metadata CI 42397956915, Pages 42398163708 and audit 42398637168 passed; 20/20 bodies matched the official artifact |
 
 Local gate log SHA-256:
 `19f580866b5e8767f22bfcbfd3313f4178dc27fd6877833eeff6e51954f71594`;
@@ -160,16 +160,19 @@ Git authentication failure without remote mutation. Existing SSH access then
 completed the atomic source/distribution push without credential changes; the
 proposed browser-upload bootstrap was never created.
 
-## Remaining Pages gate and historical limits
+## Pages deployment and returned-byte acceptance
 
-Pages metadata deployment and comparison of actual returned bodies with its
-official artifact remain pending. Successful release publication does not
-establish that separate result. The
-earlier [first-run observation](../../../research/2026-11-07-first-run-value/README.md)
-retains its route correction, terminally incomplete adopt task and omitted
-repeats. This packet does not regrade them. Published 1.5.0 remains unchanged;
-implicit loading, broad harness compatibility, ordinary-user reliability and
-measured human benefit are unverified.
+[Metadata CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42397956915) passed at deployed source `c1589cdbd26a5768847578a69d520212ccb04c03`. The [Pages run](https://github.com/warbr1ng3r/tibicen/actions/runs/42398163708) deployed that same source successfully as deployment `7624750429`. The separate [audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42398637168) passed on its first attempt at audit commit `943434617d8588fc33d8a18811608fcc4e23e51e`.
+
+The audit downloaded the actual official `github-pages` artifact `13584163294` (78,177 bytes, SHA-256 `2841925ce61a6f6969329fbe7c6d4238a6061d329e0203fcd43e472d91734a4b`), safely inspected its 20 regular files without executing site code, and compared every public body with that artifact. All 20 results were HTTP 200 / exit zero with equal bytes, hashes and sizes; no local rebuild supplied the expected bytes. The checksum index retained all eight prior records, warnings and independence text and appended the exact ninth 1.5.1 record.
+
+The full 20-row summary was reconstructed locally from five indexed checksum-bound annotation parts: 10,905 bytes, SHA-256 `a1f9c60ba072c5ebf4bfbd82e21d3ad999663570b853b058c2f9410382c83f25`. Root acceptance SHA-256: `273c96ee2de31ab870a21806f8ff73d027556b280f5564e886b4af21f22e8a8b`; independent Ship review: `9ba3e7c7c4b468117c33f709d2fadea9e2a528d839882840d0334ce55bcc901a`. Raw ZIP/TAR/body files remain in Actions; a local download of that full bundle is not claimed.
+
+Pages serves `c1589cdbd26a5768847578a69d520212ccb04c03`. This later documentation-only closure does not change the deployed site, installed skill bytes or immutable release assets and does not claim another deployment.
+
+## Historical limits
+
+The earlier [first-run observation](../../../research/2026-11-07-first-run-value/README.md) retains its route correction, terminally incomplete adopt task and omitted repeats. This packet does not regrade them. Published 1.5.0 remains unchanged; implicit loading, broad harness compatibility, ordinary-user reliability and measured human benefit are unverified.
 
 ## Preparation snapshot — 7 November 2026, before candidate observations
 
