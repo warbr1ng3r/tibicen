@@ -94,6 +94,12 @@ Record corrections in a new candidate. Preserve failed attempts and old sums.
 Published tags and bytes stay immutable; a published defect requires a new
 version. There is no background update of installed Tibicen or project setup.
 
+## Published 1.5.2; separate Pages metadata pending
+
+[1.5.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2), release ID `437911222`, was published at `2026-11-07T23:27:53Z`. Source `f5bc0a416813c54d3ec21e50f3f5ede0b4be2bb8` binds distribution `df15ae7e0ae67aee2bd278f7e4f265e03437e672` through annotated tag `76c2ec9ab6136e177430c5fa440b1f22309833d2`. [Source CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42424557875), [all six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/42424565552) and [publication](https://github.com/warbr1ng3r/tibicen/actions/runs/42425341227) passed. Root accepted all three returned assets and 111 archive files/modes; stable 1.5.1 remains unchanged. Exact public update/recovery/removal and actual agent observations retain their limits in the [release report](evals/results/2026-11-08-release-1.5.2/README.md).
+
+This compatible patch corrects first-setup routing after project-local Tibicen installation while preserving outer user-infrastructure ownership. Inventory, nonempty-project, consent and application-write protections, persisted schemas and dependencies are unchanged. The tenth checksum-index record preserves all nine earlier records and warnings; separate metadata CI, Pages deployment and returned-body verification are pending. No automatic loading or measured human-benefit claim follows.
+
 ## Published 1.5.1; Pages verified
 
 [1.5.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.1), release ID `437729870`, was published at `2026-11-07T17:33:16Z`. Source `210e786fdac4a7aa90b88cd34e223788f4f097dd` binds distribution `287ef7b22630482aca7996e5a0faad601cede778` through annotated tag `53125f3e60b1f22cc6da6121ac318b2800b0a921`. [Source CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42395772435), [all six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/42396159346) and [publication](https://github.com/warbr1ng3r/tibicen/actions/runs/42396865336) passed. Root accepted all three returned assets and 111 archive files/modes; stable 1.5.0 remains unchanged. Exact public update/recovery/removal and two explicitly assisted guidance sessions retain their limits in the [release report](evals/results/2026-11-07-release-1.5.1/README.md).

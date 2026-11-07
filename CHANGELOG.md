@@ -1,9 +1,11 @@
 # Changelog
 
-Version 1.5.1 is public. See [release details](docs/RELEASING.md) for
+Version 1.5.2 is public. See [release details](docs/RELEASING.md) for
 immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
+
+## [1.5.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2) — 2026-11-07
 
 ### Fixed
 

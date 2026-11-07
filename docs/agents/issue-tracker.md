@@ -1,5 +1,9 @@
 # Issue tracker
 
+## Current status — 1.5.2 published; Pages metadata pending
+
+The compatible routing fix is published from `f5bc0a416813c54d3ec21e50f3f5ede0b4be2bb8` as [1.5.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2) at `2026-11-07T23:27:53Z`. Source CI, six platform cells, public delivery and returned assets passed. The [release report](../evals/results/2026-11-08-release-1.5.2/README.md) retains actual agent observations, operator assistance and earlier failures with their limits. Separate Pages metadata is pending; previous observations are unchanged.
+
 ## Current effort — patch1.5.2, useful cycles and truthful preview
 
 The owner authorized the new effort (`../../.scratch/release-and-working-cycles-20261108/map.md`; private development record; excluded from public source): commit/publish the compatible scanner correction, complete fresh useful tasks, inspect available alternative harnesses and show a truthful landing mockup before production changes. The dashboard (`../../.scratch/release-and-working-cycles-20261108/dashboard.md`; private development record; excluded from public source) owns actual progress. The scanner fix and outer user-infrastructure ownership are complete and independently reviewed; candidate-01 is accepted. The versioned full gate passed 1048 tests with one existing skip, standalone checks passed 3/3, the frozen-source rebuild matched all 111 distribution files, and local installation/replacement/repeat/edited-backup restoration/removal passed. Fresh native observations are running; results, public gates/delivery and publication remain pending. Published 1.5.1 and historical native outcomes remain unchanged. No paid API or personal auth edit; Agensi stays parked. See the [release report](../evals/results/2026-11-08-release-1.5.2/README.md) for scope and limits.

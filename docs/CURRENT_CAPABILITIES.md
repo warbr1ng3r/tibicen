@@ -1,9 +1,9 @@
 # What Tibicen does today
 
-**Published skills: 1.5.1 · 7 November 2026 (Moscow).** Tibicen helps your existing coding
+**Published skills: 1.5.2 · 2026-11-07 UTC.** Tibicen helps your existing coding
 agent inspect, set up or repair project instructions and integrations, apply the
 changes you approve, and report what was checked. The
-[release report](evals/results/2026-11-07-release-1.5.1/README.md) defines the exact
+[release report](evals/results/2026-11-08-release-1.5.2/README.md) defines the exact
 published bytes and delivery evidence; the [product vision](PRODUCT_VISION.md)
 defines wider goals, not extra shipped capabilities.
 
@@ -13,15 +13,14 @@ Both can select the appropriate route from the actual project. A sufficient
 setup can stay unchanged, without creating a new session merely to record work.
 There is no Tibicen server, account, separate model or background service.
 
-## Unreleased correction — first setup after project-local installation
+## First setup after project-local installation — available in 1.5.2
 
 The [local change](../openspec/changes/distinguish-self-installed-tibicen/proposal.md)
 selects initial setup when exact canonical Tibicen skill folders are the only
 infrastructure. Other instructions, skills or a recorded setup still select
 improvement. All files remain inventoried; folder names prove neither trust nor
 upstream provenance. An installed skill still makes the directory nonempty, so
-initial routing grants no application-scaffolding permission. This correction is
-not included in the published 1.5.1 archive.
+initial routing grants no application-scaffolding permission. This correction is included in published 1.5.2.
 
 ## Optional project context evidence — available in 1.5.0
 
