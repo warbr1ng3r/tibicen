@@ -8,7 +8,6 @@ import type {
   ManifestSnapshot,
   Source,
 } from './types.ts';
-import { readFile } from 'node:fs/promises';
 import {
   assert,
   digest,
@@ -16,14 +15,13 @@ import {
   parseData,
   validateData,
   validateFileMode,
+  MAX_DATA_BYTES,
 } from './contracts.ts';
-import {
-  isInfrastructurePath,
-  safePath,
-  validateRelativePath,
-} from './paths.ts';
+import { isInfrastructurePath, validateRelativePath } from './paths.ts';
 import { validateSharedRules } from './shared-rules.ts';
 import { validateProcessPlan } from '../process/index.ts';
+import { validateMemory } from './memory.ts';
+import { readProjectFile } from '../scan/index.ts';
 
 export const MANIFEST_SCHEMA = 2;
 const hash = (value: unknown) =>
@@ -101,10 +99,11 @@ function owners(sources: Source[]) {
 export async function readManifest(root: string): Promise<ManifestSnapshot> {
   let text;
   try {
-    text = await readFile(
-      await safePath(root, '.tibicen/manifest.yml'),
-      'utf8',
-    );
+    text = (
+      await readProjectFile(root, '.tibicen/manifest.yml', {
+        maxFileBytes: MAX_DATA_BYTES,
+      })
+    ).content.toString('utf8');
   } catch (caught) {
     if ((caught as NodeJS.ErrnoException).code === 'ENOENT')
       return { manifest: null, hash: null };
@@ -112,10 +111,17 @@ export async function readManifest(root: string): Promise<ManifestSnapshot> {
   }
   const manifest = parseData(text) as Manifest;
   assert(
-    manifest && [1, MANIFEST_SCHEMA].includes(manifest.schema),
+    manifest && [1, MANIFEST_SCHEMA, 3].includes(manifest.schema),
     'unsupported-manifest-schema',
     'Unsupported passport schema; no files were changed.',
   );
+  if (manifest.schema === 3) validateMemory(manifest.memory);
+  else
+    assert(
+      manifest.memory === undefined,
+      'invalid-memory',
+      'Memory ownership requires passport schema 3.',
+    );
   assert(
     Array.isArray(manifest.installed) && Array.isArray(manifest.sessions),
     'invalid-manifest',
@@ -131,12 +137,12 @@ export async function readManifest(root: string): Promise<ManifestSnapshot> {
     'MCP sources belong in mcpSources, not installed skill files.',
   );
   const files = owners(manifest.installed);
-  if (manifest.schema === MANIFEST_SCHEMA)
+  if (manifest.schema >= MANIFEST_SCHEMA)
     for (const { file } of files.values())
       assert(
         hash(file.installedHash),
         'invalid-manifest',
-        'Schema 2 must distinguish upstream and installed hashes.',
+        'Schema 2 and 3 must distinguish upstream and installed hashes.',
       );
   return { manifest, hash: hashContent(text) };
 }
@@ -170,6 +176,7 @@ export async function planComponents(
   changes: Change[],
   read: ReadCurrent,
   migrate = false,
+  toSchema = snapshot.manifest?.schema === 3 ? 3 : MANIFEST_SCHEMA,
 ): Promise<ComponentPlan> {
   validateData({ sources, updates });
   assert(
@@ -179,10 +186,10 @@ export async function planComponents(
   );
   assert(
     !snapshot.manifest ||
-      snapshot.manifest.schema === MANIFEST_SCHEMA ||
+      snapshot.manifest.schema === toSchema ||
       migrate === true,
     'manifest-migration-required',
-    'Show migrateManifest: true to approve the schema 1 to 2 passport conversion.',
+    'Show migrateManifest: true to approve the passport schema conversion.',
   );
   const previous = owners(
     snapshot.recoveredInstalled ?? snapshot.manifest?.installed ?? [],
@@ -374,12 +381,23 @@ export async function planComponents(
           'component-mode-required',
           `Show the exact upstream permissions in changes: ${relative}.`,
         );
-      if (resolution === 'merge')
+      if (resolution === 'merge') {
+        const installedMode = old?.file.installedMode ?? old?.file.fileMode;
         assert(
-          change && change.action !== 'delete' && afterHash,
+          (change && change.action !== 'delete' && afterHash) ||
+            (!change &&
+              old &&
+              revisionKey(old.source) === revisionKey(next.source) &&
+              old.file.sourcePath === next.file.sourcePath &&
+              old.file.contentHash === next.file.contentHash &&
+              old.file.installedHash === actual.hash &&
+              installedMode !== undefined &&
+              installedMode === actual.mode &&
+              old.file.fileMode === next.file.fileMode),
           'component-content-required',
           `Show the merged content and diff: ${relative}.`,
         );
+      }
       desired = afterHash
         ? state(next.source, next.file, afterHash, afterMode ?? undefined)
         : null;
@@ -424,7 +442,7 @@ export async function planComponents(
     ),
     manifestHash: snapshot.hash,
     fromSchema: snapshot.manifest?.schema ?? null,
-    toSchema: MANIFEST_SCHEMA,
+    toSchema,
     ...(snapshot.recoveredInstalled ? { recoveredOwnership: true } : {}),
     files,
   };

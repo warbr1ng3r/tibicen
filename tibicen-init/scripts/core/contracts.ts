@@ -3,13 +3,15 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { validateSharedRules } from './shared-rules.ts';
 import { validateProcessChanges } from '../process/index.ts';
+import { validateMemory } from './memory.ts';
+import { HARNESS_PROFILES, isHarnessHintList } from '../agents/profiles.ts';
 
 export const VERSION: string = JSON.parse(
   readFileSync(new URL('../../package.json', import.meta.url), 'utf8'),
 ).version;
 export const SCHEMA_VERSION = 1;
 export const MAX_DATA_BYTES = 8 * 1024 * 1024;
-export const AGENTS = ['claude-code', 'codex', 'cursor'];
+export const AGENTS = HARNESS_PROFILES.map((profile) => profile.id);
 export const TRANSFER_STATUSES = [
   'complete',
   'manual-action-required',
@@ -49,6 +51,18 @@ export function validateFileMode(value: unknown): number {
     'Only ordinary file permission bits are supported.',
   );
   return value;
+}
+
+export function validateTargetFileMode(
+  value: unknown = process.platform === 'win32' ? 0o666 : 0o600,
+): number {
+  const mode = validateFileMode(value);
+  assert(
+    process.platform !== 'win32' || mode === 0o666,
+    'unsupported-file-mode',
+    'Windows writes support ordinary writable mode 0666, not exact POSIX permissions or ACL guarantees.',
+  );
+  return mode;
 }
 
 export function stableStringify(value: unknown): string {
@@ -124,10 +138,17 @@ export function validateProposal(input: unknown): Proposal {
   const plan = input as Proposal;
   validateData(plan);
   assert(
-    plan?.schema === 1 && ['init', 'improve'].includes(plan.mode),
+    [1, 2].includes(plan?.schema) && ['init', 'improve'].includes(plan.mode),
     'invalid-plan',
     'Unsupported plan schema or mode.',
   );
+  if (plan.schema === 2) validateMemory(plan.memory);
+  else
+    assert(
+      plan.memory === undefined,
+      'invalid-memory',
+      'Memory ownership requires proposal schema 2.',
+    );
   assert(
     Array.isArray(plan.changes) &&
       Array.isArray(plan.commands) &&
@@ -137,8 +158,10 @@ export function validateProposal(input: unknown): Proposal {
   );
   assert(
     plan.components?.schema === 1 &&
-      plan.components.toSchema === 2 &&
-      [null, 1, 2].includes(plan.components.fromSchema) &&
+      plan.components.toSchema === (plan.memory ? 3 : 2) &&
+      (plan.memory ? [null, 1, 2, 3] : [null, 1, 2]).includes(
+        plan.components.fromSchema,
+      ) &&
       Array.isArray(plan.components.files),
     'invalid-plan',
     'Compile the component inventory with the current proposal command; older plans need a new proposal.',
@@ -186,6 +209,11 @@ export function validateProposal(input: unknown): Proposal {
   }
   const paths = new Set();
   for (const change of plan.changes) {
+    assert(
+      change.path !== plan.memory?.path || change.action !== 'delete',
+      'memory-protected',
+      'User-owned memory is preserved when removing infrastructure.',
+    );
     assert(
       !('managedBlock' in change),
       'invalid-plan',
@@ -367,9 +395,9 @@ export function validatePreset(input: unknown): Preset {
       );
     } else if (key === 'agents') {
       assert(
-        Array.isArray(value) && value.every((agent) => AGENTS.includes(agent)),
+        isHarnessHintList(value),
         'invalid-preset',
-        'Unsupported preset agent.',
+        'Harness hints need valid lowercase IDs with at most sixteen distinct values.',
       );
     } else
       assert(

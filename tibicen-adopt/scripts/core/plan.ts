@@ -15,7 +15,7 @@ import {
   assert,
   digest,
   hashContent,
-  validateFileMode,
+  validateTargetFileMode,
   validateProposal,
 } from './contracts.ts';
 import { safePath, isInfrastructurePath } from './paths.ts';
@@ -35,6 +35,7 @@ import {
 } from '../process/index.ts';
 import { infrastructureScope } from '../verify/scope.ts';
 import { inspectNodeEnvironment } from '../verify/environment.ts';
+import { memoryAllows, resolveMemory } from './memory.ts';
 
 export function containsSecret(content: string) {
   if (
@@ -99,6 +100,58 @@ export async function readCurrent(
   }
 }
 
+function proposalDiff(
+  filename: string,
+  before: string | null,
+  after: string | null,
+  beforeMode: number | null,
+  afterMode: number | null,
+) {
+  const beforeLines = before?.match(/[^\n]*\n|[^\n]+$/g) ?? [];
+  const afterLines = after?.match(/[^\n]*\n|[^\n]+$/g) ?? [];
+  let diff = `--- ${before === null ? '/dev/null' : filename}\n+++ ${after === null ? '/dev/null' : filename}\n`;
+  if (beforeMode !== afterMode)
+    diff += `old mode ${beforeMode === null ? 'absent' : beforeMode.toString(8)}\nnew mode ${afterMode === null ? 'absent' : afterMode.toString(8)}\n`;
+  let prefix = 0;
+  while (
+    prefix < beforeLines.length &&
+    prefix < afterLines.length &&
+    beforeLines[prefix] === afterLines[prefix]
+  )
+    prefix++;
+  if (prefix === beforeLines.length && prefix === afterLines.length)
+    return diff;
+  let beforeEnd = beforeLines.length,
+    afterEnd = afterLines.length;
+  while (
+    beforeEnd > prefix &&
+    afterEnd > prefix &&
+    beforeLines[beforeEnd - 1] === afterLines[afterEnd - 1]
+  ) {
+    beforeEnd--;
+    afterEnd--;
+  }
+  // shortcut: keep one combined changed region; split hunks only if review needs it.
+  const start = Math.max(0, prefix - 3);
+  const beforeCount = Math.min(beforeLines.length, beforeEnd + 3) - start;
+  const afterCount = Math.min(afterLines.length, afterEnd + 3) - start;
+  diff += `@@ -${beforeCount ? start + 1 : start},${beforeCount} +${afterCount ? start + 1 : start},${afterCount} @@\n`;
+  const render = (lines: string[], marker: string) =>
+    lines
+      .map(
+        (line) =>
+          `${marker}${line}${line.endsWith('\n') ? '' : '\n\\ No newline at end of file\n'}`,
+      )
+      .join('');
+  return (
+    diff +
+    render(beforeLines.slice(start, prefix), ' ') +
+    render(beforeLines.slice(prefix, beforeEnd), '-') +
+    render(afterLines.slice(prefix, afterEnd), '+') +
+    render(beforeLines.slice(beforeEnd, start + beforeCount), ' ')
+  );
+}
+
 export async function createProposal(
   root: string,
   data: unknown,
@@ -131,6 +184,29 @@ export async function createProposal(
     root,
     await readManifest(root),
   );
+  const memory = resolveMemory(
+    input.memory,
+    baseline.recoveredMemory ?? baseline.manifest?.memory,
+  );
+  assert(
+    !memory || baseline.pendingStateSchema !== 3,
+    'resume-required',
+    'Complete the pending legacy session before configuring memory.',
+  );
+  if (memory) {
+    const current = await readCurrent(root, memory.path, { forbiddenPaths });
+    assert(
+      current.content !== null ||
+        requestedChanges.some(
+          (change) =>
+            change.path === memory.path &&
+            change.action !== 'delete' &&
+            typeof change.content === 'string',
+        ),
+      'invalid-memory',
+      'Bind an existing memory file or include its exact creation in changes.',
+    );
+  }
   const processSetup = await planProcess(
     input.process,
     baseline.recoveredProcess ?? baseline.manifest?.process,
@@ -254,6 +330,7 @@ export async function createProposal(
     );
     assert(
       isInfrastructurePath(change.path ?? '') ||
+        memoryAllows(memory, change.path) ||
         processAllows(processSetup.process, change.path) ||
         (input.mode === 'init' && emptyProject),
       'application-protected',
@@ -298,16 +375,18 @@ export async function createProposal(
     const fileMode =
       action === 'delete'
         ? undefined
-        : validateFileMode(
+        : validateTargetFileMode(
             change.fileMode ??
               (upstream
                 ? (upstream.fileMode ?? 0o644)
-                : (before.mode ?? 0o600)),
+                : (before.mode ?? undefined)),
           );
     const previous = registered.get(change.path);
     const expectedHash = previous?.hash ?? previous?.afterHash;
     const expectedMode = previous?.mode ?? previous?.afterMode;
     const acceptsLocalChange =
+      (baseline.pendingStateSchema === 4 &&
+        memoryAllows(memory, change.path)) ||
       (expectedHash !== undefined && expectedHash !== before.hash) ||
       (expectedMode !== undefined && expectedMode !== before.mode);
     if (
@@ -318,8 +397,6 @@ export async function createProposal(
     )
       continue;
     const content = action === 'delete' ? null : change.content;
-    const beforeLines = before.content?.split('\n') ?? [];
-    const afterLines = content?.split('\n') ?? [];
     changes.push({
       path: change.path,
       action,
@@ -327,10 +404,13 @@ export async function createProposal(
       beforeMode: before.mode,
       ...(content === null ? {} : { content, fileMode }),
       reason: change.reason,
-      diff: `--- ${change.path}\n+++ ${change.path}\n${fileMode !== undefined && before.mode !== fileMode ? `old mode ${before.mode === null ? 'absent' : before.mode.toString(8)}\nnew mode ${fileMode.toString(8)}\n` : ''}@@ -1,${beforeLines.length} +1,${afterLines.length} @@\n${beforeLines
-        .map((line) => `-${line}`)
-        .concat(afterLines.map((line) => `+${line}`))
-        .join('\n')}`,
+      diff: proposalDiff(
+        change.path,
+        before.content,
+        content ?? null,
+        before.mode,
+        fileMode ?? null,
+      ),
     });
   }
   const preparedChecks = prepareCheckCommands(
@@ -363,6 +443,7 @@ export async function createProposal(
     changes,
     (relative) => readCurrent(root, relative, { forbiddenPaths }),
     input.migrateManifest,
+    memory ? 3 : 2,
   );
   const sharedStatus = await inspectSharedRules(
     sharedRules,
@@ -398,7 +479,8 @@ export async function createProposal(
     });
   }
   const proposal: Proposal = {
-    schema: 1,
+    schema: memory ? 2 : 1,
+    ...(memory ? { memory } : {}),
     root,
     mode: input.mode,
     emptyProject,
@@ -452,6 +534,7 @@ export async function createProposal(
         ...(fileMode === undefined ? {} : { fileMode }),
       })),
       components,
+      ...(memory ? { memory } : {}),
       sharedRules: sharedStatus,
       ...(proposal.process
         ? { process: { ...proposal.process, verification: processStatus } }

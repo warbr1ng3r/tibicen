@@ -24,6 +24,7 @@ import { isInfrastructurePath } from './paths.ts';
 import { safePath } from './paths.ts';
 import { bindRunner, availableNames } from './checks.ts';
 import { digest } from './contracts.ts';
+import { memoryAllows } from './memory.ts';
 
 export function runtimeHooks(
   root: string,
@@ -80,12 +81,15 @@ export function runtimeHooks(
       let infrastructure = await verifyInfrastructure(root, {
         observedFiles: scanned.files,
         components: plan.components,
-        expectedFiles: session.applied.filter((item) =>
-          isInfrastructurePath(item.path),
+        expectedFiles: session.applied.filter(
+          (item) =>
+            isInfrastructurePath(item.path) ||
+            memoryAllows(plan.memory, item.path),
         ),
         forbiddenPaths: plan.forbiddenPaths,
         sharedRules: plan.sharedRules ?? [],
         process: plan.process,
+        memory: plan.memory,
       });
       if (
         infrastructure.reason === 'no-check-scope' &&

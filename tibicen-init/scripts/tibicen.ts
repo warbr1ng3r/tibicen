@@ -6,6 +6,11 @@ import { assert, parseData, serializeData, VERSION } from './core/contracts.ts';
 import { createProposal, unwrapPlan } from './core/plan.ts';
 import { applyPlan, getStatus, atomicWrite } from './core/apply.ts';
 import type { Source } from './core/types.ts';
+import {
+  HARNESS_PROFILES,
+  getHarnessProfile,
+  isHarnessId,
+} from './agents/profiles.ts';
 
 function parseArgs(argv: string[]) {
   const [command = 'help', ...args] = argv;
@@ -55,19 +60,59 @@ async function inputData(filename: unknown) {
   return parseData(text);
 }
 
+async function inspectCurrent(
+  root: string,
+  current: Awaited<ReturnType<typeof getStatus>>,
+) {
+  const { scanProject } = await import('./scan/index.ts');
+  const { verifyInfrastructure } = await import('./verify/index.ts');
+  const memory = current.state?.proposal.memory ?? current.manifest?.memory;
+  const forbiddenPaths = current.state?.proposal.forbiddenPaths ?? [];
+  const scan = await scanProject(root, { forbiddenPaths, memory });
+  const infrastructure = await verifyInfrastructure(root, {
+    forbiddenPaths,
+    memory,
+    observedFiles: scan.files,
+    components: current.state?.proposal.components,
+    expectedFiles: current.state ? current.observedApplied : [],
+    sharedRules:
+      current.state?.proposal.sharedRules ??
+      current.manifest?.sharedRules ??
+      [],
+    process: current.state?.proposal.process ?? current.manifest?.process,
+  });
+  const conflicts =
+    current.recovery?.files.filter(
+      (file) => file.path === memory?.path && file.state === 'ambiguous',
+    ) ?? [];
+  if (conflicts.length) {
+    infrastructure.status = 'issues-found';
+    infrastructure.issues = [
+      ...(infrastructure.issues ?? []),
+      ...conflicts.map((file) => ({
+        path: file.path,
+        reason: 'pending-memory-conflict',
+      })),
+    ];
+  }
+  return { scan, infrastructure };
+}
+
 export async function main(argv = process.argv.slice(2)) {
   const { command, options } = parseArgs(argv);
   const accepted: Record<string, string[]> = {
     scan: [],
     discover: ['query', 'kind'],
     'source-check': ['input'],
-    practices: ['agents'],
+    practices: ['agents', 'input'],
+    harnesses: ['agents'],
     proposal: ['input'],
     apply: ['plan', 'approve'],
     resume: ['plan', 'approve'],
     status: [],
     verify: [],
-    report: ['save', 'requested'],
+    report: ['input', 'save', 'requested'],
+    'mcp-diagnose': ['input'],
     'mcp-verify': ['agent', 'config', 'input'],
     'preset-load': ['name'],
     'preset-save': ['input', 'requested'],
@@ -94,14 +139,17 @@ export async function main(argv = process.argv.slice(2)) {
         scan: 'scan --root PATH',
         discover: 'discover --query TEXT [--kind skill|mcp]',
         'source-check': 'source-check --input FILE_OR_STDIN_DASH',
-        practices: 'practices --agents codex,cursor,claude-code',
+        practices: 'practices --agents ID[,ID...] [--input FILE_OR_STDIN_DASH]',
+        harnesses: 'harnesses [--agents ID[,ID...]]',
         proposal: 'proposal --root PATH --input FILE_OR_STDIN_DASH',
         apply: 'apply --root PATH --plan FILE_OR_STDIN_DASH --approve DIGEST',
         resume:
           'resume --root PATH [--plan FILE_OR_STDIN_DASH] --approve DIGEST',
         status: 'status --root PATH',
         verify: 'verify --root PATH',
-        report: 'report --root PATH [--save --requested]',
+        report:
+          'report --root PATH [--input FILE_OR_STDIN_DASH] [--save --requested]',
+        'mcp-diagnose': 'mcp-diagnose --root PATH --input FILE_OR_STDIN_DASH',
         'mcp-verify':
           'mcp-verify --root PATH --agent claude-code|cursor|codex [--config CODEX_CONFIG --input SERVER_SPEC]',
         'preset-load': 'preset-load --name NAME_OR_PATH',
@@ -113,6 +161,33 @@ export async function main(argv = process.argv.slice(2)) {
         'Review the exact proposal and obtain explicit user consent before apply/resume. Autopilot is not approval.',
     };
   if (command === 'version') return { version: VERSION, schema: 1 };
+  if (command === 'harnesses') {
+    assert(
+      options.agents === undefined || typeof options.agents === 'string',
+      'invalid-agents',
+      'Provide comma-separated harness IDs.',
+    );
+    const selected =
+      options.agents === undefined
+        ? HARNESS_PROFILES.map((profile) => profile.id)
+        : options.agents.split(',');
+    assert(
+      selected.length <= 16 && selected.every(isHarnessId),
+      'invalid-agents',
+      'Select at most sixteen lowercase harness IDs of at most 64 characters.',
+    );
+    return {
+      schema: 1,
+      harnesses: [...new Set(selected)].map(
+        (id) =>
+          getHarnessProfile(id) ?? {
+            id,
+            status: 'unknown',
+            reason: 'unsupported-agent',
+          },
+      ),
+    };
+  }
   if (command === 'scan') {
     const { scanProject } = await import('./scan/index.ts');
     return scanProject(root);
@@ -121,8 +196,10 @@ export async function main(argv = process.argv.slice(2)) {
     return createProposal(root, await inputData(options.input));
   if (command === 'status') {
     const result = await getStatus(root);
+    const memory = result.state?.proposal.memory ?? result.manifest?.memory;
     return {
       schema: 1,
+      ...(memory ? { memory } : {}),
       status: result.status,
       continuationAvailable: Boolean(result.state),
       sessionId:
@@ -140,12 +217,21 @@ export async function main(argv = process.argv.slice(2)) {
     };
   }
   if (command === 'report') {
+    const { summarizeDiagnosis, validateTaskContext } =
+      await import('./core/diagnosis.ts');
+    const context =
+      options.input === undefined
+        ? undefined
+        : validateTaskContext(await inputData(options.input));
     const current = await getStatus(root);
     const session = current.state ?? current.manifest?.sessions?.at(-1);
     const process =
       current.state?.proposal.process ?? current.manifest?.process;
+    const memory = current.state?.proposal.memory ?? current.manifest?.memory;
+    const { scan, infrastructure } = await inspectCurrent(root, current);
     const report = {
       schema: 1,
+      ...(memory ? { memory } : {}),
       status: current.status,
       reason:
         current.state?.reason ?? session?.attempts?.at(-1)?.reason ?? null,
@@ -172,6 +258,17 @@ export async function main(argv = process.argv.slice(2)) {
         current.state?.proposal?.manualFragments ??
         current.manifest?.manualFragments ??
         [],
+      diagnosis: summarizeDiagnosis({
+        scan,
+        infrastructure,
+        context,
+        forbiddenPaths: current.state?.proposal.forbiddenPaths ?? [],
+        registeredMemoryPath: memory?.path,
+        session: session?.id
+          ? { id: session.id, status: current.status }
+          : null,
+        continuationAvailable: Boolean(current.state),
+      }),
     };
     if (options.save) {
       assert(
@@ -216,20 +313,8 @@ export async function main(argv = process.argv.slice(2)) {
     }
   }
   if (command === 'verify') {
-    const { scanProject } = await import('./scan/index.ts');
-    const { verifyInfrastructure } = await import('./verify/index.ts');
-    const scan = await scanProject(root);
     const current = await getStatus(root);
-    return verifyInfrastructure(root, {
-      observedFiles: scan.files,
-      components: current.state?.proposal.components,
-      expectedFiles: current.state ? current.observedApplied : [],
-      sharedRules:
-        current.state?.proposal.sharedRules ??
-        current.manifest?.sharedRules ??
-        [],
-      process: current.state?.proposal.process ?? current.manifest?.process,
-    });
+    return (await inspectCurrent(root, current)).infrastructure;
   }
   if (command === 'source-check') {
     const { validateSources } = await import('./discovery/index.ts');
@@ -256,9 +341,42 @@ export async function main(argv = process.argv.slice(2)) {
     assert(
       typeof options.agents === 'string',
       'invalid-arguments',
-      'Provide --agents codex,cursor,claude-code.',
+      'Provide --agents ID[,ID...]; use harnesses to inspect known profiles.',
     );
-    return checkPractices({ agents: options.agents.split(',') });
+    const input =
+      options.input === undefined ? {} : await inputData(options.input);
+    assert(
+      input !== null &&
+        typeof input === 'object' &&
+        !Array.isArray(input) &&
+        Object.keys(input).every((key) => key === 'agentVersions'),
+      'invalid-practices-input',
+      'Practice input accepts only an optional agentVersions object.',
+    );
+    return checkPractices({
+      agents: options.agents.split(','),
+      agentVersions: (input as { agentVersions?: unknown }).agentVersions,
+    });
+  }
+  if (command === 'mcp-diagnose') {
+    const { validateMcpDiagnosisRequest, diagnoseMcp } =
+      await import('./mcp/diagnosis.ts');
+    const request = validateMcpDiagnosisRequest(await inputData(options.input));
+    const current = await getStatus(root);
+    const { readProjectFile } = await import('./scan/index.ts');
+    const configs = new Map<string, string>();
+    for (const source of request.sources) {
+      try {
+        const { content } = await readProjectFile(root, source.path, {
+          forbiddenPaths: current.state?.proposal.forbiddenPaths ?? [],
+          maxFileBytes: 1024 * 1024,
+        });
+        configs.set(source.path, content.toString('utf8'));
+      } catch {
+        // Missing map entries preserve unreadable/excluded status without raw errors.
+      }
+    }
+    return diagnoseMcp(request, configs);
   }
   if (command === 'mcp-verify') {
     const { validateMcpConfig, verifyCodexMcpBlock } =

@@ -10,11 +10,16 @@ import { constants } from 'node:fs';
 import { open, readdir, realpath, lstat } from 'node:fs/promises';
 import { assert, hashContent, validateScanResult } from '../core/contracts.ts';
 import {
-  isSensitivePath,
+  isSensitiveInspectionPath,
   isInfrastructurePath,
   safePath,
   validateRelativePath,
 } from '../core/paths.ts';
+import { MEMORY_PATHS, memoryAllows, validateMemory } from '../core/memory.ts';
+import {
+  harnessInfrastructurePath,
+  observedHarnesses,
+} from '../agents/profiles.ts';
 
 const IGNORED = new Set([
   '.git',
@@ -46,12 +51,28 @@ const LANGUAGES: Record<string, string> = {
 export function infrastructurePath(relative: string) {
   return (
     isInfrastructurePath(relative) ||
-    /(?:^|\/)\.cursorrules$/.test(relative) ||
-    /(?:^|\/)\.(?:claude|cursor|codex)\/(?:settings(?:\.local)?\.json|config\.toml|commands\/|agents\/|skills\/|rules\/)/.test(
-      relative,
-    ) ||
+    harnessInfrastructurePath(relative) ||
     relative === '.tibicen/manifest.yml'
   );
+}
+
+function installedTibicenSkill(relative: string) {
+  for (const match of relative.matchAll(
+    /(?:^|\/)(\.[^/]+\/skills(?:-[a-zA-Z0-9_-]+)?\/([^/]+))(?=\/)/g,
+  )) {
+    const [, root, name] = match;
+    const parent = relative.slice(0, match.index);
+    if (
+      parent &&
+      ['example.instructions.md', 'example.json'].some((leaf) =>
+        infrastructurePath(`${parent}/${leaf}`),
+      )
+    )
+      return false;
+    if (harnessInfrastructurePath(`${root}/SKILL.md`))
+      return ['tibicen-init', 'tibicen-adopt'].includes(name);
+  }
+  return false;
 }
 
 export function exclusionReason(
@@ -72,13 +93,7 @@ export function exclusionReason(
     relative.startsWith('.tibicen/state/')
   )
     return 'cache-or-metadata';
-  if (
-    isSensitivePath(relative) ||
-    /(?:^|\/)(?:\.npmrc|\.netrc|\.pypirc|\.git-credentials|[^/]*credentials[^/]*\.json)$/i.test(
-      relative,
-    )
-  )
-    return 'sensitive-path';
+  if (isSensitiveInspectionPath(relative)) return 'sensitive-path';
   return null;
 }
 
@@ -135,11 +150,19 @@ export async function scanProject(
     maxFiles = 10000,
     maxTotalBytes = 128 * 1024 * 1024,
     maxDepth = 40,
+    memory,
   }: ScanOptions = {},
 ) {
   for (const relative of forbiddenPaths)
     validateRelativePath(relative.replace(/\/$/, ''));
   const base = await realpath(root);
+  if (!memory && !exclusionReason('.tibicen/manifest.yml', forbiddenPaths))
+    memory = (
+      await import('../core/components.ts').then(({ readManifest }) =>
+        readManifest(base),
+      )
+    ).manifest?.memory;
+  if (memory) validateMemory(memory);
   assert(
     (await lstat(base)).isDirectory(),
     'invalid-root',
@@ -217,7 +240,8 @@ export async function scanProject(
           limited = true;
           return;
         }
-        const infrastructure = infrastructurePath(name);
+        const infrastructure =
+          infrastructurePath(name) || memoryAllows(memory, name);
         files.push({
           path: name,
           hash: hashContent(content),
@@ -227,14 +251,7 @@ export async function scanProject(
         });
         const language = LANGUAGES[path.posix.extname(name)];
         if (language && !infrastructure) languages.add(language);
-        if (
-          /(?:^|\/)(?:CLAUDE\.md|\.claude\/)/.test(name) ||
-          name === '.mcp.json'
-        )
-          agents.add('claude-code');
-        if (/(?:^|\/)(?:\.cursor\/|\.cursorrules$)/.test(name))
-          agents.add('cursor');
-        if (/(?:^|\/)\.codex\//.test(name)) agents.add('codex');
+        for (const agent of observedHarnesses(name)) agents.add(agent);
         if (!infrastructure && path.posix.basename(name) === 'package.json') {
           let manifest;
           try {
@@ -313,8 +330,15 @@ export async function scanProject(
     schema: 1,
     root: base,
     kind: existing || gaps.length ? 'existing' : 'empty',
-    mode: files.some((file) => file.infrastructure) ? 'improve' : 'init',
+    mode: files.some(
+      (file) => file.infrastructure && !installedTibicenSkill(file.path),
+    )
+      ? 'improve'
+      : 'init',
     files,
+    memoryCandidates: files
+      .filter((file) => MEMORY_PATHS.includes(file.path))
+      .map((file) => file.path),
     languages: [...languages].sort(),
     commands,
     agents: [...agents].sort(),

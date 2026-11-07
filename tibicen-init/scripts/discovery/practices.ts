@@ -1,17 +1,14 @@
 import type { Fetch, HttpResponse, PathReason } from '../core/types.ts';
 import { assert, fail, hashContent } from '../core/contracts.ts';
+import {
+  HARNESS_PROFILES,
+  getHarnessProfile,
+  isHarnessId,
+} from '../agents/profiles.ts';
 
-export const OFFICIAL_SOURCES = Object.freeze({
-  'claude-code': [
-    'https://code.claude.com/docs/en/best-practices',
-    'https://code.claude.com/docs/en/skills',
-  ],
-  codex: [
-    'https://learn.chatgpt.com/docs/agent-configuration/agents-md',
-    'https://learn.chatgpt.com/docs/build-skills',
-  ],
-  cursor: ['https://cursor.com/docs/rules', 'https://cursor.com/docs/skills'],
-});
+export const OFFICIAL_SOURCES = Object.freeze(
+  Object.fromEntries(HARNESS_PROFILES.map(({ id, sources }) => [id, sources])),
+);
 interface PracticeEvidence {
   title: string;
   headings: string[];
@@ -44,6 +41,15 @@ const OFFICIAL_HOSTS = new Set([
   'learn.chatgpt.com',
   'agents.md',
   'agentskills.io',
+  'dev.opencode.ai',
+  'geminicli.com',
+  'docs.github.com',
+  'aider.chat',
+  'zcode.z.ai',
+  'docs.cline.bot',
+  'docs.devin.ai',
+  'docs.continue.dev',
+  'roocodeinc.github.io',
 ]);
 
 function plain(text: string) {
@@ -216,40 +222,79 @@ export async function checkPractices(
   {
     agents = [],
     agentVersions = {},
-  }: { agents?: string[]; agentVersions?: Record<string, string> } = {},
+  }: { agents?: string[]; agentVersions?: unknown } = {},
   options: PracticeOptions = {},
 ) {
   assert(
-    Array.isArray(agents) && agents.length <= 3,
+    Array.isArray(agents) &&
+      agents.length <= 16 &&
+      [...agents].every(isHarnessId),
     'invalid-agents',
-    'Select at most the three supported agents.',
+    'Select at most sixteen lowercase harness IDs of at most 64 characters.',
   );
+  assert(
+    agentVersions !== null &&
+      typeof agentVersions === 'object' &&
+      !Array.isArray(agentVersions),
+    'invalid-agent-versions',
+    'agentVersions must be an object of selected agent versions.',
+  );
+  const versions = agentVersions as Record<string, unknown>;
+  for (const [agent, version] of Object.entries(versions))
+    assert(
+      isHarnessId(agent) &&
+        agents.includes(agent) &&
+        typeof version === 'string' &&
+        version.trim().length > 0 &&
+        version.length <= 100 &&
+        !/\p{Cc}/u.test(version),
+      'invalid-agent-versions',
+      'Versions need selected valid harness IDs and nonblank strings of at most 100 characters without controls.',
+    );
   const checkedAt = new Date(options.now ?? Date.now()).toISOString();
   const result: { schema: number; practices: Practice[]; gaps: PathReason[] } =
     { schema: 1, practices: [], gaps: [] };
   const selected = [...new Set(agents)];
+  // Validate every selected source list before the first request.
   for (const agent of selected) {
-    if (!Object.hasOwn(OFFICIAL_SOURCES, agent)) {
-      result.gaps.push({ agent, reason: 'unsupported-agent' });
-      continue;
-    }
-    if (!agentVersions[agent])
-      result.gaps.push({ agent, reason: 'agent-version-unverified' });
-    const sources =
-      options.sources?.[agent] ??
-      OFFICIAL_SOURCES[agent as keyof typeof OFFICIAL_SOURCES];
+    const profile = getHarnessProfile(agent);
+    if (!profile) continue;
+    const sources = options.sources?.[agent] ?? profile.sources;
     assert(
-      Array.isArray(sources) && sources.length <= 2,
+      Array.isArray(sources) &&
+        sources.length <= 2 &&
+        [...sources].every((source) => typeof source === 'string'),
       'source-request-limit',
       'At most two relevant official sources are read per agent.',
     );
+  }
+  let attempts = 0;
+  for (const agent of selected) {
+    const profile = getHarnessProfile(agent);
+    if (!profile) {
+      result.gaps.push({ agent, reason: 'unsupported-agent' });
+      continue;
+    }
+    const agentVersion = Object.hasOwn(versions, agent)
+      ? (versions[agent] as string)
+      : undefined;
+    if (!agentVersion)
+      result.gaps.push({ agent, reason: 'agent-version-unverified' });
+    const sources = options.sources?.[agent] ?? profile.sources;
     for (const source of sources) {
       const entry = {
         source,
         checkedAt,
         appliesTo: `${agent} project instructions and skills`,
-        ...(agentVersions[agent] ? { agentVersion: agentVersions[agent] } : {}),
+        ...(agentVersion ? { agentVersion } : {}),
       };
+      if (attempts >= 6) {
+        const reason = 'source-budget-exhausted';
+        result.practices.push({ ...entry, status: 'unverified', reason });
+        result.gaps.push({ source, agent, reason });
+        continue;
+      }
+      attempts++;
       try {
         result.practices.push({
           ...entry,

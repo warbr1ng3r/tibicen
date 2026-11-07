@@ -32,6 +32,7 @@ import {
   digest,
   hashContent,
   validateCheckResult,
+  validateTargetFileMode,
 } from '../core/contracts.ts';
 import { safePath, validateRelativePath } from '../core/paths.ts';
 import {
@@ -48,6 +49,13 @@ import { inspectProcess, processAllows } from '../process/index.ts';
 import type { ProcessPlan } from '../process/index.ts';
 import { infrastructureScope } from './scope.ts';
 import type { ExpectedFile } from './scope.ts';
+import type { ProjectMemory } from '../core/types.ts';
+import {
+  memoryAllows,
+  memoryInstructionPath,
+  referencesMemory,
+  validateMemory,
+} from '../core/memory.ts';
 import { copyNodeEnvironment } from './environment.ts';
 
 const liveSnapshots = new Map<string, { container: string; id: string }>();
@@ -224,13 +232,16 @@ export async function prepareFinalSnapshot(
     'unknown-snapshot',
     'Baseline must be a retained snapshot.',
   );
+  const records = new Map(
+    baseline.files.map((file) => [file.path, { ...file }]),
+  );
+  for (const change of changes)
+    if (change.action !== 'delete')
+      validateTargetFileMode(change.fileMode ?? records.get(change.path)?.mode);
   const final = await allocate(baseline.sourceRoot, options);
   final.excluded = baseline.excluded.map((item) => ({ ...item }));
   final.gaps = baseline.gaps.map((item) => ({ ...item }));
   final.baselineId = baseline.id;
-  const records = new Map(
-    baseline.files.map((file) => [file.path, { ...file }]),
-  );
   const seen = new Set();
   try {
     for (const file of baseline.files) {
@@ -298,7 +309,7 @@ export async function prepareFinalSnapshot(
         'Snapshot changes cannot introduce literal credentials.',
       );
       await mkdir(path.dirname(destination), { recursive: true });
-      const mode = change.fileMode ?? before?.mode ?? 0o600;
+      const mode = validateTargetFileMode(change.fileMode ?? before?.mode);
       await writeFile(destination, change.content, { mode });
       await chmod(destination, mode);
       records.set(change.path, {
@@ -593,6 +604,7 @@ export async function verifyInfrastructure(
     forbiddenPaths = [],
     sharedRules,
     process,
+    memory,
   }: {
     expectedFiles?: ExpectedFile[];
     observedFiles?: FileRecord[];
@@ -600,12 +612,15 @@ export async function verifyInfrastructure(
     forbiddenPaths?: string[];
     sharedRules?: SharedRule[];
     process?: ProcessPlan;
+    memory?: ProjectMemory;
   } = {},
 ): Promise<CheckResult> {
   const issues: PathReason[] = [];
   const manifest = (await readManifest(root)).manifest;
   sharedRules ??= manifest?.sharedRules ?? [];
   process ??= manifest?.process;
+  memory ??= manifest?.memory;
+  if (memory) validateMemory(memory);
   // Managed content has its own checks; current writes still require exact bytes.
   const independentlyChecked = new Set([
     ...sharedRules.flatMap((rule) => rule.targets.map((target) => target.path)),
@@ -617,6 +632,7 @@ export async function verifyInfrastructure(
     observedFiles,
     expectedFiles,
     components,
+    memory,
   );
   const processStatus = await inspectProcess(process, async (relative) => {
     try {
@@ -649,6 +665,7 @@ export async function verifyInfrastructure(
     try {
       assert(
         infrastructurePath(expected.path) ||
+          memoryAllows(memory, expected.path) ||
           processAllows(process, expected.path),
         'outside-infrastructure',
         'Structural scope must name an infrastructure file.',
@@ -698,6 +715,7 @@ export async function verifyInfrastructure(
       }
       if (
         !content.toString('utf8').trim() &&
+        !memoryAllows(memory, expected.path) &&
         !process?.files.some(
           (file) => file.path === expected.path && file.role === 'anchor',
         )
@@ -737,6 +755,31 @@ export async function verifyInfrastructure(
                 : 'unreadable-file',
       });
     }
+  }
+  if (memory) {
+    const paths = new Set(
+      [
+        ...expectedFiles.map((file) => file.path),
+        ...observedFiles.map((file) => file.path),
+        'AGENTS.md',
+        'CLAUDE.md',
+        '.cursorrules',
+      ].filter(memoryInstructionPath),
+    );
+    let connected = false;
+    for (const relative of paths) {
+      try {
+        const { content } = await readProjectFile(root, relative, {
+          forbiddenPaths,
+        });
+        if (referencesMemory(content.toString('utf8'), memory))
+          connected = true;
+      } catch {
+        // Missing or unsafe instruction files cannot provide the memory connection.
+      }
+    }
+    if (!connected)
+      issues.push({ path: memory.path, reason: 'missing-memory-connection' });
   }
   return validateCheckResult({
     kind: 'infrastructure',

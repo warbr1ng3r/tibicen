@@ -230,6 +230,8 @@ function parseConfig(text: string) {
   return { data, ast: ast as SyntaxObject };
 }
 
+export { parseConfig as parseMcpJson };
+
 function containsLiteralSecret(value: unknown): boolean {
   if (!value || typeof value !== 'object') return false;
   return Object.entries(value).some(
@@ -284,6 +286,25 @@ function envStatus(
   return names.every((name) => availableEnvNames.includes(name))
     ? 'configured-unverified'
     : 'no-key';
+}
+
+function environmentNames(
+  agent: string,
+  values: string[],
+  names: string[] = [],
+) {
+  const reference =
+    agent === 'cursor'
+      ? /\$\{env:([A-Za-z_][A-Za-z0-9_]*)\}/g
+      : /\$\{([A-Za-z_][A-Za-z0-9_]*)\}/g;
+  return [
+    ...new Set([
+      ...names,
+      ...values.flatMap((value) =>
+        [...value.matchAll(reference)].map((match) => match[1]),
+      ),
+    ]),
+  ];
 }
 
 function manual(agent: string, reason: string): McpPlan {
@@ -348,15 +369,17 @@ export function planMcpChanges(
       results.push({ name: operation.name, status: 'disabled-by-user' });
     } else {
       const server = { ...operation.server, name: operation.name };
-      content = updateServer(
-        content,
-        operation.name,
-        serverConfig(agent, server),
+      const config = serverConfig(agent, server);
+      const names = environmentNames(
+        agent,
+        [config.command, ...config.args],
+        server.envNames ?? [],
       );
+      content = updateServer(content, operation.name, config);
       results.push({
         name: operation.name,
-        status: envStatus(server.envNames ?? [], options),
-        envNames: server.envNames ?? [],
+        status: envStatus(names, options),
+        envNames: names,
       });
     }
   }
@@ -453,10 +476,17 @@ export function validateMcpConfig(
       if (!match) invalid = true;
       else names.push(match[1]);
     }
+    const envNames = invalid
+      ? []
+      : environmentNames(
+          agent,
+          [server.command, ...(server.args ?? [])],
+          names,
+        );
     servers.push({
       name,
-      status: invalid ? 'manual-action-required' : envStatus(names, options),
-      ...(invalid ? { reason: 'invalid-env-reference' } : { envNames: names }),
+      status: invalid ? 'manual-action-required' : envStatus(envNames, options),
+      ...(invalid ? { reason: 'invalid-env-reference' } : { envNames }),
     });
   }
   return { agent, servers };
@@ -550,7 +580,9 @@ export function verifyCodexMcpBlock(
     for (const raw of text.split(/\r?\n/)) {
       const line = raw.trim();
       if (line.startsWith('[')) {
-        active = line === heading || line === bareHeading;
+        active =
+          line === heading ||
+          (/^[A-Za-z0-9_-]+$/.test(server.name) && line === bareHeading);
         if (active) found++;
         continue;
       }

@@ -5,9 +5,11 @@ import type {
   ComponentPlan,
   FileRecord,
   Manifest,
+  ProjectMemory,
 } from '../core/types.ts';
 import { assert, validateFileMode } from '../core/contracts.ts';
 import { infrastructurePath } from '../scan/index.ts';
+import { memoryAllows } from '../core/memory.ts';
 
 export interface ExpectedFile {
   path: string;
@@ -25,10 +27,12 @@ export function infrastructureScope(
   observed: FileRecord[],
   expected: ExpectedFile[],
   components?: ComponentPlan,
+  memory: ProjectMemory | undefined = manifest?.memory,
 ): ExpectedFile[] {
   const scope = new Map<string, ExpectedFile>();
   const inScope = (relative: string) =>
-    infrastructurePath(relative) && relative !== '.tibicen/manifest.yml';
+    (infrastructurePath(relative) || memoryAllows(memory, relative)) &&
+    relative !== '.tibicen/manifest.yml';
   const owned = (
     relative: string,
     file: ComponentFileState,
@@ -115,5 +119,8 @@ export function infrastructureScope(
   for (const file of observed)
     if (inScope(file.path) && !scope.has(file.path)) scope.set(file.path, file);
   for (const file of expected) scope.delete(file.path);
+  // Initial explicit writes stay exact; completed memory bodies belong to the user.
+  if (memory && !expected.some((file) => file.path === memory.path))
+    scope.set(memory.path, { path: memory.path });
   return [...scope.values(), ...expected];
 }
