@@ -13,7 +13,9 @@ Two entry points:
 - `tibicen-init` — “Set up agent infrastructure.” For an empty directory or an existing application without an agent setup.
 - `tibicen-adopt` — “Review and update agent infrastructure.” For fixing, extending, and updating existing instructions and integrations.
 
-[**1.5.0 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0):
+[**1.5.1 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.1): clearer consent for generated service records and faithful file permissions in the development evaluator. Exact CLI approval remains required; schemas and the selected memory store are unchanged. [Release checks and limits](docs/evals/results/2026-11-07-release-1.5.1/README.md) keep explicit skill access and operator assistance separate from automatic loading or measured human benefit. Pages metadata is verified separately.
+
+Earlier release (historical): [**1.5.0 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0):
 check explicitly selected instruction files, review changed sources of remembered
 facts, and explain how supplied upstream guidance affects a local decision.
 These optional report additions preserve existing approvals and the selected
@@ -31,8 +33,8 @@ Application source code, existing package manifests, CI, and data are preserved 
 
 ## Install Tibicen
 
-The command below pins the 1.5.0 distribution at its full commit. The
-[release report](docs/evals/results/2026-11-07-release-1.5/README.md) records exact
+The command below pins the 1.5.1 distribution at its full commit. The
+[release report](docs/evals/results/2026-11-07-release-1.5.1/README.md) records exact
 checks, retained earlier failures and candidate-bound limits.
 Publication and public delivery are tracked in [release details](docs/RELEASING.md).
 The source branch is not an installation target.
@@ -44,7 +46,7 @@ The explicit `universal` target puts both complete skills in `~/.agents/skills/`
 it does not require your host, model or provider to be in Tibicen's catalog.
 
 ```sh
-npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/0706d7caf6a93b79a117379c1cd5f8cd95effb04 -g --agent universal --skill tibicen-init tibicen-adopt --copy
+npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/287ef7b22630482aca7996e5a0faad601cede778 -g --agent universal --skill tibicen-init tibicen-adopt --copy
 ```
 
 Use the full distribution SHA from the release notes when an exact commit is

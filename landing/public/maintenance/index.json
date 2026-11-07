@@ -154,6 +154,25 @@
         }
       ],
       "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0"
+    },
+    {
+      "version": "1.5.1",
+      "publishedAtUtc": "2026-11-07T17:33:16Z",
+      "sourceCommit": "210e786fdac4a7aa90b88cd34e223788f4f097dd",
+      "distributionCommit": "287ef7b22630482aca7996e5a0faad601cede778",
+      "scope": "Compatible patch: clearer generated-service consent and faithful ordinary input modes in the development evaluator; no schema or approval expansion. Two assisted Codex sessions explicitly read the staged skill, compiled and applied an exact approved proposal; the persisted manual-action-required state retained a pending read-instructions marker despite observed explicit reading. Automatic fresh-session loading was not observed. Public full-SHA replacement/repeat, complete edited-backup restoration/removal, both installed self-tests and all 110 payload files passed; six standalone platform cells passed. MIT license retained. No automatic discovery, all-harness/model compatibility or measured human benefit is established.",
+      "payloadManifest": {
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.1/distribution-SHA256SUMS",
+        "sha256": "1c36d93471168d439f1540eac07fcde33916d096b860446d154b8973ea050961"
+      },
+      "archives": [
+        {
+          "name": "tibicen-1.5.1.tar.gz",
+          "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.1/tibicen-1.5.1.tar.gz",
+          "sha256": "eb2d256d2e30677e1c34476a5c52ab14ebc69bff0fc01577e3c3e9dc3ba2e9b9"
+        }
+      ],
+      "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.1"
     }
   ],
   "warnings": []

@@ -4,7 +4,11 @@ Updated 7 November 2026 (Moscow). Product scope remains in the
 [vision](PRODUCT_VISION.md) and [addendum](PRODUCT_VISION_ADDENDUM.md).
 This roadmap owns milestone order; detailed requirements and tasks stay in OpenSpec.
 
-## Current milestone — 1.5.0 and Pages delivered
+## Current milestone — 1.5.1 published; Pages metadata pending
+
+Compatible consent/mode fixes are published from `210e786fdac4a7aa90b88cd34e223788f4f097dd` as [1.5.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.1) at `2026-11-07T17:33:16Z`. Source CI, six platform cells, public delivery and returned assets passed. The [release report](evals/results/2026-11-07-release-1.5.1/README.md) retains explicit reading, operator assistance and manual-action-required limits. Separate Pages metadata is pending; previous observations are unchanged.
+
+## Historical milestone — 1.5.0 and Pages delivered
 
 [Skills 1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0) were
 published at `2026-11-06T22:43:22Z` (7 November Moscow). Candidate-02, three scoped

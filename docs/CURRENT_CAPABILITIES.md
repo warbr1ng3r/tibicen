@@ -1,9 +1,9 @@
 # What Tibicen does today
 
-**Published skills: 1.5.0 · 7 November 2026 (Moscow).** Tibicen helps your existing coding
+**Published skills: 1.5.1 · 7 November 2026 (Moscow).** Tibicen helps your existing coding
 agent inspect, set up or repair project instructions and integrations, apply the
 changes you approve, and report what was checked. The
-[release report](evals/results/2026-11-07-release-1.5/README.md) defines the exact
+[release report](evals/results/2026-11-07-release-1.5.1/README.md) defines the exact
 published bytes and delivery evidence; the [product vision](PRODUCT_VISION.md)
 defines wider goals, not extra shipped capabilities.
 

@@ -94,6 +94,12 @@ Record corrections in a new candidate. Preserve failed attempts and old sums.
 Published tags and bytes stay immutable; a published defect requires a new
 version. There is no background update of installed Tibicen or project setup.
 
+## Published 1.5.1; separate Pages metadata pending
+
+[1.5.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.1), release ID `437729870`, was published at `2026-11-07T17:33:16Z`. Source `210e786fdac4a7aa90b88cd34e223788f4f097dd` binds distribution `287ef7b22630482aca7996e5a0faad601cede778` through annotated tag `53125f3e60b1f22cc6da6121ac318b2800b0a921`. [Source CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42395772435), [all six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/42396159346) and [publication](https://github.com/warbr1ng3r/tibicen/actions/runs/42396865336) passed. Root accepted all three returned assets and 111 archive files/modes; stable 1.5.0 remains unchanged. Exact public update/recovery/removal and two explicitly assisted guidance sessions retain their limits in the [release report](evals/results/2026-11-07-release-1.5.1/README.md).
+
+This compatible patch clarifies generated-service consent and corrects development evaluator file modes. Persisted schemas, approved project scope and the selected memory store are unchanged. The new ninth checksum-index record is prepared with the prior eight records and warnings preserved; separate metadata CI, Pages deployment and returned-body verification are still pending. No automatic loading or human-benefit claim follows.
+
 ## Published 1.5.0 — 7 November 2026 (Moscow)
 
 [1.5.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.0), release ID

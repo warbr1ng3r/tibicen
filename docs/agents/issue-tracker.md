@@ -1,5 +1,9 @@
 # Issue tracker
 
+## Current status — 1.5.1 published; Pages metadata pending
+
+Compatible consent/mode fixes are published from `210e786fdac4a7aa90b88cd34e223788f4f097dd` as [1.5.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.1) at `2026-11-07T17:33:16Z`. Source CI, six platform cells, public delivery and returned assets passed. The [release report](../evals/results/2026-11-07-release-1.5.1/README.md) retains explicit reading, operator assistance and manual-action-required limits. Separate Pages metadata is pending; previous observations are unchanged.
+
 ## Local fixes complete — first-run consent and file modes, 7 November
 
 The owner requested implementation of the two recorded follow-ups. The
