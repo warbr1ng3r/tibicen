@@ -11,6 +11,8 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ### Fixed
 
+- Recognize links to a registered memory file with Markdown fragments during structural checks, retaining exact path and safe-read boundaries.
+- Accept explicit per-operation forbidden paths on read-only project commands, including recovery and report/MCP evidence; combine them with unfinished-plan exclusions without persisting a project ACL.
 - Clarify that mandatory manual actions are external steps the agent cannot perform. Available instruction reading stays with the agent; deferred behavior checks remain unverified. Finalization, approval and existing pending plans are unchanged; a fresh proposal kept future reading and task checks as limitations, with no mandatory human action. This single observation does not establish general model compliance.
 
 ## [1.5.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2) — 2026-11-07

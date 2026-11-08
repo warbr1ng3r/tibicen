@@ -2,6 +2,8 @@
 
 ## Current work — reliability and remaining native coverage
 
+The [memory-link correction](../openspec/changes/archive/2026-11-08-recognize-memory-link-fragments/verification.md) and [explicit per-read exclusions](../openspec/changes/archive/2026-11-08-respect-read-only-path-constraints/verification.md) passed independent review, the full gate (1067 passes / one existing skip) and both copied skills (12 CLI reads / four core calls). Detailed tasks and retained failures stay with the archived changes. These source fixes are Unreleased; published 1.5.2 remains unchanged.
+
 The [new workflow report](evals/results/2026-11-08-normal-workflows/README.md) separates real documentation setup/work from a test checker that wrongly rejected a valid tag example and its separately reviewed continuation. The [manual-action clarification](../openspec/changes/archive/2026-11-08-clarify-external-manual-actions/verification.md) keeps available agent work out of mandatory human handoff; the execution contract and original pending plans remain unchanged. This is Unreleased source work, not a replacement of published 1.5.2.
 
 The effort (`../.scratch/normal-workflow-and-second-harness-20261108/map.md`; private development record; excluded from public source) owns integration and the remaining coverage tasks. One different harness and memory correction/reuse there remain unverified: ZCode UI control is unavailable and current Claude status is logged out. Continue available product work without requiring OS setup; do not infer a native pass from the prepared fixture or configuration scans.

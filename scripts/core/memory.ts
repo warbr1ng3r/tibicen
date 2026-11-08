@@ -52,7 +52,7 @@ export function memoryAllows(
 export function referencesMemory(content: string, memory: ProjectMemory) {
   const escaped = memory.path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return new RegExp(
-    `(^|[\\s\\x60("'])${escaped}(?=$|[\\s\\x60)"',;:]|\\.(?=$|\\s))`,
+    `(^|[\\s\\x60("'])${escaped}(?=$|[\\s\\x60)"',;:#]|\\.(?=$|\\s))`,
     'm',
   ).test(content);
 }

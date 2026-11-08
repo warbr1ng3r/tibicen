@@ -158,6 +158,12 @@ path relative to the project root, such as `docs/memory.md`. This does not
 establish task applicability or native loading, or authorize editing protected
 nested rules.
 
+**Unreleased correction:** a same-file fragment such as
+`[decisions](docs/decisions.md#accepted)` also counts as a structural pointer to
+the registered `docs/decisions.md`. This does not check that the heading exists.
+Backup filenames, other directories, external URLs and query-only destinations
+do not become connections.
+
 Structural checks can establish a safe file and intact instruction connection.
 They cannot establish that an agent read, used or updated memory. Fresh-session
 observations must identify the tested distribution, agent/tool versions,

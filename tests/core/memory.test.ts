@@ -889,6 +889,40 @@ test('missing or unsafe memory and damaged policy remain separate structural iss
   );
 });
 
+test('structural memory connections accept in-file fragments and reject other destinations', async (t) => {
+  const memoryPath = 'docs/decisions.md';
+  const notes = '# Decisions\n\n## Accepted\nKeep SQLite.\n';
+  const { root, home } = await fixture(t, { [memoryPath]: notes });
+  const memory = { path: memoryPath, ownership: 'user-memory' as const };
+  const cases = [
+    [memoryPath, true],
+    [`${memoryPath}#accepted`, true],
+    [`${memoryPath}#`, true],
+    [`${memoryPath}.backup#accepted`, false],
+    [`other/${memoryPath}#accepted`, false],
+    [`/${memoryPath}#accepted`, false],
+    [`https://example.invalid/${memoryPath}#accepted`, false],
+    [`${memoryPath}?raw=1#accepted`, false],
+  ] as const;
+  for (const [destination, connected] of cases) {
+    await writeFile(
+      path.join(root, 'AGENTS.md'),
+      `Read [decisions](${destination}) before work.\n`,
+    );
+    const before = await fileState(root);
+    const result = await verifyInfrastructure(root, { memory });
+    assert.equal(
+      result.issues!.some(
+        (issue) => issue.reason === 'missing-memory-connection',
+      ),
+      !connected,
+      destination,
+    );
+    assert.deepEqual(await fileState(root), before);
+  }
+  assert.deepEqual(await readdir(home), []);
+});
+
 test('malformed or downgraded memory passports refuse before any new write', async (t) => {
   const { root, home } = await fixture(t);
   const plan = await createProposal(root, setup(), { home });
