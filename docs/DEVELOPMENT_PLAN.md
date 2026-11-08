@@ -1,5 +1,11 @@
 # Tibicen development plan
 
+## Current work — reliability and remaining native coverage
+
+The [new workflow report](evals/results/2026-11-08-normal-workflows/README.md) separates real documentation setup/work from a test checker that wrongly rejected a valid tag example and its separately reviewed continuation. The [manual-action clarification](../openspec/changes/archive/2026-11-08-clarify-external-manual-actions/verification.md) keeps available agent work out of mandatory human handoff; the execution contract and original pending plans remain unchanged. This is Unreleased source work, not a replacement of published 1.5.2.
+
+The effort (`../.scratch/normal-workflow-and-second-harness-20261108/map.md`; private development record; excluded from public source) owns integration and the remaining coverage tasks. One different harness and memory correction/reuse there remain unverified: ZCode UI control is unavailable and current Claude status is logged out. Continue available product work without requiring OS setup; do not infer a native pass from the prepared fixture or configuration scans.
+
 ## Completed work — landing and bounded reliability follow-up
 
 The approved landing is [published and verified](../openspec/changes/archive/2026-11-08-compose-approved-landing-visuals/verification.md). Fresh Bash completed setup, useful task and read-only repeat. Documentation completed approved apply, useful task and repeat through an explicit operator handoff after an interrupted proposal; the original failure remains unchanged. The [report](evals/results/2026-11-08-reliability-followup/README.md) records both outcomes, independent task checks and cleanup.

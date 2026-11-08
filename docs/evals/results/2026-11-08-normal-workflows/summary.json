@@ -1,0 +1,295 @@
+{
+  "schema": 1,
+  "date": "2026-11-08",
+  "status": "bounded-observations-complete-other-harness-fronts-unverified",
+  "productVersion": "1.5.2",
+  "publishedRuntimeFiles": 110,
+  "publishedRuntimeChanged": false,
+  "collectorSha256": "34cc4fa7062168b1382d9526ffbbbd32e43c2fe62c0d3f8630ead65589daca5f",
+  "frozenRunnerSourceFiles": 20,
+  "documentation": {
+    "fixture": "Pocket handbook",
+    "synthetic": true,
+    "initialAuthoredFiles": 7,
+    "initialInputFilesIncludingSkillsAndCaptureHelper": 118,
+    "host": "Codex",
+    "hostVersion": "0.157.0",
+    "model": "gpt-6-astra",
+    "billingRoute": "subscription",
+    "goal": "fresh complete proposal/apply/useful-task/read-only-repeat without rescuing an interrupted proposal",
+    "originalPacketState": "closed-after-failed-frozen-documentary-grade",
+    "phases": {
+      "proposal": {
+        "state": "accepted-for-exact-owner-consent",
+        "nativeCalls": 1,
+        "callerWallMs": 87017,
+        "mechanicalPass": true,
+        "semanticAccepted": true,
+        "semanticAcceptanceScope": "actual unchanged proposal may be consented and applied; integration is not complete",
+        "actualCliMode": "init",
+        "preservedInputFiles": 118,
+        "evidenceArtifactsAdded": 1,
+        "proposedUserFiles": [
+          "AGENTS.md"
+        ],
+        "existingMemoryTarget": "docs/decisions.md",
+        "setupApplied": false
+      },
+      "apply": {
+        "state": "accepted-exact-application-manual-actions-pending",
+        "nativeCalls": 1,
+        "nativeMs": 61034.624,
+        "callerWallMs": 64906,
+        "mechanicalPass": true,
+        "semanticAccepted": true,
+        "productStatus": "manual-action-required",
+        "productStatusObservedIn": [
+          "apply result",
+          "report result"
+        ],
+        "separateStatusCapturedOutputBytes": 0,
+        "separateStatusJsonObserved": false,
+        "separateStatusEmptyOutputCause": "unknown",
+        "structureCheck": "passed",
+        "cliApplyVerifyStatusReportExitCodes": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "approvedAgentsFileMode": "0600",
+        "manifestMode": "0600",
+        "transientSessionStateAbsent": true,
+        "protectedInputFilesPreserved": 120,
+        "returnedFiles": 122,
+        "ordinaryNonzeroCommands": [
+          "rg:2 before .tibicen existed",
+          "python:127 followed by Node inventory"
+        ],
+        "genericErrorEvents": 0
+      },
+      "task": {
+        "state": "native-semantically-accepted-original-grade-failed-separate-corrected-grade-passed",
+        "nativeCalls": 1,
+        "nativeMs": 63980.126,
+        "callerWallMs": 66183,
+        "mechanicalPass": true,
+        "inputFiles": 119,
+        "instructionReadingCue": false,
+        "allowedMutation": "existing docs/releasing.md only",
+        "semanticAccepted": true,
+        "actualInstructionsAndDecisionsReadsObserved": true,
+        "returnedFiles": 119,
+        "protectedInputFilesPreserved": 118,
+        "allFileModesPreserved": true,
+        "manifestAndPendingActionsUnchanged": true,
+        "genericErrorEvents": 0,
+        "modelFreeGrade": {
+          "state": "failed-original-raw-outcome-retained",
+          "exitCode": 1,
+          "durationMs": 834.922667,
+          "failure": "FEATURE:docs-inspect",
+          "preservationAndCleanupPassed": true,
+          "possibleBareTagCheckerFalseNegative": "confirmed by reviewed actual red/green and11positive/19negative controls",
+          "silentRegrade": false
+        },
+        "semanticAcceptanceScope": "meaning only; original frozen grade remains failed; corrected contained assessment accepted separately",
+        "acceptedUnderOriginalFrozenGrade": false
+      },
+      "repeat": {
+        "state": "not-run-in-closed-original-packet"
+      }
+    },
+    "limits": {
+      "maximumNativeCalls": 4,
+      "maximumAggregateCallerWallMs": 600000,
+      "maximumModelFreeGradeContainers": 1,
+      "gradeDeadlineMs": 20000,
+      "automaticRetries": 0,
+      "paidApiBudget": 0
+    },
+    "modelFreeGradeContainersExecuted": 1,
+    "separateCheckerContinuation": {
+      "state": "closed-corrected-grade-and-new-repeat-accepted-cleanup-complete",
+      "maximumCorrectedModelFreeGrades": 1,
+      "gradeDeadlineMs": 20000,
+      "maximumConditionalReadOnlyNativeRepeats": 1,
+      "repeatDeadlineMs": 90000,
+      "maximumCallerWallMs": 120000,
+      "requires": "checker correction controls, independent review and fresh root GO; repeat conditional on accepted corrected grade",
+      "originalFailureRewrittenOrSilentlyRegraded": false,
+      "correctedGrade": {
+        "pass": true,
+        "durationMs": 2700.948458,
+        "markdownFilesChecked": 6,
+        "sourceProjectFilesPreserved": 119,
+        "totalInputs": 126,
+        "preservationAndCleanupPassed": true,
+        "originalFailedGradeChanged": false
+      },
+      "repeat": {
+        "state": "accepted-read-only-no-change",
+        "nativeCalls": 1,
+        "nativeMs": 48767.184,
+        "callerWallMs": 51194,
+        "preservedFiles": 119,
+        "allFileModesPreserved": true,
+        "noChangesOrNewSessionReported": true,
+        "actualAgentsAndMemoryReadsObserved": true,
+        "localDocumentationLinkReviewed": true,
+        "historicalManifestAndPendingActionsUnchanged": true,
+        "semanticAccepted": true,
+        "automaticLoadingVerified": false,
+        "independentReviewSha256": "aae66e542490a5c2e62dcee9ac8edf98df7c3d893aa6f71c0f2ea36aa66ef7fd"
+      },
+      "cleanupVerified": true,
+      "ownedRootRemovedOnce": true,
+      "nativeHomesAndOracleEmpty": true
+    },
+    "cleanup": "complete-owned-root-removed-once",
+    "observedFriction": {
+      "classification": "confirmed-guidance-contradiction-core-correctly-retains-approved-contract",
+      "mandatoryPendingActions": [
+        "read-instructions",
+        "representative-review"
+      ],
+      "observedStatusAfterSuccessfulUnchangedApply": "manual-action-required",
+      "reason": "future instruction-reading and local documentation checks are deferred as mandatory manual actions although an agent could perform them",
+      "proposalFormatActuallyRead": true,
+      "causalInfluenceOfUnreadHandoff": "unproven",
+      "guidanceClarification": "implemented-offline-verified-unreleased",
+      "guidanceVerification": "openspec/changes/archive/2026-11-08-clarify-external-manual-actions/verification.md",
+      "offlineGate": {
+        "passed": 1055,
+        "skipped": 1,
+        "failed": 0
+      },
+      "builtSkillsSelfTestsPassed": 2,
+      "workingPayloadChecksumsVerified": 110,
+      "workingPayloadGuidanceReferencesChanged": 4,
+      "published152Modified": false,
+      "originalPlanOrPendingStatusesRewritten": false,
+      "generalModelBehaviorRepairEstablished": false
+    },
+    "assistance": [
+      "project-scoped staging of both complete published skills",
+      "explicit named skill invocation",
+      "visible evaluation permissions and protected published-CLI-main proposal capture helper",
+      "root approval of actual unchanged synthetic proposal required before apply"
+    ],
+    "originalStartedNativeCalls": 3,
+    "originalCompletedNativeCalls": 3,
+    "originalCompletedAggregateCallerWallMs": 218106,
+    "acceptedPhasesAcrossSeparatePackets": [
+      "proposal",
+      "exact application",
+      "useful documentary task under corrected assessment",
+      "new read-only repeat"
+    ],
+    "cleanOriginalFourPhaseCycleAccepted": false
+  },
+  "otherHosts": {
+    "claude": {
+      "observedAt": "2026-11-08T15:40:26.972Z",
+      "statusOperations": 1,
+      "loggedIn": false,
+      "authMethod": "none",
+      "modelRequests": 0,
+      "loginAttempts": 0,
+      "pathState": "stopped-no-current-authenticated-route",
+      "olderAmbiguousStatusRegraded": false,
+      "personalCacheOrSettingsPreservation": "not measured"
+    },
+    "zcode": {
+      "state": "not-run-current-route-unavailable-ui-setup-not-required-for-remaining-work",
+      "currentNativeTaskTurns": 0,
+      "memoryCorrectionAndFreshUseAccepted": false,
+      "osGrantObserved": false,
+      "ownerPermissionRejectionClaimed": false,
+      "blocksRemainingWork": false,
+      "differentHarnessAndMemoryCoverage": "separate-unverified-front",
+      "unavailableControlRequirements": [
+        "Accessibility",
+        "ScreenRecording"
+      ]
+    }
+  },
+  "keyReceipts": {
+    "availability": "private local records retained; not published here",
+    "documentationClosureSha256": "4cef74e3dfcc67c2e08970db20947377c6c02c2857a3d11f30b0ea1380d5ef7b",
+    "failedOriginalGradeRawSha256": "aaed462864b73c90ab42653b9380d430f566616122639412e79b91893a070ae5",
+    "guidanceActualReviewSha256": "2a081471dbd7cbb78620845f8ff462c39d29c9360f8d83d7e46992eb7bdbe3d9",
+    "guidanceCleanupSha256": "df047edbcffae55ac45ca156d640b875c62316da47f8b798705af9ee8ee31873",
+    "currentClaudeStatusSha256": "1b397d0076b78bc1aa4326825b392beba4adf6e1fdb29fd15c6aee560e63b8dc",
+    "guidanceClosureSha256": "a1e666fc25927da7b353f8cb4034f473b37679a90f8369d2cb060f5f406a0e9d"
+  },
+  "limitsOfInference": [
+    "historical interrupted and operator-assisted observations remain unchanged",
+    "original failed grade is retained; later accepted corrected assessment is a separate prospective observation",
+    "no clean original four-phase pass or product status complete claim",
+    "no automatic discovery/loading or live generic-error-recovery claim",
+    "one current working-guidance proposal is not a controlled causal or universal behavior improvement demonstration",
+    "no second-harness native success, universal harness/model compatibility or measured human benefit"
+  ],
+  "aggregateObserved": {
+    "nativeCalls": 5,
+    "completedCallerWallMs": 351618,
+    "modelFreeGradeContainers": 2,
+    "originalFrozenGradePassed": false,
+    "correctedContainedGradePassed": true,
+    "completeOriginalFourPhaseCycleClaimed": false,
+    "productStatusCompleteClaimed": false,
+    "documentationNativeCalls": 4,
+    "documentationCallerWallMs": 269300,
+    "guidanceProposalNativeCalls": 1,
+    "guidanceProposalCallerWallMs": 82318,
+    "documentationWorkflowAcceptedAcrossSeparatePackets": true,
+    "allNativeContainersStoppedAndRemoved": true,
+    "allNativeSourceConfigCodeModeGuardsPassed": true,
+    "documentationAndGuidanceOwnedRootsRemoved": true,
+    "nativeHomesEmpty": true
+  },
+  "guidanceObservation": {
+    "state": "closed-accepted-proposal-only-cleanup-complete",
+    "runtimeKind": "Unreleased guidance working build based on1.5.2; not published candidate",
+    "runtimeFiles": 110,
+    "changedWorkingReferenceFiles": 4,
+    "initialAuthoredFiles": 7,
+    "initialInputFiles": 118,
+    "sameNaturalProposalPrompt": true,
+    "desiredManualActionsInjected": false,
+    "maximumNativeCalls": 1,
+    "nativeDeadlineMs": 150000,
+    "maximumCallerWallMs": 180000,
+    "nativeCalls": 1,
+    "applyTaskGradeOrClarificationAllowed": false,
+    "automaticRetries": 0,
+    "paidApiBudget": 0,
+    "cleanup": "complete-owned-root-removed-homes-empty",
+    "nativeMs": 79913.48,
+    "callerWallMs": 82318,
+    "mechanicalPass": true,
+    "semanticAccepted": true,
+    "protectedInputFilesPreserved": 118,
+    "returnedFiles": 119,
+    "artifactBytes": 8070,
+    "actualProposalDigest": "792c8e7d91c7728eb9ff6c8f44e5f09ae96becb1ee04c5ffad1b51edf0c4385e",
+    "proposedUserFile": "AGENTS.md",
+    "proposedMode": "0600",
+    "existingMemoryTarget": "docs/decisions.md",
+    "manualActions": [],
+    "futureReadingAndBehaviorChecksLocation": "gaps",
+    "setupApplied": false,
+    "generalBehavioralImprovementEstablished": false,
+    "controlledCausalImprovementClaimed": false,
+    "artifactSha256": "a861a404b69472319ee718f8c5a89dcfde92750d994919a6863dbf74df8c9d3b",
+    "oneProposalSeparatesDeferredChecks": true,
+    "applicationConsentGranted": false,
+    "ownedRootRemoved": true
+  },
+  "remainingFronts": {
+    "differentHarnessUsefulWork": "open-unverified",
+    "differentHarnessDecisionCorrectionAndFreshReuse": "open-unverified",
+    "osUiSetupRequiredForRemainingWork": false
+  }
+}

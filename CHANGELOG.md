@@ -9,6 +9,10 @@ immutable source/distribution references, checks and remaining scope limits.
 
 - Compose the bilingual landing from the approved static setup tree, short workflow conversation and separate scope diagram. Keep optional components explicit and complete init/adopt examples in a native disclosure; installation, presets and published 1.5.2 skills are unchanged.
 
+### Fixed
+
+- Clarify that mandatory manual actions are external steps the agent cannot perform. Available instruction reading stays with the agent; deferred behavior checks remain unverified. Finalization, approval and existing pending plans are unchanged; a fresh proposal kept future reading and task checks as limitations, with no mandatory human action. This single observation does not establish general model compliance.
+
 ## [1.5.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2) — 2026-11-07
 
 ### Fixed

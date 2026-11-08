@@ -1,5 +1,11 @@
 # Issue tracker
 
+## Current effort — reliability integration and remaining coverage
+
+The owner delegated continued work without routine approvals. The map (`../../.scratch/normal-workflow-and-second-harness-20261108/map.md`; private development record; excluded from public source) and dashboard (`../../.scratch/normal-workflow-and-second-harness-20261108/dashboard.md`; private development record; excluded from public source) own parallel observation, review and integration. The [report](../evals/results/2026-11-08-normal-workflows/README.md) preserves the original three-call packet and failed grade separately from the corrected-checker continuation and fresh Unreleased guidance observation. Prior failures, limits, assistance and cleanup are not regraded.
+
+The [guidance correction](../../openspec/changes/archive/2026-11-08-clarify-external-manual-actions/verification.md) retains mandatory external human actions and exact consent. Actual different-host work and memory correction/reuse remain open; ZCode UI control is unavailable and Claude is logged out. OS setup is not required to finish available work. No paid API, personal authentication change, private-history publication or universal-compatibility claim.
+
 ## Completed effort — landing and bounded reliability
 
 The approved [landing](../../openspec/changes/archive/2026-11-08-compose-approved-landing-visuals/verification.md) is published from `d227d28107504155060d03aa92bb8aeed6292cb0`; source CI, Pages deployment and 20/20 returned bodies passed. Fresh Bash completed four phases. Documentation's interrupted proposal remains failed; a separately approved artifact handoff completed apply, useful task and read-only repeat, with exact preservation and cleanup. The [report](../evals/results/2026-11-08-reliability-followup/README.md) retains actual outcomes, unknown historical causes and assistance.
