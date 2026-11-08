@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  PAGES_SOURCE_SHA: "4d08e13e7c2131ba6c32b6f80b6fc2d3ab0efcfb"
+  PAGES_SOURCE_SHA: "d227d28107504155060d03aa92bb8aeed6292cb0"
 
 jobs:
   pages:
