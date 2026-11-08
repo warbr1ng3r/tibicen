@@ -1,10 +1,10 @@
 # Tibicen development plan
 
-## Current work — compatible patch and practical acceptance
+## Current work — 1.5.2 published; landing preview and harness checks
 
-The 8 November effort (`../.scratch/release-and-working-cycles-20261108/map.md`; private development record; excluded from public source) owns patch 1.5.2, fresh useful working cycles and a truthful screenshot preview before landing implementation. The scanner fix, including outer user-infrastructure ownership, is complete and independently reviewed. Candidate-01 is accepted: the versioned full gate passed 1048 tests with one existing skip, built standalone checks passed 3/3, and rebuilding the frozen source reproduced all 111 distribution files exactly. Local installation, replacement, identical repeat, edited-backup restoration and removal passed. Fresh native observations are running; their results, public CI/platform checks, public delivery and publication remain pending. Published 1.5.1 remains current. The [release report](evals/results/2026-11-08-release-1.5.2/README.md) records acceptance and limits; detailed work stays in the effort dashboard. Every earlier observation remains unchanged.
+The 8 November effort (`../.scratch/release-and-working-cycles-20261108/map.md`; private development record; excluded from public source) delivered compatible patch 1.5.2: reviewed routing correction, frozen candidate, 1048 passing tests/one existing skip, standalone 3/3, exact local/public installation/recovery/removal, public CI/six platforms, returned assets and separate Pages verification. Two synthetic queue/monorepo working cycles completed; shell/docs remain stopped with their evidence limits. The [release report](evals/results/2026-11-08-release-1.5.2/README.md) preserves actual outcomes. Landing-preview choice and additional harness observations remain separate follow-ups; no production landing redesign is implied. Earlier observations and parked Agensi are unchanged.
 
-## Latest local correction — first setup after installing Tibicen
+## Historical local correction — 7 November checkpoint
 
 Canonical installed Tibicen skill folders alone now select init; other user infrastructure still selects improve. All files remain inventoried and the nonempty-project/write guards are unchanged. The [change verification](../openspec/changes/distinguish-self-installed-tibicen/verification.md) records independent Ponytail Ship, 1047 passing tests/one existing skip, both built skills and 110 checksums. The correction is Unreleased; published 1.5.1 remains unchanged.
 
@@ -12,9 +12,9 @@ The [ordinary-cycle report](evals/results/2026-11-07-ordinary-working-cycles/REA
 
 Updated 7 November 2026 (Moscow). Product scope remains in the [vision](PRODUCT_VISION.md) and [addendum](PRODUCT_VISION_ADDENDUM.md). This roadmap owns milestone order; detailed requirements and tasks stay in OpenSpec.
 
-## Current milestone — 1.5.2 published; Pages metadata pending
+## Current milestone — 1.5.2 published; Pages verified
 
-The compatible routing fix is published from `f5bc0a416813c54d3ec21e50f3f5ede0b4be2bb8` as [1.5.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2) at `2026-11-07T23:27:53Z`. Source CI, six platform cells, public delivery and returned assets passed. The [release report](evals/results/2026-11-08-release-1.5.2/README.md) retains actual agent observations, operator assistance and earlier failures with their limits. Separate Pages metadata is pending; previous observations are unchanged.
+The compatible routing fix is published from `f5bc0a416813c54d3ec21e50f3f5ede0b4be2bb8` as [1.5.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2) at `2026-11-07T23:27:53Z`. Source CI, six platform cells, public delivery and returned assets passed. The [release report](evals/results/2026-11-08-release-1.5.2/README.md) retains actual agent observations, operator assistance and earlier failures with their limits. [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42427301398) serves source `2454eda623ad58d1d18e6037fa8aead4a629def2`; the [audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42427728184) matched all 20 bodies to the official artifact. This documentation closure does not redeploy the site; previous observations are unchanged.
 
 ## Historical milestone — 1.5.1 published; Pages verified
 

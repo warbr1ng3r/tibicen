@@ -1,6 +1,6 @@
 # Tibicen 1.5.2 release report
 
-**[1.5.2 is published](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2).** Release 437911222 was published at 2026-11-07T23:27:53Z (8 November Moscow); returned assets are accepted. The original 1.5.1 tag, stable metadata and assets remain unchanged. Separate Pages metadata, deployment and returned-body verification are pending.
+**[1.5.2 is published](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2).** Release 437911222 was published at 2026-11-07T23:27:53Z (8 November Moscow); returned assets are accepted, and stable 1.5.1 is unchanged. [Metadata CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42426687073), [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42427301398) and the [20-body audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42427728184) passed at [deployed source 2454eda](https://github.com/warbr1ng3r/tibicen/commit/2454eda623ad58d1d18e6037fa8aead4a629def2). This documentation closure does not redeploy the site.
 
 The compatible patch keeps initial setup available when canonical installed Tibicen folders are the project's only infrastructure. Other user instructions, skills, registered memory and recorded setup still select improvement. Outer user-rule/command/MCP directories retain ownership of nested examples. Inventory, modes, physical emptiness, consent and application-write boundaries remain unchanged; no migration is needed.
 

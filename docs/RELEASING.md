@@ -94,11 +94,11 @@ Record corrections in a new candidate. Preserve failed attempts and old sums.
 Published tags and bytes stay immutable; a published defect requires a new
 version. There is no background update of installed Tibicen or project setup.
 
-## Published 1.5.2; separate Pages metadata pending
+## Published 1.5.2; Pages verified
 
 [1.5.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2), release ID `437911222`, was published at `2026-11-07T23:27:53Z`. Source `f5bc0a416813c54d3ec21e50f3f5ede0b4be2bb8` binds distribution `df15ae7e0ae67aee2bd278f7e4f265e03437e672` through annotated tag `76c2ec9ab6136e177430c5fa440b1f22309833d2`. [Source CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42424557875), [all six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/42424565552) and [publication](https://github.com/warbr1ng3r/tibicen/actions/runs/42425341227) passed. Root accepted all three returned assets and 111 archive files/modes; stable 1.5.1 remains unchanged. Exact public update/recovery/removal and actual agent observations retain their limits in the [release report](evals/results/2026-11-08-release-1.5.2/README.md).
 
-This compatible patch corrects first-setup routing after project-local Tibicen installation while preserving outer user-infrastructure ownership. Inventory, nonempty-project, consent and application-write protections, persisted schemas and dependencies are unchanged. The tenth checksum-index record preserves all nine earlier records and warnings; separate metadata CI, Pages deployment and returned-body verification are pending. No automatic loading or measured human-benefit claim follows.
+This compatible patch corrects first-setup routing after project-local Tibicen installation while preserving outer user-infrastructure ownership. Inventory, nonempty-project, consent and application-write protections, persisted schemas and dependencies are unchanged. The tenth checksum-index record preserves all nine earlier records, warnings and independence text. [Metadata CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42426687073), [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42427301398) and the [20-body audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42427728184) passed for deployed source `2454eda623ad58d1d18e6037fa8aead4a629def2`; deployment `7628813571`, official artifact `13596395958` / SHA-256 `d14d73718e010bbaab659d40e30eb741601f9c82edd2dffbe9a4781c8057f4ed`. All 20 returned bodies matched that artifact without rebuilding. Later documentation-only closure changes neither the deployed source nor published skill assets. No automatic loading or measured human-benefit claim follows.
 
 ## Published 1.5.1; Pages verified
 
