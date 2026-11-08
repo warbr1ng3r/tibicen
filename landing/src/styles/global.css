@@ -354,7 +354,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    container-type: inline-size;
   }
   .repo-stage {
     position: relative;
@@ -395,15 +394,87 @@
     height: 6px;
     opacity: 0.7;
   }
+  .preview-scenario {
+    padding: 17px 24px 0;
+    color: #dedede;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .preview-flow {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 7px;
+    min-width: 0;
+    margin: 0;
+    padding: 13px 0 0;
+    border: 0;
+  }
+  .preview-choice {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .preview-flow > label {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 38px;
+    padding: 7px 5px;
+    border: 1px solid #4b4b4b;
+    border-radius: 5px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.3;
+    text-align: center;
+    cursor: pointer;
+  }
+  .preview-flow > label:first-of-type {
+    margin-left: 24px;
+  }
+  .preview-flow > label:last-of-type {
+    margin-right: 24px;
+  }
+  .preview-flow .step-number {
+    margin-right: 5px;
+    opacity: 0.65;
+  }
+  .preview-choice:checked + label {
+    border-color: #79d98b65;
+    background: #79d98b12;
+    color: #9ce4a9;
+  }
+  .preview-choice:focus-visible + label {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .preview-before-only,
+  .preview-after-only,
+  #preview-before:checked ~ .repo-content [data-preview-file='instructions'],
+  #preview-before:checked ~ .repo-status .preview-proposal-only,
+  #preview-after:checked ~ .repo-content .preview-proposal-only,
+  #preview-after:checked ~ .repo-status .preview-proposal-only {
+    display: none;
+  }
+  #preview-before:checked ~ .repo-status .preview-before-only,
+  #preview-after:checked ~ .repo-content .preview-after-only,
+  #preview-after:checked ~ .repo-status .preview-after-only {
+    display: revert;
+  }
   .repo-content {
-    padding: 26px 24px 24px;
+    flex-basis: 100%;
+    padding: 18px 24px 20px;
     font-size: 14px;
   }
   .tree-row {
     display: flex;
     align-items: center;
     gap: 12px;
-    min-height: 54px;
+    min-height: 44px;
   }
   .repo-tree {
     list-style: none;
@@ -419,53 +490,27 @@
     content: '';
     position: absolute;
     left: -23px;
-    top: 27px;
+    top: 22px;
     width: 13px;
     border-top: 1px solid #555;
   }
-  .tree-folder {
-    position: relative;
-    display: inline-block;
+  .tree-icon {
+    width: 19px;
+    height: 20px;
     flex-shrink: 0;
-    width: 15px;
-    height: 11px;
-    border: 1px solid #999;
-    border-radius: 1px 2px 2px 2px;
-    background: #ffffff08;
+    color: #aaa;
   }
-  .tree-folder::before {
-    content: '';
-    position: absolute;
-    width: 7px;
-    height: 3px;
-    border: 1px solid #999;
-    border-bottom: 0;
-    border-radius: 2px 2px 0 0;
-    left: -1px;
-    top: -4px;
+  .project-folder-icon,
+  .proposed-file .tree-icon {
+    color: var(--accent);
   }
-  .project-folder,
-  .project-folder::before {
-    border-color: var(--accent);
-  }
-  .tree-file {
-    width: 11px;
-    height: 14px;
-    display: inline-block;
-    flex-shrink: 0;
-    margin-inline: 2px;
-    border: 1px solid currentColor;
-    border-radius: 1px;
-    opacity: 0.75;
+  .project-folder-icon {
+    width: 21px;
+    height: 21px;
   }
   .tree-name {
     min-width: 0;
     overflow-wrap: anywhere;
-  }
-  .tree-tool {
-    width: 15px;
-    height: 18px;
-    flex-shrink: 0;
   }
   .tree-annotation {
     margin-left: auto;
@@ -481,11 +526,6 @@
       Arial,
       sans-serif;
   }
-  .annotation-muted {
-    color: var(--subtle);
-    background: none;
-    padding-right: 0;
-  }
   .proposed-file .tree-row {
     color: var(--accent);
     background: #79d98b08;
@@ -494,59 +534,24 @@
     margin: 0 -10px 6px -8px;
     padding-inline: 7px;
   }
-  .project-work {
+  .existing-file {
     color: var(--subtle);
-    padding-top: 10px;
-  }
-  .repo-tree .project-work::before {
-    top: 37px;
-  }
-  .work-contents {
-    font-size: 9px;
-    color: var(--subtle);
-    padding-left: 27px;
-    margin-top: -5px;
-    line-height: 1.7;
   }
   .repo-status {
     display: flex;
+    flex-basis: 100%;
     align-items: center;
     gap: 11px;
     padding: 19px 24px;
     border-top: 1px solid var(--line);
     color: var(--muted);
     font-size: 12px;
+    line-height: 1.5;
   }
   .repo-status svg {
     width: 21px;
     height: 21px;
     color: var(--accent);
-  }
-  @container (max-width: 300px) {
-    .preview-toolbar {
-      gap: 10px;
-      padding-inline: 12px;
-    }
-    .preview-project {
-      font-size: 13px;
-      white-space: nowrap;
-    }
-    .repo-content {
-      padding-inline: 12px;
-    }
-    .tree-row {
-      display: grid;
-      grid-template-columns: 18px minmax(0, 1fr);
-      column-gap: 8px;
-      row-gap: 4px;
-      padding-block: 10px;
-    }
-    .tree-annotation {
-      grid-column: 2;
-      justify-self: start;
-      margin-left: 0;
-      white-space: normal;
-    }
   }
   h2 {
     font-size: clamp(34px, 3.1vw, 45px);
@@ -1295,7 +1300,7 @@
       width: 100%;
     }
     .repo-stage {
-      padding-block: 12px 10px;
+      padding-block: 8px 6px;
     }
     .hero-surface::before {
       background-size: auto 100%;
@@ -1320,43 +1325,58 @@
     .preview-project {
       font-size: 16px;
     }
+    .preview-scenario {
+      padding: 8px 14px 0;
+      font-size: 10px;
+    }
+    .preview-flow {
+      column-gap: 5px;
+      padding-top: 8px;
+    }
+    .preview-flow > label {
+      min-height: 44px;
+      padding: 5px 3px;
+      font-size: 9px;
+    }
+    .preview-flow > label:first-of-type {
+      margin-left: 14px;
+    }
+    .preview-flow > label:last-of-type {
+      margin-right: 14px;
+    }
+    .preview-flow .step-number {
+      margin-right: 3px;
+    }
     .repo-content {
-      padding: 10px 14px;
+      padding: 8px 14px;
       font-size: 11px;
     }
+    .tree-icon {
+      width: 15px;
+      height: 16px;
+    }
+    .project-folder-icon {
+      width: 18px;
+      height: 18px;
+    }
     .tree-annotation {
-      font-size: 9px;
-      padding: 2px 6px;
-      max-width: clamp(72px, 23vw, 110px);
-      grid-column: auto;
-      justify-self: end;
-      margin-left: auto;
+      font-size: 8px;
+      padding: 2px 5px;
+      max-width: 76px;
       white-space: normal;
       text-align: right;
     }
     .tree-row {
       display: grid;
-      grid-template-columns: 14px minmax(0, 1fr) auto;
+      grid-template-columns: 15px minmax(0, 1fr) auto;
       column-gap: 8px;
-      row-gap: 0;
-      padding-block: 2px;
-      min-height: 28px;
-    }
-    .work-contents {
-      font-size: 8px;
-      padding-left: 23px;
-    }
-    .project-work {
-      padding-top: 4px;
+      min-height: 21px;
     }
     .repo-tree li::before {
-      top: 14px;
-    }
-    .repo-tree .project-work::before {
-      top: 18px;
+      top: 10.5px;
     }
     .repo-status {
-      padding: 10px 14px;
+      padding: 8px 14px;
       font-size: 10px;
     }
     .section-space {

@@ -32,45 +32,60 @@ async function localFile(url: URL) {
 }
 
 for (const { filename, route, locale, other } of pages) {
-  test(`${locale}: the six-row preview explains optional setup without fixed memory or skill paths`, async () => {
+  test(`${locale}: the project preview shows one chosen setup in three native stages`, async () => {
     const html = await readFile(new URL(filename, site), 'utf8');
     const preview = html.match(
       /<figure\b[^>]*id="example"[\s\S]*?<\/figure>/,
     )?.[0];
     assert.ok(preview);
-    assert.equal([...preview.matchAll(/<li\b/g)].length, 6);
+    assert.equal([...preview.matchAll(/class="existing-file"/g)].length, 6);
+    assert.equal([...preview.matchAll(/<li\b/g)].length, 8);
+    for (const name of [
+      'src/',
+      'tests/',
+      'docs/',
+      'data/',
+      'package.json',
+      'README.md',
+    ])
+      assert.ok(preview.includes(`>${name}</span>`), name);
     assert.doesNotMatch(
       preview,
-      /MEMORY\.md|\.agents\/|your-work\/|Example setup|Paths and tools depend/,
+      /MEMORY\.md|\.agents\/|MCP|Agent instructions|Project memory/,
+    );
+    for (const stage of ['before', 'proposal', 'after']) {
+      assert.match(preview, new RegExp(`<input\\b[^>]*id="preview-${stage}"`));
+      assert.ok(preview.includes(`for="preview-${stage}"`));
+    }
+    assert.match(preview, /<input\b[^>]*id="preview-proposal"[^>]*checked/);
+    assert.match(
+      preview,
+      /class="proposed-file" data-preview-file="instructions"/,
+    );
+    assert.match(
+      preview,
+      /class="preview-after-only" data-preview-file="history"/,
     );
     for (const text of locale === 'en'
       ? [
-          'Agent instructions',
-          'your host’s format',
-          'Project memory',
-          'if you want it',
-          'Project skills',
-          'if useful',
-          'MCP',
-          'if needed',
-          '.tibicen/',
-          'after applying',
-          'Your existing files',
-          'unchanged',
+          'Example: one simple setup',
+          'Before',
+          'Proposal',
+          'After approval',
+          'proposed',
+          'added',
+          'Nothing changes until you approve.',
+          'Existing project files stay intact.',
         ]
       : [
-          'Инструкции агента',
-          'в формате вашей среды',
-          'Память проекта',
-          'по желанию',
-          'Скиллы проекта',
-          'если полезны',
-          'MCP',
-          'если нужно',
-          '.tibicen/',
-          'после применения',
-          'Ваши файлы',
-          'без изменений',
+          'Пример простой настройки',
+          'До настройки',
+          'Предложение',
+          'После согласия',
+          'предлагается',
+          'добавлен',
+          'Без согласия ничего не меняется.',
+          'Ваши файлы остались прежними.',
         ])
       assert.ok(preview.includes(text), text);
   });

@@ -111,3 +111,67 @@ for (const locale of ['en', 'ru'] as const) {
     await context.close();
   });
 }
+
+test('project preview stages work with the keyboard and without JavaScript', async ({
+  browser,
+  baseURL,
+}) => {
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    baseURL,
+  });
+  const page = await context.newPage();
+  for (const locale of ['en', 'ru']) {
+    for (const width of [1440, 320]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto(locale === 'en' ? './' : 'ru/');
+      const preview = page.locator('#example');
+      const rows = preview.locator('.repo-tree > li:visible');
+      const instructions = preview.locator(
+        '[data-preview-file="instructions"]',
+      );
+      const history = preview.locator('[data-preview-file="history"]');
+      await expect(preview.locator('#preview-proposal')).toBeChecked();
+      await expect(rows).toHaveCount(7);
+      await expect(instructions).toBeVisible();
+      await expect(history).toBeHidden();
+      await expect(
+        instructions.locator('.preview-proposal-only'),
+      ).toBeVisible();
+      await expect(instructions.locator('.preview-after-only')).toBeHidden();
+      await preview.locator('#preview-proposal').focus();
+      await page.keyboard.press('ArrowLeft');
+      await expect(preview.locator('#preview-before')).toBeChecked();
+      await expect(rows).toHaveCount(6);
+      await expect(instructions).toBeHidden();
+      await expect(history).toBeHidden();
+      await expect(
+        preview.locator('.repo-status .preview-before-only'),
+      ).toBeVisible();
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await expect(preview.locator('#preview-after')).toBeChecked();
+      await expect(rows).toHaveCount(8);
+      await expect(instructions.locator('.preview-after-only')).toBeVisible();
+      await expect(instructions.locator('.preview-proposal-only')).toBeHidden();
+      await expect(history).toBeVisible();
+      await expect(
+        preview.locator('.repo-status .preview-after-only'),
+      ).toBeVisible();
+      await expect(
+        preview.locator('.existing-file:visible .tree-name'),
+      ).toHaveText([
+        'src/',
+        'tests/',
+        'docs/',
+        'data/',
+        'package.json',
+        'README.md',
+      ]);
+      expect(
+        await page.evaluate(() => document.documentElement.scrollWidth),
+      ).toBe(width);
+    }
+  }
+  await context.close();
+});
