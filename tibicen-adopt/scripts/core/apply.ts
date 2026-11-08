@@ -1,4 +1,10 @@
-import type { Proposal, Session, ApplyOptions, Runner } from './types.ts';
+import type {
+  Proposal,
+  Session,
+  ApplyOptions,
+  Runner,
+  PathOptions,
+} from './types.ts';
 import path from 'node:path';
 import os from 'node:os';
 import { randomUUID } from 'node:crypto';
@@ -20,7 +26,9 @@ import {
   serializeData,
   validateFileMode,
   validateTargetFileMode,
+  MAX_DATA_BYTES,
 } from './contracts.ts';
+import { readProjectFile } from '../scan/index.ts';
 import { safePath, isInfrastructurePath } from './paths.ts';
 import {
   containsSecret,
@@ -34,6 +42,7 @@ import { parseManagedBlock, supportsManagedBlocks } from './blocks.ts';
 import { planComponents, readManifest } from './components.ts';
 import {
   inspectRecovery,
+  validateRecoveryState,
   recoverPlanningBaseline,
   resultHash,
   changeModes,
@@ -104,9 +113,11 @@ export async function atomicWrite(
 }
 
 async function readInternal<T>(root: string, relative: string) {
-  const filename = await safePath(root, relative);
   try {
-    return parseData(await readFile(filename, 'utf8')) as T;
+    const { content } = await readProjectFile(root, relative, {
+      maxFileBytes: MAX_DATA_BYTES,
+    });
+    return parseData(content.toString('utf8')) as T;
   } catch (caught) {
     const error = caught as NodeJS.ErrnoException;
     if (error.code === 'ENOENT') return null;
@@ -114,15 +125,35 @@ async function readInternal<T>(root: string, relative: string) {
   }
 }
 
-export async function getStatus(root: string) {
+export async function readStatusMetadata(
+  root: string,
+  { forbiddenPaths = [] }: PathOptions = {},
+) {
   root = await realpath(root);
+  for (const internal of [
+    '.tibicen/state/session.json',
+    '.tibicen/manifest.yml',
+  ])
+    if (forbiddenPaths.length)
+      await safePath(root, internal, { forbiddenPaths });
   const state = await readInternal<Session>(
     root,
     '.tibicen/state/session.json',
   );
   const { manifest, hash: manifestHash } = await readManifest(root);
+  if (state) validateRecoveryState(root, state);
+  return { root, state, manifest, manifestHash };
+}
+
+export async function getStatus(
+  root: string,
+  { forbiddenPaths = [] }: PathOptions = {},
+) {
+  const metadata = await readStatusMetadata(root, { forbiddenPaths });
+  root = metadata.root;
+  const { state, manifest, manifestHash } = metadata;
   const recovery = state
-    ? await inspectRecovery(root, state, manifestHash)
+    ? await inspectRecovery(root, state, manifestHash, forbiddenPaths)
     : null;
   const observedApplied = state
     ? recovery!.files

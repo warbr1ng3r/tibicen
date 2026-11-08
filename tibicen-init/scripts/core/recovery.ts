@@ -7,7 +7,7 @@ import type {
 import { readFile } from 'node:fs/promises';
 import { assert, digest, hashContent, parseData } from './contracts.ts';
 import { readCurrent, unwrapPlan } from './plan.ts';
-import { safePath } from './paths.ts';
+import { safePath, validateRelativePath } from './paths.ts';
 import { installedComponents } from './components.ts';
 
 export const STATE_SCHEMA = 3;
@@ -100,16 +100,20 @@ export function manifestRecovery(state: Session, actualHash: string | null) {
       : 'ambiguous';
 }
 
-export async function inspectRecovery(
-  root: string,
-  state: Session,
-  actualManifestHash: string | null,
-) {
+export function validateRecoveryState(root: string, state: Session) {
   assert(
     state.schema === (state.proposal?.schema === 2 ? 4 : STATE_SCHEMA),
     'unsupported-state-schema',
     'Saved work needs state schema 3 (legacy) or 4 (memory), with file originals and execution/write journals; inspect older state explicitly.',
   );
+  assert(
+    Array.isArray(state.proposal?.forbiddenPaths) &&
+      state.proposal.forbiddenPaths.every((item) => typeof item === 'string'),
+    'unsupported-state-schema',
+    'Saved work needs an explicit project-read scope.',
+  );
+  for (const relative of state.proposal.forbiddenPaths)
+    validateRelativePath(relative.replace(/\/$/, ''));
   assert(
     state.proposalDigest === digest(unwrapPlan(state.proposal)) &&
       state.proposal.root === root,
@@ -148,7 +152,22 @@ export async function inspectRecovery(
         'Command attempt identity differs from its approved command.',
       );
   }
+}
+
+export async function inspectRecovery(
+  root: string,
+  state: Session,
+  actualManifestHash: string | null,
+  requestedForbiddenPaths: string[] = [],
+) {
+  validateRecoveryState(root, state);
   const files: FileRecovery[] = [];
+  const forbiddenPaths = [
+    ...new Set([
+      ...(state.proposal.forbiddenPaths ?? []),
+      ...requestedForbiddenPaths,
+    ]),
+  ];
   for (const change of state.proposal.changes) {
     const original = state.planOriginals[change.path];
     assert(
@@ -162,7 +181,7 @@ export async function inspectRecovery(
     const modes = changeModes(change);
     try {
       const actual = await readCurrent(root, change.path, {
-        forbiddenPaths: state.proposal.forbiddenPaths,
+        forbiddenPaths,
       });
       files.push({
         path: change.path,
@@ -197,7 +216,7 @@ export async function inspectRecovery(
   )) {
     try {
       const actual = await readCurrent(root, applied.path, {
-        forbiddenPaths: state.proposal.forbiddenPaths,
+        forbiddenPaths,
       });
       files.push({
         path: applied.path,

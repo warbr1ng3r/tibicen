@@ -4,8 +4,14 @@ import { fileURLToPath } from 'node:url';
 import { readFile, readdir, realpath } from 'node:fs/promises';
 import { assert, parseData, serializeData, VERSION } from './core/contracts.ts';
 import { createProposal, unwrapPlan } from './core/plan.ts';
-import { applyPlan, getStatus, atomicWrite } from './core/apply.ts';
+import {
+  applyPlan,
+  getStatus,
+  readStatusMetadata,
+  atomicWrite,
+} from './core/apply.ts';
 import type { Source } from './core/types.ts';
+import { safePath, validateRelativePath } from './core/paths.ts';
 import {
   HARNESS_PROFILES,
   getHarnessProfile,
@@ -60,14 +66,57 @@ async function inputData(filename: unknown) {
   return parseData(text);
 }
 
+function inspectionPaths(input: unknown): string[] {
+  if (input === undefined) return [];
+  assert(
+    typeof input === 'string' && Buffer.byteLength(input) <= 64 * 1024,
+    'invalid-inspection-scope',
+    'Provide a literal JSON array of forbidden paths, at most 64KiB.',
+  );
+  const paths = parseData(input);
+  assert(
+    Array.isArray(paths) && paths.length <= 128,
+    'invalid-inspection-scope',
+    'Provide at most 128 forbidden relative paths.',
+  );
+  const normalized = paths.map((item) => {
+    assert(
+      typeof item === 'string' &&
+        item.length <= 4096 &&
+        !/[\p{C}\u2028\u2029]/u.test(item),
+      'invalid-inspection-scope',
+      'Forbidden paths must be printable relative paths of at most 4096 characters.',
+    );
+    return validateRelativePath(item.replace(/\/$/, ''));
+  });
+  assert(
+    !normalized.some((item) =>
+      ['.tibicen/manifest.yml', '.tibicen/state/session.json'].some(
+        (internal) => internal === item || internal.startsWith(`${item}/`),
+      ),
+    ),
+    'forbidden-path',
+    'Inspection requires the disclosed Tibicen manifest and recovery metadata; leave the forbidden scope unread.',
+  );
+  return [...new Set(normalized)];
+}
+
+const inspectionScope = (
+  current: Pick<Awaited<ReturnType<typeof getStatus>>, 'state'>,
+  requested: string[],
+) => [
+  ...new Set([...(current.state?.proposal.forbiddenPaths ?? []), ...requested]),
+];
+
 async function inspectCurrent(
   root: string,
   current: Awaited<ReturnType<typeof getStatus>>,
+  requestedForbiddenPaths: string[] = [],
 ) {
   const { scanProject } = await import('./scan/index.ts');
   const { verifyInfrastructure } = await import('./verify/index.ts');
   const memory = current.state?.proposal.memory ?? current.manifest?.memory;
-  const forbiddenPaths = current.state?.proposal.forbiddenPaths ?? [];
+  const forbiddenPaths = inspectionScope(current, requestedForbiddenPaths);
   const scan = await scanProject(root, { forbiddenPaths, memory });
   const infrastructure = await verifyInfrastructure(root, {
     forbiddenPaths,
@@ -101,7 +150,7 @@ async function inspectCurrent(
 export async function main(argv = process.argv.slice(2)) {
   const { command, options } = parseArgs(argv);
   const accepted: Record<string, string[]> = {
-    scan: [],
+    scan: ['forbidden-paths'],
     discover: ['query', 'kind'],
     'source-check': ['input'],
     practices: ['agents', 'input'],
@@ -109,11 +158,11 @@ export async function main(argv = process.argv.slice(2)) {
     proposal: ['input'],
     apply: ['plan', 'approve'],
     resume: ['plan', 'approve'],
-    status: [],
-    verify: [],
-    report: ['input', 'save', 'requested'],
-    'mcp-diagnose': ['input'],
-    'mcp-verify': ['agent', 'config', 'input'],
+    status: ['forbidden-paths'],
+    verify: ['forbidden-paths'],
+    report: ['input', 'save', 'requested', 'forbidden-paths'],
+    'mcp-diagnose': ['input', 'forbidden-paths'],
+    'mcp-verify': ['agent', 'config', 'input', 'forbidden-paths'],
     'preset-load': ['name'],
     'preset-save': ['input', 'requested'],
     'self-test': [],
@@ -129,6 +178,7 @@ export async function main(argv = process.argv.slice(2)) {
         'invalid-arguments',
         `Unsupported option --${key}.`,
       );
+  const forbiddenPaths = inspectionPaths(options['forbidden-paths']);
   const root = path.resolve(
     typeof options.root === 'string' ? options.root : process.cwd(),
   );
@@ -136,7 +186,7 @@ export async function main(argv = process.argv.slice(2)) {
     return {
       version: VERSION,
       commands: {
-        scan: 'scan --root PATH',
+        scan: 'scan --root PATH [--forbidden-paths JSON_ARRAY]',
         discover: 'discover --query TEXT [--kind skill|mcp]',
         'source-check': 'source-check --input FILE_OR_STDIN_DASH',
         practices: 'practices --agents ID[,ID...] [--input FILE_OR_STDIN_DASH]',
@@ -145,13 +195,14 @@ export async function main(argv = process.argv.slice(2)) {
         apply: 'apply --root PATH --plan FILE_OR_STDIN_DASH --approve DIGEST',
         resume:
           'resume --root PATH [--plan FILE_OR_STDIN_DASH] --approve DIGEST',
-        status: 'status --root PATH',
-        verify: 'verify --root PATH',
+        status: 'status --root PATH [--forbidden-paths JSON_ARRAY]',
+        verify: 'verify --root PATH [--forbidden-paths JSON_ARRAY]',
         report:
-          'report --root PATH [--input FILE_OR_STDIN_DASH] [--save --requested]',
-        'mcp-diagnose': 'mcp-diagnose --root PATH --input FILE_OR_STDIN_DASH',
+          'report --root PATH [--input FILE_OR_STDIN_DASH] [--forbidden-paths JSON_ARRAY] [--save --requested]',
+        'mcp-diagnose':
+          'mcp-diagnose --root PATH --input FILE_OR_STDIN_DASH [--forbidden-paths JSON_ARRAY]',
         'mcp-verify':
-          'mcp-verify --root PATH --agent claude-code|cursor|codex [--config CODEX_CONFIG --input SERVER_SPEC]',
+          'mcp-verify --root PATH --agent claude-code|cursor|codex [--config CODEX_CONFIG --input SERVER_SPEC] [--forbidden-paths JSON_ARRAY (project-local agents only)]',
         'preset-load': 'preset-load --name NAME_OR_PATH',
         'preset-save': 'preset-save --input FILE_OR_STDIN_DASH --requested',
         'self-test': 'self-test',
@@ -190,12 +241,15 @@ export async function main(argv = process.argv.slice(2)) {
   }
   if (command === 'scan') {
     const { scanProject } = await import('./scan/index.ts');
-    return scanProject(root);
+    const current = await readStatusMetadata(root, { forbiddenPaths });
+    return scanProject(root, {
+      forbiddenPaths: inspectionScope(current, forbiddenPaths),
+    });
   }
   if (command === 'proposal')
     return createProposal(root, await inputData(options.input));
   if (command === 'status') {
-    const result = await getStatus(root);
+    const result = await getStatus(root, { forbiddenPaths });
     const memory = result.state?.proposal.memory ?? result.manifest?.memory;
     return {
       schema: 1,
@@ -223,12 +277,16 @@ export async function main(argv = process.argv.slice(2)) {
       options.input === undefined
         ? undefined
         : validateTaskContext(await inputData(options.input));
-    const current = await getStatus(root);
+    const current = await getStatus(root, { forbiddenPaths });
     const session = current.state ?? current.manifest?.sessions?.at(-1);
     const process =
       current.state?.proposal.process ?? current.manifest?.process;
     const memory = current.state?.proposal.memory ?? current.manifest?.memory;
-    const { scan, infrastructure } = await inspectCurrent(root, current);
+    const { scan, infrastructure } = await inspectCurrent(
+      root,
+      current,
+      forbiddenPaths,
+    );
     const report = {
       schema: 1,
       ...(memory ? { memory } : {}),
@@ -262,7 +320,7 @@ export async function main(argv = process.argv.slice(2)) {
         scan,
         infrastructure,
         context,
-        forbiddenPaths: current.state?.proposal.forbiddenPaths ?? [],
+        forbiddenPaths: inspectionScope(current, forbiddenPaths),
         registeredMemoryPath: memory?.path,
         session: session?.id
           ? { id: session.id, status: current.status }
@@ -276,6 +334,9 @@ export async function main(argv = process.argv.slice(2)) {
         'consent-required',
         'Save a report file only after an explicit user request.',
       );
+      await safePath(root, '.tibicen/report.md', {
+        forbiddenPaths: inspectionScope(current, forbiddenPaths),
+      });
       await atomicWrite(
         root,
         '.tibicen/report.md',
@@ -313,8 +374,8 @@ export async function main(argv = process.argv.slice(2)) {
     }
   }
   if (command === 'verify') {
-    const current = await getStatus(root);
-    return (await inspectCurrent(root, current)).infrastructure;
+    const current = await getStatus(root, { forbiddenPaths });
+    return (await inspectCurrent(root, current, forbiddenPaths)).infrastructure;
   }
   if (command === 'source-check') {
     const { validateSources } = await import('./discovery/index.ts');
@@ -362,13 +423,13 @@ export async function main(argv = process.argv.slice(2)) {
     const { validateMcpDiagnosisRequest, diagnoseMcp } =
       await import('./mcp/diagnosis.ts');
     const request = validateMcpDiagnosisRequest(await inputData(options.input));
-    const current = await getStatus(root);
+    const current = await getStatus(root, { forbiddenPaths });
     const { readProjectFile } = await import('./scan/index.ts');
     const configs = new Map<string, string>();
     for (const source of request.sources) {
       try {
         const { content } = await readProjectFile(root, source.path, {
-          forbiddenPaths: current.state?.proposal.forbiddenPaths ?? [],
+          forbiddenPaths: inspectionScope(current, forbiddenPaths),
           maxFileBytes: 1024 * 1024,
         });
         configs.set(source.path, content.toString('utf8'));
@@ -383,6 +444,11 @@ export async function main(argv = process.argv.slice(2)) {
       await import('./mcp/index.ts');
     if (options.agent === 'codex') {
       assert(
+        options['forbidden-paths'] === undefined,
+        'invalid-arguments',
+        'Project read exclusions do not scope an explicitly selected global Codex config.',
+      );
+      assert(
         typeof options.config === 'string',
         'invalid-arguments',
         'Provide the explicitly selected Codex config path.',
@@ -392,7 +458,6 @@ export async function main(argv = process.argv.slice(2)) {
         await inputData(options.input),
       );
     }
-    const { safePath } = await import('./core/paths.ts');
     const target =
       options.agent === 'claude-code'
         ? '.mcp.json'
@@ -400,10 +465,13 @@ export async function main(argv = process.argv.slice(2)) {
           ? '.cursor/mcp.json'
           : null;
     assert(target, 'invalid-arguments', 'Select claude-code, cursor or codex.');
-    return validateMcpConfig(
-      options.agent as string,
-      await readFile(await safePath(root, target), 'utf8'),
-    );
+    const current = await getStatus(root, { forbiddenPaths });
+    const { readProjectFile } = await import('./scan/index.ts');
+    const { content } = await readProjectFile(root, target, {
+      forbiddenPaths: inspectionScope(current, forbiddenPaths),
+      maxFileBytes: 1024 * 1024,
+    });
+    return validateMcpConfig(options.agent as string, content.toString('utf8'));
   }
   if (command === 'preset-load' || command === 'preset-save') {
     const { loadPreset, savePreset } = await import('./presets/index.ts');
