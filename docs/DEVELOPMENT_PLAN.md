@@ -6,6 +6,8 @@ The [new workflow report](evals/results/2026-11-08-normal-workflows/README.md) s
 
 The effort (`../.scratch/normal-workflow-and-second-harness-20261108/map.md`; private development record; excluded from public source) owns integration and the remaining coverage tasks. One different harness and memory correction/reuse there remain unverified: ZCode UI control is unavailable and current Claude status is logged out. Continue available product work without requiring OS setup; do not infer a native pass from the prepared fixture or configuration scans.
 
+The [standalone ZCode investigation](evals/results/2026-11-08-zcode-standalone/README.md) reached the installed CLI without GUI access, then stopped before a model request. Its fixed shared store lacks the identity record required by that account route; this does not establish Desktop logout or an invalid subscription. Authentication was left unchanged. Actual Tibicen setup, useful work and memory reuse on another native harness remain unverified; further authentication probes are outside this completed investigation.
+
 ## Completed work — landing and bounded reliability follow-up
 
 The approved landing is [published and verified](../openspec/changes/archive/2026-11-08-compose-approved-landing-visuals/verification.md). Fresh Bash completed setup, useful task and read-only repeat. Documentation completed approved apply, useful task and repeat through an explicit operator handoff after an interrupted proposal; the original failure remains unchanged. The [report](evals/results/2026-11-08-reliability-followup/README.md) records both outcomes, independent task checks and cleanup.
