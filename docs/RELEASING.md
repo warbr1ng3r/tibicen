@@ -1,5 +1,9 @@
 # Preparing a release
 
+## 1.5.3 published; Pages metadata pending
+
+[1.5.3](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3), release ID `438539507`, was published at `2026-11-08T21:38:42Z`. Source `a86026a5bbc6e4eb0831ac8b76be08faf1891647` binds distribution `b6fd86e8927c3640fe66be064da5a34e63ac366d` through annotated tag `253fbc5788434e434874f6950ba3fb218786ef2d`. Source CI `42525730144`, all six platform cells `42525741159` and publication `42526209338` passed. Three returned assets and 111 archive files match the candidate; published 1.5.2 is preserved. The [release report](evals/results/2026-11-09-release-1.5.3/README.md) retains checks and limits. Separate Pages deployment and returned-body verification are pending.
+
 This procedure covers publishing the Tibicen skills. The static landing page
 can be deployed separately, with copy reflecting the current availability of
 the skills. Security contacts, pilot results and full skill acceptance are not

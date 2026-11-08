@@ -1,6 +1,10 @@
 # Tibicen development plan
 
-## Current work — reliability and remaining native coverage
+## Current milestone — 1.5.3 published
+
+Compatible fixes for memory links, forbidden paths and external manual actions are released as [1.5.3](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3). The [report](evals/results/2026-11-09-release-1.5.3/README.md) binds the candidate, exact delivery and six platform checks; separate Pages verification is pending. Wider live harness coverage remains separate, without new authentication probes. Detailed behavior tasks stay in their archived OpenSpec changes.
+
+## Historical work — reliability before 1.5.3
 
 The [memory-link correction](../openspec/changes/archive/2026-11-08-recognize-memory-link-fragments/verification.md) and [explicit per-read exclusions](../openspec/changes/archive/2026-11-08-respect-read-only-path-constraints/verification.md) passed independent review, the full gate (1067 passes / one existing skip) and both copied skills (12 CLI reads / four core calls). Detailed tasks and retained failures stay with the archived changes. These source fixes are Unreleased; published 1.5.2 remains unchanged.
 

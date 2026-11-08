@@ -1,9 +1,9 @@
 # What Tibicen does today
 
-**Published skills: 1.5.2 · 2026-11-07 UTC.** Tibicen helps your existing coding
+**Published skills: 1.5.3 · 2026-11-08 UTC.** Tibicen helps your existing coding
 agent inspect, set up or repair project instructions and integrations, apply the
 changes you approve, and report what was checked. The
-[release report](evals/results/2026-11-08-release-1.5.2/README.md) defines the exact
+[release report](evals/results/2026-11-09-release-1.5.3/README.md) defines the exact
 published bytes and delivery evidence; the [product vision](PRODUCT_VISION.md)
 defines wider goals, not extra shipped capabilities.
 
@@ -12,6 +12,10 @@ Tibicen consists of two standalone skills with local Node scripts:
 Both can select the appropriate route from the actual project. A sufficient
 setup can stay unchanged, without creating a new session merely to record work.
 There is no Tibicen server, account, separate model or background service.
+
+## Project inspection fixes — available in 1.5.3
+
+Structural checks recognize Markdown fragments in registered-memory links. Read-only project commands accept `--forbidden-paths` for that operation while preserving active-plan exclusions; they create no persistent ACL. Installed guidance separates mandatory external human actions from agent reading and future checks. See the [release report](evals/results/2026-11-09-release-1.5.3/README.md).
 
 ## First setup after project-local installation — available in 1.5.2
 

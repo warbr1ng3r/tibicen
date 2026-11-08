@@ -1,5 +1,9 @@
 # Maintaining Tibicen rules and adapters
 
+## 1.5.3 published; Pages metadata pending
+
+[1.5.3](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3), release ID `438539507`, was published at `2026-11-08T21:38:42Z`. Source `a86026a5bbc6e4eb0831ac8b76be08faf1891647` binds distribution `b6fd86e8927c3640fe66be064da5a34e63ac366d` through annotated tag `253fbc5788434e434874f6950ba3fb218786ef2d`. Source CI `42525730144`, all six platform cells `42525741159` and publication `42526209338` passed. Three returned assets and 111 archive files match the candidate; published 1.5.2 is preserved. The [release report](evals/results/2026-11-09-release-1.5.3/README.md) retains checks and limits. Separate Pages deployment and returned-body verification are pending.
+
 ## Landing update — 8 November 2026
 
 The approved composition is deployed from `d227d28107504155060d03aa92bb8aeed6292cb0`. [Source CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42478675849) and [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42479093609) passed; deployment `7635657063` succeeded. All 20 public HTTP 200 bodies matched the source-bound local Pages build; this comparison does not claim an independent official-artifact audit. The [verification](../openspec/changes/archive/2026-11-08-compose-approved-landing-visuals/verification.md) retains exact bindings. Published1.5.2 skill assets are unchanged; the [reliability follow-up](evals/results/2026-11-08-reliability-followup/README.md) changes only the development collector. Earlier deployment/audit records below remain historical.
