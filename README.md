@@ -225,7 +225,7 @@ The landing page is a separate Astro workspace in `landing/`, with adapted Astro
 English is canonical for project documentation. Russian translations live beside it as `*_ru.md`; all references target the English documents. Update a translation alongside its guide.
 
 - [Product vision](docs/PRODUCT_VISION.md).
-- [Capability snapshot — 1.1.0 baseline](docs/CURRENT_CAPABILITIES.md).
+- [Current capabilities](docs/CURRENT_CAPABILITIES.md).
 - [Public user problems and small-product priorities](docs/research/2026-11-05-user-problems/README.md).
 - [Current tools and technology-refresh research](docs/research/2026-11-05-technology-refresh/README.md).
 - [Development plan and work allocation](docs/DEVELOPMENT_PLAN.md).
@@ -239,7 +239,7 @@ English is canonical for project documentation. Russian translations live beside
 - [Voluntary postpublication usefulness protocol](docs/PILOT.md).
 - [Security boundaries and vulnerability reporting](SECURITY.md).
 
-Core/adapter ownership and the private security route are recorded in [SECURITY](SECURITY.md). The [maintenance procedure](docs/MAINTENANCE.md) now records source review, scope and follow-up; its [latest review](docs/evals/results/2026-11-03-maintenance-review/README.md) covers documentation and CLI metadata. Reporting now follows the scoped [code of conduct](CODE_OF_CONDUCT.md), which replaces the former general private conduct-inbox promise. The separate Pages [checksum index](landing/public/maintenance/index.json) retains earlier release records. The 1.5.1 release, separate Pages metadata deployment and 20-body official-artifact comparison are complete; exact identities and limits remain in the maintenance guide. Candidate-specific behavior keeps its separate evidence and limits in the [maintenance guide](docs/MAINTENANCE.md). GitHub administration is shared. Voluntary pilot parameters belong to the separate postpublication study. The core and adapters are reviewed at least monthly and when supported tools change significantly. Updating an installed Tibicen is an explicit user action; there is no background self-update.
+Core/adapter ownership and the private security route are recorded in [SECURITY](SECURITY.md). The [maintenance procedure](docs/MAINTENANCE.md) now records source review, scope and follow-up; its [latest review](docs/evals/results/2026-11-03-maintenance-review/README.md) covers documentation and CLI metadata. Reporting now follows the scoped [code of conduct](CODE_OF_CONDUCT.md), which replaces the former general private conduct-inbox promise. The separate Pages [checksum index](landing/public/maintenance/index.json) retains earlier release records. The 1.5.3 release, separate Pages metadata deployment and 20-body official-artifact comparison are complete; exact identities and limits remain in the maintenance guide. Candidate-specific behavior keeps its separate evidence and limits in the [maintenance guide](docs/MAINTENANCE.md). GitHub administration is shared. Voluntary pilot parameters belong to the separate postpublication study. The core and adapters are reviewed at least monthly and when supported tools change significantly. Updating an installed Tibicen is an explicit user action; there is no background self-update.
 
 License: MIT.
 

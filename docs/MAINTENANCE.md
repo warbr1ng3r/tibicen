@@ -1,8 +1,8 @@
 # Maintaining Tibicen rules and adapters
 
-## 1.5.3 published; Pages metadata pending
+## 1.5.3 published; Pages verified
 
-[1.5.3](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3), release ID `438539507`, was published at `2026-11-08T21:38:42Z`. Source `a86026a5bbc6e4eb0831ac8b76be08faf1891647` binds distribution `b6fd86e8927c3640fe66be064da5a34e63ac366d` through annotated tag `253fbc5788434e434874f6950ba3fb218786ef2d`. Source CI `42525730144`, all six platform cells `42525741159` and publication `42526209338` passed. Three returned assets and 111 archive files match the candidate; published 1.5.2 is preserved. The [release report](evals/results/2026-11-09-release-1.5.3/README.md) retains checks and limits. Separate Pages deployment and returned-body verification are pending.
+[1.5.3](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3), release ID `438539507`, was published at `2026-11-08T21:38:42Z`. Source `a86026a5bbc6e4eb0831ac8b76be08faf1891647` binds distribution `b6fd86e8927c3640fe66be064da5a34e63ac366d` through annotated tag `253fbc5788434e434874f6950ba3fb218786ef2d`. Source CI `42525730144`, all six platform cells `42525741159` and publication `42526209338` passed. Three returned assets and 111 archive files match the candidate; published 1.5.2 is preserved. The [release report](evals/results/2026-11-09-release-1.5.3/README.md) retains checks and limits. Separate metadata CI `42526716255`, [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42527154764) and [audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42527484300) passed on source `64a27525e48aab956103d777aba5861799968df7`; deployment `7642350365` succeeded. All 20 returned bodies matched official artifact `13635273624`, SHA-256 `bb30338a5379e618d11af8b331484162dc1817f45f8352bc68ca4b7a988a2994`, without a local rebuild; ten previous index records and warnings remain unchanged. Later documentation closure does not redeploy the site.
 
 ## Landing update — 8 November 2026
 

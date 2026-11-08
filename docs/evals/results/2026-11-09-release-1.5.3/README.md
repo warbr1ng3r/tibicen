@@ -1,6 +1,6 @@
 # Tibicen 1.5.3 release report
 
-**[1.5.3 is published](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3).** Release 438539507 was published at 2026-11-08T21:38:42Z (9 November Moscow). Three returned assets are accepted; stable 1.5.2 metadata and tag are unchanged. Pages deployment and returned-body verification remain pending.
+**[1.5.3 is published](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3).** Release 438539507 was published at 2026-11-08T21:38:42Z (9 November Moscow). Three returned assets are accepted; stable 1.5.2 metadata and tag are unchanged. [Metadata CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42526716255), [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42527154764) and the [20-body audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42527484300) passed at [deployed source 64a2752](https://github.com/warbr1ng3r/tibicen/commit/64a27525e48aab956103d777aba5861799968df7). This documentation closure does not redeploy the site.
 
 This compatible patch recognizes Markdown fragments in links to registered memory and accepts explicit per-operation forbidden paths on read-only project commands. Scope is combined with unfinished-plan exclusions; it is not a persistent project ACL. Required internal metadata cannot be excluded while continuing that operation. Installed guidance separates mandatory external human actions from available agent work; existing pending plans and finalization remain unchanged.
 
@@ -16,7 +16,7 @@ This compatible patch recognizes Markdown fragments in links to registered memor
 | Distribution | [b6fd86e](https://github.com/warbr1ng3r/tibicen/commit/b6fd86e8927c3640fe66be064da5a34e63ac366d); public fetch/checkout, lock refs and payload bytes/modes matched |
 | Publication | [Run 42526209338](https://github.com/warbr1ng3r/tibicen/actions/runs/42526209338); annotated tag `253fbc5788434e434874f6950ba3fb218786ef2d` points to the distribution |
 | Returned assets | All three candidate assets and 111 archive files/modes matched |
-| Pages | Deployment and returned-body verification pending |
+| Pages | Deployment 7642350365 passed; all 20 HTTP-200 bodies matched official artifact 13635273624 without a local rebuild |
 
 Release archive SHA-256: `1636a3acf2580137c4deb53e47d6ef481fe1201473ded169e58c0471a56faefb`.
 

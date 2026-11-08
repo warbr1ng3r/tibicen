@@ -1,5 +1,13 @@
 # Issue tracker
 
+## Completed release — 1.5.3
+
+[1.5.3](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3) is published from `a86026a5bbc6e4eb0831ac8b76be08faf1891647` with distribution `b6fd86e8927c3640fe66be064da5a34e63ac366d`. Source CI, all six platform cells, exact local/public delivery and all three returned release assets passed; the archive contains 111 files. The [release report](../evals/results/2026-11-09-release-1.5.3/README.md) records the compatible fixes and technical limits.
+
+Metadata CI `42526716255` passed. [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42527154764) serves source `64a27525e48aab956103d777aba5861799968df7`; the [audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42527484300) matched all 20 returned bodies to official artifact `13635273624` without rebuilding it. This metadata source does not replace the release source or distribution.
+
+This patch adds no native/model/API calls and does not regrade earlier failed observations or establish broader harness compatibility or human benefit. Published 1.5.2 and earlier records remain unchanged.
+
 ## Current effort — reliability integration and remaining coverage
 
 The owner delegated continued work without routine approvals. The map (`../../.scratch/normal-workflow-and-second-harness-20261108/map.md`; private development record; excluded from public source) and dashboard (`../../.scratch/normal-workflow-and-second-harness-20261108/dashboard.md`; private development record; excluded from public source) own parallel observation, review and integration. The [report](../evals/results/2026-11-08-normal-workflows/README.md) preserves the original three-call packet and failed grade separately from the corrected-checker continuation and fresh Unreleased guidance observation. Prior failures, limits, assistance and cleanup are not regraded.
