@@ -10,7 +10,7 @@
 ## 2. Integration and publication
 
 - [x] 2.1 Pass focused static/browser checks and required full gate, independently review frozen changes with Ponytail, and record actual results/limits in paired verification.
-- [ ] 2.2 Curate reviewed public paths, commit/push and verify exact source CI, Pages deployment and returned public files; preserve private history and published 1.5.2 assets.
+- [x] 2.2 Curate reviewed public paths, commit/push and verify exact source CI, Pages deployment and returned public files; preserve private history and published 1.5.2 assets.
 
 ## Workflow follow-up
 

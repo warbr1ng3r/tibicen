@@ -1,5 +1,9 @@
 # Сопровождение правил и адаптеров Tibicen
 
+## Обновление лендинга — 8 ноября 2026 года
+
+Утверждённая композиция выложена из `d227d28107504155060d03aa92bb8aeed6292cb0`. [CI исходников](https://github.com/warbr1ng3r/tibicen/actions/runs/42478675849) и [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42479093609) прошли; deployment `7635657063` успешен. Все 20 публичных HTTP 200 тел совпали с локальной сборкой Pages из точного source; это сравнение не объявляется независимым аудитом официального артефакта. [Проверка](../openspec/changes/archive/2026-11-08-compose-approved-landing-visuals/verification.md) сохраняет привязки. Файлы опубликованной 1.5.2 прежние; [продолжение проверки надёжности](evals/results/2026-11-08-reliability-followup/README.md) меняет только сборщик стенда. Прежние выкладки и аудиты ниже остаются историческими.
+
 ## Опубликована 1.5.2; Pages проверен
 
 [1.5.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2), release ID `437911222`, опубликована в `2026-11-07T23:27:53Z`. Source `f5bc0a416813c54d3ec21e50f3f5ede0b4be2bb8` связан с distribution `df15ae7e0ae67aee2bd278f7e4f265e03437e672` через annotated tag `76c2ec9ab6136e177430c5fa440b1f22309833d2`. [CI исходников](https://github.com/warbr1ng3r/tibicen/actions/runs/42424557875), [все шесть платформенных ячеек](https://github.com/warbr1ng3r/tibicen/actions/runs/42424565552) и [публикация](https://github.com/warbr1ng3r/tibicen/actions/runs/42425341227) прошли. Root принял три полученных файла и байты/права 111 файлов архива; стабильная 1.5.1 сохранена. Точная публичная доставка, восстановление/удаление и фактические наблюдения агента сохраняют ограничения в [отчёте выпуска](evals/results/2026-11-08-release-1.5.2/README.md).

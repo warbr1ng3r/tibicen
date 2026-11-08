@@ -1,10 +1,12 @@
 # Tibicen development plan
 
-## Current work — approved landing, then reliability
+## Completed work — landing and bounded reliability follow-up
 
-Implement and publish the approved A/C/B landing composition, then investigate the stopped Bash/documentation cases, fix confirmed causes and check additional safe existing harness routes. The effort (`../.scratch/landing-and-reliability-20261108/map.md`; private development record; excluded from public source) owns sequencing and finite observation limits; [UI requirements](../openspec/changes/compose-approved-landing-visuals/proposal.md) own the detailed approved behavior. Earlier release and failure observations remain historical; no paid API or private-history publication is included.
+The approved landing is [published and verified](../openspec/changes/archive/2026-11-08-compose-approved-landing-visuals/verification.md). Fresh Bash completed setup, useful task and read-only repeat. Documentation completed approved apply, useful task and repeat through an explicit operator handoff after an interrupted proposal; the original failure remains unchanged. The [report](evals/results/2026-11-08-reliability-followup/README.md) records both outcomes, independent task checks and cleanup.
 
-## Current work — 1.5.2 published; landing preview and harness checks
+The confirmed [development collector repair](../openspec/changes/archive/2026-11-08-await-codex-terminal-outcome/verification.md) passed independent Ponytail review and the full gate: 1,055 passes, one existing skip, no failures. All 110 skill payloads remain published 1.5.2 bytes. Twelve additional CLI format scans passed; native ZCode/Aion control was unavailable while the Mac was locked and one Claude auth-status operation left login status unknown. Wider native coverage needs an available authorized route. The closed effort (`../.scratch/landing-and-reliability-20261108/map.md`; private development record; excluded from public source) retains nine callers/625.499 seconds, original failures and assistance; no paid API or authentication change.
+
+## Historical delivery — 1.5.2 and initial follow-ups
 
 The 8 November effort (`../.scratch/release-and-working-cycles-20261108/map.md`; private development record; excluded from public source) delivered compatible patch 1.5.2: reviewed routing correction, frozen candidate, 1048 passing tests/one existing skip, standalone 3/3, exact local/public installation/recovery/removal, public CI/six platforms, returned assets and separate Pages verification. Two synthetic queue/monorepo working cycles completed; shell/docs remain stopped with their evidence limits. The [release report](evals/results/2026-11-08-release-1.5.2/README.md) preserves actual outcomes. Landing-preview choice and additional harness observations remain separate follow-ups; no production landing redesign is implied. Earlier observations and parked Agensi are unchanged.
 

@@ -1,10 +1,12 @@
 # Issue tracker
 
-## Current effort — approved landing and reliability
+## Completed effort — landing and bounded reliability
 
-The owner approved the combined landing composition and delegated investigation of the stopped Bash/documentation cases, fixes for confirmed causes and additional harness checks. The map (`../../.scratch/landing-and-reliability-20261108/map.md`; private development record; excluded from public source) and dashboard (`../../.scratch/landing-and-reliability-20261108/dashboard.md`; private development record; excluded from public source) own sequencing and bounded execution. The landing is implemented and published first; parallel reliability preparation preserves old outcomes and permits no new native calls. Paid APIs, auth/settings changes and private-history publication remain outside scope.
+The approved [landing](../../openspec/changes/archive/2026-11-08-compose-approved-landing-visuals/verification.md) is published from `d227d28107504155060d03aa92bb8aeed6292cb0`; source CI, Pages deployment and 20/20 returned bodies passed. Fresh Bash completed four phases. Documentation's interrupted proposal remains failed; a separately approved artifact handoff completed apply, useful task and read-only repeat, with exact preservation and cleanup. The [report](../evals/results/2026-11-08-reliability-followup/README.md) retains actual outcomes, unknown historical causes and assistance.
 
-## Current status — 1.5.2 published; Pages verified
+The development-only [collector repair](../../openspec/changes/archive/2026-11-08-await-codex-terminal-outcome/verification.md) passed Ponytail review and 1055 tests/one existing skip. All 110 published 1.5.2 payloads are unchanged. The map (`../../.scratch/landing-and-reliability-20261108/map.md`; private development record; excluded from public source) and dashboard (`../../.scratch/landing-and-reliability-20261108/dashboard.md`; private development record; excluded from public source) retain nine-call/625.499 second accounting and twelve CLI-format checks. Wider native coverage remains limited by unavailable ZCode/Aion control and unknown Claude login; no paid API, personal auth/settings change or private-history push.
+
+## Historical delivery — 1.5.2 and initial Pages verification
 
 The compatible routing fix is published from `f5bc0a416813c54d3ec21e50f3f5ede0b4be2bb8` as [1.5.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2) at `2026-11-07T23:27:53Z`. Source CI, six platform cells, public delivery and returned assets passed. The [release report](../evals/results/2026-11-08-release-1.5.2/README.md) retains actual agent observations, operator assistance and earlier failures with their limits. [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42427301398) serves source `2454eda623ad58d1d18e6037fa8aead4a629def2`; the [audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42427728184) matched all 20 bodies to the official artifact. This documentation closure does not redeploy the site; previous observations are unchanged.
 

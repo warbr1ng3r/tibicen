@@ -46,7 +46,6 @@ started SHALL означать наблюдаемый старт сценари�
 - **THEN** модели не вызываются, runtime скиллов не содержит evals
 - **AND** сводка не выдаётся за grader, парный эксперимент или подтверждённую пользу продукта
 
-
 ### Requirement: Contained executor failure correlation
 Contained failure receipts SHALL retain the first terminal fault's fixed kind and numeric code, plus validated, session-scoped hashed request/process identities and bounded exit facts. An operation SHALL be identified only from an observed request; a process fault SHALL claim a matched start only when the corresponding start response agrees. Ordinary valid process results SHALL NOT create terminal faults. Missing, ambiguous or invalid correlation SHALL remain unknown.
 
@@ -97,7 +96,7 @@ The contained evaluator SHALL forward schema-valid ordinary process and CLI comm
 #### Scenario: The CLI reports the failed command before recovering
 - **WHEN** the native CLI emits a schema-valid completed command result with nonzero exit code and failed status, followed by a successful command and completed turn
 - **THEN** the caller keeps the session available and preserves both actual results
-- **AND** terminal errors, failed turns, declined/cancelled items, failed file changes, unavailable command outcomes and malformed command results still fail acceptance
+- **AND** terminal native failures, failed turns, declined/cancelled items, failed file changes, unavailable command outcomes and malformed command results still fail acceptance
 
 ### Requirement: Executor faults remain terminal
 The evaluator SHALL stop on explicit sandbox denial, malformed process-exit fields and existing terminal RPC, transport, output, deadline or cleanup faults. It SHALL retain existing filesystem, network, identity, ownership and collection boundaries. Optional nullable denial metadata SHALL follow the pinned protocol without being reported as an observed false value.
@@ -119,3 +118,19 @@ Recovery-policy verification SHALL preserve original native outcomes and immutab
 - **WHEN** the same reviewed synthetic driver fails on the old source and passes on the repaired source
 - **THEN** both receipts and cleanup outcomes are retained
 - **AND** earlier native attempts remain failed with their unknown argv and uncollected candidate contents unchanged
+
+### Requirement: Native notifications await definitive outcomes
+The contained evaluator SHALL await a definitive turn outcome after a generic native error within existing process, output and time limits. Error callbacks SHALL expose only event type and a content hash. Explicit typed authentication/access errors SHALL still stop immediately. A failed turn, nonzero process exit or missing completed turn SHALL fail acceptance. No automatic retry SHALL be added.
+
+#### Scenario: A native error precedes a completed turn
+- **WHEN** a generic error is followed by a completed turn and zero process exit within all existing guards
+- **THEN** the collector does not stop solely on that error and retains its hash-only callback
+- **AND** acceptance still requires all source, configuration, ownership and cleanup checks
+
+#### Scenario: The stream does not recover
+- **WHEN** an error is followed by a failed turn, nonzero process exit or no completed turn
+- **THEN** the session is not accepted and its error remains visible without raw private details
+
+#### Scenario: Typed authentication or access rejection occurs
+- **WHEN** an error carries an existing validated HTTP401 or403 diagnostic
+- **THEN** the collector stops immediately and verifies cleanup without a retry

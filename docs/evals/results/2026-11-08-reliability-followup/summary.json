@@ -1,0 +1,422 @@
+{
+  "schema": 1,
+  "state": "closed-bash-cycle-and-operator-assisted-documentation-accepted",
+  "date": "2026-11-08",
+  "version": "1.5.2",
+  "distributedProductChanged": false,
+  "confirmedProductCoreDefect": false,
+  "historicalCases": {
+    "bash": "unaccepted-missing-original-complete-envelope-cause-unknown",
+    "documentation": "stopped-native-error-cause-unknown",
+    "oldOutcomesRegraded": false
+  },
+  "firstFreshGeneration": {
+    "state": "closed-cleaned-up-unaccepted",
+    "nativeCalls": 1,
+    "callerWallMs": 75769,
+    "reason": "evaluation-helper-nested-Node-spawn-refused-with-EPERM",
+    "directScanStatusReportSucceeded": true,
+    "acceptedProposalArtifacts": 0,
+    "applyCalls": 0,
+    "preservedFilesAndModes": 119
+  },
+  "helperCorrection": {
+    "kind": "in-process-published-cli-main-and-published-serializeData",
+    "evidence": "serialized-real-cli-result-not-literal-child-stdout-or-attestation",
+    "controlledPermissionExperimentPassed": true,
+    "oldControlledResult": "ERR_ACCESS_DENIED-without-child-process-grant",
+    "correctedControlledResult": "valid-mode0600-proposal",
+    "preservedPublishedPayloadFiles": 110,
+    "explainsOriginalLinuxRestriction": false,
+    "authModelNetworkOrContainerCalls": 0
+  },
+  "freshVerification": {
+    "state": "r2-closed-bash-accepted-docs-interrupted",
+    "maxNewNativeCalls": 8,
+    "maxNativeCallsAcrossBothFreshGenerations": 9,
+    "sharedCallerWallLimitMs": 1200000,
+    "remainingCallerWallAllowanceBeforeNewGenerationMs": 1124231,
+    "reusedPriorOracleControls": 24,
+    "newOracleControlContainers": 0,
+    "phases": [
+      {
+        "case": "bash",
+        "stage": "proposal",
+        "status": "accepted",
+        "acceptanceSha256": "34c8dfae4fe6011bcf4d1c5cdfee6457e3a736ebdcbeb19f9d4333ccba5a9d8f",
+        "nativeDurationMs": 91601.29883300001,
+        "callerWallMs": 95584
+      },
+      {
+        "case": "bash",
+        "stage": "apply",
+        "status": "accepted",
+        "acceptanceSha256": "b27d4b28bfd3247e6e5f1ee576f8b507708c1f1f4f7120602c84f4988d9a0ba3",
+        "nativeDurationMs": 81202.55774999999,
+        "callerWallMs": 83432
+      },
+      {
+        "case": "bash",
+        "stage": "useful-task",
+        "status": "accepted",
+        "acceptanceSha256": "e12f2d54c5f1925e8db0980812e217cc4f2766f2703b38bcdaba93e950e9ef4d",
+        "nativeDurationMs": 53124.007792,
+        "callerWallMs": 55483
+      },
+      {
+        "case": "bash",
+        "stage": "read-only-repeat",
+        "status": "accepted",
+        "acceptanceSha256": "67ac6546288778b19922a4792c2a0f64a705622258e088cab536ba5fde23061b",
+        "nativeDurationMs": 61307.459375,
+        "callerWallMs": 63664
+      },
+      {
+        "case": "documentation",
+        "stage": "proposal",
+        "status": "interrupted-unaccepted-valid-artifact-retained",
+        "nativePass": false,
+        "nativeCompleted": false,
+        "artifactBytes": 8158,
+        "artifactMode": "0600",
+        "artifactSha256": "d4c5341e50b3284e1fa5cbe3aed2e3b5e59211dcc422af81ff140eb36c57e79f",
+        "artifactDigest": "aa5acb075569e1f355395f3a19505c7c0ac397f897811632a4225c1280f0332d"
+      },
+      {
+        "case": "documentation",
+        "stage": "apply",
+        "status": "not-run-in-closed-r2-completed-in-separate-operator-assisted-handoff"
+      },
+      {
+        "case": "documentation",
+        "stage": "useful-task",
+        "status": "not-run-in-closed-r2-completed-in-separate-operator-assisted-handoff"
+      },
+      {
+        "case": "documentation",
+        "stage": "read-only-repeat",
+        "status": "not-run-in-closed-r2-completed-in-separate-operator-assisted-handoff"
+      }
+    ],
+    "acceptedCompleteCycles": 1,
+    "bashTask": {
+      "projectTests": 10,
+      "containedFiniteOraclePassed": true,
+      "containedOracleDurationMs": 879.334417,
+      "containedOracleCleanupVerified": true,
+      "totalFilesAfterTask": 119,
+      "immutableTaskInputFilesPreserved": 117,
+      "onlyChangedTaskPaths": [
+        "bin/filter-log.sh",
+        "tests/filter-log.test.sh"
+      ],
+      "existingMemoryPreserved": true,
+      "memoryUpdateBehaviorValidated": false,
+      "repeatAll119FilesAndModesUnchanged": true,
+      "applyStatusCommandExitCode": 0,
+      "applyStatusBodyObserved": false,
+      "applyStatusJsonObserved": false,
+      "actualApplyAndReportComplete": true,
+      "verifyScope": "structure-only",
+      "ordinaryCorrections": [
+        "apply: missing shasum and wrong usage-file lookup; same-session Node recovery",
+        "task: search exit1, no additional instruction files found",
+        "repeat: initial scripts/filter-log.sh target corrected to bin/filter-log.sh in same turn"
+      ]
+    },
+    "observedR2NativeCalls": 5,
+    "observedR2CallerWallMs": 380442
+  },
+  "formatRecognition": {
+    "cliScans": 12,
+    "distinctShapes": 12,
+    "matchedDeclaredContracts": 12,
+    "summedScanMs": 1997.245,
+    "nativeHarnessRuns": 0,
+    "publishedPayloadFilesPerCase": 110,
+    "allOwnedFixturesRemoved": true,
+    "rows": [
+      {
+        "shape": "self-install-only",
+        "mode": "init",
+        "markers": [],
+        "matchedDeclaredContract": true
+      },
+      {
+        "shape": "shared-agents",
+        "mode": "improve",
+        "markers": [],
+        "matchedDeclaredContract": true
+      },
+      {
+        "shape": "gemini",
+        "mode": "improve",
+        "markers": [
+          "gemini-cli"
+        ],
+        "matchedDeclaredContract": true
+      },
+      {
+        "shape": "vibe-config-boundary",
+        "mode": "init",
+        "markers": [],
+        "matchedDeclaredContract": true
+      },
+      {
+        "shape": "copilot",
+        "mode": "improve",
+        "markers": [
+          "copilot-cli"
+        ],
+        "matchedDeclaredContract": true
+      },
+      {
+        "shape": "windsurf-legacy",
+        "mode": "improve",
+        "markers": [
+          "windsurf"
+        ],
+        "matchedDeclaredContract": true
+      },
+      {
+        "shape": "cline",
+        "mode": "improve",
+        "markers": [
+          "cline"
+        ],
+        "matchedDeclaredContract": true
+      },
+      {
+        "shape": "roo-legacy",
+        "mode": "improve",
+        "markers": [
+          "roo-code"
+        ],
+        "matchedDeclaredContract": true
+      },
+      {
+        "shape": "aider-explicit-read",
+        "mode": "improve",
+        "markers": [
+          "aider"
+        ],
+        "matchedDeclaredContract": true
+      },
+      {
+        "shape": "cursor",
+        "mode": "improve",
+        "markers": [
+          "cursor"
+        ],
+        "matchedDeclaredContract": true
+      },
+      {
+        "shape": "claude",
+        "mode": "improve",
+        "markers": [
+          "claude-code"
+        ],
+        "matchedDeclaredContract": true
+      },
+      {
+        "shape": "continue",
+        "mode": "improve",
+        "markers": [
+          "continue-ide"
+        ],
+        "matchedDeclaredContract": true
+      }
+    ],
+    "limits": [
+      "Scanner recognition only; no host version or native instruction-loading claim.",
+      "Vibe config is inventoried with no Vibe marker and init mode; separate MCP reader was not run.",
+      "Aider CONVENTIONS.md remains ordinary inventory; configured-read loading was not run."
+    ]
+  },
+  "otherHarnessAvailability": {
+    "zcodeAndAionNativeControl": "unavailable-Mac-locked",
+    "nativeAppsOpened": 0,
+    "claudeStatus": {
+      "operations": 1,
+      "binaryMatchedPriorInventory": true,
+      "exitCode": 1,
+      "durationMs": 274.21412499999997,
+      "loggedIn": null,
+      "authMethod": "unknown",
+      "subscriptionType": "unknown",
+      "subscriptionRoute": null,
+      "rawOutputOrIdentifiersPublished": false,
+      "loginOrModelFallback": false,
+      "personalCachesPreserved": "not-measured"
+    }
+  },
+  "receiptSha256": {
+    "historicalDiagnosisAcceptance": "697f2d085779db35e275be919229f8eaa736f5172763b0b5c5845c5524b34d59",
+    "firstFreshGenerationClosure": "469d69cf790c9d8884618239e7e6be0656f4ef3420472ac6f647db51f3626bfb",
+    "helperCapabilityControl": "9ee2b2d59be444ebf0688ff204aabe96169d376df5f72f0c33cbc6897fd15c8f",
+    "freshPacket": "659f43ee65e73d266b805d25a0782b510d79010df0c3af3b3543a57c5cf43956",
+    "formatRecognitionMatrix": "2553f50f634d78c25db908eac6551df80c02df1392426120065b7725923f376b",
+    "claudeStatus": "60a5975f3d9d3c1928ac30ce7c5c42d00c84c2b66e5eb7e9500df99000778b8e",
+    "bashTaskOracle": "1f16ed93b0907299a47bab82e865a26f94dc5684640480b8821a52e53179f109",
+    "bashWorkingReview": "ab87f40f1a06daaee5856b5302ba826184bd9956b810d1933a44299661791567",
+    "closedR2": "581087c5af40fcfef8dddc1de1a3a5aa7422031bdbc0eb5c35ec3e743b0641a7",
+    "interruptedDocsOutcome": "fbe24cf3c702f6069e1ad807d87e527f95743026189674e617b60777888abca5",
+    "collectorContractResearch": "ac92fa141d354c4ba3792150fde7816541376b865e534526602afb13ee86d539",
+    "collectorRedRegression": "4b4ebbc634a21ffa6c580c91ee755a2555eb2f80bdedb2bc01339b72a9c0efa8",
+    "collectorFinalStableChecks": "9a638dc0b3c57f431b156a8154bb53e7ef9abf66b6df474fb30842f83df0fa30",
+    "collectorIndependentReview": "98f91d954fb9d4024ec5f8adfb8db6e7a068162ff049904a174f21f555baed48",
+    "fullGateAccepted": "434073246e2249456e0a06e358db608deaedbb41ac9388e4ddc2e30f591d19ba",
+    "assistedDocsTaskOracle": "d2782496db88bac5afa7627963abeb6edb1a250c245da4011003c64a6f0f71e6",
+    "assistedContinuationClosure": "e5e58f3fd51960c4c758e4b7e94a1625c79ebca7bc135e1d84a3df027a62bcea",
+    "assistedOwnerCleanup": "a0866c8ded834215b6f96e0084e923cf0b76db99b6e89de5b4613890a9a9151d",
+    "finalHistoricalPreservation": "d013468b1db950f96a3e81c65486ddce8dcc07aae49367a3ba225f82af9f0fff"
+  },
+  "limits": [
+    "Synthetic fixtures and explicit skill invocation; no human-benefit or natural-activation claim.",
+    "Operator approval binds exact actual proposed bytes/digest; helper evidence is not approval.",
+    "Only Bash is a clean accepted cycle; docs proposal remains interrupted and its accepted continuation is explicitly operator-assisted.",
+    "Earlier failed attempts remain retained; no paid API, login/install or personal-auth changes are part of this follow-up."
+  ],
+  "operatorArtifactHandoff": {
+    "state": "closed-accepted-operator-assisted-continuation",
+    "sourceNativePass": false,
+    "sourceNativeCompleted": false,
+    "sourceProposalRegraded": false,
+    "sameOriginalOwnerAndProposalRoot": true,
+    "requiresSeparateOperatorArtifactGOAndExactPlanConsent": true,
+    "maxNewCalls": 3,
+    "aggregateMaxCalls": 9,
+    "sharedCallerWallLimitMs": 1200000,
+    "alreadyConsumedCallerWallMs": 456211,
+    "remainingCallerWallAllowanceMs": 743789,
+    "stages": [
+      {
+        "stage": "apply",
+        "status": "accepted-operator-assisted",
+        "acceptanceSha256": "2378e7db23ccf37c87bc8cc71378e6b47fd56ea8ba690a86f653f0467d7140cc",
+        "nativeDurationMs": 51554.471958999995,
+        "wholeDurationMs": 55332.712666,
+        "callerWallMs": 55408,
+        "sourceNativeProposalCompleted": false
+      },
+      {
+        "stage": "useful-task",
+        "status": "accepted-operator-assisted",
+        "acceptanceSha256": "0251ccff0683388308a3be31d6e9aebed0165f17ed6079557827e4873ab2cf0b",
+        "nativeDurationMs": 62347.91,
+        "wholeDurationMs": 64595.803625,
+        "callerWallMs": 64668,
+        "sourceNativeProposalCompleted": false
+      },
+      {
+        "stage": "read-only-repeat",
+        "status": "accepted-operator-assisted",
+        "acceptanceSha256": "253fbb40d0d8230b51df60cddceea943a90f620bd8e2677b2991afc97a4e094f",
+        "nativeDurationMs": 46719.235624999994,
+        "wholeDurationMs": 49128.615249999995,
+        "callerWallMs": 49212,
+        "all119FileBytesAndModesUnchanged": true,
+        "newProjectSessionCreated": false,
+        "sourceNativeProposalCompleted": false
+      }
+    ],
+    "newProposalCalls": 0,
+    "futureSuccessWouldBeCleanFourPhaseCycle": false,
+    "actualStartedCalls": 3,
+    "acceptedStages": [
+      "apply",
+      "useful-task",
+      "read-only-repeat"
+    ],
+    "completedAssistedContinuations": 1,
+    "finalOwnerCleanup": "verified-mirrors-and-empty-homes-oracle-owner-root-removed-once",
+    "taskResult": {
+      "onlyModifiedPath": "docs/releasing.md",
+      "otherFilesPreserved": 118,
+      "totalFileModesPreserved": 119,
+      "observedReads": [
+        "AGENTS.md",
+        "README.md",
+        "docs/decisions.md"
+      ],
+      "specialInstructionReadCue": false,
+      "markdownFilesChecked": 6,
+      "softwareTests": null,
+      "containedOracleDurationMs": 857.956042,
+      "containedOracleCleanupVerified": true,
+      "gitExecuted": false,
+      "inventedDateOrPublication": false,
+      "softwareTestsRun": false,
+      "ordinaryNonzeroResults": [
+        "search found no nested instructions exit1",
+        "Python unavailable exit127; same-turn shell link checks"
+      ]
+    },
+    "applyResult": {
+      "actualApplyStatus": "complete",
+      "actualStatusBody": "complete",
+      "actualReportStatus": "complete",
+      "verifyScope": "structure-only",
+      "protectedInputs": 120,
+      "returnedFiles": 122,
+      "onlyAddedProjectPaths": [
+        "AGENTS.md",
+        ".tibicen/manifest.yml"
+      ],
+      "ordinaryNonzeroResults": [
+        "missing pre-apply paths exit2",
+        "Python unavailable exit127"
+      ]
+    },
+    "newCallerWallMs": 169288,
+    "finalPacketSha256": "016f576f4eeb37d78d749c739da9f72575a17e8dad75ec11fc331f60ee9bf867",
+    "liveGenericErrorRecoveryObserved": false
+  },
+  "collectorFault": {
+    "confirmed": true,
+    "scope": "maintained-evaluation-collector-only",
+    "kind": "premature-abort-on-generic-error-event",
+    "pinnedOfficialCommit": "00c972ed5d6ff6499317fd41b7f23605b8e6850d",
+    "officialEmitter": "https://github.com/openai/codex/blob/00c972ed5d6ff6499317fd41b7f23605b8e6850d/codex-rs/exec/src/event_processor_with_jsonl_output.rs#L447-L458",
+    "genericErrorEventAloneIsTerminal": false,
+    "patchStatus": "independently-reviewed-source-rebound-new-handoff-only",
+    "historicalNativeOutcomesRegraded": false,
+    "historicalUnderlyingErrorCausesAndUnobservedTails": "unknown",
+    "focusedRegressionTestsPassed": 57,
+    "formatLintAndCoreTypesPassed": true,
+    "actualTerminalOutcomeAndExitRequired": true,
+    "explicitAuthenticationStopsRetained": true,
+    "correctedCollectorSha256": "34cc4fa7062168b1382d9526ffbbbd32e43c2fe62c0d3f8630ead65589daca5f"
+  },
+  "fullGate": {
+    "passed": 1055,
+    "failed": 0,
+    "skipped": 1,
+    "tests": 1056,
+    "publishedRuntimePayloadsCompared": 110,
+    "publishedRuntimeUnchanged": true,
+    "earlierTestTypingFailureRetained": true
+  },
+  "closedAtUtc": "2026-11-08T13:09:09.444593+00:00",
+  "aggregateClosure": {
+    "nativeCalls": 9,
+    "summedCallerWallMs": 625499,
+    "maxNativeCalls": 9,
+    "maxSummedCallerWallMs": 1200000,
+    "acceptedCleanCycles": 1,
+    "acceptedAssistedContinuations": 1,
+    "failedOrInterruptedNativeProposalTurnsRetained": 2,
+    "modelFreeTaskGrades": 2,
+    "newOracleControlContainers": 0,
+    "borrowedOwnerRemovedOnce": true,
+    "bothMirrorsVerified": true,
+    "oldAndNewSessionHomesEmpty": true,
+    "oldR2DriverRerun": false,
+    "automaticRetry": false,
+    "paidApiCalls": 0
+  },
+  "finalHistoricalPreservation": {
+    "originalOrdinaryPacketFiles": 267,
+    "unchanged": true
+  }
+}

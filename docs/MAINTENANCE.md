@@ -1,5 +1,9 @@
 # Maintaining Tibicen rules and adapters
 
+## Landing update — 8 November 2026
+
+The approved composition is deployed from `d227d28107504155060d03aa92bb8aeed6292cb0`. [Source CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42478675849) and [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42479093609) passed; deployment `7635657063` succeeded. All 20 public HTTP 200 bodies matched the source-bound local Pages build; this comparison does not claim an independent official-artifact audit. The [verification](../openspec/changes/archive/2026-11-08-compose-approved-landing-visuals/verification.md) retains exact bindings. Published1.5.2 skill assets are unchanged; the [reliability follow-up](evals/results/2026-11-08-reliability-followup/README.md) changes only the development collector. Earlier deployment/audit records below remain historical.
+
 ## Published 1.5.2; Pages verified
 
 [1.5.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2), release ID `437911222`, was published at `2026-11-07T23:27:53Z`. Source `f5bc0a416813c54d3ec21e50f3f5ede0b4be2bb8` binds distribution `df15ae7e0ae67aee2bd278f7e4f265e03437e672` through annotated tag `76c2ec9ab6136e177430c5fa440b1f22309833d2`. [Source CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42424557875), [all six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/42424565552) and [publication](https://github.com/warbr1ng3r/tibicen/actions/runs/42425341227) passed. Root accepted all three returned assets and 111 archive files/modes; stable 1.5.1 remains unchanged. Exact public update/recovery/removal and actual agent observations retain their limits in the [release report](evals/results/2026-11-08-release-1.5.2/README.md).

@@ -34,6 +34,12 @@ export interface ContainedCodexRunInput extends ContainedCodexProfileInput {
 }
 
 export function containedCodexFailure(record: Record<string, unknown>) {
+  if (record.type === 'error') {
+    // Codex 0.157.0 omits willRetry from JSONL errors; wait for the turn/exit.
+    const status = parseCodex(JSON.stringify(record)).diagnostics.httpStatus
+      ?.value;
+    return status === 401 || status === 403;
+  }
   const item = record.item as Record<string, unknown> | undefined;
   if (record.type === 'item.completed' && item?.type === 'command_execution')
     return !(
@@ -46,7 +52,7 @@ export function containedCodexFailure(record: Record<string, unknown>) {
     );
   return (
     typeof record.type !== 'string' ||
-    ['error', 'turn.failed'].includes(record.type) ||
+    record.type === 'turn.failed' ||
     (record.type === 'item.completed' &&
       ['failed', 'declined', 'cancelled'].includes(String(item?.status)))
   );
@@ -288,17 +294,18 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
               );
               input.onStart?.();
             }
-            if (!record || containedCodexFailure(record)) {
+            const failure = !record || containedCodexFailure(record);
+            if (failure) {
               failed = true;
               controls.stop();
-              if (['error', 'turn.failed'].includes(record?.type))
-                input.onRecord?.({
-                  type: record.type,
-                  detailHash: hashContent(JSON.stringify(record)),
-                });
-              return;
             }
-            input.onRecord?.(record);
+            if (['error', 'turn.failed'].includes(record?.type))
+              input.onRecord?.({
+                type: record.type,
+                detailHash: hashContent(JSON.stringify(record)),
+              });
+            else if (!failure) input.onRecord?.(record);
+            if (failure) return;
           } catch {
             failed = true;
             controls.stop();

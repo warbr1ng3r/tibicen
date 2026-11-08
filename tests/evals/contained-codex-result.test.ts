@@ -63,6 +63,11 @@ test('native caller preserves validation, terminal failure and cleanup results',
     'error-first',
     'turn-failed-first',
     'callback-throws',
+    'generic-error-recovery',
+    'error-only',
+    'error-nonzero-exit',
+    'error-401',
+    'error-403',
     ...Object.keys(ordinaryCommands),
     ...Object.keys(terminalItems),
   ]) {
@@ -75,7 +80,7 @@ test('native caller preserves validation, terminal failure and cleanup results',
       const stubs = `
         import assert from 'node:assert/strict';
         const mode = ${JSON.stringify(mode)};
-        const terminalFailure = ['error-first', 'turn-failed-first', 'callback-throws'].includes(mode);
+        const errorMode = ['error-first', 'turn-failed-first', 'callback-throws', 'generic-error-recovery', 'error-only', 'error-nonzero-exit', 'error-401', 'error-403'].includes(mode);
         const ordinary = ${JSON.stringify(ordinary ?? null)};
         const terminalItem = ${JSON.stringify(terminalItem ?? null)};
         const privateMarker = 'SYNTHETIC PRIVATE TERMINAL DETAILS';
@@ -100,7 +105,11 @@ test('native caller preserves validation, terminal failure and cleanup results',
             signal: controller.signal, cancel: () => controller.abort(),
             dispose() { fixtureState.disposed = true; },
             async run(command) {
-              const error = { type: 'error', message: privateMarker };
+              const error = {
+                type: 'error', message: privateMarker,
+                ...(mode === 'error-401' ? { status_code: 401 } : {}),
+                ...(mode === 'error-403' ? { message: 'HTTP status: 403 ' + privateMarker } : {}),
+              };
               const failed = { type: 'turn.failed', error: { message: privateMarker } };
               const records = [
                 { type: 'thread.started', thread_id: 'inert-fixture' },
@@ -112,17 +121,20 @@ test('native caller preserves validation, terminal failure and cleanup results',
                     ]
                   : terminalItem
                   ? [{ type: 'item.completed', item: terminalItem }]
-                  : terminalFailure
-                  ? mode === 'turn-failed-first' ? [failed, error] : [error, failed]
+                  : errorMode
+                  ? mode === 'turn-failed-first' ? [failed, error]
+                    : ['error-first', 'callback-throws'].includes(mode) ? [error, failed]
+                    : mode === 'error-only' ? [error]
+                    : [error, { type: 'item.completed', item: { type: 'agent_message', text: 'offline completion after notification' } }]
                   : [{ type: 'item.completed', item: { type: 'agent_message', text: 'offline completion' } }]),
-                { type: 'turn.completed', usage: { input_tokens: 0, output_tokens: 0 } },
+                ...(mode === 'error-only' ? [] : [{ type: 'turn.completed', usage: { input_tokens: 0, output_tokens: 0 } }]),
               ];
               const stdout = records.map(record => JSON.stringify(record)).join('\\n') + '\\n';
               command.onStdout(stdout, {
                 stop() { fixtureState.stops++; },
                 deadlineIn() {},
               });
-              return { status: 0, stdout, stderr: '', timedOut: false, spawnError: false };
+              return { status: mode === 'error-nonzero-exit' ? 1 : 0, stdout, stderr: '', timedOut: false, spawnError: false };
             },
           };
         }
@@ -193,6 +205,13 @@ test('native caller preserves validation, terminal failure and cleanup results',
         'error-first',
         'turn-failed-first',
         'callback-throws',
+        'error-401',
+        'error-403',
+      ].includes(mode);
+      const genericError = [
+        'generic-error-recovery',
+        'error-only',
+        'error-nonzero-exit',
       ].includes(mode);
       const observed: { record: Record<string, unknown>; stopped: boolean }[] =
         [];
@@ -226,8 +245,13 @@ test('native caller preserves validation, terminal failure and cleanup results',
         result.sourceUnchanged,
         ['tool-failure', 'validation-unavailable'].includes(mode) ? null : true,
       );
-      assert.equal(result.pass, mode === 'completed' || Boolean(ordinary));
-      assert.equal(result.parsed.completed, true);
+      assert.equal(
+        result.pass,
+        mode === 'completed' ||
+          mode === 'generic-error-recovery' ||
+          Boolean(ordinary),
+      );
+      assert.equal(result.parsed.completed, mode !== 'error-only');
       const terminal = observed.filter(({ record }) =>
         ['error', 'turn.failed'].includes(String(record.type)),
       );
@@ -237,24 +261,47 @@ test('native caller preserves validation, terminal failure and cleanup results',
             type: record.type,
             stopped,
           })),
+          mode === 'error-first'
+            ? [
+                { type: 'error', stopped: false },
+                { type: 'turn.failed', stopped: true },
+              ]
+            : [
+                {
+                  type: mode === 'turn-failed-first' ? 'turn.failed' : 'error',
+                  stopped: mode !== 'callback-throws',
+                },
+              ],
+        );
+        assert(fixtureState.stops >= 1);
+        if (mode === 'error-401' || mode === 'error-403') {
+          assert('diagnostics' in result.parsed);
+          assert.equal(
+            result.parsed.diagnostics.httpStatus?.value,
+            mode === 'error-401' ? 401 : 403,
+          );
+        }
+      } else if (genericError) {
+        assert.equal(fixtureState.stops, 0);
+        assert.deepEqual(
+          observed.map(({ record }) => record.type),
           [
-            {
-              type: mode === 'turn-failed-first' ? 'turn.failed' : 'error',
-              stopped: true,
-            },
+            'thread.started',
+            'turn.started',
+            'error',
+            ...(mode === 'error-only'
+              ? []
+              : ['item.completed', 'turn.completed']),
           ],
         );
+        assert.equal(terminal[0].stopped, false);
         assert.deepEqual(
-          terminal[0].record,
-          result.parsed.records.find(
-            (record) => record.type === terminal[0].record.type,
-          ),
+          result.parsed.messages,
+          mode === 'error-only'
+            ? []
+            : ['offline completion after notification'],
         );
-        assert.deepEqual(Object.keys(terminal[0].record).sort(), [
-          'detailHash',
-          'type',
-        ]);
-        assert(fixtureState.stops >= 1);
+        assert.equal(result.exitCode, mode === 'error-nonzero-exit' ? 1 : 0);
       } else if (terminalItem) {
         assert(fixtureState.stops >= 1);
         assert.deepEqual(
@@ -319,6 +366,13 @@ test('native caller preserves validation, terminal failure and cleanup results',
             ],
           );
         }
+      }
+      for (const { record } of terminal) {
+        assert.deepEqual(
+          record,
+          result.parsed.records.find((parsed) => parsed.type === record.type),
+        );
+        assert.deepEqual(Object.keys(record).sort(), ['detailHash', 'type']);
       }
       assert.deepEqual(fixtureState.stopReasons, [
         'host-finished',
