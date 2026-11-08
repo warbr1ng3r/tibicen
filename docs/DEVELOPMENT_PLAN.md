@@ -1,5 +1,9 @@
 # Tibicen development plan
 
+## Current work — approved landing, then reliability
+
+Implement and publish the approved A/C/B landing composition, then investigate the stopped Bash/documentation cases, fix confirmed causes and check additional safe existing harness routes. The effort (`../.scratch/landing-and-reliability-20261108/map.md`; private development record; excluded from public source) owns sequencing and finite observation limits; [UI requirements](../openspec/changes/compose-approved-landing-visuals/proposal.md) own the detailed approved behavior. Earlier release and failure observations remain historical; no paid API or private-history publication is included.
+
 ## Current work — 1.5.2 published; landing preview and harness checks
 
 The 8 November effort (`../.scratch/release-and-working-cycles-20261108/map.md`; private development record; excluded from public source) delivered compatible patch 1.5.2: reviewed routing correction, frozen candidate, 1048 passing tests/one existing skip, standalone 3/3, exact local/public installation/recovery/removal, public CI/six platforms, returned assets and separate Pages verification. Two synthetic queue/monorepo working cycles completed; shell/docs remain stopped with their evidence limits. The [release report](evals/results/2026-11-08-release-1.5.2/README.md) preserves actual outcomes. Landing-preview choice and additional harness observations remain separate follow-ups; no production landing redesign is implied. Earlier observations and parked Agensi are unchanged.

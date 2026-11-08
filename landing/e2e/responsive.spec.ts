@@ -77,6 +77,7 @@ for (const route of ['./', 'preset/']) {
       await page.locator('.advanced > summary').click();
     } else {
       await page.locator('.installation-alternatives > summary').click();
+      await page.locator('#complete-examples > summary').click();
       for (const kind of ['init', 'adopt']) {
         await page.locator(`label[for="example-choice-${kind}"]`).click();
         for (const summary of await page

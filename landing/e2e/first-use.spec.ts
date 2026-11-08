@@ -52,6 +52,11 @@ for (const locale of ['en', 'ru'] as const) {
         'href',
         /\/(?:ru\/)?preset\/$/,
       );
+      const complete = page.locator('#complete-examples');
+      await expect(complete).not.toHaveAttribute('open');
+      await complete.locator(':scope > summary').focus();
+      await page.keyboard.press('Enter');
+      await expect(complete).toHaveAttribute('open', '');
       await expect(
         page.locator('#walkthrough-init [data-step="proposal"]'),
       ).toBeVisible();
@@ -85,6 +90,12 @@ for (const locale of ['en', 'ru'] as const) {
     await page.locator('.installation-alternatives > summary').click();
     await expect(page.locator('#install-command-pnpm')).toBeVisible();
     await expect(page.locator('#install-command-yarn')).toBeVisible();
+    const complete = page.locator('#complete-examples');
+    await expect(complete).not.toHaveAttribute('open');
+    await expect(page.locator('#walkthrough-init')).toBeHidden();
+    await complete.locator(':scope > summary').focus();
+    await page.keyboard.press('Enter');
+    await expect(complete).toHaveAttribute('open', '');
     await expect(page.locator('#walkthrough-init')).toBeVisible();
     await expect(page.locator('#walkthrough-adopt')).toBeHidden();
     await page.locator('label[for="example-choice-adopt"]').click();
@@ -112,7 +123,7 @@ for (const locale of ['en', 'ru'] as const) {
   });
 }
 
-test('project preview stages work with the keyboard and without JavaScript', async ({
+test('static composition and complete examples work with the keyboard without JavaScript', async ({
   browser,
   baseURL,
 }) => {
@@ -122,52 +133,45 @@ test('project preview stages work with the keyboard and without JavaScript', asy
   });
   const page = await context.newPage();
   for (const locale of ['en', 'ru']) {
-    for (const width of [1440, 320]) {
+    for (const width of [1440, 390, 320, 280]) {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(locale === 'en' ? './' : 'ru/');
       const preview = page.locator('#example');
-      const rows = preview.locator('.repo-tree > li:visible');
-      const instructions = preview.locator(
-        '[data-preview-file="instructions"]',
-      );
-      const history = preview.locator('[data-preview-file="history"]');
-      await expect(preview.locator('#preview-proposal')).toBeChecked();
-      await expect(rows).toHaveCount(7);
-      await expect(instructions).toBeVisible();
-      await expect(history).toBeHidden();
+      await expect(preview.locator('input, button')).toHaveCount(0);
+      await expect(preview.locator('.optional-setup li')).toHaveCount(3);
       await expect(
-        instructions.locator('.preview-proposal-only'),
+        preview.locator('[data-preview-file="history"]'),
       ).toBeVisible();
-      await expect(instructions.locator('.preview-after-only')).toBeHidden();
-      await preview.locator('#preview-proposal').focus();
-      await page.keyboard.press('ArrowLeft');
-      await expect(preview.locator('#preview-before')).toBeChecked();
-      await expect(rows).toHaveCount(6);
-      await expect(instructions).toBeHidden();
-      await expect(history).toBeHidden();
-      await expect(
-        preview.locator('.repo-status .preview-before-only'),
-      ).toBeVisible();
+      await expect(page.locator('.setup-dialog')).toBeVisible();
+      await expect(page.locator('#setup-scope')).toBeVisible();
+      if (width <= 390)
+        expect((await preview.boundingBox())!.height).toBeLessThan(360);
+      const complete = page.locator('#complete-examples');
+      const summary = complete.locator(':scope > summary');
+      await expect(complete).not.toHaveAttribute('open');
+      expect((await summary.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+      await summary.focus();
+      await page.keyboard.press('Enter');
+      await expect(complete).toHaveAttribute('open', '');
+      await expect(page.locator('#walkthrough-init')).toBeVisible();
+      for (const label of await complete
+        .locator('.example-switcher > label')
+        .all())
+        expect((await label.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+      await page.locator('#example-choice-init').focus();
       await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('ArrowRight');
-      await expect(preview.locator('#preview-after')).toBeChecked();
-      await expect(rows).toHaveCount(8);
-      await expect(instructions.locator('.preview-after-only')).toBeVisible();
-      await expect(instructions.locator('.preview-proposal-only')).toBeHidden();
-      await expect(history).toBeVisible();
+      await expect(page.locator('#example-choice-adopt')).toBeChecked();
+      await expect(page.locator('#walkthrough-adopt')).toBeVisible();
+      await expect(page.locator('#walkthrough-init')).toBeHidden();
+      await page
+        .locator('#walkthrough-adopt [data-step="proposal"] summary')
+        .click();
       await expect(
-        preview.locator('.repo-status .preview-after-only'),
+        page.locator('#walkthrough-adopt .proposal-diff'),
       ).toBeVisible();
-      await expect(
-        preview.locator('.existing-file:visible .tree-name'),
-      ).toHaveText([
-        'src/',
-        'tests/',
-        'docs/',
-        'data/',
-        'package.json',
-        'README.md',
-      ]);
+      await summary.focus();
+      await page.keyboard.press('Enter');
+      await expect(page.locator('#walkthrough-adopt')).toBeHidden();
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth),
       ).toBe(width);

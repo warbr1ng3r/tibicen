@@ -1,5 +1,7 @@
 ---
 import { localize, type Locale } from '../i18n';
+import WorkflowSummary from './WorkflowSummary.astro';
+import SetupScope from './SetupScope.astro';
 
 interface Props {
   locale: Locale;
@@ -85,105 +87,121 @@ const examples = [
   class="result-section section-space page-width"
   aria-labelledby="result-title"
 >
-  <p class="eyebrow">{t('Illustrative examples', 'Учебные примеры')}</p>
-  <h2 id="result-title">
-    {t(
-      'What you ask. What the agent does.',
-      'Что просите вы. Что делает агент.',
-    )}
-  </h2>
-  <p class="example-intro">
-    {t(
-      'Two made-up projects, shown step by step. These are illustrations of the workflow, not recorded runs or guaranteed results.',
-      'Два вымышленных проекта, шаг за шагом. Это иллюстрации процесса, а не записи прогонов или гарантированные результаты.',
-    )}
-  </p>
-  <fieldset class="example-switcher">
-    <legend>{t('See how it works', 'Как это работает')}</legend>
-    {examples.map((example) => (
-      <>
-        <input
-          class="example-choice"
-          type="radio"
-          name="walkthrough-case"
-          id={`example-choice-${example.id}`}
-          value={example.id}
-          checked={example.id === 'init'}
-          aria-controls={`walkthrough-${example.id}`}
-        />
-        <label for={`example-choice-${example.id}`}>{example.title}</label>
-      </>
-    ))}
-    <div class="result-grid">
-      {examples.map((example) => (
-        <article
-          class="result-card walkthrough"
-          id={`walkthrough-${example.id}`}
-          aria-labelledby={`walkthrough-${example.id}-title`}
-        >
-          <p class="skill-label">{example.skill}</p>
-          <h3 id={`walkthrough-${example.id}-title`}>{example.title}</h3>
-          <ol class="walkthrough-steps">
-            <li data-step="before">
-              <h4>{t('Starting project', 'Что было в проекте')}</h4>
-              <p>{example.before}</p>
-              <details>
-                <summary>
-                  {t(
-                    'Files and existing instructions',
-                    'Файлы и исходные инструкции',
-                  )}
-                </summary>
-                <pre><code>{example.files}</code></pre>
-                <pre><code>{example.initial}</code></pre>
-              </details>
-            </li>
-            <li data-step="request">
-              <h4>{t('You ask', 'Вы пишете')}</h4>
-              <blockquote>{example.request}</blockquote>
-            </li>
-            <li data-step="inspect">
-              <h4>{t('The agent inspects', 'Агент изучает')}</h4>
-              <p>{example.inspection}</p>
-              <p class="clarification">{example.clarification}</p>
-            </li>
-            <li data-step="proposal">
-              <h4>{t('The agent proposes', 'Агент предлагает')}</h4>
-              <p>{example.proposal}</p>
-              <details>
-                <summary>
-                  {t('Exact proposed change', 'Точное предлагаемое изменение')}
-                </summary>
-                <pre class="proposal-diff"><code>{example.diff}</code></pre>
-              </details>
-            </li>
-            <li data-step="approval">
-              <h4>{t('You approve', 'Вы соглашаетесь')}</h4>
-              <blockquote>
-                {t('Yes, apply this plan.', 'Да, примени этот план.')}
-              </blockquote>
-            </li>
-            <li data-step="result">
-              <h4>
-                {t(
-                  'The agent applies and reports',
-                  'Агент применяет и отчитывается',
-                )}
-              </h4>
-              <p>{example.result}</p>
-              <p class="example-unverified">
-                {t(
-                  'Not checked in this illustration: project tests or behavior in the next agent session. A real report lists the actual checks and their limits.',
-                  'В этой иллюстрации не проверены тесты проекта и поведение следующей сессии агента. Настоящий отчёт перечисляет фактические проверки и ограничения.',
-                )}
-              </p>
-            </li>
-          </ol>
-        </article>
-      ))}
+  <WorkflowSummary {locale} />
+  <details class="detailed-examples" id="complete-examples">
+    <summary>
+      {t(
+        'Explore the complete setup and repair examples',
+        'Посмотреть полные примеры настройки и исправления',
+      )}
+      <span aria-hidden="true">+</span>
+    </summary>
+    <div class="detailed-content">
+      <p class="eyebrow">{t('Illustrative examples', 'Учебные примеры')}</p>
+      <h3 id="detailed-result-title">
+        {t(
+          'What you ask. What the agent does.',
+          'Что просите вы. Что делает агент.',
+        )}
+      </h3>
+      <p class="example-intro">
+        {t(
+          'Two made-up projects, shown step by step. These are illustrations of the workflow, not recorded runs or guaranteed results.',
+          'Два вымышленных проекта, шаг за шагом. Это иллюстрации процесса, а не записи прогонов или гарантированные результаты.',
+        )}
+      </p>
+      <fieldset class="example-switcher">
+        <legend>{t('See how it works', 'Как это работает')}</legend>
+        {examples.map((example) => (
+          <>
+            <input
+              class="example-choice"
+              type="radio"
+              name="walkthrough-case"
+              id={`example-choice-${example.id}`}
+              value={example.id}
+              checked={example.id === 'init'}
+              aria-controls={`walkthrough-${example.id}`}
+            />
+            <label for={`example-choice-${example.id}`}>{example.title}</label>
+          </>
+        ))}
+        <div class="result-grid">
+          {examples.map((example) => (
+            <article
+              class="result-card walkthrough"
+              id={`walkthrough-${example.id}`}
+              aria-labelledby={`walkthrough-${example.id}-title`}
+            >
+              <p class="skill-label">{example.skill}</p>
+              <h3 id={`walkthrough-${example.id}-title`}>{example.title}</h3>
+              <ol class="walkthrough-steps">
+                <li data-step="before">
+                  <h4>{t('Starting project', 'Что было в проекте')}</h4>
+                  <p>{example.before}</p>
+                  <details>
+                    <summary>
+                      {t(
+                        'Files and existing instructions',
+                        'Файлы и исходные инструкции',
+                      )}
+                    </summary>
+                    <pre><code>{example.files}</code></pre>
+                    <pre><code>{example.initial}</code></pre>
+                  </details>
+                </li>
+                <li data-step="request">
+                  <h4>{t('You ask', 'Вы пишете')}</h4>
+                  <blockquote>{example.request}</blockquote>
+                </li>
+                <li data-step="inspect">
+                  <h4>{t('The agent inspects', 'Агент изучает')}</h4>
+                  <p>{example.inspection}</p>
+                  <p class="clarification">{example.clarification}</p>
+                </li>
+                <li data-step="proposal">
+                  <h4>{t('The agent proposes', 'Агент предлагает')}</h4>
+                  <p>{example.proposal}</p>
+                  <details>
+                    <summary>
+                      {t(
+                        'Exact proposed change',
+                        'Точное предлагаемое изменение',
+                      )}
+                    </summary>
+                    <pre class="proposal-diff"><code>{example.diff}</code></pre>
+                  </details>
+                </li>
+                <li data-step="approval">
+                  <h4>{t('You approve', 'Вы соглашаетесь')}</h4>
+                  <blockquote>
+                    {t('Yes, apply this plan.', 'Да, примени этот план.')}
+                  </blockquote>
+                </li>
+                <li data-step="result">
+                  <h4>
+                    {t(
+                      'The agent applies and reports',
+                      'Агент применяет и отчитывается',
+                    )}
+                  </h4>
+                  <p>{example.result}</p>
+                  <p class="example-unverified">
+                    {t(
+                      'Not checked in this illustration: project tests or behavior in the next agent session. A real report lists the actual checks and their limits.',
+                      'В этой иллюстрации не проверены тесты проекта и поведение следующей сессии агента. Настоящий отчёт перечисляет фактические проверки и ограничения.',
+                    )}
+                  </p>
+                </li>
+              </ol>
+            </article>
+          ))}
+        </div>
+      </fieldset>
     </div>
-  </fieldset>
+  </details>
 </section>
+<SetupScope {locale} />
 
 <style>
   .example-switcher {

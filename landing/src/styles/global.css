@@ -394,76 +394,11 @@
     height: 6px;
     opacity: 0.7;
   }
-  .preview-scenario {
-    padding: 17px 24px 0;
-    color: #dedede;
-    font-size: 12px;
-    line-height: 1.5;
-  }
-  .preview-flow {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 7px;
-    min-width: 0;
-    margin: 0;
-    padding: 13px 0 0;
-    border: 0;
-  }
-  .preview-choice {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-  .preview-flow > label {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    min-width: 0;
-    min-height: 38px;
-    padding: 7px 5px;
-    border: 1px solid #4b4b4b;
-    border-radius: 5px;
-    color: var(--muted);
-    font-size: 11px;
-    line-height: 1.3;
-    text-align: center;
-    cursor: pointer;
-  }
-  .preview-flow > label:first-of-type {
-    margin-left: 24px;
-  }
-  .preview-flow > label:last-of-type {
-    margin-right: 24px;
-  }
-  .preview-flow .step-number {
-    margin-right: 5px;
-    opacity: 0.65;
-  }
-  .preview-choice:checked + label {
-    border-color: #79d98b65;
-    background: #79d98b12;
-    color: #9ce4a9;
-  }
-  .preview-choice:focus-visible + label {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-  }
-  .preview-before-only,
-  .preview-after-only,
-  #preview-before:checked ~ .repo-content [data-preview-file='instructions'],
-  #preview-before:checked ~ .repo-status .preview-proposal-only,
-  #preview-after:checked ~ .repo-content .preview-proposal-only,
-  #preview-after:checked ~ .repo-status .preview-proposal-only {
-    display: none;
-  }
-  #preview-before:checked ~ .repo-status .preview-before-only,
-  #preview-after:checked ~ .repo-content .preview-after-only,
-  #preview-after:checked ~ .repo-status .preview-after-only {
-    display: revert;
+  .preview-example {
+    color: var(--subtle);
+    font-size: 10px;
+    font-family:
+      -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   }
   .repo-content {
     flex-basis: 100%;
@@ -486,7 +421,8 @@
   .repo-tree li {
     position: relative;
   }
-  .repo-tree li::before {
+  .repo-tree > li::before,
+  .optional-setup li::before {
     content: '';
     position: absolute;
     left: -23px;
@@ -512,12 +448,12 @@
     min-width: 0;
     overflow-wrap: anywhere;
   }
-  .tree-annotation {
+  .tree-annotation,
+  .tree-note {
     margin-left: auto;
     padding: 5px 8px;
     border-radius: 4px;
-    color: #a4d9af;
-    background: #79d98b10;
+    color: var(--subtle);
     white-space: nowrap;
     font:
       10px/1.5 -apple-system,
@@ -525,6 +461,46 @@
       'Segoe UI',
       Arial,
       sans-serif;
+  }
+  .tree-annotation {
+    color: #a4d9af;
+    background: #79d98b10;
+  }
+  .optional-setup {
+    padding: 18px 0 10px;
+  }
+  .optional-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--subtle);
+    font:
+      10px/1.5 -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Arial,
+      sans-serif;
+  }
+  .optional-heading > span {
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+  }
+  .optional-heading small {
+    font-size: inherit;
+    text-align: right;
+  }
+  .optional-setup > ul {
+    list-style: none;
+    border-left: 1px dashed #515151;
+    padding-left: 20px;
+    margin: 10px 0 0 7px;
+  }
+  .optional-setup li::before {
+    left: -20px;
+    top: 20px;
+  }
+  .optional-setup .tree-row {
+    min-height: 40px;
   }
   .proposed-file .tree-row {
     color: var(--accent);
@@ -535,7 +511,17 @@
     padding-inline: 7px;
   }
   .existing-file {
+    border-top: 1px solid var(--line);
+    margin-top: 9px;
+    padding-top: 10px;
     color: var(--subtle);
+    font-size: 11px;
+  }
+  .repo-tree > .existing-file::before {
+    top: 32px;
+  }
+  .existing-file .tree-note {
+    font-size: 9px;
   }
   .repo-status {
     display: flex;
@@ -1325,27 +1311,8 @@
     .preview-project {
       font-size: 16px;
     }
-    .preview-scenario {
-      padding: 8px 14px 0;
-      font-size: 10px;
-    }
-    .preview-flow {
-      column-gap: 5px;
-      padding-top: 8px;
-    }
-    .preview-flow > label {
-      min-height: 44px;
-      padding: 5px 3px;
-      font-size: 9px;
-    }
-    .preview-flow > label:first-of-type {
-      margin-left: 14px;
-    }
-    .preview-flow > label:last-of-type {
-      margin-right: 14px;
-    }
-    .preview-flow .step-number {
-      margin-right: 3px;
+    .preview-example {
+      font-size: 8px;
     }
     .repo-content {
       padding: 8px 14px;
@@ -1359,7 +1326,8 @@
       width: 18px;
       height: 18px;
     }
-    .tree-annotation {
+    .tree-annotation,
+    .tree-note {
       font-size: 8px;
       padding: 2px 5px;
       max-width: 76px;
@@ -1372,8 +1340,41 @@
       column-gap: 8px;
       min-height: 21px;
     }
-    .repo-tree li::before {
+    .repo-tree > li::before {
       top: 10.5px;
+    }
+    .optional-setup {
+      padding: 10px 0 6px;
+    }
+    .optional-heading {
+      font-size: 8px;
+      letter-spacing: 0;
+    }
+    .optional-heading > span {
+      letter-spacing: 0;
+    }
+    .optional-setup > ul {
+      padding-left: 14px;
+      margin-top: 6px;
+    }
+    .optional-setup .tree-row {
+      min-height: 25px;
+    }
+    .optional-setup li::before {
+      left: -14px;
+      top: 12.5px;
+      width: 9px;
+    }
+    .existing-file {
+      font-size: 9px;
+      margin-top: 4px;
+      padding-top: 5px;
+    }
+    .existing-file .tree-note {
+      font-size: 7px;
+    }
+    .repo-tree > .existing-file::before {
+      top: 15.5px;
     }
     .repo-status {
       padding: 8px 14px;
@@ -1634,4 +1635,463 @@
 /* Override the shared widget's utility spacing for the continuous first-use flow. */
 #start #scenarios > .page-width {
   padding-block: 48px 24px;
+}
+
+@layer components {
+  .setup-composition {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 84px;
+    align-items: center;
+  }
+  .composition-copy > p:not(.eyebrow) {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.85;
+    margin-top: 24px;
+    max-width: 440px;
+  }
+  .workflow-summary-steps {
+    list-style: none;
+    padding: 0;
+    margin: 28px 0 0;
+    display: grid;
+    gap: 24px;
+  }
+  .workflow-summary-steps li {
+    display: flex;
+    gap: 17px;
+    align-items: flex-start;
+  }
+  .workflow-summary-steps > li > span {
+    font:
+      11px/1.6 Consolas,
+      'Liberation Mono',
+      monospace;
+    color: var(--accent);
+    padding-top: 2px;
+  }
+  .workflow-summary-steps strong {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .workflow-summary-steps p {
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--subtle);
+    margin-top: 6px;
+  }
+  .setup-dialog {
+    min-width: 0;
+    border: 1px solid #515151;
+    border-radius: 10px;
+    background: var(--surface-alt);
+  }
+  .setup-dialog svg,
+  .scope-diagram svg,
+  .scope-benefits svg {
+    width: 21px;
+    height: 21px;
+  }
+  .dialog-content {
+    padding: 28px;
+  }
+  .dialog-speaker {
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--subtle);
+  }
+  .you-label {
+    text-align: right;
+    margin-bottom: 8px;
+  }
+  .request-bubble {
+    margin: 0 0 0 38px;
+    padding: 16px;
+    border: 1px solid #515151;
+    background: #2b2b2b;
+    border-radius: 8px 8px 0 8px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .agent-label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 28px 0 13px;
+  }
+  .agent-mark {
+    display: grid;
+    place-items: center;
+    width: 21px;
+    height: 21px;
+    border: 1px solid #79d98b70;
+    border-radius: 5px;
+    color: var(--accent);
+    font:
+      600 15px Georgia,
+      serif;
+  }
+  .dialog-reply {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #d0d0d0;
+  }
+  .proposal-paper {
+    border: 1px solid #79d98b45;
+    background: #79d98b08;
+    border-radius: 5px;
+    margin-top: 24px;
+    padding: 20px 16px 12px;
+  }
+  .proposal-heading {
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: #a4d9af;
+    text-transform: uppercase;
+    margin-bottom: 9px;
+  }
+  .proposed-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 9px;
+    min-height: 39px;
+  }
+  .proposed-line b,
+  .proposed-line svg {
+    color: var(--accent);
+  }
+  .proposed-line svg {
+    width: 17px;
+    height: 17px;
+  }
+  .proposed-line code {
+    font-size: 12px;
+    color: #bce7c4;
+  }
+  .proposed-line > span {
+    margin-left: auto;
+    font-size: 10px;
+    color: #aab9ad;
+  }
+  .dialog-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 22px 28px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .dialog-footer svg {
+    color: var(--accent);
+  }
+  .detailed-examples {
+    margin-top: 42px;
+    border-block: 1px solid var(--line);
+  }
+  .detailed-examples > summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    min-height: 44px;
+    padding-block: 20px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+    list-style: none;
+  }
+  .detailed-examples > summary::-webkit-details-marker {
+    display: none;
+  }
+  .detailed-examples > summary > span {
+    color: var(--accent);
+    font-size: 20px;
+  }
+  .detailed-examples[open] > summary > span {
+    transform: rotate(45deg);
+  }
+  .detailed-content {
+    padding: 20px 0 35px;
+  }
+  .detailed-content > h3 {
+    font-size: 28px;
+    letter-spacing: -0.8px;
+    line-height: 1.3;
+  }
+  .setup-scope {
+    padding-bottom: 104px;
+    gap: 94px;
+  }
+  .scope-diagram {
+    min-width: 0;
+    position: relative;
+    padding: 18px 0 24px;
+    isolation: isolate;
+  }
+  .scope-diagram::before,
+  .scope-diagram::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 20px 1px 24px;
+    border: 1px solid #535353;
+    border-radius: 10px;
+    background: #1e1e1e;
+    transform: rotate(-2deg);
+    translate: -12px 14px;
+  }
+  .scope-diagram::before {
+    translate: -23px 25px;
+    border-color: var(--line);
+  }
+  .scope-layer {
+    background: var(--surface);
+    border: 1px solid #666;
+    border-radius: 10px;
+  }
+  .scope-content {
+    padding: 26px;
+  }
+  .scope-stage {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: var(--subtle);
+    font-size: 9px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 14px;
+  }
+  .scope-stage small {
+    color: #a4d9af;
+    font-size: inherit;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .instruction-panel {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 20px 15px;
+    border: 1px solid #79d98b50;
+    background: #79d98b0c;
+    border-radius: 6px;
+  }
+  .instruction-panel > svg {
+    color: var(--accent);
+  }
+  .instruction-panel > svg:last-child {
+    width: 18px;
+    margin-left: auto;
+  }
+  .instruction-panel strong {
+    font-size: 15px;
+    color: #8de49c;
+  }
+  .instruction-panel p {
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .module-label {
+    margin: 22px 0 12px;
+    font-size: 11px;
+    color: var(--subtle);
+  }
+  .module-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .module-grid > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+    padding: 15px 10px;
+    border: 1px dashed #535353;
+    border-radius: 5px;
+    background: #ffffff02;
+  }
+  .module-grid svg {
+    color: #a0b2a3;
+  }
+  .module-grid strong {
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+  .module-grid small {
+    font-size: 10px;
+    line-height: 1.5;
+    color: var(--subtle);
+    overflow-wrap: anywhere;
+  }
+  .project-layer {
+    margin-top: 23px;
+    border-top: 1px solid var(--line);
+    padding-top: 23px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    color: var(--subtle);
+  }
+  .project-layer strong {
+    font-size: 12px;
+    color: #c6c6c6;
+  }
+  .project-layer p {
+    font:
+      10px/1.7 Consolas,
+      'Liberation Mono',
+      monospace;
+    margin-top: 7px;
+  }
+  .project-layer > span {
+    margin-left: auto;
+    font-size: 9px;
+  }
+  .scope-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0 0;
+    display: grid;
+    gap: 18px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #ccc;
+  }
+  .scope-benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .scope-benefits svg {
+    width: 17px;
+    height: 17px;
+    margin-top: 2px;
+    color: var(--accent);
+  }
+  @media (max-width: 899px) {
+    .setup-composition {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+    }
+    .composition-copy > p:not(.eyebrow) {
+      max-width: none;
+    }
+    .setup-dialog,
+    .scope-diagram {
+      width: 100%;
+      max-width: 560px;
+      margin-inline: auto;
+    }
+    .dialog-content {
+      padding: 23px;
+    }
+    .workflow-summary-steps {
+      gap: 18px;
+    }
+    .detailed-examples {
+      margin-top: 30px;
+    }
+    .setup-scope {
+      padding-bottom: 65px;
+    }
+    .setup-scope .composition-copy {
+      grid-row: 1;
+    }
+    .scope-diagram {
+      grid-row: 2;
+      width: calc(100% - 16px);
+      margin-left: 16px;
+    }
+    .scope-diagram::before {
+      translate: -15px 20px;
+    }
+    .scope-diagram::after {
+      translate: -8px 10px;
+    }
+    .scope-content {
+      padding: 18px;
+    }
+    .project-layer > span {
+      display: none;
+    }
+    .scope-benefits {
+      gap: 14px;
+    }
+  }
+  @media (max-width: 480px) {
+    .module-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .module-grid > div {
+      display: grid;
+      grid-template-columns: 21px minmax(0, 1fr);
+      align-items: center;
+    }
+    .module-grid small {
+      grid-column: 2;
+    }
+  }
+  @media (max-width: 380px) {
+    .preview-toolbar {
+      gap: 8px;
+    }
+    .preview-project {
+      font-size: 14px;
+    }
+    .preview-example {
+      font-size: 7px;
+    }
+    .repo-tree {
+      padding-left: 17px;
+    }
+    .repo-tree > li::before {
+      left: -17px;
+      width: 9px;
+    }
+    .tree-row {
+      column-gap: 6px;
+    }
+    .tree-note,
+    .tree-annotation {
+      max-width: 65px;
+      font-size: 7px;
+    }
+    .optional-heading {
+      flex-wrap: wrap;
+      row-gap: 2px;
+    }
+    .optional-heading small {
+      text-align: left;
+    }
+    .request-bubble {
+      margin-left: 16px;
+      padding: 13px;
+      font-size: 14px;
+    }
+    .dialog-content,
+    .scope-content {
+      padding: 16px;
+    }
+    .proposal-paper {
+      padding: 16px 12px 10px;
+    }
+    .instruction-panel {
+      padding-inline: 10px;
+      gap: 8px;
+    }
+    .instruction-panel strong {
+      font-size: 13px;
+    }
+  }
 }

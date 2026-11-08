@@ -1,0 +1,107 @@
+---
+import { localize, type Locale } from '../i18n';
+import SetupIcon from './SetupIcon.astro';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = (en: string, ru: string) => localize(locale, en, ru);
+const steps = [
+  [
+    t('Understand the project', 'Изучить проект'),
+    t(
+      'Read the files, commands and existing rules.',
+      'Прочитать файлы, команды и существующие правила.',
+    ),
+  ],
+  [
+    t('Review one proposal', 'Посмотреть предложение'),
+    t(
+      'See the changes before anything is applied.',
+      'Увидеть изменения до их применения.',
+    ),
+  ],
+  [
+    t('Approve and continue', 'Согласовать и продолжить'),
+    t(
+      'Get the result, checks and any remaining limits.',
+      'Получить результат, проверки и оставшиеся ограничения.',
+    ),
+  ],
+];
+---
+
+<div class="setup-composition workflow-summary">
+  <div class="composition-copy">
+    <p class="eyebrow">{t('How it works', 'Как это работает')}</p>
+    <h2 id="result-title">
+      {t('Ask in your own words.', 'Попросите своими словами.')}
+    </h2>
+    <p>
+      {t(
+        'Work in your usual agent. Tibicen reads the project, proposes a setup and applies what you approve.',
+        'Работайте в привычном агенте. Tibicen изучит проект, предложит настройку и применит согласованные изменения.',
+      )}
+    </p>
+    <ol class="workflow-summary-steps">
+      {steps.map(([title, description], index) => (
+        <li>
+          <span aria-hidden="true">0{index + 1}</span>
+          <div>
+            <strong>{title}</strong>
+            <p>{description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+  <div
+    class="setup-dialog"
+    aria-label={t('Illustrative conversation', 'Учебный диалог')}
+  >
+    <div class="dialog-content">
+      <p class="dialog-speaker you-label">{t('You', 'Вы')}</p>
+      <blockquote class="request-bubble">
+        {t('Set this up for my agent.', 'Настрой проект для моего агента.')}
+      </blockquote>
+      <p class="dialog-speaker agent-label">
+        <span class="agent-mark" aria-hidden="true">
+          t
+        </span>
+        {t('Your agent + Tibicen', 'Ваш агент + Tibicen')}
+      </p>
+      <p class="dialog-reply">
+        {t(
+          'I’ll keep your code and propose only the setup you need.',
+          'Сохраню ваш код и предложу только нужную настройку.',
+        )}
+      </p>
+      <div class="proposal-paper">
+        <p class="proposal-heading">
+          {t('One possible proposal', 'Один из возможных планов')}
+        </p>
+        <div class="proposed-line">
+          <b aria-hidden="true">+</b>
+          <SetupIcon name="file" />
+          <code>AGENTS.md</code>
+          <span>{t('instructions', 'инструкции')}</span>
+        </div>
+        <div class="proposed-line">
+          <b aria-hidden="true">+</b>
+          <SetupIcon name="folderClock" />
+          <code>.tibicen/</code>
+          <span>{t('setup history', 'история настройки')}</span>
+        </div>
+      </div>
+    </div>
+    <div class="dialog-footer">
+      <SetupIcon name="check" />
+      <p>
+        {t(
+          'Review the plan. Approve the changes.',
+          'Посмотрите план. Согласуйте изменения.',
+        )}
+      </p>
+    </div>
+  </div>
+</div>

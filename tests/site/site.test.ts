@@ -32,62 +32,96 @@ async function localFile(url: URL) {
 }
 
 for (const { filename, route, locale, other } of pages) {
-  test(`${locale}: the project preview shows one chosen setup in three native stages`, async () => {
+  test(`${locale}: the static hero groups optional setup without promising fixed paths`, async () => {
     const html = await readFile(new URL(filename, site), 'utf8');
     const preview = html.match(
       /<figure\b[^>]*id="example"[\s\S]*?<\/figure>/,
     )?.[0];
     assert.ok(preview);
-    assert.equal([...preview.matchAll(/class="existing-file"/g)].length, 6);
-    assert.equal([...preview.matchAll(/<li\b/g)].length, 8);
-    for (const name of [
-      'src/',
-      'tests/',
-      'docs/',
-      'data/',
-      'package.json',
-      'README.md',
-    ])
-      assert.ok(preview.includes(`>${name}</span>`), name);
     assert.doesNotMatch(
       preview,
-      /MEMORY\.md|\.agents\/|MCP|Agent instructions|Project memory/,
+      /<input|<button|preview-(?:before|proposal|after)|MEMORY\.md|\.agents\//,
     );
-    for (const stage of ['before', 'proposal', 'after']) {
-      assert.match(preview, new RegExp(`<input\\b[^>]*id="preview-${stage}"`));
-      assert.ok(preview.includes(`for="preview-${stage}"`));
-    }
-    assert.match(preview, /<input\b[^>]*id="preview-proposal"[^>]*checked/);
-    assert.match(
-      preview,
-      /class="proposed-file" data-preview-file="instructions"/,
-    );
-    assert.match(
-      preview,
-      /class="preview-after-only" data-preview-file="history"/,
-    );
+    for (const name of [
+      'next-good-idea',
+      'AGENTS.md',
+      '.tibicen/',
+      'src/ · tests/ · data/',
+      'MCP',
+    ])
+      assert.ok(preview.includes(name), name);
+    assert.equal([...preview.matchAll(/class="optional-setup"/g)].length, 1);
+    assert.match(preview, /M21 9\.6V7\.8/);
     for (const text of locale === 'en'
       ? [
-          'Example: one simple setup',
-          'Before',
-          'Proposal',
-          'After approval',
-          'proposed',
-          'added',
-          'Nothing changes until you approve.',
-          'Existing project files stay intact.',
+          'example',
+          'Optional',
+          'chosen for your project',
+          'Memory',
+          'Skills',
+          'setup history',
+          'unchanged',
+          'Only the setup your project needs.',
         ]
       : [
-          'Пример простой настройки',
-          'До настройки',
-          'Предложение',
-          'После согласия',
-          'предлагается',
-          'добавлен',
-          'Без согласия ничего не меняется.',
-          'Ваши файлы остались прежними.',
+          'пример',
+          'При необходимости',
+          'под ваш проект',
+          'Память',
+          'Скиллы',
+          'история настройки',
+          'без изменений',
+          'Только то, что нужно вашему проекту.',
         ])
       assert.ok(preview.includes(text), text);
+  });
+
+  test(`${locale}: distinct workflow and scope visuals keep full examples in native disclosure`, async () => {
+    const html = await readFile(new URL(filename, site), 'utf8');
+    const result = html.slice(
+      html.indexOf('id="result"'),
+      html.indexOf('id="faq"'),
+    );
+    assert.match(result, /class="setup-dialog"/);
+    assert.match(result, /class="proposal-paper"/);
+    assert.match(
+      result,
+      /<details\b[^>]*class="detailed-examples"[^>]*id="complete-examples"[^>]*>/,
+    );
+    assert.doesNotMatch(
+      result,
+      /<details\b[^>]*id="complete-examples"[^>]*\bopen|next-good-idea|dialog-options|prototype-switcher|data-move/,
+    );
+    assert.ok(
+      result.indexOf('id="complete-examples"') <
+        result.indexOf('id="setup-scope"'),
+    );
+    assert.equal([...result.matchAll(/class="module-grid"/g)].length, 1);
+    for (const text of locale === 'en'
+      ? [
+          'Ask in your own words.',
+          'Set this up for my agent.',
+          'One possible proposal',
+          'Review the plan. Approve the changes.',
+          'after your approval',
+          'Optional · add only what helps',
+          'Your application files are preserved.',
+        ]
+      : [
+          'Попросите своими словами.',
+          'Настрой проект для моего агента.',
+          'Один из возможных планов',
+          'Посмотрите план. Согласуйте изменения.',
+          'после вашего согласия',
+          'Необязательно · только если полезно',
+          'Файлы приложения сохраняются.',
+        ])
+      assert.ok(result.includes(text), text);
+    for (const kind of ['init', 'adopt'])
+      assert.match(
+        result,
+        new RegExp(`<input\\b[^>]*id="example-choice-${kind}"`),
+      );
   });
 
   test(`${locale}: the home links to a secondary preset without adding form controls`, async () => {
@@ -133,8 +167,8 @@ for (const { filename, route, locale, other } of pages) {
       assert.match(html, /Учебные примеры/);
     }
     assert.match(html, new RegExp(`<a\\b[^>]*hreflang="${other}"`));
-    const sections = ['start', 'result', 'faq', 'preset'].map((id) =>
-      html.indexOf(`id="${id}"`),
+    const sections = ['start', 'result', 'setup-scope', 'faq', 'preset'].map(
+      (id) => html.indexOf(`id="${id}"`),
     );
     assert.ok(sections.every((offset) => offset > 0));
     assert.deepEqual(

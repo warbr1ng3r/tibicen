@@ -7,7 +7,7 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ### Changed
 
-- Replace the landing illustration with one concrete setup example across Before, Proposal and After approval. Keep existing project files visible and show setup history only after approval; no memory, skills or MCP files are implied as mandatory. This site update leaves the 1.5.2 skill release unchanged.
+- Compose the bilingual landing from the approved static setup tree, short workflow conversation and separate scope diagram. Keep optional components explicit and complete init/adopt examples in a native disclosure; installation, presets and published 1.5.2 skills are unchanged.
 
 ## [1.5.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2) — 2026-11-07
 

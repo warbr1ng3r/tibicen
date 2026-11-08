@@ -1,36 +1,27 @@
 ---
 import { localize, type Locale } from '../i18n';
-
+import SetupIcon from './SetupIcon.astro';
 interface Props {
   locale?: Locale;
 }
 const { locale = 'en' } = Astro.props;
 const t = (en: string, ru: string) => localize(locale, en, ru);
-const folder =
-  'M2.5 6V4.5A1.5 1.5 0 0 1 4 3h4l2 2h6A1.5 1.5 0 0 1 17.5 6.5v9A1.5 1.5 0 0 1 16 17H4a1.5 1.5 0 0 1-1.5-1.5V6Z';
-const file = ['M5 2.5h6l4 4v11H5Z', 'M11 2.5v4h4M7.5 10h5M7.5 13h5'];
-const existing = [
-  { name: 'src/', paths: [folder, 'm7.5 9-2 2 2 2m5-4 2 2-2 2'] },
-  { name: 'tests/', paths: [folder, 'm7 11 2 2 4-4'] },
-  { name: 'docs/', paths: [folder, 'M6 9.5h7.5M6 12.5h5.5'] },
+const optional = [
   {
-    name: 'data/',
-    paths: [
-      'M4 5v10c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V5M4 10c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5',
-    ],
+    icon: 'memory' as const,
+    name: t('Memory', 'Память'),
+    note: t('your decisions', 'ваши решения'),
   },
   {
-    name: 'package.json',
-    paths: [
-      'm10 2.5 7 4v7.5l-7 4-7-4V6.5ZM3 6.5l7 4 7-4M10 10.5V18M6.5 4.5l7 4',
-    ],
+    icon: 'skills' as const,
+    name: t('Skills', 'Скиллы'),
+    note: t('repeated tasks', 'повторные задачи'),
   },
-  { name: 'README.md', paths: file },
-];
-const stages = [
-  { id: 'before', label: t('Before', 'До настройки') },
-  { id: 'proposal', label: t('Proposal', 'Предложение') },
-  { id: 'after', label: t('After approval', 'После согласия') },
+  {
+    icon: 'plug' as const,
+    name: 'MCP',
+    note: t('external tools', 'внешние инструменты'),
+  },
 ];
 ---
 
@@ -38,159 +29,71 @@ const stages = [
   <div class="repo-stage">
     <div class="repo-window">
       <div class="preview-toolbar">
-        <svg
-          class="tree-icon project-folder-icon"
-          viewBox="0 0 20 20"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.25"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d={folder} />
-        </svg>
+        <SetupIcon name="folder" class="tree-icon project-folder-icon" />
         <span class="preview-project" id="preview-project">
           next-good-idea<span class="project-slash"> /</span>
         </span>
+        <span class="preview-example">{t('example', 'пример')}</span>
         <span class="status-dot" aria-hidden="true"></span>
       </div>
-      <p class="preview-scenario">
-        {t('Example: one simple setup', 'Пример простой настройки')}
-      </p>
-      <fieldset class="preview-flow">
-        <legend class="sr-only">{t('Example stages', 'Этапы примера')}</legend>
-        {stages.map((stage, index) => (
-          <>
-            <input
-              class="preview-choice"
-              type="radio"
-              name="preview-stage"
-              id={`preview-${stage.id}`}
-              value={stage.id}
-              checked={stage.id === 'proposal'}
-              aria-controls="preview-tree"
-            />
-            <label for={`preview-${stage.id}`}>
-              <span class="step-number" aria-hidden="true">
-                {index + 1}
+      <div class="repo-content">
+        <ul
+          class="repo-tree"
+          aria-label={t('One possible setup', 'Один из вариантов настройки')}
+        >
+          <li class="proposed-file">
+            <div class="tree-row">
+              <SetupIcon name="file" class="tree-icon" />
+              <span class="tree-name">AGENTS.md</span>
+              <span class="tree-annotation">
+                {t('agent instructions', 'инструкции агенту')}
               </span>
-              {stage.label}
-            </label>
-          </>
-        ))}
-        <div class="repo-content">
-          <ul
-            class="repo-tree"
-            id="preview-tree"
-            aria-label={t('Files in this example', 'Файлы в этом примере')}
-          >
-            <li class="proposed-file" data-preview-file="instructions">
-              <div class="tree-row">
-                <svg
-                  class="tree-icon"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  {file.map((d) => (
-                    <path d={d} />
-                  ))}
-                </svg>
-                <span class="tree-name">AGENTS.md</span>
-                <span class="tree-annotation preview-proposal-only">
-                  {t('proposed', 'предлагается')}
-                </span>
-                <span class="tree-annotation preview-after-only">
-                  {t('added', 'добавлен')}
-                </span>
-              </div>
-            </li>
-            {existing.map((entry) => (
-              <li class="existing-file">
-                <div class="tree-row">
-                  <svg
-                    class="tree-icon"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.25"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    {entry.name === 'data/' && (
-                      <ellipse cx="10" cy="5" rx="6" ry="2.5" />
-                    )}
-                    {entry.paths.map((d) => (
-                      <path d={d} />
-                    ))}
-                  </svg>
-                  <span class="tree-name">{entry.name}</span>
-                </div>
-              </li>
-            ))}
-            <li class="preview-after-only" data-preview-file="history">
-              <div class="tree-row">
-                <svg
-                  class="tree-icon"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M17.5 8V6.5A1.5 1.5 0 0 0 16 5h-6L8 3H4a1.5 1.5 0 0 0-1.5 1.5v11A1.5 1.5 0 0 0 4 17h4" />
-                  <circle cx="13.5" cy="13.5" r="4" />
-                  <path d="M13.5 11v2.5H16" />
-                </svg>
-                <span class="tree-name">.tibicen/</span>
-                <span class="tree-annotation">
-                  {t('setup history', 'история настройки')}
-                </span>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="repo-status">
-          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <circle cx="10" cy="10" r="8" stroke="currentColor" />
-            <path
-              d="m6.5 10 2.3 2.3 4.7-5"
-              stroke="currentColor"
-              stroke-width="1.3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <p>
-            <span class="preview-before-only">
-              {t(
-                'An existing project, without agent instructions.',
-                'Проект уже есть, инструкций для агента пока нет.',
-              )}
-            </span>
-            <span class="preview-proposal-only">
-              {t(
-                'Review first. Nothing changes until you approve.',
-                'Сначала проверьте. Без согласия ничего не меняется.',
-              )}
-            </span>
-            <span class="preview-after-only">
-              {t(
-                'Instructions are ready. Existing project files stay intact.',
-                'Инструкции готовы. Ваши файлы остались прежними.',
-              )}
-            </span>
-          </p>
-        </div>
-      </fieldset>
+            </div>
+          </li>
+          <li class="optional-setup">
+            <div class="optional-heading">
+              <span>{t('Optional', 'При необходимости')}</span>
+              <small>{t('chosen for your project', 'под ваш проект')}</small>
+            </div>
+            <ul>
+              {optional.map((entry) => (
+                <li>
+                  <div class="tree-row">
+                    <SetupIcon name={entry.icon} class="tree-icon" />
+                    <span class="tree-name">{entry.name}</span>
+                    <span class="tree-note">{entry.note}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </li>
+          <li data-preview-file="history">
+            <div class="tree-row">
+              <SetupIcon name="folderClock" class="tree-icon" />
+              <span class="tree-name">.tibicen/</span>
+              <span class="tree-note">
+                {t('setup history', 'история настройки')}
+              </span>
+            </div>
+          </li>
+          <li class="existing-file">
+            <div class="tree-row">
+              <SetupIcon name="folder" class="tree-icon" />
+              <span class="tree-name">src/ · tests/ · data/</span>
+              <span class="tree-note">{t('unchanged', 'без изменений')}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="repo-status">
+        <SetupIcon name="check" />
+        <p>
+          {t(
+            'Only the setup your project needs.',
+            'Только то, что нужно вашему проекту.',
+          )}
+        </p>
+      </div>
     </div>
   </div>
 </figure>

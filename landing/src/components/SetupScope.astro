@@ -1,0 +1,121 @@
+---
+import { localize, type Locale } from '../i18n';
+import SetupIcon from './SetupIcon.astro';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = (en: string, ru: string) => localize(locale, en, ru);
+const modules = [
+  {
+    icon: 'memory' as const,
+    title: t('Memory', 'Память'),
+    note: t('Your decisions', 'Ваши решения'),
+  },
+  {
+    icon: 'skills' as const,
+    title: t('Skills', 'Скиллы'),
+    note: t('Repeated tasks', 'Повторные задачи'),
+  },
+  {
+    icon: 'plug' as const,
+    title: t('Tools', 'Инструменты'),
+    note: t('Useful connections', 'Нужные подключения'),
+  },
+];
+const benefits = [
+  t('Your application files are preserved.', 'Файлы приложения сохраняются.'),
+  t('Useful existing rules are kept.', 'Полезные правила остаются.'),
+  t(
+    'No resident Tibicen service remains.',
+    'Tibicen не оставляет фоновый сервис.',
+  ),
+  t(
+    'The result includes checks and limits.',
+    'В результате указаны проверки и ограничения.',
+  ),
+];
+---
+
+<section
+  class="setup-composition setup-scope page-width"
+  id="setup-scope"
+  aria-labelledby="scope-title"
+>
+  <div
+    class="scope-diagram"
+    aria-label={t(
+      'Setup around your project',
+      'Настройка вокруг вашего проекта',
+    )}
+  >
+    <div class="scope-layer">
+      <div class="scope-content">
+        <div class="scope-stage">
+          <span>
+            {t('Setup around your project', 'Настройка вокруг проекта')}
+          </span>
+          <small>{t('after your approval', 'после вашего согласия')}</small>
+        </div>
+        <div class="instruction-panel">
+          <SetupIcon name="file" />
+          <div>
+            <strong>{t('Clear instructions', 'Понятные инструкции')}</strong>
+            <p>{t('For the agent you use', 'Для вашего агента')}</p>
+          </div>
+          <SetupIcon name="check" />
+        </div>
+        <p class="module-label">
+          {t(
+            'Optional · add only what helps',
+            'Необязательно · только если полезно',
+          )}
+        </p>
+        <div class="module-grid">
+          {modules.map((module) => (
+            <div>
+              <SetupIcon name={module.icon} />
+              <strong>{module.title}</strong>
+              <small>{module.note}</small>
+            </div>
+          ))}
+        </div>
+        <div class="project-layer">
+          <SetupIcon name="folder" />
+          <div>
+            <strong>
+              {t('Your project stays yours.', 'Ваш проект остаётся вашим.')}
+            </strong>
+            <p>src/ · tests/ · docs/ · data/</p>
+          </div>
+          <span>{t('unchanged', 'без изменений')}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="composition-copy">
+    <p class="eyebrow">
+      {t('What stays in your project', 'Что останется в проекте')}
+    </p>
+    <h2 id="scope-title">
+      {t(
+        'A useful setup. Your project intact.',
+        'Нужная настройка. Ваш проект цел.',
+      )}
+    </h2>
+    <p>
+      {t(
+        'Instructions fit the way you work. Memory, skills and connections are optional.',
+        'Инструкции подстраиваются под вашу работу. Память, скиллы и подключения добавляются при необходимости.',
+      )}
+    </p>
+    <ul class="scope-benefits">
+      {benefits.map((benefit) => (
+        <li>
+          <SetupIcon name="check" />
+          <span>{benefit}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
