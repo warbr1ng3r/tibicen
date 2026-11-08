@@ -1,0 +1,32 @@
+{
+  "version": "1.5.3",
+  "releaseSourceCommit": "a86026a5bbc6e4eb0831ac8b76be08faf1891647",
+  "pagesSourceCommit": "64a27525e48aab956103d777aba5861799968df7",
+  "distributionCommit": "b6fd86e8927c3640fe66be064da5a34e63ac366d",
+  "metadataCiRunId": 42526716255,
+  "pagesRunId": 42527154764,
+  "artifactId": 13635273624,
+  "artifactSha256": "bb30338a5379e618d11af8b331484162dc1817f45f8352bc68ca4b7a988a2994",
+  "pagesDeploymentStatus": "success",
+  "maintenanceBeforeSha256": "3d621e9cc0c5b3b79197a903ad013aec0614ae015e59de7d4ed510f8d5db20b8",
+  "observedPublicIp": "185.199.108.153",
+  "publishedRecord": {
+    "version": "1.5.3",
+    "publishedAtUtc": "2026-11-08T21:38:42Z",
+    "sourceCommit": "a86026a5bbc6e4eb0831ac8b76be08faf1891647",
+    "distributionCommit": "b6fd86e8927c3640fe66be064da5a34e63ac366d",
+    "scope": "Compatible inspection fixes: registered-memory Markdown fragments, per-operation forbidden paths, and external manual-action guidance. Persisted schemas, dependencies and exact approval remain unchanged. Candidate-bound copied behavior, local/public update/recovery/removal, both installed self-tests and six portable platform cells passed. Native loading, broad harness/model behavior and measured human benefit remain unverified; earlier failed observations retain their scope. MIT license retained.",
+    "payloadManifest": {
+      "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.3/distribution-SHA256SUMS",
+      "sha256": "c58657448cc2b58e161cc49c655b61f398493c998b7e50c2502e924ddcde143d"
+    },
+    "archives": [
+      {
+        "name": "tibicen-1.5.3.tar.gz",
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.3/tibicen-1.5.3.tar.gz",
+        "sha256": "1636a3acf2580137c4deb53e47d6ef481fe1201473ded169e58c0471a56faefb"
+      }
+    ],
+    "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3"
+  }
+}

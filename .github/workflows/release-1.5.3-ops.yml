@@ -10,151 +10,70 @@ concurrency:
   group: release-1.5.3-ops
   cancel-in-progress: false
 
-env:
-  PAGES_SOURCE_SHA: "64a27525e48aab956103d777aba5861799968df7"
 
 jobs:
-  pages:
+  pages-audit:
     if: >-
       github.event_name == 'push' &&
       github.repository == 'warbr1ng3r/tibicen' &&
       github.ref == 'refs/heads/codex/release-1.5.3-ops' &&
       github.run_attempt == 1 &&
-      github.event.head_commit.message == 'release-1.5.3-ops: pages'
+      github.event.head_commit.message == 'release-1.5.3-ops: pages-audit'
     runs-on: ubuntu-24.04
-    timeout-minutes: 3
+    timeout-minutes: 7
     permissions:
       contents: read
-      actions: write
+      actions: read
+    env:
+      AUDIT_CONFIG_SHA256: "9faa559feb456b0ad261743ef5712e6d2e79e43fc6ed20501bf5608888ace603"
+      AUDIT_SCRIPT_SHA256: "9918b2e3ccbfd3abde114fa0c03bfce4e7e9a695da98653171a8dff26aacb383"
+      RETURNED_VERIFIER_SHA256: "c5f5e7c86c89387d98d8bb95eadd27f3c07cffa16d030a34cffe42c20cdac882"
     steps:
-      - name: Dispatch the existing pages workflow once at the frozen main head
+      - name: Require exact reviewed hashes
         shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          RECEIPT_DIRECTORY="$RUNNER_TEMP/tibicen-1.5.3-pages-dispatch"
-          export RECEIPT_DIRECTORY
-          umask 077
-          [[ "$PAGES_SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]] || exit 1
-          mkdir "$RECEIPT_DIRECTORY"
-          date -u +%Y-%m-%dT%H:%M:%SZ > "$RECEIPT_DIRECTORY/started-at"
-          printf '%s\n' "$PAGES_SOURCE_SHA" > "$RECEIPT_DIRECTORY/expected-source"
-          gh api repos/warbr1ng3r/tibicen/git/ref/heads/main --jq .object.sha > "$RECEIPT_DIRECTORY/observed-main"
-          test "$(cat "$RECEIPT_DIRECTORY/observed-main")" = "$PAGES_SOURCE_SHA"
-          gh api repos/warbr1ng3r/tibicen/actions/workflows/pages.yml \
-            --jq '.state + " " + .path' > "$RECEIPT_DIRECTORY/observed-workflow"
-          test "$(cat "$RECEIPT_DIRECTORY/observed-workflow")" = 'active .github/workflows/pages.yml'
-          tibicen_dispatch_curl_exit=0
-          curl --disable --proto '=https' --connect-timeout 10 --max-time 30 --max-filesize 1048576 -sS \
-            --request POST \
-            -H 'Accept: application/vnd.github+json' \
-            -H 'Content-Type: application/json' \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            -H 'X-GitHub-Api-Version: 2026-03-10' \
-            --data '{"ref":"main"}' \
-            -D "$RECEIPT_DIRECTORY/dispatch.headers" \
-            -o "$RECEIPT_DIRECTORY/dispatch.body" \
-            -w '%{http_code}' \
-            https://api.github.com/repos/warbr1ng3r/tibicen/actions/workflows/pages.yml/dispatches \
-            > "$RECEIPT_DIRECTORY/http-status" \
-            2> "$RECEIPT_DIRECTORY/transport.stderr" || tibicen_dispatch_curl_exit=$?
-          printf '%s\n' "$tibicen_dispatch_curl_exit" > "$RECEIPT_DIRECTORY/curl-exit"
-          python3 - "$RECEIPT_DIRECTORY" <<'PY'
-          from pathlib import Path
-          import hashlib, json, re, sys
-          root = Path(sys.argv[1])
-          body = (root / 'dispatch.body').read_bytes() if (root / 'dispatch.body').exists() else b''
-          status = (root / 'http-status').read_text().strip()
-          curl_exit = int((root / 'curl-exit').read_text())
-          headers = (root / 'dispatch.headers').read_text() if (root / 'dispatch.headers').exists() else ''
-          version = re.findall(r'^x-github-api-version-selected:\s*(\d{4}-\d{2}-\d{2})\s*$', headers, re.M | re.I)
-          receipt = {
-              'expectedSource': (root / 'expected-source').read_text().strip(),
-              'startedAt': (root / 'started-at').read_text().strip(),
-              'workflowPath': '.github/workflows/pages.yml',
-              'requestedRef': 'main', 'httpStatus': status, 'curlExit': curl_exit,
-              'selectedApiVersion': version[-1] if version else None,
-              'bodyBytes': len(body), 'bodySha256': hashlib.sha256(body).hexdigest(),
-              'runId': None, 'dispatchPostAttempts': 1,
-          }
-          outcome = 'transport-outcome-unknown'
-          passed = False
-          if curl_exit == 0 and status == '204' and not body:
-              outcome, passed = 'acknowledged-without-run-id', True
-          elif curl_exit == 0 and status == '200':
-              try:
-                  value = json.loads(body)
-                  run_id = value.get('workflow_run_id') if isinstance(value, dict) else None
-              except (ValueError, UnicodeError):
-                  run_id = None
-              if type(run_id) is int and run_id > 0:
-                  receipt['runId'] = run_id
-                  (root / 'run-id').write_text(str(run_id) + '\n')
-                  outcome, passed = 'acknowledged-with-run-id', True
-              else:
-                  outcome = 'unexpected-200-response-shape'
-          elif curl_exit == 0:
-              outcome = 'unexpected-http-status-or-body'
-          receipt['outcome'] = outcome
-          (root / 'receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
-          print(json.dumps(receipt, indent=2))
-          if not passed:
-              print('Stop and inspect response and run state; do not dispatch again.', file=sys.stderr)
-              raise SystemExit(1)
-          PY
-          if test -s "$RECEIPT_DIRECTORY/run-id"; then
-            tibicen_pages_run_id="$(cat "$RECEIPT_DIRECTORY/run-id")"
-            printf 'Pages run: https://github.com/warbr1ng3r/tibicen/actions/runs/%s\n' "$tibicen_pages_run_id"
-            gh api "repos/warbr1ng3r/tibicen/actions/runs/$tibicen_pages_run_id" \
-              --jq '{id,html_url,head_sha,head_branch,path,event,status,conclusion}' \
-              > "$RECEIPT_DIRECTORY/pages-run.json"
-            jq -e --arg sha "$PAGES_SOURCE_SHA" \
-              '.head_sha == $sha and .head_branch == "main" and .path == ".github/workflows/pages.yml" and .event == "workflow_dispatch"' \
-              "$RECEIPT_DIRECTORY/pages-run.json"
-            cat "$RECEIPT_DIRECTORY/pages-run.json"
-          else
-            echo 'Dispatch acknowledged without run ID. Root must identify the actual run and verify its source and deployment; do not dispatch again.'
-          fi
+          for tibicen_name in AUDIT_CONFIG_SHA256 AUDIT_SCRIPT_SHA256 RETURNED_VERIFIER_SHA256; do
+            [[ "${!tibicen_name}" =~ ^[0-9a-f]{64}$ ]] || exit 1
+          done
 
-      - name: Sanitize retained dispatch receipts
-        id: sanitize
-        if: always()
+      - name: Read only the exact operations commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Retrieve the official artifact and compare all returned public bodies once
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          RECEIPT_DIRECTORY="$RUNNER_TEMP/tibicen-1.5.3-pages-dispatch"
-          export RECEIPT_DIRECTORY
+          umask 077
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           python3 - <<'PY'
           from pathlib import Path
-          import hashlib, json, os
-          root = Path(os.environ['RECEIPT_DIRECTORY'])
-          assert root.is_dir() and not root.is_symlink()
-          token = os.environ['GH_TOKEN'].encode()
-          assert token
-          inventory = {}
-          redacted = []
-          for file in sorted(root.iterdir()):
-              assert file.is_file() and not file.is_symlink(), file.name
-              before = file.read_bytes()
-              data = before.replace(token, b'[REDACTED_GITHUB_TOKEN]')
-              if data != before:
-                  file.write_bytes(data)
-                  redacted.append(file.name)
-              assert token not in data
-              inventory[file.name] = {'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
-          safe = {'tokenRedactionAppliedTo': redacted, 'files': inventory}
-          (root / 'retained-inventory.json').write_text(json.dumps(safe, indent=2) + '\n')
-          print('Retained only dispatch response/source receipts; GitHub token checked and removed if present.')
+          import hashlib, os
+          for name, variable in [
+              ('pages-audit.json', 'AUDIT_CONFIG_SHA256'),
+              ('pages-audit.py', 'AUDIT_SCRIPT_SHA256'),
+              ('pages-verify-returned.py', 'RETURNED_VERIFIER_SHA256'),
+          ]:
+              file = Path('.release-1.5.3') / name
+              assert file.is_file() and not file.is_symlink()
+              assert hashlib.sha256(file.read_bytes()).hexdigest() == os.environ[variable]
           PY
+          python3 .release-1.5.3/pages-audit.py .release-1.5.3/pages-audit.json \
+            "$RUNNER_TEMP/tibicen-1.5.3-pages-audit-$GITHUB_RUN_ID"
 
-      - name: Retain dispatch receipts
-        if: always() && steps.sanitize.outcome == 'success'
+      - name: Retain official artifact and verification receipts
+        if: always()
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
-          name: tibicen-1.5.3-pages-dispatch-${{ github.run_id }}
-          path: ${{ runner.temp }}/tibicen-1.5.3-pages-dispatch
+          name: tibicen-1.5.3-pages-audit-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/tibicen-1.5.3-pages-audit-${{ github.run_id }}/*.json
+            ${{ runner.temp }}/tibicen-1.5.3-pages-audit-${{ github.run_id }}/official-github-pages.zip
+            ${{ runner.temp }}/tibicen-1.5.3-pages-audit-${{ github.run_id }}/returned-check/
           retention-days: 7
-          if-no-files-found: error
+          if-no-files-found: warn
