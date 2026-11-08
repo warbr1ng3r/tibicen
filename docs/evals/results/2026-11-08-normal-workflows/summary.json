@@ -291,5 +291,91 @@
     "differentHarnessUsefulWork": "open-unverified",
     "differentHarnessDecisionCorrectionAndFreshReuse": "open-unverified",
     "osUiSetupRequiredForRemainingWork": false
+  },
+  "diagnosisFollowup": {
+    "state": "closed-static-review-and-separate-diagnostic-red",
+    "bash": {
+      "originalExportedToolResultBytes": 0,
+      "originalChildStdoutBytes": "unknown",
+      "laterIdenticalStatusRenderingExportedBytes": [
+        181,
+        0
+      ],
+      "laterStatusExits": [
+        0,
+        0
+      ],
+      "lossBoundary": "unknown",
+      "oldOutcomesRegraded": false
+    },
+    "docs": {
+      "originalErrorPayloadAndNaturalTerminalTail": "unrecoverable from retained redacted records",
+      "collectorPrematureStop": "already fixed; historical upstream cause remains unknown",
+      "oldOutcomesRegraded": false
+    },
+    "zcode": {
+      "standaloneSubscriptionCli": "supported entry exists",
+      "currentReadiness": "unverified",
+      "bareAppServer": "requires actual host account state and request-auth handling",
+      "guiIsOnlyPossibleRoute": false,
+      "freshAuthCalls": 0,
+      "freshModelCalls": 0,
+      "credentialMetadataRead": "not executed; presence alone is not actionable readiness"
+    },
+    "commandTransportProbe": {
+      "state": "closed-diagnostic-red-accepted-as-observation-not-transport-pass",
+      "nativeCalls": 1,
+      "callerWallMs": 19318,
+      "nativeMs": 15339.779417,
+      "nativePass": true,
+      "turnCompleted": true,
+      "diagnosticPass": false,
+      "classification": "valid-cli-envelope-native-export-mismatch",
+      "cliTeeCommandExitCodes": [
+        0,
+        0,
+        0
+      ],
+      "capturedStdout": {
+        "bytes": 6381,
+        "sha256": "da6f4dabb10f39b11e549586e5d5e9843616dac978c4d3dc34495e3c442e2dcd",
+        "artifactMode": "0600",
+        "validCanonicalProposalEnvelope": true
+      },
+      "capturedStderrBytes": 0,
+      "exportedCommandOutputBytes": 0,
+      "preservedInputFilesAndModes": 120,
+      "returnedFiles": 123,
+      "sourceConfigAndCodeModeGuardsPassed": true,
+      "nativeContainerStoppedAndRemoved": true,
+      "independentReview": "accepted diagnostic observation; no transport pass",
+      "ownedRootCleanup": "complete",
+      "rawToolResponseRetained": false,
+      "modelOutputVisibility": "not established",
+      "omissionReproducedAboveChildStdout": true,
+      "exactUpstreamLayer": "unknown",
+      "oldCauseEstablished": false,
+      "oldOutcomesRegraded": false,
+      "proposalApplied": false,
+      "repairClaimed": false,
+      "additionalAcceptedWorkflowClaimed": false,
+      "additionalZcodeNativeCoverage": false,
+      "assessmentSha256": "8e06a1994de364e467cc22023fed7e52e82cf072c98d8b2a0445bab1d60acad2",
+      "nativeOutcomeSha256": "8bbc70aac3f552c94388cf106dfd9c9d80d451d2dbffc8f3afc245561c31945f",
+      "callerFinishedSha256": "d6dd5448d69f2da44167090c37a2417718aa4b69be10eb590cfb2be49ff14ae6",
+      "nativeHomesEmpty": true,
+      "actualReviewSha256": "8cb1a3d87b34b0e3d42ca739d84abcfcae0a54b6d7492646515eedb842587ff8",
+      "cleanupSha256": "c52b3fac91fcd6a3e6c586bcb0d0b9ba1abd5ea4a11cbe89213beba3b681cf5f",
+      "closureSha256": "6920e5dac40ec0f4bdc12dbbc80d528ed0b9385a9a9f2b3c4269ea4e6fc4a848"
+    },
+    "nativeCoverageAdded": 0,
+    "existingNativeAccountingUnchanged": true,
+    "conclusionBindings": {
+      "bashConclusionSha256": "09824bd3b178de660a6bfb8f0c9b6b0887a63e7bb640d670533288d2207e18ea",
+      "docsConclusionSha256": "d24e94858ccca5f88501344a4b9e4632e19e5da41e4617085b33b59ed58995ca",
+      "zcodeConclusionSha256": "1b29b1431b7d956d0f3930d867e6a330bf9bf9557d8a99216a46529c28b20c25",
+      "zcodeIndependentReviewSha256": "d47b8468481555a2ac7fb8faa4b19667f427e3343946a6884bff20b726d4c43e"
+    },
+    "existingNativeAccountingScope": "earlier workflow aggregate only; separate diagnostic call below"
   }
 }
