@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "distributionCommit": "b6fd86e8927c3640fe66be064da5a34e63ac366d",
+  "candidateArchiveSha256": "1636a3acf2580137c4deb53e47d6ef481fe1201473ded169e58c0471a56faefb",
+  "payloadFiles": 110,
+  "calls": {
+    "installer": 4,
+    "standalone": 2
+  },
+  "preservationPassed": true,
+  "rawReceiptSha256": "3fa7b5772ce5e565b4b5d0fe86d9c38906a09ddee84d2270f24a41784521262b",
+  "limits": [
+    "Owned macOS/Node24 anonymous public full-SHA lifecycle; no native loading, model behavior or human usefulness claim."
+  ]
+}

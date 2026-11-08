@@ -1,0 +1,10 @@
+{
+  "ref": "refs/tags/v1.5.2",
+  "node_id": "REF_kwDOVYjC1bByZWZzL3RhZ3MvdjEuNS4y",
+  "url": "https://api.github.com/repos/warbr1ng3r/tibicen/git/refs/tags/v1.5.2",
+  "object": {
+    "sha": "76c2ec9ab6136e177430c5fa440b1f22309833d2",
+    "type": "tag",
+    "url": "https://api.github.com/repos/warbr1ng3r/tibicen/git/tags/76c2ec9ab6136e177430c5fa440b1f22309833d2"
+  }
+}
