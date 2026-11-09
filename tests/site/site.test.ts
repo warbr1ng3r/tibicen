@@ -5,7 +5,8 @@ import { readFile, stat } from 'node:fs/promises';
 const site = new URL('../../landing/dist/', import.meta.url);
 const basePath = (process.env.TIBICEN_SITE_BASE ?? '/').replace(/\/$/, '');
 const origin = 'https://tibicen.invalid';
-const siteOrigin = 'https://warbr1ng3r.github.io';
+const siteOrigin =
+  process.env.TIBICEN_SITE_ORIGIN ?? 'https://warbr1ng3r.github.io';
 const pages = [
   { filename: 'index.html', route: '/', locale: 'en', other: 'ru' },
   { filename: 'ru/index.html', route: '/ru/', locale: 'ru', other: 'en' },
