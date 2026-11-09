@@ -5,6 +5,12 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+### Changed
+
+- Put the first action before release history in the paired README guides, preserve complete earlier records and keep one concise current roadmap. Add a [bounded first-use report](docs/evals/results/2026-11-09-first-use-1.5.4/README.md) with actual native application and fresh-task results, including assistance and coverage limits.
+- Add localized canonical and social-preview metadata with a PNG image, preserving the landing design and installation pin.
+- Limit full-suite test file workers to four without changing assertions, deadlines or distributed runtime files.
+
 ## [1.5.4](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.4) — 2026-11-09
 
 ### Changed

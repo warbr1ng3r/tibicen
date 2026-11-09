@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <title>Tibicen — project instructions and optional tools</title>
+  <desc>Project instructions connect to optional memory and tools after approval.</desc>
+  <rect width="1200" height="630" fill="#1c1c1c"/>
+  <g stroke="#343834" stroke-width="2">
+    <path d="M640 0 940 210 1200 70M940 210l-80 270 340 120M640 0l-80 380 300 100M560 380 1200 70"/>
+    <circle cx="940" cy="210" r="8" fill="#1c1c1c"/>
+    <circle cx="860" cy="480" r="8" fill="#1c1c1c"/>
+  </g>
+  <g transform="translate(65 68) scale(.33)">
+    <path fill="#f0f0f0" d="M35 57h250v36H172l-23 21H35zM89 123h56v140H89z"/>
+    <path fill="#79d98b" d="M188 102h48q6 0 2 4l-78 78q-5 5-5-2v-44q0-2 2-4l29-30q1-2 2-2z"/>
+  </g>
+  <text x="185" y="145" fill="#f0f0f0" font-family="ui-monospace, monospace" font-size="72" font-weight="700">tibicen</text>
+  <text x="80" y="240" fill="#f0f0f0" font-family="system-ui, sans-serif" font-size="46" font-weight="600">Set up your project</text>
+  <text x="80" y="300" fill="#f0f0f0" font-family="system-ui, sans-serif" font-size="46" font-weight="600">for your coding agent.</text>
+  <rect x="80" y="370" width="470" height="80" rx="14" fill="#242824" stroke="#79d98b" stroke-width="2"/>
+  <text x="108" y="421" fill="#a9e7b5" font-family="ui-monospace, monospace" font-size="28">instructions</text>
+  <path d="M550 410h100m0-65v200m0-200h55m-55 200h55" stroke="#59765f" stroke-width="3"/>
+  <rect x="705" y="305" width="390" height="80" rx="14" fill="#222522" stroke="#4b574d" stroke-width="2"/>
+  <text x="731" y="355" fill="#cacdca" font-family="ui-monospace, monospace" font-size="25">memory · optional</text>
+  <rect x="705" y="505" width="390" height="80" rx="14" fill="#222522" stroke="#4b574d" stroke-width="2"/>
+  <text x="731" y="555" fill="#cacdca" font-family="ui-monospace, monospace" font-size="25">tools · optional</text>
+  <text x="80" y="550" fill="#9ca19c" font-family="system-ui, sans-serif" font-size="27">Review. Approve. Apply.</text>
+</svg>

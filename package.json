@@ -13,7 +13,7 @@
     "format:check": "prettier --check .",
     "typecheck": "pnpm typecheck:core && pnpm --filter @tibicen/landing typecheck",
     "typecheck:core": "tsc --noEmit",
-    "test": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm build:site && pnpm spec:check && node scripts/build.ts && node --test",
+    "test": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm build:site && pnpm spec:check && node scripts/build.ts && node --test --test-concurrency=4",
     "test:core": "node --test tests/compat/*.test.ts tests/core/*.test.ts tests/discovery/*.test.ts tests/mcp/*.test.ts tests/presets/*.test.ts tests/process/*.test.ts tests/scan/*.test.ts tests/skills/*.test.ts tests/verify/*.test.ts",
     "test:evals": "node scripts/build.ts && node --test tests/evals/*.test.ts",
     "test:site:unit": "pnpm build:site && node --test tests/site/*.test.ts",

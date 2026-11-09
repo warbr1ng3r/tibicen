@@ -5,6 +5,7 @@ import { readFile, stat } from 'node:fs/promises';
 const site = new URL('../../landing/dist/', import.meta.url);
 const basePath = (process.env.TIBICEN_SITE_BASE ?? '/').replace(/\/$/, '');
 const origin = 'https://tibicen.invalid';
+const siteOrigin = 'https://warbr1ng3r.github.io';
 const pages = [
   { filename: 'index.html', route: '/', locale: 'en', other: 'ru' },
   { filename: 'ru/index.html', route: '/ru/', locale: 'ru', other: 'en' },
@@ -302,6 +303,70 @@ for (const { filename, route } of [
   { filename: 'preset/index.html', route: '/preset/' },
   { filename: 'ru/preset/index.html', route: '/ru/preset/' },
 ]) {
+  test(`${route}: canonical and social metadata preserve page, language and configured base`, async () => {
+    const html = await readFile(new URL(filename, site), 'utf8');
+    const locale = route.startsWith('/ru/') ? 'ru' : 'en';
+    const preset = route.endsWith('/preset/');
+    const canonical = `${siteOrigin}${basePath}${route}`;
+    const canonicalLinks = [
+      ...html.matchAll(/<link\b[^>]*rel="canonical"[^>]*href="([^"]+)"/g),
+    ];
+    assert.deepEqual(
+      canonicalLinks.map((match) => match[1]),
+      [canonical],
+    );
+    for (const language of ['en', 'ru', 'x-default']) {
+      const expected = `${siteOrigin}${basePath}/${language === 'ru' ? 'ru/' : ''}${preset ? 'preset/' : ''}`;
+      assert.match(
+        html,
+        new RegExp(
+          `<link\\b[^>]*rel="alternate"[^>]*hreflang="${language}"[^>]*href="${expected}"`,
+        ),
+      );
+    }
+    const meta = (key: string) => {
+      const values = [
+        ...html.matchAll(
+          new RegExp(
+            `<meta\\b[^>]*(?:name|property)="${key}"[^>]*content="([^"]+)"`,
+            'g',
+          ),
+        ),
+      ];
+      assert.equal(values.length, 1, key);
+      return values[0][1];
+    };
+    assert.equal(meta('og:url'), canonical);
+    assert.equal(meta('og:type'), 'website');
+    assert.equal(meta('og:site_name'), 'Tibicen');
+    assert.equal(meta('og:locale'), locale === 'ru' ? 'ru_RU' : 'en_US');
+    assert.equal(
+      meta('og:locale:alternate'),
+      locale === 'ru' ? 'en_US' : 'ru_RU',
+    );
+    const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
+    assert.equal(meta('og:title'), title);
+    assert.equal(meta('twitter:title'), title);
+    assert.equal(meta('og:description'), meta('description'));
+    assert.equal(meta('twitter:description'), meta('description'));
+    assert.equal(meta('twitter:card'), 'summary_large_image');
+    const preview = `${siteOrigin}${basePath}/assets/social-preview.png`;
+    assert.equal(meta('og:image'), preview);
+    assert.equal(meta('twitter:image'), preview);
+    assert.equal(meta('og:image:alt'), meta('twitter:image:alt'));
+    if (locale === 'ru') assert.match(meta('og:image:alt'), /[А-Яа-яЁё]/);
+    else assert.doesNotMatch(meta('og:image:alt'), /[А-Яа-яЁё]/);
+    assert.equal(meta('og:image:type'), 'image/png');
+    assert.equal(meta('og:image:width'), '1200');
+    assert.equal(meta('og:image:height'), '630');
+    const asset = await localFile(new URL(new URL(preview).pathname, origin));
+    const png = await readFile(asset);
+    assert.equal(png.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+    assert.equal(png.subarray(12, 16).toString(), 'IHDR');
+    assert.equal(png.readUInt32BE(16), 1200);
+    assert.equal(png.readUInt32BE(20), 630);
+  });
+
   test(`${route}: IDs, accessible associations, local resources and destination fragments resolve`, async () => {
     const html = await readFile(new URL(filename, site), 'utf8');
     const ids = idsIn(html);
@@ -324,6 +389,16 @@ for (const { filename, route } of [
         if (reference.startsWith('data:')) continue;
         const url = new URL(reference, current);
         if (url.origin !== origin) {
+          if (
+            tag[1] === 'link' &&
+            /\brel="(?:canonical|alternate)"/.test(tag[0])
+          ) {
+            assert.equal(url.origin, siteOrigin);
+            assert.equal(url.search, '');
+            assert.equal(url.hash, '');
+            await localFile(new URL(url.pathname, origin));
+            continue;
+          }
           assert.equal(
             tag[1],
             'a',
