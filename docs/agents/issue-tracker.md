@@ -1,6 +1,10 @@
 # Issue tracker
 
-## Current effort — release 1.5.4
+## Current effort — Pages metadata for 1.5.4
+
+[1.5.4](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.4) is published; source checks, six platform cells, exact public delivery and returned assets are accepted. The [report](../evals/results/2026-11-09-release-1.5.4/README.md) retains native-observation limits. The remaining release step is separate Pages deployment and returned-body verification. Additional harness coverage stays outside this release.
+
+## Historical preparation — release 1.5.4
 
 The owner authorized final review, commit, push, CI and patch publication. The map (`../../.scratch/release-1.5.4-20261109/map.md`; private development record; excluded from public source) and dashboard (`../../.scratch/release-1.5.4-20261109/dashboard.md`; private development record; excluded from public source) own candidate review, refreshed affected evidence, exact delivery and public operations. Preserve earlier outcomes and exclude concurrent promotion research/private history.
 

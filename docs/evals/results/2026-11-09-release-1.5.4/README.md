@@ -1,0 +1,37 @@
+# Tibicen 1.5.4 release report
+
+**[1.5.4 is published](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.4).** Release 438721857 was published at 2026-11-09T03:46:19Z. All three downloaded assets match the frozen candidate, including 111 archive files/modes; 1.5.3 is preserved. Pages verification remains pending.
+
+Installed guidance now preserves supplied operation names and accepted exception boundaries in memory. Before codifying a rule, it distinguishes conflicting documentation, actual implementation and accepted owner decisions. No memory schema, automatic alias inference or permission is added. Development-only diagnostics retain allowlisted failure clues without raw error text or changed stopping.
+
+## Checks
+
+| Check                | Observed result                                                                                                                                                                                                                                                        |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Repository gate      | 1,075 passes, one existing skip, zero failures; install/build passed                                                                                                                                                                                                   |
+| Candidate            | 59 source inputs; 110 skill payload files; 111 archive files/modes verified                                                                                                                                                                                            |
+| Standalone           | Three checks passed; both copied CLI self-tests passed without Git in PATH                                                                                                                                                                                             |
+| Local delivery       | Four installer calls and two installed self-tests passed; replacement, repeat, full edited-backup restoration and removal, 1.57 seconds including cleanup                                                                                                              |
+| Proposal             | Both changed references read; actual 11,107-byte CLI envelope; all 122 input files preserved                                                                                                                                                                           |
+| Operator application | Exact two AGENTS changes, preserved memory; structural verify passed and apply/status/report complete                                                                                                                                                                  |
+| Fresh task           | Memory read observed; only source/test changed; nine tests and independent behavior oracle passed                                                                                                                                                                      |
+| Preservation/cleanup | Two native callers, 167.541 seconds summed caller wall; four model-free containers; owned mirror removed and native homes empty                                                                                                                                        |
+| Public source        | [68a355e](https://github.com/warbr1ng3r/tibicen/commit/68a355e080b6323014837f8940ba79bcc3782b01); [CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42557275533) and [six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/42557285442) passed |
+| Public delivery      | Four installer calls and two installed self-tests passed in 26.48 seconds, with preservation/restoration/removal and cleanup; exact [381c5d5 distribution](https://github.com/warbr1ng3r/tibicen/commit/381c5d53972b53d60e9a134ec7f620bb7c35e6be)                      |
+| Publication          | [Run 42558175763](https://github.com/warbr1ng3r/tibicen/actions/runs/42558175763) passed; tag object `2929a09381addca1052b969b8e2d57ab5f50ada2` identifies the distribution                                                                                            |
+| Returned assets      | All three match the candidate; 111 archive files/modes verified; prior 1.5.3 preserved                                                                                                                                                                                 |
+| Pages                | Pending                                                                                                                                                                                                                                                                |
+
+Archive SHA-256: `c74e097f41f0660f6c18afa306e12d0dadbf18778feceaefcff06f306760a8cb`. Route: Codex 0.157.0 (`ad0be20d…`), requested `gpt-6-astra`, existing subscription only; Linux arm64 tool container (`ba23f5c6…`), Node 24.15.0, pnpm 11.21.0. No paid API or caller retry.
+
+## Generated policy, then useful work
+
+The twelve-file synthetic stock project reused a working application with seven tests, restored its original stale instructions and retained existing decisions. One authored README sentence incorrectly promised SKU sorting; code/tests and an accepted owner decision preserved caller order. A named memory exception selected positive stock, ascending stock and stable ties for the new `renderAssemblySheet(items)` export. This was disclosed project seeding, without an operator-written managed memory policy.
+
+The ordinary requests were “Put this project's agent instructions in order; preserve code, tests and accepted decisions; show changes before applying” and, in a fresh session, “Add renderAssemblySheet(items): sku:stock lines, header # assembly. Add tests.”
+
+The agent authored the policy and compiled the proposal with the actual Tibicen CLI, separated the stale README from accepted requirements and retained that documentation gap. An operator reviewed the exact digest and applied the unchanged plan in isolation, including its generated service records. The fresh caller received actual resulting files/modes, without the first transcript, sorting answer or memory-reading cue. It implemented the named exception while preserving old `renderStock` behavior, exact SKUs and inputs. Two ordinary proposal command failures were recovered within that caller; no host retry occurred.
+
+Boundary/functional controls passed before native use: seven baseline tests, two valid alternatives and nine targeted negatives. Exact application took 2.03 seconds; the fresh-task oracle took 1.07 seconds. All six containers were stopped/removed.
+
+This is one candidate-generated policy and working use with named-skill, write-scope and operator-approval/application assistance. It does not establish native application, automatic loading, memory correction, a causal improvement, wider harness support or human benefit. Earlier [operator-seeded observations](../2026-11-09-memory-scope/README.md) and failures remain unchanged. [Release notes](release-notes.md) retain the versioned scope.

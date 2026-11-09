@@ -13,7 +13,9 @@ Two entry points:
 - `tibicen-init` — “Set up agent infrastructure.” For an empty directory or an existing application without an agent setup.
 - `tibicen-adopt` — “Review and update agent infrastructure.” For fixing, extending, and updating existing instructions and integrations.
 
-[**1.5.3 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3): fixes registered-memory links and forbidden-path handling during project inspection, and clarifies external human actions. [Checks and limits](docs/evals/results/2026-11-09-release-1.5.3/README.md) retain the actual acceptance scope.
+[**1.5.4 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.4): memory policy keeps operation names and accepted exception boundaries; instruction authoring separates observed behavior from owner decisions when documentation and code disagree. [Checks and limits](docs/evals/results/2026-11-09-release-1.5.4/README.md) retain actual acceptance.
+
+Earlier release (historical): [**1.5.3 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3): fixes registered-memory links and forbidden-path handling during project inspection, and clarifies external human actions. [Checks and limits](docs/evals/results/2026-11-09-release-1.5.3/README.md) retain the actual acceptance scope.
 
 Earlier release (historical): [**1.5.2 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.2): first setup remains available after project-local Tibicen installation, while existing user infrastructure retains improvement routing. Complete inventory, nonempty-project checks, approval and application-write protections remain unchanged. [Release checks and limits](docs/evals/results/2026-11-08-release-1.5.2/README.md) describe actual delivery and agent observations separately from automatic loading or measured human benefit. Pages metadata is verified separately.
 
@@ -37,8 +39,8 @@ Application source code, existing package manifests, CI, and data are preserved 
 
 ## Install Tibicen
 
-The command below pins the 1.5.3 distribution at its full commit. The
-[release report](docs/evals/results/2026-11-09-release-1.5.3/README.md) records exact
+The command below pins the 1.5.4 distribution at its full commit. The
+[release report](docs/evals/results/2026-11-09-release-1.5.4/README.md) records exact
 checks, retained earlier failures and candidate-bound limits.
 Publication and public delivery are tracked in [release details](docs/RELEASING.md).
 The source branch is not an installation target.
@@ -50,7 +52,7 @@ The explicit `universal` target puts both complete skills in `~/.agents/skills/`
 it does not require your host, model or provider to be in Tibicen's catalog.
 
 ```sh
-npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/b6fd86e8927c3640fe66be064da5a34e63ac366d -g --agent universal --skill tibicen-init tibicen-adopt --copy
+npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/381c5d53972b53d60e9a134ec7f620bb7c35e6be -g --agent universal --skill tibicen-init tibicen-adopt --copy
 ```
 
 Use the full distribution SHA from the release notes when an exact commit is

@@ -15,7 +15,7 @@ const t = (en: string, ru: string) => localize(locale, en, ru);
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 const repository = 'https://github.com/warbr1ng3r/tibicen';
 const installationGuide = `${repository}/blob/main/docs/INSTALLATION.md`;
-const release = `${repository}/releases/tag/v1.5.3`;
+const release = `${repository}/releases/tag/v1.5.4`;
 const presetPath = `${basePath}/${locale === 'ru' ? 'ru/' : ''}preset/`;
 const scenarios = [
   {
@@ -146,7 +146,7 @@ const geometry = [
         </div>
         <p class="hero-note">
           <span class="status-dot" aria-hidden="true"></span>
-          Tibicen · 1.5.3 · MIT
+          Tibicen · 1.5.4 · MIT
         </p>
       </div>
       <ProjectPreview {locale} />

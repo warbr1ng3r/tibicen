@@ -75,7 +75,7 @@ The notes are readable Markdown. There is no mandatory entry schema, timestamp
 format or separate questionnaire, and the full history need not be copied into
 every instruction file.
 
-**Unreleased policy clarification:** retain the known subject, supplied operation
+**Policy clarification available in 1.5.4:** retain the known subject, supplied operation
 names and affected behavior when recording a decision. For example, if the owner
 changes `renderAssemblySheet` to select positive stock in ascending order, keep
 that name and preserve the ordinary report's input-order rule. A later request
