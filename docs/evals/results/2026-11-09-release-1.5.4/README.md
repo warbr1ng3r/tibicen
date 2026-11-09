@@ -1,6 +1,6 @@
 # Tibicen 1.5.4 release report
 
-**[1.5.4 is published](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.4).** Release 438721857 was published at 2026-11-09T03:46:19Z. All three downloaded assets match the frozen candidate, including 111 archive files/modes; 1.5.3 is preserved. Pages verification remains pending.
+**[1.5.4 is published](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.4).** Release 438721857 was published at 2026-11-09T03:46:19Z. All three downloaded assets match the frozen candidate, including 111 archive files/modes; 1.5.3 is preserved. Pages verification passed: all 20 bodies matched the official artifact without a local rebuild; the [20-body audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42559662662) retains separate evidence.
 
 Installed guidance now preserves supplied operation names and accepted exception boundaries in memory. Before codifying a rule, it distinguishes conflicting documentation, actual implementation and accepted owner decisions. No memory schema, automatic alias inference or permission is added. Development-only diagnostics retain allowlisted failure clues without raw error text or changed stopping.
 
@@ -20,7 +20,7 @@ Installed guidance now preserves supplied operation names and accepted exception
 | Public delivery      | Four installer calls and two installed self-tests passed in 26.48 seconds, with preservation/restoration/removal and cleanup; exact [381c5d5 distribution](https://github.com/warbr1ng3r/tibicen/commit/381c5d53972b53d60e9a134ec7f620bb7c35e6be)                      |
 | Publication          | [Run 42558175763](https://github.com/warbr1ng3r/tibicen/actions/runs/42558175763) passed; tag object `2929a09381addca1052b969b8e2d57ab5f50ada2` identifies the distribution                                                                                            |
 | Returned assets      | All three match the candidate; 111 archive files/modes verified; prior 1.5.3 preserved                                                                                                                                                                                 |
-| Pages                | Pending                                                                                                                                                                                                                                                                |
+| Pages | [Metadata CI](https://github.com/warbr1ng3r/tibicen/actions/runs/42558903550), [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42559292001) and [20-body audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42559662662) passed; source `0d5eedbbfb61070c172eb5e86db05066fa394fd5`, deployment `7646663128`; 20/20 bodies matched official artifact `13647709700` (`ce77a7dbbede80a88e838b21e0cf4dc5c889c1e70a654b3d4fe49cc9b94ac0ae`) |
 
 Archive SHA-256: `c74e097f41f0660f6c18afa306e12d0dadbf18778feceaefcff06f306760a8cb`. Route: Codex 0.157.0 (`ad0be20d…`), requested `gpt-6-astra`, existing subscription only; Linux arm64 tool container (`ba23f5c6…`), Node 24.15.0, pnpm 11.21.0. No paid API or caller retry.
 

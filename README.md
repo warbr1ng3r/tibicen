@@ -13,7 +13,7 @@ Two entry points:
 - `tibicen-init` — “Set up agent infrastructure.” For an empty directory or an existing application without an agent setup.
 - `tibicen-adopt` — “Review and update agent infrastructure.” For fixing, extending, and updating existing instructions and integrations.
 
-[**1.5.4 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.4): memory policy keeps operation names and accepted exception boundaries; instruction authoring separates observed behavior from owner decisions when documentation and code disagree. [Checks and limits](docs/evals/results/2026-11-09-release-1.5.4/README.md) retain actual acceptance.
+[**1.5.4 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.4): memory policy keeps operation names and accepted exception boundaries; instruction authoring separates observed behavior from owner decisions when documentation and code disagree. [Checks and limits](docs/evals/results/2026-11-09-release-1.5.4/README.md) retain actual acceptance. Separate [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42559292001) and a [20-body audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42559662662) matched the official artifact; the [report](docs/evals/results/2026-11-09-release-1.5.4/README.md) retains the limits.
 
 Earlier release (historical): [**1.5.3 is published**](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3): fixes registered-memory links and forbidden-path handling during project inspection, and clarifies external human actions. [Checks and limits](docs/evals/results/2026-11-09-release-1.5.3/README.md) retain the actual acceptance scope.
 

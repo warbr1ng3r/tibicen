@@ -1,8 +1,8 @@
 # Maintaining Tibicen rules and adapters
 
-## 1.5.4 published; Pages verification pending
+## 1.5.4 published; Pages verified
 
-[1.5.4](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.4), release ID `438721857`, was published at `2026-11-09T03:46:19Z`. Source `68a355e080b6323014837f8940ba79bcc3782b01` binds distribution `381c5d53972b53d60e9a134ec7f620bb7c35e6be` through annotated tag `2929a09381addca1052b969b8e2d57ab5f50ada2`. Source CI `42557275533`, all six platform cells `42557285442` and publication `42558175763` passed. Three returned assets and 111 archive files match the candidate; published 1.5.3 is preserved. The [release report](evals/results/2026-11-09-release-1.5.4/README.md) separates technical acceptance from bounded native observations. Separate Pages deployment and returned-body verification are pending.
+[1.5.4](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.4), release ID `438721857`, was published at `2026-11-09T03:46:19Z`. Source `68a355e080b6323014837f8940ba79bcc3782b01` binds distribution `381c5d53972b53d60e9a134ec7f620bb7c35e6be` through annotated tag `2929a09381addca1052b969b8e2d57ab5f50ada2`. Source CI `42557275533`, all six platform cells `42557285442` and publication `42558175763` passed. Three returned assets and 111 archive files match the candidate; published 1.5.3 is preserved. The [release report](evals/results/2026-11-09-release-1.5.4/README.md) separates technical acceptance from bounded native observations. Metadata CI `42558903550`, [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42559292001) and the [20-body audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42559662662) passed for source `0d5eedbbfb61070c172eb5e86db05066fa394fd5`; deployment `7646663128` succeeded. All 20 returned bodies matched official artifact `13647709700`, SHA-256 `ce77a7dbbede80a88e838b21e0cf4dc5c889c1e70a654b3d4fe49cc9b94ac0ae`, without a local rebuild. Eleven previous records and warnings remain unchanged. Later documentation closure does not redeploy the site.
 
 ## 1.5.3 published; Pages verified
 
