@@ -1,8 +1,20 @@
 # Issue tracker
 
-## Current effort — first use and adoption
+## Closed effort — publication and remaining investigations
 
-The owner approved the three post-1.5.4 fronts. The effort map (`../../.scratch/first-use-and-adoption-20261109/map.md`; private development record; excluded from public source) and dashboard (`../../.scratch/first-use-and-adoption-20261109/dashboard.md`; private development record; excluded from public source) own the current work. Priorities live in the [roadmap](../DEVELOPMENT_PLAN.md).
+The [publication follow-up](../evals/results/2026-11-09-first-use-publication/README.md) records the completed bounded package. The map (`../../.scratch/first-use-publication-20261109/map.md`; private development record; excluded from public source) and dashboard (`../../.scratch/first-use-publication-20261109/dashboard.md`; private development record; excluded from public source) retain its assignments and receipts.
+
+| Front | Owner | State |
+| --- | --- | --- |
+| Public source and Pages | none | Source `4d315d50`, CI `42590769227` and Pages `42591765771` passed; 22 returned bodies matched a source-bound local build |
+| Native child stdout | none | One caller, 25.701 s: nested spawn `EPERM`, direct CLI valid; preservation and cleanup passed; older cause unknown |
+| Different harness | none | Static investigation complete; an authorized live route was not established, native coverage remains open |
+
+No product runtime fix, new skill release, paid API or personal authentication/settings repair resulted. The six-call first-use packet and earlier outcomes retain their original accounting and scope. The Pages comparison did not download the official artifact.
+
+## Completed effort — first use and adoption
+
+The owner approved the three post-1.5.4 fronts. The effort map (`../../.scratch/first-use-and-adoption-20261109/map.md`; private development record; excluded from public source) and dashboard (`../../.scratch/first-use-and-adoption-20261109/dashboard.md`; private development record; excluded from public source) retain the completed work. Priorities live in the [roadmap](../DEVELOPMENT_PLAN.md).
 
 | Work | Owner | State |
 | --- | --- | --- |

@@ -1,8 +1,20 @@
 # Трекер задач
 
-## Текущая работа — первый запуск и настройка существующих проектов
+## Закрытая работа — публикация и оставшиеся исследования
 
-Владелец одобрил три направления после 1.5.4. Карта (`../../.scratch/first-use-and-adoption-20261109/map.md`; private development record; excluded from public source) и дашборд (`../../.scratch/first-use-and-adoption-20261109/dashboard.md`; private development record; excluded from public source) хранят действующие задачи. Приоритеты — в [плане](../DEVELOPMENT_PLAN.md).
+[Отчёт продолжения](../evals/results/2026-11-09-first-use-publication/README.md) фиксирует завершённый ограниченный пакет. Карта (`../../.scratch/first-use-publication-20261109/map.md`; private development record; excluded from public source) и дашборд (`../../.scratch/first-use-publication-20261109/dashboard.md`; private development record; excluded from public source) сохраняют исполнителей и свидетельства.
+
+| Направление | Исполнитель | Состояние |
+| --- | --- | --- |
+| Публичные исходники и Pages | нет | Source `4d315d50`, CI `42590769227` и Pages `42591765771` прошли; 22 полученных тела совпали с локальной сборкой этих исходников |
+| Нативный дочерний stdout | нет | Один вызов, 25,701 с: вложенный запуск вернул `EPERM`, прямой CLI корректен; сохранность и очистка подтверждены; прежняя причина неизвестна |
+| Другой харнесс | нет | Статическое исследование завершено; авторизованный живой путь не подтверждён, нативный охват остаётся открытым |
+
+Исправления исполняемого кода продукта, нового выпуска скиллов, платного API и ремонта личной авторизации/настроек не было. Прежний пакет из шести вызовов и более ранние исходы сохраняют исходный учёт и охват. Сравнение Pages не скачивало официальный артефакт.
+
+## Завершённая работа — первый запуск и настройка существующих проектов
+
+Владелец одобрил три направления после 1.5.4. Карта (`../../.scratch/first-use-and-adoption-20261109/map.md`; private development record; excluded from public source) и дашборд (`../../.scratch/first-use-and-adoption-20261109/dashboard.md`; private development record; excluded from public source) сохраняют завершённую работу. Приоритеты — в [плане](../DEVELOPMENT_PLAN.md).
 
 | Работа | Исполнитель | Состояние |
 | --- | --- | --- |
