@@ -24,27 +24,26 @@ pnpm preview:site
 
 Упрощение первого запуска опубликовано из [`a6d54bc`](https://github.com/warbr1ng3r/tibicen/commit/a6d54bc6901bbf212cbfd889385d77b82e4b2f4f): [Pages 42156035977](https://github.com/warbr1ng3r/tibicen/actions/runs/42156035977) и проверки четырёх живых EN/RU маршрутов на desktop/телефоне прошли, локальные пресеты идентичны. Проверки записаны в [свидетельствах change](../openspec/changes/simplify-first-use-landing/verification.md). Исходная двуязычная итерация опубликована 28 октября 2026 года из [`31694d4`](https://github.com/warbr1ng3r/tibicen/commit/31694d4b234efc82064b8a1799f7a179a6541041). [Ubuntu CI](https://github.com/warbr1ng3r/tibicen/actions/runs/40689855224) и [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/40690279699) прошли для этого коммита. На живом сайте проверены английский корень и русский `ru/`, восемь ресурсов, переключение с JavaScript и без него, одинаковые локально скачанные пресеты; см. [свидетельства](../openspec/changes/localize-and-simplify-landing/verification.md#publication). Квитанция прежней выкладки ниже сохранена как история.
 
-## GitHub Pages
+## Публичный хостинг
 
-[Ручной workflow](../.github/workflows/pages.yml) публикует только лендинг. Выпуск скиллов, пилот и контакты сопровождения не требуются для хостинга страницы.
+Основной лендинг — [tibicen.pages.dev](https://tibicen.pages.dev/), с главной и конструктором на английском и русском. Обычная сборка Astro использует этот origin. [Workflow Cloudflare](../.github/workflows/cloudflare-pages.yml) собирает и проверяет сайт при каждом push в `main`, затем публикует закреплённым Wrangler. Ручной запуск поддерживается на `main`. Требуются repository secrets `CLOUDFLARE_API_TOKEN` и `CLOUDFLARE_ACCOUNT_ID`; существующий токен аккаунта имеет Pages Write. Для ротации замените токен Cloudflare и секрет GitHub. Другие ветки и pull request не публикуются.
 
-После выбора репозитория и размещения reviewed кода с workflow в default branch:
+## Прежний GitHub Pages
 
-1. В Settings → Pages выберите Source: GitHub Actions.
-2. В Actions откройте **Deploy landing to GitHub Pages** → **Run workflow** и выберите проверенную ветку.
-3. Дождитесь build и deploy; URL появится в environment **github-pages**. Проверьте главную, логотип/лицензию и скачивание пресета на этом адресе.
+[Ручной workflow Pages](../.github/workflows/pages.yml) публикует только четыре небольших HTML из `legacy-pages/` и неизменённую копию `public/maintenance/index.json`. Второй Astro-лендинг не собирается. После проверенного обновления канала запустите **Publish legacy redirects and checksum index** на `main`; проверьте четыре перехода и сравните публичный JSON с исходником.
 
-Workflow получает origin/base из Pages, передаёт их Astro и проверяет собранные файлы перед upload. Он поддерживает project path и корень пользовательского сайта/настроенного домена. На push/PR публикация не запускается; собственный домен настраивается отдельно в Pages. Поля `homepage`/`repository` в package.json описывают пакет; текущая сборка использует параметры Astro `site`/`base`.
+Старые маршруты сохраняют язык и тип страницы, содержат немедленный HTML refresh, canonical и видимые ссылки. При JavaScript сохраняются query и fragment. Это статические HTML-переходы с HTTP 200, не серверные HTTP 301. Прежний maintenance endpoint остаётся прямым JSON-ответом; channel и опубликованные записи не меняются. См. [проверку переноса](../openspec/changes/make-cloudflare-primary-site/verification.md).
 
-Эквивалент локальной проверки project path из корня репозитория:
+Явные origin/base остаются доступны для локальных проверок:
 
 ```sh
 pnpm --filter @tibicen/landing build --site https://tibicen.invalid --base /repo/
-TIBICEN_SITE_BASE=/repo/ node --test tests/site/*.test.ts
-TIBICEN_SITE_BASE=/repo/ pnpm exec playwright test --config landing/playwright.config.ts --project chromium --grep "without JavaScript|Russian layout|equivalent English"
+TIBICEN_SITE_ORIGIN=https://tibicen.invalid TIBICEN_SITE_BASE=/repo/ node --test tests/site/*.test.ts
 ```
 
-`tibicen.invalid` здесь — пример origin для локальной проверки, без публикации или обращения к нему. После неё верните обычную сборку командой `pnpm build:site`. Для просмотра project-path сборки используйте preview с тем же `--base /repo/` и адресом `/repo/`.
+После проверки верните обычную сборку Cloudflare командой `pnpm build:site`.
+
+Следующая квитанция сохранена как история.
 
 [Лендинг](https://warbr1ng3r.github.io/tibicen/) опубликован 27 октября 2026 года из source [`e0f59a5`](https://github.com/warbr1ng3r/tibicen/tree/e0f59a55c7ce7581e402c3e270aa162fa1e0dc52); [GitHub Pages run](https://github.com/warbr1ng3r/tibicen/actions/runs/40438226284) успешен. Публикация страницы не закрывает полную MVP-приёмку скиллов.
 
@@ -75,7 +74,7 @@ pnpm test:site
 
 ## Установка продукта и разработка сайта
 
-Команда посетителя фиксирует поставку 1.4.1 коммитом `52c0769574e90d7d1a0438996df9da40621b0107` через skills 1.7.4. Рекомендуется npx; эквивалентные команды pnpm и Yarn 2+ необязательны. Исходники и зависимости сайта не нужны. Публикация и привязанные к кандидату проверки описаны в [инструкции выпуска](../docs/RELEASING.md), отдельно проверенная выкладка Pages и возвращённые байты — в [сопровождении](../docs/MAINTENANCE.md). Native-обнаружение/загрузка остаются отдельно экспериментальными.
+Команда посетителя фиксирует поставку 1.5.4 коммитом `381c5d53972b53d60e9a134ec7f620bb7c35e6be` через skills 1.7.4. Рекомендуется npx; эквивалентные команды pnpm и Yarn 2+ необязательны. Исходники и зависимости сайта не нужны. Публикация и привязанные к кандидату проверки описаны в [инструкции выпуска](../docs/RELEASING.md), отдельно проверенная выкладка Pages и возвращённые байты — в [сопровождении](../docs/MAINTENANCE.md). Native-обнаружение/загрузка остаются отдельно экспериментальными.
 
 Исторические публичные установки 1.0.0 (`e8532bba0582564c93e50de1f55174daaa9bbd34`) по полному SHA для Codex, Claude Code и Cursor совпали со всеми 86 файлами поставки; суммы релизных файлов и опубликованные metadata Pages проверены. Alpha tag `v0.1.0-alpha.1` и страница опубликованы 27 октября 2026 года после проверки Git-доставки: установки по полному SHA и tag совпали со всеми 86 файлами, проверки resume/удаления прошли. Native-наблюдения alpha ограничены macOS/Node 24/Codex.
 

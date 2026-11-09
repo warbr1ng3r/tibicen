@@ -8,6 +8,8 @@
 
 Tibicen helps your coding agent set up or repair a project's instructions and tools. It examines the project, shows one suitable plan, applies the changes you approve and reports what it checked. It runs inside your usual agent; there is no separate Tibicen account or background service.
 
+[Website and preset builder](https://tibicen.pages.dev/).
+
 ## Get started
 
 Run this in your terminal. It installs both complete skills from the exact published **1.5.4** distribution; Node **22.20 or newer** and Git are required.

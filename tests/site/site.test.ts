@@ -6,7 +6,7 @@ const site = new URL('../../landing/dist/', import.meta.url);
 const basePath = (process.env.TIBICEN_SITE_BASE ?? '/').replace(/\/$/, '');
 const origin = 'https://tibicen.invalid';
 const siteOrigin =
-  process.env.TIBICEN_SITE_ORIGIN ?? 'https://warbr1ng3r.github.io';
+  process.env.TIBICEN_SITE_ORIGIN ?? 'https://tibicen.pages.dev';
 const pages = [
   { filename: 'index.html', route: '/', locale: 'en', other: 'ru' },
   { filename: 'ru/index.html', route: '/ru/', locale: 'ru', other: 'en' },

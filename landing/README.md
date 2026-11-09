@@ -24,27 +24,26 @@ All four pages share one layout and components. After the hero, first use has tw
 
 The first-use simplification was deployed from [`a6d54bc`](https://github.com/warbr1ng3r/tibicen/commit/a6d54bc6901bbf212cbfd889385d77b82e4b2f4f): [Pages 42156035977](https://github.com/warbr1ng3r/tibicen/actions/runs/42156035977) and four-route EN/RU desktop/mobile checks passed, with identical local presets. Its checks are recorded in the [change verification](../openspec/changes/simplify-first-use-landing/verification.md). The original bilingual iteration was published on 28 October 2026 from [`31694d4`](https://github.com/warbr1ng3r/tibicen/commit/31694d4b234efc82064b8a1799f7a179a6541041). [Ubuntu CI](https://github.com/warbr1ng3r/tibicen/actions/runs/40689855224) and [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/40690279699) passed for that commit. The live English root and Russian `ru/`, eight assets, language switching with/without JavaScript and identical local preset downloads passed; see [verification](../openspec/changes/localize-and-simplify-landing/verification.md#publication). The earlier deployment receipt below is historical.
 
-## GitHub Pages
+## Public hosting
 
-The [manual workflow](../.github/workflows/pages.yml) deploys the landing page separately. Skill publication, pilot results and support contacts are not prerequisites for hosting the page.
+The primary landing is [tibicen.pages.dev](https://tibicen.pages.dev/), with English/Russian home and preset routes. The default Astro build uses this origin. The [Cloudflare workflow](../.github/workflows/cloudflare-pages.yml) builds and checks the site on every push to `main`, then deploys with pinned Wrangler. Manual runs are supported on `main`. Repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are required; the existing account token grants Pages Write. Rotate it in Cloudflare and replace the GitHub secret. Other branches and pull requests do not deploy.
 
-To redeploy reviewed code from the default branch:
+## Legacy GitHub Pages
 
-1. In Settings → Pages, select Source: GitHub Actions.
-2. In Actions, open **Deploy landing to GitHub Pages** → **Run workflow** and select the reviewed branch.
-3. Wait for build and deploy; the URL appears in the **github-pages** environment. Check the home page, logo/license and preset download at that address.
+The [manual Pages workflow](../.github/workflows/pages.yml) publishes only four small HTML redirects from `legacy-pages/` and an unchanged copy of `public/maintenance/index.json`. It does not build a second Astro landing. After a reviewed channel update, run **Publish legacy redirects and checksum index** on `main`; verify the four redirects and compare the public JSON bytes to the committed source.
 
-The workflow gets origin/base from Pages, passes them to Astro and checks the built files before upload. It supports a project path and the root of a user site or configured domain. Push/PR does not trigger deployment; configure a custom domain separately in Pages. The package.json `homepage`/`repository` fields describe the package; the build uses Astro `site`/`base` parameters.
+The legacy routes preserve language/page type and have immediate HTML refresh, canonical URLs and visible links. With JavaScript, query and fragment are preserved. These are static HTML redirects with HTTP 200, not server-side HTTP 301. The maintenance endpoint remains a direct JSON response at its existing address; its channel and published records are unchanged. See the [migration verification](../openspec/changes/make-cloudflare-primary-site/verification.md).
 
-Equivalent local project-path checks from the repository root:
+Explicit origin/base flags remain available for local compatibility checks:
 
 ```sh
 pnpm --filter @tibicen/landing build --site https://tibicen.invalid --base /repo/
-TIBICEN_SITE_BASE=/repo/ node --test tests/site/*.test.ts
-TIBICEN_SITE_BASE=/repo/ pnpm exec playwright test --config landing/playwright.config.ts --project chromium --grep "without JavaScript|Russian layout|equivalent English"
+TIBICEN_SITE_ORIGIN=https://tibicen.invalid TIBICEN_SITE_BASE=/repo/ node --test tests/site/*.test.ts
 ```
 
-`tibicen.invalid` is an example origin for local checking, without publication or requests to it. Restore the ordinary build afterward with `pnpm build:site`. To inspect a project-path build, use preview with the same `--base /repo/` and visit `/repo/`.
+Restore the ordinary Cloudflare-origin build afterward with `pnpm build:site`.
+
+The following receipt is historical.
 
 The [landing page](https://warbr1ng3r.github.io/tibicen/) was published on 27 October 2026 from source [`e0f59a5`](https://github.com/warbr1ng3r/tibicen/tree/e0f59a55c7ce7581e402c3e270aa162fa1e0dc52); the [GitHub Pages run](https://github.com/warbr1ng3r/tibicen/actions/runs/40438226284) succeeded. Page publication does not close full MVP acceptance of the skills.
 
@@ -75,7 +74,7 @@ Current references were recorded on macOS. Playwright uses separate references f
 
 ## Product installation and site development
 
-The visitor command pins the 1.4.1 distribution commit `52c0769574e90d7d1a0438996df9da40621b0107` through skills 1.7.4. npx is recommended; equivalent pnpm and Yarn 2+ commands are optional. Site source and dependencies are unnecessary. See [release details](../docs/RELEASING.md) for publication and candidate-bound coverage; [maintenance](../docs/MAINTENANCE.md) records the separately verified Pages deployment and returned bytes. Native discovery/loading remains separately experimental.
+The visitor command pins the 1.5.4 distribution commit `381c5d53972b53d60e9a134ec7f620bb7c35e6be` through skills 1.7.4. npx is recommended; equivalent pnpm and Yarn 2+ commands are optional. Site source and dependencies are unnecessary. See [release details](../docs/RELEASING.md) for publication and candidate-bound coverage; [maintenance](../docs/MAINTENANCE.md) records the separately verified Pages deployment and returned bytes. Native discovery/loading remains separately experimental.
 
 Historically, public full-SHA installation of 1.0.0 (`e8532bba0582564c93e50de1f55174daaa9bbd34`) for Codex, Claude Code and Cursor matched all 86 payload files, with matching release asset hashes and deployed Pages metadata. The alpha tag `v0.1.0-alpha.1` and page were published on 27 October 2026 after Git delivery checks: full-SHA and tag installations matched all 86 distribution files, and resume/removal checks passed. Alpha native observations cover macOS, Node 24 and Codex.
 
