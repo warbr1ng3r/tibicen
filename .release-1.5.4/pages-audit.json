@@ -1,0 +1,32 @@
+{
+  "version": "1.5.4",
+  "releaseSourceCommit": "68a355e080b6323014837f8940ba79bcc3782b01",
+  "pagesSourceCommit": "0d5eedbbfb61070c172eb5e86db05066fa394fd5",
+  "distributionCommit": "381c5d53972b53d60e9a134ec7f620bb7c35e6be",
+  "metadataCiRunId": 42558903550,
+  "pagesRunId": 42559292001,
+  "artifactId": 13647709700,
+  "artifactSha256": "ce77a7dbbede80a88e838b21e0cf4dc5c889c1e70a654b3d4fe49cc9b94ac0ae",
+  "pagesDeploymentStatus": "success",
+  "maintenanceBeforeSha256": "58b9389ef244e81aa27c949ce138d35b739f2130b01c5cbd1875ed8dea0681b6",
+  "observedPublicIp": null,
+  "publishedRecord": {
+    "version": "1.5.4",
+    "publishedAtUtc": "2026-11-09T03:46:19Z",
+    "sourceCommit": "68a355e080b6323014837f8940ba79bcc3782b01",
+    "distributionCommit": "381c5d53972b53d60e9a134ec7f620bb7c35e6be",
+    "scope": "Compatible guidance clarifications: retain operation names and accepted memory-exception boundaries, and separate conflicting observed behavior from accepted owner decisions before instruction authoring. Development-only diagnostics retain allowlisted event clues without raw error text or changed stopping. No new schema, dependency, automatic alias inference or permission. Candidate-bound local/public update/recovery/removal, both installed self-tests and six platform cells passed. Earlier observations keep their original outcomes; bounded fresh-session evidence is recorded separately, without causal, broad-harness or measured human-benefit claims. MIT license retained.",
+    "payloadManifest": {
+      "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.4/distribution-SHA256SUMS",
+      "sha256": "0d4f3d3f581c136e47c1060dd436e02e2369132b658069cfc5dbde6f2ab9ea04"
+    },
+    "archives": [
+      {
+        "name": "tibicen-1.5.4.tar.gz",
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.4/tibicen-1.5.4.tar.gz",
+        "sha256": "c74e097f41f0660f6c18afa306e12d0dadbf18778feceaefcff06f306760a8cb"
+      }
+    ],
+    "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.4"
+  }
+}
