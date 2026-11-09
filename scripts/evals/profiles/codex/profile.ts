@@ -94,6 +94,36 @@ function failureDiagnostics(
       if (typeof text !== 'string') return;
       // A matched provider message is evidence of text, not a trusted error cause.
       if (
+        Buffer.byteLength(text, 'utf8') <= 2048 &&
+        [...text].every((character) => {
+          const code = character.charCodeAt(0);
+          return (
+            code >= 32 &&
+            !(code >= 127 && code <= 159) &&
+            code !== 0x2028 &&
+            code !== 0x2029
+          );
+        })
+      ) {
+        let value: NativeFailureDiagnostics['messageId'];
+        if (
+          text ===
+          "Codex ran out of room in the model's context window. Start a new thread or clear earlier history before retrying."
+        )
+          value = { value: 'context-window-exceeded', source };
+        else if (text === 'request timed out')
+          value = { value: 'request-timeout', source };
+        else if (text.startsWith('stream disconnected before completion: '))
+          value = { value: 'stream-disconnected', source };
+        else if (
+          /^exceeded retry limit, last status: [45]\d{2}(?: [^,]{1,64})?(?:, request id: .{1,512})?$/.test(
+            text,
+          )
+        )
+          value = { value: 'retry-limit-exhausted', source };
+        if (value) result.messageId ??= value;
+      }
+      if (
         /^The '[A-Za-z0-9][A-Za-z0-9._:-]{0,127}' model is not supported when using Codex with a ChatGPT account\.$/.test(
           text,
         )
@@ -167,6 +197,26 @@ function failureDiagnostics(
   return result;
 }
 
+export function projectCodexError(record: Record<string, unknown>) {
+  const { httpStatus, serverCode, messageId } = failureDiagnostics(
+    [record],
+    '',
+  );
+  return {
+    type: record.type,
+    detailHash: hashContent(JSON.stringify(record)),
+    ...(httpStatus || serverCode || messageId
+      ? {
+          diagnostics: {
+            ...(httpStatus ? { httpStatus } : {}),
+            ...(serverCode ? { serverCode } : {}),
+            ...(messageId ? { messageId } : {}),
+          },
+        }
+      : {}),
+  };
+}
+
 export function parseCodex(output: string, stderr = '') {
   const records = output
     .split('\n')
@@ -204,10 +254,7 @@ export function parseCodex(output: string, stderr = '') {
       )
       .map((record) =>
         ['error', 'turn.failed'].includes(String(record.type))
-          ? {
-              type: record.type,
-              detailHash: hashContent(JSON.stringify(record)),
-            }
+          ? projectCodexError(record)
           : record,
       ),
     messages: items

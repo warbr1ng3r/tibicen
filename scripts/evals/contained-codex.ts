@@ -13,7 +13,7 @@ import {
 } from './container/subscription.ts';
 import { inspectContainedCodexProfile } from './profiles/codex/contained.ts';
 import type { ContainedCodexProfileInput } from './profiles/codex/contained.ts';
-import { parseCodex } from './profiles/codex/profile.ts';
+import { parseCodex, projectCodexError } from './profiles/codex/profile.ts';
 import { createProcessSupervisor } from './process-supervisor.ts';
 import {
   stageContainerCodeMode,
@@ -300,10 +300,7 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
               controls.stop();
             }
             if (['error', 'turn.failed'].includes(record?.type))
-              input.onRecord?.({
-                type: record.type,
-                detailHash: hashContent(JSON.stringify(record)),
-              });
+              input.onRecord?.(projectCodexError(record));
             else if (!failure) input.onRecord?.(record);
             if (failure) return;
           } catch {

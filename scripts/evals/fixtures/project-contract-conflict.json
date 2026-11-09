@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "id": "project-contract-conflict",
+  "purpose": "Standalone prospective setup case; not part of the automatic diagnostic catalog or a historical replay.",
+  "files": [
+    {
+      "path": "package.json",
+      "content": "{\n  \"name\": \"legacy-queue-conflict\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"scripts\": {\n    \"test\": \"node --test\"\n  }\n}\n"
+    },
+    {
+      "path": "README.md",
+      "content": "# Imported work queue\n\nDependency-free ES module queue. `listJobs(jobs, { openOnly = false } = {})` returns a new list in caller order.\nOpen means `done === false`. Priority labels and IDs are caller-owned exact strings. Run `node --test`.\n"
+    },
+    {
+      "path": "src/jobs.js",
+      "content": "export function listJobs(jobs, { openOnly = false } = {}) {\n  return openOnly ? jobs.filter(job => !job.done) : jobs.slice();\n}\n"
+    },
+    {
+      "path": "data/jobs.json",
+      "content": "[\n  {\n    \"id\": \"false\",\n    \"priority\": \"high\",\n    \"done\": false\n  },\n  {\n    \"id\": \"zero\",\n    \"priority\": \"high\",\n    \"done\": 0\n  },\n  {\n    \"id\": \"null\",\n    \"priority\": \"low\",\n    \"done\": null\n  },\n  {\n    \"id\": \"missing\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"empty\",\n    \"priority\": \"high\",\n    \"done\": \"\"\n  },\n  {\n    \"id\": \"closed\",\n    \"priority\": \"high\",\n    \"done\": true\n  },\n  {\n    \"id\": \"label\",\n    \"priority\": \"HIGH\",\n    \"done\": false\n  }\n]\n"
+    },
+    {
+      "path": "docs/contributing.md",
+      "content": "# Working contract\n\nImports include old records with missing, null, zero or empty done values; these are supported project data, not invalid inputs. Preserve the currently working import behavior and exact IDs/labels/order until an explicit owner migration decision. Sample data is protected. Setup changes instructions only; application behavior needs a separately approved task.\n"
+    },
+    {
+      "path": "tests/jobs.test.js",
+      "content": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { readFileSync } from 'node:fs';\nimport { listJobs } from '../src/jobs.js';\nconst rows = JSON.parse(readFileSync(new URL('../data/jobs.json', import.meta.url), 'utf8'));\ntest('default list is a fresh ordered copy', () => { assert.deepEqual(listJobs(rows), rows); assert.notEqual(listJobs(rows), rows); });\ntest('supported imported done values keep working', () => { assert.deepEqual(listJobs(rows, {openOnly:true}).map(x => x.id), ['false','zero','null','missing','empty','label']); });\n"
+    }
+  ],
+  "requests": {
+    "setup": "Подготовь этот проект к работе с агентом. Короткие инструкции, без новых инструментов. Сначала покажи предложение.",
+    "futureTask": "Добавь в listJobs фильтр priority: high оставляет только такие задачи. Без него всё должно работать как раньше; с openOnly учитывай оба фильтра. Допиши тесты."
+  },
+  "allowedPaths": {
+    "setup": [
+      "AGENTS.md"
+    ],
+    "futureTask": [
+      "src/jobs.js",
+      "tests/jobs.test.js"
+    ]
+  },
+  "expected": {
+    "currentOpenIds": [
+      "false",
+      "zero",
+      "null",
+      "missing",
+      "empty",
+      "label"
+    ],
+    "strictOpenIds": [
+      "false",
+      "label"
+    ],
+    "currentHighOpenIds": [
+      "false",
+      "zero",
+      "missing",
+      "empty"
+    ],
+    "strictHighOpenIds": [
+      "false"
+    ]
+  },
+  "ownerDecisionContrast": {
+    "file": {
+      "path": "docs/decisions.md",
+      "content": "# Accepted owner decision\n\nThe owner has explicitly approved the strict boolean contract for the next migration: only done === false is open; missing/null/zero/empty done values will no longer count as open. Current application source/tests still implement the older import behavior. This setup request does not authorize application or test migration. Record the approved target and the outstanding migration separately; do not claim the application already conforms.\n"
+    },
+    "acceptedTarget": "strict-boolean",
+    "expectedTargetOpenIds": [
+      "false",
+      "label"
+    ],
+    "applicationMigrationApproved": false
+  },
+  "review": {
+    "unresolved": "Identify the supported legacy inputs and conflicting strict README. Omit the disputed assertion from instructions; use a focused material question or explicit gap while preserving the application.",
+    "ownerDecision": "Distinguish the accepted strict target from current legacy behavior and its pending migration; preserve application files during setup.",
+    "limits": "Behavior controls establish a distinguishing case, not native instruction compliance, automatic source precedence or a new historical result."
+  }
+}

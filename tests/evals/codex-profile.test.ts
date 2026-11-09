@@ -33,11 +33,19 @@ test('generic Codex 429 binds terminal details without inventing a cause or retr
     errors.map((record) => ({
       type: record.type,
       detailHash: hashContent(JSON.stringify(record)),
+      diagnostics: {
+        httpStatus: { value: 429, source: 'terminal-message' },
+        messageId: {
+          value: 'retry-limit-exhausted',
+          source: 'terminal-message',
+        },
+      },
     })),
   );
   assert.deepEqual(parsed.diagnostics, {
     ...noFailureHints,
     httpStatus: { value: 429, source: 'terminal-message' },
+    messageId: { value: 'retry-limit-exhausted', source: 'terminal-message' },
   });
   assert.equal(parsed.started, true);
   assert.equal(parsed.completed, false);
@@ -59,7 +67,14 @@ test('structured Codex hints take precedence and retain only safe scalar diagnos
     'HTTP/2 500\nRetry-After: 7\nX-Request-ID: stderr-request\ncode=insufficient_quota',
   );
   assert.deepEqual(parsed.records, [
-    { type: error.type, detailHash: hashContent(JSON.stringify(error)) },
+    {
+      type: error.type,
+      detailHash: hashContent(JSON.stringify(error)),
+      diagnostics: {
+        httpStatus: { value: 429, source: 'terminal-record' },
+        serverCode: { value: 'rate_limit_exceeded', source: 'terminal-record' },
+      },
+    },
   ]);
   assert.deepEqual(parsed.diagnostics, {
     httpStatus: { value: 429, source: 'terminal-record' },
@@ -106,6 +121,17 @@ test('terminal failure projection excludes structured private details and arbitr
     failures.map((record) => ({
       type: record.type,
       detailHash: hashContent(JSON.stringify(record)),
+      ...(record.type === 'error'
+        ? {
+            diagnostics: {
+              httpStatus: { value: 429, source: 'terminal-record' },
+              serverCode: {
+                value: 'rate_limit_exceeded',
+                source: 'terminal-record',
+              },
+            },
+          }
+        : {}),
     })),
   );
   assert.deepEqual(parsed.diagnostics, {

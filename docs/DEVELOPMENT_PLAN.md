@@ -1,5 +1,22 @@
 # Tibicen development plan
 
+## Completed locally — scoped memory decisions
+
+The shared policy now retains supplied operation names and exception boundaries. The [report](evals/results/2026-11-09-memory-scope/README.md) accepts named correction, fresh implementation and clarification of a real same-operation conflict across three completed subscription callers. Nine project tests and the independent oracle passed; all six containers and the owned root were removed. The [verification](../openspec/changes/archive/2026-11-09-clarify-memory-decision-scope/verification.md) records 1075 offline passes/one skip, portable 3/3 and the unrelated full-worktree formatting blocker. Earlier HOLD and published 1.5.3 remain unchanged; no causal or broad-harness claim. The effort (`../.scratch/memory-scope-20261109/map.md`; private development record; excluded from public source) closes this bounded work without commit or publication.
+
+
+## Closed observation — conflict handling and corrected memory
+
+The [report](evals/results/2026-11-09-fresh-conflict-memory/README.md) and [summary](evals/results/2026-11-09-fresh-conflict-memory/summary.json) record four completed native turns: both conflict proposals and memory correction accepted, fresh reuse held at a safe clarification with no implementation. Corrected memory was read, but autonomous application remains unverified. All seven containers and the owned host root were cleaned up. The effort (`../.scratch/fresh-conflict-memory-20261109/map.md`; private development record; excluded from public source) retains boundaries. Next investigate how a decision names its operation and scoped exception without treating every general rule as an unresolved conflict; no causal fix is inferred from this single case. Changes remain Unreleased and published 1.5.3 unchanged.
+
+## Completed locally — reliable failure evidence
+
+Privacy-safe per-event diagnostics and one instruction-authoring conflict trigger are implemented and independently reviewed. The [verification](../openspec/changes/archive/2026-11-09-preserve-safe-failure-signals/verification.md) records 1075 passing tests/one existing skip and 3 passing unpacked lifecycle checks. The effort (`../.scratch/reliability-signals-20261109/map.md`; private development record; excluded from public source) retains ownership and boundaries. Changes remain Unreleased; next observational work is fresh conflict handling and corrected-memory reuse under a new bounded protocol. Old outcomes and published 1.5.3 remain unchanged.
+
+## Ordinary 1.5.3 observation — closed with gaps
+
+The [report](evals/results/2026-11-09-ordinary-1.5.3/README.md) records accepted initial/existing setup and the stock task, a queue compatibility hold, and an interrupted memory correction. Fresh corrected-decision reuse and both repeats remain unobserved. The bounded packet is closed; published 1.5.3 and earlier outcomes are unchanged. The next reliability focus is preserving conflicting project contracts and obtaining useful, privacy-safe diagnostics for interrupted native turns. Detailed evidence and follow-ups stay in the effort (`../.scratch/ordinary-1.5.3-20261109/map.md`; private development record; excluded from public source); this result does not establish human benefit or wider native coverage.
+
 ## Current milestone — 1.5.3 published
 
 Compatible fixes for memory links, forbidden paths and external manual actions are released as [1.5.3](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3). The [report](evals/results/2026-11-09-release-1.5.3/README.md) binds the candidate, exact delivery and six platform checks; [Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/42527154764) and the [official-artifact audit](https://github.com/warbr1ng3r/tibicen/actions/runs/42527484300) passed (20/20) on `64a27525e48aab956103d777aba5861799968df7`. Wider live harness coverage remains separate, without new authentication probes. Detailed behavior tasks stay in their archived OpenSpec changes.

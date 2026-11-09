@@ -1,0 +1,315 @@
+{
+  "schema": 1,
+  "status": "closed-with-gaps",
+  "version": "1.5.3",
+  "sourceCommit": "a86026a5bbc6e4eb0831ac8b76be08faf1891647",
+  "distributionCommit": "b6fd86e8927c3640fe66be064da5a34e63ac366d",
+  "protocolSha256": "60bc2e805cec886ab7104ab447055a02f27bf5760ac4b55bf7d97f988e272f9b",
+  "cases": {
+    "queue": {
+      "startingProjectFiles": 6,
+      "publishedSkillFiles": 110,
+      "setup": "accepted",
+      "freshTask": "finite-checks-pass-semantic-compatibility-hold",
+      "reason": "Unrequested no-priority openOnly behavior change for absent/null/zero done; documentation and source conflict. No confirmed Tibicen runtime cause.",
+      "repeat": "not-run-case-stop"
+    },
+    "stock": {
+      "startingProjectFiles": 12,
+      "publishedSkillFiles": 110,
+      "setup": "accepted",
+      "freshTask": "accepted",
+      "memoryCorrection": "partial-write-observed-native-turn-failed",
+      "memoryPath": ".agents/memory.md",
+      "memoryMode": "0600",
+      "memoryContentReview": "new policy correct; unrelated note preserved; no other files changed",
+      "errorCause": "unknown: retained error/turn.failed details are hashes; not timeout",
+      "freshCorrectedDecisionReuse": "not-run-global-stop",
+      "repeat": "not-run-global-stop"
+    }
+  },
+  "execution": {
+    "nativeCalls": 7,
+    "nativeCompleted": 6,
+    "semanticAccepted": 5,
+    "semanticHeld": 1,
+    "nativeIncomplete": 1,
+    "maxNativeCalls": 10,
+    "summedMaintainedCallerWallMs": 485406,
+    "maxSummedMaintainedCallerWallMs": 1500000,
+    "retries": 0,
+    "paidApiBudget": 0,
+    "providerInternalHttpRequests": "unverified",
+    "subscriptionCost": "unmeasured",
+    "modelFreeContainers": 3,
+    "maxModelFreeContainers": 4,
+    "modelFreeControls": {
+      "baselines": 2,
+      "positive": 3,
+      "negative": 10
+    },
+    "taskTests": {
+      "queue": 5,
+      "stock": 7
+    }
+  },
+  "nativeOutcomes": [
+    {
+      "phase": "queue-proposal",
+      "nativeCompleted": true,
+      "semanticResult": "accepted",
+      "nativeDurationMs": 70338.208166,
+      "outcomeDurationMs": 72809.786833,
+      "maintainedCallerWallMs": 72899,
+      "returnedFiles": 117,
+      "protectedFiles": 116,
+      "containerStopped": true,
+      "containerRemoved": true,
+      "toolFailure": null,
+      "sourceUnchanged": true,
+      "configUnchanged": true,
+      "codeModeUnchanged": true,
+      "hashes": {
+        "protocol.json": "e3760d7ef5312deaca935d6c713165bd70d113fd9e33312e3fd6cb306e7d8fa2",
+        "GO.json": "a8c3f32c484db841a16ec146decbc628b34ae64044fb2622cae72be0311d6777",
+        "started.json": "5ce561ff389c3ea4ef1d93c10d81c4f79b77d4133efeccdddcef029ae6829c52",
+        "finished.json": "004ded3422642467d9cfd5a5668022f4f5cccc135373a6214eb701b7a915bfaa",
+        "outcome.json": "c5076f21021275e077ae49362ba98788d09a6eb472f2cb1cdbbf7ad263c459ca",
+        "events.jsonl": "cca31d267d94d8c51ef0921626f17c319f449b0f23d8b1acde29759b6ac92685",
+        "assessment.json": "0bd6887a2b5048b3d6ec6a80f58d575529b5f1d5c8e7682c47df229c0c3d9e54",
+        "acceptance.json": "80664b33acdbfc0450d4573cf7044b1cafd1db8e5e06cff80eb8fbfb1b3f0049"
+      }
+    },
+    {
+      "phase": "queue-apply",
+      "nativeCompleted": true,
+      "semanticResult": "accepted",
+      "nativeDurationMs": 63863.117167000004,
+      "outcomeDurationMs": 67734.1525,
+      "maintainedCallerWallMs": 67823,
+      "returnedFiles": 119,
+      "protectedFiles": 117,
+      "containerStopped": true,
+      "containerRemoved": true,
+      "toolFailure": null,
+      "sourceUnchanged": true,
+      "configUnchanged": true,
+      "codeModeUnchanged": true,
+      "hashes": {
+        "protocol.json": "da4d42cbdab2b606fadaffbdfdc952bac3701bdedeca5383852d63e0bc6188e5",
+        "GO.json": "e44e6d2b678c129b6f63cda34cc6a9d1cd07d266e036ada068b9ddddab905a4d",
+        "started.json": "cfd536de16ccef0aeddbd91dc0b8563b62b5df359ddb88d7e08092e692dc5422",
+        "finished.json": "1d4c5bff9e704074ff0b909abb286d5ea177ac08ef9147df9d7b88d44e5d0826",
+        "outcome.json": "562e8317ef45933aab263eda193fff03cfc14505342fa336f020ba70b4657c98",
+        "events.jsonl": "ebebf06494b86ed34eadf2d228c082b63693a2a9cbd3fffc155ae57fc044acf4",
+        "assessment.json": "b16bf9f5dbac5604b59d8d8d8125236a9b1d7c7135a3129a53e1ca0d3bde50a7",
+        "acceptance.json": "a8ec031ed8dce2a4e014ea9688fa3f510e01222b28234857eeb263188c74537d"
+      }
+    },
+    {
+      "phase": "queue-task",
+      "nativeCompleted": true,
+      "semanticResult": "hold",
+      "nativeDurationMs": 39289.132125000004,
+      "outcomeDurationMs": 41403.379834,
+      "maintainedCallerWallMs": 41481,
+      "returnedFiles": 118,
+      "protectedFiles": 116,
+      "containerStopped": true,
+      "containerRemoved": true,
+      "toolFailure": null,
+      "sourceUnchanged": true,
+      "configUnchanged": true,
+      "codeModeUnchanged": true,
+      "hashes": {
+        "protocol.json": "55160856ee2931d0f782964eed1b8ba24fd1777388110b7aaf03f678df16456b",
+        "GO.json": "142278f56235469b1ce195858d01c6b69cb00c1c644261f9f98f3c0ba87d6bbe",
+        "started.json": "2559e63a3726cd9e4adcce2082fcc210ac6a6c0fe809d4bed4ccad7ba554f040",
+        "finished.json": "c7ab96028f4baf2fd5da4860abada66c5ca603dd0bb820a30abd82336dd850e8",
+        "outcome.json": "4be4de56140f961881df5653dbe4dcf4812d837eb05efa6f954e6cb512c96958",
+        "events.jsonl": "487269c6c8890229cb551ad22347199e38174605e4719abbb5324d8e6ad742a8",
+        "assessment.json": "847bcd723f6d66621ddb9d0d2aec94d3d5c48b7ade41b22add4d5cefb6a1ec4c",
+        "task-grade.json": "f6c988712be7bbf00bf7901fb1e5f358232b8d56fc03b8529ca2df47d04ed708"
+      }
+    },
+    {
+      "phase": "stock-proposal",
+      "nativeCompleted": true,
+      "semanticResult": "accepted",
+      "nativeDurationMs": 118134.966542,
+      "outcomeDurationMs": 120336.5685,
+      "maintainedCallerWallMs": 120423,
+      "returnedFiles": 124,
+      "protectedFiles": 122,
+      "containerStopped": true,
+      "containerRemoved": true,
+      "toolFailure": null,
+      "sourceUnchanged": true,
+      "configUnchanged": true,
+      "codeModeUnchanged": true,
+      "hashes": {
+        "protocol.json": "442a48f3d919d6a0cdd0eb845993d6ed18b8207b01e788e13e5b269dbaf7cec9",
+        "GO.json": "008925c502ccf97a0fa5b9319896b44f14ec0540faee13e51565a80ed1d1e4f7",
+        "started.json": "cf085a3a772ff3467c23fb8377dd84045a830a30e1945f42069358bc4f760b71",
+        "finished.json": "c90f1fa8fec77568e1e6b70f64035795017bc72d3f71c824a4a5325d3cbbd2bd",
+        "outcome.json": "3142cc87a9644c38fbbbb64efc0a258961012a3a3e633a74e87d70b8c6def09a",
+        "events.jsonl": "64e26ec2e5f3e594056d44b4d1033a3fffda81d47a34229fd60eaea215539f78",
+        "assessment.json": "425a34d30dd04303e502207efd096da420667971618f67d850cab6f2821aad26",
+        "acceptance.json": "dfb4e48c9961d6b104f8792fd141756253336c1d10e563cf0f3c1e8d3d0c6dab"
+      }
+    },
+    {
+      "phase": "stock-apply",
+      "nativeCompleted": true,
+      "semanticResult": "accepted",
+      "nativeDurationMs": 60910.593917,
+      "outcomeDurationMs": 63075.097916,
+      "maintainedCallerWallMs": 63180,
+      "returnedFiles": 125,
+      "protectedFiles": 122,
+      "containerStopped": true,
+      "containerRemoved": true,
+      "toolFailure": null,
+      "sourceUnchanged": true,
+      "configUnchanged": true,
+      "codeModeUnchanged": true,
+      "hashes": {
+        "protocol.json": "d049cfed7733aec7fcc49abe269ac30893e28c108024b0b881f58117eb466209",
+        "GO.json": "0e6c22a202ead2424162c311d0b9386db40061f5fa06150755eabd4412751f6f",
+        "started.json": "2c7a2c654fc0571f79743f52a1d36a4f22053e4d305dbc2a63aa7fe541eace23",
+        "finished.json": "8fb2cc3a34eb8fa94d81bc268a5d58f70da7688085cb513c8b7cf7f1e1c0da8b",
+        "outcome.json": "e90d0b0865054cf481956a8ea067793d04261c616a980aa97223651b51986c33",
+        "events.jsonl": "e0acb5826c529744928993a3343018e0740b1ff657f2175c3f758da7dfcd1347",
+        "assessment.json": "cc37521a8e8872d4a1e614bb0756b3590031f1794f2c298474fadadde0453633",
+        "acceptance.json": "ca7f9eb44e0cb240587f7fc5e504867d6857c987927b91d411a11277f4b5694b"
+      }
+    },
+    {
+      "phase": "stock-task",
+      "nativeCompleted": true,
+      "semanticResult": "accepted",
+      "nativeDurationMs": 58754.308458,
+      "outcomeDurationMs": 60876.618208,
+      "maintainedCallerWallMs": 61022,
+      "returnedFiles": 123,
+      "protectedFiles": 121,
+      "containerStopped": true,
+      "containerRemoved": true,
+      "toolFailure": null,
+      "sourceUnchanged": true,
+      "configUnchanged": true,
+      "codeModeUnchanged": true,
+      "hashes": {
+        "protocol.json": "691b995310c97be1eac29960b6d1885c7c7afc10ab67180f5698fdbe4279102d",
+        "GO.json": "3f1c6c24f06732a647868be6ccd33002b9110c36533cd876c4aeeab0af05e42a",
+        "started.json": "1ff32d5d90e1fa28ad6a08be35df6b98d49433b6014fd6e3c26cc9699ce0c12a",
+        "finished.json": "b97c1e5a9be73d69e213764d390aed961ddb37fc40bc84ea33c696d55e5aa640",
+        "outcome.json": "dc5f988c18164056805ed0dc30958ddcfe3bc752de7bd06417b11305d1618385",
+        "events.jsonl": "3be0152b435eddb6e5a8824795f6ae5cdca40071d4fea2b4d98b8c56b4b0f521",
+        "assessment.json": "11990e342245e338ff0dcb4da13309f9bdbb0f43818274f96e7864d5968b4ac5",
+        "acceptance.json": "9af0c61567b8a2beb5a7e544babecad22fc37c126a10a86084a231c4937c4b0a",
+        "task-grade.json": "ab791ec892a868c21429ab1f034a9a5da9c92036ae59cc43b9dc28aec926292b"
+      }
+    },
+    {
+      "phase": "stock-correction",
+      "nativeCompleted": false,
+      "semanticResult": "incomplete",
+      "nativeDurationMs": 56081.971750000004,
+      "outcomeDurationMs": 58475.782209000005,
+      "maintainedCallerWallMs": 58578,
+      "returnedFiles": 123,
+      "protectedFiles": 122,
+      "containerStopped": true,
+      "containerRemoved": true,
+      "toolFailure": null,
+      "sourceUnchanged": true,
+      "configUnchanged": true,
+      "codeModeUnchanged": true,
+      "hashes": {
+        "protocol.json": "285c3866fbd8f4f55cd2ffef67006a7a692378b66e98388dc2ce996a745e2a05",
+        "GO.json": "fb8d2e6c9163dc44d80972f3896890cae9b5b58b0dd152fe3434070643cc82f1",
+        "started.json": "ebbe0e4bc633605905faa717e756b3ba0722cb7156ae437bac61e76df22261b3",
+        "finished.json": "8574936329f68635b90f3a1a47d74eed0716b5b69d64b09626da3eb13ed333a0",
+        "outcome.json": "e6e6acb82d8930b31cf5ea9e8f4794dbd0b91d993df48a7cc00f39c232dd715e",
+        "events.jsonl": "b77a60a8dedb50e726362be120f4fcb0bf8b85cee75272b34bfc4198aee5757c",
+        "assessment.json": "ff8667a2f98fe33f5ff938eae71d2bf6572269e9cec0f07ac62c08d6f315b832"
+      }
+    }
+  ],
+  "modelFreeOutcomes": [
+    {
+      "label": "oracle-controls-grade",
+      "pass": true,
+      "durationMs": 4009.0925829999996,
+      "cleanupVerified": true,
+      "hashes": {
+        "protocol.json": "dfc9c2c48d8445a6ee0ffd93e6265c3e7f955f1b3bd3cbce0cf351dbaee50982",
+        "GO.json": "3bfbd6219275ae9b8a65dcf20fd6486a55321eceec5b972d4918e43662d35c54",
+        "raw.json": "8361eee64847e5755b71dd9ada01570eea8f3cdd1ff51a1de25af3a01811d872",
+        "result.json": "f3009e3dd6340c445f3204efd82c27326bcaf55a9a2260e4ab42df7783335a14"
+      }
+    },
+    {
+      "label": "queue-task-grade",
+      "pass": true,
+      "durationMs": 950.919584,
+      "cleanupVerified": true,
+      "hashes": {
+        "protocol.json": "5654b42da40cf8775d739599069604dccd9dda105cdfcc4733c6f32bcde3fc1e",
+        "GO.json": "ee9c7869a7be4bcd49ecf222eb224a6d8ce02f23baefa07e84f43a05cdeead6a",
+        "raw.json": "c6390dcb634a7754e6ef54592058f8dcd19bff15e6abea7013e642f977a8971a",
+        "result.json": "f6c988712be7bbf00bf7901fb1e5f358232b8d56fc03b8529ca2df47d04ed708"
+      }
+    },
+    {
+      "label": "stock-task-grade",
+      "pass": true,
+      "durationMs": 1006.576417,
+      "cleanupVerified": true,
+      "hashes": {
+        "protocol.json": "2013437360cb37245482170d8aea9a62e6a8e88fd6efff1f22440d9d2a282a38",
+        "GO.json": "11d67f4c13ce63e2b35d32aefe38bf76136304ae74b70f22257f734a991f31e3",
+        "raw.json": "a51ef1b5ce801724133c0d0a1856294dad8ef02462c2f990f2afad5ad96de2c4",
+        "result.json": "ab791ec892a868c21429ab1f034a9a5da9c92036ae59cc43b9dc28aec926292b"
+      }
+    }
+  ],
+  "notRun": [
+    "queue-repeat",
+    "stock-reuse",
+    "stock-repeat"
+  ],
+  "operatorAssistance": [
+    "Published skill folder placement and explicit setup-skill paths.",
+    "Explicit per-phase write/execution boundaries, including memory path for correction.",
+    "Two exact synthetic operator approvals of actual agent-authored CLI proposals.",
+    "Evaluator-only proposal transport removed before fresh tasks; raw evidence retained.",
+    "Independent semantic and contained finite checks."
+  ],
+  "operatorPlanOrTaskRepairs": 0,
+  "productSourceChanged": false,
+  "newHarnessCompatibilityClaim": false,
+  "humanUsefulness": "unmeasured",
+  "causalImprovement": "unmeasured",
+  "automaticLoading": "unverified; actual reads observed",
+  "cleanup": {
+    "pass": true,
+    "ownedHostMirrorRemoved": true,
+    "nativeHomesEmpty": true,
+    "nativeContainersStoppedRemoved": 7,
+    "modelFreeContainersStoppedRemoved": 3,
+    "receiptSha256": "b3af63f61b3e01c33f32a9674dad455ac21cf829bc2512fab89b387a573f7678"
+  },
+  "stopEvidence": {
+    "globalStopSha256": "d9ca8db151c426374ee3381b7529c8a0f220080311f74baa3e378279a2dbe7f5",
+    "queueCaseStopSha256": "ae8c36d021170935f16e1325a6390ec97bac64d7848a5b8992df7a3641d5bfa9"
+  },
+  "limits": [
+    "Two synthetic projects on one pinned Codex subscription route/model, not a human study or diverse native harness matrix.",
+    "No full ordinary cycle or corrected-decision reuse completed in this packet.",
+    "Frozen boolean-domain queue checks did not cover the separate semantic compatibility counterexample.",
+    "Stock correction has a useful partial file write, not a completed session or accepted end-to-end memory result.",
+    "No auth repair, paid API, automatic retry, product patch, commit or publication."
+  ]
+}

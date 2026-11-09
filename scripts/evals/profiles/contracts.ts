@@ -20,7 +20,14 @@ export interface NativeSessionInput extends NativePermissions {
 }
 export interface NativeFailureDiagnostics {
   messageId?: {
-    value: 'model-unsupported-chatgpt' | 'config-load' | 'provider-not-found';
+    value:
+      | 'model-unsupported-chatgpt'
+      | 'config-load'
+      | 'provider-not-found'
+      | 'context-window-exceeded'
+      | 'request-timeout'
+      | 'stream-disconnected'
+      | 'retry-limit-exhausted';
     source: 'terminal-message' | 'stderr-message';
   };
   httpStatus: { value: number; source: string } | null;

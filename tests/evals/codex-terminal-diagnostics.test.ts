@@ -8,6 +8,140 @@ const unsupported =
 const parse = (message: unknown, extra = {}) =>
   parseCodex(JSON.stringify({ type: 'error', message, ...extra }));
 
+const contextLimit =
+  "Codex ran out of room in the model's context window. Start a new thread or clear earlier history before retrying.";
+
+test('pinned terminal formats retain fixed identities without private variable tails', () => {
+  const privateValue = 'synthetic-private-terminal-value';
+  for (const [message, value] of [
+    [contextLimit, 'context-window-exceeded'],
+    ['request timed out', 'request-timeout'],
+    [
+      'stream disconnected before completion: ' + privateValue,
+      'stream-disconnected',
+    ],
+    [
+      'exceeded retry limit, last status: 503 Service Unavailable, request id: ' +
+        privateValue,
+      'retry-limit-exhausted',
+    ],
+  ]) {
+    const result = parseCodex(
+      JSON.stringify({ type: 'turn.failed', error: { message, privateValue } }),
+    );
+    assert.deepEqual(result.diagnostics?.messageId, {
+      value,
+      source: 'terminal-message',
+    });
+    assert.deepEqual(
+      (result.records[0].diagnostics as Record<string, unknown>).messageId,
+      result.diagnostics?.messageId,
+    );
+    observationGuard([message, privateValue])(result);
+  }
+});
+
+test('new terminal formats reject misleading text, controls and UTF-8 overflow', () => {
+  const prefix = 'stream disconnected before completion: ';
+  const fitting =
+    prefix + 'é'.repeat(Math.floor((2048 - Buffer.byteLength(prefix)) / 2));
+  assert(Buffer.byteLength(fitting) <= 2048);
+  assert.equal(
+    parse(fitting).diagnostics?.messageId?.value,
+    'stream-disconnected',
+  );
+  for (const message of [
+    'prefix ' + contextLimit,
+    contextLimit + ' extra',
+    'request timed out later',
+    'Request timed out',
+    'quoted: ' + prefix + 'details',
+    'stream disconnected before completion! details',
+    'exceeded retry limit, last status: wrong',
+    'exceeded retry limit, last status: 429.5',
+    'exceeded retry limit, last status: 503 Service Unavailable, other: private',
+    prefix + 'private\nmore',
+    prefix + 'private\u0000more',
+    prefix + 'private\u007fmore',
+    prefix + 'private\u2028more',
+    fitting + 'é',
+  ])
+    assert.equal(parse(message).diagnostics?.messageId, undefined, message);
+  assert.equal(
+    parse(JSON.stringify({ note: contextLimit })).diagnostics?.messageId,
+    undefined,
+  );
+});
+
+test('event-local clues preserve terminal identity without replacing aggregate precedence or adding identifiers', () => {
+  const privateValue = 'synthetic-private-event-value';
+  const first = {
+    type: 'error',
+    status_code: 429,
+    code: 'rate_limit_exceeded',
+    retry_after: 7,
+    request_id: privateValue,
+    message: 'request timed out',
+  };
+  const last = {
+    type: 'turn.failed',
+    error: {
+      status: 503,
+      code: 'server_is_overloaded',
+      message: 'stream disconnected before completion: ' + privateValue,
+    },
+  };
+  const result = parseCodex(
+    [first, last].map((record) => JSON.stringify(record)).join('\n'),
+  );
+  assert.deepEqual(result.diagnostics?.messageId, {
+    value: 'request-timeout',
+    source: 'terminal-message',
+  });
+  assert.deepEqual(result.diagnostics?.httpStatus, {
+    value: 429,
+    source: 'terminal-record',
+  });
+  assert.deepEqual(result.diagnostics?.serverCode, {
+    value: 'rate_limit_exceeded',
+    source: 'terminal-record',
+  });
+  assert.deepEqual(
+    result.records.map((record) => record.diagnostics),
+    [
+      {
+        httpStatus: { value: 429, source: 'terminal-record' },
+        serverCode: { value: 'rate_limit_exceeded', source: 'terminal-record' },
+        messageId: { value: 'request-timeout', source: 'terminal-message' },
+      },
+      {
+        httpStatus: { value: 503, source: 'terminal-record' },
+        serverCode: {
+          value: 'server_is_overloaded',
+          source: 'terminal-record',
+        },
+        messageId: { value: 'stream-disconnected', source: 'terminal-message' },
+      },
+    ],
+  );
+  for (const record of result.records)
+    assert.deepEqual(Object.keys(record).sort(), [
+      'detailHash',
+      'diagnostics',
+      'type',
+    ]);
+  const unknown = parse(privateValue, {
+    request_id: privateValue,
+    retry_after: 7,
+  });
+  assert.deepEqual(Object.keys(unknown.records[0]).sort(), [
+    'detailHash',
+    'type',
+  ]);
+  assert.equal(unknown.diagnostics?.retryAfterSeconds?.value, 7);
+  observationGuard([privateValue])(result);
+});
+
 test('subscription model template survives terminal JSON without inventing HTTP status or retaining text', () => {
   for (const message of [
     unsupported,

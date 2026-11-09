@@ -5,6 +5,17 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+## 1.5.4 — prepared, unpublished
+
+### Changed
+
+- Clarify project-memory policies to retain supplied operation names and exception boundaries, apply matching accepted exceptions and clarify genuine same-scope conflicts. No memory schema or automatic alias inference is added.
+- At instruction authoring, explicitly route conflicting project documentation, implementation and tests to the existing clarification/gap rules before codifying a behavior claim; preserve application scope and accepted owner decisions.
+
+### Fixed
+
+- Development-only native diagnostics retain allowlisted clues per error event and recognize four pinned terminal-message forms without raw error text. Aggregate precedence, failure stopping and historical outcomes remain unchanged; no live recovery is established.
+
 ## [1.5.3](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3) — 2026-11-09
 
 ### Changed

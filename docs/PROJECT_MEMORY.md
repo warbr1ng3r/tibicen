@@ -75,6 +75,22 @@ The notes are readable Markdown. There is no mandatory entry schema, timestamp
 format or separate questionnaire, and the full history need not be copied into
 every instruction file.
 
+**Unreleased policy clarification:** retain the known subject, supplied operation
+names and affected behavior when recording a decision. For example, if the owner
+changes `renderAssemblySheet` to select positive stock in ascending order, keep
+that name and preserve the ordinary report's input-order rule. A later request
+that changes only the sheet's format can use the accepted exception. Unknown
+relationships between names and incompatible active decisions for the same
+operation still require clarification. Memory does not override the current
+request. This is guidance for the next distribution, not a guarantee that an
+agent will infer an unnamed operation.
+
+A separate [three-session observation](evals/results/2026-11-09-memory-scope/README.md)
+accepted named correction, fresh implementation and clarification of a genuine
+conflict. Its synthetic seed and operator-instantiated policy limit the result;
+it does not establish automatic generation, broader harness compliance or a
+causal improvement over the previous unnamed case.
+
 <a id="check-the-first-task-and-later-memory-use--unreleased"></a>
 
 ## Check the first task and later memory use

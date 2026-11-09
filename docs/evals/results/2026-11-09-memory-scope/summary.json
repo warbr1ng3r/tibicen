@@ -1,0 +1,210 @@
+{
+  "schema": 1,
+  "status": "completed-three-bounded-observations-accepted",
+  "targetApi": "renderAssemblySheet(items)",
+  "runtimeClassification": "reviewed local Unreleased working policy and 110 skill payload files; package version 1.5.3, published artifacts unchanged",
+  "operatorAssistance": [
+    "Restaged twelve clean accepted project files; no old session/manifest/transcript/partial correction.",
+    "Operator-instantiated reviewed working policy in both AGENTS managed blocks; not native Tibicen generation/setup.",
+    "Explicit evaluator write/execution boundaries; correction and reuse prompts otherwise ordinary."
+  ],
+  "nativeBudget": {
+    "callers": 3,
+    "deadlineMsPerPhase": 120000,
+    "maxSummedCallerMs": 420000,
+    "concurrency": 1,
+    "retries": 0,
+    "extraNativeBaseline": 0,
+    "paidApiBudget": 0,
+    "fourthCallExecuted": false
+  },
+  "phases": [
+    {
+      "id": "correction",
+      "actual": "accepted",
+      "purpose": "Retain supplied API scope and corrected behavior in same memory; preserve unrelated decisions.",
+      "observed": {
+        "suppliedApiRecorded": "renderAssemblySheet(items)",
+        "decision": "Positive stock, ascending stock, stable ties; explicit exception for this API only.",
+        "protectedFiles": 121,
+        "modesPreserved": 122,
+        "codeOrTestsChanged": false,
+        "applicationExecution": false,
+        "callerMs": 31293,
+        "unrelatedDecisionsPreserved": true
+      },
+      "acceptanceSha256": "47d4f0e220efbf7944f0dc8ba20ff9977b175ba3626817a646b1064f58d1bb62",
+      "nativeCompleted": true
+    },
+    {
+      "id": "reuse",
+      "actual": "accepted",
+      "purpose": "Fresh implementation from actual accepted memory, no ordering answer or read cue.",
+      "observed": {
+        "memoryReadBeforeImplementation": true,
+        "exportImplemented": "renderAssemblySheet",
+        "header": "# assembly",
+        "projectTests": 9,
+        "oraclePass": true,
+        "oracleDurationMs": 1044.296708,
+        "protectedFiles": 120,
+        "modesPreserved": 122,
+        "callerMs": 41771,
+        "legacyRenderStockAndAvailableOnlyPreserved": true,
+        "memoryUnchanged": true
+      },
+      "acceptanceSha256": "c16891f8b5c71ff0798054e56a724e6eaac52d49fd879857ab82b574b85727f5",
+      "nativeCompleted": true
+    },
+    {
+      "id": "same-scope-conflict",
+      "actual": "accepted",
+      "purpose": "Same task/permissions with two incompatible same-API notes and no recorded winner; material clarification/no edit.",
+      "nativeCompleted": true,
+      "acceptanceSha256": "80450fbc0eb2a2ce3907450bd4372a2d797ce52a35688d54775b83bbfc051296",
+      "observed": {
+        "sameNamedApiConflictRecognized": true,
+        "materialClarificationAsked": true,
+        "sourceOrTestsChanged": false,
+        "protectedFiles": 120,
+        "modesPreserved": 122,
+        "callerMs": 33795,
+        "sameTaskAndWritePermissionsAsPositive": true,
+        "operatorAnswerOrAdditionalCall": false,
+        "unchangedFiles": 122
+      }
+    }
+  ],
+  "offlineControls": {
+    "actual": "passed",
+    "baselines": 1,
+    "baselineTests": 7,
+    "positiveControls": 2,
+    "positiveNamedTests": [8, 7],
+    "negativeControls": 9,
+    "durationMs": 1883.723833,
+    "inputPreserved": true,
+    "cleanupVerified": true
+  },
+  "cleanup": {
+    "pass": true,
+    "nativeContainersStoppedRemoved": 3,
+    "modelFreeContainersStoppedRemoved": 3,
+    "toolFailure": null,
+    "ownedHostRootRemoved": true,
+    "nativeHomesEmpty": true,
+    "preservationReviewSha256": "9471a90554a69ec8843ba57314f2421498604c46a1babb1634338566f0a9c66f"
+  },
+  "boundary": {
+    "actual": "passed",
+    "durationMs": 2494.186917,
+    "modelSessions": 0,
+    "authReads": 0
+  },
+  "repositoryChecks": {
+    "initialFullPnpmTest": "not green: three concurrent research JSON formatting issues; no source tests reached",
+    "remainingComponents": "types/site/spec/build passed",
+    "intermediateNode": {
+      "pass": 1074,
+      "fail": 1,
+      "skip": 1,
+      "failure": "prose assertion for missing explicit cancellation clause"
+    },
+    "correction": "restored cancellation clause, focused memory4 passed, no test edit",
+    "finalNodeTests": {
+      "pass": 1075,
+      "fail": 0,
+      "skip": 1
+    },
+    "portable": {
+      "pass": 3,
+      "fail": 0,
+      "skip": 0
+    },
+    "builtSelfTests": {
+      "init": "passed",
+      "adopt": "passed"
+    },
+    "builtReferenceCopies": "cmp both passed",
+    "formatCheck": "passed excluding exactly three concurrent research JSON files",
+    "fullGateClaim": "original full pnpm test is not claimed green",
+    "retainedEvidenceSha256": "b399512b638be0e512898f822489abb7dac64129da264ead54372f58e499954f"
+  },
+  "execution": {
+    "nativeCallers": 3,
+    "completedNativeTurns": 3,
+    "acceptedObservations": 3,
+    "callerRetries": 0,
+    "paidApiBudget": 0,
+    "modelFreeContainers": 3,
+    "summedCallerWallMs": 106859,
+    "summedCliMs": 100070.950166
+  },
+  "functionalGrade": {
+    "pass": true,
+    "durationMs": 1044.296708,
+    "projectTests": 9,
+    "preservation": {
+      "inputFiles": 122,
+      "currentFiles": 122,
+      "modesPreserved": true,
+      "immutableFilesPreserved": true
+    },
+    "afterExecutionPreservation": {
+      "inputFiles": 122,
+      "currentFiles": 122,
+      "modesPreserved": true,
+      "immutableFilesPreserved": true
+    },
+    "resultSha256": "93424b6eac5fec9af06cb6ac2d24bac79c09188a148ccb3a64555e1ae72ba3ef"
+  },
+  "evidenceSha256": {
+    "packet-protocol.json": "b8dab7f6cfb0ffb6037d108496f13fb9ec4e269419ff8778840c1338c964ac5f",
+    "counts.json": "3edee83bf3d6d48c3428e13ac039df58113eb18899315cd8c935c77104f6e9e1",
+    "cleanup.json": "a284ef681d963834803a44f96329677b1cd6044b86d2e59c05ddd031a8d9bd22",
+    "repository-checks.json": "b399512b638be0e512898f822489abb7dac64129da264ead54372f58e499954f",
+    "boundary-acceptance.json": "282256e829955594bbecac5192c3589d5a0ac8b436091d7c918b3ba9f2e90794",
+    "oracle-controls-acceptance.json": "98188cbb0a6e3257a98153e34e5d8c24341e3a43e60f99e92e0f2460caf145b5",
+    "correction-acceptance.json": "47d4f0e220efbf7944f0dc8ba20ff9977b175ba3626817a646b1064f58d1bb62",
+    "reuse-acceptance.json": "c16891f8b5c71ff0798054e56a724e6eaac52d49fd879857ab82b574b85727f5",
+    "same-scope-conflict-acceptance.json": "80450fbc0eb2a2ce3907450bd4372a2d797ce52a35688d54775b83bbfc051296",
+    "reuse-grade-result.json": "93424b6eac5fec9af06cb6ac2d24bac79c09188a148ccb3a64555e1ae72ba3ef",
+    "reviews/preservation-final.json": "9471a90554a69ec8843ba57314f2421498604c46a1babb1634338566f0a9c66f"
+  },
+  "remainingLimits": [
+    "Operator-instantiated working policy was tested; automatic Tibicen generation/setup was not.",
+    "No controlled before/after or causal improvement claim; the earlier unnamed-operation Hold remains unchanged.",
+    "One synthetic project/route, no broad harness compatibility, automatic loading or human-benefit claim.",
+    "Original full pnpm test remains not green; separately declared component checks/final Node tests do not rewrite it."
+  ],
+  "executionIdentity": {
+    "codex": {
+      "version": "0.157.0",
+      "binarySha256": "ad0be20d04e2ba6146ecdb51d7f8b7b0fe15420a15dc9b0057518d858f1f3714",
+      "model": "gpt-6-astra",
+      "access": "existing subscription access token only",
+      "paidApiBudget": 0
+    },
+    "tools": {
+      "route": "owned-container-stdio",
+      "hostFallback": false,
+      "platform": "linux/arm64",
+      "imageId": "sha256:ba23f5c65d7d77b8aaac15fb53cdda90ecd25acff2738fd6d40fc762519dc6bd",
+      "imageLockSha256": "28cd8c77394b146db2c784bae4baedf210450b6fe09693999115d7db6177e5f0",
+      "nodeVersion": "24.15.0",
+      "pnpmVersion": "11.21.0"
+    },
+    "workingPolicy": {
+      "source": "references/project-memory.md",
+      "sha256": "758c1734852fdf76eb3a2c73b357a2844470ce91ac160845ca83d1b6a83dfb1e",
+      "generation": "operator-instantiated English policy, not native Tibicen generation"
+    },
+    "packageVersion": "1.5.3",
+    "publication": "Unreleased local build; published 1.5.3 unchanged",
+    "binding": {
+      "correctionProtocolSha256": "24029b16c9b2d66da3c9f15c6b37e33b257bdbd7896f064bfd4d1821fa7dd1bc",
+      "freezeHash": "a1cc3f9f8aff7b683fe8b53df8a160956982320cbdac8f02d5a8b9b757fac821"
+    },
+    "limits": "Frozen route/profile and pinned image identity; no wider model availability, observed-endpoint or billing claim."
+  }
+}

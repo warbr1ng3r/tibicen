@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "status": "closed-with-functional-gap",
+  "runtime": {
+    "classification": "Reviewed local Unreleased build, not the published distribution",
+    "packageVersion": "1.5.3",
+    "payloadFiles": 110,
+    "profile": "Codex CLI0.157.0 / gpt-6-astra / existing ChatGPT subscription",
+    "broaderHarnessCoverage": "unverified"
+  },
+  "native": {
+    "nativeCallers": 4,
+    "completedNativeTurns": 4,
+    "acceptedObservations": 3,
+    "functionalHolds": 1,
+    "summedCliMs": 294547,
+    "summedCallerMs": 303707,
+    "nativeRetries": 0,
+    "extraClarificationCalls": 0
+  },
+  "phases": [
+    {
+      "id": "conflict-unresolved",
+      "nativeCompleted": true,
+      "mechanicalPass": true,
+      "observationalResult": "accepted",
+      "scope": "proposal",
+      "cliDurationMs": 69762.259,
+      "callerDurationMs": 72115,
+      "protectedInputFiles": 116,
+      "returnedFiles": 118,
+      "ordinaryNonzeroCommands": 2,
+      "terminalErrors": 0,
+      "sourceConfigCodeModeUnchanged": true
+    },
+    {
+      "id": "conflict-owner",
+      "nativeCompleted": true,
+      "mechanicalPass": true,
+      "observationalResult": "accepted",
+      "scope": "proposal",
+      "cliDurationMs": 88786.169,
+      "callerDurationMs": 91045,
+      "protectedInputFiles": 117,
+      "returnedFiles": 119,
+      "ordinaryNonzeroCommands": 2,
+      "terminalErrors": 0,
+      "sourceConfigCodeModeUnchanged": true
+    },
+    {
+      "id": "memory-correction",
+      "nativeCompleted": true,
+      "mechanicalPass": true,
+      "observationalResult": "accepted",
+      "scope": "correction",
+      "cliDurationMs": 29294.787,
+      "callerDurationMs": 31539,
+      "protectedInputFiles": 121,
+      "returnedFiles": 122,
+      "ordinaryNonzeroCommands": 0,
+      "terminalErrors": 0,
+      "sourceConfigCodeModeUnchanged": true
+    },
+    {
+      "id": "memory-reuse",
+      "nativeCompleted": true,
+      "mechanicalPass": true,
+      "observationalResult": "functional-hold-clarification",
+      "scope": "reuse",
+      "cliDurationMs": 106703.399,
+      "callerDurationMs": 109008,
+      "protectedInputFiles": 120,
+      "returnedFiles": 122,
+      "ordinaryNonzeroCommands": 0,
+      "terminalErrors": 0,
+      "sourceConfigCodeModeUnchanged": true
+    }
+  ],
+  "checks": {
+    "pureBoundaryControls": {
+      "positive": 3,
+      "negative": 6,
+      "passed": true
+    },
+    "modelFreeContainers": 3,
+    "actualContainerBoundaryPassed": true,
+    "conflictBehaviorControls": 4,
+    "stockBaselineTests": 7,
+    "validImplementationControls": 2,
+    "expectedNegativeControls": 8,
+    "actualReuseGrade": {
+      "passed": false,
+      "exitCode": 1,
+      "reason": "REUSE:pick-export",
+      "taskImplemented": false,
+      "baselineTestsPassedDuringNative": 7,
+      "nativeTaskFilesChanged": false
+    }
+  },
+  "memory": {
+    "correctionCompleted": true,
+    "correctedStoreReadInFreshSession": true,
+    "privateModePreserved": true,
+    "unrelatedNotesPreserved": true,
+    "decisionAutonomouslyApplied": false,
+    "outcome": "Agent requested scope clarification; no implementation or operator answer"
+  },
+  "assistance": {
+    "explicitSkillInvocation": true,
+    "evaluatorFileAndExecutionScopes": true,
+    "operatorRestagedStockFiles": 12,
+    "nativeSetupOfStockObservedThisPacket": false,
+    "previousCorrectionConversationIncludedInFreshTask": false,
+    "memoryReadPathOrOrderHintInFreshPrompt": false,
+    "operatorRepairOrAnswer": false,
+    "setupApplications": 0
+  },
+  "cleanup": {
+    "ownedHostRootRemoved": true,
+    "generatedHomesEmpty": true,
+    "nativeContainersStoppedRemoved": 4,
+    "modelFreeContainersStoppedRemoved": 3,
+    "toolFailures": 0
+  },
+  "limits": {
+    "maxNativeCallers": 4,
+    "summedCallerCapMs": 600000,
+    "paidApiBudget": 0,
+    "historicalOutcomesUnchanged": true,
+    "nativeFailureCausesProved": false,
+    "causalImprovementOrHumanBenefit": "unmeasured",
+    "comparativeBaselineAgent": "not run",
+    "commitPushPublication": false
+  },
+  "nextQuestion": "How should durable decisions bind to a named operation and distinguish a scoped exception from an unresolved disagreement? A new prospective observation is required; this record is not retried or regraded."
+}

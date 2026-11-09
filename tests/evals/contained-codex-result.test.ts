@@ -68,6 +68,7 @@ test('native caller preserves validation, terminal failure and cleanup results',
     'error-nonzero-exit',
     'error-401',
     'error-403',
+    'error-known-diagnostics',
     ...Object.keys(ordinaryCommands),
     ...Object.keys(terminalItems),
   ]) {
@@ -80,7 +81,7 @@ test('native caller preserves validation, terminal failure and cleanup results',
       const stubs = `
         import assert from 'node:assert/strict';
         const mode = ${JSON.stringify(mode)};
-        const errorMode = ['error-first', 'turn-failed-first', 'callback-throws', 'generic-error-recovery', 'error-only', 'error-nonzero-exit', 'error-401', 'error-403'].includes(mode);
+        const errorMode = ['error-first', 'turn-failed-first', 'callback-throws', 'generic-error-recovery', 'error-only', 'error-nonzero-exit', 'error-401', 'error-403', 'error-known-diagnostics'].includes(mode);
         const ordinary = ${JSON.stringify(ordinary ?? null)};
         const terminalItem = ${JSON.stringify(terminalItem ?? null)};
         const privateMarker = 'SYNTHETIC PRIVATE TERMINAL DETAILS';
@@ -98,7 +99,7 @@ test('native caller preserves validation, terminal failure and cleanup results',
         export const generateContainerCodexHome = async () => ({
           argv: [], env: {}, validate: async () => {},
         });
-        export { parseCodex } from ${JSON.stringify(new URL('../../scripts/evals/profiles/codex/profile.ts', import.meta.url).href)};
+        export { parseCodex, projectCodexError } from ${JSON.stringify(new URL('../../scripts/evals/profiles/codex/profile.ts', import.meta.url).href)};
         export function createProcessSupervisor() {
           const controller = new AbortController();
           return {
@@ -109,8 +110,9 @@ test('native caller preserves validation, terminal failure and cleanup results',
                 type: 'error', message: privateMarker,
                 ...(mode === 'error-401' ? { status_code: 401 } : {}),
                 ...(mode === 'error-403' ? { message: 'HTTP status: 403 ' + privateMarker } : {}),
+                ...(mode === 'error-known-diagnostics' ? { status_code:429, code:'rate_limit_exceeded', retry_after:7, request_id:privateMarker, message:'request timed out' } : {}),
               };
-              const failed = { type: 'turn.failed', error: { message: privateMarker } };
+              const failed = { type: 'turn.failed', error: mode === 'error-known-diagnostics' ? { status:503, code:'server_is_overloaded', message:'stream disconnected before completion: ' + privateMarker } : { message:privateMarker } };
               const records = [
                 { type: 'thread.started', thread_id: 'inert-fixture' },
                 { type: 'turn.started' },
@@ -123,11 +125,11 @@ test('native caller preserves validation, terminal failure and cleanup results',
                   ? [{ type: 'item.completed', item: terminalItem }]
                   : errorMode
                   ? mode === 'turn-failed-first' ? [failed, error]
-                    : ['error-first', 'callback-throws'].includes(mode) ? [error, failed]
+                    : ['error-first', 'callback-throws', 'error-known-diagnostics'].includes(mode) ? [error, failed]
                     : mode === 'error-only' ? [error]
                     : [error, { type: 'item.completed', item: { type: 'agent_message', text: 'offline completion after notification' } }]
                   : [{ type: 'item.completed', item: { type: 'agent_message', text: 'offline completion' } }]),
-                ...(mode === 'error-only' ? [] : [{ type: 'turn.completed', usage: { input_tokens: 0, output_tokens: 0 } }]),
+                ...(['error-only','error-known-diagnostics'].includes(mode) ? [] : [{ type: 'turn.completed', usage: { input_tokens: 0, output_tokens: 0 } }]),
               ];
               const stdout = records.map(record => JSON.stringify(record)).join('\\n') + '\\n';
               command.onStdout(stdout, {
@@ -207,6 +209,7 @@ test('native caller preserves validation, terminal failure and cleanup results',
         'callback-throws',
         'error-401',
         'error-403',
+        'error-known-diagnostics',
       ].includes(mode);
       const genericError = [
         'generic-error-recovery',
@@ -251,7 +254,10 @@ test('native caller preserves validation, terminal failure and cleanup results',
           mode === 'generic-error-recovery' ||
           Boolean(ordinary),
       );
-      assert.equal(result.parsed.completed, mode !== 'error-only');
+      assert.equal(
+        result.parsed.completed,
+        !['error-only', 'error-known-diagnostics'].includes(mode),
+      );
       const terminal = observed.filter(({ record }) =>
         ['error', 'turn.failed'].includes(String(record.type)),
       );
@@ -261,7 +267,7 @@ test('native caller preserves validation, terminal failure and cleanup results',
             type: record.type,
             stopped,
           })),
-          mode === 'error-first'
+          ['error-first', 'error-known-diagnostics'].includes(mode)
             ? [
                 { type: 'error', stopped: false },
                 { type: 'turn.failed', stopped: true },
@@ -367,12 +373,64 @@ test('native caller preserves validation, terminal failure and cleanup results',
           );
         }
       }
+      if (mode === 'error-known-diagnostics') {
+        assert('diagnostics' in result.parsed);
+        assert.deepEqual(
+          terminal.map(({ record }) => record.diagnostics),
+          [
+            {
+              httpStatus: { value: 429, source: 'terminal-record' },
+              serverCode: {
+                value: 'rate_limit_exceeded',
+                source: 'terminal-record',
+              },
+              messageId: {
+                value: 'request-timeout',
+                source: 'terminal-message',
+              },
+            },
+            {
+              httpStatus: { value: 503, source: 'terminal-record' },
+              serverCode: {
+                value: 'server_is_overloaded',
+                source: 'terminal-record',
+              },
+              messageId: {
+                value: 'stream-disconnected',
+                source: 'terminal-message',
+              },
+            },
+          ],
+        );
+        assert.equal(result.parsed.diagnostics?.httpStatus?.value, 429);
+        assert.equal(
+          result.parsed.diagnostics?.serverCode?.value,
+          'rate_limit_exceeded',
+        );
+        assert.equal(
+          result.parsed.diagnostics?.messageId?.value,
+          'request-timeout',
+        );
+      }
       for (const { record } of terminal) {
         assert.deepEqual(
           record,
           result.parsed.records.find((parsed) => parsed.type === record.type),
         );
-        assert.deepEqual(Object.keys(record).sort(), ['detailHash', 'type']);
+        assert.deepEqual(
+          Object.keys(record).sort(),
+          record.diagnostics
+            ? ['detailHash', 'diagnostics', 'type']
+            : ['detailHash', 'type'],
+        );
+        if (mode === 'error-401' || mode === 'error-403')
+          assert.deepEqual(record.diagnostics, {
+            httpStatus: {
+              value: mode === 'error-401' ? 401 : 403,
+              source:
+                mode === 'error-401' ? 'terminal-record' : 'terminal-message',
+            },
+          });
       }
       assert.deepEqual(fixtureState.stopReasons, [
         'host-finished',

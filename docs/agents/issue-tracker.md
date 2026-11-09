@@ -1,5 +1,26 @@
 # Issue tracker
 
+## Current effort — release 1.5.4
+
+The owner authorized final review, commit, push, CI and patch publication. The map (`../../.scratch/release-1.5.4-20261109/map.md`; private development record; excluded from public source) and dashboard (`../../.scratch/release-1.5.4-20261109/dashboard.md`; private development record; excluded from public source) own candidate review, refreshed affected evidence, exact delivery and public operations. Preserve earlier outcomes and exclude concurrent promotion research/private history.
+
+## Closed effort — scoped memory decisions
+
+The map (`../../.scratch/memory-scope-20261109/map.md`; private development record; excluded from public source), dashboard (`../../.scratch/memory-scope-20261109/dashboard.md`; private development record; excluded from public source), [report](../evals/results/2026-11-09-memory-scope/README.md) and [archived change](../../openspec/changes/archive/2026-11-09-clarify-memory-decision-scope/verification.md) close the policy clarification and three accepted bounded observations: correction, fresh implementation and genuine-conflict clarification. Summed caller time 106859 ms; three model-free containers, no retries/fourth call, exact preservation and cleanup passed. Guidance/code checks passed with the separate full-worktree formatting blocker recorded. The old ambiguous HOLD, prior source changes and concurrent research remain preserved. No paid API, auth/settings repair, commit or publication.
+
+
+## Closed effort — fresh conflict and memory observations
+
+The map (`../../.scratch/fresh-conflict-memory-20261109/map.md`; private development record; excluded from public source), dashboard (`../../.scratch/fresh-conflict-memory-20261109/dashboard.md`; private development record; excluded from public source), [report](../evals/results/2026-11-09-fresh-conflict-memory/README.md) and [summary](../evals/results/2026-11-09-fresh-conflict-memory/summary.json) close four sequential subscription callers and three model-free containers. Both real CLI conflict proposals and memory-only correction accepted; fresh reuse read the corrected store but requested clarification and produced no function. The frozen oracle rejected the absent export. Summed caller time 303707ms; no fifth call, answer, retry or repair. Cleanup passed, old outcomes and parked work preserved. Decision scope/exception interpretation remains the follow-up; no paid API, auth/settings change, commit or publication.
+
+## Completed locally — safe failure signals and conflicting contracts
+
+The map (`../../.scratch/reliability-signals-20261109/map.md`; private development record; excluded from public source), dashboard (`../../.scratch/reliability-signals-20261109/dashboard.md`; private development record; excluded from public source) and [verification](../../openspec/changes/archive/2026-11-09-preserve-safe-failure-signals/verification.md) close both minimal implementations and independent review. Full gate: 1075 passed/one existing skip; separate unpacked lifecycle: 3 passed. Existing ordinary reports and closed outcomes are preserved. Changes are Unreleased; no new native/model/auth calls, personal settings changes, commit or publication. Fresh conflict compliance, corrected-memory reuse and wider native coverage remain observational gaps.
+
+## Closed effort — ordinary workflows on 1.5.3
+
+The [report](../evals/results/2026-11-09-ordinary-1.5.3/README.md) and [summary](../evals/results/2026-11-09-ordinary-1.5.3/summary.json) close seven callers and three model-free containers. Both exact approved setups and the stock task were accepted; queue task compatibility was held, and memory correction terminal-failed after a safe partial write. Reuse and repeats were not run. The map (`../../.scratch/ordinary-1.5.3-20261109/map.md`; private development record; excluded from public source) and dashboard (`../../.scratch/ordinary-1.5.3-20261109/dashboard.md`; private development record; excluded from public source) preserve boundaries and follow-ups. Owned resources were removed; no product patch, paid API, auth repair, commit or publication occurred.
+
 ## Completed release — 1.5.3
 
 [1.5.3](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.3) is published from `a86026a5bbc6e4eb0831ac8b76be08faf1891647` with distribution `b6fd86e8927c3640fe66be064da5a34e63ac366d`. Source CI, all six platform cells, exact local/public delivery and all three returned release assets passed; the archive contains 111 files. The [release report](../evals/results/2026-11-09-release-1.5.3/README.md) records the compatible fixes and technical limits.
