@@ -2,7 +2,7 @@
 
 ## Release 1.5.5 published
 
-[1.5.5](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.5) is published; CI/six platforms/exact delivery and returned assets are accepted. [Report](../evals/results/2026-11-15-release-1.5.5/README.md). Site metadata has a separate final check. New research and model matrices are outside this release.
+[1.5.5](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.5) is published; CI/six platforms/exact delivery and returned assets are accepted. [Report](../evals/results/2026-11-15-release-1.5.5/README.md). Site metadata deployment and returned bodies are verified; the release effort is closed. New research and model matrices are outside this release.
 
 ## Closed effort — native apply completed with corrected capture, 15 November 2026
 

@@ -6,7 +6,7 @@ Updated 15 November 2026. Scope stays in the [vision](PRODUCT_VISION.md), [adden
 
 ## Starting point
 
-Published skills are **1.5.5**. The [release report](evals/results/2026-11-15-release-1.5.5/README.md) defines exact delivered bytes and limits. Input-file hardening and proposal guidance are included. The recorded [Cloudflare migration](../openspec/changes/make-cloudflare-primary-site/verification.md) remains in effect; the 1.5.4 release assets are preserved. Site metadata deployment is being verified separately.
+Published skills are **1.5.5**. The [release report](evals/results/2026-11-15-release-1.5.5/README.md) defines exact delivered bytes and limits. Input-file hardening and proposal guidance are included. The recorded [Cloudflare migration](../openspec/changes/make-cloudflare-primary-site/verification.md) remains in effect; the 1.5.4 release assets are preserved. Site metadata and both checksum endpoints are deployed and verified.
 
 The [10–12 November registry](evals/results/2026-11-10-reliability-runs/README.md) reports wider usage than the earlier AionCore attempt: additional harnesses, Bash/documentation/Python, adopt, memory, recovery and optional process tools. The [assessment](evals/results/2026-11-10-reliability-runs/ASSESSMENT.md) separates reports from retained primary evidence. Codex's operator-run apply is not a wholly native cycle. Some raw streams and fixtures were deleted: aggregate counts are not independent reproducible acceptance or proof that all 218 planned checks passed. The original AionCore route remains unverified.
 
