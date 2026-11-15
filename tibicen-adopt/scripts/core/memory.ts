@@ -1,4 +1,4 @@
-import type { ProjectMemory } from './types.ts';
+import type { CheckResult, ProjectMemory } from './types.ts';
 import { assert } from './contracts.ts';
 export { instructionCandidate as memoryInstructionPath } from '../agents/profiles.ts';
 
@@ -47,6 +47,19 @@ export function memoryAllows(
   relative: string,
 ) {
   return !!memory && memory.path === relative;
+}
+
+export function memoryConnectionAdvice(check: CheckResult) {
+  const issue = check.issues?.find(
+    (item) => item.reason === 'missing-memory-connection',
+  );
+  if (!issue?.path) return undefined;
+  return {
+    kind: 'repair-memory-connection',
+    path: issue.path,
+    reason:
+      'Review the selected memory and applicable instructions within the permitted read scope. Repeating the same plan cannot add a missing connection. Prepare a new exact connecting proposal, obtain fresh approval, then resume the original session when continuation is available. Preserve memory notes; leave excluded paths and permissions unchanged.',
+  };
 }
 
 export function referencesMemory(content: string, memory: ProjectMemory) {

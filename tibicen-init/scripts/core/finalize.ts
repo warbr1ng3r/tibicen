@@ -13,6 +13,7 @@ import { safePath } from './paths.ts';
 import { readCurrent } from './plan.ts';
 import { installedComponents, readManifest } from './components.ts';
 import { manifestRecovery } from './recovery.ts';
+import { memoryConnectionAdvice } from './memory.ts';
 
 interface FinalizationContext {
   root: string;
@@ -253,27 +254,29 @@ export async function finalizeSession(
     action,
     evidence,
   }));
-  if (failure)
-    return {
-      schema: 1,
-      id: session.id,
-      status: 'incomplete',
-      reason: session.reason,
-      applied,
-      checks: session.checks,
-      continuation:
-        'Inspect status, verify actual files, and approve a proposal again before resume.',
-    };
-  return {
-    schema: 1,
-    id: session.id,
-    status: session.status,
-    applied,
-    checks: session.checks,
-    manualActions: proposal.manualActions,
-    manualFragments: proposal.manualFragments ?? [],
-    manifest: manifest!,
-    firstUsefulRequest:
-      'Используй инструкции проекта и выполни небольшую согласованную рабочую задачу.',
-  };
+  const nextAction = memoryConnectionAdvice(session.checks.infrastructure);
+  const result = failure
+    ? {
+        schema: 1,
+        id: session.id,
+        status: 'incomplete',
+        reason: session.reason,
+        applied,
+        checks: session.checks,
+        continuation:
+          'Inspect status, verify actual files, and approve a proposal again before resume.',
+      }
+    : {
+        schema: 1,
+        id: session.id,
+        status: session.status,
+        applied,
+        checks: session.checks,
+        manualActions: proposal.manualActions,
+        manualFragments: proposal.manualFragments ?? [],
+        manifest: manifest!,
+        firstUsefulRequest:
+          'Используй инструкции проекта и выполни небольшую согласованную рабочую задачу.',
+      };
+  return Object.assign(result, nextAction ? { nextAction } : {});
 }

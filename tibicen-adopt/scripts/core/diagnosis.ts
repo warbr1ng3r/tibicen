@@ -7,6 +7,7 @@ import {
   isHarnessId,
 } from '../agents/profiles.ts';
 import { assert } from './contracts.ts';
+import { memoryConnectionAdvice } from './memory.ts';
 import { validateRelativePath } from './paths.ts';
 import {
   type InstructionSource,
@@ -229,35 +230,37 @@ export function summarizeDiagnosis({
     ),
   ].sort();
   const complete = scan.complete && !coverageLimits.length;
-  const nextAction = continuationAvailable
-    ? {
-        kind: 'review-continuation',
-        reason:
-          'Review the interrupted session and permitted current files before approving a continuation.',
-      }
-    : !complete || gaps.length
+  const nextAction =
+    memoryConnectionAdvice(infrastructure) ??
+    (continuationAvailable
       ? {
-          kind: 'inspect-gaps',
+          kind: 'review-continuation',
           reason:
-            'Assess the permitted evidence and explain inspection limits before deciding what to keep or change; leave excluded paths and permissions unchanged.',
+            'Review the interrupted session and permitted current files before approving a continuation.',
         }
-      : issues.length || infrastructure.status === 'issues-found'
+      : !complete || gaps.length
         ? {
-            kind: 'review-issues',
+            kind: 'inspect-gaps',
             reason:
-              'Review the current structural issues and propose only necessary corrections.',
+              'Assess the permitted evidence and explain inspection limits before deciding what to keep or change; leave excluded paths and permissions unchanged.',
           }
-        : infrastructure.status !== 'passed'
+        : issues.length || infrastructure.status === 'issues-found'
           ? {
-              kind: 'inspect-setup',
+              kind: 'review-issues',
               reason:
-                'Inspect the instruction candidates and selected agent context; structural verification is incomplete.',
+                'Review the current structural issues and propose only necessary corrections.',
             }
-          : {
-              kind: 'review-evidence',
-              reason:
-                'Review the observed setup for the intended task; passing structural checks alone does not establish sufficiency.',
-            };
+          : infrastructure.status !== 'passed'
+            ? {
+                kind: 'inspect-setup',
+                reason:
+                  'Inspect the instruction candidates and selected agent context; structural verification is incomplete.',
+              }
+            : {
+                kind: 'review-evidence',
+                reason:
+                  'Review the observed setup for the intended task; passing structural checks alone does not establish sufficiency.',
+              });
   return {
     inventory: {
       complete,
