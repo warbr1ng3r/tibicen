@@ -6,7 +6,7 @@ import {
 } from '../../scripts/evals/native-usage.ts';
 import { validateRun } from '../../scripts/evals/contracts.ts';
 import { loadDiagnostic } from '../../scripts/evals/fixtures.ts';
-import { digest } from '../../scripts/core/contracts.ts';
+import { digest, hashContent } from '../../scripts/core/contracts.ts';
 import path from 'node:path';
 import os from 'node:os';
 import { mkdtemp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
@@ -257,6 +257,23 @@ test('model-free collection retains original runs and links both paired rows to 
     await readFile(path.join(input, 'tibicen-run.json'), 'utf8'),
     original,
   );
+  const summary = JSON.parse(
+    await readFile(path.join(output, 'tibicen-unit-summary.json'), 'utf8'),
+  );
+  assert.equal(summary.evidenceStatus, 'unverified');
+  assert.equal(summary.sessionIndex, 'legacy');
+  assert.equal(summary.sourceRunHash, digest(JSON.parse(original)));
+  assert.equal(
+    summary.processor.frozenHash,
+    digest({ experiment: source.experiment, conditions }),
+  );
+  assert.equal(summary.sessions.length, 4);
+  assert.equal(
+    summary.sessions[0].sourceHash,
+    hashContent(await readFile(path.join(input, summary.sessions[0].file))),
+  );
+  assert.equal(summary.sessions[0].timing, null);
+  assert.equal(summary.limitsOfObservation.pendingCostRub, null);
   const data = JSON.parse(
     await readFile(
       path.join(output, 'observations-unit-enriched.json'),
@@ -288,6 +305,19 @@ test('model-free collection retains original runs and links both paired rows to 
       path.join(output, 'observations-missing-session-enriched.json'),
       'utf8',
     ),
+  );
+  const missingSummary = JSON.parse(
+    await readFile(
+      path.join(output, 'tibicen-missing-session-summary.json'),
+      'utf8',
+    ),
+  );
+  assert.equal(missingSummary.evidenceStatus, 'incomplete');
+  assert.equal(
+    missingSummary.sessions.find(
+      (session: { file: string }) => session.file === 'tibicen-task-apply.json',
+    ).sourceHash,
+    null,
   );
   assert.deepEqual(
     missing.runs[0].events.find(
@@ -392,4 +422,122 @@ test('collector enriches setup-only records without inventing baseline or task r
   }
   for (const { filename, original } of originals)
     assert.equal(await readFile(filename, 'utf8'), original);
+  for (const { filename } of originals) {
+    const id = path.basename(filename, '-run.json'),
+      summary = JSON.parse(
+        await readFile(
+          path.join(output, id + '-setup-only-summary.json'),
+          'utf8',
+        ),
+      );
+    assert.equal(summary.evidenceStatus, 'unverified');
+    assert.equal(summary.sessions.length, 2);
+    assert(
+      summary.sessions.every(
+        (session: { stage: string }) => session.stage === 'setup',
+      ),
+    );
+  }
+});
+
+test('indexed summaries bind session wall observations and never call missing or altered traces complete', async (t) => {
+  const directory = await mkdtemp(
+    path.join(os.tmpdir(), 'tibicen-summary-index-'),
+  );
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const input = path.join(directory, 'raw'),
+    output = path.join(directory, 'reports');
+  await mkdir(input);
+  const source = await recorded(),
+    conditions = { nativeProtocol: 2, maxModelSessions: 2, harnessFiles: [] };
+  source.experiment.conditionsHash = digest(conditions);
+  await writeFile(
+    path.join(input, 'frozen.json'),
+    JSON.stringify({ experiment: source.experiment, conditions }),
+  );
+  const timing = {
+    startedAt: '2026-11-14T08:00:00.000Z',
+    endedAt: '2026-11-14T08:00:01.000Z',
+    durationMs: 1000,
+    privateMetadata: 'Must not enter the compact summary.',
+  };
+  for (const variant of ['tibicen', 'baseline'] as const) {
+    const run = structuredClone(source);
+    run.result.id = variant;
+    run.result.variant = variant;
+    const file = `${variant}-setup-proposal-0.json`,
+      trace = JSON.stringify({ exitCode: 0, timedOut: false, timing }),
+      entry = {
+        stage: 'setup',
+        phase: 'setup-proposal',
+        file,
+        hash: hashContent(trace),
+      };
+    run.events.splice(2, 0, {
+      ...run.events[2],
+      kind: 'assertion',
+      data: {
+        id: 'native-session-0',
+        expectedHash: digest(entry),
+        actualHash: digest(entry),
+      },
+    });
+    run.events.forEach((event, index) => {
+      event.attemptId = variant;
+      event.seq = index;
+      event.elapsedMs = index;
+    });
+    run.grades.forEach((grade) => {
+      grade.attemptId = variant;
+      grade.evidence = grade.evidence.map((seq) => (seq >= 2 ? seq + 1 : seq));
+    });
+    await writeFile(path.join(input, file), trace);
+    await writeFile(
+      path.join(input, variant + '-run.json'),
+      JSON.stringify(run),
+    );
+    await writeFile(
+      path.join(input, variant + '-sessions.json'),
+      JSON.stringify({ schema: 1, runHash: digest(run), sessions: [entry] }),
+    );
+    await writeFile(
+      path.join(input, variant + '-evidence.json'),
+      JSON.stringify({ schema: 1, runHash: digest(run), evidence: [] }),
+    );
+  }
+  await collectNative(input, output, 'complete');
+  const summary = JSON.parse(
+    await readFile(path.join(output, 'tibicen-complete-summary.json'), 'utf8'),
+  );
+  assert.equal(summary.evidenceStatus, 'complete');
+  assert.equal(summary.sessionIndex, 'verified');
+  assert.deepEqual(summary.sessions[0].timing, {
+    startedAt: timing.startedAt,
+    endedAt: timing.endedAt,
+    durationMs: timing.durationMs,
+  });
+  assert(!JSON.stringify(summary).includes('privateMetadata'));
+  const file = path.join(input, 'tibicen-setup-proposal-0.json');
+  await writeFile(
+    file,
+    JSON.stringify({ exitCode: 0, timedOut: false, timing: null }),
+  );
+  await assert.rejects(collectNative(input, output, 'altered'), {
+    code: 'invalid-native-cohort',
+  });
+  await assert.rejects(
+    readFile(path.join(output, 'tibicen-altered-summary.json')),
+    { code: 'ENOENT' },
+  );
+  await rm(file);
+  await collectNative(input, output, 'missing-indexed-trace');
+  const missing = JSON.parse(
+    await readFile(
+      path.join(output, 'tibicen-missing-indexed-trace-summary.json'),
+      'utf8',
+    ),
+  );
+  assert.equal(missing.evidenceStatus, 'incomplete');
+  assert.equal(missing.sessions[0].sourceHash, null);
+  assert.deepEqual(missing.result, summary.result);
 });

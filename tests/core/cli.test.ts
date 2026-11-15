@@ -12,12 +12,16 @@ import {
   symlink,
   writeFile,
 } from 'node:fs/promises';
-import { spawnSync } from 'node:child_process';
+import { spawnSync, execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
-import { digest, hashContent } from '../../scripts/core/contracts.ts';
+import {
+  digest,
+  hashContent,
+  MAX_DATA_BYTES,
+} from '../../scripts/core/contracts.ts';
 
 const script = path.resolve('scripts/tibicen.ts');
 test('CLI stdin flow applies only after consent, preserves app and creates no Git history', async (t) => {
@@ -539,4 +543,225 @@ test('source-check validates stdin/files read-only, including both standalone sk
       assert.equal(result.result.error.code, 'source-blocked');
     }
   assert.equal(await readFile(inputFile, 'utf8'), JSON.stringify([source]));
+});
+
+test(
+  'explicit CLI file inputs reject non-regular files finitely',
+  {
+    skip:
+      process.platform === 'win32' ? 'mkfifo is unavailable on Windows' : false,
+  },
+  async (t) => {
+    const base = await mkdtemp(
+      path.join(tmpdir(), 'tibicen-cli-$(false)-`-files-'),
+    );
+    t.after(() => rm(base, { recursive: true, force: true }));
+    const root = path.join(base, 'app'),
+      home = path.join(base, 'home');
+    await mkdir(root);
+    await mkdir(home);
+    await writeFile(path.join(root, 'index.js'), 'existing application');
+    const fifo = path.join(base, 'input.fifo');
+    execFileSync('mkfifo', [fifo]);
+    const directory = path.join(base, 'input-dir');
+    await mkdir(directory);
+    const execute = (args: string[]) =>
+      spawnSync(process.execPath, [script, ...args], {
+        cwd: base,
+        env: { PATH: process.env.PATH, HOME: home },
+        encoding: 'utf8',
+        timeout: 8000,
+      });
+    for (const args of [
+      ['proposal', '--root', root, '--input', fifo],
+      ['proposal', '--root', root, '--input', directory],
+      ['apply', '--root', root, '--plan', fifo],
+      ['apply', '--root', root, '--plan', directory],
+      ['mcp-verify', '--root', root, '--agent', 'codex', '--config', fifo],
+      ['mcp-verify', '--root', root, '--agent', 'codex', '--config', directory],
+    ]) {
+      const result = execute(args);
+      assert.ok(!result.error, `unexpected spawn error for ${args.join(' ')}`);
+      assert.equal(result.stderr, '');
+      assert.equal(result.status, 1);
+      assert.equal(
+        JSON.parse(result.stdout).error.code,
+        'invalid-input-file',
+        `expected typed refusal for ${args.join(' ')}`,
+      );
+    }
+    assert.deepEqual(await readdir(root), ['index.js']);
+    assert.deepEqual(await readdir(home), []);
+  },
+);
+
+test('explicit CLI files reject oversized data before parsing', async (t) => {
+  const base = await mkdtemp(path.join(tmpdir(), 'tibicen-cli-size-'));
+  t.after(() => rm(base, { recursive: true, force: true }));
+  const input = path.join(base, 'oversized.json');
+  await writeFile(input, Buffer.alloc(MAX_DATA_BYTES + 1, 32));
+  for (const args of [
+    ['proposal', '--root', base, '--input', input],
+    ['apply', '--root', base, '--plan', input],
+    ['mcp-verify', '--root', base, '--agent', 'codex', '--config', input],
+  ]) {
+    const result = spawnSync(process.execPath, [script, ...args], {
+      cwd: base,
+      env: { PATH: process.env.PATH, HOME: base },
+      encoding: 'utf8',
+      timeout: 8000,
+    });
+    assert.ok(!result.error);
+    assert.equal(result.stderr, '');
+    assert.equal(result.status, 1);
+    assert.equal(JSON.parse(result.stdout).error.code, 'invalid-data');
+  }
+  assert.deepEqual(await readdir(base), ['oversized.json']);
+});
+
+test(
+  'explicit CLI reads keep the opened regular file when its path becomes a FIFO',
+  {
+    skip:
+      process.platform === 'win32' ? 'mkfifo is unavailable on Windows' : false,
+  },
+  async (t) => {
+    const base = await mkdtemp(path.join(tmpdir(), 'tibicen-cli-swap-'));
+    t.after(() => rm(base, { recursive: true, force: true }));
+    const root = path.join(base, 'app');
+    await mkdir(root);
+    await writeFile(path.join(root, 'index.js'), 'existing application');
+    const input = path.join(base, 'input.json');
+    await writeFile(
+      input,
+      JSON.stringify({
+        mode: 'init',
+        changes: [
+          {
+            path: 'AGENTS.md',
+            content: 'Read README.md before working.\n',
+            reason: 'Connect project instructions',
+          },
+        ],
+      }),
+    );
+    const replacement = path.join(base, 'replacement.fifo');
+    execFileSync('mkfifo', [replacement]);
+    const preload = path.join(base, 'replace-path.mjs');
+    // Inject the replacement at the filesystem boundary, not through a new
+    // production test hook. The old stat-then-read path blocks on this FIFO.
+    await writeFile(
+      preload,
+      `import fs from 'node:fs';
+import { syncBuiltinESMExports } from 'node:module';
+const target = ${JSON.stringify(input)};
+const replacement = ${JSON.stringify(replacement)};
+let swapped = false;
+function swap(filename) {
+  if (String(filename) === target && !swapped) {
+    fs.renameSync(replacement, target);
+    swapped = true;
+  }
+}
+const stat = fs.promises.stat;
+fs.promises.stat = async function(filename, ...args) {
+  const result = await stat.call(this, filename, ...args);
+  swap(filename);
+  return result;
+};
+const open = fs.promises.open;
+fs.promises.open = async function(filename, ...args) {
+  const handle = await open.call(this, filename, ...args);
+  swap(filename);
+  return handle;
+};
+syncBuiltinESMExports();
+`,
+    );
+    const result = spawnSync(
+      process.execPath,
+      [
+        '--import',
+        preload,
+        script,
+        'proposal',
+        '--root',
+        root,
+        '--input',
+        input,
+      ],
+      {
+        cwd: base,
+        env: { PATH: process.env.PATH, HOME: base },
+        encoding: 'utf8',
+        timeout: 8000,
+      },
+    );
+    assert.ok(!result.error, 'a path replacement must not block the CLI');
+    assert.equal(result.stderr, '');
+    assert.equal(result.status, 0);
+    assert.match(JSON.parse(result.stdout).digest, /^[a-f0-9]{64}$/);
+    assert.equal((await lstat(input)).isFIFO(), true);
+    assert.deepEqual(await readdir(root), ['index.js']);
+    assert.equal(
+      await readFile(path.join(root, 'index.js'), 'utf8'),
+      'existing application',
+    );
+  },
+);
+
+test('explicit CLI reads stop at the byte limit when a regular file grows', async (t) => {
+  const base = await mkdtemp(path.join(tmpdir(), 'tibicen-cli-growth-'));
+  t.after(() => rm(base, { recursive: true, force: true }));
+  const input = path.join(base, 'input.json');
+  await writeFile(input, '{}');
+  const receipt = path.join(base, 'bytes-read.json');
+  const preload = path.join(base, 'grow-input.mjs');
+  await writeFile(
+    preload,
+    `import fs from 'node:fs';
+import { syncBuiltinESMExports } from 'node:module';
+const target = ${JSON.stringify(input)};
+const open = fs.promises.open;
+fs.promises.open = async function(filename, ...args) {
+  const handle = await open.call(this, filename, ...args);
+  if (String(filename) === target) {
+    const stat = handle.stat.bind(handle);
+    handle.stat = async function(...args) {
+      const result = await stat(...args);
+      fs.appendFileSync(target, Buffer.alloc(${MAX_DATA_BYTES + 1}, 32));
+      return result;
+    };
+    let bytesRead = 0;
+    const read = handle.read.bind(handle);
+    handle.read = async function(...args) {
+      const result = await read(...args);
+      bytesRead += result.bytesRead;
+      fs.writeFileSync(${JSON.stringify(receipt)}, JSON.stringify({ bytesRead }));
+      return result;
+    };
+  }
+  return handle;
+};
+syncBuiltinESMExports();
+`,
+  );
+  const result = spawnSync(
+    process.execPath,
+    ['--import', preload, script, 'proposal', '--root', base, '--input', input],
+    {
+      cwd: base,
+      env: { PATH: process.env.PATH, HOME: base },
+      encoding: 'utf8',
+      timeout: 8000,
+    },
+  );
+  assert.ok(!result.error);
+  assert.equal(result.stderr, '');
+  assert.equal(result.status, 1);
+  assert.equal(JSON.parse(result.stdout).error.code, 'invalid-data');
+  assert.equal(
+    JSON.parse(await readFile(receipt, 'utf8')).bytesRead,
+    MAX_DATA_BYTES + 1,
+  );
 });

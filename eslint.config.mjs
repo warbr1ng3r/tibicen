@@ -10,6 +10,7 @@ export default defineConfig(
     '**/.astro/**',
     '.agents/**',
     '.evals-private/**',
+    'docs/evals/sandboxes/**',
     'scripts/evals/fixtures/**',
   ]),
   {

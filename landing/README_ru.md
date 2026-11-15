@@ -28,6 +28,10 @@ pnpm preview:site
 
 Основной лендинг — [tibicen.pages.dev](https://tibicen.pages.dev/), с главной и конструктором на английском и русском. Обычная сборка Astro использует этот origin. [Workflow Cloudflare](../.github/workflows/cloudflare-pages.yml) собирает и проверяет сайт при каждом push в `main`, затем публикует закреплённым Wrangler. Ручной запуск поддерживается на `main`. Требуются repository secrets `CLOUDFLARE_API_TOKEN` и `CLOUDFLARE_ACCOUNT_ID`; существующий токен аккаунта имеет Pages Write. Для ротации замените токен Cloudflare и секрет GitHub. Другие ветки и pull request не публикуются.
 
+## Квитанции выкладки Cloudflare
+
+[Отчёт первой выкладки](../docs/deployments/2026-11-09-cloudflare-pages/README.md) сохраняет ручную загрузку, сравнение публичных байтов и ограничения браузерных проверок. [Первая автоматическая выкладка](../docs/deployments/2026-11-09-cloudflare-pages/AUTODEPLOY.md) записывает исходник `583c8ab` и все 22 возвращённых хеша. Это датированные наблюдения, а не новая выкладка из этой рабочей ветки.
+
 ## Прежний GitHub Pages
 
 [Ручной workflow Pages](../.github/workflows/pages.yml) публикует только четыре небольших HTML из `legacy-pages/` и неизменённую копию `public/maintenance/index.json`. Второй Astro-лендинг не собирается. После проверенного обновления канала запустите **Publish legacy redirects and checksum index** на `main`; проверьте четыре перехода и сравните публичный JSON с исходником.

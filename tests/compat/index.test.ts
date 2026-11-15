@@ -231,3 +231,119 @@ test('an unsafe sibling skill cannot be invoked through the native loader', asyn
   const result = await prepareCompatProbe(pair, { ...options, copyRoot });
   assert.equal(result.reason, 'skill-command-execution-required');
 });
+
+test('parallel tool calls and null message content stay interface-level and attribute exactly', async (t) => {
+  const probe = await prepareCompatProbe(pair, {
+    ...options,
+    copyRoot: await copy(t),
+  });
+  assert.equal(probe.status, 'ready');
+  const instructions = probe.expected.instructions;
+  // Parallel tool_use in one assistant message: first result lacks the
+  // instructions, second carries them; a null-content assistant record and a
+  // null-content user record must be skipped without crashing.
+  const stdout = [
+    { type: 'system', subtype: 'init', skills: ['useful'] },
+    { type: 'assistant', message: null },
+    {
+      type: 'assistant',
+      message: {
+        content: [
+          {
+            type: 'tool_use',
+            id: 'tool-1',
+            name: 'Skill',
+            input: { skill: 'useful' },
+          },
+          {
+            type: 'tool_use',
+            id: 'tool-2',
+            name: 'Skill',
+            input: { skill: 'useful' },
+          },
+        ],
+      },
+    },
+    { type: 'user', message: null },
+    {
+      type: 'user',
+      message: {
+        content: [
+          {
+            type: 'tool_result',
+            tool_use_id: 'tool-1',
+            content: 'other output',
+          },
+        ],
+      },
+    },
+    {
+      type: 'user',
+      message: {
+        content: [
+          { type: 'tool_result', tool_use_id: 'tool-2', content: instructions },
+        ],
+      },
+    },
+  ]
+    .map((value) => JSON.stringify(value))
+    .join('\n');
+  const result = evaluateCompatEvidence(probe, { exitCode: 0, stdout });
+  assert.equal(result.loading, 'verified');
+  assert.equal((result.evidence as { toolUseId?: string }).toolUseId, 'tool-2');
+  // A failed parallel result cannot verify even when its own text matches.
+  const failedFirst = evaluateCompatEvidence(probe, {
+    exitCode: 0,
+    stdout: [
+      { type: 'system', subtype: 'init', skills: ['useful'] },
+      {
+        type: 'assistant',
+        message: {
+          content: [
+            {
+              type: 'tool_use',
+              id: 'tool-1',
+              name: 'Skill',
+              input: { skill: 'useful' },
+            },
+            {
+              type: 'tool_use',
+              id: 'tool-2',
+              name: 'Skill',
+              input: { skill: 'useful' },
+            },
+          ],
+        },
+      },
+      {
+        type: 'user',
+        message: {
+          content: [
+            {
+              type: 'tool_result',
+              tool_use_id: 'tool-1',
+              is_error: true,
+              content: instructions,
+            },
+          ],
+        },
+      },
+      {
+        type: 'user',
+        message: {
+          content: [
+            {
+              type: 'tool_result',
+              tool_use_id: 'tool-2',
+              content: 'no instructions here',
+            },
+          ],
+        },
+      },
+    ]
+      .map((value) => JSON.stringify(value))
+      .join('\n'),
+  });
+  assert.equal(failedFirst.loading, 'unverified');
+  assert.equal(failedFirst.reason, 'discovered-only');
+});

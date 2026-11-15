@@ -1,8 +1,15 @@
 #!/usr/bin/env node
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { readFile, readdir, realpath } from 'node:fs/promises';
-import { assert, parseData, serializeData, VERSION } from './core/contracts.ts';
+import { constants } from 'node:fs';
+import { open, readFile, readdir, realpath } from 'node:fs/promises';
+import {
+  assert,
+  parseData,
+  serializeData,
+  MAX_DATA_BYTES,
+  VERSION,
+} from './core/contracts.ts';
 import { createProposal, unwrapPlan } from './core/plan.ts';
 import {
   applyPlan,
@@ -37,6 +44,40 @@ function parseArgs(argv: string[]) {
   return { command, options };
 }
 
+async function readRegularFile(filename: string, kind = 'Input') {
+  const handle = await open(
+    filename,
+    constants.O_RDONLY | (constants.O_NONBLOCK ?? 0),
+  );
+  try {
+    const info = await handle.stat();
+    assert(
+      info.isFile(),
+      'invalid-input-file',
+      `${kind} must be a regular file.`,
+    );
+    assert(info.size <= MAX_DATA_BYTES, 'invalid-data', 'Input is too large.');
+    const chunks: Buffer[] = [];
+    const buffer = Buffer.alloc(64 * 1024);
+    let size = 0;
+    while (true) {
+      const { bytesRead } = await handle.read(
+        buffer,
+        0,
+        Math.min(buffer.length, MAX_DATA_BYTES - size + 1),
+        null,
+      );
+      if (!bytesRead) break;
+      size += bytesRead;
+      assert(size <= MAX_DATA_BYTES, 'invalid-data', 'Input is too large.');
+      chunks.push(Buffer.from(buffer.subarray(0, bytesRead)));
+    }
+    return Buffer.concat(chunks, size).toString('utf8');
+  } finally {
+    await handle.close();
+  }
+}
+
 async function inputData(filename: unknown) {
   assert(
     typeof filename === 'string',
@@ -62,7 +103,7 @@ async function inputData(filename: unknown) {
           process.stdin.on('end', () => resolve(text));
           process.stdin.on('error', reject);
         })
-      : await readFile(filename, 'utf8');
+      : await readRegularFile(filename);
   return parseData(text);
 }
 
@@ -454,7 +495,7 @@ export async function main(argv = process.argv.slice(2)) {
         'Provide the explicitly selected Codex config path.',
       );
       return verifyCodexMcpBlock(
-        await readFile(options.config as string, 'utf8'),
+        await readRegularFile(options.config as string, 'Config'),
         await inputData(options.input),
       );
     }

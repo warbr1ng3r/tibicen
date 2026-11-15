@@ -1,0 +1,454 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "dateZone": "Europe/Moscow",
+  "status": "diagnostic-delivery-verified-historical-cause-unknown",
+  "scope": "Development-only, opt-in private executor failure diagnostics; no product runtime or published-version change.",
+  "limits": {
+    "maxOwnedControlContainers": 3,
+    "deadlineMsEach": 20000,
+    "modelSessions": 0,
+    "authReads": 0,
+    "paidApiCalls": 0,
+    "retries": 0
+  },
+  "historicalFailure": {
+    "replayed": false,
+    "cause": "unknown",
+    "commandArguments": "unknown",
+    "stderr": "unknown",
+    "failedTurnUsage": "unknown",
+    "finalTransientContainerState": "unknown"
+  },
+  "controls": [
+    {
+      "id": "eacces-before",
+      "artifacts": {
+        "protocol.json": {
+          "path": ".evals-private/executor-denial-diagnosis-20261115/eacces-before/protocol.json",
+          "sha256": "88bd6e1aec29faf97cd5af39775159f5c25e7628b0a41d414a540e488de75f5d",
+          "bytes": 1504
+        },
+        "GO.json": {
+          "path": ".evals-private/executor-denial-diagnosis-20261115/eacces-before/GO.json",
+          "sha256": "019baa55edc1505afd6204fab11cc08d93931c8f21181903f53a01f3f5bc067f",
+          "bytes": 259
+        },
+        "summary.json": {
+          "path": ".evals-private/executor-denial-diagnosis-20261115/eacces-before/summary.json",
+          "sha256": "3d52423da3fe6ce00886abc88578246047867246aea1721316798604c49a70c1",
+          "bytes": 525
+        },
+        "raw.json": {
+          "path": ".evals-private/executor-denial-diagnosis-20261115/eacces-before/raw.json",
+          "sha256": "a60bb38a66b68459ffa9c36e9955bc19d840a640db4e586ef821794e93c7ec76",
+          "bytes": 3656
+        },
+        "diagnostics/terminal-errors.jsonl": {
+          "path": ".evals-private/executor-denial-diagnosis-20261115/eacces-before/diagnostics/terminal-errors.jsonl",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "outcome": {
+        "controlCompleted": true,
+        "exitCode": 1,
+        "sandboxDenied": false,
+        "eaccesObserved": true,
+        "toolFailure": null,
+        "privateCapture": {
+          "status": "no-terminal-record",
+          "records": 0,
+          "bytes": 0,
+          "truncated": false
+        },
+        "durationMs": 2725.847
+      },
+      "cleanup": {
+        "stopped": true,
+        "removed": true
+      },
+      "interpretation": "Ordinary nonterminal EACCES; not the historical sandbox-flag branch. Empty terminal capture expected."
+    },
+    {
+      "id": "managed-before",
+      "artifacts": {
+        "protocol.json": {
+          "path": ".evals-private/executor-denial-diagnosis-20261115/managed-before/protocol.json",
+          "sha256": "59ba28ae5a29b26f1b22d3becd89a7719f9d2012d21f69a68e8f85d39fb16143",
+          "bytes": 1477
+        },
+        "GO.json": {
+          "path": ".evals-private/executor-denial-diagnosis-20261115/managed-before/GO.json",
+          "sha256": "0bbc893d40ea8a1f870fe7bc94da97021e7e431f4af9c09416e5cc77cbe17413",
+          "bytes": 300
+        },
+        "summary.json": {
+          "path": ".evals-private/executor-denial-diagnosis-20261115/managed-before/summary.json",
+          "sha256": "474b9d9f021d28173e8de66b61301e3c1ab5d56245e93783e2f06d041c02f3b9",
+          "bytes": 528
+        },
+        "raw.json": {
+          "path": ".evals-private/executor-denial-diagnosis-20261115/managed-before/raw.json",
+          "sha256": "9f4e5e8642933504ba066d5a3266d877919fff98437c873331b2235d95276da9",
+          "bytes": 2731
+        },
+        "diagnostics/terminal-errors.jsonl": {
+          "path": ".evals-private/executor-denial-diagnosis-20261115/managed-before/diagnostics/terminal-errors.jsonl",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "outcome": {
+        "controlCompleted": true,
+        "exitCode": 1,
+        "sandboxDenied": false,
+        "eaccesObserved": false,
+        "toolFailure": null,
+        "privateCapture": {
+          "status": "no-terminal-record",
+          "records": 0,
+          "bytes": 0,
+          "truncated": false
+        },
+        "durationMs": 677.410958
+      },
+      "cleanup": {
+        "stopped": true,
+        "removed": true
+      },
+      "interpretation": "Unsupported restricted-filesystem profile stopped before child startup; not the supported native route or a product failure. Empty terminal capture expected."
+    }
+  ],
+  "regression": {
+    "status": "expected-pre-fix-failure",
+    "artifact": {
+      "path": ".scratch/executor-diagnosis-20261115/diagnostic-seam-red.json",
+      "sha256": "303c08ca2d8288988ecbe466672c82b1e81d9979f1e99b464afcb79ad69bf635",
+      "bytes": 669
+    },
+    "command": "node --test --test-name-pattern='private executor stderr survives actual owner' tests/evals/container-session.test.ts",
+    "exitCode": 1,
+    "tests": 1,
+    "passed": 0,
+    "failed": 1,
+    "durationMs": 112.660166,
+    "expectedPrivateCaptureCount": 1,
+    "actualPrivateCaptureCount": 0,
+    "sessionSourceSha256": "119e3ba6c9c12cd4b39ffb232845d1c7e525a0affd65b8a5ad7e80be88e2a2b3",
+    "testSourceSha256": "7dab07f2d2581bdc5c51caa77c0c62a7e4987ccdc9505e486c0dfcfd680a3761",
+    "execution": "Actual owner/session handlers with existing Docker/socket mocks only; no real container, model or credential access."
+  },
+  "focusedVerification": {
+    "status": "passed",
+    "artifact": {
+      "path": ".scratch/executor-diagnosis-20261115/diagnostic-seam-green.json",
+      "sha256": "9d91cc20021a206b95af4162d9436d9a71af9f5edc37883293527c86eecbc331",
+      "bytes": 1128
+    },
+    "command": "node --test tests/evals/container-session.test.ts tests/evals/private-terminal-diagnostics.test.ts tests/evals/contained-codex-result.test.ts",
+    "exitCode": 0,
+    "tests": 139,
+    "passed": 139,
+    "failed": 0,
+    "durationMs": 722.843,
+    "sessionTests": 87,
+    "privateWriterTests": 11,
+    "actualCallerTests": 41,
+    "sourceHashes": {
+      "scripts/evals/container/session.ts": "531b35fe56e1d4e9bcad9ffcd0a95c8ae2590d14044461a1c0a65894c9b20d7c",
+      "tests/evals/container-session.test.ts": "2325b96461cd2acd184ced4ebb35e9027c5f4f8eb4941c5bcdd6ff18e7dc8b91"
+    },
+    "validation": {
+      "scopedEslint": "passed",
+      "prettier": "passed",
+      "coreTypecheck": "passed"
+    },
+    "execution": "Existing Docker/socket mocks only; no real container, model or auth call."
+  },
+  "sourceInspection": {
+    "kind": "inspected-local-snapshot",
+    "snapshotLabel": "codex-ac21625ddf7f9dd5f34b2802212cf20295fdff95",
+    "files": [
+      {
+        "path": ".evals-private/codex-executor-seam-20261026-r1/codex-ac21625ddf7f9dd5f34b2802212cf20295fdff95/codex-rs/sandboxing/src/denial.rs",
+        "sha256": "70ba7f805ebdc64b59147c52d9ff8a09184e6d82c4e5333309af746802892579",
+        "bytes": 2193
+      },
+      {
+        "path": ".evals-private/codex-executor-seam-20261026-r1/codex-ac21625ddf7f9dd5f34b2802212cf20295fdff95/codex-rs/exec-server/src/local_process.rs",
+        "sha256": "257b532cf1aa7bc0b4933451279c295027f0ed28509185d92771d13268b524ea",
+        "bytes": 77494
+      }
+    ],
+    "remoteVerification": {
+      "status": "root-reported-404-for-both-commit-specific-official-GitHub-blob-URLs",
+      "matchingInstalledBinaryCauseVerified": false
+    },
+    "scope": "The inspected local code uses exit/output-keyword heuristics. It does not establish the installed binary source or historical cause."
+  },
+  "finalControl": {
+    "status": "passed",
+    "id": "keyword-after",
+    "artifacts": {
+      "protocol.json": {
+        "path": ".evals-private/executor-denial-diagnosis-20261115/keyword-after/protocol.json",
+        "sha256": "15bb3f821047becd96b430c2056c1a37a690e8a67f5055025b15b7785c29fa12",
+        "bytes": 2156
+      },
+      "GO.json": {
+        "path": ".evals-private/executor-denial-diagnosis-20261115/keyword-after/GO.json",
+        "sha256": "875c4cd5f4b0e97f68c9f1f26d670f9c94dd48a7d26ed82651051abc4dbce4c3",
+        "bytes": 447
+      },
+      "started.json": {
+        "path": ".evals-private/executor-denial-diagnosis-20261115/keyword-after/started.json",
+        "sha256": "c8a835a93f7dc77587adb472e2383b53d4a703ea98c7c0e3ab82ddc23b82fa89",
+        "bytes": 125
+      },
+      "summary.json": {
+        "path": ".evals-private/executor-denial-diagnosis-20261115/keyword-after/summary.json",
+        "sha256": "035e8748737261cc5a3a9d00be2f6f88032629ad7b9c042e2a5469393660dd85",
+        "bytes": 985
+      },
+      "raw.json": {
+        "path": ".evals-private/executor-denial-diagnosis-20261115/keyword-after/raw.json",
+        "sha256": "23d5755bc615701f31f007b006022493a7749cb85fba58aaaf2757e192a2cec6",
+        "bytes": 3797
+      },
+      "diagnostics/terminal-errors.jsonl": {
+        "path": ".evals-private/executor-denial-diagnosis-20261115/keyword-after/diagnostics/terminal-errors.jsonl",
+        "sha256": "7c3601e195fdad31b6b76bc3e6d8baa8e147add734d5a9515b35c0b528232462",
+        "bytes": 625
+      }
+    },
+    "outcome": {
+      "controlCompleted": true,
+      "exitCode": 1,
+      "sandboxDenied": true,
+      "syntheticKeywordObserved": true,
+      "syntheticSecretRedacted": true,
+      "toolFailure": {
+        "kind": "process-exit",
+        "exitCode": 1,
+        "context": {
+          "operation": "process/start",
+          "requestIdHash": "857ddaacaeb4642dc9c8e086f4c0b8f75985839f450c1db1aa4dd0aa208c945f",
+          "processIdHash": "c5daa3154699ce2259045b6276890be5e68be0ad2912c1030b1f6d0ba2b7b2d8",
+          "startResponseObserved": true,
+          "sequence": 3,
+          "sandboxDenied": true
+        }
+      },
+      "privateCapture": {
+        "status": "captured",
+        "records": 1,
+        "bytes": 625,
+        "truncated": false
+      },
+      "actionableFailureRetained": true,
+      "callbackOrder": ["private-capture", "failure-notification"],
+      "durationMs": 2898.293875
+    },
+    "cleanup": {
+      "stopped": true,
+      "removed": true
+    },
+    "sourceHashes": {
+      "scripts/evals/container/session.ts": "531b35fe56e1d4e9bcad9ffcd0a95c8ae2590d14044461a1c0a65894c9b20d7c",
+      "scripts/evals/container/archive.ts": "e89b72961a63fae00df207683b802dae2636a2db6f7292b4a891cad8c42c3e48",
+      "scripts/evals/container/watchdog.mjs": "554c453524cd84dd3adf5df41703ebb66145f9714c87a4169896039c7690fcbe",
+      "scripts/evals/container/terminal-diagnostics.ts": "cf3f00b9a5e28ab522302295fc84bfe09bcfaaaac903005e1f098a19e97f9596",
+      "scripts/evals/profiles/codex/contained.ts": "b88027ba3fe440876be0a4afbca0f63c1c9597bec731703c1becbf29dcd4672d",
+      "scripts/core/contracts.ts": "109d31a36b6698d58bc53c6f1d2b5788e708a178bdc0f00057c77e683248dabf"
+    },
+    "capturePolicy": {
+      "version": 2,
+      "filename": "terminal-errors.jsonl",
+      "events": ["error", "turn.failed", "executor.error"],
+      "fields": ["message", "error.message", "error.code", "error.type"],
+      "messageBytes": 1024,
+      "identifierBytes": 128,
+      "recordBytes": 16384,
+      "fileBytes": 65536,
+      "records": 16,
+      "executor": {
+        "processes": 8,
+        "processBytes": 16384,
+        "totalBytes": 65536
+      },
+      "redaction": "exact-access-only-values-and-credential-patterns-v1"
+    },
+    "interpretation": "Supported-profile synthetic output classification and private failure retention, not an actual denied operation or historical replay.",
+    "executorVersion": "0.157.0",
+    "sandboxType": "linuxSeccomp",
+    "filesystem": "existing supported native unrestricted filesystem profile",
+    "network": "existing restricted network profile",
+    "syntheticMessage": true,
+    "actualDeniedOperation": false,
+    "historicalReplay": false
+  },
+  "standaloneVerification": {
+    "status": "passed",
+    "artifact": {
+      "path": ".scratch/executor-diagnosis-20261115/standalone-checks.json",
+      "sha256": "bceed87524ba39867930fbc4682b36e7a93328c6029189b128139faf4248396d",
+      "bytes": 696
+    },
+    "verifiedPayloadFiles": 110,
+    "resourceSelfTests": 2,
+    "environment": "Outside checkout with isolated HOME and empty PATH",
+    "candidateInventoryHash": "7d2b52de840072b08f8983106611257b5211c96d57a3a41afe49b63138665f90",
+    "evaluationAndOpenSpecToolingAbsent": true
+  },
+  "subsequentFocusedVerification": {
+    "status": "passed",
+    "artifact": {
+      "path": ".scratch/executor-diagnosis-20261115/runner-green.log",
+      "sha256": "4219d4b14a5b05f4e2cd8c03a13188876b5319c15dbfe2baf19e9f1089dca77b",
+      "bytes": 1923
+    },
+    "tests": 159,
+    "failed": 0,
+    "context": "After correcting a transitive product import with built-in/local assertion and hash behavior."
+  },
+  "independentReview": {
+    "status": "Ship",
+    "artifact": {
+      "path": ".scratch/executor-diagnosis-20261115/independent-source-review.json",
+      "sha256": "e59457336ca4d9ef03a4e7c025a75e4e849679ec3b94490d73192bd23c4bc29e",
+      "bytes": 885
+    },
+    "method": "Independent read-only Ponytail review of connected code and tests",
+    "findings": [],
+    "scope": [
+      "scripts/evals/container/session.ts",
+      "scripts/evals/container/terminal-diagnostics.ts",
+      "scripts/evals/contained-codex.ts",
+      "scripts/evals/profiles/codex/contained.ts",
+      "tests/evals/container-session.test.ts",
+      "tests/evals/private-terminal-diagnostics.test.ts",
+      "tests/evals/contained-codex-result.test.ts",
+      "tests/evals/contained-codex-profile.test.ts"
+    ],
+    "execution": "Read-only; no tests, Docker, models or auth reads."
+  },
+  "implementationIdentity": {
+    "artifact": {
+      "path": ".scratch/executor-diagnosis-20261115/implementation-identity.json",
+      "sha256": "f441221531d9a3a043c150f37f38ad81a0b03e64d5cd673ac8b9a2f42ef58730",
+      "bytes": 1084
+    },
+    "sourceBase": "31f87d993e76bbf546643211980c628c365500f0",
+    "scope": "current dirty-source identities; pre-existing changes retained",
+    "hashes": {
+      "scripts/evals/container/session.ts": "531b35fe56e1d4e9bcad9ffcd0a95c8ae2590d14044461a1c0a65894c9b20d7c",
+      "scripts/evals/container/terminal-diagnostics.ts": "cf3f00b9a5e28ab522302295fc84bfe09bcfaaaac903005e1f098a19e97f9596",
+      "scripts/evals/contained-codex.ts": "9413a0ce0070eed61953fd6db17fb4d254b16530e98af2253c407975d55883fa",
+      "scripts/evals/profiles/codex/contained.ts": "b88027ba3fe440876be0a4afbca0f63c1c9597bec731703c1becbf29dcd4672d",
+      "tests/evals/container-session.test.ts": "2325b96461cd2acd184ced4ebb35e9027c5f4f8eb4941c5bcdd6ff18e7dc8b91",
+      "tests/evals/private-terminal-diagnostics.test.ts": "689c8460aeebfb83ea5310e6085d68c9bf50b72e9f2c410b60429b5b2e9c1746",
+      "tests/evals/contained-codex-result.test.ts": "bd1c79fd733130b6a8a9bab528599fa7a473969d0a364be2d778a8fe3ab3f143",
+      "tests/evals/contained-codex-profile.test.ts": "d3bab08eeeb100984f850f3363e1c1b6eda22934c02aba4e36274efca8a7ffde"
+    }
+  },
+  "integrationAttempts": [
+    {
+      "id": 1,
+      "status": "failed-format-check",
+      "artifact": {
+        "path": ".scratch/executor-diagnosis-20261115/full-gate.log",
+        "sha256": "23f707eab7b536c2ece3426b86f90990de28007c5d6d14420d3b2d85091be8fb",
+        "bytes": 456
+      },
+      "fix": "Formatted the caller test."
+    },
+    {
+      "id": 2,
+      "status": "failed-profile-tests",
+      "failedProfileTests": 12,
+      "artifact": {
+        "path": ".scratch/executor-diagnosis-20261115/full-gate-2.log",
+        "sha256": "5efac25eb0625d2002c302ab0ddc8d722df2d75d2c10075b7575846042213425",
+        "bytes": 132613
+      },
+      "fix": "Removed the transitive product import from the recorder; retained equivalent local assertion/hash behavior."
+    },
+    {
+      "id": 3,
+      "status": "passed"
+    }
+  ],
+  "closure": {
+    "artifact": {
+      "path": ".evals-private/executor-denial-diagnosis-20261115/closure-checks.json",
+      "sha256": "ed97dcbaa2f3a48d006e3f7815bb1706aad0eb2b3586bf65550722785c47b54c",
+      "bytes": 857
+    },
+    "allOwnedContainersAbsent": true,
+    "controls": [
+      {
+        "id": "eacces-before",
+        "stopped": true,
+        "removed": true,
+        "independentlyAbsent": true,
+        "durationMs": 2725.847
+      },
+      {
+        "id": "managed-before",
+        "stopped": true,
+        "removed": true,
+        "independentlyAbsent": true,
+        "durationMs": 677.410958
+      },
+      {
+        "id": "keyword-after",
+        "stopped": true,
+        "removed": true,
+        "independentlyAbsent": true,
+        "durationMs": 2898.293875
+      }
+    ],
+    "sourceSnapshotMatches": true,
+    "diagnosticDirectoryMode": "0700",
+    "diagnosticFileMode": "0600",
+    "retainedRecords": 1,
+    "retainedStderrStatus": "complete",
+    "privateTextAbsentFromPublicReceipt": true,
+    "executorVersion": "0.157.0",
+    "sandboxType": "linuxSeccomp",
+    "modelSessions": 0,
+    "authReads": 0,
+    "paidApiCalls": 0
+  },
+  "finalVerification": {
+    "status": "passed",
+    "artifact": {
+      "path": ".scratch/executor-diagnosis-20261115/full-gate.json",
+      "sha256": "949fd959a262749ef92066217f881071cfef2975a596cbc183a13a996f9c7879",
+      "bytes": 548
+    },
+    "log": {
+      "path": ".scratch/executor-diagnosis-20261115/full-gate-3.log",
+      "sha256": "3d47a26622ea95647fed8ee463fe8dc1a6ed62193e68d470053e593a0697c737",
+      "bytes": 117647
+    },
+    "command": "pnpm test",
+    "exitCode": 0,
+    "tests": 1149,
+    "passed": 1148,
+    "failed": 0,
+    "existingSkipped": 1,
+    "nodeTestDurationMs": 76018.565125,
+    "included": [
+      "lint",
+      "formatting",
+      "core and landing types",
+      "site build",
+      "strict active and archived OpenSpec validation",
+      "distribution build",
+      "offline Node tests"
+    ],
+    "actualModels": 0
+  }
+}

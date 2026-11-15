@@ -810,6 +810,10 @@ test('instruction removal and restoration preserve later notes; direct memory de
     approvedDigest: removal.digest,
   });
   assert.equal(removed.status, 'incomplete');
+  assert.equal(removed.nextAction?.kind, 'repair-memory-connection');
+  assert.equal(removed.nextAction?.path, '.agents/memory.md');
+  assert.match(removed.nextAction!.reason, /new exact connecting proposal/);
+  assert.match(removed.nextAction!.reason, /fresh approval/);
   assert(
     removed.checks.infrastructure.issues!.some(
       (issue) => issue.reason === 'missing-memory-connection',
@@ -819,11 +823,29 @@ test('instruction removal and restoration preserve later notes; direct memory de
     await readFile(path.join(root, '.agents/memory.md'), 'utf8'),
     later,
   );
+  const waiting = await getStatus(root);
+  const beforeReport = await fileState(root);
+  const disconnectedReport = cli(root, 'report').result;
+  assert.equal(disconnectedReport.status, 'incomplete');
+  assert.equal(
+    disconnectedReport.diagnosis.nextAction.kind,
+    'repair-memory-connection',
+  );
+  assert.deepEqual(await fileState(root), beforeReport);
   const restore = await createProposal(
     root,
     { mode: 'improve', changes: [setup().changes[0]] },
     { home },
   );
+  await assert.rejects(
+    applyPlan(root, restore, {
+      home,
+      approvedDigest: removal.digest,
+      resume: true,
+    }),
+    { code: 'consent-required' },
+  );
+  assert.deepEqual(await fileState(root), beforeReport);
   assert.equal(
     (
       await applyPlan(root, restore, {
@@ -837,6 +859,16 @@ test('instruction removal and restoration preserve later notes; direct memory de
   assert.equal(
     await readFile(path.join(root, '.agents/memory.md'), 'utf8'),
     later,
+  );
+  const repaired = await getStatus(root);
+  assert.equal(repaired.manifest!.sessions.at(-1)!.id, waiting.state!.id);
+  assert.equal(
+    repaired.manifest!.sessions.at(-1)!.attempts.length,
+    waiting.state!.attempts.length + 1,
+  );
+  assert.notEqual(
+    cli(root, 'report').result.diagnosis.nextAction.kind,
+    'repair-memory-connection',
   );
 });
 

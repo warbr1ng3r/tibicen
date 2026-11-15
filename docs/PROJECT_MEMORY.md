@@ -55,6 +55,50 @@ unresolved choice remains an explicit gap; it is not silently decided by file ag
 After approval, later additions to that memory are normal working content. A
 repeat adopt uses those current notes; it does not restore the original template.
 
+## Preserve your rules and make reading explicit
+
+**Unreleased guidance:** keep project commands, owner constraints and accepted
+decisions in ordinary instruction sections outside the replaceable
+`<!-- tibicen:begin v1 -->` / `<!-- tibicen:end v1 -->` block, or in the selected
+memory. The block holds the generic reading and maintenance procedure. Replacing
+or removing a block replaces everything inside it; Tibicen cannot infer ownership
+from the prose. If a previous setup mixed project decisions and generic policy,
+adopt proposes an exact full-file repair moving the owner sections outside the
+markers while preserving their bytes. Later block updates then leave those
+sections intact. That repair needs the ordinary reviewed plan and approval.
+
+After handoff, ordinary working agents can read and maintain these instructions
+and the selected memory within the owner's authorized scope, without installed
+Tibicen. `tibicen-init` creates the initial setup; `tibicen-adopt` reviews an
+existing setup and proposes updates for approval. Managed markers identify
+replaceable setup policy; editing authority comes from the owner. Preserve owner
+sections, registered connections and applicable consent. Changes through Tibicen
+still require approval of the exact reviewed plan; later authorized memory
+maintenance is ordinary agent work and does not require repeating setup.
+
+The instruction entrypoint depends on the actual host, version, configuration and
+working directory. A filename recognized during inventory does not establish that
+the host loads it, and read-only recognition does not grant write support. Preserve
+a suitable existing entrypoint when possible. If native discovery is unknown or
+its file is outside the supported write scope, a supported common `AGENTS.md` can
+carry the rules with an explicit first step, for example:
+
+> Read `AGENTS.md`, then the relevant entries in `docs/decisions.md`, before
+> choosing an approach.
+
+Use the selected memory path. Report that instruction as reading assistance, with
+native loading still unverified; if the step cannot be performed, disclose the
+missing connection. This fallback adds no native adapter or host configuration
+change.
+
+Before exact setup approval, permitted memory is read-only input. The setup agent
+keeps proposed notes in context and does not invoke host memory-saving tools or
+write global/private memory. After approval, native host memory still cannot
+replace the selected project store. Automatic storage performed by the host may
+be outside Tibicen's control; the report must disclose that limitation rather than
+promise that a skill suppresses it. These guidance changes are not new native-run
+evidence or a guarantee that an agent obeys them.
+
 ## What the rules ask working agents to do
 
 | When                                                          | Expected action                                           |
@@ -154,6 +198,15 @@ before-content. If the file changes, obtain a fresh plan and approval. After
 completed setup, the memory body is user-owned: adding a note does not have to
 match its initial hash. The file's safe location, presence and managed instruction
 connection remain independently checkable.
+
+**Unreleased recovery advice:** `apply.nextAction` and
+`report.diagnosis.nextAction` explain a current `missing-memory-connection`.
+Review the permitted instruction scope and selected store, propose an exact new
+connection, obtain fresh approval and resume the original session. Repeating the
+same digest cannot add an absent connection. Approved instruction removal remains
+allowed and preserves notes; the advice does not undo it, authorize a repair or
+expand forbidden paths. The repair retains the original session and attempt
+history.
 
 Updating or removing installed Tibicen is separate from changing project notes.
 Keep useful later notes when reviewing recovery or removal. Follow the

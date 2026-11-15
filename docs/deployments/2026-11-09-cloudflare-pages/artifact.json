@@ -1,0 +1,101 @@
+{
+  "source": "57a491a4b0a232984d871e18b41f785513c879ca",
+  "site": "https://tibicen.pages.dev",
+  "base": "/",
+  "built_at_utc": "2026-11-09T16:43:52.879270+00:00",
+  "files": {
+    "_astro/Landing.astro_astro_type_script_index_0_lang.DT3-3a5N.js": {
+      "bytes": 5344,
+      "sha256": "824b02833acaec08fbbead727efd631e7c422a614f2d7964cc65d5d819cb3078"
+    },
+    "_astro/SelectRoot.astro_astro_type_script_index_0_lang.Ce_hi4Vm.js": {
+      "bytes": 79632,
+      "sha256": "7097913a4c8ce98e265c19ae3f66de91ce37e8cfacbc0978e9d3c5e7dea42449"
+    },
+    "_astro/SiteLayout.DZKi-6Aw.css": {
+      "bytes": 39009,
+      "sha256": "a75ba0b1e5ca3dfa2ced0b614ced9dc12f49a208917dc77a5f7e3cdb113bdb6d"
+    },
+    "_astro/SiteLayout.astro_astro_type_script_index_0_lang.Ni3uzf5N.js": {
+      "bytes": 12077,
+      "sha256": "46ae7108de93fc8fa7bb9ba9bd6eb4b5db655ecaf9274c8ba2b793b9c371fdff"
+    },
+    "assets/cluster-graph.svg": {
+      "bytes": 24029,
+      "sha256": "717a89f486aad9f3621b6cb3bd6b5044b90befd1b16880e42bb63b7cdcb08882"
+    },
+    "assets/contour-wave.svg": {
+      "bytes": 9311,
+      "sha256": "152c1bb3c96f3a8511cdd20a38193c5c04ab5cd513c9d54354e05c01bc85dbbc"
+    },
+    "assets/cubes.svg": {
+      "bytes": 13493,
+      "sha256": "8fc36e6819a4058f4de17df8f2ed0efae4f70fec4bdcdd5b3145570a4fb39793"
+    },
+    "assets/favicon.svg": {
+      "bytes": 355,
+      "sha256": "46a0d078ec3795dbecc80cd2147b61653037d4dd59a76d58669b7367184f71aa"
+    },
+    "assets/lattice.svg": {
+      "bytes": 74834,
+      "sha256": "70a443e49761b690acf664da8089a9e4e2ff48d972a1a7d0a72d05eedb9b9a38"
+    },
+    "assets/layered-graph.svg": {
+      "bytes": 8255,
+      "sha256": "7375cdc9fd0d8bbd689c8bc4e24f35dbfd48e1c3e52e83c9a150a21268d0ecc2"
+    },
+    "assets/logo.svg": {
+      "bytes": 305,
+      "sha256": "bf7991b06280f422784d73dd44c0d283dd322b5bfe92c0b9075a855ddc4b68d7"
+    },
+    "assets/scaffold.svg": {
+      "bytes": 23150,
+      "sha256": "fabfcbafb57b4bb48ba57ed365988c89bf2655b36fb287686d79ca4867e379fb"
+    },
+    "assets/social-preview.png": {
+      "bytes": 59639,
+      "sha256": "b2de8fc269d80c9ad46b1696eb0b5d20a39e6180f6ba18f7ebb5c2e624e7b2ec"
+    },
+    "assets/social-preview.svg": {
+      "bytes": 2070,
+      "sha256": "e24008204791716383231e30408db4d19687cfbc98626d0a8bebe0ee55665107"
+    },
+    "assets/truss.svg": {
+      "bytes": 11640,
+      "sha256": "702ba21ae08d44d82a4b966e1c52b510763cde6ef320536cb4c9cec00fad0d99"
+    },
+    "index.html": {
+      "bytes": 35002,
+      "sha256": "8ae00596f4c25c95b295996dead192d2a9766ed88e9213a0980fbeecf7d8df47"
+    },
+    "licenses/astrowind.txt": {
+      "bytes": 1065,
+      "sha256": "6b7e2fe59d6b85c47fd2de8cad65db3c37b84e8bbf662f37a7c7cc7fd1cfea25"
+    },
+    "licenses/starwind.txt": {
+      "bytes": 1076,
+      "sha256": "828baa148ab4e36009febf62a4f23031e0c097fe6e01043bd8e91647080138bf"
+    },
+    "maintenance/index.json": {
+      "bytes": 17856,
+      "sha256": "0548a67abc264d0f1cc4885977fc04c15ed32a06c4ed4854adc1dc6e2162f6eb"
+    },
+    "preset/index.html": {
+      "bytes": 22061,
+      "sha256": "643c5acdb183e6d4aa3230bb2fd076a6b8bf27302cde9b6ca9dfc6e506f865f2"
+    },
+    "ru/index.html": {
+      "bytes": 42049,
+      "sha256": "72c74bd04daccef7aa197b13eff34fc499a89e97f47267222dc8cacb40bbc0d4"
+    },
+    "ru/preset/index.html": {
+      "bytes": 23944,
+      "sha256": "6a3cf50e7c728e0e7cafd7c2668bf29df760b1875b17be976719a0cb83678da2"
+    }
+  },
+  "zip": {
+    "path": "tibicen-pages.zip",
+    "bytes": 149395,
+    "sha256": "19805d87cf68df9851f130c6ce31d1ab9067efee0a87415a29e2631ebe1b531a"
+  }
+}

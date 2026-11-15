@@ -15,6 +15,7 @@ import {
   validateContainerInput,
 } from '../../scripts/evals/container/session.ts';
 import type { ContainerInput } from '../../scripts/evals/container/session.ts';
+import type { ExecutorFailureDiagnostic } from '../../scripts/evals/container/session.ts';
 import { createContainerOwner } from '../../scripts/evals/container/owner.ts';
 import {
   decodeArchive,
@@ -384,6 +385,448 @@ const exited = (processId: string, exitCode = 1, sandboxDenied = true) => ({
 });
 const respond = (session: DiagnosticSession, ...messages: unknown[]) =>
   session.child.stdout.emit('data', wire(...messages));
+
+const processOutput = (
+  processId: string,
+  seq: number,
+  stream: string,
+  bytes: Buffer,
+) => ({
+  method: 'process/output',
+  params: { processId, seq, stream, chunk: bytes.toString('base64') },
+});
+
+test('private executor stderr survives actual owner cancellation with the right interleaved process', async (t) => {
+  const docker = mockDocker(t, {});
+  const server = Object.assign(new EventEmitter(), {
+    listening: false,
+    listen(_path: string, callback: () => void) {
+      this.listening = true;
+      queueMicrotask(callback);
+    },
+    close(callback: () => void) {
+      this.listening = false;
+      queueMicrotask(callback);
+    },
+  });
+  t.mock.method(net, 'createServer', () => server as unknown as Server);
+  syncBuiltinESMExports();
+  const captured: ExecutorFailureDiagnostic[] = [],
+    order: string[] = [];
+  const input = {
+    imageId: 'sha256:' + 'b'.repeat(64),
+    workspace: '/tmp/project',
+    files: { file: Buffer.from('fixture') },
+    deadlineMs: 10000,
+    onFailureDiagnostic(record: ExecutorFailureDiagnostic) {
+      order.push('capture');
+      captured.push(record);
+      assert.equal(docker.calls.includes('kill'), false);
+    },
+  };
+  const owner = await createContainerOwner(input);
+  try {
+    owner.session.failure.then(() => order.push('cancel'));
+    const peer = new Duplex({
+      read() {},
+      write(_chunk, _encoding, callback) {
+        callback();
+      },
+    });
+    server.emit('connection', peer);
+    peer.push(
+      wire(
+        start('failed-request', 'failed-process'),
+        start('other-request', 'other-process'),
+      ),
+    );
+    await new Promise<void>((resolve) => setImmediate(resolve));
+    const message = Buffer.from('Denied ü — KNOWN_TOKEN_END');
+    const first = message.indexOf(Buffer.from('ü')) + 1;
+    const second = message.indexOf(Buffer.from('TOKEN')) + 2;
+    respond(
+      owner.session,
+      accepted('other-request', 'other-process'),
+      accepted('failed-request', 'failed-process'),
+      processOutput('failed-process', 1, 'stderr', message.subarray(0, first)),
+      processOutput('other-process', 1, 'stderr', Buffer.from('OTHER STDERR')),
+      processOutput(
+        'failed-process',
+        2,
+        'stdout',
+        Buffer.from('PRIVATE STDOUT'),
+      ),
+      processOutput(
+        'failed-process',
+        3,
+        'stderr',
+        message.subarray(first, second),
+      ),
+      processOutput('failed-process', 4, 'stderr', message.subarray(second)),
+      {
+        ...exited('other-process', 0, false),
+        params: {
+          processId: 'other-process',
+          seq: 2,
+          exitCode: 0,
+          sandboxDenied: false,
+        },
+      },
+      {
+        ...exited('failed-process'),
+        params: {
+          processId: 'failed-process',
+          seq: 5,
+          exitCode: 1,
+          sandboxDenied: true,
+        },
+      },
+    );
+    const receipt = await owner.finished;
+    assert.equal(captured.length, 1);
+    assert.equal(captured[0].type, 'executor.error');
+    assert.equal(captured[0].message, message.toString());
+    const metadata = captured[0].executor as Record<string, unknown>;
+    assert.equal(metadata.stderrStatus, 'complete');
+    assert.equal(metadata.stderrBytes, message.length);
+    assert.deepEqual(metadata.context, receipt.toolFailure?.context);
+    assert.deepEqual(order, ['capture', 'cancel']);
+    assert.equal(receipt.reason, 'tool-failure');
+    assert(receipt.stopped && receipt.removed && docker.removed());
+    assert.equal(JSON.stringify(receipt).includes('KNOWN_TOKEN_END'), false);
+    assert.equal(JSON.stringify(captured).includes('OTHER STDERR'), false);
+    assert.equal(JSON.stringify(captured).includes('PRIVATE STDOUT'), false);
+    assert.equal(JSON.stringify(captured).includes('secret-command'), false);
+  } finally {
+    await owner.stop([], 'test-cleanup');
+  }
+});
+
+async function privateDiagnosticSession(
+  t: TestContext,
+  observe?: (record: ExecutorFailureDiagnostic) => void,
+) {
+  const docker = mockDocker(t, {}),
+    captured: ExecutorFailureDiagnostic[] = [];
+  const session = await startContainerSession({
+    imageId: 'sha256:' + 'b'.repeat(64),
+    workspace: '/tmp/project',
+    files: { file: Buffer.from('fixture') },
+    deadlineMs: 10000,
+    onFailureDiagnostic(record) {
+      captured.push(record);
+      observe?.(record);
+    },
+  });
+  session.observeRequest(wire(start(1, 'private-process')));
+  respond(session, accepted(1, 'private-process'));
+  return { session, captured, docker };
+}
+
+const privateExit = (seq: number) => ({
+  method: 'process/exited',
+  params: {
+    processId: 'private-process',
+    seq,
+    exitCode: 1,
+    sandboxDenied: true,
+  },
+});
+
+for (const [name, output, seq, status] of [
+  ['empty stderr', [], 1, 'empty'],
+  [
+    'duplicate sequence',
+    [
+      processOutput(
+        'private-process',
+        1,
+        'stderr',
+        Buffer.from('secret-prefix'),
+      ),
+      processOutput(
+        'private-process',
+        1,
+        'stderr',
+        Buffer.from('secret-suffix'),
+      ),
+    ],
+    2,
+    'invalid',
+  ],
+  [
+    'missing output sequence',
+    [processOutput('private-process', 2, 'stderr', Buffer.from('secret'))],
+    3,
+    'invalid',
+  ],
+  [
+    'stdout sequence gap',
+    [
+      processOutput('private-process', 1, 'stderr', Buffer.from('secret')),
+      processOutput('private-process', 3, 'stdout', Buffer.from('discard')),
+    ],
+    4,
+    'invalid',
+  ],
+  [
+    'exit sequence gap',
+    [processOutput('private-process', 1, 'stderr', Buffer.from('secret'))],
+    3,
+    'invalid',
+  ],
+  [
+    'noncanonical base64',
+    [
+      {
+        method: 'process/output',
+        params: {
+          processId: 'private-process',
+          seq: 1,
+          stream: 'stderr',
+          chunk: 'Zh==',
+        },
+      },
+    ],
+    2,
+    'invalid',
+  ],
+  [
+    'malformed base64',
+    [
+      {
+        method: 'process/output',
+        params: {
+          processId: 'private-process',
+          seq: 1,
+          stream: 'stderr',
+          chunk: '%not-base64%',
+        },
+      },
+    ],
+    2,
+    'invalid',
+  ],
+  [
+    'invalid UTF-8',
+    [processOutput('private-process', 1, 'stderr', Buffer.from([0xff]))],
+    2,
+    'invalid',
+  ],
+  [
+    'unknown stream',
+    [processOutput('private-process', 1, 'unknown', Buffer.from('secret'))],
+    2,
+    'invalid',
+  ],
+  [
+    'per-process overflow',
+    [
+      processOutput('private-process', 1, 'stderr', Buffer.alloc(16384, 's')),
+      processOutput(
+        'private-process',
+        2,
+        'stderr',
+        Buffer.from('SECRET_SUFFIX'),
+      ),
+    ],
+    3,
+    'overflow',
+  ],
+] as const)
+  test('private stderr withholds text on ' + name, async (t) => {
+    const { session, captured, docker } = await privateDiagnosticSession(t);
+    respond(session, ...output, privateExit(seq));
+    const receipt = await session.finished;
+    assert.equal(captured.length, 1);
+    assert.equal(captured[0].message, undefined);
+    assert.equal(captured[0].executor.stderrStatus, status);
+    assert.equal(receipt.reason, 'tool-failure');
+    assert.equal(receipt.toolFailure?.context.startResponseObserved, true);
+    assert.equal(JSON.stringify(receipt).includes('secret'), false);
+    assert(receipt.stopped && receipt.removed && docker.removed());
+  });
+
+test('private buffering respects pending-process and aggregate-byte limits', async (t) => {
+  for (const kind of ['processes', 'total'] as const)
+    await t.test(kind, async (t) => {
+      const docker = mockDocker(t, {}),
+        captured: ExecutorFailureDiagnostic[] = [];
+      const session = await startContainerSession({
+        imageId: 'sha256:' + 'b'.repeat(64),
+        workspace: '/tmp/project',
+        files: { file: Buffer.from('fixture') },
+        deadlineMs: 10000,
+        onFailureDiagnostic(record) {
+          captured.push(record);
+        },
+      });
+      const count = kind === 'processes' ? 9 : 5;
+      for (let index = 0; index < count; index++) {
+        const process = 'bounded-' + index;
+        session.observeRequest(wire(start(index + 1, process)));
+        respond(
+          session,
+          accepted(index + 1, process),
+          processOutput(
+            process,
+            1,
+            'stderr',
+            Buffer.alloc(
+              kind === 'processes' || index === count - 1 ? 1 : 16384,
+              's',
+            ),
+          ),
+        );
+      }
+      respond(session, {
+        method: 'process/exited',
+        params: {
+          processId: 'bounded-' + (count - 1),
+          seq: 2,
+          exitCode: 1,
+          sandboxDenied: true,
+        },
+      });
+      const receipt = await session.finished;
+      assert.equal(captured[0].message, undefined);
+      assert.equal(captured[0].executor.stderrStatus, 'overflow');
+      assert(receipt.stopped && receipt.removed && docker.removed());
+    });
+});
+
+test('ordinary nonzero exits discard private stderr and free pending buffers before recovery', async (t) => {
+  const { session, captured } = await privateDiagnosticSession(t);
+  respond(
+    session,
+    processOutput(
+      'private-process',
+      1,
+      'stderr',
+      Buffer.from('ordinary failure'),
+    ),
+    {
+      method: 'process/exited',
+      params: {
+        processId: 'private-process',
+        seq: 2,
+        exitCode: 1,
+        sandboxDenied: false,
+      },
+    },
+  );
+  assert.equal(captured.length, 0);
+  session.observeRequest(wire(start(2, 'next-process')));
+  respond(
+    session,
+    accepted(2, 'next-process'),
+    processOutput('next-process', 1, 'stderr', Buffer.from('actual denied')),
+    {
+      method: 'process/exited',
+      params: {
+        processId: 'next-process',
+        seq: 2,
+        exitCode: 1,
+        sandboxDenied: true,
+      },
+    },
+  );
+  await session.finished;
+  assert.equal(captured.length, 1);
+  assert.equal(captured[0].message, 'actual denied');
+});
+
+test('ambiguous and unaccepted processes cannot contribute private failure text', async (t) => {
+  for (const kind of [
+    'duplicate-response',
+    'duplicate-request',
+    'unaccepted',
+    'earlier-output',
+  ] as const)
+    await t.test(kind, async (t) => {
+      mockDocker(t, {});
+      const captured: ExecutorFailureDiagnostic[] = [];
+      const session = await startContainerSession({
+        imageId: 'sha256:' + 'b'.repeat(64),
+        workspace: '/tmp/project',
+        files: { file: Buffer.from('fixture') },
+        deadlineMs: 10000,
+        onFailureDiagnostic(record) {
+          captured.push(record);
+        },
+      });
+      session.observeRequest(wire(start(1, 'private-process')));
+      if (kind === 'earlier-output')
+        respond(
+          session,
+          processOutput(
+            'private-process',
+            1,
+            'stderr',
+            Buffer.from('too early'),
+          ),
+        );
+      if (kind !== 'unaccepted')
+        respond(session, accepted(1, 'private-process'));
+      respond(
+        session,
+        processOutput('private-process', 1, 'stderr', Buffer.from('secret')),
+      );
+      if (kind === 'duplicate-response')
+        respond(session, accepted(1, 'private-process'));
+      if (kind === 'duplicate-request')
+        session.observeRequest(wire(start(1, 'duplicate')));
+      respond(session, privateExit(2));
+      await session.finished;
+      assert.equal(captured[0].message, undefined);
+      assert.equal(
+        captured[0].executor.stderrStatus,
+        kind === 'earlier-output' ? 'invalid' : 'uncorrelated',
+      );
+    });
+});
+
+test('matched RPC errors retain only a fixed message and do not claim process stderr', async (t) => {
+  const { session, captured } = await privateDiagnosticSession(t);
+  session.observeRequest(wire(start(2, 'rejected-process')));
+  respond(session, {
+    id: 2,
+    error: {
+      code: -32603,
+      message: 'Unknown executor start failure',
+      data: { secret: 'never retain' },
+    },
+  });
+  const receipt = await session.finished;
+  assert.equal(captured[0].message, 'Unknown executor start failure');
+  assert.equal(captured[0].executor.kind, 'rpc-error');
+  assert.equal(captured[0].executor.stderrStatus, 'not-process');
+  assert.equal(captured[0].executor.stderrBytes, 0);
+  assert.equal(captured[0].executor.context.startResponseObserved, false);
+  assert.equal(JSON.stringify(captured).includes('never retain'), false);
+  assert.equal(receipt.toolFailure?.kind, 'rpc-error');
+});
+
+test('private callback faults and mutations cannot change the original public failure or cleanup', async (t) => {
+  const { session, docker } = await privateDiagnosticSession(t, (record) => {
+    record.executor.context.operation = null;
+    throw new Error('PRIVATE OBSERVER ERROR');
+  });
+  respond(
+    session,
+    processOutput('private-process', 1, 'stderr', Buffer.from('private error')),
+    privateExit(2),
+  );
+  const receipt = await session.finished;
+  assert.equal(receipt.reason, 'tool-failure');
+  assert.equal(receipt.toolFailure?.kind, 'process-exit');
+  assert.equal(receipt.toolFailure?.context.operation, 'process/start');
+  assert.equal(
+    JSON.stringify(receipt).includes('PRIVATE OBSERVER ERROR'),
+    false,
+  );
+  assert(receipt.stopped && receipt.removed && docker.removed());
+});
 
 test('interleaved accepted starts identify the failing process, not the last completed command', async (t) => {
   const docker = mockDocker(t, {});

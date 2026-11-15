@@ -1,0 +1,127 @@
+{
+  "schema": 1,
+  "scope": "One explicitly authorized follow-up, separate from the immutable original eight-attempt packet",
+  "candidate": {
+    "sourceBase": "31f87d993e76bbf546643211980c628c365500f0",
+    "changes": "reviewed Unreleased reliability changes",
+    "payloadFiles": 110,
+    "inventoryHash": "9acde8988b871893705ecb8d11a5ed176b30b0312a941456627d4d2abd13e9f7",
+    "publishedVersionUnchanged": "1.5.4"
+  },
+  "protocol": {
+    "attempts": 1,
+    "concurrency": 1,
+    "automaticRetries": 0,
+    "deadlineMs": 120000,
+    "paidApiBudget": 0,
+    "digest": "b41454ba45b9d83a3b690d1f9a68ec704dab3e8084f96fd86f97978feb832415",
+    "promptHash": "7a6404f53b601259b429b4d1d40697e4869b17d1ae5f62833aff6ed88e547bdc",
+    "totalInputFiles": 63,
+    "approval": "synthetic fixture-controller grant after independent review; not human consent",
+    "controllerSources": {
+      "run.mjs": "f4b580df979c4a1729797b11ed6d6dfdee3af31f5aa39283c69676b1707331be",
+      "capture.mjs": "ac591076a0c3bcccb501e282e3a025440a3abacdb6838569ba1f76bb068d1d00",
+      "contained-codex-captured.ts": "02e5e34e3d425668121ccff301ef4877b2f009b53b9f006c512ba4614c6e0481"
+    },
+    "instrumentation": "Private source mirror preserves maintained container/profile guards; one terminal-error hook records bounded credential-redacted diagnostics before existing public projection. Published candidate unchanged."
+  },
+  "route": {
+    "harness": "Codex CLI",
+    "version": "0.157.0",
+    "configuredModel": "gpt-6-astra",
+    "funding": "existing ChatGPT subscription",
+    "container": "owned Linux arm64; no host mounts or tool network",
+    "imageId": "sha256:ba23f5c65d7d77b8aaac15fb53cdda90ecd25acff2738fd6d40fc762519dc6bd",
+    "binaryHash": "ad0be20d04e2ba6146ecdb51d7f8b7b0fe15420a15dc9b0057518d858f1f3714",
+    "loading": "explicit skill and entrypoint reads; assisted"
+  },
+  "result": {
+    "pass": true,
+    "scope": "one explicitly authorized follow-up; original failure retained",
+    "digest": "b41454ba45b9d83a3b690d1f9a68ec704dab3e8084f96fd86f97978feb832415",
+    "sessionId": "d90e5062-d924-4126-97d0-cd2b51f357d5",
+    "statuses": {
+      "apply": {
+        "exitCode": 0,
+        "status": "complete",
+        "stdoutBytes": 3929
+      },
+      "verify": {
+        "exitCode": 0,
+        "status": "passed",
+        "stdoutBytes": 181
+      },
+      "status": {
+        "exitCode": 0,
+        "status": "complete",
+        "stdoutBytes": 1035
+      },
+      "report": {
+        "exitCode": 0,
+        "status": "complete",
+        "stdoutBytes": 2967
+      }
+    },
+    "ownerTextPreservedOutsidePolicy": true,
+    "existingMemoryUnchanged": true,
+    "exactlyTwoExpectedServiceFilesAdded": true,
+    "privateTerminalErrors": 0,
+    "originalFailureCause": "unknown; not reproduced in this follow-up",
+    "instrumentation": "private error recorder only; product payload unchanged",
+    "cleanup": {
+      "containerAbsent": true,
+      "generatedHomesRemaining": 0
+    },
+    "paidApiCalls": 0,
+    "callerMs": 73135.88587499999,
+    "outcomeHash": "c5a186e9cc66828e53fe9c69544353bf7b034518dce8be15feb9467a4a6ae3fa",
+    "eventsHash": "578474c7d8291cf8a040bf1044d253b124c322634eb73f205f333fd033e1658d",
+    "limits": [
+      "verify is structure-only; project/task/quiz/compat/MCP results not established",
+      "No generated-policy use in a separate useful task observed",
+      "Private recorder instrumented evalsource; exact candidate/prompt/plan unchanged"
+    ],
+    "totalInputFiles": 63,
+    "unchangedInputFiles": 62,
+    "allOtherInputsAndModesPreserved": true
+  },
+  "usage": {
+    "inputTokens": 218564,
+    "outputTokens": 1387,
+    "monetaryCost": null
+  },
+  "helperFailure": {
+    "eventLine": 20,
+    "itemId": "item_9",
+    "exitCode": 127,
+    "reason": "shasum was unavailable",
+    "eventHashWithoutNewline": "bb4aa3b88ad6ae974a7c54a4092914076c2c5fb3cdc3622210a4fdef5dcdfa6b",
+    "subsequentCheck": "Node byte/mode checks succeeded in item_15; controller independently checked full inventory",
+    "subsequentEventHashWithoutNewline": "d0767b65ab693e02f59440350006b455489bca48772df4dafaa6d86009c356c1"
+  },
+  "originalFailure": {
+    "outcomeHash": "57b6e865f6345510e48d59142b89708aa2909dd4f222ce4ea6ccf4f2ed675cf1",
+    "cause": "unknown; not reproduced",
+    "retainedDiagnostics": "unknown terminal-error free text was hashed before collection; original native home was removed; no raw message retained",
+    "oldPacketRewritten": false
+  },
+  "review": "Independent read-only review accepted the qualified result after correcting the 63-total/62-unchanged description",
+  "privateRecordHashes": {
+    "protocol.json": "448041ad60a228083783c70294a0000750b4495d683aab8879a99b6134fb111f",
+    "GO.json": "f6e959f8be12444950548e0382ba67878962c4f9fc1710a04ca59dee68a249bf",
+    "started.json": "49a0769e37c1b78643f5323f825213cde753570bcd1b17065c7011ebbf866a3e",
+    "finished.json": "a166c8861acc20872bd3acc272232d770f6eebe1494b729cf34541656c11fd85",
+    "readonly-recompile.json": "09aee2332c6b0d71e4405e5dd171ac63aa1db52664e04e0b2aee487961b8ce94",
+    "capture-self-check.json": "3d5ca640f0e8186cb95395967b29d129331906129e9fb42a568943d2621b87f9",
+    "assessment.json": "f63dcf801ee98ea31f67fe02a04c7ffbeb58dea299b057c6146077334585c078",
+    "outcome.json": "c5a186e9cc66828e53fe9c69544353bf7b034518dce8be15feb9467a4a6ae3fa",
+    "events.jsonl": "578474c7d8291cf8a040bf1044d253b124c322634eb73f205f333fd033e1658d",
+    "terminal-errors.private.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "limits": [
+    "No technical cause or network/provider fault established for the original failure",
+    "Private terminal-error retention was added to the evaluator copy, not released product code",
+    "No unassisted native loading, human usefulness, generated-policy use in a fresh useful task, or project tests established by this follow-up",
+    "Subscription usage is not comparable with elapsed model time or a product reliability rate"
+  ]
+}

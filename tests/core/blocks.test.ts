@@ -1,7 +1,14 @@
 import test from 'node:test';
 import type { TestContext } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import {
+  mkdir,
+  mkdtemp,
+  readFile,
+  readdir,
+  rm,
+  writeFile,
+} from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import {
@@ -251,6 +258,115 @@ test('proposal/apply preserve user instructions through block addition, replacem
     await readFile(path.join(root, 'app.ts'), 'utf8'),
     'untouched application',
   );
+});
+
+test('reviewed mixed-block repair preserves owner sections and one memory through later policy replacement and removal', async (t) => {
+  const { root, home } = await fixture(t);
+  const prefix = '\uFEFF# Agent instructions\r\nOwner header.  \r\n\r\n';
+  const owner =
+    '## Проект\r\nRun `node --test`.  \r\n' +
+    '## Owner decisions\r\nRead `docs/decisions.md` before related work.\r\n' +
+    'Ask before adding dependencies.  \r\n';
+  const suffix = '\r\n## Local notes\r\nСохранить пробелы.  ';
+  const initial =
+    prefix + block('Old generic policy\r\n\r\n' + owner, '\r\n') + suffix;
+  const policy = 'Retain accepted decisions; correct superseded notes.';
+  const repaired = prefix + owner + '\r\n' + block(policy, '\r\n') + suffix;
+  const selected = '# Decisions\r\n- Keep integer kopecks.  \r\n';
+  const unselected = '# Other notes\nDo not merge this store.\n';
+  const application = 'export const untouched = true;\n';
+  await mkdir(path.join(root, 'docs'));
+  await writeFile(path.join(root, 'AGENTS.md'), initial);
+  await writeFile(path.join(root, 'docs/decisions.md'), selected);
+  await writeFile(path.join(root, 'MEMORY.md'), unselected);
+  await writeFile(path.join(root, 'app.ts'), application);
+  const before = await readdir(root);
+  const repair = await createProposal(
+    root,
+    {
+      mode: 'improve',
+      memory: { path: 'docs/decisions.md' },
+      changes: [
+        {
+          path: 'AGENTS.md',
+          content: repaired,
+          reason: 'Move exact owner sections outside replaceable policy.',
+        },
+      ],
+    },
+    { home },
+  );
+  assert.equal(repair.proposal.changes.length, 1);
+  assert.equal(repair.proposal.changes[0].beforeHash, hashContent(initial));
+  assert.equal(repair.proposal.changes[0].content, repaired);
+  assert(repair.proposal.changes[0].diff!.includes('## Проект'));
+  await assert.rejects(applyPlan(root, repair, { home }), {
+    code: 'consent-required',
+  });
+  assert.equal(await readFile(path.join(root, 'AGENTS.md'), 'utf8'), initial);
+  assert.equal(
+    await readFile(path.join(root, 'docs/decisions.md'), 'utf8'),
+    selected,
+  );
+  assert.deepEqual(await readdir(root), before);
+  assert.deepEqual(await readdir(home), []);
+  const applied = await applyPlan(root, repair, {
+    home,
+    approvedDigest: repair.digest,
+  });
+  assert.equal(applied.status, 'complete');
+  assert.equal(await readFile(path.join(root, 'AGENTS.md'), 'utf8'), repaired);
+
+  const later = selected + '- Verified: zero displays as Free.  \r\n';
+  await writeFile(path.join(root, 'docs/decisions.md'), later);
+  for (const content of ['Updated generic policy', null]) {
+    const plan = await createProposal(
+      root,
+      {
+        mode: 'improve',
+        changes: [
+          {
+            path: 'AGENTS.md',
+            managedBlock: { content },
+            reason: 'Change generic policy only.',
+          },
+        ],
+      },
+      { home },
+    );
+    assert.equal(plan.proposal.changes.length, 1);
+    assert.deepEqual(plan.proposal.memory, {
+      path: 'docs/decisions.md',
+      ownership: 'user-memory',
+    });
+    const result = await applyPlan(root, plan, {
+      home,
+      approvedDigest: plan.digest,
+    });
+    assert.equal(result.status, 'complete');
+    assert.deepEqual(
+      await readFile(path.join(root, 'AGENTS.md')),
+      Buffer.from(
+        prefix +
+          owner +
+          '\r\n' +
+          (content ? block(content, '\r\n') : '') +
+          suffix,
+      ),
+    );
+    assert.deepEqual(
+      await readFile(path.join(root, 'docs/decisions.md')),
+      Buffer.from(later),
+    );
+    assert.equal(
+      await readFile(path.join(root, 'MEMORY.md'), 'utf8'),
+      unselected,
+    );
+    assert.equal(
+      await readFile(path.join(root, 'app.ts'), 'utf8'),
+      application,
+    );
+  }
 });
 
 test('block input cannot smuggle a full file replacement, unsupported format or malformed operation', async (t) => {

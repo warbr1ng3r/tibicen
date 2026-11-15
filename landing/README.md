@@ -28,6 +28,10 @@ The first-use simplification was deployed from [`a6d54bc`](https://github.com/wa
 
 The primary landing is [tibicen.pages.dev](https://tibicen.pages.dev/), with English/Russian home and preset routes. The default Astro build uses this origin. The [Cloudflare workflow](../.github/workflows/cloudflare-pages.yml) builds and checks the site on every push to `main`, then deploys with pinned Wrangler. Manual runs are supported on `main`. Repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are required; the existing account token grants Pages Write. Rotate it in Cloudflare and replace the GitHub secret. Other branches and pull requests do not deploy.
 
+## Cloudflare deployment receipts
+
+The [initial deployment report](../docs/deployments/2026-11-09-cloudflare-pages/README.md) retains the manual upload, public-byte comparison and browser-check limits. The [first automatic deployment](../docs/deployments/2026-11-09-cloudflare-pages/AUTODEPLOY.md) records source `583c8ab` and all 22 returned hashes. These are dated observations, not a fresh deployment from this working branch.
+
 ## Legacy GitHub Pages
 
 The [manual Pages workflow](../.github/workflows/pages.yml) publishes only four small HTML redirects from `legacy-pages/` and an unchanged copy of `public/maintenance/index.json`. It does not build a second Astro landing. After a reviewed channel update, run **Publish legacy redirects and checksum index** on `main`; verify the four redirects and compare the public JSON bytes to the committed source.

@@ -47,6 +47,26 @@ for (const stream of ['stdout', 'stderr'] as const)
     },
   );
 
+for (const stream of ['stdout', 'stderr'] as const)
+  test(
+    'supervisor applies the ' + stream + ' cap in UTF-8 bytes',
+    async (t) => {
+      const supervisor = createProcessSupervisor();
+      t.after(() => supervisor.dispose());
+      const result = await supervisor.run({
+        ...command(
+          `require('node:fs').writeSync(${stream === 'stdout' ? 1 : 2},'😀'.repeat(100));process.exit(0);`,
+        ),
+        stdoutLimit: 13,
+        stderrLimit: 13,
+      });
+      assert.equal(result.status, null);
+      assert.equal(result[stream], '😀'.repeat(3));
+      assert(Buffer.byteLength(result[stream]) <= 13);
+      assert.equal(result.timedOut, false);
+    },
+  );
+
 test(
   'a protocol observation can replace the launch deadline without losing timeout cleanup',
   { skip: process.platform === 'win32' },
@@ -113,6 +133,55 @@ test('a successful exit cannot validate an oversized stream with a valid JSON pr
   assert.equal(result.status, null);
   assert.equal(result.timedOut, false);
 });
+
+test('a buffered successful exit cannot hide a failed observation callback', async (t) => {
+  const supervisor = createProcessSupervisor();
+  t.after(() => supervisor.dispose());
+  const running = supervisor.run({
+    ...command("require('node:fs').writeSync(1,'observed');process.exit(0);"),
+    onStdout() {
+      throw new Error('Invalid protocol observation.');
+    },
+  });
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 200);
+  const result = await running;
+  assert.equal(result.stdout, 'observed');
+  assert.equal(result.status, null);
+  assert.equal(result.timedOut, false);
+});
+
+test(
+  'timeout settles even when an escaped descendant retains an output pipe',
+  { skip: process.platform === 'win32', timeout: 3000 },
+  async (t) => {
+    const supervisor = createProcessSupervisor();
+    t.after(() => supervisor.dispose());
+    let escaped: number | undefined;
+    t.after(() => {
+      if (escaped)
+        try {
+          process.kill(escaped, 'SIGKILL');
+        } catch {
+          /* Already gone. */
+        }
+    });
+    const began = performance.now();
+    const result = await supervisor.run({
+      ...command(
+        `const child=require('node:child_process').spawn(process.execPath,['-e','setTimeout(()=>{},10000)'],{detached:true,stdio:['ignore',1,2]});console.log(child.pid);setInterval(()=>{},1000);`,
+      ),
+      onStdout(chunk, controls) {
+        escaped = Number(chunk.trim());
+        if (Number.isSafeInteger(escaped) && escaped > 0)
+          controls.deadlineIn(20);
+      },
+    });
+    assert(escaped && escaped > 0);
+    assert.equal(result.status, null);
+    assert.equal(result.timedOut, true);
+    assert(performance.now() - began < 1500);
+  },
+);
 
 test('cancellation stops execution while retaining signal handlers through outer cleanup', async (t) => {
   const before = process.listenerCount('SIGINT');

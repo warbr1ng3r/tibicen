@@ -9,6 +9,7 @@ import {
   transferLimits,
   relativeFile,
 } from './archive.ts';
+import { terminalDiagnosticPolicy } from './terminal-diagnostics.ts';
 
 const docker = '/usr/local/bin/docker';
 const dockerEnv = {
@@ -57,9 +58,11 @@ export interface ContainerInput {
   files: Record<string, Buffer>;
   fileModes?: Record<string, number>;
   deadlineMs: number;
+  /** Synchronous private observation before failure notification and cleanup. */
+  onFailureDiagnostic?: (record: ExecutorFailureDiagnostic) => void;
 }
 
-interface FailureContext {
+export interface FailureContext {
   operation: 'process/start' | null;
   requestIdHash: string | null;
   processIdHash: string | null;
@@ -67,6 +70,25 @@ interface FailureContext {
   sequence: number | null;
   sandboxDenied: boolean | null;
 }
+
+export type ExecutorFailureDiagnostic = {
+  type: 'executor.error';
+  message?: string;
+  executor: {
+    kind: 'process-exit' | 'rpc-error';
+    code: number | null;
+    exitCode: number | null;
+    context: FailureContext;
+    stderrStatus:
+      | 'complete'
+      | 'empty'
+      | 'overflow'
+      | 'invalid'
+      | 'uncorrelated'
+      | 'not-process';
+    stderrBytes: number;
+  };
+};
 
 type ToolFailure = (
   | { kind: 'rpc-error'; code: number | null }
@@ -94,18 +116,32 @@ function ordinaryProcessExit(params: unknown) {
   );
 }
 
-function failureCorrelation() {
+function failureCorrelation(privateCapture = false) {
+  type Stderr = {
+    chunks: Buffer[];
+    bytes: number;
+    sequence: number;
+    closed: boolean;
+    status: 'empty' | 'complete' | 'invalid' | 'overflow';
+  };
   const key = randomBytes(32),
     buffer = Buffer.alloc(65536),
     responseDecoder = new TextDecoder('utf-8', { fatal: true }),
     requests = new Map<
       string,
-      { process: string | null; responded: boolean; accepted: boolean }
+      {
+        process: string | null;
+        responded: boolean;
+        accepted: boolean;
+        stderr?: Stderr;
+      }
     >(),
     processes = new Map<string, string>();
   let enabled = true,
     size = 0,
-    total = 0;
+    total = 0,
+    bufferedBytes = 0,
+    buffers = 0;
   const object = (value: unknown): value is Record<string, unknown> =>
     value !== null && typeof value === 'object' && !Array.isArray(value);
   const identity = (value: unknown, domain: 'request' | 'process') => {
@@ -124,10 +160,21 @@ function failureCorrelation() {
       .update(String(value))
       .digest('hex');
   };
+  const discard = (stderr: Stderr) => {
+    if (stderr.chunks.length) buffers--;
+    for (const chunk of stderr.chunks) {
+      bufferedBytes -= chunk.length;
+      chunk.fill(0);
+    }
+    stderr.chunks = [];
+  };
   const disable = () => {
     enabled = false;
     buffer.fill(0);
     size = 0;
+    if (privateCapture)
+      for (const request of requests.values())
+        if (request.stderr) discard(request.stderr);
     requests.clear();
     processes.clear();
   };
@@ -171,7 +218,22 @@ function failureCorrelation() {
             return disable();
           processes.set(process, id);
         }
-        requests.set(id, { process, responded: false, accepted: false });
+        requests.set(id, {
+          process,
+          responded: false,
+          accepted: false,
+          ...(privateCapture && process
+            ? {
+                stderr: {
+                  chunks: [],
+                  bytes: 0,
+                  sequence: 0,
+                  closed: false,
+                  status: 'empty',
+                } as Stderr,
+              }
+            : {}),
+        });
       } catch {
         return disable();
       } finally {
@@ -180,7 +242,63 @@ function failureCorrelation() {
       }
     }
   };
+  const processRequest = (event: Record<string, unknown>) => {
+    const params = object(event.params) ? event.params : {};
+    const process = identity(params.processId, 'process');
+    const id = enabled && process ? processes.get(process) : undefined;
+    return id ? requests.get(id) : undefined;
+  };
+  const observeOutput = (event: Record<string, unknown>) => {
+    const request = processRequest(event),
+      stderr = request?.stderr;
+    if (!stderr || stderr.closed) return;
+    const params = object(event.params) ? event.params : {};
+    if (
+      !request.accepted ||
+      !Number.isSafeInteger(params.seq) ||
+      params.seq !== stderr.sequence + 1 ||
+      !['stderr', 'stdout'].includes(String(params.stream)) ||
+      typeof params.chunk !== 'string'
+    ) {
+      discard(stderr);
+      stderr.status = 'invalid';
+      return;
+    }
+    stderr.sequence = Number(params.seq);
+    const bytes = Buffer.from(params.chunk, 'base64');
+    if (bytes.toString('base64') !== params.chunk) {
+      discard(stderr);
+      stderr.status = 'invalid';
+      return;
+    }
+    if (params.stream === 'stdout') return;
+    stderr.bytes += bytes.length;
+    if (stderr.status === 'invalid' || stderr.status === 'overflow') return;
+    const limits = terminalDiagnosticPolicy.executor;
+    if (
+      stderr.bytes > limits.processBytes ||
+      bufferedBytes + bytes.length > limits.totalBytes ||
+      (bytes.length && !stderr.chunks.length && buffers >= limits.processes)
+    ) {
+      discard(stderr);
+      stderr.status = 'overflow';
+      return;
+    }
+    if (bytes.length) {
+      if (!stderr.chunks.length) buffers++;
+      stderr.chunks.push(bytes);
+      bufferedBytes += bytes.length;
+      stderr.status = 'complete';
+    }
+  };
   const observeResponse = (event: unknown) => {
+    if (
+      privateCapture &&
+      enabled &&
+      object(event) &&
+      event.method === 'process/output'
+    )
+      observeOutput(event);
     if (!enabled || !object(event) || !Object.hasOwn(event, 'id')) return;
     const id = identity(event.id, 'request'),
       request = id ? requests.get(id) : undefined;
@@ -206,6 +324,69 @@ function failureCorrelation() {
     disable,
     observeRequest,
     observeResponse,
+    ordinaryExit(event: Record<string, unknown>) {
+      const stderr = privateCapture ? processRequest(event)?.stderr : undefined;
+      if (stderr) {
+        discard(stderr);
+        stderr.closed = true;
+      }
+    },
+    diagnostic(
+      event: Record<string, unknown>,
+      failure: ToolFailure,
+    ): ExecutorFailureDiagnostic {
+      const executor: ExecutorFailureDiagnostic['executor'] = {
+        kind: failure.kind,
+        code: failure.kind === 'rpc-error' ? failure.code : null,
+        exitCode: failure.kind === 'process-exit' ? failure.exitCode : null,
+        context: { ...failure.context },
+        stderrStatus: 'uncorrelated',
+        stderrBytes: 0,
+      };
+      let message: string | undefined;
+      if (failure.kind === 'rpc-error') {
+        if (failure.context.requestIdHash !== null) {
+          executor.stderrStatus = 'not-process';
+          const error = object(event.error) ? event.error : {};
+          if (typeof error.message === 'string') {
+            const bytes = Buffer.from(error.message);
+            if (bytes.length > terminalDiagnosticPolicy.executor.processBytes)
+              executor.stderrStatus = 'overflow';
+            else if (bytes.toString() !== error.message)
+              executor.stderrStatus = 'invalid';
+            else message = error.message;
+          }
+        }
+      } else {
+        const stderr = processRequest(event)?.stderr;
+        if (failure.context.startResponseObserved && stderr && !stderr.closed) {
+          const params = object(event.params) ? event.params : {};
+          if (
+            !Number.isSafeInteger(params.seq) ||
+            params.seq !== stderr.sequence + 1
+          ) {
+            discard(stderr);
+            stderr.status = 'invalid';
+          }
+          executor.stderrStatus = stderr.status;
+          executor.stderrBytes = stderr.bytes;
+          if (stderr.status === 'complete') {
+            try {
+              message = new TextDecoder('utf-8', { fatal: true }).decode(
+                Buffer.concat(stderr.chunks),
+              );
+            } catch {
+              executor.stderrStatus = 'invalid';
+            }
+          }
+        }
+      }
+      return {
+        type: 'executor.error',
+        ...(message === undefined ? {} : { message }),
+        executor,
+      };
+    },
     responseBytes(chunk: Buffer) {
       if (enabled)
         try {
@@ -250,6 +431,11 @@ function failureCorrelation() {
 
 export function validateContainerInput(input: ContainerInput) {
   assert(
+    input.onFailureDiagnostic === undefined ||
+      typeof input.onFailureDiagnostic === 'function',
+    'invalid-container-failure-observer',
+  );
+  assert(
     /^sha256:[a-f0-9]{64}$/.test(input.imageId),
     'pinned-container-image-required',
   );
@@ -283,7 +469,9 @@ export function validateContainerInput(input: ContainerInput) {
 
 export async function startContainerSession(input: ContainerInput) {
   const archive = validateContainerInput(input);
-  const correlation = failureCorrelation();
+  const correlation = failureCorrelation(
+    input.onFailureDiagnostic !== undefined,
+  );
   const name = 'tibicen-eval-' + randomUUID(),
     owner = randomUUID();
   let cid = '',
@@ -502,7 +690,7 @@ export async function startContainerSession(input: ContainerInput) {
             (event.method === 'process/exited' &&
               !ordinaryProcessExit(event.params))
           ) {
-            if (!stopPromise)
+            if (!stopPromise) {
               toolFailure =
                 event.error && event.error.code !== -32004
                   ? {
@@ -519,8 +707,17 @@ export async function startContainerSession(input: ContainerInput) {
                         : null,
                       context: correlation.context(event, true),
                     };
+              try {
+                input.onFailureDiagnostic?.(
+                  correlation.diagnostic(event, toolFailure),
+                );
+              } catch {
+                /* Recording cannot replace the original fault or skip cleanup. */
+              }
+            }
             void stop([], 'tool-failure').catch(() => {});
-          }
+          } else if (!stopPromise && event.method === 'process/exited')
+            correlation.ordinaryExit(event);
         } catch {
           void stop([], 'invalid-protocol').catch(() => {});
         }

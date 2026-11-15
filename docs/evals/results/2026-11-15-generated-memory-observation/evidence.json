@@ -1,0 +1,443 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "dateZone": "Europe/Moscow",
+  "assessment": "native-generation-passed; native-application-stopped; separate-model-free-control-passed",
+  "privacy": {
+    "rawArtifactsCopied": false,
+    "paths": "Private artifact paths below are packet-relative identifiers, not local absolute paths.",
+    "purpose": "Hashes identify retained private records. This is not a transcript export or replay bundle."
+  },
+  "candidate": {
+    "publishedVersion": "1.5.4",
+    "sourceBase": "31f87d993e76bbf546643211980c628c365500f0",
+    "label": "source plus reviewed Unreleased changes; not a published new release",
+    "payloadFiles": 110,
+    "payloadInventorySha256": "7d2b52de840072b08f8983106611257b5211c96d57a3a41afe49b63138665f90"
+  },
+  "offlineChecks": {
+    "source": "root integration gate; separate from native outcomes",
+    "total": 1119,
+    "passed": 1118,
+    "failed": 0,
+    "existingSkipped": 1,
+    "standaloneFileHashesPassed": 110,
+    "bothSkillSelfTests": "passed"
+  },
+  "nativeProtocol": {
+    "harness": "Codex CLI 0.157.0",
+    "model": "gpt-6-astra",
+    "route": "existing subscription",
+    "maxSessions": 5,
+    "actualSessions": 2,
+    "concurrency": 1,
+    "deadlineMsPerPhase": 180000,
+    "maxCallerMs": 900000,
+    "callerRetries": 0,
+    "newPaidApiCalls": 0,
+    "observedTokenAdmissionStops": {
+      "input": 600000,
+      "output": 40000,
+      "hardProviderQuota": false,
+      "missingUsageBlocksContinuation": true
+    },
+    "originalPacketState": "stopped; no continuation or retry",
+    "laterPhases": ["first-task", "correction", "fresh-corrected"],
+    "laterPhasesStarted": false
+  },
+  "generation": {
+    "status": "passed",
+    "callerDurationMs": 94521.167542,
+    "nativeTurnCompleted": true,
+    "inputFiles": 60,
+    "allInputBytesAndModesPreserved": true,
+    "onlyAddedFiles": [
+      "support/proposal-input.json",
+      "support/proposal-output.json"
+    ],
+    "proposalDigest": "041a692cc896330c27f0cd670888b54553a7e9f123d25e0208d49b75822018e2",
+    "proposalChanges": [
+      {
+        "path": "AGENTS.md",
+        "action": "add",
+        "mode": "0600",
+        "contentSha256": "ba354fda7abebabe73b7bebd3f44cf2098518384ab2b0e8f7dc967550876e4a8"
+      },
+      {
+        "path": ".agents/memory.md",
+        "action": "add",
+        "mode": "0600",
+        "contentSha256": "f4a64403ca4d2d50c8248a01c0dc59a54e4d26abdbfd66c48f297a8c9be79e39"
+      }
+    ],
+    "selectedMemory": {
+      "path": ".agents/memory.md",
+      "ownership": "user-memory"
+    },
+    "review": "actual generated content independently reviewed and original input recompiled; no policy rewrite",
+    "policy": "authorizes ordinary reading and correction within owner scope; no exclusive init editor or installed Tibicen requirement",
+    "decisionIsolation": "zero-price answer only in selected memory, absent from proposed policy and starter code",
+    "implementationDistinction": "accepted target decisions separated from observed unfinished implementation",
+    "unrelatedNoteSha256": "3b5c3bf67b475bb60870b9bffb0d00911e6c3757eaa4deae800d4db02d2eb00b",
+    "approvalAuthority": "synthetic fixture controller; not human authentication",
+    "loading": "explicit SKILL read; assisted",
+    "usage": {
+      "inputTokens": 189811,
+      "outputTokens": 2738
+    },
+    "helperRecovery": "failed Python helper followed by Node recovery in the same session; not another native attempt"
+  },
+  "nativeApplyPhase": {
+    "status": "stopped; application unverified",
+    "callerDurationMs": 19862.804083000003,
+    "nativeTurnCompleted": false,
+    "completedCommands": 2,
+    "completedCommandKind": "skill and proposal reads only",
+    "tibicenApplyObserved": false,
+    "verifyStatusReportObserved": false,
+    "failure": {
+      "kind": "process-exit",
+      "exitCode": 1,
+      "operation": "process/start",
+      "startResponseObserved": true,
+      "sequence": 7,
+      "sandboxDenied": true,
+      "commandArgumentsRetained": false,
+      "exactCause": "unknown"
+    },
+    "timedOut": false,
+    "spawnError": false,
+    "parseError": false,
+    "hostInputMirrorFiles": 66,
+    "hostInputBytesAndModesPreserved": true,
+    "hostCliCapturePlaceholders": "all four remain null",
+    "writes": "no application or service write observed; transient container state cannot be established",
+    "returnedContainerFiles": 0,
+    "finalContainerState": "unknown; failure cleanup collected no files",
+    "cleanup": {
+      "stopped": true,
+      "removed": true
+    },
+    "privateTerminalDiagnostics": {
+      "status": "no-terminal-record",
+      "records": 0,
+      "bytes": 0,
+      "meaning": "owner stopped before CLI error/turn.failed reached recorder; not a cause diagnosis"
+    },
+    "usage": {
+      "inputTokens": null,
+      "outputTokens": null
+    }
+  },
+  "modelFreeControl": {
+    "status": "passed separately; does not change original native outcome",
+    "kind": "real executor RPC with synthetic controller",
+    "callerDurationMs": 3735.573958,
+    "maxContainers": 1,
+    "deadlineMs": 20000,
+    "modelSessions": 0,
+    "authReads": 0,
+    "paidApiCalls": 0,
+    "retries": 0,
+    "network": "none",
+    "uid": 1000,
+    "gid": 1000,
+    "modes": ["0600", "0644"],
+    "nodeChildReadWrite": "passed",
+    "exactProposalDigest": "041a692cc896330c27f0cd670888b54553a7e9f123d25e0208d49b75822018e2",
+    "cliSteps": {
+      "apply": {
+        "exitCode": 0,
+        "result": "complete",
+        "captureSha256": "fc0afc8c3daea6aa7bb1efb142dab45da774c524e8f94a634ffb33f9b6c03a8f"
+      },
+      "verify": {
+        "exitCode": 0,
+        "result": "passed",
+        "captureSha256": "33d03f07026b7704ecad8222bce379dcbadf787bdd6e73e1420904dca6a82728"
+      },
+      "status": {
+        "exitCode": 0,
+        "result": "complete",
+        "captureSha256": "a0e7636417e5b1a2ac015f94329c9ed957b1b8564f50d3e129a5b7036a866331"
+      },
+      "report": {
+        "exitCode": 0,
+        "result": "complete",
+        "captureSha256": "921b00e74a590ca7bbd82c13fed9d1eb73810c0f788e666bdcb69917dcc29b6f"
+      }
+    },
+    "verificationScope": "structure only; no application or memory-use check",
+    "returnedFiles": 72,
+    "originalStarterFilesPreserved": 4,
+    "generatedApprovedFilesExactBytesAndMode": 2,
+    "otherFrozenInputs": "unchanged except four permitted CLI captures",
+    "extraFiles": [
+      "project/AGENTS.md",
+      "project/.agents/memory.md",
+      "project/.tibicen/manifest.yml",
+      "support/home/.tibicen/usage.json",
+      "support/control600.json",
+      "support/control644.json"
+    ],
+    "cleanup": {
+      "stopped": true,
+      "removed": true
+    },
+    "limitations": [
+      "not native-agent application success",
+      "original failing argv unavailable; not exact failure replay",
+      "exact sandbox cause unknown",
+      "no fresh generated-memory use result"
+    ]
+  },
+  "remainingUnknown": [
+    "native application",
+    "ordinary generated-memory use",
+    "memory correction and unrelated-note preservation",
+    "fresh corrected reuse",
+    "unassisted native loading",
+    "failed-session usage and complete packet token total",
+    "subscription monetary cost",
+    "exact executor sandbox cause",
+    "human usefulness and ordinary-agent baseline"
+  ],
+  "retainedArtifacts": [
+    {
+      "packet": "generated-memory-20261115",
+      "path": "protocol.json",
+      "sha256": "f5597ec9ff174713ea2d2737107ead5d7795d86cbc19f4f7ef6844f339a32f8c",
+      "bytes": 4308
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "driver.mjs",
+      "sha256": "a4d7288d3df8cfb83a2a1c9caefbf4f42a7e2dd1a32cdca0d5bba245922f9c4a",
+      "bytes": 8194
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "prepare.mjs",
+      "sha256": "b7153baa7576efb76aac13fbdde704d15ff6524bcbd9699837e6db8708ce27d2",
+      "bytes": 6292
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "grade.mjs",
+      "sha256": "9f32b026f2616cdd0dca47305f0f0d482ef4127ca03f27fa37d1254b58f1f4bf",
+      "bytes": 3262
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "generate.prompt.txt",
+      "sha256": "61924ce56207fb3920d60db424b8ac3748edea73405a2634fc7508fbf21a1e47",
+      "bytes": 1562
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "generate/prospective.json",
+      "sha256": "72f96d8df6b3ef014ee941f61972f6b17b98c16eba4539faca5e41260d4077de",
+      "bytes": 19946
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "generate/GO.json",
+      "sha256": "1037595b06352d33738e50db29daa0dbff3be6af5c5bdbbcd2d6303effa2d211",
+      "bytes": 399
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "generate/started.json",
+      "sha256": "4eaa4c90d785302c0684bfa726cc591cce488aac51d932e652cc246ece5a1644",
+      "bytes": 157
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "generate/events.jsonl",
+      "sha256": "090c86ac01317926ab5ecc96d5216549631e1f69cc4ac1058ad5e7cb4644bfb3",
+      "bytes": 215405
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "generate/outcome.json",
+      "sha256": "0330ff678978ac57e2c16186711dbb08fc0bbf06556dc9d77851eab758e59ee0",
+      "bytes": 9007456
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "generate/finished.json",
+      "sha256": "fb5ad2ca576a70c9d85e49640f36b09223360f741adb498465acb6074d2930df",
+      "bytes": 78
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "generate/acceptance.json",
+      "sha256": "454e16ced3f18b6d9f5ffc8b521ff73e52ac7eca47f82d91cd69d1ec5fba8522",
+      "bytes": 510
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "generate/recompile.json",
+      "sha256": "878d24bd5b9b843dbde5aa8b6ccbc375c73437bb34fbf52c2eec05a4d9fe8ae7",
+      "bytes": 9365
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "generate/staged.json",
+      "sha256": "e7d5893702de08dda7710b35e8c2e2ee1c122e3d8821f228c581091f9f32f831",
+      "bytes": 128
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "setup-approval.json",
+      "sha256": "288f543acf06787270751c4275a8d94a23e9b3e19ffc48637064cdeabaa20ed9",
+      "bytes": 650
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "unrelated-note.txt",
+      "sha256": "3b5c3bf67b475bb60870b9bffb0d00911e6c3757eaa4deae800d4db02d2eb00b",
+      "bytes": 131
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "apply.prompt.txt",
+      "sha256": "964e8245479a88d6ba58fe0cf678fdcbcd588d3452c42df354d899ea7a3a248b",
+      "bytes": 1710
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "apply/prospective.json",
+      "sha256": "7cf961be70e8499d7bef0f5edea5950bbec3aabd60664eceea2b1aba71f80bc0",
+      "bytes": 21050
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "apply/GO.json",
+      "sha256": "6ec2de45450bc00f952ff3116be021a1b4f29798f98fac7ea5fef87f816db168",
+      "bytes": 392
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "apply/started.json",
+      "sha256": "6a9334ed390b86f148ff0edb102f234816a8e2179cef8c306deeeec7664da02e",
+      "bytes": 157
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "apply/events.jsonl",
+      "sha256": "026d46c5146787e3e3937541f05239eeea2e9b7eb0532e185f0ceefc532d8390",
+      "bytes": 15072
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "apply/outcome.json",
+      "sha256": "70c63ba948e7a55f47742d4a8a8f2b0d5d6ae36ad569a5b6873fafc3f4d01df4",
+      "bytes": 40317
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "apply/finished.json",
+      "sha256": "d4bd8b04299f04625d95554a0ec388f900cb8e69b49715734134b1b38ccf1e42",
+      "bytes": 77
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "diagnostics/generate/terminal-errors.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "packet": "generated-memory-20261115",
+      "path": "diagnostics/apply/terminal-errors.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "packet": "generated-memory-boundary-20261115",
+      "path": "protocol.json",
+      "sha256": "55eec7ad432dfeebd6b37fd224f07ce05356ec449c1e8c4d4873ac10bbd9d8a3",
+      "bytes": 1114
+    },
+    {
+      "packet": "generated-memory-boundary-20261115",
+      "path": "GO.json",
+      "sha256": "cc5e28163699ede3c2a31b89357b984c3adeff1dd7a37a1e8babe21763282f94",
+      "bytes": 325
+    },
+    {
+      "packet": "generated-memory-boundary-20261115",
+      "path": "prelaunch-invalid-protocol.json",
+      "sha256": "6cb72f4eaf9bd544890399c55b0d91eb4164ecf4c21297c22f07906aa8d08c7c",
+      "bytes": 1114
+    },
+    {
+      "packet": "generated-memory-boundary-20261115",
+      "path": "probe.mjs",
+      "sha256": "5328a9f4426f47622b79eb749ff5275f5a75b588b4c64f5d45f11c5cc50b8adc",
+      "bytes": 8366
+    },
+    {
+      "packet": "generated-memory-boundary-20261115",
+      "path": "started.json",
+      "sha256": "e7785bbdfac39330dfb1cd813538c71f6801db8a729cbeb4d7d8379131a76212",
+      "bytes": 125
+    },
+    {
+      "packet": "generated-memory-boundary-20261115",
+      "path": "raw.json",
+      "sha256": "61565b86df9d5a9528a141b2bcc88f44f393d3994b05168e86da0613830b6714",
+      "bytes": 8844946
+    },
+    {
+      "packet": "generated-memory-boundary-20261115",
+      "path": "summary.json",
+      "sha256": "9b02aabeb9de2a95dbc20a2ffabe6e2bceb65e3dc7c45c690ac3dee5464d86f0",
+      "bytes": 1423
+    },
+    {
+      "packet": "generated-memory-boundary-20261115",
+      "path": "acceptance.json",
+      "sha256": "6937d25867221ed5b35979dda8e5d42b649924b47eb17144678f2515102010e6",
+      "bytes": 2089
+    }
+  ],
+  "embeddedFileIndex": [
+    {
+      "record": "generated-memory-20261115/generate/outcome.json",
+      "file": "support/proposal-input.json",
+      "sha256": "2b9c4ce0e3f86e5bb43d7deca4db130865251b68631843771435257500d505f0",
+      "bytes": 3438
+    },
+    {
+      "record": "generated-memory-20261115/generate/outcome.json",
+      "file": "support/proposal-output.json",
+      "sha256": "9566eb7b7ef0fc1f89a4929143260bfaa42d2af17804041750ef43081217113d",
+      "bytes": 8815
+    },
+    {
+      "record": "generated-memory-boundary-20261115/raw.json",
+      "file": "support/apply-capture.json",
+      "sha256": "fc0afc8c3daea6aa7bb1efb142dab45da774c524e8f94a634ffb33f9b6c03a8f",
+      "bytes": 6019
+    },
+    {
+      "record": "generated-memory-boundary-20261115/raw.json",
+      "file": "support/verify-capture.json",
+      "sha256": "33d03f07026b7704ecad8222bce379dcbadf787bdd6e73e1420904dca6a82728",
+      "bytes": 266
+    },
+    {
+      "record": "generated-memory-boundary-20261115/raw.json",
+      "file": "support/status-capture.json",
+      "sha256": "a0e7636417e5b1a2ac015f94329c9ed957b1b8564f50d3e129a5b7036a866331",
+      "bytes": 1373
+    },
+    {
+      "record": "generated-memory-boundary-20261115/raw.json",
+      "file": "support/report-capture.json",
+      "sha256": "921b00e74a590ca7bbd82c13fed9d1eb73810c0f788e666bdcb69917dcc29b6f",
+      "bytes": 3760
+    }
+  ]
+}

@@ -59,7 +59,38 @@ test('current structural damage remains separate from the completed saved sessio
   assert.equal(result.structure.status, 'issues-found');
   assert.equal(result.structure.issues[0].reason, 'missing-memory-connection');
   assert.equal(result.structure.issues[1].reason, 'shared-rule-copy-outdated');
-  assert.equal(result.nextAction.kind, 'review-issues');
+  assert.equal(result.nextAction.kind, 'repair-memory-connection');
+  assert.match(result.nextAction.reason, /new exact connecting proposal/);
+  assert.match(result.nextAction.reason, /fresh approval/);
+});
+
+test('missing-connection advice retains incomplete inventory and continuation limits', () => {
+  const current = scan();
+  current.complete = false;
+  current.excluded = [{ path: 'AGENTS.md', reason: 'forbidden-path' }];
+  current.gaps = [{ path: '.', reason: 'scan-limit' }];
+  const infrastructure = structure('issues-found');
+  infrastructure.issues = [
+    { path: 'docs/decisions.md', reason: 'missing-memory-connection' },
+  ];
+  const before = structuredClone({ current, infrastructure });
+  const result = summarizeDiagnosis({
+    scan: current,
+    infrastructure,
+    continuationAvailable: true,
+    session: { id: 'original', status: 'incomplete' },
+    forbiddenPaths: ['AGENTS.md'],
+  });
+  assert.equal(result.nextAction.kind, 'repair-memory-connection');
+  assert.equal(result.inventory.complete, false);
+  assert.deepEqual(result.inventory.gaps, current.gaps);
+  assert.deepEqual(result.inventory.coverageLimits, ['forbidden-path']);
+  assert.match(result.nextAction.reason, /permitted read scope/);
+  assert.match(
+    result.nextAction.reason,
+    /leave excluded paths and permissions unchanged/,
+  );
+  assert.deepEqual({ current, infrastructure }, before);
 });
 
 test('a native setup has no invented session, selected agent, or loading result', () => {

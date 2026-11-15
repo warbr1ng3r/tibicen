@@ -52,7 +52,7 @@ test('catalog hints stay local preferences in English and Russian on a narrow vi
   for (const route of ['./', 'ru/']) {
     await page.goto(route);
     await expect(page.locator('#install-command')).toContainText(
-      '52c0769574e90d7d1a0438996df9da40621b0107',
+      '381c5d53972b53d60e9a134ec7f620bb7c35e6be',
     );
     await openPreset(page);
     await openAdvanced(page);
@@ -122,7 +122,7 @@ test('one universal command stays primary while native alternatives are optional
     ).toHaveCount(0);
     const primary = page.locator('#install-command');
     const suffix =
-      'skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/52c0769574e90d7d1a0438996df9da40621b0107 -g --agent universal --skill tibicen-init tibicen-adopt --copy';
+      'skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/381c5d53972b53d60e9a134ec7f620bb7c35e6be -g --agent universal --skill tibicen-init tibicen-adopt --copy';
     await expect(primary).toHaveText(`npx ${suffix}`);
     const alternatives = page.locator('.installation-alternatives');
     await expect(alternatives).not.toHaveAttribute('open');
@@ -384,8 +384,14 @@ for (const width of [320, 390, 768, 1024, 1440]) {
     expect(Math.min(...measurements.fontSizes)).toBeGreaterThanOrEqual(12);
     expect(Math.min(...measurements.targets)).toBeGreaterThanOrEqual(44);
     expect(Math.max(...measurements.iconOffset)).toBeLessThan(1);
-    await page.locator('#language').scrollIntoViewIfNeeded();
-    await page.evaluate(() => window.scrollBy(0, -260));
+    await page
+      .locator('#language')
+      .evaluate((element) =>
+        element.scrollIntoView({ block: 'center', behavior: 'instant' }),
+      );
+    await page.evaluate(() =>
+      window.scrollBy({ top: -260, behavior: 'instant' }),
+    );
     await page.locator('#language').click();
     const popup = page.getByRole('listbox');
     await expect(popup).toBeVisible();
@@ -441,7 +447,7 @@ test('without JavaScript English stays default in a Russian browser and language
     );
     await expect(page.locator('#preset-form')).toHaveCount(0);
     await expect(page.locator('#install-command')).toHaveText(
-      'npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/52c0769574e90d7d1a0438996df9da40621b0107 -g --agent universal --skill tibicen-init tibicen-adopt --copy',
+      'npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/381c5d53972b53d60e9a134ec7f620bb7c35e6be -g --agent universal --skill tibicen-init tibicen-adopt --copy',
     );
     await page.locator('.installation-alternatives > summary').click();
     for (const [manager, runner] of [
@@ -450,7 +456,7 @@ test('without JavaScript English stays default in a Russian browser and language
     ]) {
       await expect(page.locator(`#install-command-${manager}`)).toBeVisible();
       await expect(page.locator(`#install-command-${manager}`)).toHaveText(
-        `${runner} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/52c0769574e90d7d1a0438996df9da40621b0107 -g --agent universal --skill tibicen-init tibicen-adopt --copy`,
+        `${runner} skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/381c5d53972b53d60e9a134ec7f620bb7c35e6be -g --agent universal --skill tibicen-init tibicen-adopt --copy`,
       );
     }
     await expect(

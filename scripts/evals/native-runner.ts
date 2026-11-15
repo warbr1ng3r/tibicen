@@ -41,6 +41,7 @@ import type {
 import { inspectOpenSpecPackage } from './openspec-source.ts';
 import { createProcessSupervisor } from './process-supervisor.ts';
 import { createNativeEvidence } from './native-evidence.ts';
+import { createNativeApproval } from './native-approval.ts';
 import {
   checkMathExports,
   checkOpenSpecArtifacts,
@@ -444,6 +445,7 @@ export async function runNativeExperiment(
       [
         'native.ts',
         'native-runner.ts',
+        'native-approval.ts',
         'process-supervisor.ts',
         'native-evidence.ts',
         'native-checks.ts',
@@ -587,7 +589,7 @@ export async function runNativeExperiment(
           }
         : null,
       consent:
-        'Exact per-phase files/commands; specification, plan and implementation have separate approvals. Kernel service intent is separately bound.',
+        'Frozen-fixture synthetic host approval, not a human decision. Exact per-phase files/commands; specification, plan and implementation have separate one-use controller grants. Kernel service intent is separately bound. Digest equality identifies content, not the approving person.',
     };
     profile.startupHash = digest({
       preflight: ready.startupHash,
@@ -786,6 +788,7 @@ export async function runNativeExperiment(
             kernelApproved = false,
             approvedKernel: Record<string, unknown> | undefined,
             appliedOutput: NativeOutput | undefined;
+          const approvalGate = createNativeApproval();
           fact(
             stage,
             'context',
@@ -822,7 +825,18 @@ export async function runNativeExperiment(
             write: boolean,
             phase: NativePhase,
             sequence: number,
+            grant?: object,
           ) {
+            if (write)
+              approvalGate.consume(grant, {
+                root,
+                stage,
+                phase,
+                planHash: digest(phasePlan),
+                kernelDigest: approvedKernel
+                  ? digest(approvedKernel.proposal ?? approvedKernel)
+                  : null,
+              });
             assert(
               !supervisor.signal.aborted,
               'native-aborted',
@@ -1490,6 +1504,15 @@ export async function runNativeExperiment(
               phasePlan = reviewed.plan;
               kernelApproved = reviewed.kernel !== null;
               approvedKernel = reviewed.kernel ?? undefined;
+              const approvalGrant = approvalGate.issue({
+                root,
+                stage,
+                phase,
+                planHash: digest(phasePlan),
+                kernelDigest: approvedKernel
+                  ? digest(approvedKernel.proposal ?? approvedKernel)
+                  : null,
+              });
               if (reviewed.kernel)
                 assertion(
                   stage,
@@ -1547,6 +1570,7 @@ export async function runNativeExperiment(
                     true,
                     phase,
                     1,
+                    approvalGrant,
                   );
               } finally {
                 if (kernelFilename)

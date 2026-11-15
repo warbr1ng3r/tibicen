@@ -5,10 +5,27 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+## [1.5.5](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.5) — 2026-11-15
+
+Publication pending final delivery checks.
+
+### Fixed
+
+- Clarify owner-authorized maintenance of generated instructions and memory without installed Tibicen; init is first-time setup and adopt reviews existing infrastructure.
+- Optionally retain bounded private CLI and executor errors, including matched stderr before cancellation, with credential redaction and frozen storage policy. Gaps withhold text; public projections stay unchanged and historical causes remain unknown.
+- Explain missing project-memory connections in incomplete apply results and fresh report diagnosis, preserving approved removal and newly approved same-session repair.
+- Keep evaluation output within UTF-8 byte caps and fail closed on observer errors; bound pipe draining after stop without claiming containment of escaped descendants.
+- Bound explicitly selected CLI input and Codex MCP config files with one nonblocking file handle; refuse special or oversized inputs and stop growth at the byte limit, including path-replacement races.
+
 ### Changed
 
+- Add controller-only generated-memory controls and paired observation guides; record [fresh use, correction and reuse](docs/evals/results/2026-11-15-generated-memory-task-followup/README.md) separately from the stopped native apply and successful controller application.
+- Separate autonomous interview defaults, tool access and exact-plan consent; disclose digest identity limits and bind controlled synthetic approvals to one reviewed native phase.
+- Keep owner decisions outside replaceable setup blocks and make the selected memory's applicable entrypoint or explicit-read fallback clear, including host-native memory limitations.
+- Export compact identity-bound native-run evidence summaries with explicit missing evidence and unknown timing/cost dimensions; collection remains model-free and does not authorize paid work.
 - Make tibicen.pages.dev the primary site and replace the four legacy GitHub Pages routes with static redirects while preserving the checksum endpoint and release records.
-
+- Publish the existing bilingual landing at [tibicen.pages.dev](https://tibicen.pages.dev/) through Cloudflare Pages Direct Upload; record [delivery checks and manual update instructions](docs/deployments/2026-11-09-cloudflare-pages/README.md).
+- Clarify first-file reading, root-relative shared `AGENTS.md` and proposal compilation before presentation, including a conditional temporary-file-free POSIX pipe. The [diagnostic follow-up](docs/evals/results/2026-11-09-proposal-handoff/README.md) retains failures and unverified native effectiveness; runtime and schema are unchanged.
 - Put the first action before release history in the paired README guides, preserve complete earlier records and keep one concise current roadmap. Add a [bounded first-use report](docs/evals/results/2026-11-09-first-use-1.5.4/README.md) with actual native application and fresh-task results, including assistance and coverage limits.
 - Add localized canonical and social-preview metadata with a PNG image, preserving the landing design and installation pin.
 - Limit full-suite test file workers to four without changing assertions, deadlines or distributed runtime files.
@@ -41,7 +58,6 @@ immutable source/distribution references, checks and remaining scope limits.
 ### Fixed
 
 - Keep first-time setup routing when the only project infrastructure is canonical installed Tibicen skill folders. Preserve the complete inventory, existing user-setup detection and all nonempty-project/approval/write guards; folder recognition does not establish provenance or trust.
-
 
 ## [1.5.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.1) — 2026-11-07
 

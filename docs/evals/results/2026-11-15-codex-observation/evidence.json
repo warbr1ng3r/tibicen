@@ -1,0 +1,367 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "dateZone": "Europe/Moscow",
+  "utcTimes": true,
+  "sourceBase": "31f87d993e76bbf546643211980c628c365500f0",
+  "candidate": {
+    "publishedVersion": "1.5.4",
+    "label": "1.5.4 source plus reviewed Unreleased reliability changes",
+    "payloadFiles": 110,
+    "inventoryHash": "9acde8988b871893705ecb8d11a5ed176b30b0312a941456627d4d2abd13e9f7"
+  },
+  "route": {
+    "harness": "Codex CLI",
+    "version": "0.157.0",
+    "configuredModel": "gpt-6-astra",
+    "authentication": "existing ChatGPT subscription, access-only copy",
+    "tools": "owned Linux arm64 container; no host mounts or tool networking"
+  },
+  "attemptedSessions": 8,
+  "completedNativeTurns": 7,
+  "failedNativeTurns": 1,
+  "retries": 0,
+  "concurrency": 1,
+  "nativeCallerMs": 466371,
+  "maxCallerMs": 1440000,
+  "paidApiCalls": 0,
+  "monetaryCost": null,
+  "monetaryCostReason": "No new paid API use. Native subscription monetary cost not reported; missing usage on failed turn is not zero.",
+  "usageComplete": false,
+  "rows": [
+    {
+      "id": "memory-first",
+      "case": "memory-work",
+      "kind": "task",
+      "configuredModel": "gpt-6-astra",
+      "threadId": "01a1dc2c-b1f2-7ba2-b3bd-6d067a8ae99b",
+      "startedAt": "2026-11-14T22:27:56.111Z",
+      "endedAt": "2026-11-14T22:28:34.055Z",
+      "callerMs": 37943,
+      "nativeTurnCompleted": true,
+      "assessment": "accepted-in-declared-scope",
+      "accepted": true,
+      "cleanup": {
+        "stopped": true,
+        "removed": true,
+        "reason": "owner-end"
+      },
+      "configUnchanged": true,
+      "sourceUnchanged": true,
+      "codeModeUnchanged": true,
+      "usage": {
+        "inputTokens": 52426,
+        "outputTokens": 811
+      },
+      "freezeHash": "0f60ce366587bc8044a2c38777f8a3cbad3ddd99038a66a62074170e35c97224",
+      "outcomeHash": "8f0f56a11e23c55466d3aa8671755f77f0343a6f44a8d8ca119f59d81eea01b4",
+      "eventsHash": "cac948c29864b2c5cbd5b6211f31c4f8a5a223e699e9425a571afe64c94dfb9a",
+      "acceptanceHash": "5c575118046cfe05e4a3df3b57125ca58dfb4ee9f5e09eb21a7a17821a7ded5e",
+      "nonzeroCommands": [
+        {
+          "toolUseId": "item_3",
+          "exitCode": 127
+        }
+      ],
+      "emptyCommandCaptures": []
+    },
+    {
+      "id": "memory-correction",
+      "case": "memory-work",
+      "kind": "correction",
+      "configuredModel": "gpt-6-astra",
+      "threadId": "01a1dc2f-67e7-77b1-87bf-94aae028a34b",
+      "startedAt": "2026-11-14T22:30:54.005Z",
+      "endedAt": "2026-11-14T22:31:26.997Z",
+      "callerMs": 32991,
+      "nativeTurnCompleted": true,
+      "assessment": "accepted-in-declared-scope",
+      "accepted": true,
+      "cleanup": {
+        "stopped": true,
+        "removed": true,
+        "reason": "owner-end"
+      },
+      "configUnchanged": true,
+      "sourceUnchanged": true,
+      "codeModeUnchanged": true,
+      "usage": {
+        "inputTokens": 42348,
+        "outputTokens": 703
+      },
+      "freezeHash": "24d64a062cedca0919ac3a2909bde482dbc334a1e39a3501c6eca3cedc6c3715",
+      "outcomeHash": "8a2ede592803deaa2f3533e62d5d4569985450c6c8e88f76bb314dbcb24fe8eb",
+      "eventsHash": "1deb398a3868a4ede9164cc568e21bedc605e4927591b4eee0ea22c5a11fef94",
+      "acceptanceHash": "efaf4685f015e0eda6a5058a4530b2a66fc2e2343aaefa4cb61b3cef2d17ad69",
+      "nonzeroCommands": [
+        {
+          "toolUseId": "item_2",
+          "exitCode": 127
+        }
+      ],
+      "emptyCommandCaptures": []
+    },
+    {
+      "id": "memory-fresh",
+      "case": "memory-work",
+      "kind": "reuse",
+      "configuredModel": "gpt-6-astra",
+      "threadId": "01a1dc31-df5f-7322-b001-f269a8259f98",
+      "startedAt": "2026-11-14T22:33:35.720Z",
+      "endedAt": "2026-11-14T22:34:06.299Z",
+      "callerMs": 30578,
+      "nativeTurnCompleted": true,
+      "assessment": "accepted-in-declared-scope",
+      "accepted": true,
+      "cleanup": {
+        "stopped": true,
+        "removed": true,
+        "reason": "owner-end"
+      },
+      "configUnchanged": true,
+      "sourceUnchanged": true,
+      "codeModeUnchanged": true,
+      "usage": {
+        "inputTokens": 52661,
+        "outputTokens": 608
+      },
+      "freezeHash": "b5f7e52f8802ba947f08ba3c0ed8b1991e5a3b684d5aecf924a0bffa3b0e1581",
+      "outcomeHash": "2c4f5ed6e94ce0ec44d370faf6f35a2a56d8d9b0084e5b8d63904bbc0f634b2b",
+      "eventsHash": "d2e0df659dd510840605528c3d8708b4a234da3a6419a584dcaa99040e5b7b7d",
+      "acceptanceHash": "710f4825115bdf014f53016951df29d2c7d704398f99a36fbfc9f11524d82349",
+      "nonzeroCommands": [
+        {
+          "toolUseId": "item_2",
+          "exitCode": 127
+        }
+      ],
+      "emptyCommandCaptures": []
+    },
+    {
+      "id": "init-bash-proposal",
+      "case": "init-bash",
+      "kind": "proposal",
+      "configuredModel": "gpt-6-astra",
+      "threadId": "01a1dc2d-c6cd-76d3-8c9f-50a41b400d54",
+      "startedAt": "2026-11-14T22:29:05.004Z",
+      "endedAt": "2026-11-14T22:30:44.981Z",
+      "callerMs": 99976,
+      "nativeTurnCompleted": true,
+      "assessment": "accepted-in-declared-scope",
+      "accepted": true,
+      "cleanup": {
+        "stopped": true,
+        "removed": true,
+        "reason": "owner-end"
+      },
+      "configUnchanged": true,
+      "sourceUnchanged": true,
+      "codeModeUnchanged": true,
+      "usage": {
+        "inputTokens": 228828,
+        "outputTokens": 3162
+      },
+      "freezeHash": "c1e44cd94a11c3ff11053fd01d524990e514800c791094c84e59d93bdaa21f34",
+      "outcomeHash": "1f25a6208234846a5bbc09936e3b4746623bfe491bc67270508110acf28ffed6",
+      "eventsHash": "3018f68f22ade50893202f6bf67080cba6588a2917e63a87d54aae67e296fbe8",
+      "acceptanceHash": "c69cebf60cbcbc8b83e4daf30a6349d7d86fd89f52df62c8ae19281d4a4ca4ca",
+      "nonzeroCommands": [
+        {
+          "toolUseId": "item_2",
+          "exitCode": 1
+        },
+        {
+          "toolUseId": "item_11",
+          "exitCode": 1
+        }
+      ],
+      "emptyCommandCaptures": [
+        "item_11",
+        "item_13"
+      ]
+    },
+    {
+      "id": "adopt-docs-proposal",
+      "case": "adopt-docs",
+      "kind": "proposal",
+      "configuredModel": "gpt-6-astra",
+      "threadId": "01a1dc30-4742-7511-8e85-2ce3cb3793e5",
+      "startedAt": "2026-11-14T22:31:48.981Z",
+      "endedAt": "2026-11-14T22:33:26.408Z",
+      "callerMs": 97425,
+      "nativeTurnCompleted": true,
+      "assessment": "accepted-in-declared-scope",
+      "accepted": true,
+      "cleanup": {
+        "stopped": true,
+        "removed": true,
+        "reason": "owner-end"
+      },
+      "configUnchanged": true,
+      "sourceUnchanged": true,
+      "codeModeUnchanged": true,
+      "usage": {
+        "inputTokens": 255128,
+        "outputTokens": 2873
+      },
+      "freezeHash": "4f6bb37d28f67b1e1269ae61e5e653b26737e50fb08f65042b7859252d5c5ff2",
+      "outcomeHash": "bcf12b121fa7edb75b074d76b694eb0a2438fe30ac5f771ca3aeeb22b4c30466",
+      "eventsHash": "bb8a0c4c104b52fb0e49d5b205cc6d1a4ba6bd96bab48592ef6e0ce69795b2e9",
+      "acceptanceHash": "08b58ea8257a6ad24bd0a694af92929e6df13f18c1813f1c34de8b49adfa11cb",
+      "nonzeroCommands": [
+        {
+          "toolUseId": "item_13",
+          "exitCode": 127
+        }
+      ],
+      "emptyCommandCaptures": [
+        "item_10",
+        "item_15"
+      ]
+    },
+    {
+      "id": "sufficient-proposal",
+      "case": "sufficient",
+      "kind": "proposal",
+      "configuredModel": "gpt-6-astra",
+      "threadId": "01a1dc38-d0e1-7bc1-a8b7-98462112abe1",
+      "startedAt": "2026-11-14T22:41:06.785Z",
+      "endedAt": "2026-11-14T22:42:10.706Z",
+      "callerMs": 63920,
+      "nativeTurnCompleted": true,
+      "assessment": "accepted-in-declared-scope",
+      "accepted": true,
+      "cleanup": {
+        "stopped": true,
+        "removed": true,
+        "reason": "owner-end"
+      },
+      "configUnchanged": true,
+      "sourceUnchanged": true,
+      "codeModeUnchanged": true,
+      "usage": {
+        "inputTokens": 131653,
+        "outputTokens": 1368
+      },
+      "freezeHash": "7f07191c3474a78f474e769c2c9ba16936d2a09cfd3df369013a2975749e6d9a",
+      "outcomeHash": "409cb03caa2171ccf3b148dafe156a2bee29764033436bbfdc12e5f21a19305e",
+      "eventsHash": "e8527a2d9bdb335b6ca052346eac404e57b496ffa4fa6110bee8b1743abc5724",
+      "acceptanceHash": "0c9ff5edc53cc66acfc91dd69bb7c0ef9c37119e29f6e16d4266c8ce7f46823c",
+      "nonzeroCommands": [],
+      "emptyCommandCaptures": []
+    },
+    {
+      "id": "init-bash-apply",
+      "case": "init-bash",
+      "kind": "apply",
+      "configuredModel": "gpt-6-astra",
+      "threadId": "01a1dc32-e362-7762-9c53-e7e2bc8967ab",
+      "startedAt": "2026-11-14T22:34:42.066Z",
+      "endedAt": "2026-11-14T22:35:32.683Z",
+      "callerMs": 50615,
+      "nativeTurnCompleted": true,
+      "assessment": "complete-with-status-capture-gap",
+      "accepted": true,
+      "cleanup": {
+        "stopped": true,
+        "removed": true,
+        "reason": "owner-end"
+      },
+      "configUnchanged": true,
+      "sourceUnchanged": true,
+      "codeModeUnchanged": true,
+      "usage": {
+        "inputTokens": 135759,
+        "outputTokens": 1077
+      },
+      "freezeHash": "1feea57f367aea293d5a2463eca7f082e8f1b22545dc289a33f7272ef946b52b",
+      "outcomeHash": "74ad181525600a5eb8f486065657cc11534a67c2d2854657ed87c58464bc8096",
+      "eventsHash": "4386d8c72d255d18a5d99449f0288463c1737fb67cb24c0b48b4680d2b36b322",
+      "acceptanceHash": "fb6749ade838846c410e0aa91ec90839d565f72c5d074951caf56b0153d3af39",
+      "nonzeroCommands": [
+        {
+          "toolUseId": "item_3",
+          "exitCode": 1
+        },
+        {
+          "toolUseId": "item_9",
+          "exitCode": 1
+        }
+      ],
+      "emptyCommandCaptures": [
+        "item_14"
+      ]
+    },
+    {
+      "id": "adopt-docs-apply",
+      "case": "adopt-docs",
+      "kind": "apply",
+      "configuredModel": "gpt-6-astra",
+      "threadId": "01a1dc3a-72a3-72e3-950d-609b16f81cc0",
+      "startedAt": "2026-11-14T22:42:57.543Z",
+      "endedAt": "2026-11-14T22:43:50.467Z",
+      "callerMs": 52923,
+      "nativeTurnCompleted": false,
+      "assessment": "unverified",
+      "accepted": false,
+      "cleanup": {
+        "stopped": true,
+        "removed": true,
+        "reason": "owner-end"
+      },
+      "configUnchanged": true,
+      "sourceUnchanged": true,
+      "codeModeUnchanged": true,
+      "usage": {
+        "inputTokens": null,
+        "outputTokens": null
+      },
+      "freezeHash": "99efea90a9577801f6ca84846e33693074c7aba9b427b02c0d5396f020f7caf4",
+      "outcomeHash": "57b6e865f6345510e48d59142b89708aa2909dd4f222ce4ea6ccf4f2ed675cf1",
+      "eventsHash": "64045b965f2d9ef1bfa9bc2d8f31f5fd4b94a7bf3770937854ccbca9ec5aedad",
+      "acceptanceHash": "6b7f0d32d05c0c91aa0a3ca4d4b13edca063127829da9db5cfc08c0cfa0f10b9",
+      "nonzeroCommands": [],
+      "emptyCommandCaptures": []
+    }
+  ],
+  "cases": [
+    {
+      "id": "init-bash",
+      "result": "Exact reviewed AGENTS applied; native apply/verify/report captured; native status stdout missing. Controller Bash smoke:2passed."
+    },
+    {
+      "id": "adopt-docs",
+      "result": "Reviewed proposal preserves owner rules and existing memory. Native continuation failed before apply; project unchanged; application unverified."
+    },
+    {
+      "id": "sufficient",
+      "result": "Scoped no-change recommendation; all61inputs unchanged, no apply or unnecessary components."
+    },
+    {
+      "id": "memory-work",
+      "result": "Three fresh native sessions read manual policy, use it, update zero-price decision, and reuse corrected meaning; unrelated notes preserved."
+    }
+  ],
+  "limits": [
+    "Owned containers, no host mounts, no network for tools; model transport uses subscription.",
+    "Proposal read-only is observed by returned files/events, not a mechanical write restriction inside the container.",
+    "Collection covers explicit paths; transient writes and unknown extra files are not exhaustively observed.",
+    "Manual memory fixture, not proof that Tibicen generated this policy.",
+    "Every phase starts fresh, including correction.",
+    "Explicit SKILL read is assisted loading.",
+    "Root review and exact synthetic-controller grant before conditional setup apply; not human approval."
+  ],
+  "otherLimits": [
+    "Native status stdout was empty in adopt proposal and init apply; init completion is supported separately by apply/report/manifest.",
+    "Root used wrong --approved spelling in init continuation; worker corrected to documented --approve within same native session.",
+    "Python/git absence and empty command captures retained; not established product failures.",
+    "One pass through synthetic fixtures is not cross-host/platform coverage, automatic loading or measured human benefit.",
+    "ZCode external handoff prepared; no external results assessed here.",
+    "No product source changes, commit, push, version bump or release performed by this observation."
+  ],
+  "nextActions": [
+    "Retain failed adopt continuation and empty captures; reproduce transport/error capture offline before attributing a product defect or scheduling a new bounded native attempt.",
+    "Assess external ZCode evidence independently when available; compare declared scopes and assistance on this exact candidate.",
+    "Do not expand the tool catalog or claim reliability percentages from this packet."
+  ]
+}

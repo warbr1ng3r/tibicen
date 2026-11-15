@@ -1,0 +1,298 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "status": "passed for exact assisted synthetic-consent native CLI cycle",
+  "publishedVersion": "1.5.4",
+  "candidateInventoryHash": "7d2b52de840072b08f8983106611257b5211c96d57a3a41afe49b63138665f90",
+  "freezeHash": "3f8fbacd2e86355b7f8702a732f03b075fb7e995f96f67470273d6d2fc8f8e66",
+  "planDigest": "041a692cc896330c27f0cd670888b54553a7e9f123d25e0208d49b75822018e2",
+  "baselineInputCount": 66,
+  "additionalFrozenEvaluatorInputs": 1,
+  "promptChanged": true,
+  "changeScope": "Private evaluator capture helper and paired docs only; no maintained product or runtime behavior edits",
+  "sources": {
+    "scripts/core/contracts.ts": "109d31a36b6698d58bc53c6f1d2b5788e708a178bdc0f00057c77e683248dabf",
+    "scripts/evals/contracts.ts": "6d25a1f63c8c621dacff25c2908cfb99a3be828fcd385567865111070aaa84b2",
+    "scripts/evals/process-supervisor.ts": "c72a40699236afaec015d38c3f40be72cef7292eb318b15c5c724df03b7605a2",
+    "scripts/evals/native-runner.ts": "03026a4ab796f702107e6f5122549c7c2c2ce19a82494f311256ebe77bb5e9cc",
+    "scripts/evals/native-approval.ts": "62f422c12e026f22f148b75dc7cb76634941b93b022f58c813c8935d1b23f4dd",
+    "scripts/evals/container/session.ts": "531b35fe56e1d4e9bcad9ffcd0a95c8ae2590d14044461a1c0a65894c9b20d7c",
+    "scripts/evals/container/archive.ts": "e89b72961a63fae00df207683b802dae2636a2db6f7292b4a891cad8c42c3e48",
+    "scripts/evals/container/owner.ts": "df6a4ef6d9e63f928c0c9f39fbb8dc7a452240e07aeb9ed620540d355abaa970",
+    "scripts/evals/container/bridge.mjs": "461c5e2e7aee8ba5ca6df525667e393bc1da69a967b057b1629e5808e0e6e114",
+    "scripts/evals/container/codex-config.ts": "72ae263bb066d1b416804de50e855f32c878ccd7fd3a535a6b930054757eadba",
+    "scripts/evals/container/code-mode.ts": "f68066ee1d527703c07bd28dc7611014d44e24fdd02055c01512403db00320d4",
+    "scripts/evals/container/codex-code-mode-model.json": "6885e65423bb632be27ddf448fd6aa0ff3f7ba09e6915b29bd57f2762ff8e375",
+    "scripts/evals/container/subscription.ts": "915ac877f35d843d934c08a2af0b8262021bdc8a5b2e49e892c503731b7681cc",
+    "scripts/evals/container/terminal-diagnostics.ts": "cf3f00b9a5e28ab522302295fc84bfe09bcfaaaac903005e1f098a19e97f9596",
+    "scripts/evals/container/codex-model.json": "c0948f5e809f1d7236b8fa51cae88cecc2524c0b010f95abb122916d7bf87457",
+    "scripts/evals/container/watchdog.mjs": "554c453524cd84dd3adf5df41703ebb66145f9714c87a4169896039c7690fcbe",
+    "scripts/evals/container/image-lock.json": "28cd8c77394b146db2c784bae4baedf210450b6fe09693999115d7db6177e5f0",
+    "scripts/evals/container/Dockerfile": "678f8498fe57c6cbdcd34da80ce325635af67e9e075529ceda0d9a7666f93c33",
+    "scripts/evals/profiles/codex/preflight.ts": "ac5c8c7357ef6e5dbd7b2505564b18ccc0dffbab060088aedf0e8901cce13c86",
+    "scripts/evals/profiles/codex/profile.ts": "8ff9013d5acf341ed9b592debaa26903dd29bbcc28d7ef81d11fce9a276f5b72",
+    "scripts/evals/profiles/codex/contained.ts": "b88027ba3fe440876be0a4afbca0f63c1c9597bec731703c1becbf29dcd4672d",
+    "scripts/evals/contained-codex.ts": "9413a0ce0070eed61953fd6db17fb4d254b16530e98af2253c407975d55883fa"
+  },
+  "selfChecks": {
+    "helperPositive": 1,
+    "helperNegative": 4,
+    "graderPositive": 1,
+    "graderNegative": 14,
+    "models": 0,
+    "syntheticNativeMetadataInGraderControl": true
+  },
+  "preflight": {
+    "kind": "model-free controller RPC, not native evidence",
+    "containers": 1,
+    "deadlineMs": 20000,
+    "elapsedMs": 3671.043541,
+    "actualCliCalls": 4,
+    "artifactGrade": true,
+    "innerNetwork": "restricted",
+    "outerNetwork": "none",
+    "modelSessions": 0,
+    "authReads": 0,
+    "paidApiCalls": 0
+  },
+  "native": {
+    "calls": 1,
+    "deadlineMs": 180000,
+    "retries": 0,
+    "paidApiCalls": 0,
+    "runnerElapsedMs": 43228.30025,
+    "driverElapsedMs": 43279.370417,
+    "model": "gpt-6-astra",
+    "cliVersion": "0.157.0",
+    "funding": "existing personal subscription",
+    "usage": {
+      "inputTokens": 125922,
+      "outputTokens": 725
+    },
+    "actualCliCalls": 4,
+    "artifactAcceptance": true,
+    "eventReview": "Ship",
+    "cli": {
+      "apply": {
+        "exitCode": 0,
+        "status": "complete",
+        "stdoutHash": "86c306a942adc4bef74010a795867df6f99d67ecd582e9534a39c88f5ff09848",
+        "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "scope": "structure-only"
+      },
+      "verify": {
+        "exitCode": 0,
+        "status": "passed",
+        "stdoutHash": "4a43a2bda407ca13c2aff939107f37b9ac34e14aa13eeb52299d7136d79d1cb9",
+        "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "scope": "structure-only"
+      },
+      "status": {
+        "exitCode": 0,
+        "status": "complete",
+        "stdoutHash": "b9623ff738821c96460d31bf44df87f7d1c36cdbf84a043a3476a4579bd877ba",
+        "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "scope": "structure-only"
+      },
+      "report": {
+        "exitCode": 0,
+        "status": "complete",
+        "stdoutHash": "871484e6d7927ac4641ae0bf3108ecc64c49c3eafcd64fb154144a28437e81d1",
+        "stderrHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "scope": "structure-only"
+      }
+    },
+    "syntheticConsent": true,
+    "assistedLoading": true,
+    "scope": "structure-only",
+    "privateDiagnosticRecords": 0
+  },
+  "preservation": {
+    "immutableReturnedInputs": 63,
+    "approvedFiles": 2,
+    "namedReturnedFiles": 71,
+    "hostInputsUnchanged": 66,
+    "frozenSourceFilesUnchanged": 22,
+    "temporarySessionNamedFileAbsent": true
+  },
+  "closure": {
+    "ownedContainersIndependentlyAbsent": 2,
+    "disposableHomeAbsent": true,
+    "earlierFailedGradePreserved": true,
+    "liveJobs": 0
+  },
+  "accounting": {
+    "thisPacketNativeCalls": 1,
+    "previousGeneratedMemoryCalls": 6,
+    "combinedGeneratedMemoryCalls": 7,
+    "scope": "Only original generated-memory,three-task follow-up and two directed apply observations; not all project history",
+    "failedHistoricalUsage": "unknown",
+    "monetaryCost": "unknown",
+    "additionalPaidApiCalls": 0
+  },
+  "review": {
+    "reviewer": "approval_boundary",
+    "prelaunch": "Ship after source-binding correction",
+    "postrun": "Ship for assisted helper route",
+    "report": "Ship",
+    "assessmentRecordedBy": "root"
+  },
+  "artifacts": [
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/capture-cli.cjs",
+      "sha256": "1bcf9a03c9ce8403d77c7c0b6a920d283f66c06e0ffe86bf58db4bb289e433de",
+      "bytes": 2847
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/driver.mjs",
+      "sha256": "8b4daf9238933e71208d78354f5fc777bea269d4ba389d22507d51d1dd4fb6c5",
+      "bytes": 5476
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/grade.mjs",
+      "sha256": "20b1256b6c0d5a3d8f80928050317f4651d10dd914e74ca0dc1e8fe6450ad5fb",
+      "bytes": 7147
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/prompt.txt",
+      "sha256": "81abe4dbc8d992ef192e4c034f8025765bd4c92c410efc4a7c24e04d9aa3b638",
+      "bytes": 2679
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/protocol.json",
+      "sha256": "6613944ff9d658670fd71033337d8ca3fc58e6489ae1c6c8874bc022116dfddc",
+      "bytes": 3646
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/approval.json",
+      "sha256": "86f7b7a1e96357ae21e83e0af446f0b050a77bab8355e3e8e7f47a1ff1abdf33",
+      "bytes": 955
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/prospective.json",
+      "sha256": "3e35a8dc0d0f88f3ea7a6046a967e1c808e385a849485aa668d2f93fa6ac49ea",
+      "bytes": 20739
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/controller-review.json",
+      "sha256": "887c42ffff1d65234e31495c4ceb006611392212ce4ea05ca4b2ddb91f196e0b",
+      "bytes": 604
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/self-checks.json",
+      "sha256": "721b3d81d9ba130da4f9dfb9527bbc947a7614ed3eb01f0f95261f7f6aaa88ce",
+      "bytes": 469
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/GO.json",
+      "sha256": "dc8d0d98011bf844a47523fafbb124105a93e7bbe60f2efa9a7e6d47febd32c9",
+      "bytes": 866
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/events.jsonl",
+      "sha256": "74173c36bedbb63716ba88557acafccfcf778b0ea953ccc4bb56d1288529f918",
+      "bytes": 49152
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/outcome.json",
+      "sha256": "9146ee21bd51006a90e99d66123a9741358d713b0d2192bb3e3c6b98f3c10147",
+      "bytes": 8988082
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/acceptance.json",
+      "sha256": "ff5f66a3e358dc519acec5ad52b0e8ac4e5046ed5c9d04bc4042346eaf8312ad",
+      "bytes": 1796
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/finished.json",
+      "sha256": "f6e33a6afdae78737e85ee413a888bb6fd6ae2b45753db764c5598d87e479ed8",
+      "bytes": 83
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/diagnostics/run/terminal-errors.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/preflight.mjs",
+      "sha256": "a9c5a5dafed7691cfa24a8669fa79c56db1d32b531218196efd7065f9b329dda",
+      "bytes": 6066
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/preflight/protocol.json",
+      "sha256": "60cf19bd03284483b97d936a5f1dbf54939d57e876adb93346449c501f742ff7",
+      "bytes": 4398
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/preflight/pre-review-protocol.json",
+      "sha256": "cb75f706f9ec89ae0f1b9da4285bd468b47c13b8abc609a87565cbf5bf04cad0",
+      "bytes": 4398
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/preflight/GO.json",
+      "sha256": "351aea4dd00b291cd7b9a679f1499cf3991b5b1a2cd01b144723d6523845ccf4",
+      "bytes": 251
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/preflight/raw.json",
+      "sha256": "5a82955c7d74a788fb14fa120f3dfb658587a57bc4968555e91b12e6248f5e39",
+      "bytes": 8916875
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/preflight/summary.json",
+      "sha256": "b4246b2f6cb3e65d26624886efc637e49017210e46333152d6031c4da7e275a7",
+      "bytes": 840
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/preflight/acceptance.json",
+      "sha256": "8a0feb009eae754acced96e9e54727b3578d954cc5be9cb948b752deb5213c35",
+      "bytes": 1723
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/closure.mjs",
+      "sha256": "91be1b8adbd6e6fe453d396ce7eed66f15228d9833ff0710d6bec07766cf4e8c",
+      "bytes": 2944
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/closure.json",
+      "sha256": "78720f1c6c1277c8d02af0227f43da6098273a3e103efae162d6f080d1a3feb5",
+      "bytes": 840
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/postrun-review.json",
+      "sha256": "7392f66c3fbad10fb316c210460b7a347d899409b3219d2b8294d39a821958ee",
+      "bytes": 704
+    },
+    {
+      "path": ".evals-private/native-apply-fixed-capture-20261115/completion.json",
+      "sha256": "36bdbca74b852d183b972de7618efee5f25eaaec33da4e8b40a64d80f73daac0",
+      "bytes": 694
+    },
+    {
+      "path": ".evals-private/native-apply-followup-20261115/acceptance.json",
+      "sha256": "8290daab8c0f2471a8fc8ddca6096a7a5c10209320675497f9807d36d9cb5061",
+      "bytes": 291
+    }
+  ],
+  "limits": [
+    "Named collection only, not exhaustive filesystem audit",
+    "Prompt and evaluator helper changed; previous failed grade remains unchanged",
+    "Synthetic consent is not human approval; explicit reading is not autoload",
+    "Structure-only verification is not application behavior or human usefulness",
+    "No claim of all harnesses, historical denial cause, commit, push or release"
+  ],
+  "documentationChecks": {
+    "pass": true,
+    "prettier": true,
+    "whitespace": true,
+    "documents": 8,
+    "canonicalLocalLinks": 108,
+    "artifactIdentities": 27,
+    "historicalArtifactIdentitiesUnchanged": 24,
+    "sourceBindings": 22,
+    "candidateInventoryUnchanged": true,
+    "completionBindings": 5,
+    "privatePathAndCredentialPatternScan": true,
+    "fullSourceGateRepeated": false
+  }
+}

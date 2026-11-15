@@ -20,6 +20,11 @@ import {
   linuxCodeModeHost,
   linuxCodeModeHash,
 } from './container/code-mode.ts';
+import {
+  createPrivateDiagnostics,
+  describePrivateDiagnostics,
+} from './container/terminal-diagnostics.ts';
+import type { PrivateDiagnosticsInput } from './container/terminal-diagnostics.ts';
 
 export interface ContainedCodexRunInput extends ContainedCodexProfileInput {
   home: string;
@@ -31,6 +36,7 @@ export interface ContainedCodexRunInput extends ContainedCodexProfileInput {
     | { kind: 'synthetic'; baseUrl: string }
     | { kind: 'subscription'; authPath: string };
   expectedFreezeHash?: string;
+  privateDiagnostics?: PrivateDiagnosticsInput;
 }
 
 export function containedCodexFailure(record: Record<string, unknown>) {
@@ -95,6 +101,13 @@ export async function describeContainedCodexRun(input: ContainedCodexRunInput) {
     'invalid-contained-codex-run',
     'Synthetic transport must be a literal loopback Responses endpoint.',
   );
+  const privateDiagnostics =
+    input.privateDiagnostics === undefined
+      ? undefined
+      : await describePrivateDiagnostics(input.privateDiagnostics, [
+          input.home,
+          input.workspace,
+        ]);
   const profile = await inspectContainedCodexProfile(input);
   const freeze = {
     schema: 1,
@@ -132,6 +145,7 @@ export async function describeContainedCodexRun(input: ContainedCodexRunInput) {
             hostFallback: false,
           }
         : null,
+    ...(privateDiagnostics ? { privateDiagnostics } : {}),
   };
   return { profile, freeze, freezeHash: digest(freeze) };
 }
@@ -156,6 +170,9 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
       ]),
     ),
     resultPaths: [...input.resultPaths],
+    ...(input.privateDiagnostics === undefined
+      ? {}
+      : { privateDiagnostics: { ...input.privateDiagnostics } }),
     ...(input.fileModes === undefined
       ? {}
       : {
@@ -191,6 +208,8 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
   let owner: Awaited<ReturnType<typeof createContainerOwner>> | undefined;
   let auth: Buffer | undefined;
   let codeMode: Awaited<ReturnType<typeof stageContainerCodeMode>> | undefined;
+  let privateDiagnostics:
+    Awaited<ReturnType<typeof createPrivateDiagnostics>> | undefined;
   // Only remove a home created by this caller, never a pre-existing path.
   let homeCreated = false;
   try {
@@ -205,6 +224,13 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
       );
     await profile.validate();
     remaining();
+    if (input.privateDiagnostics) {
+      privateDiagnostics = await createPrivateDiagnostics(
+        input.privateDiagnostics,
+        [input.home, input.workspace],
+      );
+      remaining();
+    }
     await mkdir(input.home, { mode: 0o700 });
     homeCreated = true;
     assert(
@@ -213,7 +239,14 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
       'Use a canonical new home.',
     );
     owner = await createContainerOwner(
-      { ...input, deadlineMs: remaining(1000) },
+      {
+        ...input,
+        deadlineMs: remaining(1000),
+        onFailureDiagnostic: privateDiagnostics
+          ? (record: Record<string, unknown>) =>
+              privateDiagnostics?.capture(record, auth)
+          : undefined,
+      },
       input.resultPaths,
     );
     void owner.session.failure.then(() => supervisor.cancel());
@@ -299,9 +332,10 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
               failed = true;
               controls.stop();
             }
-            if (['error', 'turn.failed'].includes(record?.type))
+            if (['error', 'turn.failed'].includes(record?.type)) {
+              privateDiagnostics?.capture(record, auth);
               input.onRecord?.(projectCodexError(record));
-            else if (!failure) input.onRecord?.(record);
+            } else if (!failure) input.onRecord?.(record);
             if (failure) return;
           } catch {
             failed = true;
@@ -311,6 +345,21 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
         }
       },
     });
+    if (privateDiagnostics && pending.trim()) {
+      let tail: Record<string, unknown> | undefined;
+      try {
+        tail = JSON.parse(pending);
+      } catch {
+        // An incomplete tail is missing evidence, not a captured error.
+      }
+      if (tail && ['error', 'turn.failed'].includes(String(tail.type))) {
+        try {
+          privateDiagnostics.capture(tail, auth);
+        } catch {
+          failed = true;
+        }
+      }
+    }
     const timing = {
       startedAt,
       endedAt: new Date().toISOString(),
@@ -346,6 +395,8 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
         () => true,
         () => false,
       )) ?? true;
+    privateDiagnostics?.close();
+    const diagnosticReceipt = privateDiagnostics?.receipt();
     const pass =
       !supervisor.signal.aborted &&
       performance.now() < input.deadlineAt! &&
@@ -361,6 +412,7 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
       configUnchanged &&
       sourceUnchanged === true &&
       codeModeUnchanged &&
+      diagnosticReceipt?.status !== 'failed' &&
       ['completed', 'host-finished', 'owner-end'].includes(receipt.reason);
     return {
       pass,
@@ -381,6 +433,7 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
       stderrHash: hashContent(output.stderr),
       parsed,
       receipt,
+      ...(diagnosticReceipt ? { privateDiagnostics: diagnosticReceipt } : {}),
     };
   } finally {
     parentSignal?.removeEventListener('abort', abort);
@@ -390,6 +443,7 @@ export async function runContainedCodexSession(input: ContainedCodexRunInput) {
     } finally {
       try {
         auth?.fill(0);
+        privateDiagnostics?.close();
         try {
           await codeMode?.dispose();
         } finally {

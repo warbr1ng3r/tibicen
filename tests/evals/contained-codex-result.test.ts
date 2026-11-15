@@ -69,6 +69,13 @@ test('native caller preserves validation, terminal failure and cleanup results',
     'error-401',
     'error-403',
     'error-known-diagnostics',
+    'private-completed',
+    'private-executor-failure',
+    'private-executor-write-failed',
+    'private-complete-tail',
+    'private-partial',
+    'private-write-failed',
+    'private-tail-write-failed',
     ...Object.keys(ordinaryCommands),
     ...Object.keys(terminalItems),
   ]) {
@@ -77,18 +84,23 @@ test('native caller preserves validation, terminal failure and cleanup results',
       const terminalItem = terminalItems[mode as keyof typeof terminalItems];
       const root = await realpath(await mkdtemp('/tmp/tibicen-caller-result-'));
       t.after(() => rm(root, { recursive: true, force: true }));
+      const privateCapture =
+        ['error-first', 'callback-throws'].includes(mode) ||
+        mode.startsWith('private-');
+      const diagnosticDirectory = path.join(root, 'private-diagnostics');
       const runner = path.join(root, 'scripts/evals/contained-codex.ts');
       const stubs = `
         import assert from 'node:assert/strict';
         const mode = ${JSON.stringify(mode)};
-        const errorMode = ['error-first', 'turn-failed-first', 'callback-throws', 'generic-error-recovery', 'error-only', 'error-nonzero-exit', 'error-401', 'error-403', 'error-known-diagnostics'].includes(mode);
+        const executorFailure = ['private-executor-failure','private-executor-write-failed'].includes(mode);
+        const toolFailureMode = executorFailure || mode === 'tool-failure';
+        const errorMode = ['error-first', 'turn-failed-first', 'callback-throws', 'generic-error-recovery', 'error-only', 'error-nonzero-exit', 'error-401', 'error-403', 'error-known-diagnostics', 'private-complete-tail', 'private-partial', 'private-write-failed', 'private-tail-write-failed'].includes(mode);
         const ordinary = ${JSON.stringify(ordinary ?? null)};
         const terminalItem = ${JSON.stringify(terminalItem ?? null)};
         const privateMarker = 'SYNTHETIC PRIVATE TERMINAL DETAILS';
         export const fixtureState = { stops: 0, stopReasons: [], disposed: false };
         export { assert };
-        export const digest = () => 'a'.repeat(64);
-        export { hashContent } from ${JSON.stringify(new URL('../../scripts/core/contracts.ts', import.meta.url).href)};
+        export { digest, hashContent } from ${JSON.stringify(new URL('../../scripts/core/contracts.ts', import.meta.url).href)};
         export const linuxCodeModeHost = 'unused';
         export const linuxCodeModeHash = 'unused';
         export const stageContainerCodeMode = () => { throw Error('Must not stage'); };
@@ -116,7 +128,9 @@ test('native caller preserves validation, terminal failure and cleanup results',
               const records = [
                 { type: 'thread.started', thread_id: 'inert-fixture' },
                 { type: 'turn.started' },
-                ...(ordinary
+                ...(mode === 'private-tail-write-failed'
+                  ? [{ type: 'turn.completed', usage: { input_tokens: 0, output_tokens: 0 } }, error]
+                  : ordinary
                   ? [
                       { type: 'item.completed', item: { id: 'cmd-1', type: 'command_execution', command: 'node --test', aggregated_output: 'synthetic red test', ...ordinary } },
                       { type: 'item.completed', item: { id: 'cmd-2', type: 'command_execution', command: 'node --test', aggregated_output: 'synthetic recovered test', exit_code: 0, status: 'completed' } },
@@ -126,12 +140,13 @@ test('native caller preserves validation, terminal failure and cleanup results',
                   : errorMode
                   ? mode === 'turn-failed-first' ? [failed, error]
                     : ['error-first', 'callback-throws', 'error-known-diagnostics'].includes(mode) ? [error, failed]
-                    : mode === 'error-only' ? [error]
+                    : ['error-only', 'private-complete-tail', 'private-partial'].includes(mode) ? [error]
                     : [error, { type: 'item.completed', item: { type: 'agent_message', text: 'offline completion after notification' } }]
                   : [{ type: 'item.completed', item: { type: 'agent_message', text: 'offline completion' } }]),
-                ...(['error-only','error-known-diagnostics'].includes(mode) ? [] : [{ type: 'turn.completed', usage: { input_tokens: 0, output_tokens: 0 } }]),
+                ...(['error-only','error-known-diagnostics','private-complete-tail','private-partial','private-tail-write-failed'].includes(mode) ? [] : [{ type: 'turn.completed', usage: { input_tokens: 0, output_tokens: 0 } }]),
               ];
-              const stdout = records.map(record => JSON.stringify(record)).join('\\n') + '\\n';
+              let stdout = records.map(record => JSON.stringify(record)).join('\\n') + (['private-complete-tail', 'private-partial', 'private-tail-write-failed'].includes(mode) ? '' : '\\n');
+              if (mode === 'private-partial') stdout = stdout.slice(0, -3);
               command.onStdout(stdout, {
                 stop() { fixtureState.stops++; },
                 deadlineIn() {},
@@ -156,17 +171,24 @@ test('native caller preserves validation, terminal failure and cleanup results',
             },
           };
         }
-        export async function createContainerOwner() {
+        export async function createContainerOwner(input) {
           let finish;
           const finished = new Promise(resolve => { finish = resolve; });
           const receipt = {
-            cid: 'inert-fixture', reason: mode === 'tool-failure' ? mode : 'host-finished',
+            cid: 'inert-fixture', reason: toolFailureMode ? 'tool-failure' : 'host-finished',
             stopped: true, removed: true, files: {}, modes: {},
-            toolFailure: mode === 'tool-failure' ? { kind: 'rpc-error', code: -32000 } : null,
+            toolFailure: toolFailureMode ? { kind: 'rpc-error', code: -32000 } : null,
           };
           return {
             manifestPath: 'inert-fixture', session: { failure: new Promise(() => {}) }, finished,
-            async stop(_paths, reason) { fixtureState.stopReasons.push(reason); finish(receipt); return receipt; },
+            async stop(_paths, reason) {
+              fixtureState.stopReasons.push(reason);
+              fixtureState.privateHook = typeof input.onFailureDiagnostic === 'function';
+              if (executorFailure && reason === 'host-finished') {
+                try { input.onFailureDiagnostic?.({type:'executor.error',message:'SYNTHETIC PRIVATE EXECUTOR DETAILS Bearer sk-synthetic-secret-token',executor:{kind:'process-exit',code:null,exitCode:1,context:{operation:'process/start',requestIdHash:'a'.repeat(64),processIdHash:'b'.repeat(64),startResponseObserved:true,sequence:7,sandboxDenied:true},stderrStatus:'complete',stderrBytes:80}}); } catch {}
+              }
+              finish(receipt); return receipt;
+            },
           };
         }
       `;
@@ -175,6 +197,20 @@ test('native caller preserves validation, terminal failure and cleanup results',
           new URL('../../scripts/evals/contained-codex.ts', import.meta.url),
         ),
         'scripts/fixture.ts': stubs,
+        'scripts/evals/container/terminal-diagnostics.ts': [
+          'private-write-failed',
+          'private-tail-write-failed',
+          'private-executor-write-failed',
+        ].includes(mode)
+          ? `export { describePrivateDiagnostics } from ${JSON.stringify(new URL('../../scripts/evals/container/terminal-diagnostics.ts', import.meta.url).href)};
+             import { createPrivateDiagnostics as create } from ${JSON.stringify(new URL('../../scripts/evals/container/terminal-diagnostics.ts', import.meta.url).href)};
+             export async function createPrivateDiagnostics(...args) { const recorder = await create(...args); recorder.close(); return recorder; }`
+          : await readFile(
+              new URL(
+                '../../scripts/evals/container/terminal-diagnostics.ts',
+                import.meta.url,
+              ),
+            ),
         'scripts/core/contracts.ts': "export * from '../fixture.ts';",
         ...Object.fromEntries(
           [
@@ -221,7 +257,7 @@ test('native caller preserves validation, terminal failure and cleanup results',
       const fileModes = { 'seed.txt': 0o600 };
       Object.defineProperty(fileModes, 'seed.txt', { enumerable: false });
       fixtureState.originalModes = fileModes;
-      const result = await module.runContainedCodexSession({
+      const input = {
         binary: '/never-execute',
         binaryHash: 'a'.repeat(64),
         imageId: 'inert-fixture',
@@ -234,34 +270,105 @@ test('native caller preserves validation, terminal failure and cleanup results',
         deadlineMs: 10000,
         prompt: 'offline fixture',
         route: { kind: 'synthetic', baseUrl: 'http://127.0.0.1:1/v1' },
-        onRecord(record) {
+        ...(privateCapture
+          ? { privateDiagnostics: { directory: diagnosticDirectory } }
+          : {}),
+        onRecord(record: Record<string, unknown>) {
           observed.push({ record, stopped: fixtureState.stops > 0 });
           if (mode === 'callback-throws' && record.type === 'error')
             throw new Error('SYNTHETIC PRIVATE CALLBACK DETAILS');
         },
-      });
+      } satisfies Parameters<typeof module.runContainedCodexSession>[0];
+      const prospective = privateCapture
+        ? await module.describeContainedCodexRun(input)
+        : undefined;
+      if (prospective) {
+        assert.equal(
+          prospective.freeze.privateDiagnostics?.directory,
+          diagnosticDirectory,
+        );
+        assert.equal(
+          prospective.freeze.privateDiagnostics?.policy.fileBytes,
+          65536,
+        );
+        assert.equal(prospective.freeze.privateDiagnostics?.policy.version, 2);
+        assert.equal(
+          prospective.freeze.privateDiagnostics?.policy.executor.processBytes,
+          16384,
+        );
+        const alternate = await module.describeContainedCodexRun({
+          ...input,
+          privateDiagnostics: {
+            directory: path.join(root, 'different-destination'),
+          },
+        });
+        assert.notEqual(alternate.freezeHash, prospective.freezeHash);
+      }
+      const result = await module.runContainedCodexSession(input);
+      if (mode === 'private-partial') assert.equal(result.parseError, true);
+      if (mode === 'private-complete-tail')
+        assert.equal(result.parseError, false);
+      if (prospective) assert.equal(result.freezeHash, prospective.freezeHash);
+      else {
+        assert.equal(Object.hasOwn(result.freeze, 'privateDiagnostics'), false);
+        assert.equal(Object.hasOwn(result, 'privateDiagnostics'), false);
+      }
       if (mode === 'completed') {
         assert.equal(fileModes['seed.txt'], 0o755);
         assert.equal(fixtureState.capturedMode, 0o600);
       }
       assert.equal(
         result.sourceUnchanged,
-        ['tool-failure', 'validation-unavailable'].includes(mode) ? null : true,
+        [
+          'tool-failure',
+          'validation-unavailable',
+          'private-executor-failure',
+          'private-executor-write-failed',
+        ].includes(mode)
+          ? null
+          : true,
       );
       assert.equal(
         result.pass,
         mode === 'completed' ||
+          mode === 'private-completed' ||
           mode === 'generic-error-recovery' ||
           Boolean(ordinary),
       );
       assert.equal(
         result.parsed.completed,
-        !['error-only', 'error-known-diagnostics'].includes(mode),
+        ![
+          'error-only',
+          'error-known-diagnostics',
+          'private-complete-tail',
+          'private-partial',
+        ].includes(mode),
       );
       const terminal = observed.filter(({ record }) =>
         ['error', 'turn.failed'].includes(String(record.type)),
       );
-      if (terminalFailure) {
+      if (
+        [
+          'private-complete-tail',
+          'private-partial',
+          'private-write-failed',
+          'private-tail-write-failed',
+        ].includes(mode)
+      ) {
+        assert.equal(terminal.length, 0);
+        assert.equal(
+          fixtureState.stops,
+          mode === 'private-write-failed' ? 1 : 0,
+        );
+        assert.deepEqual(
+          observed.map(({ record }) => record.type),
+          [
+            'thread.started',
+            'turn.started',
+            ...(mode === 'private-tail-write-failed' ? ['turn.completed'] : []),
+          ],
+        );
+      } else if (terminalFailure) {
         assert.deepEqual(
           terminal.map(({ record, stopped }) => ({
             type: record.type,
@@ -437,7 +544,48 @@ test('native caller preserves validation, terminal failure and cleanup results',
         'caller-finally',
       ]);
       assert.equal(fixtureState.disposed, true);
+      assert.equal(fixtureState.privateHook, privateCapture);
       await assert.rejects(lstat(path.join(root, 'home')), { code: 'ENOENT' });
+      if (privateCapture) {
+        const retained = await readFile(
+          path.join(diagnosticDirectory, 'terminal-errors.jsonl'),
+          'utf8',
+        );
+        if (mode === 'private-complete-tail') {
+          assert(retained.includes('SYNTHETIC PRIVATE TERMINAL DETAILS'));
+          assert.equal(result.privateDiagnostics?.status, 'captured');
+          assert.equal(result.privateDiagnostics?.records, 1);
+        } else if (mode === 'private-executor-failure') {
+          assert(retained.includes('SYNTHETIC PRIVATE EXECUTOR DETAILS'));
+          assert(!retained.includes('sk-synthetic-secret-token'));
+          const record = JSON.parse(retained.trim());
+          assert.equal(record.type, 'executor.error');
+          assert.equal(record.executor.context.processIdHash, 'b'.repeat(64));
+          assert.equal(result.privateDiagnostics?.status, 'captured');
+          assert.equal(result.privateDiagnostics?.records, 1);
+        } else if (mode.startsWith('private-')) {
+          assert.equal(retained, '');
+          assert.equal(
+            result.privateDiagnostics?.status,
+            [
+              'private-write-failed',
+              'private-tail-write-failed',
+              'private-executor-write-failed',
+            ].includes(mode)
+              ? 'failed'
+              : 'no-terminal-record',
+          );
+          assert.equal(result.privateDiagnostics?.records, 0);
+        } else {
+          assert(retained.includes('SYNTHETIC PRIVATE TERMINAL DETAILS'));
+          assert.equal(result.privateDiagnostics?.status, 'captured');
+          assert.equal(
+            result.privateDiagnostics?.records,
+            mode === 'error-first' ? 2 : 1,
+          );
+        }
+        assert(!JSON.stringify(result.privateDiagnostics).includes(root));
+      }
       const saved = path.join(root, 'result.json');
       await writeFile(saved, JSON.stringify(result));
       const eventLog = path.join(root, 'events.json');
@@ -445,6 +593,8 @@ test('native caller preserves validation, terminal failure and cleanup results',
       for (const marker of [
         'SYNTHETIC PRIVATE TERMINAL DETAILS',
         'SYNTHETIC PRIVATE CALLBACK DETAILS',
+        'SYNTHETIC PRIVATE EXECUTOR DETAILS',
+        'sk-synthetic-secret-token',
       ]) {
         assert.equal(JSON.stringify(result.parsed).includes(marker), false);
         assert.equal(JSON.stringify(result).includes(marker), false);
@@ -457,7 +607,13 @@ test('native caller preserves validation, terminal failure and cleanup results',
       }
       assert.deepEqual(
         result.receipt.toolFailure,
-        mode === 'tool-failure' ? { kind: 'rpc-error', code: -32000 } : null,
+        [
+          'tool-failure',
+          'private-executor-failure',
+          'private-executor-write-failed',
+        ].includes(mode)
+          ? { kind: 'rpc-error', code: -32000 }
+          : null,
       );
       assert.equal(
         JSON.stringify(result).includes('PRIVATE VALIDATION MESSAGE'),

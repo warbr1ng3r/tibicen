@@ -9,6 +9,8 @@ import { writeEvalArtifact } from './observations.ts';
 import type { QualityPlan } from './quality.ts';
 import { prepareJudgePacket } from './quality.ts';
 import type { QualityEvidence } from './quality.ts';
+import { summarizeRun } from './run-summary.ts';
+import type { SessionSummary } from './run-summary.ts';
 
 // Explicit, model-free processing of retained host artifacts. Original files are never changed.
 export async function collectNative(
@@ -25,6 +27,13 @@ export async function collectNative(
   const frozen = JSON.parse(
     await readFile(path.join(directory, 'frozen.json'), 'utf8'),
   );
+  const processor = {
+    collectorHash: hashContent(await readFile(fileURLToPath(import.meta.url))),
+    summaryHash: hashContent(
+      await readFile(new URL('./run-summary.ts', import.meta.url)),
+    ),
+    frozenHash: digest(frozen),
+  };
   const experiment = validateExperiment(frozen.experiment);
   assert(
     digest(frozen.conditions) === experiment.conditionsHash,
@@ -70,7 +79,8 @@ export async function collectNative(
       'invalid-native-cohort',
       'Run must belong to this cohort and artifact slot.',
     );
-    const sessions = [];
+    const sessions = [],
+      sessionSummaries: SessionSummary[] = [];
     const indexed = frozen.conditions.nativeProtocol === 2;
     const observedStage = (stage: 'setup' | 'task') =>
       raw.result[stage]?.status !== 'skip' ||
@@ -166,6 +176,16 @@ export async function collectNative(
             raw.events.some(
               (event) => event.stage === stage && event.kind === 'approval',
             ));
+        if (indexed || expected)
+          sessionSummaries.push({
+            stage,
+            phase,
+            file: name,
+            sourceHash: null,
+            timing: null,
+            exitCode: null,
+            timedOut: null,
+          });
         if (expected) sessions.push({ stage, records: [] });
         continue;
       }
@@ -176,6 +196,21 @@ export async function collectNative(
           'Session trace differs from its retained index.',
         );
       const record = JSON.parse(bytes.toString('utf8'));
+      sessionSummaries.push({
+        stage,
+        phase,
+        file: name,
+        sourceHash: hashContent(bytes),
+        timing: record.timing
+          ? {
+              startedAt: record.timing.startedAt,
+              endedAt: record.timing.endedAt,
+              durationMs: record.timing.durationMs,
+            }
+          : null,
+        exitCode: record.exitCode ?? null,
+        timedOut: record.timedOut ?? null,
+      });
       const turns = (record.records ?? []).filter(
         (item: { type: string }) => item.type === 'turn.completed',
       );
@@ -262,6 +297,15 @@ export async function collectNative(
         run,
       );
     }
+    await writeEvalArtifact(
+      path.join(destination, `${slot.id}-${label}-summary.json`),
+      summarizeRun(
+        raw,
+        sessionSummaries,
+        processor,
+        indexed ? (index ? 'verified' : 'missing') : 'legacy',
+      ),
+    );
   }
   const report = buildPairedReport([
     { experiment, mode: 'observed', plans, runs },

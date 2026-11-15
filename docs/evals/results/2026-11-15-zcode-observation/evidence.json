@@ -1,0 +1,447 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "dateZone": "Europe/Moscow",
+  "assessment": "qualified-external-observation",
+  "source": {
+    "kind": "user-returned external ZCode packet",
+    "rawArtifactsCopied": false,
+    "indexPurpose": "Hashes let a holder of the original packet check identity; this index is not an execution-event export or a replay bundle."
+  },
+  "candidate": {
+    "publishedVersion": "1.5.4",
+    "label": "source plus reviewed Unreleased reliability changes; not a new published release",
+    "sourceBase": "31f87d993e76bbf546643211980c628c365500f0",
+    "payloadFiles": 110,
+    "frozenFiles": 147,
+    "payloadInventorySha256": "9acde8988b871893705ecb8d11a5ed176b30b0312a941456627d4d2abd13e9f7"
+  },
+  "independentAudit": {
+    "method": "Read-only file hashing, mode and inventory comparison, stable proposal digest recomputation, receipt comparison and source/grader inspection. No worker code execution.",
+    "frozenFilesModesAndInventoriesMatched": true,
+    "payloadHashesMatched": true,
+    "fourCaseBaselinesMatchFrozenFixtures": true,
+    "allDeclaredEvidenceExists": true,
+    "reportArtifactCount": 31,
+    "externalPacketModified": false,
+    "modelsOrApiCalled": false,
+    "testsRun": false
+  },
+  "reportedRoute": {
+    "harness": "ZCode",
+    "installedVersion": null,
+    "platform": "macOS arm64",
+    "workerModels": null,
+    "subscription": "existing subscription; external coordinator report",
+    "workerSessions": 5,
+    "resumptions": 4,
+    "newPaidApiCalls": 0,
+    "monetaryCost": null,
+    "nativeToolEventExportAvailable": false,
+    "freshContextsIndependentlyAttested": false
+  },
+  "cases": [
+    {
+      "id": "init-bash",
+      "independentState": "approved exact bytes and modes on disk; four original files unchanged; complete manifest and matching isolated usage/session receipt",
+      "proposalDigest": "0a60fcb81de9a7e8de992b8452b1532c9e8458a357bfbe9b4195a68a05b8a29c",
+      "approvalAuthority": "recorded synthetic-fixture-controller; content binding checked, human identity not authenticated",
+      "nativeExecution": "executor-reported, not raw-tool-attested",
+      "applicationChecks": "coordinator reports two Bash smoke checks; built-in verifier remains unverified/no-project-checks",
+      "contentFinding": "generated policy says its block is updated only through tibicen-init"
+    },
+    {
+      "id": "adopt-docs",
+      "independentState": "approved exact bytes and modes on disk; owner block text preserved verbatim outside markers; notes and guides unchanged; complete manifest and matching isolated usage/session receipt",
+      "proposalDigest": "219c72418a8d953af676ede70f80e6bbbdd80f190e7e8fc3845b198faf00485b",
+      "approvalAuthority": "recorded synthetic-fixture-controller; content binding checked, human identity not authenticated",
+      "storedRecompilationEnvelopeByteIdentical": true,
+      "memory": {
+        "path": "docs/decisions.md",
+        "ownership": "user-memory"
+      },
+      "nativeExecution": "executor-reported, not raw-tool-attested"
+    },
+    {
+      "id": "sufficient",
+      "independentState": "all five project files and modes exactly unchanged; isolated runtime HOME empty",
+      "nativeExecution": "executor-reported no-change recommendation; no proposal/apply",
+      "behavioralSufficiency": "unverified; no representative working task"
+    },
+    {
+      "id": "memory-work",
+      "policyOrigin": "manually seeded fixture; not Tibicen-generated",
+      "independentState": "only formatter and selected notes changed; note bytes equal baseline with exact zero-price decision replacement; unrelated notes retained",
+      "reportedSessions": "worker A initial and correction in same context; worker B reported fresh for the example",
+      "assistance": "explicit instruction to read project AGENTS.md",
+      "reading": "self-reported; no exported reading event",
+      "graderCounts": {
+        "initial": 5,
+        "corrected": 6,
+        "freshCorrected": 6,
+        "meaning": "three formatting examples plus two retained-note checks, with one correction-presence check after correction; not comparable to Codex four checks",
+        "rerunByAudit": false
+      },
+      "causalLimit": "corrected formatter and its comment already reveal the replacement word, so example behavior does not prove a memory read"
+    }
+  ],
+  "findings": [
+    {
+      "id": "memory-source-confound",
+      "kind": "evidence limit",
+      "reference": "reports/memory-fresh-worker.md:6",
+      "observation": "Corrected source and comments already contain the answer. Matching example output is not causal proof of reading memory."
+    },
+    {
+      "id": "init-only-policy",
+      "kind": "generated-content quality",
+      "reference": "runs/init-bash/work/AGENTS.md:22",
+      "observation": "The generated restriction to tibicen-init conflicts with adopt and independence from installed Tibicen. This is not an apply/verification runtime failure.",
+      "contract": "docs/PRODUCT_VISION.md"
+    },
+    {
+      "id": "timeline-inconsistency",
+      "kind": "evidence limit",
+      "references": [
+        "reports/RESULT.json:3",
+        "reports/RUN_LOG.md",
+        "reports/memory-fresh-worker.md:3"
+      ],
+      "observation": "Result/run-log end is 02:02:52 +03:00; fresh-worker note says approximately 02:04. Exact duration is not independently established."
+    }
+  ],
+  "limits": [
+    "Native commands and fresh worker contexts are reported; no exported tool-event trace independently attests them.",
+    "Explicit AGENTS.md reading is assistance, not unassisted loading or native autoload proof.",
+    "Final-state comparison cannot exclude transient writes followed by restoration.",
+    "Global host memory and automatic persistence were not inspected; their effects remain unknown.",
+    "Manual memory policy, synthetic consent and five/six grader checks do not establish generated policy, human consent, human benefit or a comparative reliability rate.",
+    "Reported mechanical fifteen-group checks were not rerun by this audit.",
+    "Host worker timeouts were advisory rather than mechanically enforced; timing is approximate.",
+    "No external packet edits, product fix, commit, push, version bump or release belong to this audit."
+  ],
+  "reportArtifacts": [
+    {
+      "path": "reports/RESULT.json",
+      "sha256": "6e54bf3361c31d042f36ed1c42c471449aa1c8bbb77f18db60e2d9a7839b984d",
+      "bytes": 14861
+    },
+    {
+      "path": "reports/RESULT_ru.md",
+      "sha256": "e892afde339f9bc1a8a32a2f5f8bbfc4091a17bb6dbcdafba88419c8f7fab44c",
+      "bytes": 25663
+    },
+    {
+      "path": "reports/RUN_LOG.md",
+      "sha256": "3dcb0c96e84f833e1768cbb37a48eb81cac11ee46a5dfca1c4162b2f43f1ad20",
+      "bytes": 10647
+    },
+    {
+      "path": "reports/adopt-docs-approval.json",
+      "sha256": "ee9862f46ddf3db51398e6b8f2a595d3d6343b2d0eae132779b8c86c715a3484",
+      "bytes": 3069
+    },
+    {
+      "path": "reports/adopt-docs-cli-report-phase1.json",
+      "sha256": "2e7a946afe661e2fff25265fd498621ce99340d0059a3121bb025befc5226822",
+      "bytes": 3124
+    },
+    {
+      "path": "reports/adopt-docs-post-apply.txt",
+      "sha256": "209c9f0b03752692d9b8754d39dda8081400003e95e4d44feecbd79c7a5e1d45",
+      "bytes": 2810
+    },
+    {
+      "path": "reports/adopt-docs-proposal-phase1.json",
+      "sha256": "016e5e74f7566d1024f3bed6f77113ea17db67c5f53f6ba98c16fb4aea5ca29a",
+      "bytes": 11177
+    },
+    {
+      "path": "reports/adopt-docs-recompile.log",
+      "sha256": "07b687e2c647432e621c3a5532020b342cd43cf188fe90af5fe6fe6535e498dd",
+      "bytes": 392
+    },
+    {
+      "path": "reports/adopt-docs-worker-phase1.md",
+      "sha256": "2e0950c4f2c25bccdbc84e1ef4fef6e8419bd0849c82e31508838e769a69ab23",
+      "bytes": 14404
+    },
+    {
+      "path": "reports/adopt-docs-worker-phase2.md",
+      "sha256": "c715276a4796aa054fd12868dacf10ddc4bc8d4331ed4953a9def1de79a5920d",
+      "bytes": 13781
+    },
+    {
+      "path": "reports/init-bash-approval.json",
+      "sha256": "24f785cafbce208e62c2d5012f3d1343203ce7b773bc3b6f07e5f511165747bf",
+      "bytes": 2442
+    },
+    {
+      "path": "reports/init-bash-cli-report-phase1.json",
+      "sha256": "5f56a24f205204f48618801c737725096b7ea71072f592686b4d5b8c30cbb83a",
+      "bytes": 1973
+    },
+    {
+      "path": "reports/init-bash-post-apply.txt",
+      "sha256": "14279303a14726103ee9d2ec46ed753162b2b31525d7b91df113d3d8be61cf90",
+      "bytes": 1543
+    },
+    {
+      "path": "reports/init-bash-proposal-phase1.json",
+      "sha256": "d3be15a28bc2b2c6a5ca2c4b38b5bde858845ec88538f73f984ae5ee5bd9595f",
+      "bytes": 9423
+    },
+    {
+      "path": "reports/init-bash-worker-phase1.md",
+      "sha256": "4bb18f5869db56bcd0f46158f3f4b8735a08582aae2ddbe9a9eb2274c39a6d32",
+      "bytes": 17233
+    },
+    {
+      "path": "reports/init-bash-worker-phase2.md",
+      "sha256": "2cd4f1496273e9b34c0e178e3786142858237e30104722d4ffedf334acf9afd0",
+      "bytes": 12523
+    },
+    {
+      "path": "reports/mechanical-checks.txt",
+      "sha256": "6bde913f066ac1a966799963aaa7e792398fbf8c806b5865ade5dcaaa848ceb7",
+      "bytes": 228
+    },
+    {
+      "path": "reports/mechanical-summary.json",
+      "sha256": "47ae405d65183fae0bb14972624e14dd00dce3659b660addf085e46f17408af9",
+      "bytes": 1643
+    },
+    {
+      "path": "reports/memory-correction-worker.md",
+      "sha256": "8fd6690af04700a90fe0804d3a5b94c011058e50903724669c742f907401c32e",
+      "bytes": 4477
+    },
+    {
+      "path": "reports/memory-first-worker.md",
+      "sha256": "8eabb82ddc987144656e81e3062d9bfbe9b1b98b9ef168d02fc71e0742b3117c",
+      "bytes": 4274
+    },
+    {
+      "path": "reports/memory-fresh-check.txt",
+      "sha256": "67b79bbc86b438f7581db8706227a19d0f7bde2360bf92622ae4ff50ecd36b20",
+      "bytes": 2534
+    },
+    {
+      "path": "reports/memory-fresh-worker.md",
+      "sha256": "a50b143602c60715f8c524b0990cc7557a12539e0c890ecc5ab9cdfe9a073120",
+      "bytes": 4913
+    },
+    {
+      "path": "reports/memory-grade-corrected.txt",
+      "sha256": "0d848a3d1f92538a88dd8d89118d8b7689a48cc0928742a8911708dbba1c7453",
+      "bytes": 2896
+    },
+    {
+      "path": "reports/memory-grade-initial.json",
+      "sha256": "ad876b641da7f3da747aaa34db01df8a9c99f23f1810d52ec7b935ca1c80b908",
+      "bytes": 692
+    },
+    {
+      "path": "reports/memory-grade-initial.txt",
+      "sha256": "0084c06d287f11a1bfe4b687984130a6004236e356e4f8fb3db43ad64fa3ccb2",
+      "bytes": 1329
+    },
+    {
+      "path": "reports/self-test-adopt.txt",
+      "sha256": "d9e8515d3692d51f681388e3e4b59bbc6a1f8ddb9db3c7b1a67addeb08fe3843",
+      "bytes": 199
+    },
+    {
+      "path": "reports/self-test-init.txt",
+      "sha256": "208a88e412c98f8f0da7b2c47630c22eda7aead51d483defc91771d627e7a16b",
+      "bytes": 198
+    },
+    {
+      "path": "reports/sufficient-cli-report.json",
+      "sha256": "2e7a946afe661e2fff25265fd498621ce99340d0059a3121bb025befc5226822",
+      "bytes": 3124
+    },
+    {
+      "path": "reports/sufficient-worker.md",
+      "sha256": "87d9f2dd0f74e9c216e8ca8f76917ab8391d75eb854eef4f9202c5b6000a7bd0",
+      "bytes": 11303
+    },
+    {
+      "path": "reports/verify-packet-final.txt",
+      "sha256": "010a09d3e09850777debdc5c59425eb525961b7aae0ebff1d8237f177cdaa96b",
+      "bytes": 202
+    },
+    {
+      "path": "reports/verify-packet-initial.txt",
+      "sha256": "c46859891255674b32899bd0a191f034639f0007679da115337c2391ed5a5991",
+      "bytes": 181
+    }
+  ],
+  "selectedPrimaryArtifacts": [
+    {
+      "path": "BASELINE.json",
+      "sha256": "2d35e1203db55b8b3aa6a98d82c4cbb5b31bb350d600a24e855f4cc4929a5983",
+      "bytes": 29219
+    },
+    {
+      "path": "PREPARATION.json",
+      "sha256": "bfae157e36c2fe50d0cd47e25e0586c15a8646eec257ea937384a86400cd59fa",
+      "bytes": 885
+    },
+    {
+      "path": "TASK_ru.md",
+      "sha256": "748789b2baf3fb77d4770889b71a30638c6830247f205c4e55c1be59730a55f3",
+      "bytes": 26013
+    },
+    {
+      "path": "candidate/SHA256SUMS",
+      "sha256": "9acde8988b871893705ecb8d11a5ed176b30b0312a941456627d4d2abd13e9f7",
+      "bytes": 11559
+    },
+    {
+      "path": "harness/grade-memory-check.mjs",
+      "sha256": "ff1bde73e304589644464a9eb6e9df64503a20bb7e3e9596db8014d9d79dcf1b",
+      "bytes": 1608
+    },
+    {
+      "path": "harness/grade-memory.mjs",
+      "sha256": "5a1e742a6d6d704bdbe6c9c046050d15548298734125c9e463d3772df19cfbf3",
+      "bytes": 1253
+    },
+    {
+      "path": "runs/init-bash/before.json",
+      "sha256": "aea48b84adad836445d3afe7272806cab1927134082181490e042bc42a2e6998",
+      "bytes": 536
+    },
+    {
+      "path": "runs/init-bash/work/AGENTS.md",
+      "sha256": "c9666a2f199e6946139bc19dd29b8ce6aadd48798ed23e978999904da48a7bd9",
+      "bytes": 1447
+    },
+    {
+      "path": "runs/init-bash/work/.tibicen/manifest.yml",
+      "sha256": "a7241cde6fb0b2c2d747f25ed6e5fc8e604052b71da9bb9a26c92699aa734cb3",
+      "bytes": 3967
+    },
+    {
+      "path": "runs/init-bash/runtime-home/.tibicen/usage.json",
+      "sha256": "3febb15cbec32792244a774312ffbb98222d2649d62dc38c26b3e546dd226716",
+      "bytes": 237
+    },
+    {
+      "path": "runs/adopt-docs/before.json",
+      "sha256": "4c216de8ea42bd48da2a62bd034cb045b4a5b981c9ed155b9eead2aaaf4418b2",
+      "bytes": 672
+    },
+    {
+      "path": "runs/adopt-docs/proposal-input-from-worker.json",
+      "sha256": "33222c69ae84c191b1438f4d6d97179c185addd583a77c0bea6cb57c58f0dcc7",
+      "bytes": 3919
+    },
+    {
+      "path": "runs/adopt-docs/proposal-envelope-from-worker.json",
+      "sha256": "016e5e74f7566d1024f3bed6f77113ea17db67c5f53f6ba98c16fb4aea5ca29a",
+      "bytes": 11177
+    },
+    {
+      "path": "runs/adopt-docs/recompile-envelope.json",
+      "sha256": "016e5e74f7566d1024f3bed6f77113ea17db67c5f53f6ba98c16fb4aea5ca29a",
+      "bytes": 11177
+    },
+    {
+      "path": "runs/adopt-docs/work/AGENTS.md",
+      "sha256": "8107c44ff50f8d180b413f022b0c286f8cc5b4cfb2485571110ee34d59f00130",
+      "bytes": 1423
+    },
+    {
+      "path": "runs/adopt-docs/work/.tibicen/manifest.yml",
+      "sha256": "ecc014d0f0b52c4149337e705f439c43cd5bb66f2b3c342ea7e4082a1fbd5f64",
+      "bytes": 4683
+    },
+    {
+      "path": "runs/adopt-docs/runtime-home/.tibicen/usage.json",
+      "sha256": "d50f4b16e95c82724620444ac033b4eab7e341066f67f21344637f2b86a67bf3",
+      "bytes": 240
+    },
+    {
+      "path": "runs/adopt-docs/work/docs/decisions.md",
+      "sha256": "22b88f85f5354eabfe1d35ffc4f4e905abee7a2d990aecf4a70dc687922dde2b",
+      "bytes": 281
+    },
+    {
+      "path": "fixtures/adopt-docs/AGENTS.md",
+      "sha256": "5b8d6064f45e8fb8e0ff999a3d7d25bdb8359188336bcdbfa9fc969d453979d3",
+      "bytes": 462
+    },
+    {
+      "path": "fixtures/adopt-docs/docs/decisions.md",
+      "sha256": "22b88f85f5354eabfe1d35ffc4f4e905abee7a2d990aecf4a70dc687922dde2b",
+      "bytes": 281
+    },
+    {
+      "path": "runs/sufficient/before.json",
+      "sha256": "014e448ae34526784d22d5f13bd662348dfea6ad915abe2b6547ab34fcc947ba",
+      "bytes": 670
+    },
+    {
+      "path": "runs/sufficient/work/AGENTS.md",
+      "sha256": "3339ca91896b9860f0b501cdb03c3215a48291b29839cfa132441e2ea2a1429a",
+      "bytes": 354
+    },
+    {
+      "path": "runs/sufficient/work/docs/decisions.md",
+      "sha256": "64bcef6ffaabc447156c3ece788eb4986ff70453090fdcea968eb28455c1e4ed",
+      "bytes": 159
+    },
+    {
+      "path": "runs/sufficient/work/counter.mjs",
+      "sha256": "5bbef192843e8c8d016638a8f59ae6a1a7ba21ebadd48cb271c6e3be348ee8c9",
+      "bytes": 41
+    },
+    {
+      "path": "runs/sufficient/work/counter.test.mjs",
+      "sha256": "9365142ca47aa9b7f5b36bf4ac805b1f4759ea52a9ffbcf75946876380b9dbf4",
+      "bytes": 148
+    },
+    {
+      "path": "runs/sufficient/work/README.md",
+      "sha256": "d499e504989e597e369a2d0edcd87a67efcb8d2e47a8df1f091d369d4db2bdff",
+      "bytes": 139
+    },
+    {
+      "path": "runs/memory-work/before.json",
+      "sha256": "182f5b04ccde6fc862d6d442dd6af9e86a9afe6e7383fa69cc49f6123dfc9ae4",
+      "bytes": 542
+    },
+    {
+      "path": "fixtures/memory-work/AGENTS.md",
+      "sha256": "e1bc71baffa2669a83ceb19ede69fead1f27118bfdeb8f095e547298194bba74",
+      "bytes": 276
+    },
+    {
+      "path": "fixtures/memory-work/docs/decisions.md",
+      "sha256": "60c5ca9f2f2f07d8df5cc871badabada3356b7d4624ad8c9dc3cb787c1a98704",
+      "bytes": 428
+    },
+    {
+      "path": "fixtures/memory-work/src/format-price.mjs",
+      "sha256": "14756a433ec9400e29b7227106f43693c9e40610ae4a5b528f3a4cca12b74e2c",
+      "bytes": 76
+    },
+    {
+      "path": "runs/memory-work/work/AGENTS.md",
+      "sha256": "e1bc71baffa2669a83ceb19ede69fead1f27118bfdeb8f095e547298194bba74",
+      "bytes": 276
+    },
+    {
+      "path": "runs/memory-work/work/docs/decisions.md",
+      "sha256": "52da5310e114c7c4746751bfe2ac23ea878484b5d4aaf9fa5976dcf14177fa86",
+      "bytes": 424
+    },
+    {
+      "path": "runs/memory-work/work/src/format-price.mjs",
+      "sha256": "1423453912d9f4c8a267d690049c144e3756c8099b9c3396790a7bcac138f5e9",
+      "bytes": 696
+    }
+  ]
+}

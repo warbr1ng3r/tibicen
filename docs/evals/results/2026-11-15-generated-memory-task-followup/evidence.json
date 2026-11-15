@@ -1,0 +1,738 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "dateZone": "Europe/Moscow",
+  "assessment": "three-fresh-native-task-phases-passed after separate synthetic controller setup; original native apply remains unverified",
+  "privacy": {
+    "rawArtifactsCopied": false,
+    "artifactPaths": "packet-relative private-record identifiers, not local absolute paths",
+    "purpose": "Hashes bind retained records; not a transcript export or replay bundle."
+  },
+  "candidate": {
+    "publishedVersion": "1.5.4",
+    "sourceBase": "31f87d993e76bbf546643211980c628c365500f0",
+    "label": "source plus reviewed Unreleased changes; no new release",
+    "payloadFiles": 110,
+    "payloadInventorySha256": "7d2b52de840072b08f8983106611257b5211c96d57a3a41afe49b63138665f90",
+    "proposalDigest": "041a692cc896330c27f0cd670888b54553a7e9f123d25e0208d49b75822018e2"
+  },
+  "question": "Can ordinary fresh agents use and correct actual Tibicen-generated policy/memory after exact synthetic controller application?",
+  "setupProvenance": {
+    "policy": "actual native-generated AGENTS.md; no controller rewrite",
+    "memoryPath": ".agents/memory.md",
+    "memoryOwnership": "user-memory",
+    "application": "separate model-free real executor controller with exact synthetic approval; not native-agent apply success",
+    "originalNativeApply": "stopped, unverified and not regraded",
+    "seedHashes": {
+      "package.json": "e64cb29d808ca17543c63057e356e7121c446165003081cba09f7e752f2b5821",
+      "README.md": "9bed474e41f8d456ff87425e5eaf2fa4dd49dc4928da7651f6b7c6b2368156ba",
+      "src/format-price.mjs": "71765483fb3309bf5e21956f405e39c09c8a6a49c390345a3bd8fa1cce5c188f",
+      "tests/format-price.test.mjs": "10fa97f8939bb7dfd3c87795e1be2c4c1e3422ed052dee9b5cc5f7bd4bf04707",
+      "AGENTS.md": "ba354fda7abebabe73b7bebd3f44cf2098518384ab2b0e8f7dc967550876e4a8",
+      ".agents/memory.md": "f4a64403ca4d2d50c8248a01c0dc59a54e4d26abdbfd66c48f297a8c9be79e39"
+    }
+  },
+  "admissionAndIsolation": {
+    "harness": "Codex CLI 0.157.0",
+    "model": "gpt-6-astra",
+    "route": "existing subscription",
+    "freshInputPaths": [
+      ".agents/memory.md",
+      "AGENTS.md",
+      "README.md",
+      "package.json",
+      "src/format-price.mjs",
+      "tests/format-price.test.mjs"
+    ],
+    "fileCountEach": 6,
+    "ancestorAGENTSAbsentAtAdmission": true,
+    "runtimeHelpersScorerTranscriptAndHistoryExcluded": true,
+    "ordinaryPromptContainsMemoryHint": false,
+    "initialAnswerOutsideSelectedMemory": false,
+    "freshCorrectedAnswerOutsideSelectedMemory": false,
+    "finalPromptEqualsFirstPrompt": true,
+    "sourceReset": "final uses original starter source/tests, original generated AGENTS and actual corrected memory; declared controlled fixture fork",
+    "fullWorktreePreservationClaim": false
+  },
+  "phases": [
+    {
+      "id": "first-task",
+      "native": {
+        "pass": true,
+        "exitCode": 0,
+        "durationMs": 52086.115917,
+        "callerMs": 52104,
+        "usage": {
+          "inputTokens": 77378,
+          "outputTokens": 1324
+        },
+        "cleanup": {
+          "stopped": true,
+          "removed": true
+        }
+      },
+      "directReads": [
+        {
+          "path": "AGENTS.md",
+          "nativeItemId": "item_2",
+          "compoundCommandExitCode": 127,
+          "basis": "captured actual file content; overall command exit may reflect a later operation"
+        },
+        {
+          "path": ".agents/memory.md",
+          "nativeItemId": "item_3",
+          "compoundCommandExitCode": 1,
+          "basis": "captured actual file content; overall command exit may reflect a later operation"
+        }
+      ],
+      "functional": {
+        "pass": true,
+        "observed": {
+          "zero": "On the house",
+          "ordinary": "12.50 EUR",
+          "refund": "-2.50 EUR",
+          "line": "Notebook: On the house"
+        },
+        "checks": {
+          "zero": "passed",
+          "ordinary": "passed",
+          "refund": "passed",
+          "line": "passed"
+        }
+      },
+      "projectTests": {
+        "exitCode": 0,
+        "tests": 4,
+        "passed": 4,
+        "failed": 0,
+        "origin": "worker-authored project tests, independently executed in the isolated grade"
+      },
+      "gradeCleanup": {
+        "stopped": true,
+        "removed": true
+      },
+      "unrelatedDecisionExactBytesPreserved": true,
+      "actualReturnedFiles": {
+        ".agents/memory.md": {
+          "sha256": "1008c5573f0c0323ec98bea76d42910097b595bc3a9e03394aa0c19b7c06d977",
+          "mode": "0600",
+          "unchangedFromPhaseInput": false
+        },
+        "AGENTS.md": {
+          "sha256": "ba354fda7abebabe73b7bebd3f44cf2098518384ab2b0e8f7dc967550876e4a8",
+          "mode": "0600",
+          "unchangedFromPhaseInput": true
+        },
+        "README.md": {
+          "sha256": "9bed474e41f8d456ff87425e5eaf2fa4dd49dc4928da7651f6b7c6b2368156ba",
+          "mode": "0600",
+          "unchangedFromPhaseInput": true
+        },
+        "package.json": {
+          "sha256": "e64cb29d808ca17543c63057e356e7121c446165003081cba09f7e752f2b5821",
+          "mode": "0600",
+          "unchangedFromPhaseInput": true
+        },
+        "src/format-price.mjs": {
+          "sha256": "926df93be401d7f5533277922d93d1ae125bd00e0233f5cdf9fb3c3e2a0c441f",
+          "mode": "0600",
+          "unchangedFromPhaseInput": false
+        },
+        "tests/format-price.test.mjs": {
+          "sha256": "a28bb1d3522615dfb7c777cff0548b5d4cf65df5153330faa7523eafc5aba71c",
+          "mode": "0600",
+          "unchangedFromPhaseInput": false
+        }
+      },
+      "acceptance": {
+        "functional": "4/4",
+        "projectTests": "passed",
+        "entrypoint": "unchanged",
+        "packageAndReadme": "unchanged",
+        "unrelatedDecision": "exact frozen passage preserved",
+        "currentDecision": "initial accepted label",
+        "memoryMaintenance": "Observed implementation facts updated by ordinary agent; legitimate scoped maintenance, not unchanged-memory assertion."
+      }
+    },
+    {
+      "id": "correction",
+      "native": {
+        "pass": true,
+        "exitCode": 0,
+        "durationMs": 34107.678708,
+        "callerMs": 34124,
+        "usage": {
+          "inputTokens": 54175,
+          "outputTokens": 694
+        },
+        "cleanup": {
+          "stopped": true,
+          "removed": true
+        }
+      },
+      "directReads": [
+        {
+          "path": "AGENTS.md",
+          "nativeItemId": "item_2",
+          "compoundCommandExitCode": 127,
+          "basis": "captured actual file content; overall command exit may reflect a later operation"
+        },
+        {
+          "path": ".agents/memory.md",
+          "nativeItemId": "item_3",
+          "compoundCommandExitCode": 0,
+          "basis": "captured actual file content; overall command exit may reflect a later operation"
+        }
+      ],
+      "functional": {
+        "pass": true,
+        "observed": {
+          "zero": "Included",
+          "ordinary": "12.50 EUR",
+          "refund": "-2.50 EUR",
+          "line": "Notebook: Included"
+        },
+        "checks": {
+          "zero": "passed",
+          "ordinary": "passed",
+          "refund": "passed",
+          "line": "passed"
+        }
+      },
+      "projectTests": {
+        "exitCode": 0,
+        "tests": 4,
+        "passed": 4,
+        "failed": 0,
+        "origin": "worker-authored project tests, independently executed in the isolated grade"
+      },
+      "gradeCleanup": {
+        "stopped": true,
+        "removed": true
+      },
+      "unrelatedDecisionExactBytesPreserved": true,
+      "actualReturnedFiles": {
+        ".agents/memory.md": {
+          "sha256": "e56d1062602635904a7d0abbe685232036cfbafe0e06dba8a959d038e0f41b97",
+          "mode": "0600",
+          "unchangedFromPhaseInput": false
+        },
+        "AGENTS.md": {
+          "sha256": "ba354fda7abebabe73b7bebd3f44cf2098518384ab2b0e8f7dc967550876e4a8",
+          "mode": "0600",
+          "unchangedFromPhaseInput": true
+        },
+        "README.md": {
+          "sha256": "9bed474e41f8d456ff87425e5eaf2fa4dd49dc4928da7651f6b7c6b2368156ba",
+          "mode": "0600",
+          "unchangedFromPhaseInput": true
+        },
+        "package.json": {
+          "sha256": "e64cb29d808ca17543c63057e356e7121c446165003081cba09f7e752f2b5821",
+          "mode": "0600",
+          "unchangedFromPhaseInput": true
+        },
+        "src/format-price.mjs": {
+          "sha256": "a0eaf998fca1447b4656e662c4e7af33797f9623a56e91ddd3f80640ecd52b6c",
+          "mode": "0600",
+          "unchangedFromPhaseInput": false
+        },
+        "tests/format-price.test.mjs": {
+          "sha256": "cf5176689eac3572dd5e58046a9c4b01e9abe9b1c43efb7c5b1b2d793a389e01",
+          "mode": "0600",
+          "unchangedFromPhaseInput": false
+        }
+      },
+      "acceptance": {
+        "functional": "4/4",
+        "projectTests": "passed",
+        "entrypoint": "unchanged",
+        "packageAndReadme": "unchanged",
+        "unrelatedDecision": "exact frozen passage preserved",
+        "semantics": "Included is the sole current rule with user reason and provenance; old phrase explicitly superseded history."
+      }
+    },
+    {
+      "id": "fresh-corrected",
+      "native": {
+        "pass": true,
+        "exitCode": 0,
+        "durationMs": 41550.328458,
+        "callerMs": 41569,
+        "usage": {
+          "inputTokens": 53331,
+          "outputTokens": 813
+        },
+        "cleanup": {
+          "stopped": true,
+          "removed": true
+        }
+      },
+      "directReads": [
+        {
+          "path": "AGENTS.md",
+          "nativeItemId": "item_2",
+          "compoundCommandExitCode": 127,
+          "basis": "captured actual file content; overall command exit may reflect a later operation"
+        },
+        {
+          "path": ".agents/memory.md",
+          "nativeItemId": "item_3",
+          "compoundCommandExitCode": 0,
+          "basis": "captured actual file content; overall command exit may reflect a later operation"
+        }
+      ],
+      "functional": {
+        "pass": true,
+        "observed": {
+          "zero": "Included",
+          "ordinary": "12.50 EUR",
+          "refund": "-2.50 EUR",
+          "line": "Notebook: Included"
+        },
+        "checks": {
+          "zero": "passed",
+          "ordinary": "passed",
+          "refund": "passed",
+          "line": "passed"
+        }
+      },
+      "projectTests": {
+        "exitCode": 0,
+        "tests": 4,
+        "passed": 4,
+        "failed": 0,
+        "origin": "worker-authored project tests, independently executed in the isolated grade"
+      },
+      "gradeCleanup": {
+        "stopped": true,
+        "removed": true
+      },
+      "unrelatedDecisionExactBytesPreserved": true,
+      "actualReturnedFiles": {
+        ".agents/memory.md": {
+          "sha256": "e56d1062602635904a7d0abbe685232036cfbafe0e06dba8a959d038e0f41b97",
+          "mode": "0600",
+          "unchangedFromPhaseInput": true
+        },
+        "AGENTS.md": {
+          "sha256": "ba354fda7abebabe73b7bebd3f44cf2098518384ab2b0e8f7dc967550876e4a8",
+          "mode": "0600",
+          "unchangedFromPhaseInput": true
+        },
+        "README.md": {
+          "sha256": "9bed474e41f8d456ff87425e5eaf2fa4dd49dc4928da7651f6b7c6b2368156ba",
+          "mode": "0600",
+          "unchangedFromPhaseInput": true
+        },
+        "package.json": {
+          "sha256": "e64cb29d808ca17543c63057e356e7121c446165003081cba09f7e752f2b5821",
+          "mode": "0600",
+          "unchangedFromPhaseInput": true
+        },
+        "src/format-price.mjs": {
+          "sha256": "a0eaf998fca1447b4656e662c4e7af33797f9623a56e91ddd3f80640ecd52b6c",
+          "mode": "0600",
+          "unchangedFromPhaseInput": false
+        },
+        "tests/format-price.test.mjs": {
+          "sha256": "c03029c83d19f6a2fdda0478b35e53e65ae27bcbca457fd1b40c9574c6bb4dfe",
+          "mode": "0600",
+          "unchangedFromPhaseInput": false
+        }
+      },
+      "acceptance": {
+        "functional": "4/4",
+        "projectTests": "passed",
+        "entrypointAndMemory": "unchanged from correction",
+        "packageAndReadme": "unchanged",
+        "unrelatedDecision": "exact frozen passage preserved",
+        "sourceReset": "pre-task implementation and tests at admission; corrected label only from selected memory"
+      }
+    }
+  ],
+  "correctionPreparationDeviation": {
+    "recordSha256": "8537d4eb3a550555ca95cfb513618cd8db120032678f9cd8b03cb1098b3e7e94",
+    "reason": "Frozen helper incorrectly required unchanged initial memory despite legitimate ordinary implementation-fact maintenance.",
+    "frozenPrepareUnedited": true,
+    "frozenPrepareUsedForCorrection": false,
+    "separateProjectionSha256": "842598f6e3f496ae9047bb7573b64cfb0a2fe5aa486e7c7a2f26d0fa08efc4a7",
+    "actualAcceptedWorkingProjectCopiedExactly": true,
+    "deviationBoundToProspectiveGO": true,
+    "contentRewrittenByController": false,
+    "resourceOrQuestionChange": false,
+    "extraModelCalls": 0
+  },
+  "resourceClosure": {
+    "closed": true,
+    "newNativeSessions": 3,
+    "previousNativeSessions": 2,
+    "aggregateNativeSessions": 5,
+    "maxAggregateNativeSessions": 5,
+    "aggregateCallerMs": 242262,
+    "maxAggregateCallerMs": 900000,
+    "maxPhaseMs": 180000,
+    "concurrency": 1,
+    "callerRetries": 0,
+    "newPaidApiCalls": 0,
+    "newPacketUsage": {
+      "inputTokens": 184884,
+      "outputTokens": 2831
+    },
+    "newPacketOnlyAdmissionStops": {
+      "input": 200000,
+      "output": 20000,
+      "hardProviderQuota": false,
+      "inFlightOvershootPossible": true,
+      "missingUsageStopsContinuation": true
+    },
+    "originalFailedUsage": null,
+    "aggregateTokenAndMonetaryQuotaClaim": false,
+    "subscriptionCost": null,
+    "modelFreeFunctionalGradeContainers": 3,
+    "gradeDeadlineMsEach": 20000,
+    "allOwnedContainersStoppedAndRemoved": true,
+    "disposableNativeHomesRemoved": true,
+    "frozenControllersAndPreviousEvidenceUnchanged": true,
+    "furtherCallsAdmitted": false
+  },
+  "limits": [
+    "no causal ablation or ordinary-agent baseline",
+    "no human usefulness measurement",
+    "no unassisted automatic loading proof",
+    "no all-harness or all-model support inference",
+    "original native setup application remains unverified",
+    "correction prompt directly supplies the new decision",
+    "four functional outputs do not alone prove full input contract or memory semantics"
+  ],
+  "previousEvidenceIndex": [
+    {
+      "packetArtifact": "generated-memory-20261115/protocol.json",
+      "sha256": "f5597ec9ff174713ea2d2737107ead5d7795d86cbc19f4f7ef6844f339a32f8c",
+      "bytes": 4308
+    },
+    {
+      "packetArtifact": "generated-memory-20261115/generate/outcome.json",
+      "sha256": "0330ff678978ac57e2c16186711dbb08fc0bbf06556dc9d77851eab758e59ee0",
+      "bytes": 9007456
+    },
+    {
+      "packetArtifact": "generated-memory-20261115/apply/outcome.json",
+      "sha256": "70c63ba948e7a55f47742d4a8a8f2b0d5d6ae36ad569a5b6873fafc3f4d01df4",
+      "bytes": 40317
+    },
+    {
+      "packetArtifact": "generated-memory-20261115/generate/finished.json",
+      "sha256": "fb5ad2ca576a70c9d85e49640f36b09223360f741adb498465acb6074d2930df",
+      "bytes": 78
+    },
+    {
+      "packetArtifact": "generated-memory-20261115/apply/finished.json",
+      "sha256": "d4bd8b04299f04625d95554a0ec388f900cb8e69b49715734134b1b38ccf1e42",
+      "bytes": 77
+    },
+    {
+      "packetArtifact": "generated-memory-boundary-20261115/acceptance.json",
+      "sha256": "6937d25867221ed5b35979dda8e5d42b649924b47eb17144678f2515102010e6",
+      "bytes": 2089
+    },
+    {
+      "packetArtifact": "generated-memory-boundary-20261115/raw.json",
+      "sha256": "61565b86df9d5a9528a141b2bcc88f44f393d3994b05168e86da0613830b6714",
+      "bytes": 8844946
+    }
+  ],
+  "retainedArtifactCount": 58,
+  "retainedArtifacts": [
+    {
+      "path": "CLOSED.json",
+      "sha256": "9f87e656124d13963d69da1be5f4d82fcfa9a6ca56bc56c0ee8b2a3a50d614ce",
+      "bytes": 3400
+    },
+    {
+      "path": "correction/GO.json",
+      "sha256": "7d5c69ccb30911f72e371530308b585ff145d27f017d48b0f2a80bb883a48efb",
+      "bytes": 544
+    },
+    {
+      "path": "correction/acceptance.json",
+      "sha256": "d13acac2928e16213fe9ea8dbe0df1b4a98afecff35fc01cde48d96d74978217",
+      "bytes": 620
+    },
+    {
+      "path": "correction/events.jsonl",
+      "sha256": "1b9c2e46cc6d8fc4ac73e524c3a899b6bf59bb52735e19d1e151e2f236fc87c4",
+      "bytes": 7862
+    },
+    {
+      "path": "correction/finished.json",
+      "sha256": "02120395cb92d7ab829b2916c3822edc90bcd321739fef5b06650d4ff245d655",
+      "bytes": 78
+    },
+    {
+      "path": "correction/grade-GO.json",
+      "sha256": "984cd6330f6ade943760b0cf02047ff6d27cc5e00f8649571cacfebf6dc1f04b",
+      "bytes": 204
+    },
+    {
+      "path": "correction/grade-finished.json",
+      "sha256": "0dcae0ca620babb4bc3ca51045efe770d9112ccf7abbfa476a25ec44e9ed6382",
+      "bytes": 83
+    },
+    {
+      "path": "correction/grade-protocol.json",
+      "sha256": "4db37093821eea133c30b321555af678ae4399c3679c15c834e8339c1adb7b9a",
+      "bytes": 2591
+    },
+    {
+      "path": "correction/grade-raw.json",
+      "sha256": "70b66bcd0371ec130fc0b7e73539baab931be64d5734f4441fa85db175648c93",
+      "bytes": 27543
+    },
+    {
+      "path": "correction/grade-result.json",
+      "sha256": "707e3b675ff614fd0022e995b68b74a634a595a3ce56c5a948ce8fa72decf834",
+      "bytes": 1356
+    },
+    {
+      "path": "correction/grade-started.json",
+      "sha256": "c70c1424792c265a3e4633326ac0345704a85c070302d6475d5e93645b79c570",
+      "bytes": 170
+    },
+    {
+      "path": "correction/outcome.json",
+      "sha256": "d97cec7c5381f86c8dc957b2ebe9cf9277950c0ce4d3502749c0759574894e48",
+      "bytes": 69484
+    },
+    {
+      "path": "correction/prospective.json",
+      "sha256": "e6ebb7d733c1ac5066222dc6218e0ade07ec237bbace5ae246960d2e78586cb8",
+      "bytes": 6569
+    },
+    {
+      "path": "correction/started.json",
+      "sha256": "1acafb9c0ac9f71a9d2b7c7a3294612d1ade80ef340b722da239d4db65a5671a",
+      "bytes": 157
+    },
+    {
+      "path": "correction-preparation-deviation.json",
+      "sha256": "8537d4eb3a550555ca95cfb513618cd8db120032678f9cd8b03cb1098b3e7e94",
+      "bytes": 1891
+    },
+    {
+      "path": "correction-projection.mjs",
+      "sha256": "842598f6e3f496ae9047bb7573b64cfb0a2fe5aa486e7c7a2f26d0fa08efc4a7",
+      "bytes": 2904
+    },
+    {
+      "path": "correction.prompt.txt",
+      "sha256": "04767d8ecfe371935a9887952395e2a3c75c9a5a36d4b78c717e5fe130719950",
+      "bytes": 233
+    },
+    {
+      "path": "diagnostics/correction/terminal-errors.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "diagnostics/first-task/terminal-errors.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "diagnostics/fresh-corrected/terminal-errors.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "driver.mjs",
+      "sha256": "468e7fea9e637c680f481d6888791e4c014cb5ad78ccffa1c9acafad79f2088b",
+      "bytes": 8548
+    },
+    {
+      "path": "first-task/GO.json",
+      "sha256": "501d19db495725e4ed43e4611622b71decad21f7e16b1f288404790c003d465c",
+      "bytes": 456
+    },
+    {
+      "path": "first-task/acceptance.json",
+      "sha256": "a59b0da8e1fad563a9ceebaf6f9fd4c6bd6208ca9acaf1373d9a3e964c672df2",
+      "bytes": 689
+    },
+    {
+      "path": "first-task/events.jsonl",
+      "sha256": "e1192ce7622aadee11cc0038125f8f640cf3aaadb56cef818ed18f5b3fd81f80",
+      "bytes": 11427
+    },
+    {
+      "path": "first-task/finished.json",
+      "sha256": "011afd9152c07e1fde65e813d3110c6d5b458bee60884dea0e8f7e2d5852afaa",
+      "bytes": 78
+    },
+    {
+      "path": "first-task/grade-GO.json",
+      "sha256": "ab9dad933041f3f6e5fdc96cf406afc490c7adad0c32dcc166f4430d46a0b9fa",
+      "bytes": 241
+    },
+    {
+      "path": "first-task/grade-finished.json",
+      "sha256": "fd365296477c76c91b92adbbe2b2eed7951a9ab14c6acc1bf6f691f59f6c4ccf",
+      "bytes": 83
+    },
+    {
+      "path": "first-task/grade-protocol.json",
+      "sha256": "2cc27348c8288fe1106442ddec74f47cdd8d975413a050f25572c9b61a369719",
+      "bytes": 2589
+    },
+    {
+      "path": "first-task/grade-raw.json",
+      "sha256": "f4295ceaab22dce9a0d9a8965579dd3688baadded0b9e0daa25e8c483da394ed",
+      "bytes": 27578
+    },
+    {
+      "path": "first-task/grade-result.json",
+      "sha256": "1ff3b2739080dc77f6239fb7a458e37eeba7e17e9397422de0d484646aaae65c",
+      "bytes": 1361
+    },
+    {
+      "path": "first-task/grade-started.json",
+      "sha256": "a14cd6380fbba7d8c31696155117d5a984f9b318f49be1da52af7f6e54e78c15",
+      "bytes": 170
+    },
+    {
+      "path": "first-task/outcome.json",
+      "sha256": "631068d5ae4b87ecdb119e0bb902e85af4247e4353533f3d0a07511ab23db27a",
+      "bytes": 70726
+    },
+    {
+      "path": "first-task/prospective.json",
+      "sha256": "e438c9f0b8703694e29523808f64e32459d9e283034e6f1c8185ab46eb7a0f53",
+      "bytes": 6539
+    },
+    {
+      "path": "first-task/started.json",
+      "sha256": "358b1bde4c03a4271aa1504a2a838c8b1c4d31dfdb877116733cf0511f7b6aaf",
+      "bytes": 157
+    },
+    {
+      "path": "first-task-prepared.json",
+      "sha256": "b3b53cc852b4123eaa488727378380c999d5ee4d123daee9e2d713d065e3ed66",
+      "bytes": 901
+    },
+    {
+      "path": "first-task.prompt.txt",
+      "sha256": "f96272f8515880f024e8716a4eea1365a6009474d878e6754279ccc099478320",
+      "bytes": 275
+    },
+    {
+      "path": "fresh-corrected/GO.json",
+      "sha256": "af72858e51ec09a400503c198d3ba8a9097429388ce164fac8dd8619f8f4d238",
+      "bytes": 339
+    },
+    {
+      "path": "fresh-corrected/acceptance.json",
+      "sha256": "bc75b821713e3aa2ce5d258cbe690252672c312e4ed2dbe39b3b452a88817407",
+      "bytes": 628
+    },
+    {
+      "path": "fresh-corrected/events.jsonl",
+      "sha256": "0cabfbb512dbfd8d530b5933279f19645b1a538bcc0e2b76e056450d7a77984d",
+      "bytes": 6914
+    },
+    {
+      "path": "fresh-corrected/finished.json",
+      "sha256": "629d5c9db0f25861d3d01ab2431a5dc5175dd0faad918e27b320dd3ce2e45cc8",
+      "bytes": 78
+    },
+    {
+      "path": "fresh-corrected/grade-GO.json",
+      "sha256": "959252b8e728eb72fd71efa3695bc05a73634781ae83a38ff86a644dc1b5525b",
+      "bytes": 251
+    },
+    {
+      "path": "fresh-corrected/grade-finished.json",
+      "sha256": "93a81e0744a2c37766ea7a30de469b01aaef0f347741fc6ac9420778793136b1",
+      "bytes": 83
+    },
+    {
+      "path": "fresh-corrected/grade-protocol.json",
+      "sha256": "33cda12715a3c0ca594b78bb4aea126e6ec55a56339fde497ae807a6b7b513cb",
+      "bytes": 2601
+    },
+    {
+      "path": "fresh-corrected/grade-raw.json",
+      "sha256": "0189a82daa642310e52842659f5a3fff6fb123ee075a991f44c9c124eda2961c",
+      "bytes": 28631
+    },
+    {
+      "path": "fresh-corrected/grade-result.json",
+      "sha256": "44c8052396b60b6a9d4f7f6e4507de1f042bdde40c1d7345da5fc448ebf4efea",
+      "bytes": 1416
+    },
+    {
+      "path": "fresh-corrected/grade-started.json",
+      "sha256": "d102a304d51ac51590727970293920736cf7b030774f3138d445898c03cc0289",
+      "bytes": 170
+    },
+    {
+      "path": "fresh-corrected/outcome.json",
+      "sha256": "b04f2c7e5881a092a2d74630e13c8979c74b481fc902d149eaf0b43fc18a4711",
+      "bytes": 68972
+    },
+    {
+      "path": "fresh-corrected/prospective.json",
+      "sha256": "a7dead9978ef116678ef2f2c0858d5a92875816f7bfaac6747e1efdfb7c24cde",
+      "bytes": 6594
+    },
+    {
+      "path": "fresh-corrected/started.json",
+      "sha256": "15f8a60e3aa828d732f6e81ea5efea005b8429f01cee7a93378c3296386097ba",
+      "bytes": 157
+    },
+    {
+      "path": "fresh-corrected-prepared.json",
+      "sha256": "7d03abfbccf995a61e554990ec1670af06e96af8eb763f7641e81d33a35a8572",
+      "bytes": 906
+    },
+    {
+      "path": "fresh-corrected.prompt.txt",
+      "sha256": "f96272f8515880f024e8716a4eea1365a6009474d878e6754279ccc099478320",
+      "bytes": 275
+    },
+    {
+      "path": "grade.mjs",
+      "sha256": "3558e97ca64182cba247bc99c318a2fb64ebe7d9a231ad1f051d936c4245e6ec",
+      "bytes": 12096
+    },
+    {
+      "path": "prelaunch-r1/first-task/prospective.json",
+      "sha256": "a7f7f4a0eb4b00b4fd06f5e40925b3d6f024f139312909d9dee34d7fe1b0ebb5",
+      "bytes": 6552
+    },
+    {
+      "path": "prelaunch-r1/first-task-prepared.json",
+      "sha256": "6b3fcd0ae6c2dc596af2b4b85206eb1ccf87fb6e806d2f3025289719b9e381b6",
+      "bytes": 901
+    },
+    {
+      "path": "prelaunch-r1/first-task.prompt.txt",
+      "sha256": "4f296e2eac7758e375120b33b051d7f8a33d75a713da7bbdd6278e41de99f366",
+      "bytes": 393
+    },
+    {
+      "path": "prelaunch-r1/protocol.json",
+      "sha256": "22bef6b73782bb6f48eb41f8603f139a5400e496c88a9806b82cea2ab6eee3b7",
+      "bytes": 4829
+    },
+    {
+      "path": "prepare.mjs",
+      "sha256": "2656e190dab1204a35ad53fc1e54f1c810b242881bbdac6351912d1ba7be173c",
+      "bytes": 7518
+    },
+    {
+      "path": "protocol.json",
+      "sha256": "4dd65dc1d9728f6fe9c9ab5b506c055da20b0433c741bebb35c9eb971b1d1134",
+      "bytes": 4829
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+# External ZCode observation, 15 November 2026
+
+The returned packet supports independently checked final file states and
+**executor-reported native work**. Native commands, reading events and fresh
+contexts have no exported tool-event trace. Accept these as qualified external
+observations, not independently attested full native cycles or a reliability rate.
+The [sanitized evidence index](evidence.json) binds the retained artifacts by hash.
+
+## Candidate and method
+
+The candidate is source base `31f87d993e76bbf546643211980c628c365500f0`
+plus reviewed **Unreleased** reliability changes. All **147 frozen files**, their
+modes and frozen inventories matched the packet baseline. All **110 payload
+files** matched their manifest; its SHA-256 is
+`9acde8988b871893705ecb8d11a5ed176b30b0312a941456627d4d2abd13e9f7`.
+Published **1.5.4 remains unchanged**.
+
+The external coordinator reports ZCode on macOS arm64, an existing subscription,
+five separate workers and four resumptions. Installed ZCode version and worker
+models are unknown. Worker freshness, command execution and absence of new paid
+API calls are reported, rather than independently attested. Subscription cost is
+unknown. The audit read files, compared hashes/modes and inspected the formatter
+and grader; it executed no worker code, model, API call or test suite and changed
+nothing in the external packet.
+
+## Results and evidence boundaries
+
+| Case                   | Independently checked state                                                                                                                                                                                           | Reported execution and remaining limit                                                                                                                                                                                                                    |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Bash init              | `AGENTS.md` exactly equals the approved plan. Original four project files are unchanged. Manifest and isolated usage record agree on the completed session.                                                           | Worker reports proposal, then apply/verify/status/report after synthetic approval. The coordinator reports two Bash smoke checks; built-in application verification remains `unverified/no-project-checks`. Generated policy has the quality issue below. |
+| Documentation adopt    | Both proposal and approval digests match. Original owner text is preserved verbatim outside the managed block. Memory, README and both guides are unchanged; final instructions and complete receipt match the plan.  | Native application is reported by the worker; final state alone does not identify who ran the commands. Actual host loading remains unverified.                                                                                                           |
+| Sufficient setup       | All five project files and modes exactly match the baseline; isolated runtime HOME is empty.                                                                                                                          | Worker reports a justified no-change recommendation without proposal/apply. No representative working task established behavioral sufficiency.                                                                                                            |
+| Manually seeded memory | Only the formatter and selected notes changed. The notes are exactly the original bytes with the zero-price decision replaced; unrelated decisions remain intact. Final source is consistent with the corrected rule. | Two fresh workers are reported: initial implementation and correction used worker A, then worker B added an example. Initial/corrected graders report 5/6 checks; no independent tool trace proves the reads.                                             |
+
+The two compiled proposal digests were recomputed independently and matched the
+synthetic approval records, final bytes, file modes and receipt hashes. Adopt's
+stored recompilation envelope matches the worker envelope byte-for-byte. These
+are content/state checks, **not human authentication**. Pre-approval preservation
+is supported by coordinator snapshots and reports; transient writes followed by
+restoration cannot be ruled out. Global host memory was not inspected.
+
+Explicit instructions to read project `AGENTS.md` were assistance. The memory
+policy was seeded manually, not generated by Tibicen. The grader covers three
+format examples, two retained-note checks and, after correction, presence of the
+replacement word; it does not establish the complete input contract. Its **5/6
+checks** are not comparable denominators with the [Codex observation's](../2026-11-15-codex-observation/README.md)
+four checks. The reported 15 mechanical groups were not rerun by this audit and
+are separate from native-worker observations.
+
+## Findings retained by the audit
+
+1. **Fresh memory reading is not proved by the example.** The corrected formatter
+   and its comment already contain the replacement word. A fresh worker can copy
+   it from source without consulting memory. Reading is self-reported; the output
+   is consistent with memory, but does not establish a causal memory benefit or
+   unassisted loading.
+2. **Generated init policy imposes an unnecessary tool dependency.** The approved
+   `AGENTS.md` says its block is updated only through `tibicen-init`. This conflicts
+   with the [product's](../../../PRODUCT_VISION.md) adopt workflow and independence
+   from an installed Tibicen. It is an observed generated-content quality issue,
+   not an apply/verification runtime failure. It was not silently corrected.
+3. **Reported timestamps disagree.** The final result and run log end at
+   `02:02:52 +03:00`; the fresh-worker note gives approximately `02:04`. Treat the
+   timing as approximate, not an independently established exact duration. Host
+   worker timeouts were advisory, not mechanically enforced.
+
+## Next steps and retention
+
+Correct the init-only policy wording in a separately reviewed change. For another
+memory observation, distinguish the memory decision from information already
+visible in source and retain an actual reading trace where available. Preserve
+unknown host storage effects and record timing consistently. These findings do
+not justify new tools, memory infrastructure or broad host/model expansion.
+
+The index lists all **31 returned report artifacts** and selected plans, receipts,
+baselines and final files. It contains no personal paths, machine identifiers,
+credentials or raw transcripts. The original packet stays external; hashes allow
+its holder to check artifact identity, not reconstruct missing execution events.
+No source fix, commit, push, version bump or release is part of this audit.

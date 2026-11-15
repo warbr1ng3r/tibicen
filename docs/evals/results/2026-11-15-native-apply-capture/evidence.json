@@ -1,0 +1,251 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "status": "native-full-acceptance-failed; capture interaction reproduced; no product defect established",
+  "publishedVersion": "1.5.4",
+  "candidateInventoryHash": "7d2b52de840072b08f8983106611257b5211c96d57a3a41afe49b63138665f90",
+  "freezeHash": "f79b156c215a4bc418b3be42d3e47d49e102a49c6a409e22edf77d62b1723dad",
+  "planDigest": "041a692cc896330c27f0cd670888b54553a7e9f123d25e0208d49b75822018e2",
+  "sources": {
+    "scripts/core/contracts.ts": "109d31a36b6698d58bc53c6f1d2b5788e708a178bdc0f00057c77e683248dabf",
+    "scripts/evals/contracts.ts": "6d25a1f63c8c621dacff25c2908cfb99a3be828fcd385567865111070aaa84b2",
+    "scripts/evals/process-supervisor.ts": "c72a40699236afaec015d38c3f40be72cef7292eb318b15c5c724df03b7605a2",
+    "scripts/evals/native-runner.ts": "03026a4ab796f702107e6f5122549c7c2c2ce19a82494f311256ebe77bb5e9cc",
+    "scripts/evals/native-approval.ts": "62f422c12e026f22f148b75dc7cb76634941b93b022f58c813c8935d1b23f4dd",
+    "scripts/evals/container/session.ts": "531b35fe56e1d4e9bcad9ffcd0a95c8ae2590d14044461a1c0a65894c9b20d7c",
+    "scripts/evals/container/archive.ts": "e89b72961a63fae00df207683b802dae2636a2db6f7292b4a891cad8c42c3e48",
+    "scripts/evals/container/owner.ts": "df6a4ef6d9e63f928c0c9f39fbb8dc7a452240e07aeb9ed620540d355abaa970",
+    "scripts/evals/container/bridge.mjs": "461c5e2e7aee8ba5ca6df525667e393bc1da69a967b057b1629e5808e0e6e114",
+    "scripts/evals/container/codex-config.ts": "72ae263bb066d1b416804de50e855f32c878ccd7fd3a535a6b930054757eadba",
+    "scripts/evals/container/code-mode.ts": "f68066ee1d527703c07bd28dc7611014d44e24fdd02055c01512403db00320d4",
+    "scripts/evals/container/codex-code-mode-model.json": "6885e65423bb632be27ddf448fd6aa0ff3f7ba09e6915b29bd57f2762ff8e375",
+    "scripts/evals/container/subscription.ts": "915ac877f35d843d934c08a2af0b8262021bdc8a5b2e49e892c503731b7681cc",
+    "scripts/evals/container/terminal-diagnostics.ts": "cf3f00b9a5e28ab522302295fc84bfe09bcfaaaac903005e1f098a19e97f9596",
+    "scripts/evals/container/codex-model.json": "c0948f5e809f1d7236b8fa51cae88cecc2524c0b010f95abb122916d7bf87457",
+    "scripts/evals/container/watchdog.mjs": "554c453524cd84dd3adf5df41703ebb66145f9714c87a4169896039c7690fcbe",
+    "scripts/evals/container/image-lock.json": "28cd8c77394b146db2c784bae4baedf210450b6fe09693999115d7db6177e5f0",
+    "scripts/evals/container/Dockerfile": "678f8498fe57c6cbdcd34da80ce325635af67e9e075529ceda0d9a7666f93c33",
+    "scripts/evals/profiles/codex/preflight.ts": "ac5c8c7357ef6e5dbd7b2505564b18ccc0dffbab060088aedf0e8901cce13c86",
+    "scripts/evals/profiles/codex/profile.ts": "8ff9013d5acf341ed9b592debaa26903dd29bbcc28d7ef81d11fce9a276f5b72",
+    "scripts/evals/profiles/codex/contained.ts": "b88027ba3fe440876be0a4afbca0f63c1c9597bec731703c1becbf29dcd4672d",
+    "scripts/evals/contained-codex.ts": "9413a0ce0070eed61953fd6db17fb4d254b16530e98af2253c407975d55883fa"
+  },
+  "native": {
+    "calls": 1,
+    "maxCalls": 1,
+    "deadlineMs": 180000,
+    "retries": 0,
+    "paidApiCalls": 0,
+    "model": "gpt-6-astra",
+    "cliVersion": "0.157.0",
+    "nodeVersion": "24.15.0",
+    "funding": "personal subscription",
+    "runnerCompleted": true,
+    "fullAcceptance": false,
+    "runnerElapsedMs": 41733.974875,
+    "driverElapsedMs": 41784.36212500001,
+    "usage": {
+      "inputTokens": 74697,
+      "outputTokens": 900
+    },
+    "namedInputs": 66,
+    "immutableInputs": 62,
+    "approvedFiles": 2,
+    "returnedNamedFiles": 70,
+    "capturedCliJsonResults": 0,
+    "actualCliInvocationsReviewed": 4,
+    "syntheticConsent": true,
+    "automaticLoading": "not established",
+    "privateDiagnosticRecords": 0,
+    "artifactCheckHash": "fe57e3a3fff14c3b82acb91d19674e6d8d7d74532438f1efdf55c2bae5946266",
+    "graderSelfTest": {
+      "positive": 1,
+      "negative": 11
+    }
+  },
+  "controls": {
+    "containers": 2,
+    "maxPerContainerMs": 20000,
+    "modelSessions": 0,
+    "authReads": 0,
+    "paidApiCalls": 0,
+    "reproductionElapsedMs": 989.888541,
+    "comparisonElapsedMs": 2753.220167,
+    "comparisonProcesses": 3,
+    "outerNetwork": "none",
+    "restrictedPipes": {
+      "status": 0,
+      "error": "EPERM",
+      "stdoutBytes": 0,
+      "stderrBytes": 0
+    },
+    "restrictedFileDescriptors": {
+      "status": 0,
+      "error": null,
+      "expectedStdoutAndStderr": true
+    },
+    "enabledAndOmittedInnerPolicyPipes": "expected streams; no error",
+    "exactDeniedSyscall": "unknown",
+    "originalNativeSpawnError": "not retained; inference only"
+  },
+  "closure": {
+    "allThreeContainersIndependentlyAbsent": true,
+    "nativeHomeAbsent": true,
+    "hostInputsUnchanged": 66,
+    "sourceFilesUnchanged": 22,
+    "liveJobs": 0
+  },
+  "accounting": {
+    "previousGeneratedMemoryCalls": 5,
+    "previousReportedCallerMs": 242262,
+    "thisPacketCalls": 1,
+    "combinedCalls": 6,
+    "scope": "Only original generated-memory packet, three-task follow-up and this native observation; not all project history",
+    "historicalFailedUsage": "unknown",
+    "monetaryCost": "unknown",
+    "newPaidApiCalls": 0
+  },
+  "review": {
+    "reviewer": "approval_boundary",
+    "scope": "Independent read-only Codex-specific command and control assessment",
+    "reportAssessment": "Ship after requested causal-wording correction",
+    "newModelSessions": 0,
+    "assessmentRecordedBy": "root"
+  },
+  "glm": {
+    "taskPacketPrepared": true,
+    "userOperated": true,
+    "runReceived": false,
+    "resultReceived": false
+  },
+  "artifacts": [
+    {
+      "path": ".evals-private/native-apply-followup-20261115/driver.mjs",
+      "sha256": "bbf6324ac5f0cb02a03b98ed9fad02cda28f90f125d07de5175e04ff9f67dbb3",
+      "bytes": 5237
+    },
+    {
+      "path": ".evals-private/native-apply-followup-20261115/grade.mjs",
+      "sha256": "640a93cf812c6a58366e2f54a46c4704215d28f553a7d6d5285889d8360c8338",
+      "bytes": 5695
+    },
+    {
+      "path": ".evals-private/native-apply-followup-20261115/protocol.json",
+      "sha256": "4b2ab9295ab18cd843e4a7a86045a75758ead7053ec8c1a91f67f0f5d3ada452",
+      "bytes": 3580
+    },
+    {
+      "path": ".evals-private/native-apply-followup-20261115/prospective.json",
+      "sha256": "8ceea4a637d78fde47c3674280670482c21e4dbbe6ad865b9aaac3c1ccd264d4",
+      "bytes": 20561
+    },
+    {
+      "path": ".evals-private/native-apply-followup-20261115/GO.json",
+      "sha256": "d471917e077dfb64d2fdecbb46d780697407457ed9ac8f8abdf03aa8525f9368",
+      "bytes": 710
+    },
+    {
+      "path": ".evals-private/native-apply-followup-20261115/prelaunch-review.json",
+      "sha256": "9513504dc733eee8a865c70d5667bf8cf062ab8f9110a12e201786d1ea23f6a4",
+      "bytes": 427
+    },
+    {
+      "path": ".evals-private/native-apply-followup-20261115/grade-self-test.log",
+      "sha256": "02a11ad3e00971dc7081ede2ac17e0724c87d03e0619be9ebdd7ca527f87732a",
+      "bytes": 103
+    },
+    {
+      "path": ".evals-private/native-apply-followup-20261115/events.jsonl",
+      "sha256": "836172324dd1f666b7c4f04db6047c09bfe091ed9b0073c5c28302fccba3f93a",
+      "bytes": 44866
+    },
+    {
+      "path": ".evals-private/native-apply-followup-20261115/outcome.json",
+      "sha256": "b5a393c05db25ec57530c50f473858f223b6938325af54d48e8fea2d21931ae0",
+      "bytes": 8772646
+    },
+    {
+      "path": ".evals-private/native-apply-followup-20261115/acceptance.json",
+      "sha256": "8290daab8c0f2471a8fc8ddca6096a7a5c10209320675497f9807d36d9cb5061",
+      "bytes": 291
+    },
+    {
+      "path": ".evals-private/native-apply-followup-20261115/diagnostics/run/terminal-errors.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".evals-private/native-apply-followup-20261115/closure.mjs",
+      "sha256": "2f16b8a4b7b026fce33941ed1b7c185d2c49af913279306ea8ff02b0b2740aee",
+      "bytes": 4782
+    },
+    {
+      "path": ".evals-private/native-apply-followup-20261115/closure.json",
+      "sha256": "fe57e3a3fff14c3b82acb91d19674e6d8d7d74532438f1efdf55c2bae5946266",
+      "bytes": 2151
+    },
+    {
+      "path": ".evals-private/native-apply-followup-20261115/postrun-review.json",
+      "sha256": "d0e6276fd006413e31082ce61e3a718c0fc0c0f40bb43a5a78a3f715c75b6acf",
+      "bytes": 561
+    },
+    {
+      "path": ".evals-private/native-apply-stdio-control-20261115/probe.mjs",
+      "sha256": "e9f373018ae3f232c89d20a3c1d599949fa7333aa8e3dc8f242e1a40867502b8",
+      "bytes": 7693
+    },
+    {
+      "path": ".evals-private/native-apply-stdio-control-20261115/probe/protocol.json",
+      "sha256": "6aefd3de4fb2222324a0fe31ebb7db841be3cb0a98d2af4fc3ab562bca20729c",
+      "bytes": 2196
+    },
+    {
+      "path": ".evals-private/native-apply-stdio-control-20261115/probe/GO.json",
+      "sha256": "58b88d02e5f89f43ae07067a3debfad1ef1e3937a05f227806a7318cdb279292",
+      "bytes": 270
+    },
+    {
+      "path": ".evals-private/native-apply-stdio-control-20261115/probe/summary.json",
+      "sha256": "f57217d0d17024af0fc675ac32762c4b9ec5304c755525741f756096e9ad599a",
+      "bytes": 851
+    },
+    {
+      "path": ".evals-private/native-apply-stdio-control-20261115/probe/raw.json",
+      "sha256": "5fa43cbd1d1b3eed2f1d1f9a53e9104f3453a8ee612e4df509421983be01d59a",
+      "bytes": 3197
+    },
+    {
+      "path": ".evals-private/native-apply-stdio-comparison-20261115/compare.mjs",
+      "sha256": "861612c8bdeee0a6c379d8fddfc6750c95cd45e13061a76098574f6da0f85389",
+      "bytes": 7684
+    },
+    {
+      "path": ".evals-private/native-apply-stdio-comparison-20261115/protocol.json",
+      "sha256": "d46616d256b60949fa1e3f0f70503498c78692d18417ed4557e6363c878d9dd0",
+      "bytes": 1838
+    },
+    {
+      "path": ".evals-private/native-apply-stdio-comparison-20261115/GO.json",
+      "sha256": "4292f1cccba188be5eaf3deb30b6fc05e47df3c8baa31064c01611ca722c0c8d",
+      "bytes": 324
+    },
+    {
+      "path": ".evals-private/native-apply-stdio-comparison-20261115/summary.json",
+      "sha256": "a4cc4957e9a26df2df372d8ebe4a7b7793fbe7a5c954cc5d543c5f20e101463c",
+      "bytes": 2658
+    },
+    {
+      "path": ".evals-private/native-apply-stdio-comparison-20261115/raw.json",
+      "sha256": "6cf6f2bdd35129dc16d55014cc817524705998628085adef96d3b412e5a77d12",
+      "bytes": 7132
+    }
+  ],
+  "limitations": [
+    "Named paths only, not exhaustive filesystem audit",
+    "Standalone verify/status/report JSON absent; failed grade preserved",
+    "Controls cannot reconstruct earlier missing command or outputs",
+    "No product/network/credential fix, human consent or broad-harness acceptance",
+    "No new full source gate for documentation-only work",
+    "No commit, push or release"
+  ]
+}
