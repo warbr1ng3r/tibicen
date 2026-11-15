@@ -1,0 +1,43 @@
+{
+  "version": "1.5.5",
+  "publishedAtUtc": "2026-11-15T05:56:57Z",
+  "releaseId": 445844815,
+  "sourceCommit": "963e46102a1b39d6e8a64cb9995a949bc1dcc505",
+  "distributionCommit": "6d4baea666fc2885c04ba0fa0fc60dbb8b4e6a74",
+  "tagObject": "29637b354614a7e2c8ed43137c1a0aaee1d83eae",
+  "assets": {
+    "distribution-SHA256SUMS": {
+      "id": 750003186,
+      "bytes": 11559,
+      "sha256": "1a8a226193fadc7902853472551c3c691b1ecf38128d83be9930aa49667c23bf"
+    },
+    "SHA256SUMS": {
+      "id": 750003180,
+      "bytes": 177,
+      "sha256": "6e035d2f895b6937b2e4f90aaea138ea7c6c8855dd66ceda8fd28dadb4183cd8"
+    },
+    "tibicen-1.5.5.tar.gz": {
+      "id": 750003179,
+      "bytes": 290052,
+      "sha256": "b643d7fe9266dd12fd6b4693a4723ea30f2920e341b52778aaed1fbe77bc7559"
+    }
+  },
+  "sourceCiRunId": 43682820067,
+  "platformRunId": 43682833497,
+  "publishRunId": 43683217465,
+  "candidate": "1.5.5-candidate-02",
+  "payloadFiles": 110,
+  "archiveFiles": 111,
+  "localGate": {
+    "pass": 1148,
+    "fail": 0,
+    "skip": 1
+  },
+  "platformCells": 6,
+  "localDelivery": true,
+  "publicFullShaDelivery": true,
+  "returnedAssetsExact": true,
+  "previousVersionPreserved": "1.5.4",
+  "siteMetadata": "pending deployment verification",
+  "scope": "Compatible patch; explicit skill reading and synthetic consent remain disclosed; no autoload/human usefulness claim."
+}

@@ -2,9 +2,11 @@
 
 Updated 15 November 2026. Scope stays in the [vision](PRODUCT_VISION.md), [addendum](PRODUCT_VISION_ADDENDUM.md) and [current capabilities](CURRENT_CAPABILITIES.md). Assignments and integration status live in the [tracker](agents/issue-tracker.md); detailed implementation requirements belong in the relevant OpenSpec change.
 
+**Current release: [1.5.5](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.5).** The reviewed reliability fixes are published; the [report](evals/results/2026-11-15-release-1.5.5/README.md) binds exact source, distribution and limits. Additional coverage is separate postrelease work. Dated statuses below preserve preparation history.
+
 ## Starting point
 
-Published skills remain **1.5.4**. The [release report](evals/results/2026-11-09-release-1.5.4/README.md) defines exact delivered bytes and limits. Current input-file hardening and proposal guidance are **Unreleased**. This consolidation neither publishes a version nor redeploys the site. The recorded [Cloudflare migration](../openspec/changes/make-cloudflare-primary-site/verification.md) is reconciled into local source; release assets and the legacy checksum endpoint stay unchanged.
+Published skills are **1.5.5**. The [release report](evals/results/2026-11-15-release-1.5.5/README.md) defines exact delivered bytes and limits. Input-file hardening and proposal guidance are included. The recorded [Cloudflare migration](../openspec/changes/make-cloudflare-primary-site/verification.md) remains in effect; the 1.5.4 release assets are preserved. Site metadata deployment is being verified separately.
 
 The [10–12 November registry](evals/results/2026-11-10-reliability-runs/README.md) reports wider usage than the earlier AionCore attempt: additional harnesses, Bash/documentation/Python, adopt, memory, recovery and optional process tools. The [assessment](evals/results/2026-11-10-reliability-runs/ASSESSMENT.md) separates reports from retained primary evidence. Codex's operator-run apply is not a wholly native cycle. Some raw streams and fixtures were deleted: aggregate counts are not independent reproducible acceptance or proof that all 218 planned checks passed. The original AionCore route remains unverified.
 
@@ -46,7 +48,7 @@ A further [corrected-capture native observation](evals/results/2026-11-15-native
 
 Next delivery order: interrupted repair, adopt preservation and memory in another native harness, each with a finite protocol and declared capability limits. Routine GLM review has a ready user-operated packet and is not a blocker for completed work. Do not infer a product/network fix from the historical denial, or automatic loading, human benefit or broad harness support from controlled assisted tasks. Detailed tasks remain in OpenSpec and the tracker.
 
-The 14–15 November local implementation remains **Unreleased and uncommitted**. This observation follow-up selects no commit, push, version bump, publication or new paid work; published **1.5.4** is unchanged.
+The reviewed 14–15 November implementation is committed and published in **1.5.5**, following the user-authorized release. The earlier 1.5.4 release remains unchanged. Additional native observations are postrelease work; publication does not turn unverified behavior into supported behavior.
 
 No paid run is part of this cleanup. This effort originally authorized **100 RUB total**; the key's technical **200 RUB/day** limit does not renew that authorization. Later report totals disagree and exceed the original figure; separate authorization and settled spend are not established by the retained packet. Reconcile accounting and applicable authorization before another paid packet. Offline work remains available.
 

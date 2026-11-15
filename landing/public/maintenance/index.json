@@ -27,7 +27,7 @@
       "publishedAtUtc": "2026-11-04T05:36:46Z",
       "sourceCommit": "4c1be3ecc4126f1531030e51c4a8a56e9a292190",
       "distributionCommit": "e8532bba0582564c93e50de1f55174daaa9bbd34",
-      "scope": "Mechanical public installation verified for Codex, Claude Code and Cursor; six macOS/Ubuntu/Windows × Node 22.20/24.15 standalone CI cells passed. Windows command launch is unsupported; read-only operations are available. Native discovery/loading and application execution are not established by installation. Human benefit is unmeasured.",
+      "scope": "Mechanical public installation verified for Codex, Claude Code and Cursor; six macOS/Ubuntu/Windows \u00d7 Node 22.20/24.15 standalone CI cells passed. Windows command launch is unsupported; read-only operations are available. Native discovery/loading and application execution are not established by installation. Human benefit is unmeasured.",
       "payloadManifest": {
         "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.0.0/distribution-SHA256SUMS",
         "sha256": "0bdcf606c644859120dbae065b04095a8f7bacedb39ec98508f72290cfc0bbb3"
@@ -46,7 +46,7 @@
       "publishedAtUtc": "2026-11-04T21:02:42Z",
       "sourceCommit": "3166be50a1a3979e600ea08b65694c9255dcb89a",
       "distributionCommit": "7bbd953a020ac4ac4c7dfb99efa59f6e4b195026",
-      "scope": "Optional project memory with one approved Markdown store. Mechanical public installation/update/removal verified for Codex, Claude Code and Cursor; all 90 payload files matched. Six macOS/Ubuntu/Windows × Node 22.20/24.15 standalone CI cells passed. Two fresh controlled Codex tasks explicitly read, used and updated memory after root-assisted setup; automatic startup loading and equivalent behavior in other agents are not established. Windows command launch is unsupported; read-only operations are available. Human benefit is unmeasured.",
+      "scope": "Optional project memory with one approved Markdown store. Mechanical public installation/update/removal verified for Codex, Claude Code and Cursor; all 90 payload files matched. Six macOS/Ubuntu/Windows \u00d7 Node 22.20/24.15 standalone CI cells passed. Two fresh controlled Codex tasks explicitly read, used and updated memory after root-assisted setup; automatic startup loading and equivalent behavior in other agents are not established. Windows command launch is unsupported; read-only operations are available. Human benefit is unmeasured.",
       "payloadManifest": {
         "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.1.0/distribution-SHA256SUMS",
         "sha256": "bf6d76cfddf7c41f071bb1f9c9f3633ab69070aeac38cd0fc246b583ad33ec0f"
@@ -65,7 +65,7 @@
       "publishedAtUtc": "2026-11-05T03:46:37Z",
       "sourceCommit": "fb80e78198e7fe12353fbe8f9319f84ac943f792",
       "distributionCommit": "0656f12e00ea83d84229180d331f3178bf253407",
-      "scope": "Version-aware practice evidence, clearer adopt diagnosis and recognition of existing nested memory pointers. Mechanical public installation/update/backup restoration/removal verified for Codex, Claude Code and Cursor; all 92 payload files matched. Six macOS/Ubuntu/Windows × Node 22.20/24.15 standalone CI cells are reused through unchanged exact runtime/build/platform inputs. Two source-supplied Desktop observations were independently accepted for generic explanation and keep/change reasoning only; new native or implicit loading, current target compatibility and broader harness support are not established. Historical skill/process/memory observations retain their original source/input/profile and assistance limits. Windows command launch is unsupported; read-only operations are available. Human benefit is unmeasured.",
+      "scope": "Version-aware practice evidence, clearer adopt diagnosis and recognition of existing nested memory pointers. Mechanical public installation/update/backup restoration/removal verified for Codex, Claude Code and Cursor; all 92 payload files matched. Six macOS/Ubuntu/Windows \u00d7 Node 22.20/24.15 standalone CI cells are reused through unchanged exact runtime/build/platform inputs. Two source-supplied Desktop observations were independently accepted for generic explanation and keep/change reasoning only; new native or implicit loading, current target compatibility and broader harness support are not established. Historical skill/process/memory observations retain their original source/input/profile and assistance limits. Windows command launch is unsupported; read-only operations are available. Human benefit is unmeasured.",
       "payloadManifest": {
         "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.2.0/distribution-SHA256SUMS",
         "sha256": "9c4853a038fec91a37ad430e50184ef3364e9ebb1f7569ff2010ba7a39cb70c5"
@@ -84,7 +84,7 @@
       "publishedAtUtc": "2026-11-05T19:34:40Z",
       "sourceCommit": "797b96e5306da77e8acc54a28c8a6a8e85b3cfd7",
       "distributionCommit": "b61a19583dc91ee9e3e795250d733d2cc99e6569",
-      "scope": "Explicit universal installation and manual archive route, common project instructions/memory and valid uncatalogued harness hints. Mechanical full-SHA public install/replacement/repeat, actual-path edited-backup restoration/removal and 94 payload checks passed for one universal target on macOS arm64/Node 24.15.0. Six macOS/Ubuntu/Windows × Node 22.20.0/24.15.0 standalone platform cells passed. Two source-assisted init/adopt reasoning cases passed independent review; native loading and broad model compatibility remain unverified. Installer Git children have ordinary OS permissions; no OS isolation claim. Windows project-command launch remains unsupported; read-only operations are available. Human benefit is unmeasured.",
+      "scope": "Explicit universal installation and manual archive route, common project instructions/memory and valid uncatalogued harness hints. Mechanical full-SHA public install/replacement/repeat, actual-path edited-backup restoration/removal and 94 payload checks passed for one universal target on macOS arm64/Node 24.15.0. Six macOS/Ubuntu/Windows \u00d7 Node 22.20.0/24.15.0 standalone platform cells passed. Two source-assisted init/adopt reasoning cases passed independent review; native loading and broad model compatibility remain unverified. Installer Git children have ordinary OS permissions; no OS isolation claim. Windows project-command launch remains unsupported; read-only operations are available. Human benefit is unmeasured.",
       "payloadManifest": {
         "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.3.0/distribution-SHA256SUMS",
         "sha256": "bf589996433f8eb46b83f87cd229fc6ead81af46f0ce50959e4c7c05525bee4d"
@@ -230,6 +230,25 @@
         }
       ],
       "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.4"
+    },
+    {
+      "version": "1.5.5",
+      "publishedAtUtc": "2026-11-15T05:56:57Z",
+      "sourceCommit": "963e46102a1b39d6e8a64cb9995a949bc1dcc505",
+      "distributionCommit": "6d4baea666fc2885c04ba0fa0fc60dbb8b4e6a74",
+      "scope": "Compatible reliability patch: actionable memory-connection recovery, preserved owner rules and exact-plan consent, maintenance without installed Tibicen and bounded CLI reads. No schema migration, new write permission or background update. Exact local/public install/update/recovery/removal, both standalone self-tests and six platform cells passed. Assisted native observations and synthetic consent remain separate from autoload, human approval and measured usefulness. MIT license retained.",
+      "payloadManifest": {
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.5/distribution-SHA256SUMS",
+        "sha256": "1a8a226193fadc7902853472551c3c691b1ecf38128d83be9930aa49667c23bf"
+      },
+      "archives": [
+        {
+          "name": "tibicen-1.5.5.tar.gz",
+          "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.5/tibicen-1.5.5.tar.gz",
+          "sha256": "b643d7fe9266dd12fd6b4693a4723ea30f2920e341b52778aaed1fbe77bc7559"
+        }
+      ],
+      "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.5"
     }
   ],
   "warnings": []

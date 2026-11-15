@@ -57,7 +57,7 @@ repeat adopt uses those current notes; it does not restore the original template
 
 ## Preserve your rules and make reading explicit
 
-**Unreleased guidance:** keep project commands, owner constraints and accepted
+**Guidance available in 1.5.5:** keep project commands, owner constraints and accepted
 decisions in ordinary instruction sections outside the replaceable
 `<!-- tibicen:begin v1 -->` / `<!-- tibicen:end v1 -->` block, or in the selected
 memory. The block holds the generic reading and maintenance procedure. Replacing
@@ -199,7 +199,7 @@ completed setup, the memory body is user-owned: adding a note does not have to
 match its initial hash. The file's safe location, presence and managed instruction
 connection remain independently checkable.
 
-**Unreleased recovery advice:** `apply.nextAction` and
+**Recovery advice available in 1.5.5:** `apply.nextAction` and
 `report.diagnosis.nextAction` explain a current `missing-memory-connection`.
 Review the permitted instruction scope and selected store, propose an exact new
 connection, obtain fresh approval and resume the original session. Repeating the

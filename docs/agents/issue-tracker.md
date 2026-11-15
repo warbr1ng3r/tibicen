@@ -1,5 +1,9 @@
 # Issue tracker
 
+## Release 1.5.5 published
+
+[1.5.5](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.5) is published; CI/six platforms/exact delivery and returned assets are accepted. [Report](../evals/results/2026-11-15-release-1.5.5/README.md). Site metadata has a separate final check. New research and model matrices are outside this release.
+
 ## Closed effort — native apply completed with corrected capture, 15 November 2026
 
 Owner: none; root completed the owner's request. The [final report and evidence](../evals/results/2026-11-15-native-apply-completion/README.md) record one successful fresh native Codex cycle: apply → structure-only verify → status → report, all exit zero with actual nonempty JSON and null child error/signal/capture error. Independent review matched the four native helper invocations and outputs to the returned captures. Both approved files, 63 immutable named inputs and session/memory binding passed grading. This is the explicitly assisted synthetic-consent route, not unassisted loading or human approval.
