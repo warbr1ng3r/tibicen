@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "distributionCommit": "6d4baea666fc2885c04ba0fa0fc60dbb8b4e6a74",
+  "candidateArchiveSha256": "b643d7fe9266dd12fd6b4693a4723ea30f2920e341b52778aaed1fbe77bc7559",
+  "payloadFiles": 110,
+  "calls": {
+    "installer": 4,
+    "standalone": 2
+  },
+  "preservationPassed": true,
+  "rawReceiptSha256": "33e5c858aa5a951b32409b580cd752df575e226b03a33773a606ca182a60d797",
+  "limits": [
+    "Owned macOS/Node24 anonymous full-SHA delivery and cleanup. Assisted native observations and synthetic consent stay separate; no autoload or human-benefit claim. Installer child reads/network are not an OS sandbox."
+  ]
+}
