@@ -2,7 +2,7 @@
 
 ## Release 1.5.6 published
 
-Owner: root; final site-metadata verification continues. [1.5.6](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.6) is published; CI, six platform cells, exact public delivery and returned assets are accepted. [Report](../evals/results/2026-11-16-release-1.5.6/README.md). The earlier failed observation and ZCode admission deviation are not regraded. New models, paid APIs and research are outside this release.
+Owner: none; release and site-metadata verification are complete. [1.5.6](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.6) is published; CI, six platform cells, exact public delivery and returned assets are accepted. [Report](../evals/results/2026-11-16-release-1.5.6/README.md). The earlier failed observation and ZCode admission deviation are not regraded. New models, paid APIs and research are outside this release.
 
 ## Closed assessment — returned ZCode memory follow-up, 16 November
 

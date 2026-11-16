@@ -1,6 +1,6 @@
 # Tibicen development plan
 
-**Current release: [1.5.6](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.6).** Owner decision-authority guidance is published; the [report](evals/results/2026-11-16-release-1.5.6/README.md) binds exact delivery and observation limits. Site metadata is verified separately after publication. Dated plans below retain history rather than new assignments.
+**Current release: [1.5.6](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.6).** Owner decision-authority guidance is published; the [report](evals/results/2026-11-16-release-1.5.6/README.md) binds exact delivery and observation limits. Site metadata and both checksum endpoints are deployed and verified. Dated plans below retain history rather than new assignments.
 
 ## Postrelease findings — 16 November
 
@@ -8,7 +8,7 @@ The [original ZCode assessment](evals/results/2026-11-15-zcode-postrelease/READM
 
 The separate [combined-use follow-up](evals/results/2026-11-16-zcode-memory-authority/README.md) reports all five behavioral phases passed, including ordinary use, explicit correction and fresh reuse. Root checked candidate/plan identity and replayed both retained corrected projects. This is positive scoped evidence; it is **not protocol-compliant acceptance** because later phases were admitted after the 180-second stop. Preserve that deviation and the missing initial-state replay/worker traces; no new model run is needed to relabel it.
 
-Final engineering review, authorized commits and compatible **1.5.6 patch** delivery are complete; the release notice above tracks the remaining site-metadata verification. No new product feature or broad model matrix is required here. Future observation protocols should enforce their next-call stops and retain each phase's source/memory snapshot. Causal memory-only research, autoload, human usefulness and other-harness coverage remain separate work. Detailed implementation tasks stay in the change.
+Final engineering review, authorized commits and compatible **1.5.6 patch** delivery are complete; site metadata is also deployed and verified. No new product feature or broad model matrix is required here. Future observation protocols should enforce their next-call stops and retain each phase's source/memory snapshot. Causal memory-only research, autoload, human usefulness and other-harness coverage remain separate work. Detailed implementation tasks stay in the change.
 
 Updated 16 November 2026. Scope stays in the [vision](PRODUCT_VISION.md), [addendum](PRODUCT_VISION_ADDENDUM.md) and [current capabilities](CURRENT_CAPABILITIES.md). Assignments and integration status live in the [tracker](agents/issue-tracker.md); detailed implementation requirements belong in the relevant OpenSpec change.
 

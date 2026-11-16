@@ -72,5 +72,18 @@
   },
   "newPaidModelApiCalls": 0,
   "newBehavioralModelSessionsForRelease": 0,
-  "siteMetadata": "pending separate deployment and returned-body verification"
+  "siteMetadata": {
+    "sourceCommit": "c84834d541f951c8fdb31723e9747556a3541d52",
+    "ciRunId": 43779879844,
+    "cloudflareRunId": 43779879820,
+    "legacyPagesRunId": 43780093686,
+    "allPassed": true,
+    "verifiedAtUtc": "2026-11-16T00:24:47.546563+00:00",
+    "bodiesChecked": 8,
+    "indexSha256": "4e17ea702b920eeefc38032cc5d257f3c0d32ba0177b35052641231365525667",
+    "historicalRecordsPreserved": 13,
+    "bothIndexesAndRedirectsMatchCommittedBytes": true,
+    "primaryHomeInstallPinsAndLocalesVerified": true,
+    "officialArtifactComparison": false
+  }
 }

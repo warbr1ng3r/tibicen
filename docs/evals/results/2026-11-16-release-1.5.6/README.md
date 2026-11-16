@@ -27,4 +27,8 @@ All **108 nonmetadata payload files**, including all **54 observed nonmetadata i
 
 Independent Ponytail review accepted the candidate, public projection, reused finite delivery controls and concrete publication binding. No new paid model API calls were made. A private metadata-preparation syntax typo was caught before real writes and corrected in an isolated control; it is not a product failure.
 
-Site metadata is verified separately after publication.
+Site metadata verification is recorded below.
+
+## Site metadata verified
+
+Metadata source `c84834d541f951c8fdb31723e9747556a3541d52` passed [CI](https://github.com/warbr1ng3r/tibicen/actions/runs/43779879844), [Cloudflare deployment](https://github.com/warbr1ng3r/tibicen/actions/runs/43779879820) and [legacy Pages deployment](https://github.com/warbr1ng3r/tibicen/actions/runs/43780093686). Eight returned HTTPS bodies passed normal TLS verification: English/Russian home and preset pages, both checksum endpoints and both legacy home redirects. Home pages contain the full 1.5.6 distribution pin and release link. Both indexes and both redirects exactly match committed bytes; all 13 older index records and warnings are preserved. Index SHA-256: `4e17ea702b920eeefc38032cc5d257f3c0d32ba0177b35052641231365525667`. This is scoped metadata verification, not a full official-artifact/body audit. Later documentation closure does not change published skill assets or claim a different deployed artifact.
