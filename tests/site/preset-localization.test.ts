@@ -12,20 +12,20 @@ const invalidCases = [
   {
     field: 'name',
     value: '../private',
-    en: 'Name: up to 64 lowercase Latin letters, numbers and hyphens. For example, hackathon.',
-    ru: 'Имя: до 64 латинских букв, цифр и дефисов. Например, hackathon.',
+    en: 'Use up to 64 characters: lowercase Latin letters, numbers and hyphens. Start with a letter or number. For example, hackathon.',
+    ru: 'До 64 символов: строчные латинские буквы, цифры и дефисы. Начните с буквы или цифры. Например, hackathon.',
   },
   {
     field: 'process',
     value: 'unknown',
-    en: 'Choose one of the available processes.',
-    ru: 'Выберите предложенный процесс.',
+    en: 'Choose how detailed the workflow should be.',
+    ru: 'Выберите, насколько подробно разбивать работу на этапы.',
   },
   {
     field: 'style',
     value: 'unknown',
-    en: 'Choose one of the available response styles.',
-    ru: 'Выберите предложенную подробность ответов.',
+    en: 'Choose the agent response style.',
+    ru: 'Выберите стиль ответов агента.',
   },
   {
     field: 'agents',
@@ -42,20 +42,20 @@ const invalidCases = [
   {
     field: 'language',
     value: 'not a short name',
-    en: 'Use short names for programming language and project type.',
-    ru: 'Стек и тип проекта задаются короткими названиями.',
+    en: 'Enter a short name for the programming language or project type.',
+    ru: 'Укажите короткое название языка программирования или типа проекта.',
   },
   {
     field: 'kind',
     value: 'not a short name',
-    en: 'Use short names for programming language and project type.',
-    ru: 'Стек и тип проекта задаются короткими названиями.',
+    en: 'Enter a short name for the programming language or project type.',
+    ru: 'Укажите короткое название языка программирования или типа проекта.',
   },
   {
     field: 'forbiddenPaths',
     value: '../private',
-    en: 'Protected paths must be relative to the project, without .., backslashes or absolute paths.',
-    ru: 'Запретные пути задаются относительно проекта, без .., обратных слешей и абсолютных путей.',
+    en: 'Use paths relative to the project root. Do not use .., backslashes or absolute paths.',
+    ru: 'Укажите пути относительно корня проекта. Не используйте .., обратные слеши и абсолютные пути.',
   },
 ];
 

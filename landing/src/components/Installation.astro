@@ -44,11 +44,14 @@ const alternatives: { manager: Manager; label: string }[] = [
   </div>
   <pre><code id="install-command">{installationCommand('npm')}</code></pre>
   <p>
-    {t('Installs both skills in', 'Установит оба скилла в')}{' '}
+    {t(
+      'This command installs both skills in',
+      'Команда установит оба скилла в',
+    )}{' '}
     <code>~/.agents/skills/</code>.
     {t(
-      ' Back up local skill edits before reinstalling.',
-      ' Перед переустановкой сохраните локальные правки скиллов.',
+      ' If you edited skill files, save a copy before reinstalling.',
+      ' Если вы редактировали их файлы, сохраните копию перед переустановкой.',
     )}
   </p>
   <details class="installation-alternatives">

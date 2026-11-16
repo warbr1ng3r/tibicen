@@ -15,7 +15,7 @@ const optional = [
   {
     icon: 'skills' as const,
     name: t('Skills', 'Скиллы'),
-    note: t('repeated tasks', 'повторные задачи'),
+    note: t('for recurring tasks', 'для повторяющихся задач'),
   },
   {
     icon: 'plug' as const,
@@ -53,7 +53,6 @@ const optional = [
           <li class="optional-setup">
             <div class="optional-heading">
               <span>{t('Optional', 'При необходимости')}</span>
-              <small>{t('chosen for your project', 'под ваш проект')}</small>
             </div>
             <ul>
               {optional.map((entry) => (
@@ -89,8 +88,8 @@ const optional = [
         <SetupIcon name="check" />
         <p>
           {t(
-            'Only the setup your project needs.',
-            'Только то, что нужно вашему проекту.',
+            'The setup depends on your project',
+            'Состав настройки зависит от проекта',
           )}
         </p>
       </div>

@@ -64,7 +64,9 @@ test('catalog hints stay local preferences in English and Russian on a narrow vi
       ),
     ).toEqual(HARNESS_PROFILES.map(({ id }) => id));
     await expect(page.locator('#agents-hint')).toContainText(
-      russian ? 'Это предпочтения' : 'Preferences only',
+      russian
+        ? 'Выбор сохранится в пресете'
+        : 'Your choices are saved in the preset',
     );
     for (const label of ['Roo Code', 'Windsurf']) {
       await expect(
@@ -232,7 +234,10 @@ test('keyboard selection, dismissal and focus do not submit the preset', async (
   await trigger.focus();
   await page.keyboard.press('Space');
   await expect(
-    page.getByRole('option', { name: 'Detect in project', exact: true }),
+    page.getByRole('option', {
+      name: 'Detect from project files',
+      exact: true,
+    }),
   ).toBeFocused();
   await page.keyboard.press('ArrowDown');
   await expect(
@@ -249,7 +254,7 @@ test('keyboard selection, dismissal and focus do not submit the preset', async (
   await expect(trigger).toBeFocused();
   await expect(trigger).toHaveAttribute('aria-expanded', 'false');
   await trigger.click();
-  await page.getByRole('heading', { name: 'Save your preferences' }).click();
+  await page.getByRole('heading', { name: 'Save your agent settings' }).click();
   await expect(trigger).toHaveAttribute('aria-expanded', 'false');
 });
 
@@ -258,7 +263,9 @@ test('custom selects participate in FormData, including empty defaults', async (
 }) => {
   await openPreset(page);
   await openAdvanced(page);
-  await expect(page.locator('#language')).toContainText('Detect in project');
+  await expect(page.locator('#language')).toContainText(
+    'Detect from project files',
+  );
   await expect(page.locator('#kind')).toContainText('Various projects');
   await expect(page.locator('#style')).toContainText('Concise');
   const values = () =>
@@ -281,8 +288,10 @@ test('custom selects participate in FormData, including empty defaults', async (
     kind: 'library',
     style: 'detailed',
   });
-  await choose(page, 'language', 'Detect in project');
-  await expect(page.locator('#language')).toContainText('Detect in project');
+  await choose(page, 'language', 'Detect from project files');
+  await expect(page.locator('#language')).toContainText(
+    'Detect from project files',
+  );
   expect(await values()).toMatchObject({ language: '' });
 });
 
@@ -299,7 +308,9 @@ test('field errors block downloads, identify the field and recover after editing
   await expect(name).toBeFocused();
   await expect(name).toHaveAttribute('aria-invalid', 'true');
   await expect(name).toHaveAttribute('aria-describedby', /name-error/);
-  await expect(page.locator('#name-error')).toContainText('Name:');
+  await expect(page.locator('#name-error')).toContainText(
+    'Use up to 64 characters:',
+  );
   expect(downloads).toBe(0);
   if (testInfo.project.name === 'chromium') {
     await expect(page.locator('.preset-details')).toHaveScreenshot(
@@ -365,7 +376,7 @@ for (const width of [320, 390, 768, 1024, 1440]) {
       return {
         width: document.documentElement.scrollWidth,
         textFits:
-          value.textContent === 'Detect in project' &&
+          value.textContent === 'Detect from project files' &&
           value.scrollWidth <= value.clientWidth,
         fontSizes: [
           ...document.querySelectorAll('.preset-details small, .form-footnote'),
@@ -588,9 +599,7 @@ for (const locale of ['en', 'ru'] as const) {
         (window as Window & { completeCopy?: () => void }).completeCopy!(),
       );
       await expect(page.locator('#copy-status')).toHaveText(
-        locale === 'en'
-          ? 'Copied to clipboard.'
-          : 'Скопировано в буфер обмена.',
+        locale === 'en' ? 'Copied' : 'Скопировано',
       );
       await expect(button.locator('[data-copy-label]')).toHaveText(
         locale === 'en' ? 'Copied' : 'Скопировано',
@@ -639,7 +648,7 @@ test('Russian name/path errors identify fields and recover with advanced setting
     'aria-describedby',
     /name-error/,
   );
-  await expect(page.locator('#name-error')).toContainText('Имя:');
+  await expect(page.locator('#name-error')).toContainText('До 64 символов:');
   await page.locator('#name').fill('my-setup');
   await expect(page.locator('#name-error')).toBeHidden();
   await expect(page.locator('#name')).not.toHaveAttribute('aria-invalid');
@@ -654,7 +663,7 @@ test('Russian name/path errors identify fields and recover with advanced setting
     'true',
   );
   await expect(page.locator('#forbidden-paths-error')).toContainText(
-    'относительно проекта',
+    'относительно корня проекта',
   );
   expect(downloads).toBe(0);
   await page.locator('#forbidden-paths').fill('private/');
@@ -682,8 +691,8 @@ test('equivalent English/Russian choices download identical local presets with l
       expect(file.suggestedFilename()).toBe('preset.yaml');
       await expect(page.locator('#download-status')).toHaveText(
         locale === 'en'
-          ? 'File prepared for download. Give it to your agent in the target project.'
-          : 'Файл подготовлен к скачиванию. Передайте его агенту в нужном проекте.',
+          ? 'The file is ready to download. Give it to your agent in the project you want to set up.'
+          : 'Файл готов к скачиванию. Передайте его агенту в нужном проекте.',
       );
       return downloadedText(file);
     };

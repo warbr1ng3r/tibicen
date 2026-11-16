@@ -21,8 +21,8 @@ const scenarios = [
   {
     title: t('Set up this project', 'Настроить проект'),
     description: t(
-      'Start here if the project has no agent instructions yet.',
-      'Если в проекте ещё нет инструкций для агента.',
+      'For a project with no agent instructions yet',
+      'Для проекта, в котором ещё нет инструкций для агента',
     ),
     prompt: t(
       'Read ~/.agents/skills/tibicen-init/SKILL.md and follow its instructions. Set this project up for my coding agent.',
@@ -30,10 +30,13 @@ const scenarios = [
     ),
   },
   {
-    title: t('Fix the existing setup', 'Привести настройку в порядок'),
+    title: t(
+      'Update existing instructions',
+      'Обновить существующие инструкции',
+    ),
     description: t(
-      'Keep useful rules and correct what is outdated or conflicting.',
-      'Сохранить полезные правила и исправить устаревшее или противоречивое.',
+      'For a project with outdated or conflicting rules',
+      'Для проекта с устаревшими или противоречащими друг другу правилами',
     ),
     prompt: t(
       'Read ~/.agents/skills/tibicen-adopt/SKILL.md and follow its instructions. Check the project instructions and fix what is outdated.',
@@ -43,13 +46,10 @@ const scenarios = [
 ];
 const questions = [
   {
-    title: t(
-      'Can I use another coding agent?',
-      'Можно использовать другого агента?',
-    ),
+    title: t('Which coding agents can I use?', 'Какие агенты подходят?'),
     description: t(
-      'Use a host that can read project files and run the required Node commands. Explicitly open the installed SKILL.md; a catalog entry or automatic discovery is not required. Your host chooses the model and provider. Check Requirements and compatibility for the narrower observations on the published release.',
-      'Нужна среда, которая читает файлы проекта и запускает нужные Node-команды. Явно откройте установленный SKILL.md; запись в каталоге и автоматическое обнаружение не обязательны. Модель и провайдера выбирает ваша среда. Наблюдения для опубликованного релиза перечислены в разделе «Требования и совместимость».',
+      'Use an agent that can read project files and run commands with Node. Ask it to read the installed SKILL.md; automatic discovery is not required. The model and provider depend on your agent settings. Check Requirements and compatibility for a link to what was tested in the published release and its limits.',
+      'Подойдёт агент, который читает файлы проекта и запускает команды через Node. Попросите его прочитать установленный SKILL.md: автоматическое обнаружение для этого не требуется. Модель и провайдер зависят от настроек вашего агента. Перед запуском проверьте раздел «Требования и совместимость»: там есть ссылка на проверки и ограничения релиза.',
     ),
   },
   {
@@ -58,8 +58,8 @@ const questions = [
       'Нужен отдельный аккаунт или API-ключ?',
     ),
     description: t(
-      'Tibicen runs inside your usual coding agent and needs no separate account or API key. Your agent and any selected external services keep their own authentication and costs.',
-      'Tibicen работает внутри привычного агента, отдельный аккаунт или API-ключ не нужен. У агента и выбранных внешних сервисов остаются собственные авторизация и стоимость.',
+      'Tibicen runs inside your coding agent, so it needs no separate account or API key. Your agent and connected services may require their own accounts and payment.',
+      'Для Tibicen не нужны отдельный аккаунт или API-ключ: он работает внутри вашего агента. Для самого агента и подключаемых сервисов могут понадобиться свои аккаунты и оплата.',
     ),
   },
   {
@@ -68,15 +68,15 @@ const questions = [
       'Что произойдёт с существующими файлами?',
     ),
     description: t(
-      'Only approved agent infrastructure changes. Application source, data, existing package manifests and CI are preserved. Installations and project commands require approval. No commits or persistent Tibicen process are created.',
-      'Меняется только согласованная агентская инфраструктура. Код приложения, данные, существующие package-файлы и CI сохраняются. Установка и проектные команды требуют согласия. Коммиты и постоянный процесс Tibicen не создаются.',
+      'Tibicen changes only the agent setup files you approve. Application code, data, existing package files and CI stay unchanged. Installing tools and running project commands require your approval. Tibicen creates no commits and does not run in the background after it finishes.',
+      'Tibicen меняет только согласованные файлы настройки агента. Код приложения, данные, существующие файлы пакетов и CI остаются без изменений. Установка инструментов и запуск команд проекта требуют вашего согласия. Tibicen не создаёт коммиты и не работает в фоне после завершения.',
     ),
   },
   {
     title: t('Where does my data go?', 'Куда отправляются данные?'),
     description: t(
-      'The optional preset is generated in your browser without sending answers. Project work follows your agent provider’s data rules. Component research uses external sources; keep secrets out of presets.',
-      'Необязательный пресет создаётся в браузере без отправки ответов. Для работы с проектом действуют правила обработки данных вашего агента. Поиск компонентов использует внешние источники; секреты в пресет не добавляйте.',
+      'The preset is created in your browser; form answers are not sent anywhere. Project data is handled under your agent provider’s policies. Tibicen uses external sources to research components. Keep passwords, tokens and other secrets out of presets.',
+      'Пресет создаётся в браузере; ответы из формы никуда не отправляются. При работе с проектом данные обрабатываются по правилам провайдера вашего агента. Для поиска компонентов Tibicen обращается к внешним источникам. Не добавляйте в пресет пароли, токены и другие секреты.',
     ),
   },
   {
@@ -85,8 +85,8 @@ const questions = [
       'Как работают обновление и удаление?',
     ),
     description: t(
-      'Updates are explicit; there is no background updater. Back up local skill edits before reinstalling a pinned release. Removing the skills does not undo approved project changes. The linked guide covers both operations.',
-      'Обновления запускаются явно, фонового обновления нет. Перед переустановкой закреплённого релиза сохраните локальные правки скиллов. Удаление скиллов не отменяет согласованные изменения проекта. Обе операции описаны в инструкции по ссылке.',
+      'Tibicen updates when you ask; it does not update in the background. If you edited skill files, save a copy before reinstalling your chosen version. Removing the skills does not undo changes already made to a project. The guide explains how to update or remove Tibicen.',
+      'Tibicen обновляется по вашей команде, без фонового обновления. Если вы редактировали файлы скиллов, сохраните копию перед переустановкой выбранной версии. Удаление скиллов не отменяет уже внесённые изменения в проекте. Как обновить или удалить Tibicen, описано в инструкции.',
     ),
   },
 ];
@@ -126,12 +126,12 @@ const geometry = [
         </p>
         <h1 id="hero-title">
           {t('Set up your project for ', 'Подготовьте проект к работе ')}
-          <span>{t('AI coding.', 'с агентом.')}</span>
+          <span>{t('your coding agent', 'с агентом')}</span>
         </h1>
         <p class="hero-description">
           {t(
-            'Project instructions and useful tools, set up for your coding agent. Review the plan before anything changes.',
-            'Инструкции и нужные инструменты под ваш проект и агента. Сначала посмотрите и согласуйте план изменений.',
+            'Tibicen reads your project and proposes instructions and tools for your agent. Changes begin after you approve the plan.',
+            'Tibicen изучит проект и предложит инструкции и инструменты для агента. Изменения внесёт после вашего согласия.',
           )}
         </p>
         <div class="hero-actions">
@@ -158,22 +158,19 @@ const geometry = [
       <div class="start-copy">
         <p class="eyebrow">
           <span class="eyebrow-line" aria-hidden="true"></span>
-          {t(
-            'Install, then ask your agent',
-            'Установите и дайте задачу агенту',
-          )}
+          {t('First run', 'Первый запуск')}
         </p>
-        <h2 id="start-title">{t('Get started', 'Начните работу')}</h2>
+        <h2 id="start-title">{t('Install Tibicen', 'Установите Tibicen')}</h2>
         <p>
           {t(
-            'Use your usual coding agent with file access. You need Node ≥22.20 and Git for installation. No extra account or preset.',
-            'Работайте в привычном агенте с доступом к файлам. Для установки нужны Node ≥22.20 и Git. Дополнительный аккаунт и пресет не нужны.',
+            'Installation requires Node ≥22.20 and Git. To use Tibicen, your agent needs access to project files. No separate account is needed. You can create a preset later.',
+            'Для установки нужны Node ≥22.20 и Git, для работы — агент с доступом к файлам проекта. Регистрироваться отдельно не нужно. Пресет можно создать позже.',
           )}
         </p>
         <p class="support-note">
           {t(
             'Automatic loading is experimental. On Windows, run project commands manually.',
-            'Автозагрузка экспериментальна. На Windows запускайте команды проекта вручную.',
+            'Автоматическая загрузка скиллов пока экспериментальная. На Windows запускайте команды проекта вручную.',
           )}
         </p>
         <details class="start-help" id="compatibility">
@@ -182,8 +179,8 @@ const geometry = [
           </summary>
           <p>
             {t(
-              'Your agent must read the complete skill folder and run its Node commands; otherwise a local operator performs the approved steps. Your model and provider are your choice. Automatic discovery and native behavior depend on the host; the release notes state exactly what was checked.',
-              'Агент должен читать всю папку скилла и запускать его Node-команды; иначе согласованные шаги выполняет локальный оператор. Модель и провайдера выбираете вы. Автообнаружение и нативное поведение зависят от среды; точные проверки перечислены в описании релиза.',
+              'Your agent needs access to the whole skill folder and must be able to run its commands with Node. If it cannot run commands, you’ll need to carry out the approved steps yourself. You choose the model and provider in your agent. Automatic discovery and skill behavior depend on the environment. The release notes explain what was tested.',
+              'Агенту нужен доступ ко всей папке скилла и возможность запускать его команды через Node. Если агент не умеет выполнять команды, согласованные шаги придётся выполнить вам. Модель и провайдера вы выбираете в своём агенте. Автоматическое обнаружение и работа скилла зависят от используемой среды. Что именно проверено, указано в описании релиза.',
             )}
           </p>
           <a href={release}>
@@ -196,14 +193,17 @@ const geometry = [
     <Features
       id="scenarios"
       {locale}
-      tagline={t('2. Send one request', '2. Отправьте один запрос')}
+      tagline={t(
+        '2. Send a request to your agent',
+        '2. Отправьте запрос агенту',
+      )}
       title={t(
         'Open the project in your agent',
         'Откройте проект в своём агенте',
       )}
       subtitle={t(
-        'Copy the request for your task into the project session. Tibicen inspects the files and proposes the changes for your approval.',
-        'Скопируйте запрос под вашу задачу в сессию проекта. Tibicen изучит файлы и предложит изменения для согласования.',
+        'Choose a request and send it to your agent in the project chat. Tibicen reads the files and shows you a change plan.',
+        'Выберите подходящий запрос и отправьте его агенту в чате проекта. Tibicen изучит файлы и покажет план изменений.',
       )}
       items={scenarios}
     />
@@ -213,8 +213,8 @@ const geometry = [
       </summary>
       <p>
         {t(
-          'Ask it to read the exact SKILL.md path in the request, replacing ~ with your home directory if needed. Keep the whole skill folder available, including its references and scripts. Explicit reading is assisted loading; it does not prove automatic discovery.',
-          'Попросите прочитать SKILL.md по пути из запроса; при необходимости замените ~ на домашний каталог. Нужна вся папка скилла, включая связанные инструкции и скрипты. Явное чтение — ручная загрузка; это не подтверждает автообнаружение.',
+          'Ask your agent to read SKILL.md at the path in the request. If it does not understand ~, use the full path to your home folder. Keep the whole skill folder: it needs the included instructions and scripts. This loads the skill manually; automatic discovery depends on your agent.',
+          'Попросите агента прочитать SKILL.md по пути из запроса. Если он не понимает ~, укажите полный путь к домашней папке. Сохраните всю папку скилла: ему нужны вложенные инструкции и скрипты. Такой способ загружает скилл вручную; автоматическое обнаружение зависит от агента.',
         )}
       </p>
       <a href={installationGuide}>
@@ -239,12 +239,15 @@ const geometry = [
         {t('For your next projects', 'Для следующих проектов')}
       </p>
       <h2 id="preset-title">
-        {t('Reuse your preferences', 'Используйте свои предпочтения снова')}
+        {t(
+          'Save your setup for future projects',
+          'Сохраните настройки для следующих проектов',
+        )}
       </h2>
       <p>
         {t(
-          'Save preferences in an optional preset. Each project is still inspected afresh.',
-          'Сохраните предпочтения в необязательный пресет. Каждый проект всё равно изучается заново.',
+          'Save your workflow and constraints in a preset. Give it to your agent in the next project: it will use those preferences, read the files and propose a new plan.',
+          'Сохраните привычный порядок работы и ограничения в пресет. В следующем проекте передайте его агенту: тот учтёт настройки, заново изучит файлы и предложит план.',
         )}
       </p>
     </div>

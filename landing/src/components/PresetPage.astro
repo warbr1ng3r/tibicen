@@ -19,21 +19,21 @@ const home = `${basePath}/${locale === 'ru' ? 'ru/' : ''}`;
   >
     <div class="preset-intro">
       <p class="eyebrow">
-        {t('Optional preferences', 'Необязательные предпочтения')}
+        {t('For future projects', 'Для следующих проектов')}
       </p>
       <h1 id="preset-title">
-        {t('Save your preferences', 'Сохраните предпочтения')}
+        {t('Save your agent settings', 'Сохраните настройки работы с агентом')}
       </h1>
       <p>
         {t(
-          'Reuse your workflow and constraints in similar projects. Pass preset.yaml to your agent; it will inspect each project again and ask you to approve its plan.',
-          'Сохраните привычный процесс и ограничения для похожих проектов. Передайте preset.yaml агенту — каждый проект он изучит заново и согласует с вами план.',
+          'Describe your workflow and constraints. Download preset.yaml and give it to your agent in the next project. It will read the project again and ask you to approve a plan before making changes.',
+          'Укажите, как вы привыкли работать и какие ограничения нужно соблюдать. Скачайте preset.yaml и передайте агенту в следующем проекте. Перед изменениями он заново изучит проект и согласует с вами план.',
         )}
       </p>
       <p class="privacy-note">
         {t(
-          'Generated in your browser. No answers are sent. Keep secrets out of the preset.',
-          'Создаётся в вашем браузере. Ответы никуда не отправляются. Не добавляйте секреты в пресет.',
+          'The file is created in your browser; answers are not sent anywhere. Do not include passwords, tokens or other secrets.',
+          'Файл создаётся в браузере, ответы никуда не отправляются. Не добавляйте пароли, токены и другие секреты.',
         )}
       </p>
       <p>

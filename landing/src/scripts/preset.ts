@@ -43,25 +43,22 @@ export function buildPreset(
     throw new PresetValidationError(
       'name',
       t(
-        'Name: up to 64 lowercase Latin letters, numbers and hyphens. For example, hackathon.',
-        'Имя: до 64 латинских букв, цифр и дефисов. Например, hackathon.',
+        'Use up to 64 characters: lowercase Latin letters, numbers and hyphens. Start with a letter or number. For example, hackathon.',
+        'До 64 символов: строчные латинские буквы, цифры и дефисы. Начните с буквы или цифры. Например, hackathon.',
       ),
     );
   if (typeof process !== 'string' || !PROCESSES.includes(process))
     throw new PresetValidationError(
       'process',
       t(
-        'Choose one of the available processes.',
-        'Выберите предложенный процесс.',
+        'Choose how detailed the workflow should be.',
+        'Выберите, насколько подробно разбивать работу на этапы.',
       ),
     );
   if (typeof style !== 'string' || !STYLES.includes(style))
     throw new PresetValidationError(
       'style',
-      t(
-        'Choose one of the available response styles.',
-        'Выберите предложенную подробность ответов.',
-      ),
+      t('Choose the agent response style.', 'Выберите стиль ответов агента.'),
     );
   const hintError = t(
     'Use up to 16 distinct harness IDs: 1–64 lowercase Latin letters, numbers and hyphens, starting with a letter or number.',
@@ -82,8 +79,8 @@ export function buildPreset(
       throw new PresetValidationError(
         key as 'language' | 'kind',
         t(
-          'Use short names for programming language and project type.',
-          'Стек и тип проекта задаются короткими названиями.',
+          'Enter a short name for the programming language or project type.',
+          'Укажите короткое название языка программирования или типа проекта.',
         ),
       );
     stack_hint[key] = value;
@@ -105,8 +102,8 @@ export function buildPreset(
     throw new PresetValidationError(
       'forbiddenPaths',
       t(
-        'Protected paths must be relative to the project, without .., backslashes or absolute paths.',
-        'Запретные пути задаются относительно проекта, без .., обратных слешей и абсолютных путей.',
+        'Use paths relative to the project root. Do not use .., backslashes or absolute paths.',
+        'Укажите пути относительно корня проекта. Не используйте .., обратные слеши и абсолютные пути.',
       ),
     );
   }

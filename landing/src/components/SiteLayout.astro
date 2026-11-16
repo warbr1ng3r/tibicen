@@ -13,19 +13,22 @@ const home = `${basePath}/${locale === 'ru' ? 'ru/' : ''}`;
 const repository = 'https://github.com/warbr1ng3r/tibicen';
 const guide = `${repository}/blob/main/README.md`;
 const title = preset
-  ? t('Tibicen — save your preferences', 'Tibicen — сохраните предпочтения')
+  ? t(
+      'Tibicen — save your agent settings',
+      'Tibicen — сохраните настройки работы с агентом',
+    )
   : t(
-      'Tibicen — set up your project for AI coding',
+      'Tibicen — set up your project for your coding agent',
       'Tibicen — подготовьте проект к работе с агентом',
     );
 const description = preset
   ? t(
-      'Save reusable preferences for your coding agent. Build and download a Tibicen preset locally in your browser.',
-      'Сохраните предпочтения для агента. Соберите и скачайте пресет Tibicen локально в браузере.',
+      'Save your agent settings for future projects. Create and download a Tibicen preset in your browser.',
+      'Сохраните настройки работы с агентом для следующих проектов. Создайте и скачайте пресет Tibicen прямо в браузере.',
     )
   : t(
-      'Set up project instructions and only the tools your coding agent needs. Review the exact plan before changes and receive a clear verification report.',
-      'Настройте инструкции проекта и только нужные агенту инструменты. Сначала согласуйте точный план, затем получите изменения и понятный отчёт о проверках.',
+      'Tibicen prepares instructions and tools for your coding agent. Review the plan first, then approve the changes and receive the check results.',
+      'Tibicen подготовит инструкции и инструменты для вашего агента. Сначала покажет план, после вашего согласия внесёт изменения и сообщит результаты проверок.',
     );
 const english = new URL(`${basePath}/${preset ? 'preset/' : ''}`, Astro.site);
 const russian = new URL(

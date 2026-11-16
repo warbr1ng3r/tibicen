@@ -143,7 +143,7 @@ test('only the latest copy reports completion, without replacing icons or access
   requests[0].resolve();
   await first;
   assert.equal(view.labels[0].textContent, 'Копировать');
-  assert.equal(view.status.textContent, 'Скопировано в буфер обмена.');
+  assert.equal(view.status.textContent, 'Скопировано');
   assert.equal(view.buttons[1].icon, icon);
   assert.equal(view.buttons[1].ariaLabel, 'Скопировать команду');
   for (const callback of view.timers.values()) callback();
@@ -171,7 +171,7 @@ test('home copy controls work when no preset form exists', async () => {
   await view.buttons[0].click();
   assert.equal(view.copied, 'text:command-0');
   assert.equal(view.labels[0].textContent, 'Скопировано');
-  assert.equal(view.status.textContent, 'Скопировано в буфер обмена.');
+  assert.equal(view.status.textContent, 'Скопировано');
 });
 
 test('an outdated clipboard rejection cannot overwrite a newer copy through fallback', async () => {
@@ -197,7 +197,7 @@ test('an outdated clipboard rejection cannot overwrite a newer copy through fall
   await first;
   assert.equal(view.copied, undefined);
   assert.equal(view.labels[1].textContent, 'Скопировано');
-  assert.equal(view.status.textContent, 'Скопировано в буфер обмена.');
+  assert.equal(view.status.textContent, 'Скопировано');
 });
 
 test('failed copying never announces success and a repeated click cancels old feedback', async () => {

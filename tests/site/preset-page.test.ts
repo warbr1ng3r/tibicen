@@ -29,7 +29,9 @@ for (const locale of ['en', 'ru'] as const) {
     assert.match(html, /<noscript>/);
     assert.match(
       html,
-      locale === 'en' ? /No answers are sent/ : /Ответы никуда не отправляются/,
+      locale === 'en'
+        ? /answers are not sent anywhere/
+        : /ответы никуда не отправляются/,
     );
     assert.doesNotMatch(html, /(?:https?:)?\/\/[^"<> ]+\/(?:submit|collect)/);
   });

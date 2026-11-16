@@ -12,7 +12,10 @@ const { locale = 'en', expanded = false } = Astro.props;
 const t = (en: string, ru: string) => localize(locale, en, ru);
 
 const languages = [
-  { value: '', label: t('Detect in project', 'Определить в проекте') },
+  {
+    value: '',
+    label: t('Detect from project files', 'Определить по файлам проекта'),
+  },
   ...['TypeScript', 'JavaScript', 'Python', 'Go', 'Rust', 'Java'].map(
     (label) => ({ value: label.toLowerCase(), label }),
   ),
@@ -30,11 +33,11 @@ const kinds = [
 <details class="preset-details" open={expanded}>
   <summary>
     <span>
-      <strong>{t('Build your preset', 'Собрать свой пресет')}</strong>
+      <strong>{t('Preset settings', 'Настройки пресета')}</strong>
       <small>
         {t(
-          'Preferences for your next projects',
-          'Параметры работы для следующих проектов',
+          'How your agent should work in your projects',
+          'Как агенту работать в ваших проектах',
         )}
       </small>
     </span>
@@ -58,10 +61,10 @@ const kinds = [
     >
       <Field
         id="name"
-        label={t('Preset name', 'Имя пресета')}
+        label={t('Preset name', 'Название пресета')}
         hint={t(
-          'Lowercase Latin letters, numbers and hyphens. For example, hackathon.',
-          'Латинские буквы, цифры и дефисы. Например, hackathon.',
+          'Up to 64 characters: lowercase Latin letters, numbers and hyphens. Start with a letter or number. For example, hackathon.',
+          'До 64 символов: строчные латинские буквы, цифры и дефисы. Начните с буквы или цифры. Например, hackathon.',
         )}
       >
         <input
@@ -76,7 +79,10 @@ const kinds = [
       </Field>
       <fieldset data-field="process">
         <legend>
-          {t('How much process do you need?', 'Сколько процесса вам нужно?')}
+          {t(
+            'How detailed should the workflow be?',
+            'Насколько подробно разбивать работу на этапы?',
+          )}
         </legend>
         <div class="choice-grid">
           <label class="choice">
@@ -87,8 +93,10 @@ const kinds = [
               aria-describedby="process-error"
             />
             <span>
-              <strong>{t('Minimal', 'Минимум')}</strong>
-              <small>{t('Only essential steps', 'Без лишних шагов')}</small>
+              <strong>{t('Minimal', 'Минимально')}</strong>
+              <small>
+                {t('Only necessary stages', 'Только необходимые этапы')}
+              </small>
             </span>
           </label>
           <label class="choice">
@@ -100,8 +108,8 @@ const kinds = [
               checked
             />
             <span>
-              <strong>{t('Balanced', 'Баланс')}</strong>
-              <small>{t('A practical structure', 'Разумная структура')}</small>
+              <strong>{t('Moderate', 'Умеренно')}</strong>
+              <small>{t('Main stages of work', 'Основные этапы работы')}</small>
             </span>
           </label>
           <label class="choice">
@@ -112,8 +120,10 @@ const kinds = [
               aria-describedby="process-error"
             />
             <span>
-              <strong>{t('Structured', 'Структурно')}</strong>
-              <small>{t('More stages', 'Больше этапов')}</small>
+              <strong>{t('Detailed', 'Подробно')}</strong>
+              <small>
+                {t('More intermediate stages', 'Больше промежуточных этапов')}
+              </small>
             </span>
           </label>
         </div>
@@ -144,8 +154,8 @@ const kinds = [
       <details class="advanced">
         <summary>
           {t(
-            'Optional project hints and protected paths',
-            'Необязательные подсказки и защищённые пути',
+            'More options: project, agents and protected files',
+            'Дополнительно: проект, агенты и защищённые файлы',
           )}
         </summary>
         <div class="field-row">
@@ -174,7 +184,9 @@ const kinds = [
           </Field>
         </div>
         <fieldset data-field="agents">
-          <legend>{t('Harness suggestions', 'Подсказки среды агента')}</legend>
+          <legend>
+            {t('Coding agents you use', 'Какими агентами вы пользуетесь')}
+          </legend>
           <div class="agent-choices">
             {HARNESS_PROFILES.map(({ id, label, status }) => (
               <label>
@@ -191,8 +203,8 @@ const kinds = [
           </div>
           <small id="agents-hint">
             {t(
-              'Preferences only: these names do not guarantee installation or loading support. Leave empty to check your environment. Legacy entries help preserve an existing setup.',
-              'Это предпочтения, без гарантии установки или загрузки. Можно оставить пустым — агент проверит окружение. Прежние форматы помогают сохранить существующую настройку.',
+              'Your choices are saved in the preset but do not guarantee skill installation or loading in that environment. You can leave this empty: the agent will check your environment. Legacy formats are listed to help preserve existing setups.',
+              'Выбор сохранится в пресете, но не гарантирует установку или загрузку скиллов в этой среде. Можно ничего не выбирать: агент проверит окружение сам. Устаревшие форматы указаны для сохранения существующих настроек.',
             )}
           </small>
           <p
@@ -206,10 +218,10 @@ const kinds = [
         <Field
           id="custom-agents"
           name="customAgents"
-          label={t('Other harness IDs', 'ID других сред агента')}
+          label={t('Other agent IDs', 'Идентификаторы других агентов')}
           hint={t(
-            'Separate lowercase IDs with spaces or commas, for example team-agent. Up to 16 distinct IDs including suggestions. Preferences only.',
-            'Строчные ID через пробел или запятую, например team-agent. Не более 16 разных ID вместе с подсказками. Только предпочтения.',
+            'Enter lowercase IDs separated by spaces or commas, for example team-agent. You can include up to 16 distinct IDs in total, counting those selected above. They are saved as preferences.',
+            'Введите идентификаторы строчными буквами через пробел или запятую, например team-agent. Всего можно указать до 16 разных идентификаторов, включая выбранные выше. Они сохраняются как предпочтения.',
           )}
         >
           <input
@@ -225,12 +237,12 @@ const kinds = [
           id="forbidden-paths"
           name="forbiddenPaths"
           label={t(
-            'Protected paths: one relative path per line',
-            'По одному относительному пути на строку',
+            'Files and folders that must not change',
+            'Какие файлы и папки нельзя менять',
           )}
           hint={t(
-            'Path names only, without file contents or secrets.',
-            'Только названия путей, без содержимого файлов и секретов.',
+            'One path per line, relative to the project root. Include paths only, without file contents or secrets.',
+            'По одному пути относительно корня проекта на строку. Указывайте только пути, без содержимого файлов и секретов.',
           )}
         >
           <textarea
@@ -255,8 +267,8 @@ const kinds = [
     </fieldset>
     <p class="form-footnote">
       {t(
-        'The preset saves preferences. Review and approve a separate change plan in each project.',
-        'Пресет сохраняет предпочтения. План изменений согласуется отдельно в каждом проекте.',
+        'In each project, the agent proposes a separate plan and waits for your approval.',
+        'В каждом проекте агент предложит отдельный план и дождётся вашего согласия.',
       )}
     </p>
     <p

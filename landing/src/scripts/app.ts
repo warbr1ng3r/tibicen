@@ -55,10 +55,7 @@ for (const button of document.querySelectorAll<HTMLButtonElement>(
       if (!target) throw new Error('Copy target absent');
       await copyText(target.textContent ?? '', request);
       if (request !== latestCopy) return;
-      copyStatus.textContent = t(
-        'Copied to clipboard.',
-        'Скопировано в буфер обмена.',
-      );
+      copyStatus.textContent = t('Copied', 'Скопировано');
       if (label) {
         label.textContent = t('Copied', 'Скопировано');
         resetTimer = setTimeout(() => {
@@ -134,8 +131,8 @@ function initializePreset() {
       link.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
       status.textContent = t(
-        'File prepared for download. Give it to your agent in the target project.',
-        'Файл подготовлен к скачиванию. Передайте его агенту в нужном проекте.',
+        'The file is ready to download. Give it to your agent in the project you want to set up.',
+        'Файл готов к скачиванию. Передайте его агенту в нужном проекте.',
       );
     } catch (cause) {
       if (cause instanceof PresetValidationError) {

@@ -58,22 +58,20 @@ for (const { filename, route, locale, other } of pages) {
       ? [
           'example',
           'Optional',
-          'chosen for your project',
           'Memory',
           'Skills',
           'setup history',
           'unchanged',
-          'Only the setup your project needs.',
+          'The setup depends on your project',
         ]
       : [
           'пример',
           'При необходимости',
-          'под ваш проект',
           'Память',
           'Скиллы',
           'история настройки',
           'без изменений',
-          'Только то, что нужно вашему проекту.',
+          'Состав настройки зависит от проекта',
         ])
       assert.ok(preview.includes(text), text);
   });
@@ -101,22 +99,22 @@ for (const { filename, route, locale, other } of pages) {
     assert.equal([...result.matchAll(/class="module-grid"/g)].length, 1);
     for (const text of locale === 'en'
       ? [
-          'Ask in your own words.',
+          'Tell your agent what the project needs',
           'Set this up for my agent.',
-          'One possible proposal',
-          'Review the plan. Approve the changes.',
+          'Example plan',
+          'Changes begin after your approval',
           'after your approval',
-          'Optional · add only what helps',
-          'Your application files are preserved.',
+          'Added when needed',
+          'Application code and data stay unchanged',
         ]
       : [
-          'Попросите своими словами.',
+          'Опишите, что нужно вашему проекту',
           'Настрой проект для моего агента.',
-          'Один из возможных планов',
-          'Посмотрите план. Согласуйте изменения.',
+          'Пример плана',
+          'Изменения начнутся после вашего согласия',
           'после вашего согласия',
-          'Необязательно · только если полезно',
-          'Файлы приложения сохраняются.',
+          'Добавляется при необходимости',
+          'Код и данные остаются без изменений',
         ])
       assert.ok(result.includes(text), text);
     for (const kind of ['init', 'adopt'])
@@ -212,10 +210,13 @@ for (const { filename, route, locale, other } of pages) {
       html.indexOf('id="start"'),
       html.indexOf('id="result"'),
     );
-    const route = ['1. Run this in your terminal', '2. Send one request'];
+    const route = [
+      '1. Run this in your terminal',
+      '2. Send a request to your agent',
+    ];
     const translatedRoute = [
       '1. Выполните в терминале',
-      '2. Отправьте один запрос',
+      '2. Отправьте запрос агенту',
     ];
     const positions = (locale === 'en' ? route : translatedRoute).map((label) =>
       start.indexOf(label),
@@ -243,7 +244,7 @@ for (const { filename, route, locale, other } of pages) {
     assert.match(start, /docs\/INSTALLATION\.md/);
     assert.match(
       start,
-      locale === 'en' ? /assisted loading/ : /ручная загрузка/,
+      locale === 'en' ? /loads the skill manually/ : /загружает скилл вручную/,
     );
   });
 
@@ -255,7 +256,7 @@ for (const { filename, route, locale, other } of pages) {
     );
     assert.match(
       result,
-      locale === 'en' ? /not recorded runs/ : /не записи прогонов/,
+      locale === 'en' ? /fictional projects/ : /вымышленных проектах/,
     );
     for (const kind of ['init', 'adopt']) {
       const example = result.match(
@@ -277,11 +278,13 @@ for (const { filename, route, locale, other } of pages) {
       assert.match(example, /class="proposal-diff"/);
       assert.match(
         example,
-        locale === 'en' ? /No question needed/ : /Вопрос не нужен/,
+        locale === 'en'
+          ? /No extra questions are needed/
+          : /Дополнительные вопросы не нужны/,
       );
       assert.match(
         example,
-        locale === 'en' ? /next agent session/ : /следующей сессии агента/,
+        locale === 'en' ? /next agent session/ : /агента в следующем чате/,
       );
       assert.match(example, /\.tibicen\/manifest\.yml/);
       if (kind === 'adopt') {

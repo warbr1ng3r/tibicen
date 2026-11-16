@@ -8,24 +8,24 @@ const { locale } = Astro.props;
 const t = (en: string, ru: string) => localize(locale, en, ru);
 const steps = [
   [
-    t('Understand the project', 'Изучить проект'),
+    t('The agent reads the project', 'Агент изучает проект'),
     t(
-      'Read the files, commands and existing rules.',
-      'Прочитать файлы, команды и существующие правила.',
+      'Reads files, finds commands and checks existing instructions',
+      'Читает файлы, находит команды и проверяет существующие инструкции',
     ),
   ],
   [
-    t('Review one proposal', 'Посмотреть предложение'),
+    t('You review the plan', 'Вы проверяете план'),
     t(
-      'See the changes before anything is applied.',
-      'Увидеть изменения до их применения.',
+      'See which files will change and why',
+      'Видите, какие файлы изменятся и зачем',
     ),
   ],
   [
-    t('Approve and continue', 'Согласовать и продолжить'),
+    t('The agent applies the changes', 'Агент вносит изменения'),
     t(
-      'Get the result, checks and any remaining limits.',
-      'Получить результат, проверки и оставшиеся ограничения.',
+      'After you approve the plan, the agent applies the changes and reports what it could and could not verify',
+      'После вашего согласия применяет план и сообщает, что удалось проверить и что осталось непроверенным',
     ),
   ],
 ];
@@ -35,12 +35,15 @@ const steps = [
   <div class="composition-copy">
     <p class="eyebrow">{t('How it works', 'Как это работает')}</p>
     <h2 id="result-title">
-      {t('Ask in your own words.', 'Попросите своими словами.')}
+      {t(
+        'Tell your agent what the project needs',
+        'Опишите, что нужно вашему проекту',
+      )}
     </h2>
     <p>
       {t(
-        'Work in your usual agent. Tibicen reads the project, proposes a setup and applies what you approve.',
-        'Работайте в привычном агенте. Tibicen изучит проект, предложит настройку и применит согласованные изменения.',
+        'Everything happens in your agent chat, from reading the project to checking the changes.',
+        'Всё происходит в чате с вашим агентом: от изучения проекта до проверки внесённых изменений.',
       )}
     </p>
     <ol class="workflow-summary-steps">
@@ -72,14 +75,12 @@ const steps = [
       </p>
       <p class="dialog-reply">
         {t(
-          'I’ll keep your code and propose only the setup you need.',
-          'Сохраню ваш код и предложу только нужную настройку.',
+          'I’ll read the project and show you a plan first. I won’t change the application code.',
+          'Сначала изучу проект и покажу план. Код приложения менять не буду.',
         )}
       </p>
       <div class="proposal-paper">
-        <p class="proposal-heading">
-          {t('One possible proposal', 'Один из возможных планов')}
-        </p>
+        <p class="proposal-heading">{t('Example plan', 'Пример плана')}</p>
         <div class="proposed-line">
           <b aria-hidden="true">+</b>
           <SetupIcon name="file" />
@@ -98,8 +99,8 @@ const steps = [
       <SetupIcon name="check" />
       <p>
         {t(
-          'Review the plan. Approve the changes.',
-          'Посмотрите план. Согласуйте изменения.',
+          'Changes begin after your approval',
+          'Изменения начнутся после вашего согласия',
         )}
       </p>
     </div>
