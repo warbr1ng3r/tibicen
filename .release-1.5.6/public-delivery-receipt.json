@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "distributionCommit": "2c7cb6f50a36d5fc3ca29a127e83b194d1e2a169",
+  "candidateArchiveSha256": "13ffe16fb15bdcf2daa8353b4315c5746c0667833403a86593e8089ff93ba36b",
+  "payloadFiles": 110,
+  "calls": {
+    "installer": 4,
+    "standalone": 2
+  },
+  "preservationPassed": true,
+  "rawReceiptSha256": "a2599968130e6830b0cc2157cdf91a36d92f50c18d2b1426542f430af642fc57",
+  "limits": [
+    "Installer Node reads ambient, writes owned-only. Child permission allows trusted platform Git; Node permissions do not constrain child reads or writes. Known system existence probes retained. First-party CLI reads owned-only, no child grant.",
+    "Node known-flow deny hook and telemetry-off. Anonymous HTTPS Git children use the fixed GitHub repository with normal TLS verification and root-bound IPv4. Not OS firewall or child network sandbox.",
+    "Not run; identical add is explicit replacement and may refresh metadata. No claim of lock-byte stability.",
+    "Synthetic mechanical fixture; not native loading, model use, or human benefit."
+  ]
+}
