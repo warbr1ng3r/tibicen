@@ -12,10 +12,10 @@ Tibicen помогает вашему агенту настроить инстр
 
 ## Начать
 
-Выполните команду в терминале. Она установит оба полных скилла из точной опубликованной поставки **1.5.5**; нужны Node **22.20 или новее** и Git.
+Выполните команду в терминале. Она установит оба полных скилла из точной опубликованной поставки **1.5.6**; нужны Node **22.20 или новее** и Git.
 
 ```sh
-npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/6d4baea666fc2885c04ba0fa0fc60dbb8b4e6a74 -g --agent universal --skill tibicen-init tibicen-adopt --copy
+npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/2c7cb6f50a36d5fc3ca29a127e83b194d1e2a169 -g --agent universal --skill tibicen-init tibicen-adopt --copy
 ```
 
 Затем откройте проект в агенте, который может читать файлы и запускать Node, и отправьте:
@@ -41,7 +41,7 @@ npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/6d4baea666fc2885
 Польза для людей и сравнительная экономия времени не измерены. Встроенной инициализации вашего агента или прямой просьбы проверить инструкции тоже может быть достаточно.
 
 - [Работа с разными хостами и моделями](docs/HARNESS_PORTABILITY.md) и [память проекта](docs/PROJECT_MEMORY.md).
-- [Проверки и ограничения 1.5.5](docs/evals/results/2026-11-15-release-1.5.5/README.md), [история изменений](CHANGELOG.md) и [прежний README с историей выпусков](README_RELEASE_HISTORY.md).
+- [Проверки и ограничения 1.5.6](docs/evals/results/2026-11-16-release-1.5.6/README.md), [история изменений](CHANGELOG.md) и [прежний README с историей выпусков](README_RELEASE_HISTORY.md).
 - [Участие в разработке](CONTRIBUTING.md), [границы продукта](docs/PRODUCT_VISION.md) и [безопасность](SECURITY.md).
 
 ## Сборка и установка из исходников

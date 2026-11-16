@@ -1,9 +1,9 @@
 # What Tibicen does today
 
-**Published skills: 1.5.5 · 2026-11-15 UTC.** Tibicen helps your existing coding
+**Published skills: 1.5.6 · 2026-11-16 UTC.** Tibicen helps your existing coding
 agent inspect, set up or repair project instructions and integrations, apply the
 changes you approve, and report what was checked. The
-[release report](evals/results/2026-11-15-release-1.5.5/README.md) defines the exact
+[release report](evals/results/2026-11-16-release-1.5.6/README.md) defines the exact
 published bytes and delivery evidence; the [product vision](PRODUCT_VISION.md)
 defines wider goals, not extra shipped capabilities.
 
@@ -12,6 +12,10 @@ Tibicen consists of two standalone skills with local Node scripts:
 Both can select the appropriate route from the actual project. A sufficient
 setup can stay unchanged, without creating a new session merely to record work.
 There is no Tibicen server, account, separate model or background service.
+
+## Owner decision authority — available in 1.5.6
+
+Memory-maintenance guidance preserves the user-approved meaning and scope until an explicit correction. Code disagreement is a separate implementation fact, not a new accepted exception. Schemas and write permissions are unchanged; project instructions update only through a separate adopt request.
 
 ## Recovery and maintenance — available in 1.5.5
 

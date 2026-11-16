@@ -249,6 +249,25 @@
         }
       ],
       "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.5"
+    },
+    {
+      "version": "1.5.6",
+      "publishedAtUtc": "2026-11-16T00:15:51Z",
+      "sourceCommit": "1dc382d2f92a438ec69877134ecc5c821b20928c",
+      "distributionCommit": "2c7cb6f50a36d5fc3ca29a127e83b194d1e2a169",
+      "scope": "Compatible memory-guidance patch: owner-approved meaning and scope stay authoritative; implementation disagreement is a separate fact, not an accepted exception. No schema migration, new permission, dependency or background update. Exact local/public install/update/recovery/removal, standalone self-tests and six platform cells passed. Qualified combined-use ZCode evidence retains its timing-admission deviation, assisted loading, synthetic consent and missing phase3 snapshot; causality, human benefit and other-harness success are unclaimed. MIT license retained.",
+      "payloadManifest": {
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.6/distribution-SHA256SUMS",
+        "sha256": "797471c6f17b488581d5829e00b229c405a3bcb0622c596e75fb5b528ecab478"
+      },
+      "archives": [
+        {
+          "name": "tibicen-1.5.6.tar.gz",
+          "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.5.6/tibicen-1.5.6.tar.gz",
+          "sha256": "13ffe16fb15bdcf2daa8353b4315c5746c0667833403a86593e8089ff93ba36b"
+        }
+      ],
+      "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.6"
     }
   ],
   "warnings": []

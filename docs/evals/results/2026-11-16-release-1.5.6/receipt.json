@@ -1,0 +1,76 @@
+{
+  "status": "accepted-returned-assets",
+  "version": "1.5.6",
+  "releaseId": 446471560,
+  "publishedAtUtc": "2026-11-16T00:15:51Z",
+  "sourceCommit": "1dc382d2f92a438ec69877134ecc5c821b20928c",
+  "distributionCommit": "2c7cb6f50a36d5fc3ca29a127e83b194d1e2a169",
+  "tagObject": "e657d3fd89cf6e23aa8b4ea0cc15983d875463dd",
+  "assets": {
+    "distribution-SHA256SUMS": {
+      "id": 752824975,
+      "bytes": 11559,
+      "sha256": "797471c6f17b488581d5829e00b229c405a3bcb0622c596e75fb5b528ecab478"
+    },
+    "SHA256SUMS": {
+      "id": 752824978,
+      "bytes": 177,
+      "sha256": "45b8fc9301daed5191dcb894d7f112608385db5ad8043a277253a5167ba7ef8e"
+    },
+    "tibicen-1.5.6.tar.gz": {
+      "id": 752824968,
+      "bytes": 290421,
+      "sha256": "13ffe16fb15bdcf2daa8353b4315c5746c0667833403a86593e8089ff93ba36b"
+    }
+  },
+  "sourceCiRunId": 43778432634,
+  "platformRunId": 43778963759,
+  "publishRunId": 43779296013,
+  "acceptedAtUtc": "2026-11-16T00:17:07.678650+00:00",
+  "archiveFiles": 111,
+  "old155Preserved": true,
+  "assetDownloads": 3,
+  "automaticRetries": 0,
+  "localGate": {
+    "tests": 1150,
+    "passed": 1149,
+    "failed": 0,
+    "existingSkip": 1,
+    "build": "passed",
+    "bothStandaloneSelfTests": "passed",
+    "sourceInputs": 59,
+    "payloadFiles": 110
+  },
+  "localDelivery": {
+    "status": "passed",
+    "fromVersion": "1.5.5",
+    "toVersion": "1.5.6",
+    "installerCalls": 4,
+    "firstPartyCliCalls": 2,
+    "rawReceiptSha256": "d1e1acea77fa7fd83d2d72e90686bb71c741d9a10e59b99c128a46f09e259af9",
+    "cleanupVerified": true
+  },
+  "publicDelivery": {
+    "status": "passed",
+    "fromDistribution": "6d4baea666fc2885c04ba0fa0fc60dbb8b4e6a74",
+    "toDistribution": "2c7cb6f50a36d5fc3ca29a127e83b194d1e2a169",
+    "installerCalls": 4,
+    "firstPartyCliCalls": 2,
+    "rawReceiptSha256": "a2599968130e6830b0cc2157cdf91a36d92f50c18d2b1426542f430af642fc57",
+    "cleanupVerified": true
+  },
+  "behavioralTransfer": {
+    "observedCandidateManifestSha256": "80c474106e87ca2b5dcf6e526a038a46c8974af42dd419352d540819adf98905",
+    "unchangedNonmetadataPayloadFiles": 108,
+    "observedInitFilesMatching": 54,
+    "changedFiles": [
+      "SHA256SUMS",
+      "tibicen-init/package.json",
+      "tibicen-adopt/package.json"
+    ],
+    "scope": "Qualified combined-use observation; timing next-call rule breached, original task snapshot overwritten; old failure not regraded"
+  },
+  "newPaidModelApiCalls": 0,
+  "newBehavioralModelSessionsForRelease": 0,
+  "siteMetadata": "pending separate deployment and returned-body verification"
+}

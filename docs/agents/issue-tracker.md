@@ -1,5 +1,9 @@
 # Issue tracker
 
+## Release 1.5.6 published
+
+Owner: root; final site-metadata verification continues. [1.5.6](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.6) is published; CI, six platform cells, exact public delivery and returned assets are accepted. [Report](../evals/results/2026-11-16-release-1.5.6/README.md). The earlier failed observation and ZCode admission deviation are not regraded. New models, paid APIs and research are outside this release.
+
 ## Closed assessment — returned ZCode memory follow-up, 16 November
 
 Owner: none; root completed the [independent assessment](../evals/results/2026-11-16-zcode-memory-authority/README.md). Candidate integrity, plan/digest/approval binding and retained file preservation match. All three returned functional observations score 4/4; root replayed corrected phases 4 and 5 with 4/0 and 5/0 project tests. The ordinary initial implementation was overwritten by correction; its output/test receipts remain, not an independently replayable initial snapshot.
