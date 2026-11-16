@@ -5,6 +5,14 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+## 1.5.6 — Unpublished candidate
+
+Publication pending final delivery checks.
+
+### Fixed
+
+- Clarify surviving project-memory policies: owner-approved meaning and scope remain authoritative; a conflicting implementation is recorded separately. Retain strict memory-only admission and the earlier failed observation. A [separate ZCode follow-up](docs/evals/results/2026-11-16-zcode-memory-authority/README.md) observed the intended behavior with an explicit timing-protocol deviation.
+
 ## [1.5.5](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.5) — 2026-11-15
 
 ### Fixed

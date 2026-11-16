@@ -1,0 +1,217 @@
+{
+  "sourceCommit": "b3b981fb4fcce05a6348f9826c249df61c95a2a3",
+  "distributionCommit": "6d4baea666fc2885c04ba0fa0fc60dbb8b4e6a74",
+  "frozenInputs": 1511,
+  "unchangedWorkSourceFiles": 1399,
+  "workSourceComparison": "File bytes only; working-copy modes intentionally allow writes while frozen inputs are read-only.",
+  "proposals": [
+    {
+      "digest": "8744c238a0cc17acbec9c5b86f80e26e02a2b91641417a98cf106aafa79a6f56",
+      "paths": [
+        ".agents/memory.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "digest": "175024ba0344ce51a5d52ffb7b83e41156328d3636fcb9b7fa839af3adcd0c81",
+      "paths": [
+        ".agents/memory.md",
+        "AGENTS.md"
+      ]
+    }
+  ],
+  "approvedChangesIdenticalAcrossHomeReinstantiation": true,
+  "appliedBytesAndModesMatch": true,
+  "returnedCli": {
+    "apply": {
+      "exitCode": 0,
+      "status": "complete"
+    },
+    "verify": {
+      "exitCode": 0,
+      "status": "passed"
+    },
+    "status": {
+      "exitCode": 0,
+      "status": "complete"
+    },
+    "report": {
+      "exitCode": 0,
+      "status": "complete"
+    }
+  },
+  "sessionId": "4a3d44d2-7ca6-4848-89e0-bcc6e37d7886",
+  "strictMemoryOnlyAdmission": {
+    "status": "rejected",
+    "code": "generated-memory-answer-leak"
+  },
+  "ordinaryTask": {
+    "observed": {
+      "zero": "0.00 EUR",
+      "ordinary": "12.50 EUR",
+      "refund": "-2.50 EUR",
+      "line": "Notebook: On the house"
+    },
+    "score": {
+      "status": "failed",
+      "checks": {
+        "zero": "failed",
+        "ordinary": "passed",
+        "refund": "passed",
+        "line": "passed"
+      }
+    },
+    "memoryBoundaryAnnotation": "Boundary: the exception applies to receipt lines only",
+    "classification": "failed combined-use task after disclosed post-hoc protocol adaptation; not a valid memory-only observation"
+  },
+  "mechanicalCliIdentity": {
+    "route": "source export CLI, not installed distribution",
+    "matchedRuntimeFiles": 35,
+    "scriptBytesMatchDistribution": true
+  },
+  "actualAdoptPreservation": {
+    "ownerSections": true,
+    "memoryAndApplicationFiles": true,
+    "secondPlanChanges": 0,
+    "secondApplyServiceDelta": [
+      ".tibicen/manifest.yml"
+    ]
+  },
+  "workerContextsReported": 3,
+  "workerTurnsReported": 4,
+  "callerSecondsReported": 456.8,
+  "subagentTokensReported": 894822,
+  "reportedPaidApiCalls": 0,
+  "workerRouting": "unknown; controller reports GLM-5.3 subscription",
+  "toolEventExport": false,
+  "freshContextAndReadEvents": "executor-reported, no exported trace",
+  "nativeFollowupRunByRoot": false,
+  "rootNewPaidApiCalls": 0,
+  "evidence": [
+    {
+      "path": "artifacts/section1-api-case.json",
+      "bytes": 4136,
+      "sha256": "43f746208d8fc5fb91bbfcdc35fe606fa093015b0299401d7fd669d10bb8b55c"
+    },
+    {
+      "path": "artifacts/section1-cli-cases.json",
+      "bytes": 5419,
+      "sha256": "b6a3cb0762c8bb0c43782d034b0a711a82dad1ac0234511400cc12a0c9c77ba3"
+    },
+    {
+      "path": "artifacts/section1-tests-baseline.txt",
+      "bytes": 566,
+      "sha256": "7a76e587c92d6155866a2be7a8533ecbe5069244992bb017c04564f66da1d234"
+    },
+    {
+      "path": "artifacts/section2-adopt-case.json",
+      "bytes": 6059,
+      "sha256": "bc78c2a9d5349510b0aad9c4aad23969f9d85a621fd72e60bd6ccac4de802878"
+    },
+    {
+      "path": "artifacts/section3/consent-log.md",
+      "bytes": 818,
+      "sha256": "fba9e15304fe94e09186a2e32942f00010bb565a70d589aacafae937f8096a18"
+    },
+    {
+      "path": "artifacts/section3/p1-end-time.txt",
+      "bytes": 25,
+      "sha256": "ba4b5edda106c877b1a70d56fc3a531597755c87b7c5e4f2432131ccf64e735a"
+    },
+    {
+      "path": "artifacts/section3/p1-input-reconstructed.json",
+      "bytes": 3619,
+      "sha256": "92046b4c19d8fc439e4b14f01b66eaecf593745c22895918fee05468c93ec018"
+    },
+    {
+      "path": "artifacts/section3/p1-proposal-home2.json",
+      "bytes": 9810,
+      "sha256": "9f67a44a85f0f75e0a629f58cae16a926ed7f326b75bffa647f4f6edcd660286"
+    },
+    {
+      "path": "artifacts/section3/p1-proposal.json",
+      "bytes": 9738,
+      "sha256": "9a891694d30d1a2345b3f8b715f36510f7c6920cb3b7a4ada747945a70fbe37a"
+    },
+    {
+      "path": "artifacts/section3/p1-start-time.txt",
+      "bytes": 25,
+      "sha256": "ec5e0693e02c5d700edca15b70252033a8727e5df5552f8be6419d6da90e260f"
+    },
+    {
+      "path": "artifacts/section3/p1-starter-frozen.txt",
+      "bytes": 380,
+      "sha256": "2264d18f5bad3a22cf8efce558a2c28d0e72ffc5371ce52d51722372e4040cf7"
+    },
+    {
+      "path": "artifacts/section3/p2-apply-attempt1-refused.json",
+      "bytes": 182,
+      "sha256": "4ce0c06c65da26898411aa7c9a783652091446331e881c157a46330786c265c7"
+    },
+    {
+      "path": "artifacts/section3/p2-apply.json",
+      "bytes": 6410,
+      "sha256": "36019eaee0a683f036e2fbef54e872a11a3c05c76c61861343b5e1c9f4fca593"
+    },
+    {
+      "path": "artifacts/section3/p2-reinstantiate-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/section3/p2-report.json",
+      "bytes": 4949,
+      "sha256": "2315bed4706c43d967e91c88b056ecefac82ef22359dde6c188f68aafdee3596"
+    },
+    {
+      "path": "artifacts/section3/p2-retry-start.txt",
+      "bytes": 25,
+      "sha256": "33a75e1cdc824cf6b17d52e915b6d32e0768df88c7d7198da594c7bd4450a880"
+    },
+    {
+      "path": "artifacts/section3/p2-start-time.txt",
+      "bytes": 25,
+      "sha256": "ca313669a980bd9bc6ea8745c6c5d721ccde7bfefee9076a7e73a94460a0cac8"
+    },
+    {
+      "path": "artifacts/section3/p2-status.json",
+      "bytes": 1310,
+      "sha256": "fb63613f8e61647678325ac3789184e9adc8503b5da37dc7923cdac40eb3bcda"
+    },
+    {
+      "path": "artifacts/section3/p2-verify.json",
+      "bytes": 242,
+      "sha256": "14c092575407fdae75617fe3bb92eee9e0776796a011b2f610dd893b25c4175b"
+    },
+    {
+      "path": "artifacts/section3/p3-collect.json",
+      "bytes": 267,
+      "sha256": "16520d8472cb8964e4ce2cd7f05d4920383edc4e3ad33486d0d0ad1ac94feb89"
+    },
+    {
+      "path": "artifacts/section3/p3-frozen.txt",
+      "bytes": 385,
+      "sha256": "4b255fb21939befdb0434c6af6f8f5aeb3492fdd5b972cf396bde29e05da3002"
+    },
+    {
+      "path": "artifacts/section3/p3-preservation.json",
+      "bytes": 298,
+      "sha256": "ed1c54425fc5e917186921cdfa6df86e1e740bd53614999ccf869000878ba55c"
+    },
+    {
+      "path": "artifacts/section3/p3-start.txt",
+      "bytes": 25,
+      "sha256": "76be72af6ec24e9e7afce92a33e4fa9d2d12e414023149c7468bd262ab1a147e"
+    },
+    {
+      "path": "artifacts/verify-packet-final.txt",
+      "bytes": 264,
+      "sha256": "e43f2e07a57cd6bc38f34e1655c1d20b98a81434ca2d51571beaed0485621f6e"
+    },
+    {
+      "path": "artifacts/verify-packet-initial.txt",
+      "bytes": 264,
+      "sha256": "e43f2e07a57cd6bc38f34e1655c1d20b98a81434ca2d51571beaed0485621f6e"
+    }
+  ]
+}

@@ -1,5 +1,17 @@
 # Issue tracker
 
+## Closed assessment — returned ZCode memory follow-up, 16 November
+
+Owner: none; root completed the [independent assessment](../evals/results/2026-11-16-zcode-memory-authority/README.md). Candidate integrity, plan/digest/approval binding and retained file preservation match. All three returned functional observations score 4/4; root replayed corrected phases 4 and 5 with 4/0 and 5/0 project tests. The ordinary initial implementation was overwritten by correction; its output/test receipts remain, not an independently replayable initial snapshot.
+
+The external report says five phases passed, but the frozen next-call stop was breached: phase 1 took 246.3 seconds and phase 2 took 265.7 seconds against 180. Aggregate 796 seconds does not waive it. Retain positive combined-use behavior with this protocol deviation, executor-reported contexts/reads and unknown subscription cost. No new behavioral model session, paid API call, product edit, version bump, commit or publication occurred in this assessment. The existing guidance is a candidate for final review and authorized 1.5.6 patch delivery; further runs are not required to regrade this packet.
+
+## Closed local effort — returned ZCode packet and owner decision authority
+
+Owner: none; completed by root. The [independent assessment](../evals/results/2026-11-15-zcode-postrelease/README.md) confirms frozen bytes and source-bound mechanical preservation, while retaining the failed ordinary task and rejected memory-only admission. The sufficient-setup driver applied an empty plan and updated service history; it was not a native no-proposal observation.
+
+The [change](../../openspec/changes/clarify-memory-decision-authority/proposal.md) clarifies owner authority in all copyable memory policies. The red content regression, focused 11/11 checks, independent review, full gate (1,149 passed, 0 failed, 1 existing skip), build and standalone checks passed; [verification](../../openspec/changes/clarify-memory-decision-authority/verification.md) records exact scope. A new native effect was unverified at this local-implementation closure; the separately assessed follow-up above is later evidence. Local coordination: `.scratch/zcode-postrelease-assessment-20261115/map.md`. Published 1.5.5 is unchanged; no new behavioral model session, paid API call, commit or release belongs to this effort.
+
 ## Release 1.5.5 published
 
 [1.5.5](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.5) is published; CI/six platforms/exact delivery and returned assets are accepted. [Report](../evals/results/2026-11-15-release-1.5.5/README.md). Site metadata deployment and returned bodies are verified; the release effort is closed. New research and model matrices are outside this release.

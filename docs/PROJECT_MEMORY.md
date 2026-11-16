@@ -115,6 +115,8 @@ the working agent should correct the affected decision rather than leave two
 contradictory rules marked current. Existing approval and execution boundaries
 still apply: a memory note cannot authorize a command or override your instruction.
 
+**Unreleased clarification:** keep the meaning and scope of an owner-approved decision until the user explicitly changes them. If verified code implements only a narrower case, record that mismatch separately as an implementation fact; it does not create an accepted exception. An explicit user correction can still replace the decision during ordinary authorized work, without installed Tibicen. This strengthens the handoff text. A [separate ZCode combined-use observation](evals/results/2026-11-16-zcode-memory-authority/README.md) retained the intended behavior through work, correction and fresh reuse; it also breached a next-call time stop. It is qualified scoped evidence, not a guarantee, causal study or full protocol acceptance.
+
 The notes are readable Markdown. There is no mandatory entry schema, timestamp
 format or separate questionnaire, and the full history need not be copied into
 every instruction file.

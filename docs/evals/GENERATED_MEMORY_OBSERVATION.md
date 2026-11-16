@@ -25,6 +25,12 @@ its reason. The fresh-task prompts, starter source and visible tests contain nei
 answer. The approved instruction entrypoint may explain reading/updating memory
 and its path, but must not repeat the distinguishing decision itself.
 
+## Memory-only admission and combined use
+
+The strict projection deliberately rejects a distinguishing answer outside the selected memory. Product-valid owner decisions in `AGENTS.md` do not make a setup invalid, but they make this **memory-only** question inadmissible. Retain `generated-memory-answer-leak`; do not remove a generated owner section, rewrite memory, bypass the projector or relax the scorer to manufacture acceptance.
+
+If combined instruction/memory use is the intended question, freeze a **separate prospective protocol before its worker runs**. Declare answer locations, exact source and output contracts, contexts, controller approval, limits and evidence scope. Keep the memory-only rejection as an outcome. A disclosed post-hoc combined-use adaptation cannot retroactively satisfy the original admission rule or establish causal memory use. The [returned ZCode assessment](results/2026-11-15-zcode-postrelease/README.md) retains both that rejection and the failed ordinary task.
+
 ## Reuse the existing execution boundary
 
 Root owns any native launch. Reuse the maintained subscription Codex profile,
@@ -188,3 +194,7 @@ are not hard quotas and an in-flight call can overshoot. A new failure or missin
 usage stops the new packet. Freeze this changed question, provenance, resource
 scope, controller sources and actual phase inputs before launch, and report its
 outcomes separately from the stopped native workflow.
+
+## Separately returned ZCode combined-use observation
+
+The [16 November assessment](results/2026-11-16-zcode-memory-authority/README.md) concerns its own prospective combined instruction-and-memory packet and candidate, not a revision of this memory-only protocol or its earlier grades. Three functional observations scored 4/4; retained corrected projects replayed successfully. The executor nevertheless admitted later phases after its 180-second stop. A next-call admission stop remains binding even when an in-flight call cannot be forcibly stopped, its outcome becomes known, or the aggregate stays under its separate limit. Record the breach; do not retrospectively call that complete protocol acceptance or launch replacement runs merely to erase it. Retain per-phase application and memory snapshots before a later phase overwrites them. The earlier failed packet remains unchanged.

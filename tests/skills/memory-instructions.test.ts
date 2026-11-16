@@ -65,6 +65,27 @@ test('memory policy covers uncertainty, ambiguous stores and preservation rather
   assert.match(memory, /не одобряет digest/);
 });
 
+test('every copyable memory policy preserves owner authority over implementation facts', async () => {
+  const memory = await resource('project-memory');
+  const policies = [
+    ...[...memory.matchAll(/```text\n([\s\S]*?)\n```/g)].map(
+      (match) => match[1],
+    ),
+    ...[...memory.matchAll(/```json\n([\s\S]*?)\n```/g)].flatMap((match) =>
+      JSON.parse(match[1]).changes.flatMap(
+        (change: { managedBlock?: { content: string } }) =>
+          change.managedBlock ? [change.managedBlock.content] : [],
+      ),
+    ),
+  ];
+  assert.equal(policies.length, 3);
+  for (const policy of policies) {
+    assert.match(policy, /смысл и область решения, пока пользователь явно/);
+    assert.match(policy, /расхождение отдельно как факт реализации/);
+    assert.match(policy, /не заменяет решение и не создаёт исключения/);
+  }
+});
+
 test('memory verification guidance separates later mutable notes, pending writes and observed behavior', async () => {
   const verify = await resource('stage-verify');
   assert.match(verify, /`user-memory` после завершённой настройки/);
