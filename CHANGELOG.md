@@ -1,12 +1,9 @@
 # Changelog
 
-Version 1.5.6 is public. See [release details](docs/RELEASING.md) for
+Version 1.6.0 is public. See [release details](docs/RELEASING.md) for
 immutable source/distribution references, checks and remaining scope limits.
 
-## 1.6.0 — unpublished local candidate
-
-Prepared on 17 November 2026; not published yet. The tag link and publication
-date are added only after an actual release.
+## [1.6.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.6.0) — 2026-11-17
 
 ### Added
 

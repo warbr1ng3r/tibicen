@@ -1,5 +1,9 @@
 # Issue tracker
 
+## Release 1.6.0 published — 17 November
+
+Owner: root; deployment closure. The owner explicitly authorized commit, push and publication of the complete packet. Public source CI, six platforms, delivery and the immutable tag/three assets are verified. The [report](../evals/results/2026-11-17-release-1.6.0/README.md) retains exact identities and limits. Site metadata is being deployed and checked separately before closing the effort. Earlier entries below are preparation history. No new model run or paid API call.
+
 ## Release integration — 1.6.0 candidate-02, 17 November
 
 Owner: root; final local release acceptance. The exact nine-file ZCode delta is integrated; executable payload and archive match the accepted candidate-01 bytes. Root found four documentation changes after the original source freeze and is recording a new complete source identity as candidate-02, preserving the received records. All three local release assets now exist. A separate controlled incomplete-installation recovery restores 110/110 payload files and preserves unrelated skill, host settings and later project memory. The original timed SIGKILL observation remains partial; the new control does not regrade it. Commit, public projection, CI, tag, release and deployment await explicit authorization on the finished packet. Published 1.5.6 and public indexes remain unchanged.

@@ -1,18 +1,13 @@
 # What Tibicen does today
 
-**Published skills: 1.5.6 · 2026-11-16 UTC.** Tibicen helps your existing coding
+**Published skills: 1.6.0 · 2026-11-17 UTC.** Tibicen helps your existing coding
 agent inspect, set up or repair project instructions and integrations, apply the
 changes you approve, and report what was checked. The
-[release report](evals/results/2026-11-16-release-1.5.6/README.md) defines the exact
+[release report](evals/results/2026-11-17-release-1.6.0/README.md) defines the exact
 published bytes and delivery evidence; the [product vision](PRODUCT_VISION.md)
 defines wider goals, not extra shipped capabilities.
 
-**Unreleased:** the working tree adds controlled `python`, `bash` and `docs`
-application checks for existing entrypoints. It does not install or reproduce
-Python/third-party dependencies, and command discovery outside package.json is
-performed by the working agent. Explicit byte-bound file arguments and copied
-project entrypoints preserve the execution boundary. This extension is not in
-published 1.5.6; details are in the [change](../openspec/changes/support-controlled-project-checks/proposal.md).
+**Controlled checks — available in 1.6.0.** Existing Python, Bash and documentation projects can run approved checks on independent baseline/final copies. Dependency installation and Python environment reproduction are not included; the working agent discovers commands outside package.json. Interpreter paths are pinned and scripts bind to the reviewed bytes. Web behavior is preserved. See the [change](../openspec/changes/support-controlled-project-checks/proposal.md).
 
 Tibicen consists of two standalone skills with local Node scripts:
 `tibicen-init` for initial setup and `tibicen-adopt` for existing infrastructure.

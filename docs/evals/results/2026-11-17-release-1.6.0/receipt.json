@@ -1,0 +1,181 @@
+{
+  "schema": 1,
+  "version": "1.6.0",
+  "releaseId": 448096657,
+  "publishedAtUtc": "2026-11-17T03:54:57Z",
+  "sourceCommit": "b55123ca41d6c1fc4ef21e9a683b9c4686738e9d",
+  "distributionCommit": "29ab6308811c50304d61456011d1b7ec17b96c76",
+  "annotatedTag": "70fb8b61e58612e73d543d93c63a6bdf75f5f550",
+  "candidate": "candidate-02",
+  "publicSourceFiles": 1429,
+  "publicSourceManifestSha256": "528a50abf813efbae8519773644327542d697b1f3a2a693a197431c4a5052d97",
+  "payloadFiles": 110,
+  "archiveFiles": 111,
+  "checks": {
+    "localGate": {
+      "total": 1171,
+      "passed": 1170,
+      "failed": 0,
+      "skipped": 1
+    },
+    "sourceCi": {
+      "runId": 44012787884,
+      "conclusion": "success"
+    },
+    "platforms": {
+      "runId": 44012901158,
+      "passedCells": 6,
+      "conclusion": "success"
+    },
+    "publicDelivery": {
+      "status": "passed",
+      "steps": [
+        {
+          "step": "01-fresh",
+          "distributionCommit": "29ab6308811c50304d61456011d1b7ec17b96c76",
+          "exitCode": 0,
+          "seconds": 2.504
+        },
+        {
+          "step": "02-fresh-check",
+          "filesAndModesMatch": true,
+          "selfTests": 2,
+          "version": "1.6.0"
+        },
+        {
+          "step": "03-install-old",
+          "distributionCommit": "2c7cb6f50a36d5fc3ca29a127e83b194d1e2a169",
+          "exitCode": 0,
+          "seconds": 2.199
+        },
+        {
+          "step": "04-old-check",
+          "filesAndModesMatch": true,
+          "selfTests": 2,
+          "version": "1.5.6"
+        },
+        {
+          "step": "05-update",
+          "distributionCommit": "29ab6308811c50304d61456011d1b7ec17b96c76",
+          "exitCode": 0,
+          "seconds": 1.989
+        },
+        {
+          "step": "06-update-check",
+          "filesAndModesMatch": true,
+          "selfTests": 2,
+          "version": "1.6.0"
+        },
+        {
+          "step": "07-repeat",
+          "distributionCommit": "29ab6308811c50304d61456011d1b7ec17b96c76",
+          "exitCode": 0,
+          "seconds": 2.01
+        },
+        {
+          "step": "08-repeat-check",
+          "filesAndModesMatch": true,
+          "selfTests": 2,
+          "version": "1.6.0"
+        },
+        {
+          "step": "09-edited-backup-restore",
+          "completeBackupsRestored": 2
+        },
+        {
+          "step": "10-reinstall-after-restore",
+          "distributionCommit": "29ab6308811c50304d61456011d1b7ec17b96c76",
+          "exitCode": 0,
+          "seconds": 2.089
+        },
+        {
+          "step": "11-reinstall-check",
+          "filesAndModesMatch": true,
+          "selfTests": 2,
+          "version": "1.6.0"
+        },
+        {
+          "step": "12-remove",
+          "onlySelectedSkillFoldersRemoved": true
+        }
+      ],
+      "preservedSentinels": 3
+    },
+    "controlledPartialRecovery": {
+      "status": "passed",
+      "matchingPayloadFiles": 110,
+      "genuineMidCopySigkill": "partial"
+    },
+    "returnedAssets": {
+      "status": "passed",
+      "releases": [
+        {
+          "version": "1.6.0",
+          "releaseId": 448096657,
+          "publishedAtUtc": "2026-11-17T03:54:57Z",
+          "assets": [
+            {
+              "name": "distribution-SHA256SUMS",
+              "bytes": 11559,
+              "sha256": "f5009dbba05de5a1122c3d44cf06db8a1f64b62af1bc3156e673dc856fe9ca75",
+              "assetId": 757530049
+            },
+            {
+              "name": "SHA256SUMS",
+              "bytes": 177,
+              "sha256": "c08d2f6cfe6c67f14e4c995a8f022a0503ea43560e6c58509aaf801988405975",
+              "assetId": 757530060
+            },
+            {
+              "name": "tibicen-1.6.0.tar.gz",
+              "bytes": 310942,
+              "sha256": "c5d41cd1bf5cee06824bacd6e2d69e39def5ee1b313c8535ee32fbe329245174",
+              "assetId": 757529834
+            }
+          ]
+        },
+        {
+          "version": "1.5.6",
+          "releaseId": 446471560,
+          "publishedAtUtc": "2026-11-16T00:15:51Z",
+          "assets": [
+            {
+              "name": "distribution-SHA256SUMS",
+              "bytes": 11559,
+              "sha256": "797471c6f17b488581d5829e00b229c405a3bcb0622c596e75fb5b528ecab478",
+              "assetId": 752824975
+            },
+            {
+              "name": "SHA256SUMS",
+              "bytes": 177,
+              "sha256": "45b8fc9301daed5191dcb894d7f112608385db5ad8043a277253a5167ba7ef8e",
+              "assetId": 752824978
+            },
+            {
+              "name": "tibicen-1.5.6.tar.gz",
+              "bytes": 290421,
+              "sha256": "13ffe16fb15bdcf2daa8353b4315c5746c0667833403a86593e8089ff93ba36b",
+              "assetId": 752824968
+            }
+          ]
+        }
+      ],
+      "archiveFilesMatched": 111,
+      "payloadFiles": 110,
+      "archiveModesMatch": true,
+      "previousReleasePreserved": true
+    }
+  },
+  "siteMetadata": {
+    "status": "pending"
+  },
+  "newPaidApiCalls": 0,
+  "newModelSessions": 0,
+  "limits": [
+    "Windows project-command execution unavailable.",
+    "No dependency installation or Python environment reproduction.",
+    "Interpreter path pinning is not binary/version attestation; copies are not OS sandboxes.",
+    "No new native loading, all-harness or human-benefit claim.",
+    "Genuine mid-copy SIGKILL was not captured; controlled partial-state recovery is separate."
+  ]
+}

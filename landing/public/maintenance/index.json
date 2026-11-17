@@ -268,6 +268,25 @@
         }
       ],
       "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.6"
+    },
+    {
+      "version": "1.6.0",
+      "publishedAtUtc": "2026-11-17T03:54:57Z",
+      "sourceCommit": "b55123ca41d6c1fc4ef21e9a683b9c4686738e9d",
+      "distributionCommit": "29ab6308811c50304d61456011d1b7ec17b96c76",
+      "scope": "Compatible controlled checks for existing Python, Bash and documentation projects, with reviewed script-byte bindings and interpreter-path pinning. Web behavior and persisted schemas remain compatible. Source CI, six standalone platform cells and exact public install/update/recovery/removal passed. Dependencies and Python environments are not reproduced; controlled copies are not OS sandboxes. Windows project-command execution, native loading, all-harness compatibility and human benefit remain unverified. Genuine mid-copy SIGKILL observation remains partial; separate controlled partial-state recovery passed. MIT license retained.",
+      "payloadManifest": {
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.6.0/distribution-SHA256SUMS",
+        "sha256": "f5009dbba05de5a1122c3d44cf06db8a1f64b62af1bc3156e673dc856fe9ca75"
+      },
+      "archives": [
+        {
+          "name": "tibicen-1.6.0.tar.gz",
+          "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.6.0/tibicen-1.6.0.tar.gz",
+          "sha256": "c5d41cd1bf5cee06824bacd6e2d69e39def5ee1b313c8535ee32fbe329245174"
+        }
+      ],
+      "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.6.0"
     }
   ],
   "warnings": []

@@ -1,10 +1,10 @@
 # Tibicen development plan
 
-## Release preparation — 17 November
+## Current release — 1.6.0
 
-The next delivery is **1.6.0**, containing the completed controlled Python/Bash/docs checks and hardening. Root completed local candidate-02 acceptance after integrating the ZCode release packet; its payload and archive are byte-identical to the tested distribution. Public CI, delivery and publication remain pending authorization. Capability-based loading and first-use clarity follow this release and do not expand its scope. The dated candidate-01 record below retains the earlier preparation state.
+[1.6.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.6.0) was published on 17 November. Controlled Python/Bash/docs checks and hardening are shipped; CI, six platforms and public delivery passed. The [report](evals/results/2026-11-17-release-1.6.0/README.md) records exact bytes and limits. Final site metadata deployment is checked separately.
 
-**Current release: [1.5.6](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.6).** Owner decision-authority guidance is published; the [report](evals/results/2026-11-16-release-1.5.6/README.md) binds exact delivery and observation limits. Site metadata and both checksum endpoints are deployed and verified. Dated plans below retain history rather than new assignments.
+The next package is capability-based instruction loading and first-use clarity. It is outside 1.6.0; detailed tasks belong in a separate change. Dated sections below retain earlier plans and results, not current assignments.
 
 ## Postrelease findings — 16 November
 

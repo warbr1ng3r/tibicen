@@ -1,5 +1,11 @@
 # Verification
 
+## Publication — 17 November 2026
+
+This change shipped in [1.6.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.6.0). The [release report](../../../docs/evals/results/2026-11-17-release-1.6.0/README.md) binds source, distribution, CI, six platforms, public delivery and returned assets. Later sections preserve dated preparation states, including earlier Unreleased statements; they are not current publication status.
+
+## Preparation record — historical
+
 This change is **Unreleased**. The initial ZCode worktree record below is retained; the later Codex integration section records additional findings and final accepted local checks. Neither changes published 1.5.6.
 
 2026-11-16, pnpm 11.21.0, Node v24.15.0, macOS arm64, worktree branch `codex/project-checks-20261116` from f5816c7.
