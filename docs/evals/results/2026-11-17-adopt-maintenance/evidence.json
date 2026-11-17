@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-17",
+  "status": "integrated-unreleased-uncommitted",
+  "receivedBaseCommit": "f5816c792e766386f2bff7d109512615c9fa485d",
+  "integrationHead": "e3a505e0f334b51547554bdbb7a9491b54563060",
+  "receivedChangedFiles": 15,
+  "baselineEntriesChecked": 1964,
+  "receivedReportSha256": "59e6262603cdd9c87a1a29d046f89f04d49a0f013959df11a1bd405d168a2ae8",
+  "receivedPatchSha256": "306e2c19c6927e1b816b81d1d3866948ad05f778a256955a76e9f27f19211c21",
+  "ownReturnedFileHashes": [
+    {
+      "path": "CHANGELOG.md",
+      "beforeSha256": "158446221bf74e5fd7e9982d96fce17557dfb3d8eef6896d7f800db4b20f757d",
+      "afterSha256": "4e668a9a935e3c58b705c885733e417fcdcfe5ef0ca604b6e68457cd37c0c212"
+    },
+    {
+      "path": "CHANGELOG_ru.md",
+      "beforeSha256": "c248c980f0aef6187bd8599fe6e0ed350d0a9909512e99d4b53608bd4771d0a2",
+      "afterSha256": "cba1951289314c420e19414a7dff64004e736e199b170ed1def9d56e846c5cd3"
+    },
+    {
+      "path": "docs/agents/issue-tracker.md",
+      "beforeSha256": "e9510dd2a1aa093654c3579f81d652e294334eb7ab580bb4f5d65f583ccc7f16",
+      "afterSha256": "c706fa2523f398a5dd72598a14d6a50c44f5a6207c4f1056a0a14d05aa3e915a"
+    },
+    {
+      "path": "docs/agents/issue-tracker_ru.md",
+      "beforeSha256": "2e45022ea4f768c19bfb76f0519f30f73fa7c19578704b1c44cfa59a898432d7",
+      "afterSha256": "5d3280ef81dd10563f62edfff875d5f2cb3acda2bea9a90ce55ef67b3247b939"
+    },
+    {
+      "path": "openspec/changes/support-controlled-project-checks/specs/verification-and-delivery/spec.md",
+      "beforeSha256": "830b51e19f5b24fd602b35857274244e4b131942be42037aa69d2bc9f5b2d0c5",
+      "afterSha256": "a36a8df63d46167752faf6539b9fd1e71ecd350b1e8163ef5a01e6c0e28d6079"
+    },
+    {
+      "path": "openspec/changes/support-controlled-project-checks/tasks.md",
+      "beforeSha256": "6ef4c9efb034e45de565e004df0b70a1ea4f1a766752348f2e0ce857e51cf769",
+      "afterSha256": "d1f154331efcc9328950afcd45c22bb89f5b9e3718dd255ec1da2af7157050ae"
+    },
+    {
+      "path": "openspec/changes/support-controlled-project-checks/verification.md",
+      "beforeSha256": "baac88658bc507394539ac184a669f828a7cd4e7fe974dd29aedf0f8fe28bd67",
+      "afterSha256": "d841c8dd397c35f40de6588666d748d6c1f61c617dd295a8b55e3ff1ca8bb67d"
+    },
+    {
+      "path": "openspec/changes/support-controlled-project-checks/verification_ru.md",
+      "beforeSha256": "0649e56c4863b35531d0552f374dfc760b7bde56858e5c27aad255bfe26b197c",
+      "afterSha256": "c2ea8708fbd7ead1e1b16dee5145458edf9a18ffbca927059d2787a774339eff"
+    },
+    {
+      "path": "references/proposal-format.md",
+      "beforeSha256": "38b938becd8d196a07dad5ab3b8ea91a5874c0763772e1f777fc36d795501610",
+      "afterSha256": "0885c69aa51444adde44c3e4d87f813a50a5a42b18b73135da2112146364c882"
+    },
+    {
+      "path": "scripts/core/execute.ts",
+      "beforeSha256": "4b93603d74dc7a59f0a2e59ddc90d092b6cc17257c54b9301c910a96e5f14e04",
+      "afterSha256": "125ce1053f0283f930ea8b20a7f30679e387c1761df7a397643245622eb4fffb"
+    },
+    {
+      "path": "scripts/core/finalize.ts",
+      "beforeSha256": "effe91cdf0ba751b7accd693415cb395c7b9da61332fbf9a89ad33d45942a547",
+      "afterSha256": "147d4dd896392ae13d12a05356e3a7143c5ce0048e88eaf217fd07284b744472"
+    },
+    {
+      "path": "scripts/core/plan.ts",
+      "beforeSha256": "3636ee4c56876769fa681b107737d962f89de6d15826986832b128f6963c533a",
+      "afterSha256": "3657e469f2ff9407c96cb9978e3b7b051afdb765d00c2a2910cc8fc98b30fe87"
+    },
+    {
+      "path": "tests/core/apply.test.ts",
+      "beforeSha256": "87c99cb23097bdcdc09b21c346aa8aefe2df1501298a82a46539cf11e95e0e0f",
+      "afterSha256": "fcba51551ba5651e13adacdff98693717d26d5f2057c4fc37d181fa745e8a4e2"
+    },
+    {
+      "path": "tests/verify/forward-profiles.test.ts",
+      "beforeSha256": "93d06c57145ee0e19565063a663b37a575b3aa748788a54b5c0805528bcf45c4",
+      "afterSha256": "b1dcb62f3ab70e0f3cda27ea33b7ee5e2e50e5bfbb3a60ca3f646a2102484f72"
+    },
+    {
+      "path": "tests/verify/project-profiles.test.ts",
+      "beforeSha256": "cf4671cb787b78a8bf3ff6e6b0c4128ed8b31931e9f6341a24a2a7099d5c8c2b",
+      "afterSha256": "63062910a9cb1bc5507c92c0adc0bea605f6d7007cf2fcadaf91dd4ba9e051e3"
+    }
+  ],
+  "focused": {
+    "total": 33,
+    "passed": 33,
+    "failed": 0,
+    "skipped": 0
+  },
+  "fullGate": {
+    "command": "pnpm test",
+    "exitCode": 0,
+    "elapsedSeconds": 102.193,
+    "tests": 1171,
+    "passed": 1170,
+    "failed": 0,
+    "skipped": 1
+  },
+  "build": {
+    "command": "pnpm build",
+    "exitCode": 0,
+    "elapsedSeconds": 7.76
+  },
+  "distribution": {
+    "files": 110,
+    "allChecksumsMatched": true,
+    "manifestSha256": "5272acbee9ecc64899a4ffb3ab87241b5bb470ae957502852ac97688d78f684a",
+    "selfTestsPassed": 2,
+    "outsideCheckout": true,
+    "emptyPath": true,
+    "isolatedHomeUnchanged": true
+  },
+  "retainedEvidenceAuditPassed": true,
+  "readOnlyControlPassed": true,
+  "landingCommitPreserved": true,
+  "behavioralModelCallsByRoot": 0,
+  "paidApiSpendRub": 0,
+  "commitCreated": false,
+  "pushed": false,
+  "published": false,
+  "versionChanged": false,
+  "limits": [
+    "Mechanical CLI fixtures and executor-authored reasoning, not independent native agent diagnosis",
+    "Synthetic fixture consent, not human approval",
+    "No native loading or human usefulness claim",
+    "No new native Windows/Linux execution",
+    "Interpreter paths are not binary identity; copies are not OS sandboxes",
+    "No dependency or venv reproduction"
+  ]
+}

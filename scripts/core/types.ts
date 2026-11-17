@@ -94,6 +94,7 @@ export interface Command {
   envNames: string[];
   trusted?: boolean;
   source?: { path: string; script: string; scriptHash: string };
+  script?: { path: string; hash: string };
 }
 
 export interface CommandResult {
@@ -489,8 +490,10 @@ export interface ProposalInput {
     action?: string;
     managedBlock?: ManagedBlockInput;
   })[];
-  commands?: (Omit<Command, 'cwd' | 'envNames'> &
-    Partial<Pick<Command, 'cwd' | 'envNames'>>)[];
+  commands?: (Omit<Command, 'cwd' | 'envNames' | 'script'> &
+    Partial<Pick<Command, 'cwd' | 'envNames'>> & {
+      script?: { path: string; hash?: string };
+    })[];
   sources?: Source[];
   componentUpdates?: ComponentUpdate[];
   migrateManifest?: boolean;

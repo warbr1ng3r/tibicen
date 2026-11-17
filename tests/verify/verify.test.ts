@@ -300,7 +300,7 @@ test('checks use only the shared runner on complete snapshots with explicit envi
     'environment-unverified',
   );
   assert.equal(
-    (await runProjectChecks(snapshot, [command], { runner, profile: 'python' }))
+    (await runProjectChecks(snapshot, [command], { runner, profile: 'unity' }))
       .reason,
     'unsupported-profile',
   );

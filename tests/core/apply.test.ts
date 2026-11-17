@@ -59,6 +59,26 @@ test('proposal and missing/wrong consent leave project and user profile untouche
   assert.deepEqual(await readdir(home), []);
 });
 
+test('a damaged local usage counter never fails an approved apply', async (t) => {
+  const { root, home } = await fixture(t);
+  await writeFile(path.join(root, 'app.js'), 'application');
+  const plan = await createProposal(root, input, { home });
+  const damaged = '{"sessions": [truncated';
+  await mkdir(path.join(home, '.tibicen'), { recursive: true });
+  await writeFile(path.join(home, '.tibicen/usage.json'), damaged);
+  const applied = await applyPlan(root, plan, {
+    home,
+    approvedDigest: plan.digest,
+    verify: check,
+  });
+  assert.equal(applied.status, 'complete');
+  assert.equal((await getStatus(root)).state, null);
+  assert.equal(
+    await readFile(path.join(home, '.tibicen/usage.json'), 'utf8'),
+    damaged,
+  );
+});
+
 test('init routing for an installed utility never grants empty-project writes or setup execution', async (t) => {
   const { root, home } = await fixture(t);
   const starter = await createProposal(

@@ -3,7 +3,22 @@
 Version 1.5.6 is public. See [release details](docs/RELEASING.md) for
 immutable source/distribution references, checks and remaining scope limits.
 
-## Unreleased
+## 1.6.0 — unpublished local candidate
+
+Prepared on 17 November 2026; not published yet. The tag link and publication
+date are added only after an actual release.
+
+### Added
+
+- Run approved checks for existing Python, Bash and documentation projects on independent baseline/final copies. Pin interpreter paths without running them before consent; keep missing checks and unavailable execution explicit.
+- Bind script checks to reviewed bytes and explicit `./` file arguments, refuse absolute project executables that would run the original, and preserve web's shell restrictions. Dependency installation and Python environment reproduction are outside this extension.
+
+### Fixed
+
+- Refuse inline interpreter spellings (`-p`, `--eval=…`, clustered flags such as `-Ic`) in the controlled profiles: pinned interpreters accept only a bound `./` script argument or an installed `-m` module.
+- Scope script bindings to the controlled non-web profiles and reject a bound file argument riding a non-interpreter executable, so a reviewed hash never certifies bytes that are not executed.
+- Validate `checks.profile` at proposal time; unknown profile names fail before any plan or session exists instead of after apply.
+- Show the reviewed script binding in the consent summary, and keep a damaged local usage counter from failing an approved apply while preserving the file for manual repair.
 
 ## [1.5.6](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.6) — 2026-11-16
 

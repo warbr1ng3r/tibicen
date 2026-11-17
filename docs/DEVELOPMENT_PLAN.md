@@ -1,8 +1,14 @@
 # Tibicen development plan
 
+## Release preparation — 17 November
+
+The next delivery is **1.6.0**, containing the completed controlled Python/Bash/docs checks and hardening. Root completed local candidate-02 acceptance after integrating the ZCode release packet; its payload and archive are byte-identical to the tested distribution. Public CI, delivery and publication remain pending authorization. Capability-based loading and first-use clarity follow this release and do not expand its scope. The dated candidate-01 record below retains the earlier preparation state.
+
 **Current release: [1.5.6](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.6).** Owner decision-authority guidance is published; the [report](evals/results/2026-11-16-release-1.5.6/README.md) binds exact delivery and observation limits. Site metadata and both checksum endpoints are deployed and verified. Dated plans below retain history rather than new assignments.
 
 ## Postrelease findings — 16 November
+
+The next cycle starts with [controlled application checks](../openspec/changes/support-controlled-project-checks/proposal.md): the Python/Bash/docs package is integrated, and additional review findings around option-like filenames and absolute project entrypoints are fixed. The [local verification](../openspec/changes/support-controlled-project-checks/verification.md) is complete. This is **Unreleased**, separate from published 1.5.6. The [repeat-adopt assessment](evals/results/2026-11-17-adopt-maintenance/README.md) now closes the six mechanical maintenance cases and integrates further controlled-check fixes. A compatible local **1.6.0 minor candidate** was prepared on 17 November from this integrated scope, with the distribution manifest frozen in the change verification and the full source/archive identities in the release package's candidate record; it remains **unpublished**, and the public commit/tag/CI/asset/deploy sequence is the separate owner-authorized Codex publication step. Next come capability-based instruction loading and first-use clarity, as one bounded engineering package with independent GLM tasks. Native loading remains unverified; this fixture assessment is not a fresh-session benchmark. Detailed work and verification stay in the change and [tracker](agents/issue-tracker.md), not the dated historical delivery table below.
 
 The [original ZCode assessment](evals/results/2026-11-15-zcode-postrelease/README.md) retains its failed task and rejected memory-only admission. The [owner-authority clarification](../openspec/changes/clarify-memory-decision-authority/proposal.md) passed local integration and is now published in [1.5.6](evals/results/2026-11-16-release-1.5.6/README.md).
 
@@ -10,7 +16,7 @@ The separate [combined-use follow-up](evals/results/2026-11-16-zcode-memory-auth
 
 Final engineering review, authorized commits and compatible **1.5.6 patch** delivery are complete; site metadata is also deployed and verified. No new product feature or broad model matrix is required here. Future observation protocols should enforce their next-call stops and retain each phase's source/memory snapshot. Causal memory-only research, autoload, human usefulness and other-harness coverage remain separate work. Detailed implementation tasks stay in the change.
 
-Updated 16 November 2026. Scope stays in the [vision](PRODUCT_VISION.md), [addendum](PRODUCT_VISION_ADDENDUM.md) and [current capabilities](CURRENT_CAPABILITIES.md). Assignments and integration status live in the [tracker](agents/issue-tracker.md); detailed implementation requirements belong in the relevant OpenSpec change.
+Updated 17 November 2026. Scope stays in the [vision](PRODUCT_VISION.md), [addendum](PRODUCT_VISION_ADDENDUM.md) and [current capabilities](CURRENT_CAPABILITIES.md). Assignments and integration status live in the [tracker](agents/issue-tracker.md); detailed implementation requirements belong in the relevant OpenSpec change.
 
 **Current release: [1.5.5](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.5).** The reviewed reliability fixes are published; the [report](evals/results/2026-11-15-release-1.5.5/README.md) binds exact source, distribution and limits. Additional coverage is separate postrelease work. Dated statuses below preserve preparation history.
 

@@ -7,6 +7,13 @@ changes you approve, and report what was checked. The
 published bytes and delivery evidence; the [product vision](PRODUCT_VISION.md)
 defines wider goals, not extra shipped capabilities.
 
+**Unreleased:** the working tree adds controlled `python`, `bash` and `docs`
+application checks for existing entrypoints. It does not install or reproduce
+Python/third-party dependencies, and command discovery outside package.json is
+performed by the working agent. Explicit byte-bound file arguments and copied
+project entrypoints preserve the execution boundary. This extension is not in
+published 1.5.6; details are in the [change](../openspec/changes/support-controlled-project-checks/proposal.md).
+
 Tibicen consists of two standalone skills with local Node scripts:
 `tibicen-init` for initial setup and `tibicen-adopt` for existing infrastructure.
 Both can select the appropriate route from the actual project. A sufficient

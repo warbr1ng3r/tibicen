@@ -49,33 +49,45 @@ async function saveUsage({ home, session, atomicWrite }: FinalizationContext) {
     'invalid-plan',
     'Unexpected usage counter location.',
   );
-  const filename = await safePath(home, '.tibicen/usage.json');
-  let current: {
-    schema: number;
-    sessions: { id: string; project: string; mode: string; status: string }[];
-  } | null;
   try {
-    current = parseData(await readFile(filename, 'utf8')) as typeof current;
+    const filename = await safePath(home, '.tibicen/usage.json');
+    let current: {
+      schema: number;
+      sessions: {
+        id: string;
+        project: string;
+        mode: string;
+        status: string;
+      }[];
+    } | null;
+    try {
+      current = parseData(await readFile(filename, 'utf8')) as typeof current;
+    } catch (caught) {
+      if ((caught as NodeJS.ErrnoException).code !== 'ENOENT') throw caught;
+      current = null;
+    }
+    current ??= { schema: 1, sessions: [] };
+    assert(
+      current.schema === 1 && Array.isArray(current.sessions),
+      'invalid-data',
+      'Invalid local usage data.',
+    );
+    const previous = current.sessions.find((item) => item.id === session.id);
+    const item = {
+      id: session.id,
+      project: hashContent(proposal.root),
+      mode: proposal.mode,
+      status: session.status,
+    };
+    if (previous) Object.assign(previous, item);
+    else current.sessions.push(item);
+    await atomicWrite(home, '.tibicen/usage.json', serializeData(current));
   } catch (caught) {
-    if ((caught as NodeJS.ErrnoException).code !== 'ENOENT') throw caught;
-    current = null;
+    if ((caught as NodeJS.ErrnoException).code === 'invalid-plan') throw caught;
+    // The usage counter is local accounting, not transfer state: a damaged or
+    // unwritable counter never fails an otherwise complete apply, and the
+    // user's existing file stays untouched for manual repair.
   }
-  current ??= { schema: 1, sessions: [] };
-  assert(
-    current.schema === 1 && Array.isArray(current.sessions),
-    'invalid-data',
-    'Invalid local usage data.',
-  );
-  const previous = current.sessions.find((item) => item.id === session.id);
-  const item = {
-    id: session.id,
-    project: hashContent(proposal.root),
-    mode: proposal.mode,
-    status: session.status,
-  };
-  if (previous) Object.assign(previous, item);
-  else current.sessions.push(item);
-  await atomicWrite(home, '.tibicen/usage.json', serializeData(current));
 }
 
 async function writeManifest(

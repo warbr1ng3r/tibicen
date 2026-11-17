@@ -19,7 +19,11 @@ import {
   validateProposal,
 } from './contracts.ts';
 import { safePath, isInfrastructurePath } from './paths.ts';
-import { validateCommand } from './execute.ts';
+import {
+  executableName,
+  validateCommand,
+  validateExternalExecutable,
+} from './execute.ts';
 import { prepareCheckCommands } from './checks.ts';
 import {
   parseManagedBlock,
@@ -417,7 +421,136 @@ export async function createProposal(
     input.checks ?? {},
     input.compat ?? { enabled: true },
   );
-  const commands = [...(input.commands ?? []), ...preparedChecks.commands].map(
+  // Controlled non-web profiles pin interpreters and bind script bytes before validation.
+  const profile =
+    typeof input.checks?.profile === 'string' ? input.checks.profile : '';
+  assert(
+    ['', 'web', 'python', 'bash', 'docs'].includes(profile),
+    'invalid-check-command',
+    'Unknown checks profile.',
+  );
+  const controlledProfile = ['python', 'bash', 'docs'].includes(profile);
+  const PINNED_INTERPRETERS = ['node', 'python3', 'python', 'bash'];
+  const resolveOnPath = async (name: string) => {
+    for (const directory of (process.env.PATH ?? '').split(path.delimiter)) {
+      // Relative PATH entries depend on the caller's cwd and cannot pin anything.
+      if (!directory || !path.isAbsolute(directory)) continue;
+      const candidate = path.join(directory, name);
+      try {
+        const info = await stat(candidate);
+        if (info.isFile() && info.mode & 0o111) return candidate;
+      } catch {
+        // Absent PATH entries are skipped; unreadable candidates are not executables.
+      }
+    }
+    return null;
+  };
+  const requestedCommands = (input.commands ?? []).map((command) => ({
+    ...command,
+  }));
+  for (const command of requestedCommands) {
+    if (command.script === undefined) continue;
+    assert(
+      controlledProfile,
+      'invalid-check-command',
+      'Script bindings belong to the controlled non-web profiles.',
+    );
+    assert(
+      command.script !== null &&
+        typeof command.script.path === 'string' &&
+        command.script.path,
+      'invalid-command',
+      'A script binding needs its project-relative path.',
+    );
+    const reviewed = await readCurrent(root, command.script.path, {
+      forbiddenPaths,
+    });
+    assert(
+      reviewed.hash !== null,
+      'command-script-unavailable',
+      'The bound command script must exist in the project.',
+    );
+    if (command.script.hash !== undefined)
+      assert(
+        command.script.hash === reviewed.hash,
+        'command-source-changed',
+        'The bound script differs from the hash submitted for review.',
+      );
+    command.script = { path: command.script.path, hash: reviewed.hash };
+    if (command.argv?.[0] === command.script.path)
+      command.argv = [`./${command.script.path}`, ...command.argv.slice(1)];
+  }
+  if (controlledProfile) {
+    assert(
+      !(input.checks ?? {}).environment,
+      'invalid-node-environment',
+      'Dependency environments belong to the web profile.',
+    );
+    const resolved = new Map<string, string | null>();
+    for (const command of requestedCommands.filter((command) =>
+      ['build', 'test', 'lint'].includes(command.kind),
+    )) {
+      // The argv rule below keys on the interpreter name and covers bare and
+      // absolute spellings alike; a pinned-looking path is not a freer route.
+      const interpreter = PINNED_INTERPRETERS.includes(command.executable)
+        ? command.executable
+        : PINNED_INTERPRETERS.includes(executableName(command))
+          ? executableName(command)
+          : null;
+      if (PINNED_INTERPRETERS.includes(command.executable)) {
+        let pinned = resolved.get(command.executable);
+        if (pinned === undefined) {
+          pinned = await resolveOnPath(command.executable);
+          resolved.set(command.executable, pinned);
+        }
+        assert(
+          pinned,
+          'interpreter-unavailable',
+          'The interpreter for this controlled check was not found on PATH.',
+        );
+        command.executable = pinned;
+      } else {
+        assert(
+          path.isAbsolute(command.executable) ||
+            command.executable.startsWith('./'),
+          'invalid-check-command',
+          'Controlled checks need a pinned interpreter or an explicit project entrypoint.',
+        );
+        // A project entrypoint runs its own bytes; those must be the bound reviewed bytes.
+        if (command.executable.startsWith('./'))
+          assert(
+            command.script?.path === command.executable.slice(2),
+            'invalid-check-command',
+            'A project entrypoint check must bind the executed file bytes.',
+          );
+      }
+      await validateExternalExecutable(root, command.executable);
+      if (interpreter !== null)
+        // Interpreters run reviewed bytes or an installed module; every other
+        // spelling (-p, --eval=, clustered -Ic, …) can carry inline code.
+        assert(
+          (command.script !== undefined &&
+            command.argv?.[0] === `./${command.script.path}`) ||
+            (['python3', 'python'].includes(interpreter) &&
+              command.argv?.[0] === '-m' &&
+              command.argv.length >= 2),
+          'forbidden-command',
+          'A pinned interpreter accepts only a bound ./ script argument or an installed -m module.',
+        );
+    }
+  } else
+    for (const command of requestedCommands.filter((command) =>
+      ['build', 'test', 'lint'].includes(command.kind),
+    ))
+      assert(
+        path
+          .basename(command.executable)
+          .replace(/\.(?:exe|cmd)$/i, '')
+          .toLowerCase() !== 'bash',
+        'forbidden-command',
+        'Bash stays limited to the controlled non-web profiles.',
+      );
+  const commands = [...requestedCommands, ...preparedChecks.commands].map(
     (command) => validateCommand({ cwd: '.', envNames: [], ...command }),
   );
   assert(
@@ -540,13 +673,14 @@ export async function createProposal(
         ? { process: { ...proposal.process, verification: processStatus } }
         : {}),
       commands: commands.map(
-        ({ id, kind, executable, argv, cwd, envNames }) => ({
+        ({ id, kind, executable, argv, cwd, envNames, script }) => ({
           id,
           kind,
           executable,
           argv,
           cwd,
           envNames,
+          ...(script ? { script } : {}),
         }),
       ),
       retryCommands: proposal.retryCommands,
