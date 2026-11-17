@@ -31,6 +31,8 @@ The received lifecycle packet did not capture a genuinely interrupted mid-copy s
 
 Command discovery outside package.json remains agent work. Dependencies and Python environments are not reproduced. Interpreter paths are pinned without detecting versions or establishing binary identity. Controlled copies are not OS sandboxes. Windows standalone checks passed; Windows project-command execution remains unavailable. Native loading, human approval/usefulness, causal memory benefit and compatibility with every harness are not established. Prior assisted and failed observations retain their original scope. No new model session or paid API call was made.
 
-## Site metadata
+## Site metadata verified
 
-Release metadata and install pointers are being deployed separately. Deployment and returned-body checks remain pending until recorded here; publication of the skill release does not itself prove them.
+Metadata source `00a02a5063a5baf8c5f5e4ad1ce81e27e827ea97` passed [CI](https://github.com/warbr1ng3r/tibicen/actions/runs/44014102487), [Cloudflare deployment](https://github.com/warbr1ng3r/tibicen/actions/runs/44014102509) and [legacy Pages deployment](https://github.com/warbr1ng3r/tibicen/actions/runs/44014227935). Eight returned HTTPS bodies passed normal TLS verification: English/Russian homes and preset pages, both checksum endpoints and both legacy home redirects. Home pages contain the exact 1.6.0 distribution SHA and release link; presets retain their form and language/route. Both indexes and redirects match committed bytes. All 14 earlier index records and warnings are preserved. Index SHA-256: `24a992209c0eb2a18822246f93b2b59131fe74b5c41ed62fb6e8edffe099d2e9`.
+
+This is scoped metadata verification, not a complete official-artifact/body audit. The three owned lifecycle fixture roots were removed; logs and receipts remain. Later documentation-only closure records this deployment without changing its verified site or published skill bytes.

@@ -167,7 +167,114 @@
     }
   },
   "siteMetadata": {
-    "status": "pending"
+    "status": "passed",
+    "sourceCommit": "00a02a5063a5baf8c5f5e4ad1ce81e27e827ea97",
+    "ciRun": 44014102487,
+    "cloudflareRun": 44014102509,
+    "legacyPagesRun": 44014227935,
+    "audit": {
+      "status": "passed",
+      "checkedAtUtc": "2026-11-17T04:02:38.138168+00:00",
+      "sourceCommit": "00a02a5063a5baf8c5f5e4ad1ce81e27e827ea97",
+      "indexSha256": "24a992209c0eb2a18822246f93b2b59131fe74b5c41ed62fb6e8edffe099d2e9",
+      "previousRecordsPreserved": 14,
+      "warningsPreserved": true,
+      "normalTlsVerification": true,
+      "bodies": [
+        {
+          "name": "en-home",
+          "url": "https://tibicen.pages.dev/",
+          "status": 200,
+          "returnedUrl": "https://tibicen.pages.dev/",
+          "bytes": 35631,
+          "sha256": "430f5f1c7509a8724016cf26a1a049b27289b5eea06eb72e38f81777cd3bf2c1",
+          "checks": "language, route and release pointers/form"
+        },
+        {
+          "name": "ru-home",
+          "url": "https://tibicen.pages.dev/ru/",
+          "status": 200,
+          "returnedUrl": "https://tibicen.pages.dev/ru/",
+          "bytes": 43361,
+          "sha256": "f139187adacf3fa9e52fcb9b5a7b527532752305f398ac60d75068e0a9f1e9da",
+          "checks": "language, route and release pointers/form"
+        },
+        {
+          "name": "en-preset",
+          "url": "https://tibicen.pages.dev/preset/",
+          "status": 200,
+          "returnedUrl": "https://tibicen.pages.dev/preset/",
+          "bytes": 22381,
+          "sha256": "bd0774d8e74b4801b80c0c7a3a59d01336ac78ac529c2923fff2577d01ee05d0",
+          "checks": "language, route and release pointers/form"
+        },
+        {
+          "name": "ru-preset",
+          "url": "https://tibicen.pages.dev/ru/preset/",
+          "status": 200,
+          "returnedUrl": "https://tibicen.pages.dev/ru/preset/",
+          "bytes": 24832,
+          "sha256": "3df159a05d3d55022308a4a86202bb8e63a73d0f68107ea13fc03931e3e9ca5c",
+          "checks": "language, route and release pointers/form"
+        },
+        {
+          "name": "primary-index",
+          "url": "https://tibicen.pages.dev/maintenance/index.json",
+          "status": 200,
+          "returnedUrl": "https://tibicen.pages.dev/maintenance/index.json",
+          "bytes": 22071,
+          "sha256": "24a992209c0eb2a18822246f93b2b59131fe74b5c41ed62fb6e8edffe099d2e9",
+          "checks": "exact committed bytes"
+        },
+        {
+          "name": "legacy-index",
+          "url": "https://warbr1ng3r.github.io/tibicen/maintenance/index.json",
+          "status": 200,
+          "returnedUrl": "https://warbr1ng3r.github.io/tibicen/maintenance/index.json",
+          "bytes": 22071,
+          "sha256": "24a992209c0eb2a18822246f93b2b59131fe74b5c41ed62fb6e8edffe099d2e9",
+          "checks": "exact committed bytes"
+        },
+        {
+          "name": "legacy-en",
+          "url": "https://warbr1ng3r.github.io/tibicen/",
+          "status": 200,
+          "returnedUrl": "https://warbr1ng3r.github.io/tibicen/",
+          "bytes": 703,
+          "sha256": "1c9fa993b9b3f8a214efb3af5027008a771c5b25a268aab3d66d6fff4fc0bc1d",
+          "checks": "exact committed bytes"
+        },
+        {
+          "name": "legacy-ru",
+          "url": "https://warbr1ng3r.github.io/tibicen/ru/",
+          "status": 200,
+          "returnedUrl": "https://warbr1ng3r.github.io/tibicen/ru/",
+          "bytes": 732,
+          "sha256": "490faec1c2bccc4b67f8e394d11b6de05c8a6bbd72dabfdcb45385337e01fa08",
+          "checks": "exact committed bytes"
+        }
+      ],
+      "scope": "Scoped returned-body and metadata check; not a full official-artifact/body comparison."
+    },
+    "localChecks": {
+      "siteTests": {
+        "total": 69,
+        "passed": 69,
+        "failed": 0,
+        "skipped": 0
+      },
+      "siteBuild": "passed",
+      "lint": "passed",
+      "format": "passed",
+      "strictOpenSpec": {
+        "active": 44,
+        "archived": 20,
+        "failed": 0
+      },
+      "review": "Ship",
+      "previousIndexRecordsPreserved": 14,
+      "warningsPreserved": true
+    }
   },
   "newPaidApiCalls": 0,
   "newModelSessions": 0,
@@ -177,5 +284,6 @@
     "Interpreter path pinning is not binary/version attestation; copies are not OS sandboxes.",
     "No new native loading, all-harness or human-benefit claim.",
     "Genuine mid-copy SIGKILL was not captured; controlled partial-state recovery is separate."
-  ]
+  ],
+  "ownedLifecycleTemporaryRootsRemoved": 3
 }

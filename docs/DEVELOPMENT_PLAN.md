@@ -2,7 +2,7 @@
 
 ## Current release — 1.6.0
 
-[1.6.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.6.0) was published on 17 November. Controlled Python/Bash/docs checks and hardening are shipped; CI, six platforms and public delivery passed. The [report](evals/results/2026-11-17-release-1.6.0/README.md) records exact bytes and limits. Final site metadata deployment is checked separately.
+[1.6.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.6.0) was published on 17 November. Controlled Python/Bash/docs checks and hardening are shipped; CI, six platforms and public delivery passed. The [report](evals/results/2026-11-17-release-1.6.0/README.md) records exact bytes and limits. Site metadata deployment and eight returned-body checks passed; the release effort is closed.
 
 The next package is capability-based instruction loading and first-use clarity. It is outside 1.6.0; detailed tasks belong in a separate change. Dated sections below retain earlier plans and results, not current assignments.
 

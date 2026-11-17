@@ -2,7 +2,7 @@
 
 ## Release 1.6.0 published — 17 November
 
-Owner: root; deployment closure. The owner explicitly authorized commit, push and publication of the complete packet. Public source CI, six platforms, delivery and the immutable tag/three assets are verified. The [report](../evals/results/2026-11-17-release-1.6.0/README.md) retains exact identities and limits. Site metadata is being deployed and checked separately before closing the effort. Earlier entries below are preparation history. No new model run or paid API call.
+Owner: none; root completed publication and deployment. The owner explicitly authorized commit, push and publication of the complete packet. Public source CI, six platforms, delivery and the immutable tag/three assets are verified. The [report](../evals/results/2026-11-17-release-1.6.0/README.md) retains exact identities and limits. Metadata CI, Cloudflare, legacy Pages and eight returned-body checks passed; all release work is closed. Earlier entries below are preparation history. No new model run or paid API call.
 
 ## Release integration — 1.6.0 candidate-02, 17 November
 
