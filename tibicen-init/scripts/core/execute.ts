@@ -1,8 +1,34 @@
 import type { Command, CommandResult, RunOptions } from './types.ts';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
+import { realpath } from 'node:fs/promises';
 import { assert } from './contracts.ts';
-import { safePath } from './paths.ts';
+import { safePath, validateRelativePath } from './paths.ts';
+
+export async function validateExternalExecutable(
+  root: string,
+  executable: string,
+) {
+  if (!path.isAbsolute(executable)) return;
+  const projectRoot = await realpath(root);
+  const absolute = path.resolve(executable);
+  const actual = await realpath(absolute).catch(() => absolute);
+  assert(
+    [absolute, actual].every(
+      (filename) =>
+        filename !== projectRoot &&
+        !filename.startsWith(`${projectRoot}${path.sep}`),
+    ),
+    'invalid-check-command',
+    'Project executables must use a byte-bound ./ entrypoint in the controlled copy.',
+  );
+}
+
+export const executableName = ({ executable }: { executable: string }) =>
+  path
+    .basename(executable)
+    .replace(/\.(?:exe|cmd)$/i, '')
+    .toLowerCase();
 
 export function validateCommand(input: unknown): Command {
   const command = input as Command;
@@ -35,26 +61,59 @@ export function validateCommand(input: unknown): Command {
     'invalid-command',
     'Commands need an executable and literal argv.',
   );
-  const executable = path
-    .basename(command.executable)
-    .replace(/\.(?:exe|cmd)$/i, '')
-    .toLowerCase();
-  assert(
-    ![
-      'sh',
-      'bash',
-      'zsh',
-      'fish',
-      'cmd',
-      'powershell',
-      'pwsh',
-      'npx',
-      'env',
-      'xargs',
-    ].includes(executable),
-    'forbidden-command',
-    'Shells, command wrappers and dynamic npx are not supported.',
-  );
+  if (command.script !== undefined) {
+    assert(
+      command.script !== null &&
+        typeof command.script.path === 'string' &&
+        /^[a-f0-9]{64}$/.test(command.script.hash ?? ''),
+      'invalid-command',
+      'A script binding needs a safe relative path and its reviewed hash.',
+    );
+    validateRelativePath(command.script.path);
+    // Explicit ./ keeps filenames from becoming interpreter options or subcommands.
+    assert(
+      command.cwd === '.' &&
+        (command.executable === `./${command.script.path}` ||
+          command.argv[0] === `./${command.script.path}`),
+      'forbidden-command',
+      'A bound script must run from the project root as an explicit ./ executable or file argument.',
+    );
+    // When the binding rides on argv[0], the executable must be the pinned
+    // interpreter itself; otherwise the reviewed hash certifies unused bytes.
+    assert(
+      command.executable === `./${command.script.path}` ||
+        ['node', 'python3', 'python', 'bash'].includes(executableName(command)),
+      'forbidden-command',
+      'A script file argument binds only to a pinned interpreter executable.',
+    );
+  }
+  const executable = executableName(command);
+  if (executable === 'bash')
+    assert(
+      ['build', 'test', 'lint'].includes(command.kind) &&
+        path.isAbsolute(command.executable) &&
+        command.script !== undefined &&
+        command.argv.length === 1 &&
+        command.argv[0] === `./${command.script.path}`,
+      'forbidden-command',
+      'Bash execution is limited to one approved script file bound to its reviewed bytes.',
+    );
+  else
+    assert(
+      ![
+        'sh',
+        'zsh',
+        'fish',
+        'cmd',
+        'powershell',
+        'pwsh',
+        'npx',
+        'env',
+        'xargs',
+      ].includes(executable),
+      'forbidden-command',
+      'Shells, command wrappers and dynamic npx are not supported.',
+    );
   assert(
     !/\bgit\s+(?:[^\n]*\s)?commit\b/i.test(
       [command.executable, ...command.argv].join(' '),

@@ -57,6 +57,7 @@ import {
   validateMemory,
 } from '../core/memory.ts';
 import { copyNodeEnvironment } from './environment.ts';
+import { validateExternalExecutable } from '../core/execute.ts';
 
 const liveSnapshots = new Map<string, { container: string; id: string }>();
 const approval = (value?: string) =>
@@ -456,6 +457,8 @@ export function compareChecks(
   });
 }
 
+const EXECUTION_PROFILES = new Set(['web', 'python', 'bash', 'docs']);
+
 export async function runProjectChecks(
   snapshot: Snapshot,
   commands: Command[],
@@ -474,7 +477,11 @@ export async function runProjectChecks(
     reason,
     runs: [],
   });
-  if (profile !== 'web') return unverified('unsupported-profile');
+  if (!EXECUTION_PROFILES.has(profile))
+    return unverified('unsupported-profile');
+  // Dependency environments are the web profile's contract; other stacks run their own entrypoints.
+  if (snapshot?.environment && profile !== 'web')
+    return unverified('unsupported-profile');
   if (!snapshot?.complete)
     return unverified(
       snapshot?.gaps.find((gap) => gap.reason.includes('node-environment'))
@@ -531,7 +538,21 @@ export async function runProjectChecks(
         'invalid-check-command',
         'Project checks accept only approved build/test/lint commands.',
       );
+      // The bash script contract belongs to the controlled non-web profiles only.
+      if (
+        profile === 'web' &&
+        path
+          .basename(command.executable)
+          .replace(/\.(?:exe|cmd)$/i, '')
+          .toLowerCase() === 'bash'
+      )
+        return { ...unverified('forbidden-command'), runs };
       try {
+        if (profile !== 'web')
+          await validateExternalExecutable(
+            snapshot.sourceRoot,
+            command.executable,
+          );
         if (command.source) {
           const { content } = await readProjectFile(
             execution.root,
@@ -545,6 +566,23 @@ export async function runProjectChecks(
               hashContent(script) === command.source.scriptHash,
             'command-source-changed',
             'Project command source differs from the reviewed script.',
+          );
+        }
+        if (command.script) {
+          const bound = await readProjectFile(
+            execution.root,
+            command.script.path,
+          ).catch((caught) => {
+            if ((caught as NodeJS.ErrnoException).code === 'ENOENT')
+              throw Object.assign(new Error('Bound script is absent.'), {
+                code: 'command-source-changed',
+              });
+            throw caught;
+          });
+          assert(
+            hashContent(bound.content) === command.script.hash,
+            'command-source-changed',
+            'The bound command script differs from its reviewed bytes.',
           );
         }
         const result = await execute(command, {
@@ -573,9 +611,11 @@ export async function runProjectChecks(
           ...unverified(
             ['approval-required', 'consent-required'].includes(error.code ?? '')
               ? 'approval-required'
-              : ['trust-required', 'command-source-changed'].includes(
-                    error.code ?? '',
-                  )
+              : [
+                    'trust-required',
+                    'command-source-changed',
+                    'invalid-check-command',
+                  ].includes(error.code ?? '')
                 ? error.code!
                 : 'command-unavailable',
           ),
