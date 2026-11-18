@@ -181,7 +181,7 @@ export async function runWindowsCommand(
           requestFile,
         ],
         {
-          cwd: options.cwd,
+          cwd: temporary,
           env: { ...options.env, SystemRoot: systemRoot, WINDIR: systemRoot },
           shell: false,
           windowsHide: true,

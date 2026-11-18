@@ -8,13 +8,13 @@ try {
     $compiler = [CodeDom.Compiler.CompilerParameters]::new()
     $compiler.GenerateInMemory = $true
     [void]$compiler.ReferencedAssemblies.Add([Diagnostics.Process].Assembly.Location)
-    $compiler.TempFiles = [CodeDom.Compiler.TempFileCollection]::new([IO.Path]::GetDirectoryName($RequestFile), $false)
+    $compiler.TempFiles = [CodeDom.Compiler.TempFileCollection]::new('.', $false)
     $originalTmp = [Environment]::GetEnvironmentVariable('TMP', 'Process')
     $originalTemp = [Environment]::GetEnvironmentVariable('TEMP', 'Process')
     try {
-        # The framework compiler misreads Unicode temporary paths in its environment.
-        [Environment]::SetEnvironmentVariable('TMP', $null, 'Process')
-        [Environment]::SetEnvironmentVariable('TEMP', $null, 'Process')
+        # Relative compiler paths stay ASCII within the owned bootstrap directory.
+        [Environment]::SetEnvironmentVariable('TMP', '.', 'Process')
+        [Environment]::SetEnvironmentVariable('TEMP', '.', 'Process')
         Add-Type -CompilerParameters $compiler -TypeDefinition @'
 using System;
 using System.Diagnostics;
