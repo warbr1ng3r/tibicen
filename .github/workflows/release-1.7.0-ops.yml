@@ -1,0 +1,29 @@
+name: One-off Tibicen 1.7.0 publication
+on:
+  push:
+    branches: [codex/release-1.7.0-ops]
+permissions: {}
+concurrency:
+  group: release-1.7.0-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: >-
+      github.repository == 'warbr1ng3r/tibicen' &&
+      github.ref == 'refs/heads/codex/release-1.7.0-ops' &&
+      github.run_attempt == 1 &&
+      github.event.head_commit.message == 'release-1.7.0-ops: publish'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - name: Check out the frozen publication packet
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Verify accepted source, tag and assets; publish exactly once
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .release-1.7.0/publish.py

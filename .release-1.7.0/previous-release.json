@@ -1,0 +1,25 @@
+{
+  "id": 448096657,
+  "tag_name": "v1.6.0",
+  "published_at": "2026-11-17T03:54:57Z",
+  "assets": [
+    {
+      "id": 757530049,
+      "name": "distribution-SHA256SUMS",
+      "size": 11559,
+      "digest": "sha256:f5009dbba05de5a1122c3d44cf06db8a1f64b62af1bc3156e673dc856fe9ca75"
+    },
+    {
+      "id": 757530060,
+      "name": "SHA256SUMS",
+      "size": 177,
+      "digest": "sha256:c08d2f6cfe6c67f14e4c995a8f022a0503ea43560e6c58509aaf801988405975"
+    },
+    {
+      "id": 757529834,
+      "name": "tibicen-1.6.0.tar.gz",
+      "size": 310942,
+      "digest": "sha256:c5d41cd1bf5cee06824bacd6e2d69e39def5ee1b313c8535ee32fbe329245174"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "source": "6eef592d9638a063cb2b49c33fe4843e601956dd",
+  "distribution": "d881334f638ccffa74bcc032a392451f5d5b8f52",
+  "tagObject": "5884e983a1a6f8ba1a0fa0becbe61b8c8950ad7e",
+  "checks": [
+    44331525617,
+    44331426419
+  ],
+  "assets": {
+    "tibicen-1.7.0.tar.gz": "648bf3d2e06244f735690618f55b6358fa84c5518d3fc43efeb827c17e90577a",
+    "distribution-SHA256SUMS": "089afd976d09b0e83c03a69eb9ea75a4c14a180284fcffd8b2c2e2a0e9b0e91e",
+    "SHA256SUMS": "3777e2ab0667f42701899006cde27856c7970b1cfc1d5ac785dd85f94d0dff1e"
+  }
+}
