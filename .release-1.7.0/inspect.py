@@ -1,7 +1,12 @@
-import os, json, urllib.request
+import os, json, urllib.request, urllib.error
 H={"Authorization":"Bearer "+os.environ["GH_TOKEN"],"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2026-03-10","User-Agent":"Tibicen-publication-inspection"}
 def get(p):
- with urllib.request.urlopen(urllib.request.Request("https://api.github.com/repos/warbr1ng3r/tibicen/"+p,headers=H),timeout=30) as r:return json.load(r)
+ try:
+  with urllib.request.urlopen(urllib.request.Request("https://api.github.com/repos/warbr1ng3r/tibicen/"+p,headers=H),timeout=30) as r:return json.load(r)
+ except urllib.error.HTTPError as e:
+  message=json.loads(e.read()).get("message",str(e)).replace(os.environ["GH_TOKEN"],"[REDACTED]")
+  print("::error title=Inspection API failure::"+p+" HTTP "+str(e.code)+" "+message,flush=True)
+  raise
 for n in [44331525617,44331426419]:
  r=get("actions/runs/"+str(n));print("::notice title=Source gate::"+json.dumps({k:r[k] for k in ["id","head_sha","conclusion"]}))
 print("::notice title=Tag ref::"+json.dumps(get("git/ref/tags/v1.7.0")["object"]))

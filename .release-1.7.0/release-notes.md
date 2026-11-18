@@ -9,7 +9,7 @@ Windows project checks and a concrete first-task handoff are now available in Ti
 ## Checks
 - Public source: `6eef592d9638a063cb2b49c33fe4843e601956dd`. [Offline CI](https://github.com/warbr1ng3r/tibicen/actions/runs/44331525617) passed.
 - [All six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/44331426419) passed: macOS 15, Ubuntu 24.04 and Windows Server 2022 with Node 22.20.0 / 24.15.0. Windows runs execute both built skills and their CLI lifecycles.
-- Local gate: 1,176 passed, zero failed, two expected skips. An earlier offline-fixture timing failure is retained; its focused check and final complete gate passed without a product-code change.
+- Local gate: 1,176 passed, zero failed, two expected skips. An earlier offline-fixture failure is retained; its focused check and final complete gate passed without a product-code change.
 - Independent Ponytail review: Ship. All 114 payload hashes and 115 archive file hashes/modes checked.
 - Two assisted synthetic first-use cases completed useful fresh-context tasks; controller application and explicit-reading assistance are disclosed. These are not native autoload, human approval, a human pilot or measured comparative benefit.
 

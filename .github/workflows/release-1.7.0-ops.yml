@@ -28,7 +28,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: python3 .release-1.7.0/publish.py
   inspect:
-    if: github.event.head_commit.message == 'release-1.7.0-ops: inspect'
+    if: >-
+      github.event.head_commit.message == 'release-1.7.0-ops: inspect'
     runs-on: ubuntu-24.04
     timeout-minutes: 3
     permissions:
