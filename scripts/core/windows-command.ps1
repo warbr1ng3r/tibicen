@@ -1,7 +1,6 @@
+param([string]$RequestFile)
 $ErrorActionPreference = 'Stop'
-# Do not mutate Console.InputEncoding: Windows PowerShell can block on redirected stdin.
-$inputReader = [IO.StreamReader]::new([Console]::OpenStandardInput(), [Text.UTF8Encoding]::new($false))
-$request = $inputReader.ReadLine() | ConvertFrom-Json
+$request = [IO.File]::ReadAllText($RequestFile, [Text.UTF8Encoding]::new($false)) | ConvertFrom-Json
 $response = @{ schema = 1; nonce = $request.nonce; status = 'unavailable'; reason = 'process-tree-unavailable' }
 try {
     Add-Type -TypeDefinition @'
@@ -60,10 +59,9 @@ public static class TibicenWindowsJob {
         using (var process = new Process()) {
             process.StartInfo = new ProcessStartInfo {
                 FileName = executable, Arguments = arguments, WorkingDirectory = cwd,
-                UseShellExecute = false, CreateNoWindow = true, RedirectStandardInput = true
+                UseShellExecute = false, CreateNoWindow = true
             };
             if (!process.Start()) throw new InvalidOperationException("Command unavailable");
-            process.StandardInput.Close();
             process.WaitForExit();
             return unchecked((uint)process.ExitCode);
         }

@@ -90,35 +90,34 @@ async function diagnoseHelper(
     );
     const checkpoint = (stage: string) =>
       `[Console]::Error.WriteLine('[test-only-control:${stage}]')`;
-    const instrumented =
-      `${checkpoint('entry')}\n` +
-      source
-        .replace(
-          /^(\$inputReader = .*)$/m,
-          `${checkpoint('before-reader')}\n$1\n${checkpoint('after-reader')}`,
-        )
-        .replace('$request = ', `${checkpoint('before-request')}\n$request = `)
-        .replace('$response = ', `${checkpoint('after-request')}\n$response = `)
-        .replace(
-          '    Add-Type ',
-          `    ${checkpoint('before-Add-Type')}\n    Add-Type `,
-        )
-        .replace(
-          '    [TibicenWindowsJob]::Open()',
-          `    ${checkpoint('after-Add-Type')}\n    [TibicenWindowsJob]::Open()\n    ${checkpoint('after-Open')}`,
-        )
-        .replace(
-          /^(\s*\$code = \[TibicenWindowsJob\]::Run\(.*\))$/m,
-          `    ${checkpoint('before-Run')}\n$1\n    ${checkpoint('after-Run')}`,
-        )
-        .replace(
-          '        [IO.File]::WriteAllText',
-          `        ${checkpoint('before-receipt')}\n        [IO.File]::WriteAllText`,
-        )
-        .replace(
-          "if ('TibicenWindowsJob' -as [type]) { [TibicenWindowsJob]::Close() }",
-          `if ('TibicenWindowsJob' -as [type]) { ${checkpoint('before-Close')}; [TibicenWindowsJob]::Close() }`,
-        );
+    assert.match(source, /^param\(\[string\]\$RequestFile\)\r?\n/);
+    const instrumented = source
+      .replace(
+        /^(param\(\[string\]\$RequestFile\)\r?\n)/,
+        `$1${checkpoint('entry')}\n`,
+      )
+      .replace('$request = ', `${checkpoint('before-request')}\n$request = `)
+      .replace('$response = ', `${checkpoint('after-request')}\n$response = `)
+      .replace(
+        '    Add-Type ',
+        `    ${checkpoint('before-Add-Type')}\n    Add-Type `,
+      )
+      .replace(
+        '    [TibicenWindowsJob]::Open()',
+        `    ${checkpoint('after-Add-Type')}\n    [TibicenWindowsJob]::Open()\n    ${checkpoint('after-Open')}`,
+      )
+      .replace(
+        /^(\s*\$code = \[TibicenWindowsJob\]::Run\(.*\))$/m,
+        `    ${checkpoint('before-Run')}\n$1\n    ${checkpoint('after-Run')}`,
+      )
+      .replace(
+        '        [IO.File]::WriteAllText',
+        `        ${checkpoint('before-receipt')}\n        [IO.File]::WriteAllText`,
+      )
+      .replace(
+        "if ('TibicenWindowsJob' -as [type]) { [TibicenWindowsJob]::Close() }",
+        `if ('TibicenWindowsJob' -as [type]) { ${checkpoint('before-Close')}; [TibicenWindowsJob]::Close() }`,
+      );
     const systemRoot = process.env.SystemRoot ?? process.env.WINDIR;
     assert(systemRoot);
     const env: NodeJS.ProcessEnv = {
@@ -167,30 +166,39 @@ async function diagnoseHelper(
       }),
     );
     const receipt = path.join(root, 'diagnostic-only-receipt.json');
+    const scriptFile = path.join(root, 'diagnostic-owned.ps1');
+    const requestFile = path.join(root, 'diagnostic-owned-request.json');
+    await writeFile(scriptFile, instrumented, { mode: 0o600 });
+    await writeFile(
+      requestFile,
+      JSON.stringify({
+        schema: 1,
+        nonce: 'test-only-diagnostic',
+        receipt,
+        executable: process.execPath,
+        arguments: `"check.cjs" "${expectedExit}"`,
+        cwd: root,
+      }),
+      { mode: 0o600 },
+    );
     const result = spawnSync(
       launcher,
       [
         '-NoLogo',
         '-NoProfile',
         '-NonInteractive',
-        '-EncodedCommand',
-        Buffer.from(instrumented, 'utf16le').toString('base64'),
+        '-File',
+        scriptFile,
+        '-RequestFile',
+        requestFile,
       ],
       {
         cwd: root,
         env,
         encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'pipe'],
         timeout: 5000,
         maxBuffer: 64 * 1024,
-        input:
-          JSON.stringify({
-            schema: 1,
-            nonce: 'test-only-diagnostic',
-            receipt,
-            executable: process.execPath,
-            arguments: `"check.cjs" "${expectedExit}"`,
-            cwd: root,
-          }) + '\n',
       },
     );
     t.diagnostic(

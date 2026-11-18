@@ -2,7 +2,15 @@ import path from 'node:path';
 import os from 'node:os';
 import { randomUUID } from 'node:crypto';
 import { spawn } from 'node:child_process';
-import { lstat, mkdtemp, readFile, rm, stat } from 'node:fs/promises';
+import {
+  lstat,
+  mkdtemp,
+  readFile,
+  rm,
+  stat,
+  writeFile,
+} from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
 import { assert } from './contracts.ts';
 import type { Command, CommandResult } from './types.ts';
 
@@ -130,17 +138,29 @@ export async function runWindowsCommand(
       (caught as { code?: string }).code ?? 'unsupported-windows-command',
     );
   }
-  const source = await readFile(
+  const helper = fileURLToPath(
     new URL('./windows-command.ps1', import.meta.url),
-    'utf8',
-  ).catch(() => null);
-  if (!source) return unavailable('process-tree-unavailable');
+  );
+  if (!(await stat(helper).catch(() => null))?.isFile())
+    return unavailable('process-tree-unavailable');
   const temporary = await mkdtemp(
     path.join(os.tmpdir(), 'tibicen-windows-command-'),
   );
   const receipt = path.join(temporary, 'result.json');
+  const requestFile = path.join(temporary, 'request.json');
   const nonce = randomUUID();
   try {
+    await writeFile(
+      requestFile,
+      JSON.stringify({
+        schema: 1,
+        nonce,
+        receipt,
+        ...invocation,
+        cwd: options.cwd,
+      }),
+      { flag: 'wx', mode: 0o600 },
+    );
     if (options.signal?.aborted) return unavailable('aborted');
     return await new Promise<Result>((resolve) => {
       let stdout = '',
@@ -155,14 +175,17 @@ export async function runWindowsCommand(
           '-NoLogo',
           '-NoProfile',
           '-NonInteractive',
-          '-EncodedCommand',
-          Buffer.from(source, 'utf16le').toString('base64'),
+          '-File',
+          helper,
+          '-RequestFile',
+          requestFile,
         ],
         {
           cwd: options.cwd,
           env: { ...options.env, SystemRoot: systemRoot, WINDIR: systemRoot },
           shell: false,
           windowsHide: true,
+          stdio: ['ignore', 'pipe', 'pipe'],
         },
       );
       const timer = setTimeout(() => {
@@ -175,7 +198,6 @@ export async function runWindowsCommand(
         clearTimeout(timer);
         clearTimeout(force);
         options.signal?.removeEventListener('abort', abort);
-        child.stdin.destroy();
         child.stdout.destroy();
         child.stderr.destroy();
         let exitCode: number | null = null;
@@ -242,18 +264,6 @@ export async function runWindowsCommand(
       child.on('close', () => {
         void finish();
       });
-      child.stdin.on('error', () => {
-        /* Missing receipt makes a broken launch unavailable. */
-      });
-      child.stdin.end(
-        JSON.stringify({
-          schema: 1,
-          nonce,
-          receipt,
-          ...invocation,
-          cwd: options.cwd,
-        }) + '\n',
-      );
     });
   } finally {
     await rm(temporary, { recursive: true, force: true });
