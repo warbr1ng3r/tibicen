@@ -91,12 +91,19 @@ async function diagnoseHelper(
     const checkpoint = (stage: string) =>
       `[Console]::Error.WriteLine('[test-only-control:${stage}]')`;
     assert.match(source, /^param\(\[string\]\$RequestFile\)\r?\n/);
+    assert.match(
+      source,
+      /^\$request = \[IO.File\]::ReadAllText\(.+\) \| ConvertFrom-Json$/m,
+    );
     const instrumented = source
       .replace(
         /^(param\(\[string\]\$RequestFile\)\r?\n)/,
         `$1${checkpoint('entry')}\n`,
       )
-      .replace('$request = ', `${checkpoint('before-request')}\n$request = `)
+      .replace(
+        /^\$request = (\[IO.File\]::ReadAllText\(.+\)) \| ConvertFrom-Json$/m,
+        `${checkpoint('before-request-read')}\n$requestText = $1\n[Console]::Error.WriteLine('[test-only-control:after-request-read] chars=' + $requestText.Length)\n$request = $requestText | ConvertFrom-Json\n${checkpoint('after-request-json')}`,
+      )
       .replace('$response = ', `${checkpoint('after-request')}\n$response = `)
       .replace(
         '    Add-Type ',
@@ -210,6 +217,51 @@ async function diagnoseHelper(
         error: (result.error as NodeJS.ErrnoException | undefined)?.code,
         stdout: result.stdout?.slice(-4096),
         stderr: result.stderr?.slice(-4096),
+        receipt: (await readFile(receipt, 'utf8').catch(() => null))?.slice(
+          0,
+          4096,
+        ),
+      }),
+    );
+    const pinnedFile = path.join(root, 'diagnostic-pinned-owned.ps1');
+    const pinnedSource = instrumented.replace(
+      /^(param\(\[string\]\$RequestFile\)\r?\n)/,
+      `$1$env:PSModulePath = [IO.Path]::Combine($PSHOME, 'Modules')\n${checkpoint('before-Utility-import')}\nImport-Module -Name ([IO.Path]::Combine($PSHOME, 'Modules', 'Microsoft.PowerShell.Utility', 'Microsoft.PowerShell.Utility.psd1')) -ErrorAction Stop\n${checkpoint('after-Utility-import')}\n`,
+    );
+    await writeFile(pinnedFile, pinnedSource, { mode: 0o600 });
+    await rm(receipt, { force: true });
+    const pinned = spawnSync(
+      launcher,
+      [
+        '-NoLogo',
+        '-NoProfile',
+        '-NonInteractive',
+        '-File',
+        pinnedFile,
+        '-RequestFile',
+        requestFile,
+      ],
+      {
+        cwd: root,
+        env: {
+          ...env,
+          PSModulePath: path.join(path.dirname(launcher), 'Modules'),
+        },
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'pipe'],
+        timeout: 5000,
+        maxBuffer: 64 * 1024,
+      },
+    );
+    t.diagnostic(
+      JSON.stringify({
+        observation:
+          'test-only pinned Utility module control; never a product pass',
+        status: pinned.status,
+        signal: pinned.signal,
+        error: (pinned.error as NodeJS.ErrnoException | undefined)?.code,
+        stdout: pinned.stdout?.slice(-4096),
+        stderr: pinned.stderr?.slice(-4096),
         receipt: (await readFile(receipt, 'utf8').catch(() => null))?.slice(
           0,
           4096,
