@@ -5,7 +5,17 @@ Import-Module -Name ([IO.Path]::Combine($PSHOME, 'Modules', 'Microsoft.PowerShel
 $request = [IO.File]::ReadAllText($RequestFile, [Text.UTF8Encoding]::new($false)) | ConvertFrom-Json
 $response = @{ schema = 1; nonce = $request.nonce; status = 'unavailable'; reason = 'process-tree-unavailable' }
 try {
-    Add-Type -TypeDefinition @'
+    $compiler = [CodeDom.Compiler.CompilerParameters]::new()
+    $compiler.GenerateInMemory = $true
+    [void]$compiler.ReferencedAssemblies.Add([Diagnostics.Process].Assembly.Location)
+    $compiler.TempFiles = [CodeDom.Compiler.TempFileCollection]::new([IO.Path]::GetDirectoryName($RequestFile), $false)
+    $originalTmp = [Environment]::GetEnvironmentVariable('TMP', 'Process')
+    $originalTemp = [Environment]::GetEnvironmentVariable('TEMP', 'Process')
+    try {
+        # The framework compiler misreads Unicode temporary paths in its environment.
+        [Environment]::SetEnvironmentVariable('TMP', $null, 'Process')
+        [Environment]::SetEnvironmentVariable('TEMP', $null, 'Process')
+        Add-Type -CompilerParameters $compiler -TypeDefinition @'
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -78,6 +88,10 @@ public static class TibicenWindowsJob {
     }
 }
 '@
+    } finally {
+        [Environment]::SetEnvironmentVariable('TMP', $originalTmp, 'Process')
+        [Environment]::SetEnvironmentVariable('TEMP', $originalTemp, 'Process')
+    }
     [TibicenWindowsJob]::Open()
     $response.reason = 'execution-unavailable'
     $code = [TibicenWindowsJob]::Run([string]$request.executable, [string]$request.arguments, [string]$request.cwd)
