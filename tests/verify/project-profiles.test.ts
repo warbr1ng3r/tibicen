@@ -160,6 +160,41 @@ test('runProjectChecks keeps unknown profiles and web environments unsupported',
   );
 });
 
+test('web checks refuse byte-bound Bash commands with every supported Windows suffix', async (t) => {
+  const root = await fixture(t, {
+    'AGENTS.md': 'Allow checks',
+    'scripts/smoke.sh': smoke,
+  });
+  const snapshot = await createSnapshot(root, { approvedDigest });
+  t.after(() => cleanupSnapshot(snapshot));
+  let calls = 0;
+  for (const name of ['bash.exe', 'bash.cmd', 'bash.COM', 'bash.bat']) {
+    const command = {
+      id: 'smoke',
+      kind: 'test',
+      executable: path.join(path.dirname(process.execPath), name),
+      argv: ['./scripts/smoke.sh'],
+      cwd: '.',
+      envNames: [],
+      trusted: true,
+      script: { path: 'scripts/smoke.sh', hash: hashContent(smoke) },
+    };
+    validateCommand(command);
+    const result = await runProjectChecks(snapshot, [command], {
+      approvedDigest,
+      environmentReady: true,
+      profile: 'web',
+      runner: async () => {
+        calls++;
+        return { exitCode: 0 };
+      },
+    });
+    assert.equal(result.reason, 'forbidden-command', name);
+    assert.deepEqual(result.runs, []);
+    assert.equal(calls, 0, 'The web profile must refuse before execution.');
+  }
+});
+
 test('a bound script with drifted or absent bytes never executes', async (t) => {
   const root = await fixture(t, {
     'AGENTS.md': 'Allow checks',
