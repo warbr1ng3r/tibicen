@@ -94,8 +94,8 @@ async function diagnoseHelper(
       `${checkpoint('entry')}\n` +
       source
         .replace(
-          '[Console]::InputEncoding = New-Object System.Text.UTF8Encoding($false)',
-          `${checkpoint('before-InputEncoding')}\n[Console]::InputEncoding = New-Object System.Text.UTF8Encoding($false)\n${checkpoint('after-InputEncoding')}`,
+          /^(\$inputReader = .*)$/m,
+          `${checkpoint('before-reader')}\n$1\n${checkpoint('after-reader')}`,
         )
         .replace('$request = ', `${checkpoint('before-request')}\n$request = `)
         .replace('$response = ', `${checkpoint('after-request')}\n$response = `)

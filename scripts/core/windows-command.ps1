@@ -1,6 +1,7 @@
 $ErrorActionPreference = 'Stop'
-[Console]::InputEncoding = New-Object System.Text.UTF8Encoding($false)
-$request = [Console]::In.ReadToEnd() | ConvertFrom-Json
+# Do not mutate Console.InputEncoding: Windows PowerShell can block on redirected stdin.
+$inputReader = [IO.StreamReader]::new([Console]::OpenStandardInput(), [Text.UTF8Encoding]::new($false))
+$request = $inputReader.ReadToEnd() | ConvertFrom-Json
 $response = @{ schema = 1; nonce = $request.nonce; status = 'unavailable'; reason = 'process-tree-unavailable' }
 try {
     Add-Type -TypeDefinition @'
