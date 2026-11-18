@@ -90,29 +90,35 @@ async function diagnoseHelper(
     );
     const checkpoint = (stage: string) =>
       `[Console]::Error.WriteLine('[test-only-control:${stage}]')`;
-    const instrumented = source
-      .replace('$request = ', `${checkpoint('before-request')}\n$request = `)
-      .replace('$response = ', `${checkpoint('after-request')}\n$response = `)
-      .replace(
-        '    Add-Type ',
-        `    ${checkpoint('before-Add-Type')}\n    Add-Type `,
-      )
-      .replace(
-        '    [TibicenWindowsJob]::Open()',
-        `    ${checkpoint('after-Add-Type')}\n    [TibicenWindowsJob]::Open()\n    ${checkpoint('after-Open')}`,
-      )
-      .replace(
-        /^(\s*\$code = \[TibicenWindowsJob\]::Run\(.*\))$/m,
-        `    ${checkpoint('before-Run')}\n$1\n    ${checkpoint('after-Run')}`,
-      )
-      .replace(
-        '        [IO.File]::WriteAllText',
-        `        ${checkpoint('before-receipt')}\n        [IO.File]::WriteAllText`,
-      )
-      .replace(
-        "if ('TibicenWindowsJob' -as [type]) { [TibicenWindowsJob]::Close() }",
-        `if ('TibicenWindowsJob' -as [type]) { ${checkpoint('before-Close')}; [TibicenWindowsJob]::Close() }`,
-      );
+    const instrumented =
+      `${checkpoint('entry')}\n` +
+      source
+        .replace(
+          '[Console]::InputEncoding = New-Object System.Text.UTF8Encoding($false)',
+          `${checkpoint('before-InputEncoding')}\n[Console]::InputEncoding = New-Object System.Text.UTF8Encoding($false)\n${checkpoint('after-InputEncoding')}`,
+        )
+        .replace('$request = ', `${checkpoint('before-request')}\n$request = `)
+        .replace('$response = ', `${checkpoint('after-request')}\n$response = `)
+        .replace(
+          '    Add-Type ',
+          `    ${checkpoint('before-Add-Type')}\n    Add-Type `,
+        )
+        .replace(
+          '    [TibicenWindowsJob]::Open()',
+          `    ${checkpoint('after-Add-Type')}\n    [TibicenWindowsJob]::Open()\n    ${checkpoint('after-Open')}`,
+        )
+        .replace(
+          /^(\s*\$code = \[TibicenWindowsJob\]::Run\(.*\))$/m,
+          `    ${checkpoint('before-Run')}\n$1\n    ${checkpoint('after-Run')}`,
+        )
+        .replace(
+          '        [IO.File]::WriteAllText',
+          `        ${checkpoint('before-receipt')}\n        [IO.File]::WriteAllText`,
+        )
+        .replace(
+          "if ('TibicenWindowsJob' -as [type]) { [TibicenWindowsJob]::Close() }",
+          `if ('TibicenWindowsJob' -as [type]) { ${checkpoint('before-Close')}; [TibicenWindowsJob]::Close() }`,
+        );
     const systemRoot = process.env.SystemRoot ?? process.env.WINDIR;
     assert(systemRoot);
     const env: NodeJS.ProcessEnv = {
@@ -121,15 +127,48 @@ async function diagnoseHelper(
     };
     for (const name of ['PATH', 'TMPDIR', 'TMP', 'TEMP', 'LANG'])
       if (process.env[name] !== undefined) env[name] = process.env[name];
+    const launcher = path.join(
+      systemRoot,
+      'System32',
+      'WindowsPowerShell',
+      'v1.0',
+      'powershell.exe',
+    );
+    const bootstrap = spawnSync(
+      launcher,
+      [
+        '-NoLogo',
+        '-NoProfile',
+        '-NonInteractive',
+        '-EncodedCommand',
+        Buffer.from(
+          "[Console]::Error.WriteLine('bootstrap-ready')",
+          'utf16le',
+        ).toString('base64'),
+      ],
+      {
+        cwd: root,
+        env,
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'pipe'],
+        timeout: 5000,
+        maxBuffer: 64 * 1024,
+      },
+    );
+    t.diagnostic(
+      JSON.stringify({
+        observation:
+          'test-only bare PowerShell bootstrap with ignored stdin; never a product pass',
+        status: bootstrap.status,
+        signal: bootstrap.signal,
+        error: (bootstrap.error as NodeJS.ErrnoException | undefined)?.code,
+        stdout: bootstrap.stdout?.slice(-4096),
+        stderr: bootstrap.stderr?.slice(-4096),
+      }),
+    );
     const receipt = path.join(root, 'diagnostic-only-receipt.json');
     const result = spawnSync(
-      path.join(
-        systemRoot,
-        'System32',
-        'WindowsPowerShell',
-        'v1.0',
-        'powershell.exe',
-      ),
+      launcher,
       [
         '-NoLogo',
         '-NoProfile',
