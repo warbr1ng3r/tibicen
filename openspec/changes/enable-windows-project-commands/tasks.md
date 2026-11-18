@@ -13,7 +13,7 @@
 ## 3. Integration and acceptance
 
 - [x] 3.1 Complete independent Ponytail review, fix confirmed findings, run focused and full local gates, build and both isolated standalone self-tests; record exact payload and remaining unavailable checks.
-- [ ] 3.2 Run the reviewed candidate on actual Windows CI and retain source/payload-bound results for both Node versions; do not mark native support verified from macOS or mocked platform tests.
+- [x] 3.2 Run the reviewed candidate on actual Windows CI and retain source/payload-bound results for both Node versions; do not mark native support verified from macOS or mocked platform tests.
 
 ## Workflow follow-up
 
