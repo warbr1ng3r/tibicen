@@ -570,10 +570,12 @@ test(
               }),
             );
             if (applied.checks.verify.status !== 'green') {
-              const source = await readFile(
-                path.join(payload.root, 'scripts/core/windows-command.ps1'),
-                'utf8',
-              );
+              const source = (
+                await readFile(
+                  path.join(payload.root, 'scripts/core/windows-command.ps1'),
+                  'utf8',
+                )
+              ).replace(/\r\n/g, '\n');
               const instrumented = source
                 .replace(
                   '    Add-Type ',
@@ -587,6 +589,11 @@ test(
                   '} catch {\n    # Platform/bootstrap',
                   '} catch {\n    [Console]::Error.WriteLine($_.Exception.ToString())\n    # Platform/bootstrap',
                 );
+              assert(
+                instrumented.includes(
+                  '[Console]::Error.WriteLine($_.Exception.ToString())',
+                ),
+              );
               const scriptFile = path.join(
                 temporary,
                 'diagnostic-cli-owned.ps1',
@@ -614,44 +621,47 @@ test(
               );
               const systemRoot = env.SystemRoot ?? env.WINDIR;
               assert(systemRoot);
-              const probe = spawnSync(
-                path.join(
-                  systemRoot,
-                  'System32',
-                  'WindowsPowerShell',
-                  'v1.0',
-                  'powershell.exe',
+              const helperEnv = Object.fromEntries(
+                Object.entries(env).filter(([name]) =>
+                  [
+                    'PATH',
+                    'SystemRoot',
+                    'WINDIR',
+                    'TMPDIR',
+                    'TMP',
+                    'TEMP',
+                    'LANG',
+                  ].includes(name),
                 ),
-                [
-                  '-NoLogo',
-                  '-NoProfile',
-                  '-NonInteractive',
-                  '-File',
-                  scriptFile,
-                  '-RequestFile',
-                  requestFile,
-                ],
-                {
-                  cwd: root,
-                  env: Object.fromEntries(
-                    Object.entries(env).filter(([name]) =>
-                      [
-                        'PATH',
-                        'SystemRoot',
-                        'WINDIR',
-                        'TMPDIR',
-                        'TMP',
-                        'TEMP',
-                        'LANG',
-                      ].includes(name),
-                    ),
-                  ),
-                  encoding: 'utf8',
-                  stdio: ['ignore', 'pipe', 'pipe'],
-                  timeout: 10_000,
-                  maxBuffer: 64 * 1024,
-                },
               );
+              const runProbe = (probeEnv: NodeJS.ProcessEnv, timeout: number) =>
+                spawnSync(
+                  path.join(
+                    systemRoot,
+                    'System32',
+                    'WindowsPowerShell',
+                    'v1.0',
+                    'powershell.exe',
+                  ),
+                  [
+                    '-NoLogo',
+                    '-NoProfile',
+                    '-NonInteractive',
+                    '-File',
+                    scriptFile,
+                    '-RequestFile',
+                    requestFile,
+                  ],
+                  {
+                    cwd: root,
+                    env: probeEnv,
+                    encoding: 'utf8',
+                    stdio: ['ignore', 'pipe', 'pipe'],
+                    timeout,
+                    maxBuffer: 64 * 1024,
+                  },
+                );
+              const probe = runProbe(helperEnv, 10_000);
               s.diagnostic(
                 JSON.stringify({
                   observation:
@@ -662,6 +672,69 @@ test(
                     ?.code,
                   stdout: probe.stdout?.slice(-4096),
                   stderr: probe.stderr?.slice(-8192),
+                  receipt: (
+                    await readFile(receipt, 'utf8').catch(() => null)
+                  )?.slice(0, 4096),
+                }),
+              );
+              const asciiTemporary = await mkdtemp(
+                path.join(os.tmpdir(), 'tibicen-cli-diagnostic-'),
+              );
+              s.after(() =>
+                rm(asciiTemporary, { recursive: true, force: true }),
+              );
+              if (/^\p{ASCII}+$/u.test(asciiTemporary)) {
+                await rm(receipt, { force: true });
+                const asciiProbe = runProbe(
+                  {
+                    ...helperEnv,
+                    TMP: asciiTemporary,
+                    TEMP: asciiTemporary,
+                    TMPDIR: asciiTemporary,
+                  },
+                  5000,
+                );
+                s.diagnostic(
+                  JSON.stringify({
+                    observation:
+                      'test-only identical helper with only temporary environment paths changed to owned ASCII directory; never a product pass',
+                    status: asciiProbe.status,
+                    signal: asciiProbe.signal,
+                    error: (
+                      asciiProbe.error as NodeJS.ErrnoException | undefined
+                    )?.code,
+                    stdout: asciiProbe.stdout?.slice(-4096),
+                    stderr: asciiProbe.stderr?.slice(-8192),
+                    receipt: (
+                      await readFile(receipt, 'utf8').catch(() => null)
+                    )?.slice(0, 4096),
+                  }),
+                );
+              } else
+                s.diagnostic(
+                  'Test-only ASCII temporary-path control unavailable: host temporary directory is not ASCII.',
+                );
+              await writeFile(
+                scriptFile,
+                instrumented.replace(
+                  '    Add-Type -TypeDefinition',
+                  "    $compiler = [CodeDom.Compiler.CompilerParameters]::new()\n    $compiler.GenerateInMemory = $true\n    $null = $compiler.ReferencedAssemblies.Add('System.dll')\n    $compiler.TempFiles = [CodeDom.Compiler.TempFileCollection]::new([IO.Path]::GetDirectoryName($RequestFile), $false)\n    Add-Type -CompilerParameters $compiler -TypeDefinition",
+                ),
+                { mode: 0o600 },
+              );
+              await rm(receipt, { force: true });
+              const explicitTempProbe = runProbe(helperEnv, 5000);
+              s.diagnostic(
+                JSON.stringify({
+                  observation:
+                    'test-only explicit CodeDom temporary collection in the owned Unicode request directory; unchanged helper environment; never a product pass',
+                  status: explicitTempProbe.status,
+                  signal: explicitTempProbe.signal,
+                  error: (
+                    explicitTempProbe.error as NodeJS.ErrnoException | undefined
+                  )?.code,
+                  stdout: explicitTempProbe.stdout?.slice(-4096),
+                  stderr: explicitTempProbe.stderr?.slice(-8192),
                   receipt: (
                     await readFile(receipt, 'utf8').catch(() => null)
                   )?.slice(0, 4096),

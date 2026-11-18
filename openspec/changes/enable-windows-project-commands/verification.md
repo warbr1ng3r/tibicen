@@ -1,6 +1,6 @@
 # Verification
 
-## Local integration — 18 November 2026
+## Initial local integration checkpoint — 18 November 2026
 
 The implementation is **Unreleased**, based on published 1.6.0. It adds a Windows-only runner after existing approval/trust checks, one fixed packaged PowerShell/Win32 helper, native interpreter lookup and conservative batch handling. Persisted schemas, POSIX process groups and published release artifacts remain unchanged.
 
@@ -15,7 +15,7 @@ A separate Ponytail runtime reviewer inspected the helper, runner, approval/copy
 
 Root also removed suffix substitution for an explicitly reviewed extensionless entrypoint. `./check` never selects neighboring `check.exe`; native tests cover absent/present exact files with a real neighboring Node executable. The reviewer rechecked the changes and reported no further concrete finding, with **11/11** focused checks passing and native execution still unavailable locally.
 
-## Checks
+## Checks at the initial checkpoint
 
 - First combined gate: **1,172 passed / 2 failed / 2 skipped**. Both failures were the evaluator's fixed 55-file bundle guard after adding two packaged files per skill. The inspected guard is now 57, total 114, and the freeze test additionally checks hashes of both Windows files. The two cases then passed in **12/12** focused evaluation checks. This does not regrade a model observation or weaken the hash checks.
 - Post-fix Windows/shared command/profile checks: **23/23 passed**. First-use integration checks: **22/22 passed**.
@@ -26,8 +26,27 @@ Root also removed suffix substitution for an explicitly reviewed extensionless e
 
 The normal offline test gate uses synthetic executors, not live provider sessions. No paid API/model observation, new dependency, version bump, commit, push or publication has occurred at this local checkpoint.
 
+## Authorized Windows CI — 18 November 2026
+
+After that initial checkpoint, the owner explicitly authorized source commits, the public projection branch push and native CI. Private source history was not pushed. Release publication is outside this authorization. The failed attempts below remain failed; later diagnostic progress does not regrade them.
+
+| CI run | Public source | Retained outcome |
+| --- | --- | --- |
+| [44221666908](https://github.com/warbr1ng3r/tibicen/actions/runs/44221666908) | `220769c` | Failed: startup/portable timeout. |
+| [44222670618](https://github.com/warbr1ng3r/tibicen/actions/runs/44222670618) | `8963260` | Failed: bounded probe left the startup cause unknown. |
+| [44223233797](https://github.com/warbr1ng3r/tibicen/actions/runs/44223233797) | `3eed757` | Failed: coarse `New-Object`/encoding probe did not isolate the cause. |
+| [44223674498](https://github.com/warbr1ng3r/tibicen/actions/runs/44223674498) | `c0143ed` | Failed: coarse input/JSON probe remained inconclusive. |
+| [44224322116](https://github.com/warbr1ng3r/tibicen/actions/runs/44224322116) | `ea083cd` | Failed: LF pipe prototype did not establish a working lifecycle or an I/O cause. |
+| [44224917757](https://github.com/warbr1ng3r/tibicen/actions/runs/44224917757) | `b2ffeb7` | Failed: private request-file transport alone did not resolve startup. |
+| [44225584797](https://github.com/warbr1ng3r/tibicen/actions/runs/44225584797) | `3a4045c` | Failed: split probe completed `ReadAllText`, then stalled at JSON/module autoload. A pinned Utility control passed JSON, `Add-Type` and job opening, but stalled in `Run`. |
+| [44225983954](https://github.com/warbr1ng3r/tibicen/actions/runs/44225983954) | `2ceaf72` | Failed overall: all 28 leaf process fixtures passed; both CLI lifecycles remained unverified. |
+| [44226520891](https://github.com/warbr1ng3r/tibicen/actions/runs/44226520891) | `b2e6765` | Failed: verify reported `process-tree-unavailable`. Review confirmed a separate web `.COM` guard gap; its red regression was fixed and 34 focused checks then passed. |
+| [44227046420](https://github.com/warbr1ng3r/tibicen/actions/runs/44227046420) | `7c81452` | Failed: probe failed at `Add-Type`; the diagnostic exception insertion missed Windows CRLF, leaving the actual cause unknown. |
+
+The latest root local `pnpm test` passed **1,176 / 0 failed / 2 skipped**, 1,178 total, with test-runner duration **80.332 seconds**. Current payload manifest SHA-256: `43538cbb37a4e97e29ee49bd826d091c5b8b9f67e88a760b6b97ef18e53b67f8`. The earlier `072db451…` manifest and 1,177-test gate above identify only the initial checkpoint, not this candidate.
+
 ## Native acceptance — pending
 
-Task 3.2 stays open. A real Windows runner must exercise the reviewed public source and built payload on Node 22.20.0 and 24.15.0, retaining actual process/CLI outcomes and source/manifest identities. A green macOS gate, mocked win32 or self-test does not establish this. Public branch commit/push and CI require the owner's authorization under AGENTS.md; root has prepared a separate public-history checkout rather than pushing private source history.
+Task 3.2 stays open: the actual matrix is not green. A CRLF-aware exception probe and ASCII-temp control are in progress; a Unicode temporary path is not a confirmed cause. A real Windows runner must still complete the reviewed built-payload process and public CLI lifecycles on Node 22.20.0 and 24.15.0, retaining source/payload identities and actual outcomes. A green local gate, mocked win32, self-test or the 28 leaf fixture passes alone does not establish full native acceptance.
 
 System PowerShell/.NET policy may make execution unavailable; Tibicen does not bypass it. Job membership controls ordinary descendants, not filesystem/network permissions or deliberately escaped WMI processes. The batch subset intentionally refuses richer strings. Python/Bash interpreter installation, Windows ACL parity, fresh harness auto-loading and human usefulness are outside these checks.
