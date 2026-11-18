@@ -1,6 +1,6 @@
 {
   "version": "1.7.0",
-  "status": "published-metadata-pending",
+  "status": "complete",
   "source": "6eef592d9638a063cb2b49c33fe4843e601956dd",
   "distribution": "d881334f638ccffa74bcc032a392451f5d5b8f52",
   "tagObject": "5884e983a1a6f8ba1a0fa0becbe61b8c8950ad7e",
@@ -153,11 +153,221 @@
     "previousReleaseUnchanged": true
   },
   "metadata": {
-    "status": "pending"
+    "status": "passed",
+    "source": "2e37489e96c3d4df73b71803d7efd4613d8f6cb1",
+    "runs": [
+      {
+        "id": 44338460810,
+        "name": "Offline checks",
+        "head_sha": "2e37489e96c3d4df73b71803d7efd4613d8f6cb1",
+        "conclusion": "success",
+        "html_url": "https://github.com/warbr1ng3r/tibicen/actions/runs/44338460810"
+      },
+      {
+        "id": 44338461631,
+        "name": "Deploy landing to Cloudflare Pages",
+        "head_sha": "2e37489e96c3d4df73b71803d7efd4613d8f6cb1",
+        "conclusion": "success",
+        "html_url": "https://github.com/warbr1ng3r/tibicen/actions/runs/44338461631"
+      },
+      {
+        "id": 44339175050,
+        "name": "Publish legacy redirects and checksum index",
+        "head_sha": "2e37489e96c3d4df73b71803d7efd4613d8f6cb1",
+        "conclusion": "success",
+        "html_url": "https://github.com/warbr1ng3r/tibicen/actions/runs/44339175050"
+      }
+    ],
+    "localChecks": {
+      "siteUnitTests": 69,
+      "lint": "passed",
+      "format": "passed",
+      "typecheck": "passed",
+      "strictOpenSpec": "passed",
+      "independentReview": "Ship"
+    },
+    "returnedBodies": {
+      "status": "passed",
+      "checkedAtUtc": "2026-11-18T15:47:02.178073+00:00",
+      "bodies": [
+        {
+          "url": "https://tibicen.pages.dev/_astro/Landing.astro_astro_type_script_index_0_lang.DT3-3a5N.js",
+          "bytes": 5344,
+          "sha256": "824b02833acaec08fbbead727efd631e7c422a614f2d7964cc65d5d819cb3078",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/_astro/SelectRoot.astro_astro_type_script_index_0_lang.Ce_hi4Vm.js",
+          "bytes": 79632,
+          "sha256": "7097913a4c8ce98e265c19ae3f66de91ce37e8cfacbc0978e9d3c5e7dea42449",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/_astro/SiteLayout.BfVk2eyo.css",
+          "bytes": 39116,
+          "sha256": "af771c9e20c5f54b51afc69ba7b7d263a2221fcb824dd79979323821bfeef10f",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/_astro/SiteLayout.astro_astro_type_script_index_0_lang.46Pug8Zk.js",
+          "bytes": 12210,
+          "sha256": "969205471b7419c4f906a9b57ad66601886e4bce333b315c10af85f49030e515",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/assets/cluster-graph.svg",
+          "bytes": 24029,
+          "sha256": "717a89f486aad9f3621b6cb3bd6b5044b90befd1b16880e42bb63b7cdcb08882",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/assets/contour-wave.svg",
+          "bytes": 9311,
+          "sha256": "152c1bb3c96f3a8511cdd20a38193c5c04ab5cd513c9d54354e05c01bc85dbbc",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/assets/cubes.svg",
+          "bytes": 13493,
+          "sha256": "8fc36e6819a4058f4de17df8f2ed0efae4f70fec4bdcdd5b3145570a4fb39793",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/assets/favicon.svg",
+          "bytes": 355,
+          "sha256": "46a0d078ec3795dbecc80cd2147b61653037d4dd59a76d58669b7367184f71aa",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/assets/lattice.svg",
+          "bytes": 74834,
+          "sha256": "70a443e49761b690acf664da8089a9e4e2ff48d972a1a7d0a72d05eedb9b9a38",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/assets/layered-graph.svg",
+          "bytes": 8255,
+          "sha256": "7375cdc9fd0d8bbd689c8bc4e24f35dbfd48e1c3e52e83c9a150a21268d0ecc2",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/assets/logo.svg",
+          "bytes": 305,
+          "sha256": "bf7991b06280f422784d73dd44c0d283dd322b5bfe92c0b9075a855ddc4b68d7",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/assets/scaffold.svg",
+          "bytes": 23150,
+          "sha256": "fabfcbafb57b4bb48ba57ed365988c89bf2655b36fb287686d79ca4867e379fb",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/assets/social-preview.png",
+          "bytes": 68143,
+          "sha256": "1ea737735ab56418c067fb6638c57e2b6ed4409d2ff6660a3ca51b8e5e8342e9",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/assets/social-preview.svg",
+          "bytes": 2082,
+          "sha256": "07ac6e737db133c4fd263e398d4aae0d769fedc2662d30aeb99f1a857f4339f1",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/assets/truss.svg",
+          "bytes": 11640,
+          "sha256": "702ba21ae08d44d82a4b966e1c52b510763cde6ef320536cb4c9cec00fad0d99",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/",
+          "bytes": 35631,
+          "sha256": "83ec2daff649f4366ef3e960d9fcea6135ba30df6f12ba050c6a473e57661748",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/licenses/astrowind.txt",
+          "bytes": 1065,
+          "sha256": "6b7e2fe59d6b85c47fd2de8cad65db3c37b84e8bbf662f37a7c7cc7fd1cfea25",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/licenses/starwind.txt",
+          "bytes": 1096,
+          "sha256": "b75ec854b30c7ae3b2e31f4b43f804fea11ef6a78db2f5b608455da84cf28fcd",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/maintenance/index.json",
+          "bytes": 23382,
+          "sha256": "3fa55f22979c9b8b2ff5cc79572198dd33cab2a4004c35b5e71ea17476446354",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/preset/",
+          "bytes": 22381,
+          "sha256": "bd0774d8e74b4801b80c0c7a3a59d01336ac78ac529c2923fff2577d01ee05d0",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/ru/",
+          "bytes": 43361,
+          "sha256": "52cece09539303d774845e4560ef23424c6141c756caff83d1818bc6008c5f7d",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://tibicen.pages.dev/ru/preset/",
+          "bytes": 24832,
+          "sha256": "3df159a05d3d55022308a4a86202bb8e63a73d0f68107ea13fc03931e3e9ca5c",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://warbr1ng3r.github.io/tibicen/",
+          "bytes": 703,
+          "sha256": "1c9fa993b9b3f8a214efb3af5027008a771c5b25a268aab3d66d6fff4fc0bc1d",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://warbr1ng3r.github.io/tibicen/preset/",
+          "bytes": 747,
+          "sha256": "7112f72491ba9e2aafce5381ced6ad3c29238cdd21dd9487c87565c2b3c48876",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://warbr1ng3r.github.io/tibicen/ru/",
+          "bytes": 732,
+          "sha256": "490faec1c2bccc4b67f8e394d11b6de05c8a6bbd72dabfdcb45385337e01fa08",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://warbr1ng3r.github.io/tibicen/ru/preset/",
+          "bytes": 776,
+          "sha256": "b548d81791791f9f5edb370aeb075e7ba6248eb85ff1a18bfa243c91d4462b6e",
+          "matchesCommittedBuild": true
+        },
+        {
+          "url": "https://warbr1ng3r.github.io/tibicen/maintenance/index.json",
+          "bytes": 23382,
+          "sha256": "3fa55f22979c9b8b2ff5cc79572198dd33cab2a4004c35b5e71ea17476446354",
+          "matchesCommittedBuild": true
+        }
+      ],
+      "total": 27,
+      "checksumVersions": 16
+    },
+    "retainedFailure": {
+      "attempt": 1,
+      "primaryMatches": 22,
+      "legacyCurlExit": 28,
+      "cause": "unknown network timeout",
+      "followUp": "per-request DNS address; TLS verification retained; all27bodiesmatched"
+    }
   },
   "publicationRun": {
     "id": 44337344777,
     "commit": "83da4934d513687403c22f3d7b0f148d7c7070a4",
     "scope": "isolated ops branch; not merged into product source"
-  }
+  },
+  "distributionBranch": "d881334f638ccffa74bcc032a392451f5d5b8f52"
 }

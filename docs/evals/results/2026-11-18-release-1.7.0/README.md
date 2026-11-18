@@ -1,6 +1,6 @@
 # Tibicen 1.7.0 delivery and first-use checks
 
-18 November 2026. [1.7.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.0) was published at `2026-11-18T15:35:26Z`. All three returned assets and 115 archive files/modes match the frozen candidate. Published 1.6.0 is unchanged. Website metadata deployment is the remaining follow-up.
+18 November 2026. [1.7.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.0) was published at `2026-11-18T15:35:26Z`. All three returned assets and 115 archive files/modes match the frozen candidate. Published 1.6.0 is unchanged. Website metadata and both public origins are verified; the release package is complete.
 
 ## Scope and identities
 
@@ -32,6 +32,12 @@ Before apply, root independently checked each baseline and exact proposed bytes.
 ## Publication
 
 The browser upload left a failed `starter` asset in the unpublished draft. Publication refused it; a reviewed one-off ops workflow removed only that exact failed draft upload, verified the accepted source/tag and three frozen assets, and published after all guards passed. Failed diagnostic attempts remain retained. No ops workflow or binary release asset is merged into main. The previous 1.6.0 release ID, publication time and asset IDs/sizes/digests match the prepublication snapshot.
+
+## Website delivery
+
+Metadata source `2e37489e96c3d4df73b71803d7efd4613d8f6cb1` passed [offline CI](https://github.com/warbr1ng3r/tibicen/actions/runs/44338460810), [Cloudflare deployment](https://github.com/warbr1ng3r/tibicen/actions/runs/44338461631) and [legacy Pages deployment](https://github.com/warbr1ng3r/tibicen/actions/runs/44339175050). All **27 returned bodies** match the source-bound local build or committed legacy files: 22 primary files, four legacy redirects and the legacy checksum index. Both indexes contain 16 versions; the 15 prior records and warnings are unchanged. This is a local source-bound comparison, not an independent official-artifact audit.
+
+The first audit matched all 22 primary files but timed out at a legacy request (curl 28). The follow-up used a DNS-returned address for that hostname only, with TLS verification preserved, and matched all 27 responses. The exact cause of the first network timeout is unknown; it remains a failed attempt. Local metadata validation passed 69 site tests, lint, format, typecheck and strict OpenSpec validation. Independent review found and fixed a stale version assertion and the Russian developer-guide pin, then accepted the complete metadata change. Later closure edits change documentation only.
 
 ## Remaining boundaries
 
