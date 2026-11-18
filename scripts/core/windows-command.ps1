@@ -1,5 +1,7 @@
 param([string]$RequestFile)
 $ErrorActionPreference = 'Stop'
+# Avoid ambient module discovery in the runner's intentionally minimal environment.
+Import-Module -Name ([IO.Path]::Combine($PSHOME, 'Modules', 'Microsoft.PowerShell.Utility', 'Microsoft.PowerShell.Utility.psd1')) -ErrorAction Stop
 $request = [IO.File]::ReadAllText($RequestFile, [Text.UTF8Encoding]::new($false)) | ConvertFrom-Json
 $response = @{ schema = 1; nonce = $request.nonce; status = 'unavailable'; reason = 'process-tree-unavailable' }
 try {
@@ -59,9 +61,10 @@ public static class TibicenWindowsJob {
         using (var process = new Process()) {
             process.StartInfo = new ProcessStartInfo {
                 FileName = executable, Arguments = arguments, WorkingDirectory = cwd,
-                UseShellExecute = false, CreateNoWindow = true
+                UseShellExecute = false, CreateNoWindow = true, RedirectStandardInput = true
             };
             if (!process.Start()) throw new InvalidOperationException("Command unavailable");
+            process.StandardInput.Close();
             process.WaitForExit();
             return unchecked((uint)process.ExitCode);
         }

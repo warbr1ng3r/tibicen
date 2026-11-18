@@ -101,6 +101,10 @@ async function diagnoseHelper(
         `$1${checkpoint('entry')}\n`,
       )
       .replace(
+        /^(Import-Module -Name .+)$/m,
+        `${checkpoint('before-Utility-import')}\n$1\n${checkpoint('after-Utility-import')}`,
+      )
+      .replace(
         /^\$request = (\[IO.File\]::ReadAllText\(.+\)) \| ConvertFrom-Json$/m,
         `${checkpoint('before-request-read')}\n$requestText = $1\n[Console]::Error.WriteLine('[test-only-control:after-request-read] chars=' + $requestText.Length)\n$request = $requestText | ConvertFrom-Json\n${checkpoint('after-request-json')}`,
       )
@@ -116,6 +120,18 @@ async function diagnoseHelper(
       .replace(
         /^(\s*\$code = \[TibicenWindowsJob\]::Run\(.*\))$/m,
         `    ${checkpoint('before-Run')}\n$1\n    ${checkpoint('after-Run')}`,
+      )
+      .replace(
+        '            if (!process.Start()) throw new InvalidOperationException("Command unavailable");',
+        '            Console.Error.WriteLine("[test-only-control:before-Start]");\n            if (!process.Start()) throw new InvalidOperationException("Command unavailable");\n            Console.Error.WriteLine("[test-only-control:after-Start]");',
+      )
+      .replace(
+        '            process.StandardInput.Close();',
+        '            process.StandardInput.Close();\n            Console.Error.WriteLine("[test-only-control:after-StdinClose]");',
+      )
+      .replace(
+        '            process.WaitForExit();',
+        '            Console.Error.WriteLine("[test-only-control:before-Wait]");\n            process.WaitForExit();\n            Console.Error.WriteLine("[test-only-control:after-Wait]");',
       )
       .replace(
         '        [IO.File]::WriteAllText',
