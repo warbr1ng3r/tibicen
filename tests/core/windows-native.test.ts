@@ -77,223 +77,6 @@ async function stopped(pid: number) {
   );
 }
 
-async function diagnoseHelper(
-  t: TestContext,
-  root: string,
-  payload: string,
-  expectedExit: number,
-) {
-  try {
-    const source = await readFile(
-      path.join(payload, 'scripts/core/windows-command.ps1'),
-      'utf8',
-    );
-    const checkpoint = (stage: string) =>
-      `[Console]::Error.WriteLine('[test-only-control:${stage}]')`;
-    assert.match(source, /^param\(\[string\]\$RequestFile\)\r?\n/);
-    assert.match(
-      source,
-      /^\$request = \[IO.File\]::ReadAllText\(.+\) \| ConvertFrom-Json$/m,
-    );
-    const instrumented = source
-      .replace(
-        /^(param\(\[string\]\$RequestFile\)\r?\n)/,
-        `$1${checkpoint('entry')}\n`,
-      )
-      .replace(
-        /^(Import-Module -Name .+)$/m,
-        `${checkpoint('before-Utility-import')}\n$1\n${checkpoint('after-Utility-import')}`,
-      )
-      .replace(
-        /^\$request = (\[IO.File\]::ReadAllText\(.+\)) \| ConvertFrom-Json$/m,
-        `${checkpoint('before-request-read')}\n$requestText = $1\n[Console]::Error.WriteLine('[test-only-control:after-request-read] chars=' + $requestText.Length)\n$request = $requestText | ConvertFrom-Json\n${checkpoint('after-request-json')}`,
-      )
-      .replace('$response = ', `${checkpoint('after-request')}\n$response = `)
-      .replace(
-        '    Add-Type ',
-        `    ${checkpoint('before-Add-Type')}\n    Add-Type `,
-      )
-      .replace(
-        '    [TibicenWindowsJob]::Open()',
-        `    ${checkpoint('after-Add-Type')}\n    [TibicenWindowsJob]::Open()\n    ${checkpoint('after-Open')}`,
-      )
-      .replace(
-        /^(\s*\$code = \[TibicenWindowsJob\]::Run\(.*\))$/m,
-        `    ${checkpoint('before-Run')}\n$1\n    ${checkpoint('after-Run')}`,
-      )
-      .replace(
-        '            if (!process.Start()) throw new InvalidOperationException("Command unavailable");',
-        '            Console.Error.WriteLine("[test-only-control:before-Start]");\n            if (!process.Start()) throw new InvalidOperationException("Command unavailable");\n            Console.Error.WriteLine("[test-only-control:after-Start]");',
-      )
-      .replace(
-        '            process.StandardInput.Close();',
-        '            process.StandardInput.Close();\n            Console.Error.WriteLine("[test-only-control:after-StdinClose]");',
-      )
-      .replace(
-        '            process.WaitForExit();',
-        '            Console.Error.WriteLine("[test-only-control:before-Wait]");\n            process.WaitForExit();\n            Console.Error.WriteLine("[test-only-control:after-Wait]");',
-      )
-      .replace(
-        '        [IO.File]::WriteAllText',
-        `        ${checkpoint('before-receipt')}\n        [IO.File]::WriteAllText`,
-      )
-      .replace(
-        "if ('TibicenWindowsJob' -as [type]) { [TibicenWindowsJob]::Close() }",
-        `if ('TibicenWindowsJob' -as [type]) { ${checkpoint('before-Close')}; [TibicenWindowsJob]::Close() }`,
-      );
-    const systemRoot = process.env.SystemRoot ?? process.env.WINDIR;
-    assert(systemRoot);
-    const env: NodeJS.ProcessEnv = {
-      SystemRoot: systemRoot,
-      WINDIR: systemRoot,
-    };
-    for (const name of ['PATH', 'TMPDIR', 'TMP', 'TEMP', 'LANG'])
-      if (process.env[name] !== undefined) env[name] = process.env[name];
-    const launcher = path.join(
-      systemRoot,
-      'System32',
-      'WindowsPowerShell',
-      'v1.0',
-      'powershell.exe',
-    );
-    const bootstrap = spawnSync(
-      launcher,
-      [
-        '-NoLogo',
-        '-NoProfile',
-        '-NonInteractive',
-        '-EncodedCommand',
-        Buffer.from(
-          "[Console]::Error.WriteLine('bootstrap-ready')",
-          'utf16le',
-        ).toString('base64'),
-      ],
-      {
-        cwd: root,
-        env,
-        encoding: 'utf8',
-        stdio: ['ignore', 'pipe', 'pipe'],
-        timeout: 5000,
-        maxBuffer: 64 * 1024,
-      },
-    );
-    t.diagnostic(
-      JSON.stringify({
-        observation:
-          'test-only bare PowerShell bootstrap with ignored stdin; never a product pass',
-        status: bootstrap.status,
-        signal: bootstrap.signal,
-        error: (bootstrap.error as NodeJS.ErrnoException | undefined)?.code,
-        stdout: bootstrap.stdout?.slice(-4096),
-        stderr: bootstrap.stderr?.slice(-4096),
-      }),
-    );
-    const receipt = path.join(root, 'diagnostic-only-receipt.json');
-    const scriptFile = path.join(root, 'diagnostic-owned.ps1');
-    const requestFile = path.join(root, 'diagnostic-owned-request.json');
-    await writeFile(scriptFile, instrumented, { mode: 0o600 });
-    await writeFile(
-      requestFile,
-      JSON.stringify({
-        schema: 1,
-        nonce: 'test-only-diagnostic',
-        receipt,
-        executable: process.execPath,
-        arguments: `"check.cjs" "${expectedExit}"`,
-        cwd: root,
-      }),
-      { mode: 0o600 },
-    );
-    const result = spawnSync(
-      launcher,
-      [
-        '-NoLogo',
-        '-NoProfile',
-        '-NonInteractive',
-        '-File',
-        scriptFile,
-        '-RequestFile',
-        requestFile,
-      ],
-      {
-        cwd: root,
-        env,
-        encoding: 'utf8',
-        stdio: ['ignore', 'pipe', 'pipe'],
-        timeout: 5000,
-        maxBuffer: 64 * 1024,
-      },
-    );
-    t.diagnostic(
-      JSON.stringify({
-        observation: 'test-only instrumented helper; never a product pass',
-        originalHelperSha256: createHash('sha256').update(source).digest('hex'),
-        status: result.status,
-        signal: result.signal,
-        error: (result.error as NodeJS.ErrnoException | undefined)?.code,
-        stdout: result.stdout?.slice(-4096),
-        stderr: result.stderr?.slice(-4096),
-        receipt: (await readFile(receipt, 'utf8').catch(() => null))?.slice(
-          0,
-          4096,
-        ),
-      }),
-    );
-    const pinnedFile = path.join(root, 'diagnostic-pinned-owned.ps1');
-    const pinnedSource = instrumented.replace(
-      /^(param\(\[string\]\$RequestFile\)\r?\n)/,
-      `$1$env:PSModulePath = [IO.Path]::Combine($PSHOME, 'Modules')\n${checkpoint('before-Utility-import')}\nImport-Module -Name ([IO.Path]::Combine($PSHOME, 'Modules', 'Microsoft.PowerShell.Utility', 'Microsoft.PowerShell.Utility.psd1')) -ErrorAction Stop\n${checkpoint('after-Utility-import')}\n`,
-    );
-    await writeFile(pinnedFile, pinnedSource, { mode: 0o600 });
-    await rm(receipt, { force: true });
-    const pinned = spawnSync(
-      launcher,
-      [
-        '-NoLogo',
-        '-NoProfile',
-        '-NonInteractive',
-        '-File',
-        pinnedFile,
-        '-RequestFile',
-        requestFile,
-      ],
-      {
-        cwd: root,
-        env: {
-          ...env,
-          PSModulePath: path.join(path.dirname(launcher), 'Modules'),
-        },
-        encoding: 'utf8',
-        stdio: ['ignore', 'pipe', 'pipe'],
-        timeout: 5000,
-        maxBuffer: 64 * 1024,
-      },
-    );
-    t.diagnostic(
-      JSON.stringify({
-        observation:
-          'test-only pinned Utility module control; never a product pass',
-        status: pinned.status,
-        signal: pinned.signal,
-        error: (pinned.error as NodeJS.ErrnoException | undefined)?.code,
-        stdout: pinned.stdout?.slice(-4096),
-        stderr: pinned.stderr?.slice(-4096),
-        receipt: (await readFile(receipt, 'utf8').catch(() => null))?.slice(
-          0,
-          4096,
-        ),
-      }),
-    );
-  } catch (caught) {
-    t.diagnostic(
-      JSON.stringify({
-        observation: 'test-only helper diagnostic unavailable',
-        error: String(caught),
-      }),
-    );
-  }
-}
-
 test(
   'native Windows execution preserves the approved command and closes its descendants',
   {
@@ -365,8 +148,6 @@ test(
                   result,
                 }),
               );
-              if (result.exitCode !== code)
-                await diagnoseHelper(s, root, payload.root, code);
               assert.equal(
                 result.exitCode,
                 code,
@@ -776,8 +557,24 @@ test(
               ['apply', '--plan', '-', '--approve', proposal.digest],
               proposal,
             );
+            const session = applied.manifest?.sessions?.at(-1);
+            s.diagnostic(
+              JSON.stringify({
+                phase: 'controlled-docs-apply',
+                payload: payload.name,
+                status: applied.status,
+                checks: applied.checks,
+                baseline: applied.baseline ?? null,
+                attempts: applied.attempts ?? session?.attempts ?? [],
+                commandAttempts: session?.commandAttempts ?? [],
+              }),
+            );
             assert.equal(applied.status, 'complete');
-            assert.equal(applied.checks.verify.status, 'green');
+            assert.equal(
+              applied.checks.verify.status,
+              'green',
+              JSON.stringify(applied.checks.verify),
+            );
             assert.equal(applied.checks.verify.firstAttempt, true);
             assert.equal(cli(['verify']).status, 'passed');
             assert.equal(cli(['status']).status, 'complete');
