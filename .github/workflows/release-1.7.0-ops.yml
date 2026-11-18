@@ -43,3 +43,22 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 .release-1.7.0/inspect.py
+  pages:
+    if: >-
+      github.repository == 'warbr1ng3r/tibicen' &&
+      github.ref == 'refs/heads/codex/release-1.7.0-ops' &&
+      github.run_attempt == 1 &&
+      github.event.head_commit.message == 'release-1.7.0-ops: pages'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Dispatch the existing legacy Pages workflow at the accepted main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .release-1.7.0/pages.py
