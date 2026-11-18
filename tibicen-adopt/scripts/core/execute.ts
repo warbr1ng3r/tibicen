@@ -4,6 +4,7 @@ import { spawn } from 'node:child_process';
 import { realpath } from 'node:fs/promises';
 import { assert } from './contracts.ts';
 import { safePath, validateRelativePath } from './paths.ts';
+import { runWindowsCommand } from './windows.ts';
 
 export async function validateExternalExecutable(
   root: string,
@@ -27,7 +28,7 @@ export async function validateExternalExecutable(
 export const executableName = ({ executable }: { executable: string }) =>
   path
     .basename(executable)
-    .replace(/\.(?:exe|cmd)$/i, '')
+    .replace(/\.(?:exe|com|cmd|bat)$/i, '')
     .toLowerCase();
 
 export function validateCommand(input: unknown): Command {
@@ -54,6 +55,7 @@ export function validateCommand(input: unknown): Command {
   assert(
     typeof command.executable === 'string' &&
       command.executable &&
+      !command.executable.includes('\0') &&
       Array.isArray(command.argv) &&
       command.argv.every(
         (arg) => typeof arg === 'string' && !arg.includes('\0'),
@@ -116,7 +118,7 @@ export function validateCommand(input: unknown): Command {
     );
   assert(
     !/\bgit\s+(?:[^\n]*\s)?commit\b/i.test(
-      [command.executable, ...command.argv].join(' '),
+      [executable, ...command.argv].join(' '),
     ),
     'forbidden-command',
     'Tibicen never creates commits.',
@@ -158,7 +160,7 @@ export function validateCommand(input: unknown): Command {
     'Environment contains names only.',
   );
   assert(
-    typeof command.cwd === 'string',
+    typeof command.cwd === 'string' && !command.cwd.includes('\0'),
     'invalid-command',
     'Command needs a project-relative cwd.',
   );
@@ -196,8 +198,6 @@ export async function runCommand(
     timedOut: false,
   });
   if (signal?.aborted) return unavailable('aborted');
-  if (process.platform === 'win32')
-    return unavailable('process-tree-unavailable');
   const cwd = await safePath(root, command.cwd, { allowDot: true });
   const minimalEnv: NodeJS.ProcessEnv = {};
   for (const name of [
@@ -221,6 +221,19 @@ export async function runCommand(
       (result, value) => result.split(value).join('[redacted]'),
       text,
     );
+  if (process.platform === 'win32') {
+    const result = await runWindowsCommand(command, {
+      cwd,
+      env: minimalEnv,
+      timeoutMs,
+      signal,
+    });
+    return {
+      ...result,
+      stdout: redact(result.stdout),
+      stderr: redact(result.stderr),
+    };
+  }
   return new Promise<
     CommandResult & { stdout: string; stderr: string; timedOut: boolean }
   >((resolve) => {

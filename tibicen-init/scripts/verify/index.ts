@@ -57,7 +57,7 @@ import {
   validateMemory,
 } from '../core/memory.ts';
 import { copyNodeEnvironment } from './environment.ts';
-import { validateExternalExecutable } from '../core/execute.ts';
+import { executableName, validateExternalExecutable } from '../core/execute.ts';
 
 const liveSnapshots = new Map<string, { container: string; id: string }>();
 const approval = (value?: string) =>
@@ -539,13 +539,7 @@ export async function runProjectChecks(
         'Project checks accept only approved build/test/lint commands.',
       );
       // The bash script contract belongs to the controlled non-web profiles only.
-      if (
-        profile === 'web' &&
-        path
-          .basename(command.executable)
-          .replace(/\.(?:exe|cmd)$/i, '')
-          .toLowerCase() === 'bash'
-      )
+      if (profile === 'web' && executableName(command) === 'bash')
         return { ...unverified('forbidden-command'), runs };
       try {
         if (profile !== 'web')
