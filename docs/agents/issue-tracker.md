@@ -1,5 +1,9 @@
 # Issue tracker
 
+## Active effort — release 1.7.0 and first-use observation
+
+Owner: root. The owner accepted the proposed release/first-use package after the Windows branch was merged into main. Prepare the versioned candidate, a finite two-case explicit-reading observation, independent Ponytail review, lifecycle and public gates. Coordination: `.scratch/release-1.7.0-20261118/map.md`. Existing Windows/handoff changes own behavior; the release report owns delivery facts. Published 1.6.0 remains immutable. No new paid API calls.
+
 ## Closed engineering effort — Windows execution and first-task handoff, 18 November
 
 Owner: none; root and parallel agents completed implementation, independent Ponytail review and native acceptance. [Windows requirements, tasks and evidence](../../openspec/changes/enable-windows-project-commands/proposal.md) cover job-owned execution, literal arguments, native interpreter resolution and the corrected isolated Unicode bootstrap. [Handoff requirements and tasks](../../openspec/changes/clarify-first-use-handoff/proposal.md) give one copyable first task while preserving applicable native/custom instructions and optional memory. Final local gate: 1,176 passed / 0 failed / 2 skipped. The [six-cell matrix](https://github.com/warbr1ng3r/tibicen/actions/runs/44229803132) passed, including both built skills and their CLI lifecycles on Windows Server 2022 / Node 22 and 24. Failed diagnostic runs remain recorded as failures. The owner authorized commits and a separate public branch push; release publication is excluded. No new behavioral model run, paid API call, dependency or version bump; published 1.6.0 remains unchanged. This package is Unreleased, not a native-harness loading or human-usefulness result.

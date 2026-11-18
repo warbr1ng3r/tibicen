@@ -51,7 +51,7 @@ Node execution does not grant permission to run arbitrary project code. Project
 checks still require the displayed commands, trust and approval. In published 1.6.0, Windows command
 execution stops with `process-tree-unavailable`; read-only operations remain available.
 
-**Unreleased:** [controlled Windows execution](../openspec/changes/enable-windows-project-commands/design.md) is being implemented using system Windows PowerShell/.NET and a Job Object. Compilation or process-control policy restrictions remain explicit unavailable results. Native arguments stay literal; `.cmd`/`.bat` accept only a conservative subset without quotes, expansion/shell characters or trailing backslashes. Interpreters and dependencies are not installed automatically. Native Windows acceptance is still pending. A temporary copy does not by itself isolate a command's OS
+**Unreleased:** [controlled Windows execution](../openspec/changes/enable-windows-project-commands/design.md) is implemented using system Windows PowerShell/.NET and a Job Object. Compilation or process-control policy restrictions remain explicit unavailable results. Native arguments stay literal; `.cmd`/`.bat` accept only a conservative subset without quotes, expansion/shell characters or trailing backslashes. Interpreters and dependencies are not installed automatically. Both built skills passed native Windows Server 2022 checks with Node 22 and 24; see the linked verification. A temporary copy does not by itself isolate a command's OS
 permissions.
 
 The installed skills require Node ≥22.20. Developing the whole repository and

@@ -5,6 +5,9 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+1.7.0 candidate preparation is in progress; the following changes are not yet published.
+
+
 ### Added
 
 - Implement controlled Windows project commands using a fixed system PowerShell helper and a kill-on-close Job Object. Preserve literal native arguments; accept only the documented conservative batch subset. Both built skills passed native execution and portable CLI acceptance on Windows Server 2022 with Node 22 and 24; this is not part of published 1.6.0.
