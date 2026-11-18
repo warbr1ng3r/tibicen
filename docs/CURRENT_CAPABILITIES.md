@@ -1,11 +1,13 @@
 # What Tibicen does today
 
-**Published skills: 1.6.0 · 2026-11-17 UTC.** Tibicen helps your existing coding
+**Published skills: 1.7.0 · 2026-11-18 UTC.** Tibicen helps your existing coding
 agent inspect, set up or repair project instructions and integrations, apply the
 changes you approve, and report what was checked. The
-[release report](evals/results/2026-11-17-release-1.6.0/README.md) defines the exact
+[release report](evals/results/2026-11-18-release-1.7.0/README.md) defines the exact
 published bytes and delivery evidence; the [product vision](PRODUCT_VISION.md)
 defines wider goals, not extra shipped capabilities.
+
+**Windows checks and first-task handoff — available in 1.7.0.** Approved Windows project commands use system Windows PowerShell/.NET and a Job Object. Both built skills passed Windows Server 2022 checks with Node 22.20.0 and 24.15.0; policy restrictions can still make execution unavailable. The final handoff gives one copyable task request with the actual working directory, applicable reviewed instructions and optional selected memory. Useful existing native/custom entrypoints remain usable. See the [host guide](HARNESS_PORTABILITY.md).
 
 **Controlled checks — available in 1.6.0.** Existing Python, Bash and documentation projects can run approved checks on independent baseline/final copies. Dependency installation and Python environment reproduction are not included; the working agent discovers commands outside package.json. Interpreter paths are pinned and scripts bind to the reviewed bytes. Web behavior is preserved. See the [change](../openspec/changes/support-controlled-project-checks/proposal.md).
 
@@ -118,8 +120,9 @@ no personal settings, provisions no secrets, and proves no MCP handshake or tool
 Use the [installation guide](INSTALLATION.md) for the pinned universal-folder
 installer or complete manual archive. The installer needs Git; the archive route
 and installed CLI do not. Installed skills need no repository development
-packages or site build. Windows project-command launch remains unavailable;
-read-only inspection still works. Repository/site development has separate
+packages or site build. Windows project commands follow the controlled execution
+limits in the [host guide](HARNESS_PORTABILITY.md); unavailable checks remain
+explicit. Repository/site development has separate
 requirements in [CONTRIBUTING](../CONTRIBUTING.md).
 
 ## What the checks mean
@@ -127,6 +130,7 @@ requirements in [CONTRIBUTING](../CONTRIBUTING.md).
 | Evidence | What you can conclude |
 | --- | --- |
 | [1.5.0 release checks](evals/results/2026-11-07-release-1.5/README.md) | Exact candidate delivery, installation/update/recovery/removal and recorded platform cells passed within their stated scope. This is not every host/model combination. |
+| [1.7.0 first-use observations](evals/results/2026-11-18-release-1.7.0/README.md) | Two synthetic cases passed useful fresh-context tasks with explicit reading assistance and controller application. Instruction reads are executor-reported; native autoload, human approval and measured benefit remain unverified. |
 | Structural checks and MCP format diagnosis | Inspected files/connections or parsed/caller-observed facts meet the reported checks. Native activation, connection and useful behavior remain separate. |
 | [Assisted fresh Codex observations](evals/results/2026-11-06-native-memory-recovery/README.md) | Some fixture sessions read, used and corrected memory. Explicit reading help, failed original grading and its separate after-observation assessment remain disclosed; automatic discovery and general behavior are unproven. |
 | [Repair comparison](evals/results/2026-11-06-repair-comparison/README.md) | Tibicen and direct Codex reached the same repair/task result and sufficient-setup no-op in one assisted case. Extra functional benefit, saved human work, ordinary installation effort and monetary cost were not established. |

@@ -1,16 +1,15 @@
 # Changelog
 
-Version 1.6.0 is public. See [release details](docs/RELEASING.md) for
+Version 1.7.0 is public. See [release details](docs/RELEASING.md) for
 immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
-1.7.0 candidate preparation is in progress; the following changes are not yet published.
-
+## [1.7.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.0) — 2026-11-18
 
 ### Added
 
-- Implement controlled Windows project commands using a fixed system PowerShell helper and a kill-on-close Job Object. Preserve literal native arguments; accept only the documented conservative batch subset. Both built skills passed native execution and portable CLI acceptance on Windows Server 2022 with Node 22 and 24; this is not part of published 1.6.0.
+- Implement controlled Windows project commands using a fixed system PowerShell helper and a kill-on-close Job Object. Preserve literal native arguments; accept only the documented conservative batch subset. Both built skills passed native execution and portable CLI acceptance on Windows Server 2022 with Node 22 and 24.
 
 ### Changed
 

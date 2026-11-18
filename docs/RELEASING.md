@@ -1,5 +1,9 @@
 # Preparing a release
 
+## 1.7.0 published — 2026-11-18
+
+[1.7.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.0) was published at `2026-11-18T15:35:26Z`. Source `6eef592d9638a063cb2b49c33fe4843e601956dd`, distribution `d881334f638ccffa74bcc032a392451f5d5b8f52`, annotated tag `5884e983a1a6f8ba1a0fa0becbe61b8c8950ad7e`. Public CI, all six platform cells and exact public lifecycle passed. Three returned assets and 115 archive files/modes match the candidate; 1.6.0 is preserved. [Report](evals/results/2026-11-18-release-1.7.0/README.md). Site metadata follow-up is recorded separately there.
+
 ## 1.6.0 published — 2026-11-17
 
 [1.6.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.6.0) was published at `2026-11-17T03:54:57Z`. Source `b55123ca41d6c1fc4ef21e9a683b9c4686738e9d`, distribution `29ab6308811c50304d61456011d1b7ec17b96c76`, annotated tag `70fb8b61e58612e73d543d93c63a6bdf75f5f550`. CI, six platform cells and public install/update/recovery/removal passed. Three returned assets and 111 archive files/modes match candidate-02; 1.5.6 is preserved. [Release report](evals/results/2026-11-17-release-1.6.0/README.md). Metadata source `00a02a5063a5baf8c5f5e4ad1ce81e27e827ea97` passed CI, Cloudflare and legacy Pages deployment; eight returned bodies were checked. Both indexes and redirects match committed bytes; the release report records exact runs and limits.

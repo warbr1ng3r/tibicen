@@ -287,6 +287,25 @@
         }
       ],
       "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.6.0"
+    },
+    {
+      "version": "1.7.0",
+      "publishedAtUtc": "2026-11-18T15:35:26Z",
+      "sourceCommit": "6eef592d9638a063cb2b49c33fe4843e601956dd",
+      "distributionCommit": "d881334f638ccffa74bcc032a392451f5d5b8f52",
+      "scope": "Compatible Windows command execution and a concrete first-task handoff. Source CI, six platform cells and exact public install/update/backup restoration/removal passed. Native Windows Server 2022 with Node 22/24 covers both built skills. System policy may refuse process control; copies are not OS sandboxes. Assisted first-use tasks are synthetic; native autoload, all-harness compatibility, Windows ACL parity and human/causal benefit remain unverified. MIT license retained.",
+      "payloadManifest": {
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.7.0/distribution-SHA256SUMS",
+        "sha256": "089afd976d09b0e83c03a69eb9ea75a4c14a180284fcffd8b2c2e2a0e9b0e91e"
+      },
+      "archives": [
+        {
+          "name": "tibicen-1.7.0.tar.gz",
+          "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.7.0/tibicen-1.7.0.tar.gz",
+          "sha256": "648bf3d2e06244f735690618f55b6358fa84c5518d3fc43efeb827c17e90577a"
+        }
+      ],
+      "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.0"
     }
   ],
   "warnings": []

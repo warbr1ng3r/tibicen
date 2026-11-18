@@ -12,10 +12,10 @@ Tibicen helps your coding agent set up or repair a project's instructions and to
 
 ## Get started
 
-Run this in your terminal. It installs both complete skills from the exact published **1.6.0** distribution; Node **22.20 or newer** and Git are required.
+Run this in your terminal. It installs both complete skills from the exact published **1.7.0** distribution; Node **22.20 or newer** and Git are required.
 
 ```sh
-npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/29ab6308811c50304d61456011d1b7ec17b96c76 -g --agent universal --skill tibicen-init tibicen-adopt --copy
+npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/d881334f638ccffa74bcc032a392451f5d5b8f52 -g --agent universal --skill tibicen-init tibicen-adopt --copy
 ```
 
 Then open your project in an agent that can read files and run Node, and send:
@@ -41,7 +41,7 @@ Use Tibicen with a host that can read the complete skill and perform its local o
 Human usefulness and comparative time savings have not been measured. Your agent's built-in initialization or a direct request to review instructions may also be enough.
 
 - [Working across hosts and models](docs/HARNESS_PORTABILITY.md) and [project memory](docs/PROJECT_MEMORY.md).
-- [1.6.0 release checks and limits](docs/evals/results/2026-11-17-release-1.6.0/README.md), [changelog](CHANGELOG.md) and [earlier README/release history](README_RELEASE_HISTORY.md).
+- [1.7.0 release checks and limits](docs/evals/results/2026-11-18-release-1.7.0/README.md), [changelog](CHANGELOG.md) and [earlier README/release history](README_RELEASE_HISTORY.md).
 - [Contributing](CONTRIBUTING.md), [product scope](docs/PRODUCT_VISION.md) and [security](SECURITY.md).
 
 ## Build and install from source

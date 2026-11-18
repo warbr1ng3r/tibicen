@@ -1,5 +1,9 @@
 # Maintaining Tibicen rules and adapters
 
+## 1.7.0 published — 2026-11-18
+
+[1.7.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.0), release ID `450156224`, was published at `2026-11-18T15:35:26Z`. Source `6eef592d9638a063cb2b49c33fe4843e601956dd` binds distribution `d881334f638ccffa74bcc032a392451f5d5b8f52` through annotated tag `5884e983a1a6f8ba1a0fa0becbe61b8c8950ad7e`. [Offline CI](https://github.com/warbr1ng3r/tibicen/actions/runs/44331525617), [all six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/44331426419), independent review and exact public installation/update/recovery/removal passed. All three returned assets and 115 archive files/modes match candidate-01; published 1.6.0 is unchanged. Two bounded first-use cases passed with explicit-reading and synthetic-controller assistance; native autoload and human usefulness remain unverified. The [release report](evals/results/2026-11-18-release-1.7.0/README.md) retains failures, cleanup and exact limits. Site metadata deployment and returned-body verification remain pending; skill publication does not establish either.
+
 ## 1.5.6 published — 2026-11-16
 
 [1.5.6](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.6) was published at `2026-11-16T00:15:51Z`. Source `1dc382d2f92a438ec69877134ecc5c821b20928c`, distribution `2c7cb6f50a36d5fc3ca29a127e83b194d1e2a169`, annotated tag `e657d3fd89cf6e23aa8b4ea0cc15983d875463dd`. CI, six platform cells and exact public install/update/recovery/removal passed. All three returned assets and 111 archive files match the candidate; 1.5.5 is preserved. [Release report](evals/results/2026-11-16-release-1.5.6/README.md). Metadata source `c84834d541f951c8fdb31723e9747556a3541d52` passed CI, Cloudflare and legacy Pages deployment; eight returned bodies were checked, and both indexes and redirects match committed bytes. Exact runs and limits are in the release report.

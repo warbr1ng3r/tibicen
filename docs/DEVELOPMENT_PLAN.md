@@ -1,12 +1,16 @@
 # Tibicen development plan
 
-## Current work — 1.7.0 candidate, 18 November
+## Current release — 1.7.0, 18 November
 
-Windows execution and the concrete first-task handoff are merged into public main (`a8c94c2`); its offline CI and Cloudflare deployment passed. Prepare the compatible 1.7.0 minor from these reviewed changes, verify immutable distribution/lifecycle/platform delivery and observe two bounded first-use cases. Keep explicit-reading assistance separate from native discovery and do not infer measured user benefit. Detailed completion belongs in the existing Windows/handoff changes and the release report. Published 1.6.0 stays unchanged until actual publication. Older sections below are dated records.
+[1.7.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.0) was published at `2026-11-18T15:35:26Z`. This compatible minor delivers Windows execution and the concrete first-task handoff. Source `6eef592d9638a063cb2b49c33fe4843e601956dd`, distribution `d881334f638ccffa74bcc032a392451f5d5b8f52`, offline CI and all six platform cells passed. Exact public installation/update/recovery/removal passed; all three returned assets and 115 archive files/modes match candidate-01. Published 1.6.0 is preserved.
 
-## Current release — 1.6.0
+Two bounded first-use cases passed with assistance: explicit reading, controller HOME rebinding and synthetic controller application remain disclosed. Instruction reads are executor-reported; native autoload, human approval and measured user benefit remain unverified. The [release report](evals/results/2026-11-18-release-1.7.0/README.md) owns exact facts and retained failed publication attempts. Site metadata deployment and returned-body verification are still pending. Existing Windows/handoff changes own behavior and detailed tasks; older sections below are dated records, not current assignments.
+
+## Previous release — 1.6.0
 
 [1.6.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.6.0) was published on 17 November. Controlled Python/Bash/docs checks and hardening are shipped; CI, six platforms and public delivery passed. The [report](evals/results/2026-11-17-release-1.6.0/README.md) records exact bytes and limits. Site metadata deployment and eight returned-body checks passed; the release effort is closed.
+
+### Engineering acceptance snapshot — 18 November, before 1.7.0 publication
 
 The completed engineering package covers [controlled Windows commands](../openspec/changes/enable-windows-project-commands/proposal.md) and [one concrete first-task handoff](../openspec/changes/clarify-first-use-handoff/proposal.md) across capable harnesses. Independent reviews and the local gate passed: 1,176 tests, zero failures and two explicit skips. The [native matrix](https://github.com/warbr1ng3r/tibicen/actions/runs/44229803132) passed all six cells, including both built skills on Windows Server 2022 with Node 22 and 24. The owner authorized commits, a separate branch push and CI; release publication is excluded. The work remains Unreleased, and version 1.6.0 and its public artifacts remain unchanged. Detailed tasks and evidence stay in those changes. Dated sections below retain earlier plans and results, not current assignments.
 

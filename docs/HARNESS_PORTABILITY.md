@@ -5,8 +5,8 @@ and invokes tools; its **model and provider** are your choices in that host.
 Tibicen does not connect to model APIs, select a model from an allowlist or ask
 you to create provider credentials for ordinary setup.
 
-The [installation guide](INSTALLATION.md) pins published **1.6.0**. Its
-[release report](evals/results/2026-11-17-release-1.6.0/README.md) records delivery
+The [installation guide](INSTALLATION.md) pins published **1.7.0**. Its
+[release report](evals/results/2026-11-18-release-1.7.0/README.md) records delivery
 checks and their limits; earlier working-session observations keep their original
 version bindings. The common `AGENTS.md` mechanism has been available since 1.2;
 1.3 added expanded stage guidance, uncatalogued preset hints and the explicit
@@ -48,10 +48,11 @@ remove only those optional hints when downgrading.
 | Explicitly read the approved project instructions | Activate the common-file route for the current session | Keep required activation as `manual-action-required` until observed |
 
 Node execution does not grant permission to run arbitrary project code. Project
-checks still require the displayed commands, trust and approval. In published 1.6.0, Windows command
-execution stops with `process-tree-unavailable`; read-only operations remain available.
+checks still require the displayed commands, trust and approval. The older 1.6.0
+Windows runtime refuses project commands with `process-tree-unavailable`; its
+read-only operations remain available.
 
-**Unreleased:** [controlled Windows execution](../openspec/changes/enable-windows-project-commands/design.md) is implemented using system Windows PowerShell/.NET and a Job Object. Compilation or process-control policy restrictions remain explicit unavailable results. Native arguments stay literal; `.cmd`/`.bat` accept only a conservative subset without quotes, expansion/shell characters or trailing backslashes. Interpreters and dependencies are not installed automatically. Both built skills passed native Windows Server 2022 checks with Node 22 and 24; see the linked verification. A temporary copy does not by itself isolate a command's OS
+**Available in 1.7.0:** [controlled Windows execution](../openspec/changes/enable-windows-project-commands/design.md) is implemented using system Windows PowerShell/.NET and a Job Object. Compilation or process-control policy restrictions remain explicit unavailable results. Native arguments stay literal; `.cmd`/`.bat` accept only a conservative subset without quotes, expansion/shell characters or trailing backslashes. Interpreters and dependencies are not installed automatically. Both built skills passed native Windows Server 2022 checks with Node 22.20.0 and 24.15.0; see the [release report](evals/results/2026-11-18-release-1.7.0/README.md). A temporary copy does not by itself isolate a command's OS
 permissions.
 
 The installed skills require Node ≥22.20. Developing the whole repository and
@@ -106,7 +107,7 @@ independent of the selected model and provider.
   intentional differences. A genuine defect receives an exact proposed fix;
   finding multiple files does not itself require a change.
 
-**Unreleased handoff clarification:** the agent gives you one copyable request
+**First-task handoff in 1.7.0:** the agent gives you one copyable request
 containing the actual working directory, reviewed applicable instruction paths,
 selected memory when enabled, and a useful task. For example, an uncatalogued
 `team-agent` may keep existing custom `RULES.md`, a reviewed translation exception

@@ -1,0 +1,163 @@
+{
+  "version": "1.7.0",
+  "status": "published-metadata-pending",
+  "source": "6eef592d9638a063cb2b49c33fe4843e601956dd",
+  "distribution": "d881334f638ccffa74bcc032a392451f5d5b8f52",
+  "tagObject": "5884e983a1a6f8ba1a0fa0becbe61b8c8950ad7e",
+  "publicCI": [
+    {
+      "id": 44331525617,
+      "name": "Offline checks",
+      "head_sha": "6eef592d9638a063cb2b49c33fe4843e601956dd",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/warbr1ng3r/tibicen/actions/runs/44331525617"
+    },
+    {
+      "id": 44331426419,
+      "name": "Manual standalone platform checks",
+      "head_sha": "6eef592d9638a063cb2b49c33fe4843e601956dd",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/warbr1ng3r/tibicen/actions/runs/44331426419"
+    }
+  ],
+  "platforms": [
+    {
+      "id": 134896576112,
+      "name": "standalone (ubuntu-24.04, 24.15.0)",
+      "conclusion": "success",
+      "html_url": "https://github.com/warbr1ng3r/tibicen/actions/runs/44331426419/job/134896576112"
+    },
+    {
+      "id": 134896576626,
+      "name": "standalone (macos-15, 24.15.0)",
+      "conclusion": "success",
+      "html_url": "https://github.com/warbr1ng3r/tibicen/actions/runs/44331426419/job/134896576626"
+    },
+    {
+      "id": 134896576724,
+      "name": "standalone (windows-2022, 24.15.0)",
+      "conclusion": "success",
+      "html_url": "https://github.com/warbr1ng3r/tibicen/actions/runs/44331426419/job/134896576724"
+    },
+    {
+      "id": 134896576819,
+      "name": "standalone (ubuntu-24.04, 22.20.0)",
+      "conclusion": "success",
+      "html_url": "https://github.com/warbr1ng3r/tibicen/actions/runs/44331426419/job/134896576819"
+    },
+    {
+      "id": 134896576873,
+      "name": "standalone (macos-15, 22.20.0)",
+      "conclusion": "success",
+      "html_url": "https://github.com/warbr1ng3r/tibicen/actions/runs/44331426419/job/134896576873"
+    },
+    {
+      "id": 134896576924,
+      "name": "standalone (windows-2022, 22.20.0)",
+      "conclusion": "success",
+      "html_url": "https://github.com/warbr1ng3r/tibicen/actions/runs/44331426419/job/134896576924"
+    }
+  ],
+  "standalone": {
+    "status": "passed",
+    "payloadFiles": 114,
+    "archiveFiles": 115,
+    "fileModesMatch": true,
+    "selfTests": [
+      {
+        "schema": 1,
+        "status": "passed",
+        "version": "1.7.0",
+        "resources": "available",
+        "scope": "distribution-resource-check"
+      },
+      {
+        "schema": 1,
+        "status": "passed",
+        "version": "1.7.0",
+        "resources": "available",
+        "scope": "distribution-resource-check"
+      }
+    ]
+  },
+  "firstUse": {
+    "status": "passed-with-assistance",
+    "freshContexts": 4,
+    "paidApiRub": 0,
+    "cases": [
+      {
+        "case": "init",
+        "setup": "real CLI proposal; controller HOME rebinding and synthetic apply disclosed",
+        "freshTask": "passed",
+        "nativeAutoload": "unverified",
+        "instructionReads": "executor-reported, not exported tool trace",
+        "preservation": "passed",
+        "sourceCodeBehavior": "3 tests + independent slug outputs"
+      },
+      {
+        "case": "adopt",
+        "setup": "real CLI proposal; controller HOME rebinding and synthetic apply disclosed",
+        "freshTask": "passed",
+        "nativeAutoload": "unverified",
+        "instructionReads": "executor-reported, not exported tool trace",
+        "preservation": "passed",
+        "sourceCodeBehavior": "documentation comparison only; exporter behavior unverified"
+      }
+    ],
+    "limits": [
+      "Synthetic projects and fresh Codex collaboration contexts on shared host; not native harness loading or OS containment.",
+      "Controller recompiled unchanged file changes with isolated HOME before approval; original envelopes and new digests retained.",
+      "Subscription monetary cost and exact token usage unavailable; no causal benefit or human usefulness claim.",
+      "Adopt uses a supported AGENTS bridge because RULES.md is read-only to current core; its original stale link is retained and explicitly overridden.",
+      "English exit-code wording is translated, not verified against exporter implementation."
+    ]
+  },
+  "release": {
+    "id": 450156224,
+    "tag_name": "v1.7.0",
+    "published_at": "2026-11-18T15:35:26Z",
+    "html_url": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.0",
+    "draft": false
+  },
+  "returnedAssets": {
+    "status": "passed",
+    "releaseId": 450156224,
+    "publishedAt": "2026-11-18T15:35:26Z",
+    "assets": [
+      {
+        "id": 763939803,
+        "name": "distribution-SHA256SUMS",
+        "bytes": 11991,
+        "sha256": "089afd976d09b0e83c03a69eb9ea75a4c14a180284fcffd8b2c2e2a0e9b0e91e",
+        "matchesFrozen": true
+      },
+      {
+        "id": 763939867,
+        "name": "SHA256SUMS",
+        "bytes": 177,
+        "sha256": "3777e2ab0667f42701899006cde27856c7970b1cfc1d5ac785dd85f94d0dff1e",
+        "matchesFrozen": true
+      },
+      {
+        "id": 763939748,
+        "name": "tibicen-1.7.0.tar.gz",
+        "bytes": 308678,
+        "sha256": "648bf3d2e06244f735690618f55b6358fa84c5518d3fc43efeb827c17e90577a",
+        "matchesFrozen": true
+      }
+    ],
+    "archiveFiles": 115,
+    "archiveModesMatch": true,
+    "previousReleaseUnchanged": true
+  },
+  "metadata": {
+    "status": "pending"
+  },
+  "publicationRun": {
+    "id": 44337344777,
+    "commit": "83da4934d513687403c22f3d7b0f148d7c7070a4",
+    "scope": "isolated ops branch; not merged into product source"
+  }
+}
