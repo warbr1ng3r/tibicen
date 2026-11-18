@@ -252,7 +252,7 @@ export async function runWindowsCommand(
           receipt,
           ...invocation,
           cwd: options.cwd,
-        }),
+        }) + '\n',
       );
     });
   } finally {

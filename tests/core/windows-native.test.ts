@@ -182,14 +182,15 @@ async function diagnoseHelper(
         encoding: 'utf8',
         timeout: 5000,
         maxBuffer: 64 * 1024,
-        input: JSON.stringify({
-          schema: 1,
-          nonce: 'test-only-diagnostic',
-          receipt,
-          executable: process.execPath,
-          arguments: `"check.cjs" "${expectedExit}"`,
-          cwd: root,
-        }),
+        input:
+          JSON.stringify({
+            schema: 1,
+            nonce: 'test-only-diagnostic',
+            receipt,
+            executable: process.execPath,
+            arguments: `"check.cjs" "${expectedExit}"`,
+            cwd: root,
+          }) + '\n',
       },
     );
     t.diagnostic(
@@ -276,7 +277,7 @@ test(
           async (s) => {
             const root = await fixture(s, {
               'check.cjs':
-                'console.log(JSON.stringify({schema:1,nonce:"fake",status:"completed",exitCode:0})); process.exit(Number(process.argv[2]));',
+                'if(require("node:fs").readFileSync(0,"utf8")!=="")throw new Error("Project must receive EOF, not the helper request."); console.log(JSON.stringify({schema:1,nonce:"fake",status:"completed",exitCode:0})); process.exit(Number(process.argv[2]));',
             });
             for (const code of [0, 37]) {
               const result = await run(root, ['check.cjs', String(code)]);
