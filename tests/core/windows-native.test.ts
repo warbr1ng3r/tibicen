@@ -569,6 +569,105 @@ test(
                 commandAttempts: session?.commandAttempts ?? [],
               }),
             );
+            if (applied.checks.verify.status !== 'green') {
+              const source = await readFile(
+                path.join(payload.root, 'scripts/core/windows-command.ps1'),
+                'utf8',
+              );
+              const instrumented = source
+                .replace(
+                  '    Add-Type ',
+                  "    [Console]::Error.WriteLine('[test-only-cli:before-Add-Type]')\n    Add-Type ",
+                )
+                .replace(
+                  '    [TibicenWindowsJob]::Open()',
+                  "    [Console]::Error.WriteLine('[test-only-cli:after-Add-Type]')\n    [Console]::Error.WriteLine('[test-only-cli:before-Open]')\n    [TibicenWindowsJob]::Open()\n    [Console]::Error.WriteLine('[test-only-cli:after-Open]')",
+                )
+                .replace(
+                  '} catch {\n    # Platform/bootstrap',
+                  '} catch {\n    [Console]::Error.WriteLine($_.Exception.ToString())\n    # Platform/bootstrap',
+                );
+              const scriptFile = path.join(
+                temporary,
+                'diagnostic-cli-owned.ps1',
+              );
+              const requestFile = path.join(
+                temporary,
+                'diagnostic-cli-request.json',
+              );
+              const receipt = path.join(
+                temporary,
+                'diagnostic-cli-result.json',
+              );
+              await writeFile(scriptFile, instrumented, { mode: 0o600 });
+              await writeFile(
+                requestFile,
+                JSON.stringify({
+                  schema: 1,
+                  nonce: 'test-only-cli-diagnostic',
+                  receipt,
+                  executable: pinned,
+                  arguments: '"./check.cjs"',
+                  cwd: root,
+                }),
+                { mode: 0o600 },
+              );
+              const systemRoot = env.SystemRoot ?? env.WINDIR;
+              assert(systemRoot);
+              const probe = spawnSync(
+                path.join(
+                  systemRoot,
+                  'System32',
+                  'WindowsPowerShell',
+                  'v1.0',
+                  'powershell.exe',
+                ),
+                [
+                  '-NoLogo',
+                  '-NoProfile',
+                  '-NonInteractive',
+                  '-File',
+                  scriptFile,
+                  '-RequestFile',
+                  requestFile,
+                ],
+                {
+                  cwd: root,
+                  env: Object.fromEntries(
+                    Object.entries(env).filter(([name]) =>
+                      [
+                        'PATH',
+                        'SystemRoot',
+                        'WINDIR',
+                        'TMPDIR',
+                        'TMP',
+                        'TEMP',
+                        'LANG',
+                      ].includes(name),
+                    ),
+                  ),
+                  encoding: 'utf8',
+                  stdio: ['ignore', 'pipe', 'pipe'],
+                  timeout: 10_000,
+                  maxBuffer: 64 * 1024,
+                },
+              );
+              s.diagnostic(
+                JSON.stringify({
+                  observation:
+                    'test-only helper under isolated CLI environment; never a product pass',
+                  status: probe.status,
+                  signal: probe.signal,
+                  error: (probe.error as NodeJS.ErrnoException | undefined)
+                    ?.code,
+                  stdout: probe.stdout?.slice(-4096),
+                  stderr: probe.stderr?.slice(-8192),
+                  receipt: (
+                    await readFile(receipt, 'utf8').catch(() => null)
+                  )?.slice(0, 4096),
+                }),
+              );
+            }
             assert.equal(applied.status, 'complete');
             assert.equal(
               applied.checks.verify.status,
