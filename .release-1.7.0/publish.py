@@ -18,7 +18,7 @@ def api(path, data=None, method=None, upload=None):
         payload = json.dumps(data).encode() if data is not None else None
         if payload is not None: headers["Content-Type"] = "application/json"
     with urllib.request.urlopen(urllib.request.Request(url, data=payload, headers=headers, method=method), timeout=60) as response:
-        return json.load(response)
+        return None if response.status == 204 else json.load(response)
 phase = 'start'
 try:
     phase = 'payload-hashes'
@@ -57,6 +57,16 @@ try:
     phase = 'asset-list'
     existing = {a["name"]:a for a in api(f"releases/{rid}/assets")}
     assert set(existing).issubset(E["assets"]), "Unexpected draft asset"
+    phase = 'owned-failed-browser-upload'
+    starter = existing.get('tibicen-1.7.0.tar.gz')
+    if starter is not None and starter['state'] == 'starter':
+        # Only the failed upload created by this publication attempt is replaceable.
+        assert rid == 450156224 and starter['id'] == 763851878
+        assert starter['digest'] is None and starter['size'] == (D/'tibicen-1.7.0.tar.gz').stat().st_size
+        current = api(f'releases/{rid}')
+        assert current['draft'] and current['tag_name'] == 'v1.7.0'
+        api(f"releases/assets/{starter['id']}", method='DELETE')
+        del existing['tibicen-1.7.0.tar.gz']
     phase = 'asset-upload'
     for name, digest in E["assets"].items():
         if name in existing:
