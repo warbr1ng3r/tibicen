@@ -5,8 +5,8 @@ and invokes tools; its **model and provider** are your choices in that host.
 Tibicen does not connect to model APIs, select a model from an allowlist or ask
 you to create provider credentials for ordinary setup.
 
-The [installation guide](INSTALLATION.md) pins published **1.5.6**. Its
-[release report](evals/results/2026-11-16-release-1.5.6/README.md) records delivery
+The [installation guide](INSTALLATION.md) pins published **1.6.0**. Its
+[release report](evals/results/2026-11-17-release-1.6.0/README.md) records delivery
 checks and their limits; earlier working-session observations keep their original
 version bindings. The common `AGENTS.md` mechanism has been available since 1.2;
 1.3 added expanded stage guidance, uncatalogued preset hints and the explicit
@@ -48,9 +48,10 @@ remove only those optional hints when downgrading.
 | Explicitly read the approved project instructions | Activate the common-file route for the current session | Keep required activation as `manual-action-required` until observed |
 
 Node execution does not grant permission to run arbitrary project code. Project
-checks still require the displayed commands, trust and approval. Windows command
-execution currently stops with `process-tree-unavailable`; read-only operations
-remain available. A temporary copy does not by itself isolate a command's OS
+checks still require the displayed commands, trust and approval. In published 1.6.0, Windows command
+execution stops with `process-tree-unavailable`; read-only operations remain available.
+
+**Unreleased:** [controlled Windows execution](../openspec/changes/enable-windows-project-commands/design.md) is being implemented using system Windows PowerShell/.NET and a Job Object. Compilation or process-control policy restrictions remain explicit unavailable results. Native arguments stay literal; `.cmd`/`.bat` accept only a conservative subset without quotes, expansion/shell characters or trailing backslashes. Interpreters and dependencies are not installed automatically. Native Windows acceptance is still pending. A temporary copy does not by itself isolate a command's OS
 permissions.
 
 The installed skills require Node ≥22.20. Developing the whole repository and
@@ -61,9 +62,9 @@ and the pinned environment in [CONTRIBUTING](../CONTRIBUTING.md).
 
 Several hosts can explicitly read the same approved `AGENTS.md` and, when chosen,
 one [project memory file](PROJECT_MEMORY.md). Preserve useful existing rules and
-notes. Ask each host, using the actual absolute project path:
-
-> Read `/actual/project/AGENTS.md` and follow the instructions relevant to this task. Then [your first useful task].
+notes. The handoff uses the actual absolute project paths and the reviewed
+instructions for your task. A suitable existing native or custom entrypoint
+can serve the same purpose; it does not require another `AGENTS.md`.
 
 This route needs no native version gate or `sharedRules` copy adapter. Additional
 native copies, MCP configuration and process integrations require their own
@@ -90,10 +91,10 @@ See [formats and evidence](MCP_FORMATS.md) and the [init/adopt workflow](ADOPT_D
 
 ## Carry the same context into the first task
 
-Tibicen 1.4.0 adds optional [task context in the report](ADOPT_DIAGNOSIS.md#task-context-for-init-and-adopt--unreleased).
+Since 1.4.0, Tibicen includes optional [task context in the report](ADOPT_DIAGNOSIS.md#task-context-for-init-and-adopt--unreleased).
 It records the selected host, working directory and intended task path without
-making a catalog entry or native adapter mandatory. Published 1.3 retains the
-common-file workflow above; it does not include this new report input.
+making a catalog entry or native adapter mandatory. These operations remain
+independent of the selected model and provider.
 
 - **Init:** “Set up agents for this project.” For a dependency-free Node app
   without instructions, the agent derives its command from `package.json`,
@@ -105,15 +106,28 @@ common-file workflow above; it does not include this new report input.
   intentional differences. A genuine defect receives an exact proposed fix;
   finding multiple files does not itself require a change.
 
-For an uncatalogued `team-agent`, a first-task handoff can say: “From
-`/actual/project`, read `/actual/project/AGENTS.md` and the retained
-`/actual/project/docs/ru/AGENTS.md`; then update `docs/ru/install.md` to match the
-English guide.” This is an explicit reading instruction for that task, with
-ordinary write approval still required. It does not promise automatic loading
-or native precedence. If the next session uses a different host, working
-directory or target, disclose the change and reassess the scope. Record actual
-reading, task behavior and unavailable checks separately, including any supplied
-file hints. The [memory guide](PROJECT_MEMORY.md#check-the-first-task-and-later-memory-use--unreleased)
+**Unreleased handoff clarification:** the agent gives you one copyable request
+containing the actual working directory, reviewed applicable instruction paths,
+selected memory when enabled, and a useful task. For example, an uncatalogued
+`team-agent` may keep existing custom `RULES.md`, a reviewed translation exception
+and the existing decisions file:
+
+> Work from `/actual/project/docs`. Read `/actual/project/RULES.md` and `/actual/project/docs/ru/AGENTS.md`, then the relevant entries in `/actual/project/docs/decisions.md`. Follow the applicable instructions and update `/actual/project/docs/ru/install.md` to match the English guide.
+
+Those absolute paths keep the same meaning from a nested working directory and
+illustrate one reviewed setup. Your request names your actual
+entrypoints, not every instruction candidate in the inventory. Without selected
+memory, omit that reading step; if a useful task is not yet known, leave a clear
+place for it and name the gap. Ordinary write and execution approval still apply.
+
+The setup agent performs available reading within its authority, without another
+approval for reading. It separately explains structural checks, explicit reading,
+native discovery and observed use in a fresh task. Reading assistance proves
+neither native discovery nor later behavior. Missing file/Node/write operations
+receive a concrete next action; an unavailable optional probe does not force a
+host/model change or create required human activation. If the next session uses
+a different host, working directory or target, reassess the applicable scope and
+keep unresolved precedence explicit. The [memory guide](PROJECT_MEMORY.md#check-the-first-task-and-later-memory-use--unreleased)
 covers checking later decisions without creating another store.
 
 ## Three ordinary cases

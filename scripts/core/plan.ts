@@ -435,10 +435,17 @@ export async function createProposal(
     for (const directory of (process.env.PATH ?? '').split(path.delimiter)) {
       // Relative PATH entries depend on the caller's cwd and cannot pin anything.
       if (!directory || !path.isAbsolute(directory)) continue;
-      const candidate = path.join(directory, name);
+      const candidate = path.join(
+        directory,
+        process.platform === 'win32' ? `${name}.exe` : name,
+      );
       try {
         const info = await stat(candidate);
-        if (info.isFile() && info.mode & 0o111) return candidate;
+        if (
+          info.isFile() &&
+          (process.platform === 'win32' || info.mode & 0o111)
+        )
+          return candidate;
       } catch {
         // Absent PATH entries are skipped; unreadable candidates are not executables.
       }
@@ -543,10 +550,7 @@ export async function createProposal(
       ['build', 'test', 'lint'].includes(command.kind),
     ))
       assert(
-        path
-          .basename(command.executable)
-          .replace(/\.(?:exe|cmd)$/i, '')
-          .toLowerCase() !== 'bash',
+        executableName(command) !== 'bash',
         'forbidden-command',
         'Bash stays limited to the controlled non-web profiles.',
       );

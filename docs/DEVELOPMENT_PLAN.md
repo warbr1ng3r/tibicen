@@ -4,7 +4,7 @@
 
 [1.6.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.6.0) was published on 17 November. Controlled Python/Bash/docs checks and hardening are shipped; CI, six platforms and public delivery passed. The [report](evals/results/2026-11-17-release-1.6.0/README.md) records exact bytes and limits. Site metadata deployment and eight returned-body checks passed; the release effort is closed.
 
-The next package is capability-based instruction loading and first-use clarity. It is outside 1.6.0; detailed tasks belong in a separate change. Dated sections below retain earlier plans and results, not current assignments.
+The active package has two bounded fronts: [controlled Windows command execution](../openspec/changes/enable-windows-project-commands/proposal.md) and [one concrete first-task handoff](../openspec/changes/clarify-first-use-handoff/proposal.md) across capable harnesses. Local implementation and independent review are complete; the full gate passed 1,175 tests with zero failures and two explicit skips. Native Windows CI is required before support is declared verified. Detailed tasks stay in those changes. Version 1.6.0 and its public artifacts remain unchanged. Dated sections below retain earlier plans and results, not current assignments.
 
 ## Postrelease findings — 16 November
 

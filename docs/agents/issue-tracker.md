@@ -1,5 +1,9 @@
 # Issue tracker
 
+## Active effort — Windows execution and first-task handoff, 18 November
+
+Owner: root; separate agents implement native Windows fixtures and the shared first-use guidance, with independent runtime review. [Windows requirements and tasks](../../openspec/changes/enable-windows-project-commands/proposal.md) cover the job-owned launcher, literal argument handling, controlled interpreter resolution and actual Windows acceptance. [Handoff requirements and tasks](../../openspec/changes/clarify-first-use-handoff/proposal.md) consolidate the already available capability-based route into one copyable first task. Local implementation and independent reviews are complete: full gate 1,175 passed / 0 failed / 2 skipped, build and both isolated self-tests passed, 114 payload hashes matched. Actual Windows execution remains unverified until native CI. No paid API call, version bump, commit, push or publication belongs to this effort so far; published 1.6.0 remains unchanged.
+
 ## Release 1.6.0 published — 17 November
 
 Owner: none; root completed publication and deployment. The owner explicitly authorized commit, push and publication of the complete packet. Public source CI, six platforms, delivery and the immutable tag/three assets are verified. The [report](../evals/results/2026-11-17-release-1.6.0/README.md) retains exact identities and limits. Metadata CI, Cloudflare, legacy Pages and eight returned-body checks passed; all release work is closed. Earlier entries below are preparation history. No new model run or paid API call.

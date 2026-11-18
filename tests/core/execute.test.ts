@@ -24,8 +24,25 @@ test('commands need exact-plan consent and reject commits, shells and install ho
     { executable: 'sh', argv: ['test.sh'] },
     { executable: 'node', argv: ['-e', 'console.log(1)'] },
     { executable: 'npm', kind: 'install', argv: ['install'] },
+    { executable: 'C:\\tools\\git.cmd', argv: ['commit', '-m', 'x'] },
+    { executable: 'powershell.BAT', argv: ['test.ps1'] },
+    { executable: 'node\0.exe', argv: [] },
+    { cwd: '.\0', argv: [] },
   ])
     assert.throws(() => validateCommand({ ...command, ...invalid }));
+});
+
+test('supported Windows suffixes cannot bypass shell, wrapper or commit prohibitions', () => {
+  for (const executable of ['git.com', 'cmd.com', 'powershell.COM', 'npx.com'])
+    assert.throws(
+      () =>
+        validateCommand({
+          ...command,
+          executable,
+          argv: executable === 'git.com' ? ['commit', '-m', 'x'] : [],
+        }),
+      { code: 'forbidden-command' },
+    );
 });
 
 test('execution does not inherit host tokens and redacts explicitly passed secrets', async () => {
@@ -144,9 +161,7 @@ test('pre-cancelled and unavailable commands never claim a successful launch', a
           { root, approvedDigest: 'a'.repeat(64) },
         )
       ).reason,
-      process.platform === 'win32'
-        ? 'process-tree-unavailable'
-        : 'execution-unavailable',
+      'execution-unavailable',
     );
   } finally {
     await rm(root, { recursive: true, force: true });

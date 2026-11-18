@@ -3,6 +3,16 @@
 Version 1.6.0 is public. See [release details](docs/RELEASING.md) for
 immutable source/distribution references, checks and remaining scope limits.
 
+## Unreleased
+
+### Added
+
+- Implement controlled Windows project commands using a fixed system PowerShell helper and a kill-on-close Job Object. Preserve literal native arguments; accept only the documented conservative batch subset. Native Windows acceptance is pending; this is not part of published 1.6.0.
+
+### Changed
+
+- Give one copyable first-task request with the actual working directory, applicable reviewed instruction paths and optional selected memory. Existing native/custom entrypoints remain usable without creating another AGENTS.md; explicit reading does not claim automatic discovery.
+
 ## [1.6.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.6.0) — 2026-11-17
 
 ### Added

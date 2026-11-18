@@ -40,3 +40,9 @@ jobs:
         env:
           TIBICEN_PORTABLE_DIST: ${{ github.workspace }}/dist
         run: node --test tests/skills/portable.test.ts
+
+      - name: Exercise actual Windows command execution from both unpacked skills
+        if: runner.os == 'Windows'
+        env:
+          TIBICEN_PORTABLE_DIST: ${{ github.workspace }}/dist
+        run: node --test tests/core/windows-native.test.ts

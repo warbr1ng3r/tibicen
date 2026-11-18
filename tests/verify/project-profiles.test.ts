@@ -432,6 +432,8 @@ test(
       ['/bin/bash', 'invalid-check-command'],
       ['bash', 'forbidden-command'],
       ['/bin/bash', 'forbidden-command'],
+      ['bash.COM', 'forbidden-command'],
+      ['bash.bat', 'forbidden-command'],
     ] as const)
       await assert.rejects(
         createProposal(
@@ -885,7 +887,7 @@ test(
   },
 );
 
-test('controlled profiles keep Windows process execution unavailable', async (t) => {
+test('controlled profiles refuse Windows execution without the system helper', async (t) => {
   const root = await fixture(t, {
     'AGENTS.md': 'Owner rules',
     'check.cjs': 'process.exit(73);\n',
@@ -893,7 +895,11 @@ test('controlled profiles keep Windows process execution unavailable', async (t)
   const snapshot = await createSnapshot(root, { approvedDigest });
   t.after(() => cleanupSnapshot(snapshot));
   const platform = Object.getOwnPropertyDescriptor(process, 'platform')!;
+  const systemRoot = process.env.SystemRoot;
+  const windir = process.env.WINDIR;
   Object.defineProperty(process, 'platform', { value: 'win32' });
+  process.env.SystemRoot = path.join(root, 'missing-system');
+  process.env.WINDIR = path.join(root, 'missing-system');
   try {
     for (const profile of ['python', 'bash', 'docs']) {
       const result = await runProjectChecks(
@@ -921,5 +927,9 @@ test('controlled profiles keep Windows process execution unavailable', async (t)
     }
   } finally {
     Object.defineProperty(process, 'platform', platform);
+    if (systemRoot === undefined) delete process.env.SystemRoot;
+    else process.env.SystemRoot = systemRoot;
+    if (windir === undefined) delete process.env.WINDIR;
+    else process.env.WINDIR = windir;
   }
 });

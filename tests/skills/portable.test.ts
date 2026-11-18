@@ -51,7 +51,7 @@ test(
     skip:
       !distribution &&
       'Set TIBICEN_PORTABLE_DIST for the manual platform check.',
-    timeout: 60_000,
+    timeout: 90_000,
   },
   async (t) => {
     assert(distribution);
@@ -119,7 +119,7 @@ test(
               env: environment,
               encoding: 'utf8',
               input: input === undefined ? undefined : JSON.stringify(input),
-              timeout: 15_000,
+              timeout: process.platform === 'win32' ? 30_000 : 15_000,
             },
           );
           assert.ifError(result.error);
@@ -228,16 +228,8 @@ test(
         assert.equal(applied.status, 'complete');
         assert.equal(applied.checks.infrastructure.status, 'passed');
         assert.equal(applied.manifest.tibicen.version, metadata.version);
-        if (process.platform === 'win32') {
-          assert.equal(applied.checks.verify.status, 'unverified');
-          assert.equal(
-            applied.checks.verify.reason,
-            'process-tree-unavailable',
-          );
-        } else {
-          assert.equal(applied.checks.verify.status, 'green');
-          assert.equal(applied.checks.verify.firstAttempt, true);
-        }
+        assert.equal(applied.checks.verify.status, 'green');
+        assert.equal(applied.checks.verify.firstAttempt, true);
         const after = await snapshot(project);
         for (const [name, original] of Object.entries(protectedFiles))
           if (name !== 'AGENTS.md') assert.deepEqual(after[name], original);
