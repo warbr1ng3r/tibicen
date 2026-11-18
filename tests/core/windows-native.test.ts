@@ -77,6 +77,107 @@ async function stopped(pid: number) {
   );
 }
 
+async function diagnoseHelper(
+  t: TestContext,
+  root: string,
+  payload: string,
+  expectedExit: number,
+) {
+  try {
+    const source = await readFile(
+      path.join(payload, 'scripts/core/windows-command.ps1'),
+      'utf8',
+    );
+    const checkpoint = (stage: string) =>
+      `[Console]::Error.WriteLine('[test-only-control:${stage}]')`;
+    const instrumented = source
+      .replace('$request = ', `${checkpoint('before-request')}\n$request = `)
+      .replace('$response = ', `${checkpoint('after-request')}\n$response = `)
+      .replace(
+        '    Add-Type ',
+        `    ${checkpoint('before-Add-Type')}\n    Add-Type `,
+      )
+      .replace(
+        '    [TibicenWindowsJob]::Open()',
+        `    ${checkpoint('after-Add-Type')}\n    [TibicenWindowsJob]::Open()\n    ${checkpoint('after-Open')}`,
+      )
+      .replace(
+        /^(\s*\$code = \[TibicenWindowsJob\]::Run\(.*\))$/m,
+        `    ${checkpoint('before-Run')}\n$1\n    ${checkpoint('after-Run')}`,
+      )
+      .replace(
+        '        [IO.File]::WriteAllText',
+        `        ${checkpoint('before-receipt')}\n        [IO.File]::WriteAllText`,
+      )
+      .replace(
+        "if ('TibicenWindowsJob' -as [type]) { [TibicenWindowsJob]::Close() }",
+        `if ('TibicenWindowsJob' -as [type]) { ${checkpoint('before-Close')}; [TibicenWindowsJob]::Close() }`,
+      );
+    const systemRoot = process.env.SystemRoot ?? process.env.WINDIR;
+    assert(systemRoot);
+    const env: NodeJS.ProcessEnv = {
+      SystemRoot: systemRoot,
+      WINDIR: systemRoot,
+    };
+    for (const name of ['PATH', 'TMPDIR', 'TMP', 'TEMP', 'LANG'])
+      if (process.env[name] !== undefined) env[name] = process.env[name];
+    const receipt = path.join(root, 'diagnostic-only-receipt.json');
+    const result = spawnSync(
+      path.join(
+        systemRoot,
+        'System32',
+        'WindowsPowerShell',
+        'v1.0',
+        'powershell.exe',
+      ),
+      [
+        '-NoLogo',
+        '-NoProfile',
+        '-NonInteractive',
+        '-EncodedCommand',
+        Buffer.from(instrumented, 'utf16le').toString('base64'),
+      ],
+      {
+        cwd: root,
+        env,
+        encoding: 'utf8',
+        timeout: 5000,
+        maxBuffer: 64 * 1024,
+        input: JSON.stringify({
+          schema: 1,
+          nonce: 'test-only-diagnostic',
+          receipt,
+          executable: process.execPath,
+          arguments: `"check.cjs" "${expectedExit}"`,
+          cwd: root,
+        }),
+      },
+    );
+    t.diagnostic(
+      JSON.stringify({
+        observation: 'test-only instrumented helper; never a product pass',
+        originalHelperSha256: createHash('sha256').update(source).digest('hex'),
+        status: result.status,
+        signal: result.signal,
+        error: (result.error as NodeJS.ErrnoException | undefined)?.code,
+        stdout: result.stdout?.slice(-4096),
+        stderr: result.stderr?.slice(-4096),
+        receipt: (await readFile(receipt, 'utf8').catch(() => null))?.slice(
+          0,
+          4096,
+        ),
+      }),
+    );
+  } catch (caught) {
+    t.diagnostic(
+      JSON.stringify({
+        observation: 'test-only helper diagnostic unavailable',
+        error: String(caught),
+      }),
+    );
+  }
+}
+
 test(
   'native Windows execution preserves the approved command and closes its descendants',
   {
@@ -130,6 +231,7 @@ test(
             ...options,
           });
 
+        let admitted = false;
         await suite.test(
           'real exit codes do not come from project stdout',
           async (s) => {
@@ -139,6 +241,16 @@ test(
             });
             for (const code of [0, 37]) {
               const result = await run(root, ['check.cjs', String(code)]);
+              s.diagnostic(
+                JSON.stringify({
+                  phase: 'native-admission',
+                  payload: payload.name,
+                  expectedExit: code,
+                  result,
+                }),
+              );
+              if (result.exitCode !== code)
+                await diagnoseHelper(s, root, payload.root, code);
               assert.equal(
                 result.exitCode,
                 code,
@@ -147,8 +259,11 @@ test(
               assert.equal(result.reason, undefined);
               assert.equal(JSON.parse(result.stdout.trim()).nonce, 'fake');
             }
+            admitted = true;
           },
         );
+        // Keep the failed admission; do not spend another deadline on every fixture.
+        if (!admitted) return;
 
         await suite.test(
           'Unicode cwd and literal native argv round-trip',

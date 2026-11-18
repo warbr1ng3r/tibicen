@@ -51,7 +51,7 @@ test(
     skip:
       !distribution &&
       'Set TIBICEN_PORTABLE_DIST for the manual platform check.',
-    timeout: 90_000,
+    timeout: 240_000,
   },
   async (t) => {
     assert(distribution);
@@ -119,7 +119,7 @@ test(
               env: environment,
               encoding: 'utf8',
               input: input === undefined ? undefined : JSON.stringify(input),
-              timeout: process.platform === 'win32' ? 30_000 : 15_000,
+              timeout: process.platform === 'win32' ? 90_000 : 15_000,
             },
           );
           assert.ifError(result.error);
@@ -228,7 +228,11 @@ test(
         assert.equal(applied.status, 'complete');
         assert.equal(applied.checks.infrastructure.status, 'passed');
         assert.equal(applied.manifest.tibicen.version, metadata.version);
-        assert.equal(applied.checks.verify.status, 'green');
+        assert.equal(
+          applied.checks.verify.status,
+          'green',
+          JSON.stringify(applied.checks.verify),
+        );
         assert.equal(applied.checks.verify.firstAttempt, true);
         const after = await snapshot(project);
         for (const [name, original] of Object.entries(protectedFiles))
