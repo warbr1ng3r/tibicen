@@ -1,0 +1,13 @@
+{
+  "version": "1.7.1",
+  "source": "7896e21c8fc384a08a739bc3e7475f2a68e56406",
+  "sourceBranch": "codex/release-1.7.1-source",
+  "distribution": "9a5e1ef2eb837075bb79e2fb2db01f439343d28d",
+  "assets": {
+    "tibicen-1.7.1.tar.gz": "47865b8d23466170e02d8e9c649a0d39a170636dce2f0e4f83b11a80189e4e94",
+    "distribution-SHA256SUMS": "dd4f09691a190a51432d2c372ed4733ba2973a3307ddb84874b23493d38dca8e",
+    "SHA256SUMS": "907e8750bded4b90b17725a7457c2011b60b94846863708ae42fe21627a9deda"
+  },
+  "checks": [],
+  "tagObject": null
+}
