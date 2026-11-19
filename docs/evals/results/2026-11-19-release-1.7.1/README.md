@@ -1,7 +1,8 @@
-# Tibicen 1.7.1 release preparation
+# Tibicen 1.7.1 release and delivery
 
-19 November 2026. **Local candidate prepared; publication pending.**
-Published 1.7.0 remains the public default. This compatible patch contains the
+19 November 2026. **[1.7.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.1) published at 2026-11-19T00:41:12Z.**
+All three returned assets and 115 archive files/modes match candidate-01.
+Published 1.7.0 is preserved; website metadata acceptance is in progress. This compatible patch contains the
 reviewed comparison and proposal-guidance corrections from the
 [independent assessment](../2026-11-19-scenario-sweep-assessment/README.md).
 
@@ -47,3 +48,11 @@ The original five consent failures and missing catalogue variants remain.
 This release does not claim native autoload, a fresh behavioral cure for the
 guidance, human consent, causal memory benefit or Windows policy execution.
 New paid API spend: 0 RUB. Published 1.7.0 assets remain immutable.
+
+## Completed public gates
+
+Source 7896e21c8fc384a08a739bc3e7475f2a68e56406 passed [offline CI](https://github.com/warbr1ng3r/tibicen/actions/runs/44429639472) and [all six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/44429642245). Distribution 9a5e1ef2eb837075bb79e2fb2db01f439343d28d passed twelve actual public lifecycle steps. Annotated tag e42cc8202bdebc39ded3ee829980ca57edca1394 and [publication](https://github.com/warbr1ng3r/tibicen/actions/runs/44430964257) bind those exact bytes. All three downloaded assets, all 115 archive files/modes and previous 1.7.0 asset identities were independently compared by root. The one-off workflow exists only on its ops branch, not main. Review found and closed a weak run-identity guard before publication; ten bounded guard assertions passed.
+
+Local DNS resolution was intermittent. Public API reads used fresh DNS answers with normal TLS verification; scoped SSH retained strict known-host-key verification. No global network setting, new credential or browser-policy workaround was used. The first main push completed but the chained tag command lacked its message file; the later tag push succeeded after the file and exact six-cell records were verified. No release asset was deleted or replaced.
+
+Metadata local acceptance passed 69 site tests, lint, format, types and strict OpenSpec. Independent Ponytail review corrected the stale version assertion and roadmap labels, then gave Ship. The first failed site test log is retained; deployment acceptance is pending.

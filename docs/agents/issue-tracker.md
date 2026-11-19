@@ -1,8 +1,8 @@
 # Issue tracker
 
-## Active release effort — 1.7.1 patch, 19 November
+## Active release effort — 1.7.1 published; metadata acceptance, 19 November
 
-Owner: root. The owner authorized commit, push and publication after reviewed integration. Three logical fix/assessment commits are complete. The [release report](../evals/results/2026-11-19-release-1.7.1/README.md) binds the candidate and public gates as they complete. Published 1.7.0 stays unchanged until those gates pass. No paid model run is authorized or needed.
+Owner: root. [1.7.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.1) is published. Public source CI, six platform cells, exact public lifecycle and returned assets passed. The [release report](../evals/results/2026-11-19-release-1.7.1/README.md) binds source, distribution, tag and checks. Website metadata is undergoing local checks, independent review and deployment acceptance. Published 1.7.0 is preserved. No new model run or paid API call.
 
 ## Closed local effort — reviewed scenario-sweep integration, 19 November
 

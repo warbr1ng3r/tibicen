@@ -1,5 +1,9 @@
 # Preparing a release
 
+## 1.7.1 published — 2026-11-19
+
+[1.7.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.1) was published at 2026-11-19T00:41:12Z. Source 7896e21c8fc384a08a739bc3e7475f2a68e56406, distribution 9a5e1ef2eb837075bb79e2fb2db01f439343d28d, annotated tag e42cc8202bdebc39ded3ee829980ca57edca1394. Public CI, six platform cells, exact public lifecycle and three returned assets/115 archive files passed. Published 1.7.0 is preserved. [Report](evals/results/2026-11-19-release-1.7.1/README.md). Website metadata acceptance is tracked separately there.
+
 ## 1.7.0 published — 2026-11-18
 
 [1.7.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.0) was published at `2026-11-18T15:35:26Z`. Source `6eef592d9638a063cb2b49c33fe4843e601956dd`, distribution `d881334f638ccffa74bcc032a392451f5d5b8f52`, annotated tag `5884e983a1a6f8ba1a0fa0becbe61b8c8950ad7e`. Public CI, all six platform cells and exact public lifecycle passed. Three returned assets and 115 archive files/modes match the candidate; 1.6.0 is preserved. [Report](evals/results/2026-11-18-release-1.7.0/README.md). Site metadata source `2e37489e96c3d4df73b71803d7efd4613d8f6cb1` passed CI, Cloudflare and legacy Pages; all 27 returned bodies matched. The report retains exact runs, first network timeout and limits.

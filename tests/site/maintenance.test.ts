@@ -389,6 +389,20 @@ test('maintenance index freezes published release facts, not the current working
           ],
         ],
       },
+      {
+        version: '1.7.1',
+        publishedAtUtc: '2026-11-19T00:41:12Z',
+        sourceCommit: '7896e21c8fc384a08a739bc3e7475f2a68e56406',
+        distributionCommit: '9a5e1ef2eb837075bb79e2fb2db01f439343d28d',
+        manifest:
+          'dd4f09691a190a51432d2c372ed4733ba2973a3307ddb84874b23493d38dca8e',
+        archives: [
+          [
+            'tibicen-1.7.1.tar.gz',
+            '47865b8d23466170e02d8e9c649a0d39a170636dce2f0e4f83b11a80189e4e94',
+          ],
+        ],
+      },
     ],
   );
   assert.match(index.versions[0].scope, /Limited alpha/);

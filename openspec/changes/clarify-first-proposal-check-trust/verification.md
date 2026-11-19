@@ -51,3 +51,7 @@ Windows policy execution remain outside this local verification.
 Version remains 1.7.0. No commit, push, tag, publication, deployment or paid API
 call belongs to this integration. OpenSpec remains development-only and is not
 included as a dependency of distributed skills.
+
+## Delivery follow-up — 19 November 2026
+
+The separately authorized [1.7.1 patch](../../../docs/evals/results/2026-11-19-release-1.7.1/README.md) is published. The earlier local integration checkpoint and its unchanged 1.7.0 version remain historical facts; the release report binds the subsequent 1.7.1 candidate, public gates and delivery. No new behavioral guidance observation is implied.

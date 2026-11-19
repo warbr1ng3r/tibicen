@@ -1,6 +1,6 @@
 {
   "version": "1.7.1",
-  "status": "local-candidate-publication-pending",
+  "status": "published-website-metadata-pending",
   "candidate": "candidate-01",
   "manifestSha256": "dd4f09691a190a51432d2c372ed4733ba2973a3307ddb84874b23493d38dca8e",
   "archiveSha256": "47865b8d23466170e02d8e9c649a0d39a170636dce2f0e4f83b11a80189e4e94",
@@ -24,13 +24,26 @@
     "exitCode": 0
   },
   "candidateReview": "Ship; exact bytes/modes/source/3assets/2isolated resource self-tests",
-  "publicSource": null,
+  "publicSource": "7896e21c8fc384a08a739bc3e7475f2a68e56406",
   "distribution": "9a5e1ef2eb837075bb79e2fb2db01f439343d28d",
-  "sourceCi": "pending",
-  "platforms": "pending",
-  "publicLifecycle": "pending",
-  "publication": "pending",
-  "website": "pending",
+  "sourceCi": 44429639472,
+  "platforms": {
+    "run": 44429642245,
+    "successfulCells": 6
+  },
+  "publicLifecycle": {
+    "status": "passed",
+    "steps": 12,
+    "distribution": "9a5e1ef2eb837075bb79e2fb2db01f439343d28d"
+  },
+  "publication": {
+    "run": 44430964257,
+    "conclusion": "success",
+    "returnedAssets": "3/3 passed",
+    "archiveFilesAndModes": 115,
+    "previous170Preserved": true
+  },
+  "website": "metadata-local-checks-passed-deployment-pending",
   "newPaidApiRub": 0,
   "limits": [
     "native autoload unverified",
@@ -39,5 +52,89 @@
     "five original consent failures remain failed",
     "missing catalogue variants remain open",
     "Windows policy environment unverified"
-  ]
+  ],
+  "releaseId": 450734204,
+  "url": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.1",
+  "publishedAt": "2026-11-19T00:41:12Z",
+  "annotatedTag": "e42cc8202bdebc39ded3ee829980ca57edca1394",
+  "localLifecycle": {
+    "status": "passed",
+    "steps": 12
+  },
+  "evidenceHashes": [
+    {
+      "path": "candidate-01/IDENTITY.json",
+      "bytes": 20905,
+      "sha256": "890a59a8638cd700e0092710b3ceb028f5328d73bca2c45b8f6b5e3349186b7b"
+    },
+    {
+      "path": "reports/candidate-review.md",
+      "bytes": 3040,
+      "sha256": "58766b516b3820991aa20ecf58259026a30b5f718cd93ac3decbbe47fcc731b0"
+    },
+    {
+      "path": "reports/candidate-gate.log",
+      "bytes": 121597,
+      "sha256": "af2d1bf78b2c5c113b72bd3885f73ac34ecc868030549845c973a420442606f6"
+    },
+    {
+      "path": "reports/candidate-build.log",
+      "bytes": 1915,
+      "sha256": "467b69a05f09e93815f1a64cd4bfd9b508e604cb0ab6bf9efdfa507f6548000a"
+    },
+    {
+      "path": "reports/frozen-install.log",
+      "bytes": 198,
+      "sha256": "5e11c59500709dd21f8825e36eca7cc5f8e76451de17dd314acd40bc44320633"
+    },
+    {
+      "path": "reports/publication-guards.json",
+      "bytes": 868,
+      "sha256": "ddf1ad8d24a69a49d7c7a3a212adeb12c2bf69759c7bbab54b01b311a6bdd09d"
+    },
+    {
+      "path": "publication/source-projection.json",
+      "bytes": 3545,
+      "sha256": "dc223571f56df6445eac7898e092546d6d2e4dbe3548a28f224edcf09d3ca3f7"
+    },
+    {
+      "path": "publication/platform-jobs.json",
+      "bytes": 24185,
+      "sha256": "1529a96a890ba407fc9b4eaa1d30e623f06ef95aeb113dde41b0475a673274b7"
+    },
+    {
+      "path": "publication/local-lifecycle.json",
+      "bytes": 2731,
+      "sha256": "0cd3c0aff7d9f2d311ebf97662c908e55f25a5be20e653d6232728c2dfe8f039"
+    },
+    {
+      "path": "publication/public-lifecycle.json",
+      "bytes": 2408,
+      "sha256": "3b2da834b64025b6077e47847efe708f8ed9df4f7f549dc50120d8964657ed3d"
+    },
+    {
+      "path": "publication/returned-assets.json",
+      "bytes": 826,
+      "sha256": "b05ed9cbaca5e72fc9211bb70db18b23e9109c2ee8406e53ee0cb7c4c9a044b2"
+    },
+    {
+      "path": "publication/previous-release.json",
+      "bytes": 629,
+      "sha256": "24b09405f212767669f06f92e8fd2623a77f70e9d5992a02a2af71cf1bc6184d"
+    },
+    {
+      "path": "publication/network/previous-after.json",
+      "bytes": 10706,
+      "sha256": "66a8e54d565102942b08b68ce074fc80a73ef98bc0117afb4e62941bc4c1fea9"
+    }
+  ],
+  "metadataLocalChecks": {
+    "siteTests": 69,
+    "failed": 0,
+    "lint": "passed",
+    "format": "passed",
+    "types": "passed (two existing Astro hints)",
+    "strictOpenSpec": "passed",
+    "review": "Ship after correcting stale version regex and roadmap labels"
+  }
 }
