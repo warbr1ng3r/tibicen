@@ -1,0 +1,43 @@
+{
+  "version": "1.7.1",
+  "status": "local-candidate-publication-pending",
+  "candidate": "candidate-01",
+  "manifestSha256": "dd4f09691a190a51432d2c372ed4733ba2973a3307ddb84874b23493d38dca8e",
+  "archiveSha256": "47865b8d23466170e02d8e9c649a0d39a170636dce2f0e4f83b11a80189e4e94",
+  "payloadFiles": 114,
+  "archiveFiles": 115,
+  "privateFixCommits": [
+    "26e5748",
+    "33ea3d4",
+    "b343816"
+  ],
+  "localGate": {
+    "total": 1187,
+    "passed": 1185,
+    "failed": 0,
+    "skipped": 2,
+    "commands": [
+      "pnpm install --frozen-lockfile --offline",
+      "pnpm test",
+      "pnpm build"
+    ],
+    "exitCode": 0
+  },
+  "candidateReview": "Ship; exact bytes/modes/source/3assets/2isolated resource self-tests",
+  "publicSource": null,
+  "distribution": "9a5e1ef2eb837075bb79e2fb2db01f439343d28d",
+  "sourceCi": "pending",
+  "platforms": "pending",
+  "publicLifecycle": "pending",
+  "publication": "pending",
+  "website": "pending",
+  "newPaidApiRub": 0,
+  "limits": [
+    "native autoload unverified",
+    "no fresh behavioral validation of corrected guidance",
+    "controller checks are not human consent",
+    "five original consent failures remain failed",
+    "missing catalogue variants remain open",
+    "Windows policy environment unverified"
+  ]
+}

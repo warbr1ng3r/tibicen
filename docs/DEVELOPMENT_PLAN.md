@@ -1,5 +1,9 @@
 # Tibicen development plan
 
+## Current delivery — 1.7.1 patch preparation, 19 November
+
+The reviewed corrections are committed. Deliver the compatible [1.7.1 patch](evals/results/2026-11-19-release-1.7.1/README.md) through exact-candidate checks, public CI/platforms, immutable assets and verified metadata. Follow [RELEASING](RELEASING.md). Keep original scenario failures and unknown behavioral effects explicit.
+
 ## Unreleased — reviewed scenario-sweep integration, 19 November
 
 The [independent assessment](evals/results/2026-11-19-scenario-sweep-assessment/README.md) preserves the executor's 48-case tally separately from five approval-invariant failures and missing catalogue variants. Useful functional observations remain; they do not establish clean end-to-end acceptance.

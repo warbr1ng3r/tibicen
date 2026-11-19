@@ -5,6 +5,10 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+## 1.7.1 — unpublished candidate
+
+Candidate 1.7.1 is prepared from the reviewed scenario-sweep corrections. It is not published; the public default remains 1.7.0 until delivery checks pass.
+
 ### Fixed
 
 - Compare existing failures after normalizing recognized Node spec/TAP and Python unittest timing records, while preserving meaningful assertion values and requiring the same nonzero exit code. Unknown output formats keep strict comparison.

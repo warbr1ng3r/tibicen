@@ -1,5 +1,9 @@
 # Issue tracker
 
+## Active release effort — 1.7.1 patch, 19 November
+
+Owner: root. The owner authorized commit, push and publication after reviewed integration. Three logical fix/assessment commits are complete. The [release report](../evals/results/2026-11-19-release-1.7.1/README.md) binds the candidate and public gates as they complete. Published 1.7.0 stays unchanged until those gates pass. No paid model run is authorized or needed.
+
 ## Closed local effort — reviewed scenario-sweep integration, 19 November
 
 Owner: none; root completed local integration with independent runtime, approval-boundary and evidence reviews. The [assessment](../evals/results/2026-11-19-scenario-sweep-assessment/README.md) qualifies the returned 48-case report: A2/A3/B2/C3/D1 retain consent failures, A5/F3/H6 miss required variants, D5 is assisted, G5 is blocked and E2 does not prove native loading. Later reported compliance does not erase earlier violations.
