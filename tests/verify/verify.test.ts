@@ -377,6 +377,87 @@ test('structural checks find content mismatch, missing/deleted files and invalid
   ]);
 });
 
+test('shared runner treats duration-only output drift between identical failures as pre-existing', async (t) => {
+  const root = await fixture(t, { 'AGENTS.md': 'Before setup' });
+  const baseline = await createSnapshot(root, { approvedDigest });
+  t.after(() => cleanupSnapshot(baseline));
+  const command: Command = {
+    id: 'flaky-timing',
+    kind: 'test',
+    executable: process.execPath,
+    argv: ['check.cjs'],
+    cwd: '.',
+    envNames: [],
+    trusted: true,
+  };
+  let calls = 0;
+  const outputs = [
+    {
+      exitCode: 1,
+      stdout: '✖ failing check (0.703459ms)',
+      stderr: 'ℹ duration_ms 61.447167',
+      timedOut: false,
+    },
+    {
+      exitCode: 1,
+      stdout: '✖ failing check (0.526375ms)',
+      stderr: 'ℹ duration_ms 55.298041',
+      timedOut: false,
+    },
+  ];
+  const runner = async () => outputs[calls++];
+  const first = await runProjectChecks(baseline, [command], {
+    runner,
+    environmentReady: true,
+    approvedDigest,
+  });
+  const second = await runProjectChecks(baseline, [command], {
+    runner,
+    environmentReady: true,
+    approvedDigest,
+  });
+  assert.equal(first.runs[0].exitCode, 1);
+  assert.equal(second.runs[0].exitCode, 1);
+  assert.notEqual(
+    hashContent(outputs[0].stdout + '\n' + outputs[0].stderr),
+    hashContent(outputs[1].stdout + '\n' + outputs[1].stderr),
+  );
+  assert.equal(first.runs[0].outputHash, second.runs[0].outputHash);
+  assert.equal(
+    compareChecks(first.runs, second.runs).status,
+    'pre-existing-red',
+  );
+});
+
+test('real Node failing checks stay pre-existing with TAP and spec timing records', async (t) => {
+  const root = await fixture(t, {
+    'check.test.mjs':
+      'import test from "node:test"; import assert from "node:assert/strict"; test("deadline (5s)", () => assert.equal(1, 2));\n',
+  });
+  const baseline = await createSnapshot(root, { approvedDigest });
+  t.after(() => cleanupSnapshot(baseline));
+  for (const reporter of ['tap', 'spec']) {
+    const command: Command = {
+      id: 'node-' + reporter,
+      kind: 'test',
+      executable: process.execPath,
+      argv: ['--test', '--test-reporter=' + reporter, 'check.test.mjs'],
+      cwd: '.',
+      envNames: [],
+      trusted: true,
+    };
+    const options = { environmentReady: true, approvedDigest };
+    const first = await runProjectChecks(baseline, [command], options);
+    const second = await runProjectChecks(baseline, [command], options);
+    assert.equal(first.runs[0]?.exitCode, 1);
+    assert.equal(second.runs[0]?.exitCode, 1);
+    assert.equal(
+      compareChecks(first.runs, second.runs).status,
+      'pre-existing-red',
+    );
+  }
+});
+
 test('shared runner compares a real fixture baseline and final without changing retained inputs', async (t) => {
   const root = await fixture(t, {
     'AGENTS.md': 'Before setup',
