@@ -47,3 +47,23 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 .release-1.7.1/publish.py
+  pages:
+    if: >-
+      github.repository == 'warbr1ng3r/tibicen' &&
+      github.ref == 'refs/heads/codex/release-1.7.1-ops' &&
+      github.actor == 'warbr1ng3r' &&
+      github.run_attempt == 1 &&
+      github.event.head_commit.message == 'release-1.7.1-ops: pages'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Dispatch legacy Pages only at accepted metadata main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .release-1.7.1/pages.py
