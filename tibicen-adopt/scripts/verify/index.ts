@@ -340,6 +340,18 @@ export async function prepareFinalSnapshot(
   }
 }
 
+// Normalize known runner timing records, keeping duration-shaped assertion values.
+export function canonicalizeRunOutput(output: string) {
+  return output
+    .replace(/^([ \t]*[✔✖﹣][^\r\n]* )\(\d+(?:\.\d+)?ms\)(?=\r?$)/gm, '$1(<t>)')
+    .replace(/^([ℹ#] duration_ms )\d+(?:\.\d+)?(?=\r?$)/gm, '$1<t>')
+    .replace(
+      /(^[ \t]*(?:not )?ok [^\r\n]+\r?\n[ \t]+---\r?\n[ \t]+duration_ms: )\d+(?:\.\d+)?(?=\r?$)/gm,
+      '$1<t>',
+    )
+    .replace(/^(Ran \d+ tests? in )\d+(?:\.\d+)?(s)(?=\r?$)/gm, '$1<t>$2');
+}
+
 export function compareChecks(
   baselineRuns: CheckRun[] | null | undefined,
   finalRuns: CheckRun[],
@@ -428,7 +440,7 @@ export function compareChecks(
       return validateCheckResult({ ...result, reason: 'command-incomplete' });
     if (final.exitCode !== 0) {
       if (
-        before.exitCode !== 0 &&
+        before.exitCode === final.exitCode &&
         before.outputHash &&
         before.outputHash === final.outputHash
       )
@@ -596,7 +608,7 @@ export async function runProjectChecks(
           id: command.id,
           commandHash: digest(command),
           exitCode: result.exitCode,
-          outputHash: hashContent(output),
+          outputHash: hashContent(canonicalizeRunOutput(output)),
           timedOut: result.timedOut === true,
         });
       } catch (caught) {
