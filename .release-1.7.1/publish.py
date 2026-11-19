@@ -25,12 +25,20 @@ try:
     for name, digest in E["assets"].items():
         assert hashlib.sha256((D / name).read_bytes()).hexdigest() == digest, name
     phase = 'source-checks'
-    for run in E["checks"]:
+    assert len(E["checks"]) == 2 and len(set(E["checks"])) == 2
+    for run, workflow in zip(E["checks"], ["ci.yml", "platforms.yml"], strict=True):
         result = api(f"actions/runs/{run}")
         assert result["head_sha"] == E["source"] and result["conclusion"] == "success"
+        assert result["status"] == "completed" and result["head_branch"] == E["sourceBranch"]
+        assert result["event"] == "workflow_dispatch" and result["run_attempt"] == 1
+        assert result["path"] == ".github/workflows/" + workflow
     phase = 'platform-jobs'
-    jobs = api(f"actions/runs/{E['checks'][1]}/jobs")["jobs"]
-    assert len(jobs) == 6 and all(j["conclusion"] == "success" for j in jobs)
+    response = api(f"actions/runs/{E['checks'][1]}/jobs?per_page=100")
+    jobs = response["jobs"]
+    names = {f"standalone ({host}, {node})" for host in ["macos-15", "ubuntu-24.04", "windows-2022"] for node in ["22.20.0", "24.15.0"]}
+    assert response["total_count"] == 6 and len(jobs) == 6
+    assert {j["name"] for j in jobs} == names
+    assert all(j["status"] == "completed" and j["conclusion"] == "success" for j in jobs)
     phase = 'tag-identity'
     ref = api("git/ref/tags/v1.7.1")
     assert ref["object"]["type"] == "tag" and ref["object"]["sha"] == E["tagObject"]
