@@ -2,7 +2,7 @@
 
 19 November 2026. **[1.7.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.1) published at 2026-11-19T00:41:12Z.**
 All three returned assets and 115 archive files/modes match candidate-01.
-Published 1.7.0 is preserved; website metadata acceptance is in progress. This compatible patch contains the
+Published 1.7.0 is preserved; website metadata is deployed and verified. This compatible patch contains the
 reviewed comparison and proposal-guidance corrections from the
 [independent assessment](../2026-11-19-scenario-sweep-assessment/README.md).
 
@@ -28,15 +28,16 @@ Pinned frozen-lockfile offline installation, pnpm test and pnpm build passed:
 **1,187 total / 1,185 passed / 0 failed / 2 existing skips**.
 Independent Ponytail candidate review: Ship. All source copies, three assets,
 hashes/modes and both isolated outside-checkout, empty-PATH resource self-tests
-passed. Local lifecycle and public observations are recorded as they finish.
+passed. Local and public lifecycle acceptance each passed twelve steps.
 
 ## Public delivery
 
-Project only reviewed new files onto known public source history; never push
-private history. Pass public CI and all six platform cells, then verify actual
-public full-SHA installation/update/recovery/removal. Publish the annotated tag
-and three matching assets, compare returned bytes, update installation/checksum
-metadata and separately verify its deployment. The owner authorized this sequence.
+Only reviewed new files were projected onto known public source history;
+private history was not pushed. Public CI and all six platform cells passed,
+followed by actual public full-SHA installation/update/recovery/removal.
+The annotated tag and three matching assets are published; returned bytes,
+installation/checksum metadata and its deployment passed separate verification.
+The owner authorized this sequence.
 
 Initial DNS resolution failed; later ordinary Git/API access recovered. Existing
 SSH authentication works. No new credential is created. Browser access was
@@ -55,4 +56,8 @@ Source 7896e21c8fc384a08a739bc3e7475f2a68e56406 passed [offline CI](https://gith
 
 Local DNS resolution was intermittent. Public API reads used fresh DNS answers with normal TLS verification; scoped SSH retained strict known-host-key verification. No global network setting, new credential or browser-policy workaround was used. The first main push completed but the chained tag command lacked its message file; the later tag push succeeded after the file and exact six-cell records were verified. No release asset was deleted or replaced.
 
-Metadata local acceptance passed 69 site tests, lint, format, types and strict OpenSpec. Independent Ponytail review corrected the stale version assertion and roadmap labels, then gave Ship. The first failed site test log is retained; deployment acceptance is pending.
+Metadata local acceptance passed 69 site tests, lint, format, types and strict OpenSpec. Independent Ponytail review corrected the stale version assertion and roadmap labels, then gave Ship. The first failed site test log is retained.
+
+Metadata source c763fb66a048335ef37a9abedf425b5c8f375f23 passed [CI](https://github.com/warbr1ng3r/tibicen/actions/runs/44432364426), [Cloudflare](https://github.com/warbr1ng3r/tibicen/actions/runs/44432364448) and [legacy Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/44432862533). All 27 returned bodies match the source-bound local build: all 22 primary files, four legacy redirects and the legacy checksum index. Both indexes contain 17 versions; all 16 previous records and other index fields/warnings are preserved. This comparison uses the local build bound to deployed source, not a separately downloaded official build artifact. The release effort is closed; the final follow-up changes documentation only.
+
+The documentation closure uses `[skip ci]`: runtime, distribution and website files remain unchanged at their accepted references. Formatting and receipt/source consistency are checked locally; completed release and deployment checks are not rerun for this record update.

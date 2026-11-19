@@ -1,8 +1,8 @@
 # Issue tracker
 
-## Active release effort — 1.7.1 published; metadata acceptance, 19 November
+## Closed release effort — 1.7.1 published and site verified, 19 November
 
-Owner: root. [1.7.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.1) is published. Public source CI, six platform cells, exact public lifecycle and returned assets passed. The [release report](../evals/results/2026-11-19-release-1.7.1/README.md) binds source, distribution, tag and checks. Website metadata is undergoing local checks, independent review and deployment acceptance. Published 1.7.0 is preserved. No new model run or paid API call.
+Owner: none; root completed publication and site verification. [1.7.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.1) is published. Public source CI, six platform cells, exact public lifecycle and returned assets passed. The [release report](../evals/results/2026-11-19-release-1.7.1/README.md) binds source, distribution, tag and checks. Metadata source c763fb66a048335ef37a9abedf425b5c8f375f23 passed CI, Cloudflare and legacy Pages. All 27 returned bodies match the source-bound local build; both indexes contain 17 versions, preserving all 16 previous records and warnings. Published 1.7.0 is preserved. No new model run or paid API call. Next work targets external approval receipts and the A5/F3/H6/G5 gaps; original failed grades and native-loading limits remain unchanged.
 
 ## Closed local effort — reviewed scenario-sweep integration, 19 November
 

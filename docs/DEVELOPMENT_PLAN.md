@@ -1,8 +1,8 @@
 # Tibicen development plan
 
-## Current delivery — 1.7.1 published; website follow-up, 19 November
+## Current delivery — 1.7.1 published and site verified, 19 November
 
-The compatible [1.7.1 patch](evals/results/2026-11-19-release-1.7.1/README.md) is published after exact-candidate checks, public CI/platforms and returned-asset verification. Complete installation/checksum metadata deployment and verify returned website bytes. Keep original scenario failures and unknown behavioral effects explicit.
+The compatible [1.7.1 patch](evals/results/2026-11-19-release-1.7.1/README.md) is published after exact-candidate checks, public CI/platforms and returned-asset verification. Installation/checksum metadata passed CI, Cloudflare and legacy Pages; all 27 returned bodies match the source-bound local build. Both indexes contain 17 versions, preserving all 16 previous records and warnings. The release effort is closed. Original scenario failures and unknown behavioral effects remain explicit; the next bounded work is listed below.
 
 ## Completed integration — shipped in 1.7.1, 19 November
 

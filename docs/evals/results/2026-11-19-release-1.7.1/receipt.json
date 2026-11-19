@@ -1,6 +1,6 @@
 {
   "version": "1.7.1",
-  "status": "published-website-metadata-pending",
+  "status": "published-and-site-verified",
   "candidate": "candidate-01",
   "manifestSha256": "dd4f09691a190a51432d2c372ed4733ba2973a3307ddb84874b23493d38dca8e",
   "archiveSha256": "47865b8d23466170e02d8e9c649a0d39a170636dce2f0e4f83b11a80189e4e94",
@@ -43,7 +43,55 @@
     "archiveFilesAndModes": 115,
     "previous170Preserved": true
   },
-  "website": "metadata-local-checks-passed-deployment-pending",
+  "website": {
+    "status": "passed",
+    "source": "c763fb66a048335ef37a9abedf425b5c8f375f23",
+    "ci": 44432364426,
+    "cloudflare": 44432364448,
+    "legacyPages": 44432862533,
+    "acceptedRuns": [
+      {
+        "id": 44432364426,
+        "head_sha": "c763fb66a048335ef37a9abedf425b5c8f375f23",
+        "path": ".github/workflows/ci.yml",
+        "status": "completed",
+        "conclusion": "success",
+        "event": "push",
+        "head_branch": "main",
+        "run_attempt": 1
+      },
+      {
+        "id": 44432364448,
+        "head_sha": "c763fb66a048335ef37a9abedf425b5c8f375f23",
+        "path": ".github/workflows/cloudflare-pages.yml",
+        "status": "completed",
+        "conclusion": "success",
+        "event": "push",
+        "head_branch": "main",
+        "run_attempt": 1
+      },
+      {
+        "id": 44432862533,
+        "head_sha": "c763fb66a048335ef37a9abedf425b5c8f375f23",
+        "path": ".github/workflows/pages.yml",
+        "status": "completed",
+        "conclusion": "success",
+        "event": "workflow_dispatch",
+        "head_branch": "main",
+        "run_attempt": 1
+      }
+    ],
+    "returnedBodies": 27,
+    "primaryFiles": 22,
+    "legacyRedirects": 4,
+    "legacyChecksumIndexes": 1,
+    "indexVersions": 17,
+    "previousRecordsPreserved": 16,
+    "otherIndexFieldsAndWarningsPreserved": true,
+    "comparison": "source-bound local build; not an independently downloaded official build artifact",
+    "tlsVerification": true,
+    "verifiedAtUtc": "2026-11-19T00:58:33.463144+00:00"
+  },
   "newPaidApiRub": 0,
   "limits": [
     "native autoload unverified",
@@ -126,6 +174,66 @@
       "path": "publication/network/previous-after.json",
       "bytes": 10706,
       "sha256": "66a8e54d565102942b08b68ce074fc80a73ef98bc0117afb4e62941bc4c1fea9"
+    },
+    {
+      "path": "publication/site-audit.json",
+      "bytes": 6200,
+      "sha256": "2fa068bfcd9f556009140afb84ab43a9d99e90d2865113be801786eb5729d850"
+    },
+    {
+      "path": "publication/audit_site.py",
+      "bytes": 2666,
+      "sha256": "64095544dc7b6d575d20008ce9884034eafe864891d6119c6dc9797a0d8eda8e"
+    },
+    {
+      "path": "publication/network/pages-runs.json",
+      "bytes": 144424,
+      "sha256": "381175d8ae9a953b00d415df90cba2253cb20947c685433eadef82ce24d10140"
+    },
+    {
+      "path": "publication/network/metadata-ci.json",
+      "bytes": 13443,
+      "sha256": "5a436b998fe42c7719f26d8b8b1aff18ee71fc639e4fc4713b0d00d95c9f883b"
+    },
+    {
+      "path": "publication/metadata-projection.json",
+      "bytes": 1548,
+      "sha256": "e7268a10df2bac063239804a27a8a7b1ae9ddbeba4942bcdb7c278fa2e377522"
+    },
+    {
+      "path": "reports/metadata-site-tests.log",
+      "bytes": 7536,
+      "sha256": "4e89371079853179fe3eb6ed58a2aae4b0959b2e5cc2bb0426408643bf479317"
+    },
+    {
+      "path": "reports/metadata-site-tests-attempt-01-failed.log",
+      "bytes": 51363,
+      "sha256": "69bbc8b16afc3f9988b2a15cb5ff937bcd3f7674aeed12fb7089cf11076b22a2"
+    },
+    {
+      "path": "reports/metadata-lint.log",
+      "bytes": 28,
+      "sha256": "960f1eb37ac4d28430af9bef2c98f32333254854ffde619330f53d373ce0f632"
+    },
+    {
+      "path": "reports/metadata-format.log",
+      "bytes": 87,
+      "sha256": "1d66faad74f5e8709353f7288592866bd3a9095da1174a916e7aa632949971e2"
+    },
+    {
+      "path": "reports/metadata-types.log",
+      "bytes": 899,
+      "sha256": "daee910bc372c3bfe358728ec56a6f1351622e19e2aecebe351d42d7a760f04b"
+    },
+    {
+      "path": "reports/metadata-specs.log",
+      "bytes": 3600,
+      "sha256": "e488e1292b037829a70d5666980769f845c806bf4eccababfd020c9d27a7999c"
+    },
+    {
+      "path": "publication/closure-before-check.json",
+      "bytes": 252,
+      "sha256": "c2a53048495e79cc9f68c9c3c053d79aed767e3f66d613bf1e68592b22e33b5b"
     }
   ],
   "metadataLocalChecks": {
@@ -136,5 +244,10 @@
     "types": "passed (two existing Astro hints)",
     "strictOpenSpec": "passed",
     "review": "Ship after correcting stale version regex and roadmap labels"
+  },
+  "closure": {
+    "scope": "documentation only; runtime, distribution and site files unchanged",
+    "ciPolicy": "[skip ci]; accepted runtime and metadata references remain unchanged",
+    "localChecks": "formatting and receipt/source consistency"
   }
 }
