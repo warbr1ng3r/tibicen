@@ -1,0 +1,290 @@
+{
+  "schema": 1,
+  "assessedDate": "2026-11-19",
+  "packet": "scenario-sweep-1.7.0-20261118",
+  "privateBase": "a1d97e66b252c0d5f0027c4ef7459389e66b9015",
+  "integrationBranch": "codex/integrate-scenario-sweep-20261119",
+  "originalFilesPreserved": true,
+  "originalTally": {
+    "provenance": "executor-reported catalogue rollup, not independent end-to-end acceptance",
+    "total": 48,
+    "passed": 46,
+    "passedWithAssistance": 1,
+    "blocked": 1,
+    "failed": 0
+  },
+  "assessment": {
+    "approvalInvariantFailures": [
+      "A2",
+      "A3",
+      "B2",
+      "C3",
+      "D1"
+    ],
+    "differentApprovedAndExecutedDigest": [
+      "A3"
+    ],
+    "incompleteCatalogueVariants": [
+      "A5",
+      "F3",
+      "H6"
+    ],
+    "nativeLoading": "unverified; E2 capability inventory completed",
+    "assisted": [
+      "D5"
+    ],
+    "blocked": [
+      "G5"
+    ],
+    "reusedPlatformEvidence": [
+      "G4"
+    ],
+    "liveRefusalWithDeeperAutomatedCoverage": [
+      "G3"
+    ],
+    "missingComparableCommandCaptures": [
+      "G2"
+    ],
+    "independentAggregateAcceptedCount": null,
+    "laterNoSelfConsentClaim": "reported association; rendered dispatches/protocol revision absent",
+    "memory": "combined functional use; memory-only causality unverified",
+    "readIsolation": "no named oracle found; event trace unavailable, absence of leak unproved",
+    "contexts": {
+      "fresh": 40,
+      "continuations": 26,
+      "provenance": "coordinator reported, not independently reconstructed"
+    },
+    "subscriptionCost": "unknown",
+    "paidApiRubReported": 0
+  },
+  "bindings": {
+    "frozenHandoffFiles": 151,
+    "protocolSha256": "5a9560899ec2e7b292d150329850e94d03f4ddc463b9ae049516e825f3647f35",
+    "returnedPatchSha256": "58a87427ac85647ecd84ef1609160823f8c26ebbcb87e2cbc86ba9dddc66446e",
+    "candidate01ArchiveSha256": "648bf3d2e06244f735690618f55b6358fa84c5518d3fc43efeb827c17e90577a",
+    "candidate02ArchiveSha256": "095fe2ec8d4cedc94bae7070efabe141850edb8fa66c577395ae44b5bf54c783",
+    "candidateEntriesEach": 115,
+    "ret1": "guidance matched candidate02; verify source differs only comment; complete green manifest retained; first proposal/approval trace missing"
+  },
+  "selectedPrivateArtifactIndex": [
+    {
+      "path": "TASK.md",
+      "bytes": 16747,
+      "sha256": "4ba14fe575745526deb2002ffe1087c22f5ae1a168412c7acf4092fb9cf06835"
+    },
+    {
+      "path": "SCENARIOS.md",
+      "bytes": 28905,
+      "sha256": "9142f0d8f1a41eb8106e51d60d2db43cdcc17e785616a7f313a6db2a6d811d95"
+    },
+    {
+      "path": "PROTOCOL.json",
+      "bytes": 16531,
+      "sha256": "5a9560899ec2e7b292d150329850e94d03f4ddc463b9ae049516e825f3647f35"
+    },
+    {
+      "path": "PACKET_INPUTS.json",
+      "bytes": 25629,
+      "sha256": "cc331744aacd65435510e4e9a3b4b54b3c732c891f17e10c7a7648e17fd64059"
+    },
+    {
+      "path": "reports/RESULT.md",
+      "bytes": 4543,
+      "sha256": "dc9e10fc8c3aca7e254e382a5a87ee822a030be2a779b361b66e8d3e37613185"
+    },
+    {
+      "path": "reports/RESULT_ru.md",
+      "bytes": 7796,
+      "sha256": "316c2c6a9e6d90c671e405fbd4fe3750ee3c06949d0ebbe572d1616440e6799d"
+    },
+    {
+      "path": "reports/RESULT.json",
+      "bytes": 4779,
+      "sha256": "c1568e3e8d220904e69d2ff96bbb8cee48e4a4f7bef9592c8d383d69afd7fb26"
+    },
+    {
+      "path": "reports/CASES.json",
+      "bytes": 26409,
+      "sha256": "49668a0fe9260df03ec538d45ea7be5e17104400aa6ae59702af77bfcb63cca1"
+    },
+    {
+      "path": "reports/changes.patch",
+      "bytes": 39166,
+      "sha256": "58a87427ac85647ecd84ef1609160823f8c26ebbcb87e2cbc86ba9dddc66446e"
+    },
+    {
+      "path": "reports/CODEX_EVIDENCE_AUDIT.md",
+      "bytes": 10508,
+      "sha256": "253b0ae889634eda9fa0de3920bf6066ef0855deaf5690ed6a9718e86044e58d"
+    },
+    {
+      "path": "reports/CODEX_RECEIVED_INPUTS.json",
+      "bytes": 2883,
+      "sha256": "fa3702fa998b6d8224f623967558f05139e67429bf42720ce96c8d5101128710"
+    },
+    {
+      "path": "candidate-01/IDENTITY.json",
+      "bytes": 20882,
+      "sha256": "f90d019f709b2be588ba8c437a169ea6fd107bf65cb4b04bdc67b9bd2ce393ff"
+    },
+    {
+      "path": "candidate-02/IDENTITY.json",
+      "bytes": 17592,
+      "sha256": "850959365fc280ab41cda780abe3d8656dac0af1c5810bcb3ef3628cf01581b5"
+    },
+    {
+      "path": "reports/CODEX_NORMALIZATION_RED.log",
+      "bytes": 1726,
+      "sha256": "bd1dcf07ead6307969272ef9f7ef7e2908942ee31807e0437e8f0cc286656f43"
+    },
+    {
+      "path": "reports/CODEX_EXIT_CODE_RED.log",
+      "bytes": 1800,
+      "sha256": "9a32b044f2bc02da69538739c08b46857376558318f7c8c56e35028a247480a2"
+    },
+    {
+      "path": "reports/CODEX_NORMALIZATION_GREEN.log",
+      "bytes": 2015,
+      "sha256": "ceca048dc72d202e681d091437be2c06193417a916ef58e1ef73f003dd1d0b16"
+    },
+    {
+      "path": "reports/CODEX_FULL_GATE.log",
+      "bytes": 121566,
+      "sha256": "a833201e85de1812acb26f42bc685b8ba13285044f1f3691afa2b77f1e7a0007"
+    },
+    {
+      "path": "reports/CODEX_PACKET_FINAL.log",
+      "bytes": 177,
+      "sha256": "0ba02d0a4f9a6662e9d3d303854c2d9b8d9dd9df84108f343dc1083746941a35"
+    },
+    {
+      "path": "reports/CODEX_STANDALONE_BUILD.log",
+      "bytes": 181,
+      "sha256": "508201e7979d06a3bc025d607849d0d2027a14765674f7c2f68b1a30170deb92"
+    },
+    {
+      "path": "reports/CODEX_STANDALONE_CHECKS.json",
+      "bytes": 21150,
+      "sha256": "e89f8f6873d5d38d3e482f3621ab9880110e341e4d98dc08f4ba75da29b53f16"
+    },
+    {
+      "path": "reports/CODEX_SELF_TEST_tibicen-init.log",
+      "bytes": 132,
+      "sha256": "3062713b3a754cdb79acaf32cf1789d39e574deec401c1d53d353a7ff72c4e79"
+    },
+    {
+      "path": "reports/CODEX_SELF_TEST_tibicen-adopt.log",
+      "bytes": 132,
+      "sha256": "3062713b3a754cdb79acaf32cf1789d39e574deec401c1d53d353a7ff72c4e79"
+    },
+    {
+      "path": "reports/CODEX_INTEGRATION_REVIEW.md",
+      "bytes": 1317,
+      "sha256": "4bf2a323a0a2e61cd42ca17bffd2b8f1889a19fd0c9b52f32f6d73b3a5c8c5dd"
+    }
+  ],
+  "integration": {
+    "version": "1.7.0",
+    "releasedVersionModified": false,
+    "corrections": [
+      "narrow recognized runner timing records",
+      "preserve semantic duration values and names",
+      "require same nonzero failure exit code",
+      "actual supported check profile",
+      "proposed trust versus external consent",
+      "checked readiness only",
+      "worker questionnaire/default/tool permission is not external reply"
+    ],
+    "focusedTests": {
+      "tests": 19,
+      "passed": 19,
+      "failed": 0
+    },
+    "redBeforeFix": [
+      "CODEX_NORMALIZATION_RED.log",
+      "CODEX_EXIT_CODE_RED.log"
+    ],
+    "repositoryGate": {
+      "command": "pnpm test",
+      "exitCode": 0,
+      "total": 1187,
+      "passed": 1185,
+      "failed": 0,
+      "skipped": 2,
+      "testDurationMs": 78425.972875,
+      "strictOpenSpecActiveItems": 48,
+      "strictOpenSpecArchives": 20
+    },
+    "builtSkills": {
+      "version": "1.7.0",
+      "unreleasedIntegration": true,
+      "payloads": 114,
+      "totalFiles": 115,
+      "sha256sumsSha256": "ccf1ba121bcafd4e59a9303d2b924d73cdb1cdf833be8f5724e4925193d7e611",
+      "independentBuildMatchesGateBuild": true,
+      "sourceMatchesBothTrees": {
+        "scripts/verify/index.ts": "60592c541b148078e2794c3024d32f2874eea600144fe0807761bb24e0d4da7f",
+        "references/proposal-format.md": "0d8fbeca477da02698fe6f60942987de5e018dcda599ae7e9866c88398eeb359"
+      },
+      "selfTests": [
+        {
+          "skill": "tibicen-init",
+          "exitCode": 0,
+          "result": {
+            "schema": 1,
+            "status": "passed",
+            "version": "1.7.0",
+            "resources": "available",
+            "scope": "distribution-resource-check"
+          },
+          "emptyPath": true,
+          "isolatedHome": true,
+          "outsideCheckout": true
+        },
+        {
+          "skill": "tibicen-adopt",
+          "exitCode": 0,
+          "result": {
+            "schema": 1,
+            "status": "passed",
+            "version": "1.7.0",
+            "resources": "available",
+            "scope": "distribution-resource-check"
+          },
+          "emptyPath": true,
+          "isolatedHome": true,
+          "outsideCheckout": true
+        }
+      ]
+    },
+    "finalReview": {
+      "runtime": "Ship after two reproduced comparison fixes",
+      "guidance": "Ship after generic-profile correction",
+      "evidenceDocs": "Ship; original grades and limits preserved",
+      "reviewScope": "static and bounded in-memory checks; root owns full test/build results"
+    },
+    "newBehavioralModelCalls": 0,
+    "newPaidApiRub": 0,
+    "commits": 0,
+    "pushes": 0,
+    "publications": 0,
+    "sourceBindings": [
+      {
+        "path": "scripts/verify/index.ts",
+        "sha256": "60592c541b148078e2794c3024d32f2874eea600144fe0807761bb24e0d4da7f"
+      },
+      {
+        "path": "references/proposal-format.md",
+        "sha256": "0d8fbeca477da02698fe6f60942987de5e018dcda599ae7e9866c88398eeb359"
+      },
+      {
+        "path": "tests/verify/verify.test.ts",
+        "sha256": "2bfd42e68099b27525758b48d33d2169b474dc11b23d36c95f833c76cfce72ec"
+      },
+      {
+        "path": "tests/verify/run-output-normalization.test.ts",
+        "sha256": "85d5bfd0ae353e3d4a5422e19d10cd1f2a28c7df73a32b225ffa66eb9aea3839"
+      }
+    ]
+  }
+}

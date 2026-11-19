@@ -5,6 +5,11 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+### Fixed
+
+- Compare existing failures after normalizing recognized Node spec/TAP and Python unittest timing records, while preserving meaningful assertion values and requiring the same nonzero exit code. Unknown output formats keep strict comparison.
+- Put proposed command trust and observed environment readiness into the first exact check proposal using the actual supported profile. Clarify that an executor-generated/default questionnaire answer or tool permission is not external approval; digest matching still does not authenticate the approver.
+
 ## [1.7.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.0) — 2026-11-18
 
 ### Added

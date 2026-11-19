@@ -1,5 +1,11 @@
 # Issue tracker
 
+## Closed local effort — reviewed scenario-sweep integration, 19 November
+
+Owner: none; root completed local integration with independent runtime, approval-boundary and evidence reviews. The [assessment](../evals/results/2026-11-19-scenario-sweep-assessment/README.md) qualifies the returned 48-case report: A2/A3/B2/C3/D1 retain consent failures, A5/F3/H6 miss required variants, D5 is assisted, G5 is blocked and E2 does not prove native loading. Later reported compliance does not erase earlier violations.
+
+The returned patch is integrated on `codex/integrate-scenario-sweep-20261119`, with review corrections in [comparison stabilization](../../openspec/changes/stabilize-check-failure-comparison/proposal.md) and [proposal guidance](../../openspec/changes/clarify-first-proposal-check-trust/proposal.md). Requirements, detailed tasks and final local checks stay there. Review found broad normalization could hide real differences, an existing exit-code comparison gap, and guidance incorrectly forcing web. Root corrected these and clarified external reply provenance. The final gate passed 1,185 tests with zero failures and two existing skips; both isolated built-skill resource checks and all 114 payload hashes passed. Published 1.7.0 and the original packet stay unchanged; no new behavioral model calls, paid API calls, commits or publication belong to this integration. Release delivery and bounded missing observations are subsequent work.
+
 ## Closed release effort — 1.7.0 published and site verified, 18 November
 
 Owner: none; root completed publication and site verification. [1.7.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.0) was published at `2026-11-18T15:35:26Z` after the owner-authorized release/first-use package. Source `6eef592d9638a063cb2b49c33fe4843e601956dd`, distribution `d881334f638ccffa74bcc032a392451f5d5b8f52`, independent review, offline CI, all six platforms and exact public lifecycle passed. Three returned assets and 115 archive files/modes match candidate-01; published 1.6.0 is preserved. The browser failure, failed operations attempts and narrowly reviewed cleanup of its own unpublished starter upload remain recorded in the [release report](../evals/results/2026-11-18-release-1.7.0/README.md).

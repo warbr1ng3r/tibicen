@@ -1,5 +1,13 @@
 # Tibicen development plan
 
+## Unreleased — reviewed scenario-sweep integration, 19 November
+
+The [independent assessment](evals/results/2026-11-19-scenario-sweep-assessment/README.md) preserves the executor's 48-case tally separately from five approval-invariant failures and missing catalogue variants. Useful functional observations remain; they do not establish clean end-to-end acceptance.
+
+Local integration is complete for the bounded [failure comparison correction](../openspec/changes/stabilize-check-failure-comparison/proposal.md) and [first-proposal clarification](../openspec/changes/clarify-first-proposal-check-trust/proposal.md). Review tightened timing normalization to preserve meaningful assertions, requires equal failure exit codes, selects the actual check profile and distinguishes generated questionnaire answers from external approval. Detailed tasks and local verification stay in those changes. Root's corrected guidance has no new behavioral model observation.
+
+After reviewed local checks, the next delivery is a separately authorized compatible patch. Later work targets retained external approval receipts and the specific A5/F3/H6/G5 gaps; native loading and voluntary usefulness remain separate. No version bump or publication is part of this integration.
+
 ## Current release — 1.7.0, 18 November
 
 [1.7.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.0) was published at `2026-11-18T15:35:26Z`. This compatible minor delivers Windows execution and the concrete first-task handoff. Source `6eef592d9638a063cb2b49c33fe4843e601956dd`, distribution `d881334f638ccffa74bcc032a392451f5d5b8f52`, offline CI and all six platform cells passed. Exact public installation/update/recovery/removal passed; all three returned assets and 115 archive files/modes match candidate-01. Published 1.6.0 is preserved.
