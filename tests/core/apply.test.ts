@@ -94,6 +94,10 @@ test('init routing for an installed utility never grants empty-project writes or
   const skill = '.agents/skills/tibicen-init/SKILL.md';
   await mkdir(path.dirname(path.join(root, skill)), { recursive: true });
   await writeFile(path.join(root, skill), '# Installed utility\n');
+  await writeFile(
+    path.join(root, '.agents/skills/tibicen-init/package.json'),
+    JSON.stringify({ name: 'tibicen-init', version: '1.7.1' }),
+  );
   const before = await readdir(root, { recursive: true });
   assert.equal((await scanProject(root)).mode, 'init');
   assert.equal(await isEmptyProject(root), false);

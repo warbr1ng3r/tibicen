@@ -165,7 +165,13 @@ test('canonical Tibicen skill installs retain init routing and their full read-o
       const files: Record<string, string> = {
         [`${prefix}/tibicen-init/SKILL.md`]: '# Installed setup utility\n',
         [`${prefix}/tibicen-init/helper.sh`]: '#!/bin/sh\nexit 1\n',
+        [`${prefix}/tibicen-init/package.json`]: JSON.stringify({
+          name: 'tibicen-init',
+          version: '1.7.1',
+        }),
         [`${prefix}/tibicen-adopt/package.json`]: JSON.stringify({
+          name: 'tibicen-adopt',
+          version: '1.7.1',
           scripts: { test: 'touch MUST_NOT_RUN' },
         }),
         ...(withApplication
@@ -221,6 +227,10 @@ test('user infrastructure and noncanonical Tibicen lookalikes still select impro
   ]) {
     const files = {
       '.agents/skills/tibicen-init/SKILL.md': '# Installed utility\n',
+      '.agents/skills/tibicen-init/package.json': JSON.stringify({
+        name: 'tibicen-init',
+        version: '1.7.1',
+      }),
       [extra]:
         extra === '.tibicen/manifest.yml'
           ? JSON.stringify({ schema: 1, installed: [], sessions: [] })
@@ -229,7 +239,7 @@ test('user infrastructure and noncanonical Tibicen lookalikes still select impro
     const root = await fixture(t, files);
     const scan = await scanProject(root);
     assert.equal(scan.mode, 'improve', extra);
-    assert.equal(scan.files.length, 2);
+    assert.equal(scan.files.length, 3);
     assert(scan.files.every((file) => file.infrastructure));
     for (const [name, content] of Object.entries(files))
       assert.equal(await readFile(path.join(root, name), 'utf8'), content);
@@ -239,6 +249,10 @@ test('user infrastructure and noncanonical Tibicen lookalikes still select impro
 test('self-install routing leaves bare memory candidates and explicit memory bindings unchanged', async (t) => {
   const root = await fixture(t, {
     '.agents/skills/tibicen-init/SKILL.md': '# Installed utility\n',
+    '.agents/skills/tibicen-init/package.json': JSON.stringify({
+      name: 'tibicen-init',
+      version: '1.7.1',
+    }),
     'MEMORY.md': '# Existing owner notes\n',
   });
   const bare = await scanProject(root);
