@@ -5,6 +5,11 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+### Documentation
+
+- Clarify valid CLI results with exit 1 and separate structure-only verification from project tests.
+- Separate the current roadmap from byte-preserved history and record the [qualified first-use assessment](docs/evals/results/2026-11-20-first-use-assessment/README.md), preserving original outcomes and evidence limits. Runtime and published 1.8.0 remain unchanged.
+
 ## [1.8.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.0) — 2026-11-20
 
 See the [release report](docs/evals/results/2026-11-20-release-1.8.0/README.md).

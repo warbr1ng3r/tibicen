@@ -166,6 +166,20 @@ node "/Users/me/Tibicen 1.8.0/unpacked/tibicen-adopt/scripts/tibicen.ts" self-te
 These local self-tests check the installed kernel/resources. They do not prove
 that a host/model loaded the skill or completed a project task.
 
+## Reading CLI results
+
+Read the JSON before treating exit code **1** as an invocation failure. The CLI
+also returns 1 for a normal result whose top-level `status` is `incomplete` or
+`issues-found`. For example, `status` can report an unfinished saved session with
+valid `recovery`, `continuationAvailable` and `checks` fields. Handled command
+errors instead return an `error` object with `code` and `message`, also with a
+nonzero exit code.
+
+The `verify` command checks current infrastructure with `scope: structure-only`;
+`passed` does not mean project tests ran or passed. Saved `status` checks are
+historical results, not a fresh test run. See [current evidence and saved
+history](ADOPT_DIAGNOSIS.md#current-evidence-and-saved-history).
+
 ## Update and removal
 
 There is no background updater. Back up each complete installed skill folder

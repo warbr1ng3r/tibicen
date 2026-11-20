@@ -1,0 +1,176 @@
+{
+  "status": "prepared-awaiting-external-dispatch",
+  "version": "1.8.0",
+  "source": "d7108da397ac2baaf534d7c4aa09e60ca8737f9a",
+  "workerBranch": "codex/first-use-1.8.0-20261120",
+  "distributionCommit": "a748ba3932e85f5194a3ea450c003f83bf8dcd9f",
+  "distributionManifestSha256": "86b5876b5c0c5cf5e61d1f598f3552e7447d3993fc45c83be1a6c833d30e7e29",
+  "archiveSha256": "2aad29f3a57bc2d93855fdc918eecd4daad478f595bac2673e4ef4705b4c672d",
+  "sourceFiles": 1523,
+  "originalProtectedFiles": 905,
+  "frozenInputFiles": 175,
+  "payloads": 116,
+  "archiveFilesAndModes": 117,
+  "history": {
+    "docs/history/DEVELOPMENT_PLAN_2026-11-20.md": {
+      "original": "docs/DEVELOPMENT_PLAN.md",
+      "bytes": 24479,
+      "sha256": "cf05002d88f93d8bb0de49af9d302b52271e256575f87b3b4ab2e5b8bcdffcfd"
+    },
+    "docs/history/DEVELOPMENT_PLAN_2026-11-20_ru.md": {
+      "original": "docs/DEVELOPMENT_PLAN_ru.md",
+      "bytes": 40147,
+      "sha256": "629bdbc3ed53a4b1ea62e198c7cee8d65f914aef809db8b63d89fca2130f22f2"
+    },
+    "docs/agents/history/issue-tracker_2026-11-20.md": {
+      "original": "docs/agents/issue-tracker.md",
+      "bytes": 42251,
+      "sha256": "092375a3626c184c8fdadeaaf2e9571736b192da1052bea7e92af0288bd8d6f9"
+    },
+    "docs/agents/history/issue-tracker_2026-11-20_ru.md": {
+      "original": "docs/agents/issue-tracker_ru.md",
+      "bytes": 70436,
+      "sha256": "7e61f6093bbef57c2b08f7bfd866d2f345b345623e61bf23141b09a385a13029"
+    }
+  },
+  "seedChecks": {
+    "status": "passed",
+    "count": 5,
+    "method": "existing check on each authored seed; not product behavioral acceptance",
+    "attempts": 2
+  },
+  "codexControl": {
+    "status": "observed",
+    "CLI": "0.157.0",
+    "binarySha256": "ad0be20d04e2ba6146ecdb51d7f8b7b0fe15420a15dc9b0057518d858f1f3714",
+    "catalogueModel": "gpt-5.5",
+    "catalogueSha256": "c0948f5e809f1d7236b8fa51cae88cecc2524c0b010f95abb122916d7bf87457",
+    "method": "codex debug prompt-input, isolated synthetic provider, outer deny-network profile",
+    "pairedObservations": {
+      "present": {
+        "exitCode": 0,
+        "validJson": true,
+        "agentMarker": true,
+        "skillMetadataMarker": true,
+        "skillBodyMarker": false
+      },
+      "absent": {
+        "exitCode": 0,
+        "validJson": true,
+        "agentMarker": false,
+        "skillMetadataMarker": false,
+        "skillBodyMarker": false
+      }
+    },
+    "modelCalls": 0,
+    "paidApiRub": 0,
+    "temporaryDirectoryRemoved": true,
+    "limits": [
+      "Prompt rendering is not LLM use/compliance.",
+      "Skill metadata discovery is not SKILL body loading.",
+      "No general all-harness or real-subscription observation."
+    ]
+  },
+  "limits": {
+    "paidApiRub": 0,
+    "wallHours": 4,
+    "allAgentInvocations": 32,
+    "scenarioExecutorInvocations": 16,
+    "concurrencyIncludingCoordinator": 4,
+    "phaseAdmissionSeconds": 360
+  },
+  "cases": {
+    "U1": "not-run",
+    "U2": "not-run",
+    "U3": "not-run",
+    "U4": "not-run",
+    "U5": "not-run"
+  },
+  "review": "Ship: preparation-02, no remaining material finding",
+  "artifactRoot": "Tibicen-work/first-use-1.8.0-20261120",
+  "evidence": {
+    "BASELINE.json": {
+      "bytes": 531320,
+      "sha256": "f2368f062f82618d9ec999c77ef26e440c230d2b17d91a882a6e55346d194e5c"
+    },
+    "PACKET_FILES.json": {
+      "bytes": 35343,
+      "sha256": "45e172dcf12ab298e7acffaeabb0da426073da3fb1e3f8310f12c195fc3de07e"
+    },
+    "reports/packet-initial.json": {
+      "bytes": 521,
+      "sha256": "b5b3c496f333aa3467b00c1daf8e057968b68970f5cc3696dee5a6e51a7dcfb8"
+    },
+    "reports/packet-final-pre-dispatch.json": {
+      "bytes": 518,
+      "sha256": "8dc69098a4f17ab209303c65447867cd3b26bac90d3c58991d0ac0b8f0a56794"
+    },
+    "reports/guard-self-check.json": {
+      "bytes": 505,
+      "sha256": "323c17f07e789174a4a942e7cfbdd87f5748c433e39f11f5389b6bcbbb4c7a9e"
+    },
+    "reports/seed-checks.json": {
+      "bytes": 2458,
+      "sha256": "0b3df2d6b6e9750f4c03444175df79ff0ca59acfd7fc18662ecfe8c38ccdfd6e"
+    },
+    "reports/seed-checks/preparation-final/summary.json": {
+      "bytes": 2458,
+      "sha256": "90a6ae4a83ae27acc3c5bd642c776f92f4131c6f02860e4dd713a41271c4ac13"
+    },
+    "evidence/codex-prompt-renderer/summary.json": {
+      "bytes": 3836,
+      "sha256": "9c8994553aaf09a693df3e041e5e5104007837ac7d90c29a64844312e3ea9773"
+    },
+    "reports/PREPARATION_REVIEW.md": {
+      "bytes": 4716,
+      "sha256": "b22da0c678e4ab088ddc3c9c57c06cb4731fce899451546a9f584f77d5e9bee3"
+    },
+    "reports/PREPARATION_REVISIONS.json": {
+      "bytes": 1779,
+      "sha256": "13ee1a7e774c1592c0c477e094a034830155a2d28c6ff0cbcb7afb463d1f9c0b"
+    },
+    "reports/PREPARATION_REVIEW_FINAL.md": {
+      "bytes": 5578,
+      "sha256": "0d35dd9fc054156d6a7e9edb794cc5f8b4eb64824c1c3e312a274c61e8db56db"
+    },
+    "reports/preparation-01/PACKET_FILES.json": {
+      "bytes": 35343,
+      "sha256": "3e9ff3bf6b970554c1c9a772ba5e88acec0ec46b06f697800fb390183a07706b"
+    },
+    "reports/preparation-01/TASK.md": {
+      "bytes": 19233,
+      "sha256": "1f68c12f20569fceacc83fd01107f5ef131a71a225d3df743b8fbde7c62ae66c"
+    },
+    "reports/preparation-01/TASK_ru.md": {
+      "bytes": 35289,
+      "sha256": "89a0b0cb381c487aedfa76ebce4107dbcaa1b87eca21191575c158dc8283f1b5"
+    },
+    "reports/preparation-01/public-receipt.json": {
+      "bytes": 4654,
+      "sha256": "a1afe06cae3b75200e45e3d5e11999b3cfa04ff74c0027468ce0072eda1a0bcf"
+    },
+    "reports/packet-initial-rev02.json": {
+      "bytes": 521,
+      "sha256": "b5b3c496f333aa3467b00c1daf8e057968b68970f5cc3696dee5a6e51a7dcfb8"
+    },
+    "reports/packet-final-rev02.json": {
+      "bytes": 518,
+      "sha256": "8dc69098a4f17ab209303c65447867cd3b26bac90d3c58991d0ac0b8f0a56794"
+    },
+    "reports/PREPARATION_REVIEW_REV02.md": {
+      "bytes": 3138,
+      "sha256": "6738f819941c3319f0642b5cc9ed9dce395738e266a2ade25020ce619bed58fe"
+    }
+  },
+  "runtimeChanges": false,
+  "versionChanged": false,
+  "commitsCreated": false,
+  "pushOrPublication": false,
+  "newPaidApiRub": 0,
+  "preparationRevision": "preparation-02",
+  "revisionNotes": {
+    "reason": "Explicitly reject contaminated or unverified inherited coordinator/oracle context before scored fresh-work phases.",
+    "beforeFirstLiveExecutor": true,
+    "originalObservationsRegraded": false
+  }
+}

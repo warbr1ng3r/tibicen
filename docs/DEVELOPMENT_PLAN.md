@@ -1,125 +1,55 @@
 # Tibicen development plan
 
-## Current delivery — 1.8.0 published and site verified, 20 November
+Updated 20 November 2026. Assignments live in the [tracker](agents/issue-tracker.md).
+Scope remains in the [vision](PRODUCT_VISION.md) and [current capabilities](CURRENT_CAPABILITIES.md).
 
-[1.8.0](evals/results/2026-11-20-release-1.8.0/README.md) is published after exact
-public CI, six native platform cells, public lifecycle and returned-asset checks.
-Metadata source `0a8ba22375cea87ea12708f7f73ade46b34054f0` passed CI, Cloudflare
-and legacy Pages. All 27 returned bodies match its source-bound build; both
-indexes contain 18 versions, preserving 17 earlier records and warnings. The
-release effort is closed. Earlier sections are dated preparation/integration
-records. Existing behavioral evidence limits remain; no new model sweep belongs
-to this release.
+## Current status
 
-## Next delivery — 1.8.0 locally prepared, 20 November
+| Work | Status | Evidence |
+| --- | --- | --- |
+| 1.8.0 release and website | Closed | [Release report](evals/results/2026-11-20-release-1.8.0/README.md) |
+| Five-case first-use package | Executed and independently assessed with limitations; closed | [Assessment](evals/results/2026-11-20-first-use-assessment/README.md) |
+| Next product change/version | Not selected | No confirmed runtime defect or product patch in this packet |
 
-The compatible minor [candidate](evals/results/2026-11-20-release-1.8.0-preparation/README.md)
-is ready locally: logical commits, source freeze, exact assets, lifecycle,
-compatibility and independent Ship review are complete. No new model sweep is
-needed. Next is the separately authorized public push/CI/six-platform/delivery/
-release/site sequence. Stable 1.7.1 remains unchanged; detailed results and
-remaining limits stay in the candidate report and the two existing changes.
+Published **1.8.0** includes approval receipts and directory-scoped canonical-skill
+routing. Its CI, six platforms, public delivery and website checks remain accepted.
+The first-use return changes neither those release facts nor earlier behavioral grades.
 
-## Consent and routing — integration complete, 20 November (Unreleased)
+## Outcome of the first-use package
 
-Root integrated the returned ZCode/GLM packet after independent code and evidence review. The [assessment](evals/results/2026-11-20-consent-coverage-assessment/README.md) preserves its positive fixture outcomes while distinguishing frozen A5-i3 routing failure, incomplete F3/H6 digest evidence and contradictory H6 approval timing. G5 remains blocked and E2 loading unverified; guarded CB observations do not prove unprompted compliance. The original packet and published 1.7.1 stay unchanged.
+ZCode/GLM reports useful initial setup, adopt, sufficient-setup, memory and recovery
+results. Root replayed the retained final task results and checked source/candidate
+identity. The full qualified results belong in the assessment, not a second case catalogue.
 
-The two bounded changes are [approval receipts](../openspec/changes/retain-approval-receipts/proposal.md), which retain content/channel evidence without authenticating the approver, and [canonical marker routing](../openspec/changes/detect-canonical-skill-provenance/proposal.md). Integration corrects cross-directory marker collisions and receipt validation/inheritance defects with regressions. Detailed tasks stay in those changes. Independent reviews, the merged gate (1,207 passed, zero failures, two existing skips) and the 116-payload standalone build passed. The assessment retains the first failed gate and its unresolved offline-control cause separately. Next is compatible minor delivery preparation; do not repeat the broad model sweep. A future observation needs retained exact grant/envelope/consuming-command records, while native loading and Windows policy require genuinely available host capabilities.
+Original separate grants and initial-context controls are not retained, the phase
+clock was changed after execution, and early memory snapshots contain hashes only.
+Keep these protocol limits alongside positive functional results. This is not five
+independently established fresh/native end-to-end passes or measured human benefit.
+The finite execution/analysis effort is closed; no broad repeat is scheduled.
 
-## Current delivery — 1.7.1 published and site verified, 19 November
+## Next work
 
-The compatible [1.7.1 patch](evals/results/2026-11-19-release-1.7.1/README.md) is published after exact-candidate checks, public CI/platforms and returned-asset verification. Installation/checksum metadata passed CI, Cloudflare and legacy Pages; all 27 returned bodies match the source-bound local build. Both indexes contain 17 versions, preserving all 16 previous records and warnings. The release effort is closed. Original scenario failures and unknown behavioral effects remain explicit; the next bounded work is listed below.
+1. **Use the stable release.** Capture specific problems from ordinary project work,
+   preserving the task, relevant files, exact commands and expected result.
+2. **Fix demonstrated problems.** Reproduce a small issue, add a meaningful regression,
+   make the smallest complete correction and review it. Substantial behavior changes
+   use OpenSpec. A model name or an evaluation evidence gap alone is not a feature request.
+3. **Collect new observations only for a concrete question.** Before execution retain
+   actual grants, launch/initial-context controls, intermediate bytes and the whole-phase
+   clock. Keep functional behavior, loading, consent and human usefulness separate.
+4. **Version actual product changes.** Follow [release rules](RELEASING.md): compatible
+   fixes are patch, compatible features minor, supported-contract breaks major.
+   Documentation clarification alone does not require another skill release.
 
-## Completed integration — shipped in 1.7.1, 19 November
-
-The [independent assessment](evals/results/2026-11-19-scenario-sweep-assessment/README.md) preserves the executor's 48-case tally separately from five approval-invariant failures and missing catalogue variants. Useful functional observations remain; they do not establish clean end-to-end acceptance.
-
-Local integration is complete for the bounded [failure comparison correction](../openspec/changes/stabilize-check-failure-comparison/proposal.md) and [first-proposal clarification](../openspec/changes/clarify-first-proposal-check-trust/proposal.md). Review tightened timing normalization to preserve meaningful assertions, requires equal failure exit codes, selects the actual check profile and distinguishes generated questionnaire answers from external approval. Detailed tasks and local verification stay in those changes. Root's corrected guidance has no new behavioral model observation.
-
-The separately authorized compatible 1.7.1 patch is now published. Next work targets retained external approval receipts and the specific A5/F3/H6/G5 gaps; native loading and voluntary usefulness remain separate. The earlier integration checkpoint excluded release actions; the release report records subsequent delivery.
-
-## Previous release — 1.7.0, 18 November
-
-[1.7.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.0) was published at `2026-11-18T15:35:26Z`. This compatible minor delivers Windows execution and the concrete first-task handoff. Source `6eef592d9638a063cb2b49c33fe4843e601956dd`, distribution `d881334f638ccffa74bcc032a392451f5d5b8f52`, offline CI and all six platform cells passed. Exact public installation/update/recovery/removal passed; all three returned assets and 115 archive files/modes match candidate-01. Published 1.6.0 is preserved.
-
-Two bounded first-use cases passed with assistance: explicit reading, controller HOME rebinding and synthetic controller application remain disclosed. Instruction reads are executor-reported; native autoload, human approval and measured user benefit remain unverified. The [release report](evals/results/2026-11-18-release-1.7.0/README.md) owns exact facts and retained failed publication attempts. Metadata source `2e37489e96c3d4df73b71803d7efd4613d8f6cb1` passed [CI](https://github.com/warbr1ng3r/tibicen/actions/runs/44338460810), [Cloudflare](https://github.com/warbr1ng3r/tibicen/actions/runs/44338461631) and [legacy Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/44339175050). All 27 returned bodies match the committed build; both indexes contain 16 versions, preserving all 15 previous records and warnings. The release effort is closed. Existing Windows/handoff changes own behavior and detailed tasks; older sections below are dated records, not current assignments.
-
-## Previous release — 1.6.0
-
-[1.6.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.6.0) was published on 17 November. Controlled Python/Bash/docs checks and hardening are shipped; CI, six platforms and public delivery passed. The [report](evals/results/2026-11-17-release-1.6.0/README.md) records exact bytes and limits. Site metadata deployment and eight returned-body checks passed; the release effort is closed.
-
-### Engineering acceptance snapshot — 18 November, before 1.7.0 publication
-
-The completed engineering package covers [controlled Windows commands](../openspec/changes/enable-windows-project-commands/proposal.md) and [one concrete first-task handoff](../openspec/changes/clarify-first-use-handoff/proposal.md) across capable harnesses. Independent reviews and the local gate passed: 1,176 tests, zero failures and two explicit skips. The [native matrix](https://github.com/warbr1ng3r/tibicen/actions/runs/44229803132) passed all six cells, including both built skills on Windows Server 2022 with Node 22 and 24. The owner authorized commits, a separate branch push and CI; release publication is excluded. The work remains Unreleased, and version 1.6.0 and its public artifacts remain unchanged. Detailed tasks and evidence stay in those changes. Dated sections below retain earlier plans and results, not current assignments.
-
-## Postrelease findings — 16 November
-
-The next cycle starts with [controlled application checks](../openspec/changes/support-controlled-project-checks/proposal.md): the Python/Bash/docs package is integrated, and additional review findings around option-like filenames and absolute project entrypoints are fixed. The [local verification](../openspec/changes/support-controlled-project-checks/verification.md) is complete. This is **Unreleased**, separate from published 1.5.6. The [repeat-adopt assessment](evals/results/2026-11-17-adopt-maintenance/README.md) now closes the six mechanical maintenance cases and integrates further controlled-check fixes. A compatible local **1.6.0 minor candidate** was prepared on 17 November from this integrated scope, with the distribution manifest frozen in the change verification and the full source/archive identities in the release package's candidate record; it remains **unpublished**, and the public commit/tag/CI/asset/deploy sequence is the separate owner-authorized Codex publication step. Next come capability-based instruction loading and first-use clarity, as one bounded engineering package with independent GLM tasks. Native loading remains unverified; this fixture assessment is not a fresh-session benchmark. Detailed work and verification stay in the change and [tracker](agents/issue-tracker.md), not the dated historical delivery table below.
-
-The [original ZCode assessment](evals/results/2026-11-15-zcode-postrelease/README.md) retains its failed task and rejected memory-only admission. The [owner-authority clarification](../openspec/changes/clarify-memory-decision-authority/proposal.md) passed local integration and is now published in [1.5.6](evals/results/2026-11-16-release-1.5.6/README.md).
-
-The separate [combined-use follow-up](evals/results/2026-11-16-zcode-memory-authority/README.md) reports all five behavioral phases passed, including ordinary use, explicit correction and fresh reuse. Root checked candidate/plan identity and replayed both retained corrected projects. This is positive scoped evidence; it is **not protocol-compliant acceptance** because later phases were admitted after the 180-second stop. Preserve that deviation and the missing initial-state replay/worker traces; no new model run is needed to relabel it.
-
-Final engineering review, authorized commits and compatible **1.5.6 patch** delivery are complete; site metadata is also deployed and verified. No new product feature or broad model matrix is required here. Future observation protocols should enforce their next-call stops and retain each phase's source/memory snapshot. Causal memory-only research, autoload, human usefulness and other-harness coverage remain separate work. Detailed implementation tasks stay in the change.
-
-Updated 17 November 2026. Scope stays in the [vision](PRODUCT_VISION.md), [addendum](PRODUCT_VISION_ADDENDUM.md) and [current capabilities](CURRENT_CAPABILITIES.md). Assignments and integration status live in the [tracker](agents/issue-tracker.md); detailed implementation requirements belong in the relevant OpenSpec change.
-
-**Current release: [1.5.5](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.5.5).** The reviewed reliability fixes are published; the [report](evals/results/2026-11-15-release-1.5.5/README.md) binds exact source, distribution and limits. Additional coverage is separate postrelease work. Dated statuses below preserve preparation history.
-
-## Starting point
-
-Published skills are **1.5.5**. The [release report](evals/results/2026-11-15-release-1.5.5/README.md) defines exact delivered bytes and limits. Input-file hardening and proposal guidance are included. The recorded [Cloudflare migration](../openspec/changes/make-cloudflare-primary-site/verification.md) remains in effect; the 1.5.4 release assets are preserved. Site metadata and both checksum endpoints are deployed and verified.
-
-The [10–12 November registry](evals/results/2026-11-10-reliability-runs/README.md) reports wider usage than the earlier AionCore attempt: additional harnesses, Bash/documentation/Python, adopt, memory, recovery and optional process tools. The [assessment](evals/results/2026-11-10-reliability-runs/ASSESSMENT.md) separates reports from retained primary evidence. Codex's operator-run apply is not a wholly native cycle. Some raw streams and fixtures were deleted: aggregate counts are not independent reproducible acceptance or proof that all 218 planned checks passed. The original AionCore route remains unverified.
-
-The strongest signals are reported self-consent under autonomy wording, writes to harness-native memory before approval, fragile instruction/memory entrypoints and unclear recovery advice. More model names or generated files will not resolve these problems.
-
-## Next delivery order
-
-| Priority | Work package                                    | Required result                                                                                                                                                                                                                                                                                                                                                    |
-| -------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1        | **Approval boundary**                           | Design the user/host/CLI trust boundary in OpenSpec. Separate interview defaults, tool permissions and approval of exact changes. Cover ordinary, autopilot and adversarial requests with genuine external approval records. Matching `--approve DIGEST` does not prove who authorized it; wording alone cannot enforce identity.                                  |
-| 2        | **Portable instructions and memory**            | Keep owner/project sections outside replaceable managed blocks. Connect the selected project store from the actual host entrypoint; retain explicit reading when autoload is unknown. Native harness memory cannot silently replace approved project memory or justify pre-consent writes. Check Gemini/Qwen-style entrypoints against actual versioned contracts. |
-| 3        | **Actionable incomplete-state recovery**        | Explain `missing-memory-connection` before a useless same-digest resume. Preserve new connecting proposal → fresh approval → resume, including intentional removal flows. Do not reject all incomplete plans without a compatibility decision and regression evidence.                                                                                             |
-| 4        | **Small reproducible checks and cost controls** | Reuse runners; add missing transport controls and useful timestamps. Keep model/transport time unknown without direct signals. Retain compact source/fixture/consent/tool/outcome bundles and bind fresh standalone artifacts to source. Account for nested agents, retries, cancellation and unsettled charges.                                                   |
-| 5        | **First-use value and selective breadth**       | After reliability fixes, run a narrow init/adopt/fresh-task matrix across different capabilities. Add catalog guidance only when useful and backed by current primary sources. Compare necessary corrections and time to a useful task with an ordinary-agent baseline; human usefulness remains separate voluntary research.                                      |
-
-Packages 2–4 can use parallel agents with separate paths after package 1 defines any shared approval contract. Source reading, offline reproductions and test design can start earlier. Each substantial behavior change needs its own requirements, scenarios and tasks. Close one reviewable package before expanding the native matrix.
-
-## Current implementation and next observation
-
-The 13 November consolidation is committed. The authorized [reliability change](../openspec/changes/harden-consent-memory-and-recovery/proposal.md) implements the bounded local part of priorities 1–4: consent guidance and controller grants, owner-text/memory preservation, actionable recovery, finite transport and compact retained summaries. Its [offline verification and independent review](../openspec/changes/harden-consent-memory-and-recovery/verification.md) passed; detailed completion stays in that change and the tracker. Published 1.5.4 remains unchanged.
-
-The original bounded [15 November Codex observation](evals/results/2026-11-15-codex-observation/README.md) remains a dated packet of 8 fresh attempts, 7 completed native turns and 1 failure before adopt apply. A separately authorized exact recheck then completed apply, structure-only verify, status and report in one fresh subscription session, retaining all four actual CLI JSON results. The same 63 inputs, prompt, candidate and reviewed digest were used; only private evaluator error recording changed. It took 73 seconds within a 120-second deadline, with no caller retry or new paid API call. The planned instructions, owner text and existing memory were preserved. The original failure is still unknown and not reproduced; its raw diagnostic was lost through hash projection and owned-HOME cleanup, so a network/provider fix is not established.
-
-The [final ZCode artifact assessment](evals/results/2026-11-15-zcode-observation/README.md) independently verifies frozen files/modes, candidate identity, approved-plan results and preservation. Native commands, fresh contexts and reading remain executor-reported without an exported tool trace. Reading was assisted and memory manually seeded; the fresh task already contained the corrected product wording, so functional reuse is not causal memory evidence. Reported group counts and inconsistent timestamps do not establish comparable cross-host coverage. That earlier observation coordination is closed; remaining product coverage is not thereby passed.
-
-The [actionable-evidence implementation](../openspec/changes/preserve-actionable-evaluation-evidence/verification.md) is complete and independently reviewed: it corrects the init-only maintenance restriction, adds opt-in bounded private diagnostics and prepares isolated generated-memory controls. The full offline gate passed **1,118 tests, 0 failed, 1 existing skip**; all **110 standalone payload hashes** and both resource self-tests matched. This completes that local implementation, not native loading or memory behavior.
-
-The [generated-memory observation](evals/results/2026-11-15-generated-memory-observation/README.md) stopped after two native attempts: generation passed; apply stopped at an executor denial with no observed CLI application. Its final transient container state and usage remain unknown, and the other three phases were not run. A separate model-free real-RPC control applied the exact generated proposal and passed structural verify/status/report. That controller result is not native-agent apply success or an explanation of the denial.
-
-A distinct reviewed [three-task follow-up](evals/results/2026-11-15-generated-memory-task-followup/README.md) completed all three fresh native phases after controller application of the actual generated setup: initial work, ordinary correction and fresh corrected work. Each passed four independent functional outputs and four project tests; actual policy/memory reads were captured. The correction preserved its reason, superseded history and unrelated privacy restriction. Fresh corrected work reset source so only actual corrected memory carried the decision, without installed Tibicen, transcript or oracle. The [protocol guide](evals/GENERATED_MEMORY_OBSERVATION.md) describes those controls and limits. The original native-apply packet stays stopped; this is not an end-to-end native setup pass.
-
-The follow-up discloses a retained preparation deviation: a separately reviewed controller projection passed legitimate initial memory-fact updates into correction without rewriting the frozen helper or policy. Across both packets, five native calls took **242.262 caller seconds** within the five-call/900-second limits; new-packet usage was **184,884 input / 2,831 output tokens**. Its admission stops were 200,000 input/20,000 output for that packet only, not a provider quota or cross-packet cap. Original failed-call usage and subscription monetary cost remain unknown. No retries or new paid API calls occurred; owned execution/grade resources and disposable homes were cleaned up. Implementation and observation coordination are complete, not all remaining product coverage.
-
-The [executor-diagnostic follow-up](evals/results/2026-11-15-executor-diagnostics/README.md) now retains bounded matched private stderr or fixed RPC errors before cancellation, with explicit gaps and unchanged public results. The actual-owner red regression is green; independent Ponytail review accepted the source, the gate passed **1,148 tests, 0 failed, 1 existing skip**, and the **110-payload inventory** stayed unchanged. A supported-profile model-free control retained the redacted error before cleanup. Its deliberate text plus exit 1 triggered `sandboxDenied: true` without a prohibited operation: the flag alone cannot establish a permission cause. All three bounded controls were cleaned up; no models, auth reads or paid API calls occurred. The old native failure remains unknown.
-
-The subsequent [single native-apply observation](evals/results/2026-11-15-native-apply-capture/README.md) applied both reviewed files and preserved 62 immutable named inputs, but failed full acceptance because all four CLI outputs were empty. Two model-free controls isolated restricted-inner-policy pipe capture: `spawnSync` can report status zero with `EPERM`; explicit file descriptors retained both streams under the same restrictions. The native error field itself was discarded, so its exact error remains inferred. This is an evaluation capture issue; no product or internet defect is established. Failed grades remain unchanged and all resources are cleaned up.
-
-A further [corrected-capture native observation](evals/results/2026-11-15-native-apply-completion/README.md) now closes that exact CLI-output gap. A model-free preflight passed first; one fresh native Codex session then completed all four actual steps with valid JSON, preserved both planned files and 63 immutable named inputs, and passed independent command/output review. Restrictions and product code were unchanged; the prompt and frozen evaluator helper changed explicitly. Earlier failed grades remain failed. Both containers and the disposable HOME were cleaned up.
-
-Next delivery order: interrupted repair, adopt preservation and memory in another native harness, each with a finite protocol and declared capability limits. Routine GLM review has a ready user-operated packet and is not a blocker for completed work. Do not infer a product/network fix from the historical denial, or automatic loading, human benefit or broad harness support from controlled assisted tasks. Detailed tasks remain in OpenSpec and the tracker.
-
-The reviewed 14–15 November implementation is committed and published in **1.5.5**, following the user-authorized release. The earlier 1.5.4 release remains unchanged. Additional native observations are postrelease work; publication does not turn unverified behavior into supported behavior.
-
-No paid run is part of this cleanup. This effort originally authorized **100 RUB total**; the key's technical **200 RUB/day** limit does not renew that authorization. Later report totals disagree and exceed the original figure; separate authorization and settled spend are not established by the retained packet. Reconcile accounting and applicable authorization before another paid packet. Offline work remains available.
-
-## Boundaries
-
-Keep two simple workflows: `init` and `adopt`. The findings do not justify a resident service, automatic technology installer, new memory database, marketplace, model router or broad cross-product benchmark. OpenSpec remains an optional installed project component and a development workflow, never a dependency of distributed Tibicen skills.
-
-Structural success or agent opinion does not establish human usefulness or native autoload. A failed diagnostic may close its investigation while the full workflow remains open. New releases follow [the release procedure](RELEASING.md) and require publication authorization; this plan selects no version bump.
+Continue to support hosts by their available operations, preserving the user's model
+and useful native/custom instructions. Keep init/adopt lightweight, with no resident
+service or mandatory model router. OpenSpec stays a development tool or optional
+selected project component, not a distributed-skill dependency.
 
 ## History
 
-The preceding roadmap is preserved in [development history](DEVELOPMENT_HISTORY.md). Earlier current headings, budgets and assignments belong to their recorded dates, not a new instruction to resume old packets.
+The full preceding roadmap is preserved byte for byte in the
+[20 November snapshot](history/DEVELOPMENT_PLAN_2026-11-20.md). Its old headings,
+assignments, budgets and relative links retain their original context and dates.
+The [preparation record](evals/results/2026-11-20-first-use-preparation/README.md)
+and [earlier history](DEVELOPMENT_HISTORY.md) remain unchanged historical scopes.
