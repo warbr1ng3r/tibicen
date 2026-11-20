@@ -1,13 +1,15 @@
 # Tibicen development plan
 
-## Current delivery — 1.8.0 published, website acceptance in progress
+## Current delivery — 1.8.0 published and site verified, 20 November
 
 [1.8.0](evals/results/2026-11-20-release-1.8.0/README.md) is published after exact
 public CI, six native platform cells, public lifecycle and returned-asset checks.
-The compatible receipts/routing changes are delivered; prior observations retain
-their evidence limits. Current work is installation/checksum metadata deployment
-and returned-byte verification, preserving 17 earlier records. No new product
-feature or model sweep belongs to this release closure.
+Metadata source `0a8ba22375cea87ea12708f7f73ade46b34054f0` passed CI, Cloudflare
+and legacy Pages. All 27 returned bodies match its source-bound build; both
+indexes contain 18 versions, preserving 17 earlier records and warnings. The
+release effort is closed. Earlier sections are dated preparation/integration
+records. Existing behavioral evidence limits remain; no new model sweep belongs
+to this release.
 
 ## Next delivery — 1.8.0 locally prepared, 20 November
 

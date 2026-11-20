@@ -1,13 +1,15 @@
 # Issue tracker
 
-## Active release closure — 1.8.0 website metadata, 20 November
+## Closed release — 1.8.0 published and site verified, 20 November
 
-Owner: root; full publication package authorized. The
+Owner: none; root completed the authorized publication package. The
 [release report](../evals/results/2026-11-20-release-1.8.0/README.md) records
-published source/distribution/tag, exact public CI, all six platforms, public
-lifecycle and returned assets. Published 1.7.1 is preserved. Remaining work is
-metadata CI, Cloudflare and legacy checksum deployment, returned-byte checks,
-then documentation closure. No new model call or paid API work is required.
+exact source/distribution/tag, CI, six platforms, public lifecycle and returned
+assets. Metadata CI, Cloudflare and legacy Pages passed on
+`0a8ba22375cea87ea12708f7f73ade46b34054f0`; all 27 returned bodies match its build.
+Both indexes contain 18 versions, preserving 17 previous records and warnings.
+Published 1.7.1 is preserved. Historical evidence limits remain unchanged;
+no new model call or paid API work was needed.
 
 ## Closed local preparation — 1.8.0 candidate, 20 November
 

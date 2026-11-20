@@ -1,6 +1,6 @@
 {
   "version": "1.8.0",
-  "status": "published-site-pending",
+  "status": "published-site-verified",
   "release": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.0",
   "releaseId": 452259773,
   "publishedAtUtc": "2026-11-20T04:15:05Z",
@@ -42,7 +42,30 @@
   },
   "previous171Preserved": true,
   "metadata": {
-    "status": "pending"
+    "status": "passed",
+    "sourceCommit": "0a8ba22375cea87ea12708f7f73ade46b34054f0",
+    "CI": 44674193229,
+    "Cloudflare": 44674193163,
+    "Pages": 44674636788,
+    "pagesDispatch": 44674607083,
+    "buildCommand": [
+      "pnpm",
+      "--filter",
+      "@tibicen/landing",
+      "build",
+      "--site",
+      "https://tibicen.pages.dev",
+      "--base",
+      "/"
+    ],
+    "returnedBodies": 27,
+    "returnedBodyFailures": 0,
+    "sourceBoundLocalBuild": true,
+    "tlsVerification": true,
+    "indexVersions": 18,
+    "previousIndexVersionsPreserved": 17,
+    "previousIndexWarningsPreserved": true,
+    "subsequentClosure": "documentation only, deployment inputs unchanged"
   },
   "newBehavioralModelCalls": 0,
   "newPaidApiRub": 0,
@@ -124,6 +147,62 @@
     "reports/metadata-review-followup.md": {
       "bytes": 1750,
       "sha256": "9352b434d914d90b6a75c6cec61f622583a17d79c2dcdadf705dabcd893fc5e0"
+    },
+    "publication/metadata-source-projection.json": {
+      "bytes": 236,
+      "sha256": "c1e704c7937ad0e2313ab26e746f2be1653e640dbea86e852f3a2ef294d8be97"
+    },
+    "publication/metadata-ci.json": {
+      "bytes": 13435,
+      "sha256": "608da948cf4c3c97fb1c4842ba7c8876aa497a8c73f664d5bf4f23a4b6e986b7"
+    },
+    "publication/metadata-cloudflare.json": {
+      "bytes": 13469,
+      "sha256": "b51a6db9cf691a09a3a5c5201887ea9aa6c422b4fc0d62dd1326d645b98a3a46"
+    },
+    "publication/metadata-pages.json": {
+      "bytes": 13762,
+      "sha256": "06d262d131795932cc4aa70122b794110ba5492b5c37ff849e0fdeda247c5172"
+    },
+    "publication/metadata-pages-jobs.json": {
+      "bytes": 5552,
+      "sha256": "36a52e74827cdd4ef24dd2ce2cc7dd380667e51f9313021b8061af422aaf6c3e"
+    },
+    "publication/pages-dispatch.json": {
+      "bytes": 13418,
+      "sha256": "b1e66d5915b22401ef47a7940e575b8b5472423221051944a17e83d99dc91adf"
+    },
+    "publication/metadata-build.json": {
+      "bytes": 3635,
+      "sha256": "9be334015afbe28cc6636c7132a971a8cdb783e2446afeca32ab0016525a116e"
+    },
+    "publication/site-audits/attempt-01/summary.json": {
+      "bytes": 30344,
+      "sha256": "1e240a09b611056c52600b22f8afd65869a0e7c22f3ee3fbcd0d03eeda1140e9"
+    },
+    "publication/site-audits/attempt-01/plan.json": {
+      "bytes": 6125,
+      "sha256": "17e2f67cbba21ecd98ff7c8875508110f94dc816beae249841faab99a53da52c"
+    },
+    "publication/site-audits/attempt-01/expected-dist.json": {
+      "bytes": 3074,
+      "sha256": "bcb16221c6aabdd5b4569400e6665358e223f8fb0bf3c44815d785184d727581"
+    },
+    "reports/pages-dispatch-review.md": {
+      "bytes": 2610,
+      "sha256": "ae5fb5969a559de9d96fd108077c73aed9498166c973a03746b4b66b382f56bf"
+    },
+    "reports/site-audit-helper-review.md": {
+      "bytes": 2837,
+      "sha256": "47ad5db778d64dc5fd8a9218cee28ad6b2953499c006ddbfef3f05ae57b94db4"
+    },
+    "reports/public-metadata-install.log": {
+      "bytes": 940,
+      "sha256": "34b49693ee57ad3750f52518d525fb93c2d23a421cb223798de80debbf334070"
+    },
+    "reports/public-metadata-build.log": {
+      "bytes": 879,
+      "sha256": "ad0e8da7d94c91d5ea01e69ecd6a4621fa561bc0f08f905507942ec234a5f7e8"
     }
   },
   "metadataLocalChecks": {

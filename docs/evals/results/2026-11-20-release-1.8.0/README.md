@@ -40,11 +40,17 @@ separate projection of approved commits; private history was not pushed.
 
 ## Website metadata
 
-Installation pins, bilingual current guides and the checksum index are being
-updated after publication. Website CI/deploy/returned-byte acceptance is
-**pending** and is separate from the published skill assets. Preserve the
-17 earlier index entries and warnings when adding this release. The receipt
-will record the accepted metadata commit and exact returned-body checks.
+Installation pins, current bilingual guides and the checksum index are deployed
+from metadata commit `0a8ba22375cea87ea12708f7f73ade46b34054f0`.
+[CI](https://github.com/warbr1ng3r/tibicen/actions/runs/44674193229),
+[Cloudflare](https://github.com/warbr1ng3r/tibicen/actions/runs/44674193163) and
+[legacy Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/44674636788)
+passed on that exact source. All **27 returned bodies** match its local build
+using the exact Cloudflare command, site and base; HTTPS certificate checks
+passed. Both indexes contain **18 versions**, preserving all 17 previous
+records and warnings. The first audit attempt passed; raw bodies, headers and
+per-request results are retained. Later closure changes documentation only and
+does not change deployment inputs. The release effort is closed.
 
 Local metadata lint, type checking, strict OpenSpec and all 69 site checks passed.
 The first site run had two failures from an old escaped version assertion;
