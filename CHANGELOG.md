@@ -5,6 +5,14 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+### Added
+
+- Retain source-bound approval receipts for `apply`/`resume`: the consumed digest, the digest presented on the approval channel, the operation, the channel (`cli --approve` or `programmatic`), the project root, the session id and a timestamp, surfaced in the apply result, `status`, `report` and the manifest session summary. Refused consent returns the same structured record (presented versus required digest) in the `consent-required` error envelope and never writes the project. Receipts are evidence of content identity and channel; they do not authenticate an external approver. Saved sessions and manifests from before this change load unchanged.
+
+### Fixed
+
+- Scan no longer treats a skill directory named `tibicen-init` or `tibicen-adopt` as an installed canonical Tibicen skill by name alone. Canonical presence now requires the distribution identity marker the builds have always carried (`package.json` inside the skill directory with the canonical name and a nonempty version). A name-only lookalike counts as foreign infrastructure and retains the improve/unknown-provenance hint; genuine canonical installs of every published version keep the previous init routing. Markers are scoped to their complete project-relative directory, so a root, nested or sibling install cannot identify a separate lookalike.
+
 ## [1.7.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.1) — 2026-11-19
 
 ### Fixed

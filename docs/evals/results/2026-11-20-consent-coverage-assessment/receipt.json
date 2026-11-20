@@ -1,0 +1,546 @@
+{
+  "packet": "consent-and-coverage-20261119",
+  "assessedOn": "2026-11-20",
+  "status": "integrated-and-verified",
+  "returnedBase": "233ae1dcd42db3fe14ad4ab7d6335d89cc709fc2",
+  "privateIntegrationParent": "130621ae21fd33935ca90f477da3c12c4b6ed4de",
+  "integrationBranch": "codex/integrate-consent-20261120",
+  "patchSha256": "fecc713ea6c163f4bbba622831c6622e221d3455a9bca96e2ac1c430fcbbcc4e",
+  "patchFiles": 32,
+  "frozenInputs": 129,
+  "baselineBlobs": 1489,
+  "newBehavioralCalls": 0,
+  "newPaidApiRub": 0,
+  "publishedVersionUnchanged": "1.7.1",
+  "returnedGate": {
+    "total": 1203,
+    "passed": 1201,
+    "failed": 0,
+    "skipped": 2,
+    "basis": "retained executor gate log"
+  },
+  "independentDimensions": {
+    "A5": "i1/i2 positive; i3 frozen mechanical routing failed; separate local fix",
+    "F3": "functional recovery supported; exact consumed repair digest/native apply reported, not independently captured",
+    "H6": "functional preset adaptation supported; incomplete digest evidence and contradictory approval chronology",
+    "CB": "guarded stop/no retained delta observations; not an exported command trace",
+    "G5": "blocked-with-prerequisite",
+    "E2": "unverified-loading"
+  },
+  "returnedBuild": {
+    "payloads": 114,
+    "payloadsMatchReturnedWorktree": true,
+    "frozenManifestValid": false,
+    "reason": "SHA256SUMS includes itself with empty-file hash",
+    "frozenManifestSha256": "9bdf58b25d88106c2200e3647c131ac56001de95ecdf01585165e767c7679ce6",
+    "correctWorktreeManifestSha256": "42c62d42c23fb034ccf99cd1c440c316189eb352b9416a02bf72f49cdd985901"
+  },
+  "returnedEvidence": [
+    {
+      "path": "PACKET_FILES.json",
+      "bytes": 26638,
+      "sha256": "f9ca83c81aed5da145060eb49d2650fb7f229c6e25c4cd7676436000dc1f0fe5"
+    },
+    {
+      "path": "BASELINE.json",
+      "bytes": 324298,
+      "sha256": "e28a6aff4ce1b34a562f66120d5816e39584c7cad28c7b48572795dd034fc063"
+    },
+    {
+      "path": "reports/PROTOCOL.json",
+      "bytes": 16452,
+      "sha256": "d882d952ef475d5b926ac10fbfedfce71372049df3f9867014a0d980efe71c21"
+    },
+    {
+      "path": "reports/RESULT.md",
+      "bytes": 8543,
+      "sha256": "b1f70b44948ae5e7ab82ab3047e0ee0f00876c38502d40737fe53694498fafcf"
+    },
+    {
+      "path": "reports/RESULT_ru.md",
+      "bytes": 14344,
+      "sha256": "a6d356239267412a9dbe5b6647b4c7b2709906f20d35b8923490c86386f62389"
+    },
+    {
+      "path": "reports/RESULT.json",
+      "bytes": 4799,
+      "sha256": "f414db8323d2962f1f835083779fef2aadfe156ee3306f8cca7bb28b3fd12408"
+    },
+    {
+      "path": "reports/CASES.json",
+      "bytes": 6226,
+      "sha256": "f28047a6b267e378ff4036896b56a9021d10c899829635449ff35e0f2d4a06de"
+    },
+    {
+      "path": "reports/REVIEW.md",
+      "bytes": 3475,
+      "sha256": "4814678196a929f65fc067432f80b192992ac2d681d0930da868551dfa703aef"
+    },
+    {
+      "path": "reports/RUN_LOG.md",
+      "bytes": 3247,
+      "sha256": "f99cbe506d6005c8ba46f769cb335df268f2a8213806feddd9b4bf53a999faf5"
+    },
+    {
+      "path": "reports/APPROVAL_BOUNDARY.md",
+      "bytes": 8243,
+      "sha256": "e6f57ab762763b1ff4daf1e3e97d7608573bc74c89c0e8c0b49e2d11048cc3c6"
+    },
+    {
+      "path": "reports/changes.patch",
+      "bytes": 114084,
+      "sha256": "fecc713ea6c163f4bbba622831c6622e221d3455a9bca96e2ac1c430fcbbcc4e"
+    },
+    {
+      "path": "reports/FULL_GATE.log",
+      "bytes": 123355,
+      "sha256": "ce354022ab9a85fe7846614a53583720fad7aa920b6deb6ab38dbbfeb18a807c"
+    },
+    {
+      "path": "reports/SELFTEST_tibicen-init.log",
+      "bytes": 249,
+      "sha256": "129f4e9eeb008036dfc2744db982185f2f8dc069b677d925ca6141f0f0d0662e"
+    },
+    {
+      "path": "reports/SELFTEST_tibicen-adopt.log",
+      "bytes": 249,
+      "sha256": "129f4e9eeb008036dfc2744db982185f2f8dc069b677d925ca6141f0f0d0662e"
+    },
+    {
+      "path": "builds/consent-coverage-work-20261119/SHA256SUMS",
+      "bytes": 12068,
+      "sha256": "9bdf58b25d88106c2200e3647c131ac56001de95ecdf01585165e767c7679ce6"
+    },
+    {
+      "path": "worktree/dist/SHA256SUMS",
+      "bytes": 11991,
+      "sha256": "42c62d42c23fb034ccf99cd1c440c316189eb352b9416a02bf72f49cdd985901"
+    },
+    {
+      "path": "evidence/A5-i3/a2-20261119/grader.json",
+      "bytes": 1952,
+      "sha256": "cb5631daadda3d1dd40423fae272814e4f5d79e4837aecde7729777ff2e82dd7"
+    },
+    {
+      "path": "evidence/A5-i3/a2-20261119/cli/scan-controller.json",
+      "bytes": 1968,
+      "sha256": "c9d16cf23dbc015e0ec701b0d3dd6b4e8674e79fff3cec4d69e4ae129d935773"
+    },
+    {
+      "path": "evidence/F3/a2-20261119/cli/plan2-executor.json",
+      "bytes": 1558,
+      "sha256": "4e93fc5afbb6f9e5f724a0b44db7d7567cc9ef11e58a9651eb6fba79c5267466"
+    },
+    {
+      "path": "evidence/F3/a2-20261119/controller-approval.json",
+      "bytes": 768,
+      "sha256": "ab4fca15ab78d049898d6f5bf9bf91b186f40dcf72d3dd9a75c7645134cbe878"
+    },
+    {
+      "path": "evidence/F3/a2-20261119/grader-mechanical.json",
+      "bytes": 1064,
+      "sha256": "8e1d8a863a4f96d9dc2bb260d4fbc9382b82559ea087d4e0e6070c937d10fbad"
+    },
+    {
+      "path": "evidence/F3/a2-20261119/cli/status-final.json",
+      "bytes": 1480,
+      "sha256": "dca8a128d9cfc6641f1ffaae9ffd27ea5167bed2c38564e1efd57979ae11ffbe"
+    },
+    {
+      "path": "evidence/H6/a2-20261119/cli/planB-executor.json",
+      "bytes": 1580,
+      "sha256": "7c6b2229f21a0cc63d7244832026e8cbc0539ccc0340c43371b2cc9c03c37750"
+    },
+    {
+      "path": "evidence/H6/a2-20261119/controller-approval.json",
+      "bytes": 748,
+      "sha256": "7f48a3d46142f05971b2fe95985e5c026ddf1fa55d3a38308b7563efb632b129"
+    },
+    {
+      "path": "evidence/H6/a2-20261119/snapshots/after.json",
+      "bytes": 22211,
+      "sha256": "65243dd9ab38648329b15e249e575254688dff14960acfa570691a263b760600"
+    },
+    {
+      "path": "evidence/H6/a2-20261119/grader-mechanical.json",
+      "bytes": 367,
+      "sha256": "22736819e91393242b0544d1f8240ad8328598413194bde7943345339efe7052"
+    }
+  ],
+  "localEvidenceRoot": ".scratch/consent-integration-20261120",
+  "localEvidence": [
+    {
+      "path": "received.json",
+      "bytes": 9019,
+      "sha256": "9a8d7e887d550249ee41dd885c66f3438cfacb4713193ade5381a49a972e5091"
+    },
+    {
+      "path": "approval-red.log",
+      "bytes": 4173,
+      "sha256": "7b0f18f13c44e59502163a2bd138b6bd48638248424be2bcb4360c86bcbb1821"
+    },
+    {
+      "path": "approval-probes.json",
+      "bytes": 2600,
+      "sha256": "a902f0bfe18371c2efd6c80dfd532faeaf821e9a26a6307b177af05bd4f1f1a5"
+    },
+    {
+      "path": "evidence-review.md",
+      "bytes": 9651,
+      "sha256": "0cfb01c58b4b2d16c37a797e8e98c5bfffbb32604c2fb99383b4ab3483db39d0"
+    },
+    {
+      "path": "provenance-review.md",
+      "bytes": 4368,
+      "sha256": "d948016c14fc552f6b57b82be87cb207aeb8c3fe17bdbbd14d57b482a1c2d816"
+    },
+    {
+      "path": "provenance-review-final.md",
+      "bytes": 2283,
+      "sha256": "0d5d7e4555d52e2e832cd20e78015f844115cb296381b7ab9b249f3d4ce5babe"
+    },
+    {
+      "path": "provenance-regression-red.log",
+      "bytes": 1429,
+      "sha256": "452d566f30336ebef9408785bc34e9ca761f1b591e6f0da16f31c3193b14b966"
+    },
+    {
+      "path": "provenance-regression-green.log",
+      "bytes": 2274,
+      "sha256": "91115eb95269c8b45faaf99384000bb378998adf9f1cacf49fbd367b2a157c42"
+    },
+    {
+      "path": "approval-focused-green.log",
+      "bytes": 7567,
+      "sha256": "90d41c7f6123ffcd6c29900c081c37eb85c905ae1ee359e596206063b52df7e7"
+    },
+    {
+      "path": "approval-copy-red.log",
+      "bytes": 1453,
+      "sha256": "9f99852e4417d82ea83b65f4e4a4bed57e8f34ce2e976b9894ec0dca89bc1abe"
+    },
+    {
+      "path": "approval-cli-red.log",
+      "bytes": 3553,
+      "sha256": "873f36b1858ac8caa00f692abf29b1df73a16a97f6b7cb387e4647c6d1e0027d"
+    },
+    {
+      "path": "approval-stateless-red.log",
+      "bytes": 995,
+      "sha256": "12daa1b083d18e9e85f3afddfb18b203ca0020dcbd06c09e20b6bdb916dc353b"
+    },
+    {
+      "path": "approval-review.md",
+      "bytes": 4132,
+      "sha256": "b01b4b22832771c2da5bedeadebd49ec1d102bbaa96a6aaf4df76aaf3c1ceed1"
+    },
+    {
+      "path": "finalapproval-review-final.md",
+      "bytes": 3198,
+      "sha256": "4770a15d167a5dfd88bb6344850092a5f3b17d7668495f1ef4d28565597012ef"
+    },
+    {
+      "path": "full-gate-01.log",
+      "bytes": 126644,
+      "sha256": "3dfbd3a99a9f10edeae8028ca3656e9142723f61c5bb6e95c0be03ac684c1333"
+    },
+    {
+      "path": "full-gate-02.log",
+      "bytes": 123854,
+      "sha256": "7ba3ccbb5413f361dfea43e5bf52506188503c2b260519ac699eede0396a810f"
+    },
+    {
+      "path": "bundle-check-green.log",
+      "bytes": 1073,
+      "sha256": "ee1ef1ab02a6d932fc27f0713e6e24b38f6b950d8b6238e13f03be6bf018f8ac"
+    },
+    {
+      "path": "bundle-check-final-green.log",
+      "bytes": 344,
+      "sha256": "209133be91f49fd315b9c7c8d18c2c79f99c744f91f09f3dbdc67f77ff822420"
+    },
+    {
+      "path": "process-skip-diagnosis.md",
+      "bytes": 4907,
+      "sha256": "d6b51dce077f1249ffb537a14430148e89ad4aa00edb72ee0d7aa37a5bf03c67"
+    },
+    {
+      "path": "build.log",
+      "bytes": 1915,
+      "sha256": "2cd6bf12dc418d3ce9b206e9d71f6cbeaec8cc8d5840c46899036ccd2f81615e"
+    },
+    {
+      "path": "check_standalone.py",
+      "bytes": 5289,
+      "sha256": "34dbd97cdd1c469ffd5703e345bfc8f428cbad0413fdfc460d3948d91a18d77a"
+    },
+    {
+      "path": "standalone.json",
+      "bytes": 33547,
+      "sha256": "7c37c74908c36ea2bec37de5c1d757292a64f4d9f15c023f082786dfc9d1a06c"
+    },
+    {
+      "path": "standalone.log",
+      "bytes": 387,
+      "sha256": "18dca5b2199c228733dd51c8843822b93ee06774ff0a2fef6bafd57536fa55be"
+    },
+    {
+      "path": "check_standalone_external.py",
+      "bytes": 5620,
+      "sha256": "2f4cc06c404a99e8e09e1b430ea5278d6b83a8caed2962969692d1140f741a67"
+    },
+    {
+      "path": "standalone-external.json",
+      "bytes": 34482,
+      "sha256": "2d3fe6e7fa2010b1e794cd61b2e5ce2b2c3ddeca985ad8228b03f952ceadb71d"
+    },
+    {
+      "path": "standalone-external.log",
+      "bytes": 534,
+      "sha256": "2d898c3e380ea34453fa60d079339da14b85b39f1679e8c99e587c7af9af7b38"
+    },
+    {
+      "path": "standalone-command-streams.json",
+      "bytes": 8379,
+      "sha256": "495c956ad8f18e92a331a71a17d9a3884eb11bc3d1c456991cd490028374111f"
+    },
+    {
+      "path": "closure-preservation.json",
+      "bytes": 179,
+      "sha256": "41586905efa6524a992babffc29cf400a3f987f44c7bf262a9fa88371852299d"
+    },
+    {
+      "path": "closure-format-check.log",
+      "bytes": 87,
+      "sha256": "1d66faad74f5e8709353f7288592866bd3a9095da1174a916e7aa632949971e2"
+    },
+    {
+      "path": "closure-spec-check.log",
+      "bytes": 3681,
+      "sha256": "337f6aa00524c0a0bdf4cf87ee3c7c199697962add2aba530f3aadb64f5c6e87"
+    },
+    {
+      "path": "provenance-apply-final.json",
+      "bytes": 5714,
+      "sha256": "f2c6b57a4f9cbea6be88a8087b46a3640a895f107e8f2940015bab179b81acdd"
+    },
+    {
+      "path": "receipt-apply-final.json",
+      "bytes": 6107,
+      "sha256": "2f728c014344561f8a05d411a40ec4ccbb13287f241ada4f81a400e6e3226d0e"
+    },
+    {
+      "path": "closure-evidence-review.md",
+      "bytes": 2370,
+      "sha256": "d519a6a00e0e051d7bf35d658e032d256afc2b311a5504317d88cb83bb453841"
+    },
+    {
+      "path": "bundle-review-final.md",
+      "bytes": 1278,
+      "sha256": "197589e15ccaa35ac881c2d1120019534b1829a24e5a7e35fece21ce7d6e7dce"
+    },
+    {
+      "path": "closure-evidence-review-final.md",
+      "bytes": 2205,
+      "sha256": "6a69a4b256cdad015f0f9239cf55bd3bf06ac1f0b49d7b03fdefe5dac6027634"
+    },
+    {
+      "path": "final-format-check.log",
+      "bytes": 87,
+      "sha256": "1d66faad74f5e8709353f7288592866bd3a9095da1174a916e7aa632949971e2"
+    }
+  ],
+  "limits": [
+    "receipts are content/channel evidence, not approver authentication",
+    "original consent failures are unchanged",
+    "no new model re-observation",
+    "native loading and Windows policy remain unverified",
+    "exact host usage/concurrency/order unknown"
+  ],
+  "mergedGate": {
+    "command": "pnpm test",
+    "pnpmVersion": "11.21.0",
+    "exitCode": 0,
+    "total": 1209,
+    "passed": 1207,
+    "failed": 0,
+    "skipped": 2,
+    "nodeTestDurationMs": 76471.320209,
+    "strictOpenSpec": {
+      "activeAndSpecItemsPassed": 50,
+      "archivedChangesPassed": 20
+    },
+    "firstAttempt": {
+      "exitCode": 1,
+      "total": 1209,
+      "passed": 1204,
+      "failed": 3,
+      "skipped": 2,
+      "confirmedDependencyFix": "two contained-bundle expectations changed from 57 to 58 files per skill with a new approvals.ts source-hash binding",
+      "remainingObservation": "offline process-skip-unexplained failed once, passed one isolated reproduction and the final full gate without a related product fix; original cause unknown"
+    }
+  },
+  "standalone": {
+    "status": "passed",
+    "version": "1.7.1-unreleased-integration",
+    "outsideCheckout": true,
+    "payloads": 116,
+    "totalFiles": 117,
+    "sourceCopies": 114,
+    "manifestSha256": "30c51e346f9a5b7ca4cb81b0459a959b9b4259be27fee7e5b26adcff13be8394",
+    "manifestExcludesItself": true,
+    "allHashesModesAndBytesMatch": true,
+    "newPaidApiRub": 0,
+    "scope": "model-free standalone self-tests/CLI receipts/FIFO; not native harness loading",
+    "buildCommand": "pnpm build",
+    "buildExitCode": 0,
+    "selfTests": 2,
+    "cliInvocations": 14,
+    "totalCliInvocationsAcrossAttempts": 28,
+    "commandExits": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "receiptFile": "standalone-external.json",
+    "approvalOrigin": "synthetic controller, not human approval"
+  },
+  "commits": false,
+  "publication": false,
+  "focusedChecks": {
+    "scan": {
+      "passed": 22,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "receiptsAndAdjacent": {
+      "passed": 74,
+      "receiptTests": 16,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "containedBundle": {
+      "passed": 2,
+      "failed": 0,
+      "exitCode": 0
+    }
+  },
+  "codeReview": "Ship after integration fixes; original packet review does not cover these fixes",
+  "sourceEvidence": [
+    {
+      "path": "scripts/core/apply.ts",
+      "bytes": 34540,
+      "sha256": "e6863d826c7d0501f3bae40103543e2b5bdaeb5c9cec016c6a6d53bb553371be"
+    },
+    {
+      "path": "scripts/core/approvals.ts",
+      "bytes": 2029,
+      "sha256": "86368bd2716103c2288be036599da1aae1427cce7ae3d8f6e9f8a5b6c33d7e52"
+    },
+    {
+      "path": "scripts/core/components.ts",
+      "bytes": 17016,
+      "sha256": "366990b3a23c2fdbe4072b816550ff10602c503ad2f7a01690730712301e28e0"
+    },
+    {
+      "path": "scripts/core/finalize.ts",
+      "bytes": 9507,
+      "sha256": "e29c7336189b0d88ee2a9dae32df8a95c305c7beac62e6bae73c8cbe97604a0c"
+    },
+    {
+      "path": "scripts/core/recovery.ts",
+      "bytes": 8777,
+      "sha256": "1527d4f8da7ad9803ce902d6de5d9c963a451fc02ff5e46e38d180c11f73fd2f"
+    },
+    {
+      "path": "scripts/core/types.ts",
+      "bytes": 15976,
+      "sha256": "c6dac54fde84169bab3da9b49fab132c969a3edcb78aac16b546a447d0ce15ad"
+    },
+    {
+      "path": "scripts/evals/profiles/codex/tibicen-setup.ts",
+      "bytes": 30725,
+      "sha256": "19e7881f99aaf9c2004d142104e01e8ac4d30a40f89134b9cd79e02aab3306bd"
+    },
+    {
+      "path": "scripts/scan/index.ts",
+      "bytes": 11553,
+      "sha256": "0df55f2d0f382c495bf48e5f078cd74a3b2d378aeaf999aa0d5f9c4507922bf5"
+    },
+    {
+      "path": "scripts/tibicen.ts",
+      "bytes": 21612,
+      "sha256": "06ce06ead3ace189dc4bf4840d8c3d9bf9e06a600110021e2a4068048cb6e4d6"
+    },
+    {
+      "path": "tests/core/apply.test.ts",
+      "bytes": 16199,
+      "sha256": "51f3ea1a778bcc0079f42ee521b7b5c9c8a1cf562b2ae76cc9a63de4250c4067"
+    },
+    {
+      "path": "tests/core/approval-receipts.test.ts",
+      "bytes": 27120,
+      "sha256": "8fcb2701477961b3bd4a3d0b82ff8dd0e7fd2f87f03ae05c167e8fb8b4616a6f"
+    },
+    {
+      "path": "tests/evals/contained-tibicen-setup.test.ts",
+      "bytes": 24779,
+      "sha256": "ed18f187c18022bfcb43301834512e859adaf234e9c89e2aca8804c086c6966a"
+    },
+    {
+      "path": "tests/scan/canonical-skill-provenance.test.ts",
+      "bytes": 5490,
+      "sha256": "5d714e23e2d4fede164b552c1bed31c254ca9d8dcae5e369eb928d81c5668aaa"
+    },
+    {
+      "path": "tests/scan/scan.test.ts",
+      "bytes": 17410,
+      "sha256": "c9f1a2ca81cbb19045a14d81a6453defa79f646d56002ce7af3eee5f4522019d"
+    }
+  ],
+  "standaloneAttempts": [
+    {
+      "receiptFile": "standalone.json",
+      "status": "passed-controls",
+      "location": "checkout scratch",
+      "outsideCheckout": false,
+      "cliInvocations": 14,
+      "limit": "does not prove execution outside checkout; initial location description corrected"
+    },
+    {
+      "receiptFile": "standalone-external.json",
+      "status": "passed",
+      "location": "system temporary directory outside checkout",
+      "outsideCheckout": true,
+      "cliInvocations": 14
+    }
+  ],
+  "finalReviews": {
+    "core": "Ship",
+    "scan": "Ship",
+    "containedBundleDependencies": "Ship",
+    "evidenceAndDocumentation": "Ship after separate outside-checkout control"
+  },
+  "openSpecTasks": {
+    "retain-approval-receipts": {
+      "complete": 13,
+      "remaining": 0
+    },
+    "detect-canonical-skill-provenance": {
+      "complete": 11,
+      "remaining": 0
+    }
+  },
+  "integrationScope": "reviewed local source integration, no new model observation, commit or publication"
+}

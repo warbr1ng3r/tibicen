@@ -1,5 +1,11 @@
 # Tibicen development plan
 
+## Consent and routing — integration complete, 20 November (Unreleased)
+
+Root integrated the returned ZCode/GLM packet after independent code and evidence review. The [assessment](evals/results/2026-11-20-consent-coverage-assessment/README.md) preserves its positive fixture outcomes while distinguishing frozen A5-i3 routing failure, incomplete F3/H6 digest evidence and contradictory H6 approval timing. G5 remains blocked and E2 loading unverified; guarded CB observations do not prove unprompted compliance. The original packet and published 1.7.1 stay unchanged.
+
+The two bounded changes are [approval receipts](../openspec/changes/retain-approval-receipts/proposal.md), which retain content/channel evidence without authenticating the approver, and [canonical marker routing](../openspec/changes/detect-canonical-skill-provenance/proposal.md). Integration corrects cross-directory marker collisions and receipt validation/inheritance defects with regressions. Detailed tasks stay in those changes. Independent reviews, the merged gate (1,207 passed, zero failures, two existing skips) and the 116-payload standalone build passed. The assessment retains the first failed gate and its unresolved offline-control cause separately. Next is compatible minor delivery preparation; do not repeat the broad model sweep. A future observation needs retained exact grant/envelope/consuming-command records, while native loading and Windows policy require genuinely available host capabilities.
+
 ## Current delivery — 1.7.1 published and site verified, 19 November
 
 The compatible [1.7.1 patch](evals/results/2026-11-19-release-1.7.1/README.md) is published after exact-candidate checks, public CI/platforms and returned-asset verification. Installation/checksum metadata passed CI, Cloudflare and legacy Pages; all 27 returned bodies match the source-bound local build. Both indexes contain 17 versions, preserving all 16 previous records and warnings. The release effort is closed. Original scenario failures and unknown behavioral effects remain explicit; the next bounded work is listed below.

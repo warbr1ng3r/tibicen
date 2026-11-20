@@ -1,5 +1,11 @@
 # Issue tracker
 
+## Closed local integration — consent-and-coverage packet, 20 November
+
+Owner: none; root completed integration with independent approval, scan and evidence reviews. The [assessment](../evals/results/2026-11-20-consent-coverage-assessment/README.md) separates reported outcomes from retained primary evidence. A5-i3 contains a frozen routing failure; F3/H6 support functional results with incomplete consumed-digest evidence, and H6 approval timing contradicts prior consent. G5 remains blocked and E2 unverified. The returned 32-file patch and published 1.7.1 are preserved.
+
+[Approval receipts](../../openspec/changes/retain-approval-receipts/proposal.md) and [canonical marker routing](../../openspec/changes/detect-canonical-skill-provenance/proposal.md) are integrated with confirmed review defects fixed. Final reviews returned Ship; the merged gate passed 1,207 tests with zero failures and two existing skips. Both isolated built skills, all 116 payload hashes/modes and 14 real CLI invocations passed. The first gate's failures and unknown offline-control cause are retained separately. Requirements and detailed tasks stay in the changes. Source remains Unreleased; no new behavioral model run, paid API, commit or publication belongs to this integration. Next is compatible minor delivery preparation. Future bounded evidence work requires complete exact approval and native CLI records, not another aggregate all-pass claim.
+
 ## Closed release effort — 1.7.1 published and site verified, 19 November
 
 Owner: none; root completed publication and site verification. [1.7.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.1) is published. Public source CI, six platform cells, exact public lifecycle and returned assets passed. The [release report](../evals/results/2026-11-19-release-1.7.1/README.md) binds source, distribution, tag and checks. Metadata source c763fb66a048335ef37a9abedf425b5c8f375f23 passed CI, Cloudflare and legacy Pages. All 27 returned bodies match the source-bound local build; both indexes contain 17 versions, preserving all 16 previous records and warnings. Published 1.7.0 is preserved. No new model run or paid API call. Next work targets external approval receipts and the A5/F3/H6/G5 gaps; original failed grades and native-loading limits remain unchanged.
