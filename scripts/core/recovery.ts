@@ -9,6 +9,7 @@ import { assert, digest, hashContent, parseData } from './contracts.ts';
 import { readCurrent, unwrapPlan } from './plan.ts';
 import { safePath, validateRelativePath } from './paths.ts';
 import { installedComponents } from './components.ts';
+import { validateApprovalReceipts } from './approvals.ts';
 
 export const STATE_SCHEMA = 3;
 export const resultHash = (change: Change) =>
@@ -152,6 +153,10 @@ export function validateRecoveryState(root: string, state: Session) {
         'Command attempt identity differs from its approved command.',
       );
   }
+  validateApprovalReceipts(state.approvals, state.id, {
+    root,
+    proposalDigest: state.proposalDigest,
+  });
 }
 
 export async function inspectRecovery(

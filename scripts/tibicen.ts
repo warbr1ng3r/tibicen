@@ -5,6 +5,7 @@ import { constants } from 'node:fs';
 import { open, readFile, readdir, realpath } from 'node:fs/promises';
 import {
   assert,
+  digest,
   parseData,
   serializeData,
   MAX_DATA_BYTES,
@@ -291,6 +292,9 @@ export async function main(argv = process.argv.slice(2)) {
     return createProposal(root, await inputData(options.input));
   if (command === 'status') {
     const result = await getStatus(root, { forbiddenPaths });
+    const receiptSession = result.state
+      ? result.manifest?.sessions.find((item) => item.id === result.state!.id)
+      : result.manifest?.sessions.at(-1);
     const memory = result.state?.proposal.memory ?? result.manifest?.memory;
     return {
       schema: 1,
@@ -308,6 +312,7 @@ export async function main(argv = process.argv.slice(2)) {
         result.state?.commandAttempts ??
         result.manifest?.sessions?.at(-1)?.commandAttempts ??
         [],
+      approvals: result.state?.approvals ?? receiptSession?.approvals ?? [],
       checks: result.state?.checks ?? result.manifest?.checks ?? {},
     };
   }
@@ -347,6 +352,11 @@ export async function main(argv = process.argv.slice(2)) {
       commandAttempts:
         current.state?.commandAttempts ??
         current.manifest?.sessions?.at(-1)?.commandAttempts ??
+        [],
+      approvals:
+        session?.approvals ??
+        current.manifest?.sessions.find((item) => item.id === session?.id)
+          ?.approvals ??
         [],
       checks: current.state?.checks ?? current.manifest?.checks ?? {},
       manualActions:
@@ -397,21 +407,49 @@ export async function main(argv = process.argv.slice(2)) {
       'A proposal is required. If state is absent, scan and make a new proposal.',
     );
     const { runtimeHooks } = await import('./core/runtime.ts');
-    const hooks = runtimeHooks(
-      root,
-      plan,
-      typeof options.approve === 'string' ? options.approve : '',
-    );
     try {
-      return await applyPlan(root, plan, {
-        approvedDigest:
-          typeof options.approve === 'string' ? options.approve : undefined,
-        resume: command === 'resume',
-        beforeApply: hooks.beforeApply,
-        verify: hooks.verify,
-      });
-    } finally {
-      await hooks.cleanup();
+      const hooks = runtimeHooks(
+        root,
+        plan,
+        typeof options.approve === 'string' ? options.approve : '',
+      );
+      try {
+        return await applyPlan(root, plan, {
+          approvedDigest:
+            typeof options.approve === 'string' ? options.approve : undefined,
+          approvalChannel: 'cli --approve',
+          resume: command === 'resume',
+          beforeApply: hooks.beforeApply,
+          verify: hooks.verify,
+        });
+      } finally {
+        await hooks.cleanup();
+      }
+    } catch (caught) {
+      // The runner binds execution to the same digest and can refuse before
+      // applyPlan records its own refusal; keep the CLI receipt identical.
+      const error = caught as NodeJS.ErrnoException & { approval?: unknown };
+      if (error.code === 'consent-required' && !error.approval)
+        error.approval = {
+          outcome: 'refused',
+          operation: command === 'resume' ? 'resume' : 'apply',
+          channel: 'cli --approve',
+          approvedDigest:
+            typeof options.approve === 'string' ? options.approve : null,
+          proposalDigest: digest(plan),
+          root: await realpath(root),
+          sessionId: await readStatusMetadata(root).then(
+            (metadata) =>
+              metadata.state?.id ??
+              (command === 'resume'
+                ? metadata.manifest?.sessions.at(-1)?.id
+                : null) ??
+              null,
+            () => null,
+          ),
+          at: new Date().toISOString(),
+        };
+      throw error;
     }
   }
   if (command === 'verify') {
@@ -584,6 +622,7 @@ if (
             message: error.code
               ? error.message
               : 'Operation could not complete; no successful result is claimed.',
+            ...(error.approval ? { approval: error.approval } : {}),
           },
         }),
       );

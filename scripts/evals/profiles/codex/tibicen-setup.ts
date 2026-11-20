@@ -164,9 +164,9 @@ async function frozenAssets() {
     assert(
       Object.keys(assets).filter((name) =>
         name.startsWith(setupRuntime + '/' + skill + '/'),
-      ).length === 57,
+      ).length === 58,
       'contained-setup-distribution',
-      'Use the complete inspected 57-file bundle.',
+      'Use the complete inspected 58-file bundle.',
     );
   const names = ['package.json', 'pnpm-lock.yaml'];
   async function sourceFiles(relative: string) {
