@@ -1,4 +1,5 @@
 import type {
+  ApprovalReceipt,
   Proposal,
   Session,
   ApplyOptions,
@@ -29,6 +30,11 @@ import {
   MAX_DATA_BYTES,
 } from './contracts.ts';
 import { readProjectFile } from '../scan/index.ts';
+import {
+  APPROVAL_RECEIPTS_LIMIT,
+  validateApprovalChannel,
+  validateApprovalReceipts,
+} from './approvals.ts';
 import { safePath, isInfrastructurePath } from './paths.ts';
 import {
   containsSecret,
@@ -247,6 +253,27 @@ async function sourceGate(proposal: Proposal, options: ApplyOptions) {
   }
 }
 
+export { APPROVAL_RECEIPTS_LIMIT } from './approvals.ts';
+
+function approvalReceipt(
+  outcome: ApprovalReceipt['outcome'],
+  options: ApplyOptions,
+  proposalDigest: string,
+  root: string,
+  sessionId: string | null,
+): ApprovalReceipt {
+  return {
+    outcome,
+    operation: options.resume ? 'resume' : 'apply',
+    channel: options.approvalChannel ?? 'programmatic',
+    approvedDigest: options.approvedDigest ?? null,
+    proposalDigest,
+    root,
+    sessionId,
+    at: new Date().toISOString(),
+  };
+}
+
 export async function applyPlan(
   root: string,
   input: unknown,
@@ -254,14 +281,39 @@ export async function applyPlan(
 ) {
   root = await realpath(root);
   const home = await realpath(options.home ?? os.homedir());
+  validateApprovalChannel(
+    options.approvalChannel === undefined
+      ? 'programmatic'
+      : options.approvalChannel,
+  );
   const previous = await getStatus(root);
   const proposal = unwrapPlan(input ?? previous.state?.proposal);
   const proposalDigest = digest(proposal);
-  assert(
-    options.approvedDigest === proposalDigest,
-    'consent-required',
-    'Approve the digest of this exact proposal before writing or executing.',
-  );
+  if (options.approvedDigest !== proposalDigest) {
+    // The refusal record names both sides of the gate: the digest presented on
+    // the approval channel and the digest of the plan actually offered. A
+    // controller comparing its own approved digest with this record exposes
+    // executor-side divergence after the fact. The record travels only in the
+    // error envelope: a refused attempt must not write project state, because
+    // .tibicen writes are themselves part of the approved service-write
+    // contract.
+    const refusal = approvalReceipt(
+      'refused',
+      options,
+      proposalDigest,
+      root,
+      previous.state?.id ??
+        (options.resume ? previous.manifest?.sessions.at(-1)?.id : null) ??
+        null,
+    );
+    const error = Object.assign(
+      new Error(
+        'Approve the digest of this exact proposal before writing or executing.',
+      ),
+      { code: 'consent-required', approval: refusal },
+    );
+    throw error;
+  }
   assert(
     root === proposal.root,
     'invalid-plan',
@@ -746,6 +798,22 @@ export async function applyPlan(
     reason: 'interrupted',
   };
   session.attempts.push(attempt);
+  // The approval was consumed for this application attempt: bind its exact
+  // digest, channel, root and session before the first state persistence.
+  const priorApprovals =
+    oldState?.approvals ??
+    (options.resume
+      ? previous.manifest?.sessions.find((item) => item.id === session.id)
+          ?.approvals
+      : undefined);
+  session.approvals = [
+    ...(priorApprovals ?? []),
+    approvalReceipt('consumed', options, proposalDigest, root, session.id),
+  ].slice(-APPROVAL_RECEIPTS_LIMIT);
+  validateApprovalReceipts(session.approvals, session.id, {
+    root,
+    proposalDigest,
+  });
   const persist = () =>
     atomicWrite(root, '.tibicen/state/session.json', serializeData(session));
   await persist();

@@ -22,6 +22,7 @@ import { validateSharedRules } from './shared-rules.ts';
 import { validateProcessPlan } from '../process/index.ts';
 import { validateMemory } from './memory.ts';
 import { readProjectFile } from '../scan/index.ts';
+import { validateApprovalReceipts } from './approvals.ts';
 
 export const MANIFEST_SCHEMA = 2;
 const hash = (value: unknown) =>
@@ -127,6 +128,8 @@ export async function readManifest(root: string): Promise<ManifestSnapshot> {
     'invalid-manifest',
     'Passport needs installed files and session history.',
   );
+  for (const session of manifest.sessions)
+    validateApprovalReceipts(session.approvals, session.id);
   validateSharedRules(
     manifest.sharedRules === undefined ? [] : manifest.sharedRules,
   );

@@ -56,7 +56,28 @@ export function infrastructurePath(relative: string) {
   );
 }
 
-function installedTibicenSkill(relative: string) {
+// Canonical presence is carried by distribution identity, never by a name.
+const CANONICAL_SKILL_NAMES = ['tibicen-init', 'tibicen-adopt'];
+
+// A canonical-named skill directory's package.json is the identity marker every
+// distribution build has written since 0.1.0-alpha.1 (scripts/build.ts).
+function canonicalSkillMarkerFile(relative: string) {
+  const match =
+    /(?:^|\/)(\.[^/]+\/skills(?:-[a-zA-Z0-9_-]+)?\/([^/]+))\/package\.json$/.exec(
+      relative,
+    );
+  if (!match) return null;
+  const [, root, name] = match;
+  return CANONICAL_SKILL_NAMES.includes(name) &&
+    harnessInfrastructurePath(`${root}/SKILL.md`)
+    ? { root: path.posix.dirname(relative), name }
+    : null;
+}
+
+function installedTibicenSkill(
+  relative: string,
+  canonicalSkills: ReadonlySet<string>,
+) {
   for (const match of relative.matchAll(
     /(?:^|\/)(\.[^/]+\/skills(?:-[a-zA-Z0-9_-]+)?\/([^/]+))(?=\/)/g,
   )) {
@@ -70,7 +91,10 @@ function installedTibicenSkill(relative: string) {
     )
       return false;
     if (harnessInfrastructurePath(`${root}/SKILL.md`))
-      return ['tibicen-init', 'tibicen-adopt'].includes(name);
+      return (
+        CANONICAL_SKILL_NAMES.includes(name) &&
+        canonicalSkills.has(relative.slice(0, match.index + match[0].length))
+      );
   }
   return false;
 }
@@ -173,7 +197,8 @@ export async function scanProject(
     excluded: PathReason[] = [],
     commands: Command[] = [];
   const languages = new Set<string>(),
-    agents = new Set<string>();
+    agents = new Set<string>(),
+    canonicalSkills = new Set<string>();
   let entriesSeen = 0,
     totalBytes = 0,
     existing = false,
@@ -249,6 +274,26 @@ export async function scanProject(
           mode,
           infrastructure,
         });
+        const marker = canonicalSkillMarkerFile(name);
+        if (marker) {
+          try {
+            const identity = JSON.parse(content.toString('utf8')) as Partial<{
+              name: unknown;
+              version: unknown;
+            }>;
+            if (
+              identity &&
+              typeof identity === 'object' &&
+              identity.name === marker.name &&
+              typeof identity.version === 'string' &&
+              identity.version.length > 0
+            )
+              canonicalSkills.add(marker.root);
+          } catch {
+            // A malformed marker is ordinary third-party content, not
+            // canonical identity; unknown provenance stays unknown.
+          }
+        }
         const language = LANGUAGES[path.posix.extname(name)];
         if (language && !infrastructure) languages.add(language);
         for (const agent of observedHarnesses(name)) agents.add(agent);
@@ -331,7 +376,9 @@ export async function scanProject(
     root: base,
     kind: existing || gaps.length ? 'existing' : 'empty',
     mode: files.some(
-      (file) => file.infrastructure && !installedTibicenSkill(file.path),
+      (file) =>
+        file.infrastructure &&
+        !installedTibicenSkill(file.path, canonicalSkills),
     )
       ? 'improve'
       : 'init',

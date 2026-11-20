@@ -155,6 +155,7 @@ async function writeManifest(
         }
       : {}),
     ...(manifestMigration ? { manifestMigration } : {}),
+    ...(state.approvals?.length ? { approvals: state.approvals } : {}),
   });
   const installed = await installedComponents(
     state.proposal.components,
@@ -275,6 +276,7 @@ export async function finalizeSession(
         reason: session.reason,
         applied,
         checks: session.checks,
+        approvals: session.approvals ?? [],
         continuation:
           'Inspect status, verify actual files, and approve a proposal again before resume.',
       }
@@ -284,6 +286,7 @@ export async function finalizeSession(
         status: session.status,
         applied,
         checks: session.checks,
+        approvals: session.approvals ?? [],
         manualActions: proposal.manualActions,
         manualFragments: proposal.manualFragments ?? [],
         manifest: manifest!,

@@ -554,6 +554,20 @@ export interface SessionSummary {
   manifestMigration?: { from: number; to: number };
   commandAttempts?: CommandAttempt[];
   sharedRules?: SharedRule[];
+  approvals?: ApprovalReceipt[];
+}
+
+// Evidence of content identity and channel at the consent gate; the approver's
+// identity stays unknown and is never derived from executor prose.
+export interface ApprovalReceipt {
+  outcome: 'consumed' | 'refused';
+  operation: 'apply' | 'resume';
+  channel: 'cli --approve' | 'programmatic';
+  approvedDigest: string | null;
+  proposalDigest: string;
+  root: string;
+  sessionId: string | null;
+  at: string;
 }
 
 export interface Session {
@@ -587,6 +601,7 @@ export interface Session {
   };
   componentBaseline?: ManifestSnapshot;
   manifestHash?: string | null;
+  approvals?: ApprovalReceipt[];
   reason?: string;
 }
 
@@ -618,6 +633,9 @@ export interface Manifest {
 export interface ApplyOptions {
   home?: string;
   approvedDigest?: string;
+  // Provenance of the approval channel, set by the component that owns the
+  // channel (the CLI argv). Library callers stay 'programmatic'.
+  approvalChannel?: ApprovalReceipt['channel'];
   resume?: boolean;
   discovery?: DiscoveryOptions;
   timeoutMs?: number;
