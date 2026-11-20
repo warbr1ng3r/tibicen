@@ -1,11 +1,12 @@
 # История изменений
 
-Версия 1.7.1 опубликована. В [сведениях о выпуске](docs/RELEASING.md) указаны неизменяемые source/distribution refs, проверки и оставшиеся ограничения охвата.
+Версия 1.8.0 опубликована. В [сведениях о выпуске](docs/RELEASING.md) указаны неизменяемые source/distribution refs, проверки и оставшиеся ограничения охвата.
 
 ## Unreleased
 
-Завершённые изменения ниже подготовлены для неопубликованного кандидата 1.8.0.
-См. [отчёт кандидата](docs/evals/results/2026-11-20-release-1.8.0-preparation/README.md).
+## [1.8.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.0) — 2026-11-20
+
+См. [отчёт выпуска](docs/evals/results/2026-11-20-release-1.8.0/README.md).
 
 ### Добавлено
 

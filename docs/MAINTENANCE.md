@@ -1,5 +1,9 @@
 # Maintaining Tibicen rules and adapters
 
+## 1.8.0 published — 2026-11-20
+
+[1.8.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.0) was published at 2026-11-20T04:15:05Z. Source ab509eccca659ac7a273540661974c882fb8908c, distribution a748ba3932e85f5194a3ea450c003f83bf8dcd9f, annotated tag 8c1d07daf16ad9b5f25bea707357cc7588b3040e. Published 1.7.1 is preserved. Exact checks, delivery and limits are retained in the [release report](evals/results/2026-11-20-release-1.8.0/README.md). Website metadata acceptance is tracked separately there.
+
 ## 1.7.1 published — 2026-11-19
 
 [1.7.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.7.1) was published at 2026-11-19T00:41:12Z. Source 7896e21c8fc384a08a739bc3e7475f2a68e56406, distribution 9a5e1ef2eb837075bb79e2fb2db01f439343d28d, annotated tag e42cc8202bdebc39ded3ee829980ca57edca1394. Public CI, six platform cells, exact public lifecycle and three returned assets/115 archive files passed. Published 1.7.0 is preserved. [Report](evals/results/2026-11-19-release-1.7.1/README.md). Metadata source c763fb66a048335ef37a9abedf425b5c8f375f23 passed CI, Cloudflare and legacy Pages. All 27 returned bodies match the source-bound local build; both indexes contain 17 versions, preserving the previous 16 records and warnings. The release effort is closed.

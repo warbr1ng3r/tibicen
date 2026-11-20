@@ -1,5 +1,14 @@
 # Tibicen development plan
 
+## Current delivery — 1.8.0 published, website acceptance in progress
+
+[1.8.0](evals/results/2026-11-20-release-1.8.0/README.md) is published after exact
+public CI, six native platform cells, public lifecycle and returned-asset checks.
+The compatible receipts/routing changes are delivered; prior observations retain
+their evidence limits. Current work is installation/checksum metadata deployment
+and returned-byte verification, preserving 17 earlier records. No new product
+feature or model sweep belongs to this release closure.
+
 ## Next delivery — 1.8.0 locally prepared, 20 November
 
 The compatible minor [candidate](evals/results/2026-11-20-release-1.8.0-preparation/README.md)

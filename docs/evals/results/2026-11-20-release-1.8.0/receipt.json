@@ -1,0 +1,146 @@
+{
+  "version": "1.8.0",
+  "status": "published-site-pending",
+  "release": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.0",
+  "releaseId": 452259773,
+  "publishedAtUtc": "2026-11-20T04:15:05Z",
+  "sourceCommit": "ab509eccca659ac7a273540661974c882fb8908c",
+  "distributionCommit": "a748ba3932e85f5194a3ea450c003f83bf8dcd9f",
+  "annotatedTag": "8c1d07daf16ad9b5f25bea707357cc7588b3040e",
+  "checks": {
+    "CI": 44672175401,
+    "platforms": 44672177483,
+    "platformCells": 6,
+    "WindowsActualExecutionCells": 2,
+    "publication": 44673107632,
+    "allSuccess": true
+  },
+  "assets": {
+    "tibicen-1.8.0.tar.gz": "2aad29f3a57bc2d93855fdc918eecd4daad478f595bac2673e4ef4705b4c672d",
+    "distribution-SHA256SUMS": "86b5876b5c0c5cf5e61d1f598f3552e7447d3993fc45c83be1a6c833d30e7e29",
+    "SHA256SUMS": "9ff5ba874a6ac81b9515a52e006bd8435d46b741f591ceec31ea042739b54e41"
+  },
+  "returnedAssets": {
+    "status": "passed",
+    "payloads": 116,
+    "archiveFilesAndModes": 117,
+    "count": 3
+  },
+  "publicLifecycle": {
+    "status": "passed",
+    "steps": 12,
+    "installerInvocations": 5,
+    "installedSelfTests": 10,
+    "preservedSentinels": 3
+  },
+  "publicControlledRecovery": {
+    "status": "passed",
+    "installerInvocations": 1,
+    "selfTests": 2,
+    "payloadsAndModes": 116,
+    "origin": "constructed partial copy, not observed SIGKILL"
+  },
+  "previous171Preserved": true,
+  "metadata": {
+    "status": "pending"
+  },
+  "newBehavioralModelCalls": 0,
+  "newPaidApiRub": 0,
+  "privateHistoryPushed": false,
+  "artifactRoot": "Tibicen-work/release-1.8.0-20261120/publication",
+  "limits": [
+    "receipts do not authenticate approver",
+    "markers do not prove authenticity",
+    "native harness loading unverified",
+    "human/causal benefit unknown",
+    "Windows policy environment unverified",
+    "historical consent failures and evidence gaps retained"
+  ],
+  "evidence": {
+    "publication/ci.json": {
+      "bytes": 13727,
+      "sha256": "407002c313e5b2a79c14ceffe770afdf6d5848dab403238d416e36f1b48b76a8"
+    },
+    "publication/platforms.json": {
+      "bytes": 13772,
+      "sha256": "1156c49a25fea37588c8fba87dfb3a3b21f5fb547371092857bb0048c4b477de"
+    },
+    "publication/platform-jobs.json": {
+      "bytes": 24239,
+      "sha256": "2bdda33e5b19972a6dd155a10d5b39904fc0dc7fb0bd459a87de1db4815866ec"
+    },
+    "publication/release.json": {
+      "bytes": 10982,
+      "sha256": "cd1747d474c81c00539d220bf6fa1103b13be117816142b226631af8df651691"
+    },
+    "publication/returned-assets.json": {
+      "bytes": 1224,
+      "sha256": "c962dc88fbf511f1e4a54b4b4c3dd0ab20820879badfb23348c0046c9c125f3e"
+    },
+    "publication/previous-preservation.json": {
+      "bytes": 340,
+      "sha256": "e66ab9c90ff063255e7e6282677403964366ecc8ac1522d98490fa7d084ff5cf"
+    },
+    "publication/public-lifecycle.json": {
+      "bytes": 2416,
+      "sha256": "cbb160c240d3edbd96cb513104a392dcb1c91b6d1553bc1ac1fb75e961e25fd9"
+    },
+    "publication/public-controlled-recovery.json": {
+      "bytes": 1309,
+      "sha256": "74bb2c23e650bf3b4eee584a41d4e125b5f9d4e716c54c0817e89fe2c944d640"
+    },
+    "publication/metadata-update.json": {
+      "bytes": 5876,
+      "sha256": "2b9e629039bfae9959845e36ed846ace8c09340bbfa756d6fe0071540a83d4ba"
+    },
+    "publication/metadata-test-correction.json": {
+      "bytes": 459,
+      "sha256": "1b4bfa66afad8b82694eac01460283f6237cad216c97e02a358dd9c5f3cee73a"
+    },
+    "reports/metadata-site-tests.log": {
+      "bytes": 51368,
+      "sha256": "73dd2a39a8ae39f4d2600d148d38f61a549a64ab17bf28c8fb01741fc1c7cddc"
+    },
+    "reports/metadata-site-tests-fixed.log": {
+      "bytes": 7534,
+      "sha256": "65e3b2c87dca87633199bff6c55c375774e413d6752497b05693cb6ba3d97713"
+    },
+    "reports/metadata-lint.log": {
+      "bytes": 28,
+      "sha256": "960f1eb37ac4d28430af9bef2c98f32333254854ffde619330f53d373ce0f632"
+    },
+    "reports/metadata-specs.log": {
+      "bytes": 3681,
+      "sha256": "337f6aa00524c0a0bdf4cf87ee3c7c199697962add2aba530f3aadb64f5c6e87"
+    },
+    "reports/metadata-types.log": {
+      "bytes": 899,
+      "sha256": "cda33e2f3a7ac3a7c600f334a9fb2f9ad5481afeae4952c0f16451a59465fd66"
+    },
+    "reports/metadata-review.md": {
+      "bytes": 3003,
+      "sha256": "742691cbbfdb4378e34963464a36b8f63f540b0e82b8c76996ac9021250741b1"
+    },
+    "reports/metadata-review-followup.md": {
+      "bytes": 1750,
+      "sha256": "9352b434d914d90b6a75c6cec61f622583a17d79c2dcdadf705dabcd893fc5e0"
+    }
+  },
+  "metadataLocalChecks": {
+    "lint": "passed",
+    "strictOpenSpec": "passed",
+    "typecheck": "passed",
+    "siteFirstAttempt": {
+      "tests": 69,
+      "passed": 67,
+      "failed": 2,
+      "cause": "Stale escaped 1.7.1 version assertion in two locale tests; retained, corrected to published 1.8.0."
+    },
+    "siteCorrectedAttempt": {
+      "tests": 69,
+      "passed": 69,
+      "failed": 0
+    },
+    "runtimeOrFrozenAssetsChanged": false
+  }
+}

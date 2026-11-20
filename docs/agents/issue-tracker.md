@@ -1,5 +1,14 @@
 # Issue tracker
 
+## Active release closure — 1.8.0 website metadata, 20 November
+
+Owner: root; full publication package authorized. The
+[release report](../evals/results/2026-11-20-release-1.8.0/README.md) records
+published source/distribution/tag, exact public CI, all six platforms, public
+lifecycle and returned assets. Published 1.7.1 is preserved. Remaining work is
+metadata CI, Cloudflare and legacy checksum deployment, returned-byte checks,
+then documentation closure. No new model call or paid API work is required.
+
 ## Closed local preparation — 1.8.0 candidate, 20 November
 
 Owner: none; root completed the authorized logical commits and local candidate

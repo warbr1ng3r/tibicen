@@ -1,19 +1,8 @@
 # Preparing a release
 
-## 1.8.0 local candidate — 2026-11-20, unpublished
+## 1.8.0 published — 2026-11-20
 
-The [candidate report](evals/results/2026-11-20-release-1.8.0-preparation/README.md)
-records completed logical commits, compatible minor preparation, frozen assets,
-local lifecycle/compatibility and independent review. The gate passed 1,207 tests
-with zero failures and two existing skips. The 116-payload distribution manifest
-is `86b5876b5c0c5cf5e61d1f598f3552e7447d3993fc45c83be1a6c833d30e7e29`;
-the 117-file archive SHA-256 is
-`2aad29f3a57bc2d93855fdc918eecd4daad478f595bac2673e4ef4705b4c672d`.
-Public push, CI/platforms, delivery, tag/release and website metadata remain pending
-outside the local preparation scope. Published 1.7.1 and all stable links remain
-unchanged. Do not advertise an unpublished distribution or date the Unreleased
-entries as released. Use the [draft notes](evals/results/2026-11-20-release-1.8.0-preparation/release-notes.md)
-and existing candidate procedure below for the separate publication stage.
+[1.8.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.0) was published at 2026-11-20T04:15:05Z. Source ab509eccca659ac7a273540661974c882fb8908c, distribution a748ba3932e85f5194a3ea450c003f83bf8dcd9f, annotated tag 8c1d07daf16ad9b5f25bea707357cc7588b3040e. Published 1.7.1 is preserved. Exact checks, delivery and limits are retained in the [release report](evals/results/2026-11-20-release-1.8.0/README.md). Website metadata acceptance is tracked separately there.
 
 ## 1.7.1 published — 2026-11-19
 

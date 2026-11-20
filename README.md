@@ -12,10 +12,10 @@ Tibicen helps your coding agent set up or repair a project's instructions and to
 
 ## Get started
 
-Run this in your terminal. It installs both complete skills from the exact published **1.7.1** distribution; Node **22.20 or newer** and Git are required.
+Run this in your terminal. It installs both complete skills from the exact published **1.8.0** distribution; Node **22.20 or newer** and Git are required.
 
 ```sh
-npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/9a5e1ef2eb837075bb79e2fb2db01f439343d28d -g --agent universal --skill tibicen-init tibicen-adopt --copy
+npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/a748ba3932e85f5194a3ea450c003f83bf8dcd9f -g --agent universal --skill tibicen-init tibicen-adopt --copy
 ```
 
 Then open your project in an agent that can read files and run Node, and send:
@@ -36,12 +36,12 @@ The final report separates structural checks, actual task results and unverified
 
 ## Capabilities and verification limits
 
-Use Tibicen with a host that can read the complete skill and perform its local operations. Your model and provider stay configured in that host; they do not need a separate Tibicen API key. Explicit access does not establish automatic loading or compatibility with every host. Windows project-command execution remains unavailable; read-only operations are supported.
+Use Tibicen with a host that can read the complete skill and perform its local operations. Your model and provider stay configured in that host; they do not need a separate Tibicen API key. Explicit access does not establish automatic loading or compatibility with every host. Supported Windows project commands are covered by the platform checks; native policy restrictions remain unverified.
 
 Human usefulness and comparative time savings have not been measured. Your agent's built-in initialization or a direct request to review instructions may also be enough.
 
 - [Working across hosts and models](docs/HARNESS_PORTABILITY.md) and [project memory](docs/PROJECT_MEMORY.md).
-- [1.7.1 release checks and limits](docs/evals/results/2026-11-19-release-1.7.1/README.md), [changelog](CHANGELOG.md) and [earlier README/release history](README_RELEASE_HISTORY.md).
+- [1.8.0 release checks and limits](docs/evals/results/2026-11-20-release-1.8.0/README.md), [changelog](CHANGELOG.md) and [earlier README/release history](README_RELEASE_HISTORY.md).
 - [Contributing](CONTRIBUTING.md), [product scope](docs/PRODUCT_VISION.md) and [security](SECURITY.md).
 
 ## Build and install from source

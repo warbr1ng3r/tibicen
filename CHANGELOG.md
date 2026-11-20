@@ -1,12 +1,13 @@
 # Changelog
 
-Version 1.7.1 is public. See [release details](docs/RELEASING.md) for
+Version 1.8.0 is public. See [release details](docs/RELEASING.md) for
 immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
-The completed entries below are prepared for the unpublished 1.8.0 candidate.
-See the [candidate report](docs/evals/results/2026-11-20-release-1.8.0-preparation/README.md).
+## [1.8.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.0) — 2026-11-20
+
+See the [release report](docs/evals/results/2026-11-20-release-1.8.0/README.md).
 
 ### Added
 
