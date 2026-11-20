@@ -1,0 +1,176 @@
+{
+  "version": "1.8.0",
+  "preparedOn": "2026-11-20",
+  "status": "local-candidate-ready-unpublished",
+  "candidate": "candidate-01",
+  "intendedTag": "v1.8.0",
+  "inputSourceCommit": "6294bd5ffcdcd26653f77ebd125730ffd5257683",
+  "inputSourceEntries": 2053,
+  "inputSourceManifestSha256": "8a7945edb505e1b534e9bd422ddf4efb8f361380e27b918d3bd84432c66caa42",
+  "publicProjectionRuntimeCommit": "803044a35407a76803a194e4499844de35967c8c",
+  "publicProjectionBase": "233ae1dcd42db3fe14ad4ab7d6335d89cc709fc2",
+  "publicRemoteRefreshed": false,
+  "privateCommits": [
+    "97483ee",
+    "61722db",
+    "639914b",
+    "6294bd5"
+  ],
+  "payloadFiles": 116,
+  "archiveFiles": 117,
+  "manifestSha256": "86b5876b5c0c5cf5e61d1f598f3552e7447d3993fc45c83be1a6c833d30e7e29",
+  "archiveSha256": "2aad29f3a57bc2d93855fdc918eecd4daad478f595bac2673e4ef4705b4c672d",
+  "assets": {
+    "tibicen-1.8.0.tar.gz": "2aad29f3a57bc2d93855fdc918eecd4daad478f595bac2673e4ef4705b4c672d",
+    "distribution-SHA256SUMS": "86b5876b5c0c5cf5e61d1f598f3552e7447d3993fc45c83be1a6c833d30e7e29"
+  },
+  "gate": {
+    "command": "pnpm test",
+    "pnpm": "11.21.0",
+    "node": "24.15.0",
+    "exitCode": 0,
+    "total": 1209,
+    "passed": 1207,
+    "failed": 0,
+    "skipped": 2,
+    "durationMs": 78285.614083
+  },
+  "standalone": {
+    "selfTests": 2,
+    "actualCliInvocations": 14,
+    "outsideCheckout": true,
+    "emptyPath": true
+  },
+  "lifecycle": {
+    "steps": 12,
+    "installerInvocations": 5,
+    "selfTests": 10,
+    "version": "skills 1.7.4 observed existing local cache"
+  },
+  "controlledRecovery": {
+    "installerInvocations": 1,
+    "selfTests": 2,
+    "restoredPayloads": 116,
+    "origin": "controller-created partial state; not real SIGKILL"
+  },
+  "compatibility": {
+    "actualCliInvocations": 8,
+    "legacy171ReadAndMaintain": true,
+    "oldRuntimeReadOnly": true,
+    "oldRuntimeWriteback": "unverified"
+  },
+  "independentReview": "Ship after exact generated metadata check correction",
+  "artifactRoot": "Tibicen-work/release-1.8.0-20261120",
+  "artifacts": [
+    {
+      "path": "reports/INPUT_SOURCE.json",
+      "bytes": 452878,
+      "sha256": "8a7945edb505e1b534e9bd422ddf4efb8f361380e27b918d3bd84432c66caa42"
+    },
+    {
+      "path": "reports/frozen-install.log",
+      "bytes": 198,
+      "sha256": "09f4cf2ab52e75c937ff229fc12c9a3f5ff78bb09b1a75a400e3c1ac2a74fcf8"
+    },
+    {
+      "path": "reports/candidate-gate.log",
+      "bytes": 123763,
+      "sha256": "ca65820b4f46092854b36a505aeaf278881b65abcb9bc13de9aec529bb5a00b5"
+    },
+    {
+      "path": "reports/candidate-build.log",
+      "bytes": 1915,
+      "sha256": "b5a72d81545d67e2d7e477bec45d2e3eb1df4513a49917d168441b61c3899b9c"
+    },
+    {
+      "path": "reports/candidate-build-final.log",
+      "bytes": 1915,
+      "sha256": "f194e6351d7944cda0d47d82e316e29c4151f3ce5f78b23906481c8aff7c3788"
+    },
+    {
+      "path": "reports/BUILD_ORDER.json",
+      "bytes": 331,
+      "sha256": "c452ce48016ba0d19d9f255cfd0780fa6b8877082c71ac1580df285724c6831e"
+    },
+    {
+      "path": "reports/preparation-review.md",
+      "bytes": 3126,
+      "sha256": "0f18b379adb1e1785555bceda2fbecbb4ff584b44c9a8df1b834b8b2a0215f59"
+    },
+    {
+      "path": "reports/candidate-review-final.md",
+      "bytes": 3681,
+      "sha256": "7c7f2b5cd40de0bf1e3dc0bb7fa0d3f4ed40f7b2e35490cfdc36ebe6c237b4d4"
+    },
+    {
+      "path": "checks/standalone-external.json",
+      "bytes": 33971,
+      "sha256": "a462f7a6f0c1a7182d345c684b3b0178e5f84233462753cb7dd746549369d715"
+    },
+    {
+      "path": "checks/local-lifecycle.json",
+      "bytes": 2733,
+      "sha256": "2ecd0d97affeb81361515507ca880324c3038c78df7cf1153ee51f6c18d5df1e"
+    },
+    {
+      "path": "checks/compatibility.json",
+      "bytes": 5019,
+      "sha256": "79dd5be4b2461a9a50d061a3ea5dce0fda3fb4481e2088c363676c80f4873fc9"
+    },
+    {
+      "path": "checks/controlled-recovery.json",
+      "bytes": 1318,
+      "sha256": "9e7705b7bf3a23619b7fba87d1c46da718b4b4c1b6fe7b7f5086bf2facad61a1"
+    },
+    {
+      "path": "checks/exact-candidate-validation.json",
+      "bytes": 4319,
+      "sha256": "e8d6567f3d2d4899f9743c390a9b065ea65311e44bf3b656f6b3825cfe3711e5"
+    },
+    {
+      "path": "checks/public-source-projection.json",
+      "bytes": 907,
+      "sha256": "a42b1e3c8276938bc0f9ba864bf365e4ae6beffd3f7d7e4cfdad1e6470d0d42b"
+    },
+    {
+      "path": "candidate-01/IDENTITY.json",
+      "bytes": 28206,
+      "sha256": "0249e334f94178d9b3b3cb72e204b047cd1deddcf4d8d2bd96fef330edaab92d"
+    },
+    {
+      "path": "checks/asset-identities.json",
+      "bytes": 487,
+      "sha256": "7046e0238816ef1063a2eb44db5a9f873fd577ea41f03b2d2e91160231f925c7"
+    },
+    {
+      "path": "reports/documentation-review.md",
+      "bytes": 3446,
+      "sha256": "bec92cde0a72fcaa595b825d3bcaa62bf93cb786eb3e849149496c05990f93c3"
+    }
+  ],
+  "newBehavioralModelCalls": 0,
+  "newPaidApiRub": 0,
+  "publishedVersionUnchanged": "1.7.1",
+  "pending": [
+    "refresh remote and review public source",
+    "public push and normal CI",
+    "six native platform cells",
+    "actual public lifecycle",
+    "distribution tag and three assets",
+    "returned-asset verification",
+    "site metadata/deployment verification"
+  ],
+  "limits": [
+    "caller-controlled receipts do not authenticate approver",
+    "marker is not cryptographic authenticity",
+    "native harness loading unverified",
+    "no new candidate Windows policy/platform observation",
+    "measured human benefit unknown"
+  ],
+  "allThreeAssetSha256": {
+    "tibicen-1.8.0.tar.gz": "2aad29f3a57bc2d93855fdc918eecd4daad478f595bac2673e4ef4705b4c672d",
+    "distribution-SHA256SUMS": "86b5876b5c0c5cf5e61d1f598f3552e7447d3993fc45c83be1a6c833d30e7e29",
+    "SHA256SUMS": "9ff5ba874a6ac81b9515a52e006bd8435d46b741f591ceec31ea042739b54e41"
+  },
+  "documentationReview": "Ship after routing wording correction"
+}

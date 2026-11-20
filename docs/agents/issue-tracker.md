@@ -1,5 +1,18 @@
 # Issue tracker
 
+## Closed local preparation — 1.8.0 candidate, 20 November
+
+Owner: none; root completed the authorized logical commits and local candidate
+preparation, with independent Ponytail review. The
+[candidate report](../evals/results/2026-11-20-release-1.8.0-preparation/README.md)
+binds source, frozen distribution/archive, 1,207 passing tests/two existing skips,
+standalone, lifecycle, controlled partial recovery and compatibility checks.
+The local public-history projection builds identical payloads; public remote
+refresh, push, CI/platforms, delivery, tag/release and site work remain a separate
+publication package. Published 1.7.1, stable links and original packets are
+unchanged. No model or paid API run. Requirements/tasks remain with the receipt
+and routing changes; do not duplicate them or regrade old observations.
+
 ## Closed local integration — consent-and-coverage packet, 20 November
 
 Owner: none; root completed integration with independent approval, scan and evidence reviews. The [assessment](../evals/results/2026-11-20-consent-coverage-assessment/README.md) separates reported outcomes from retained primary evidence. A5-i3 contains a frozen routing failure; F3/H6 support functional results with incomplete consumed-digest evidence, and H6 approval timing contradicts prior consent. G5 remains blocked and E2 unverified. The returned 32-file patch and published 1.7.1 are preserved.

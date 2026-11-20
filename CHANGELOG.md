@@ -5,6 +5,9 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+The completed entries below are prepared for the unpublished 1.8.0 candidate.
+See the [candidate report](docs/evals/results/2026-11-20-release-1.8.0-preparation/README.md).
+
 ### Added
 
 - Retain source-bound approval receipts for `apply`/`resume`: the consumed digest, the digest presented on the approval channel, the operation, the channel (`cli --approve` or `programmatic`), the project root, the session id and a timestamp, surfaced in the apply result, `status`, `report` and the manifest session summary. Refused consent returns the same structured record (presented versus required digest) in the `consent-required` error envelope and never writes the project. Receipts are evidence of content identity and channel; they do not authenticate an external approver. Saved sessions and manifests from before this change load unchanged.

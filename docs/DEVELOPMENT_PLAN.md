@@ -1,5 +1,14 @@
 # Tibicen development plan
 
+## Next delivery — 1.8.0 locally prepared, 20 November
+
+The compatible minor [candidate](evals/results/2026-11-20-release-1.8.0-preparation/README.md)
+is ready locally: logical commits, source freeze, exact assets, lifecycle,
+compatibility and independent Ship review are complete. No new model sweep is
+needed. Next is the separately authorized public push/CI/six-platform/delivery/
+release/site sequence. Stable 1.7.1 remains unchanged; detailed results and
+remaining limits stay in the candidate report and the two existing changes.
+
 ## Consent and routing — integration complete, 20 November (Unreleased)
 
 Root integrated the returned ZCode/GLM packet after independent code and evidence review. The [assessment](evals/results/2026-11-20-consent-coverage-assessment/README.md) preserves its positive fixture outcomes while distinguishing frozen A5-i3 routing failure, incomplete F3/H6 digest evidence and contradictory H6 approval timing. G5 remains blocked and E2 loading unverified; guarded CB observations do not prove unprompted compliance. The original packet and published 1.7.1 stay unchanged.
