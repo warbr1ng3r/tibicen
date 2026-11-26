@@ -10,7 +10,7 @@ Scope remains in the [vision](PRODUCT_VISION.md) and [current capabilities](CURR
 | 1.8.0 release and website | Closed | [Release report](evals/results/2026-11-20-release-1.8.0/README.md) |
 | Five-case first-use package | Executed and independently assessed with limitations; closed | [Assessment](evals/results/2026-11-20-first-use-assessment/README.md) |
 | Five-front delegated development package | Returned and independently assessed; targeted fixes integrated locally | [Assessment](evals/results/2026-11-26-development-assessment/README.md) |
-| Next product version | 1.8.1 candidate in preparation; publication authorized 26 November | [Change](../openspec/changes/normalize-pytest-summary-timing/proposal.md); candidate/public CI/publication tracked separately below |
+| Release 1.8.1 and website | Published and verified; closed | [Release report](evals/results/2026-11-26-release-1.8.1/README.md) |
 
 Published **1.8.0** includes approval receipts and directory-scoped canonical-skill
 routing. Its CI, six platforms, public delivery and website checks remain accepted.
@@ -49,29 +49,24 @@ Its reported outcomes remain historical records, not regraded passes. New paid A
 was reported as zero; subscription cost is unknown. No commit, version change, push or
 publication is included in this integration.
 
-## Release 1.8.1 — current delivery
+## Release 1.8.1 — closed
 
-After integration the owner authorized commits, public CI and patch publication.
-The candidate version is 1.8.1; published 1.8.0 stays unchanged until the new release
-passes its own checks. Delivery includes frozen artifacts, local/public lifecycle,
-all six platform cells, immutable release assets and separately verified website
-metadata. No new broad model evaluation is required for this compatible fix.
+The compatible patch is published. Exact-source CI, six platform cells, local and
+public delivery/update/recovery/removal, all returned assets and 27 website bodies
+passed. Published 1.8.0 remains unchanged. The [release report](evals/results/2026-11-26-release-1.8.1/README.md)
+retains identities, reviews and limits. No broad model evaluation was required.
 
 ## Next work
 
-1. **Finish the patch delivery when authorized.** A compatible correction fits a
-   prospective 1.8.1 patch. Commit reviewed changes, project the public source, run
-   CI/platform checks and publish immutable artifacts under [release rules](RELEASING.md).
-   Those operations are now authorized as the separate 1.8.1 delivery.
-2. **Use the stable release.** Capture specific problems from ordinary project work,
+1. **Use the stable release.** Capture specific problems from ordinary project work,
    preserving the task, relevant files, exact commands and expected result.
-3. **Fix demonstrated problems.** Reproduce a small issue, add a meaningful regression,
+2. **Fix demonstrated problems.** Reproduce a small issue, add a meaningful regression,
    make the smallest complete correction and review it. Substantial behavior changes
    use OpenSpec. A model name or an evaluation evidence gap alone is not a feature request.
-4. **Collect new observations only for a concrete question.** Before execution retain
+3. **Collect new observations only for a concrete question.** Before execution retain
    actual grants, launch/initial-context controls, intermediate bytes and the whole-phase
    clock. Keep functional behavior, loading, consent and human usefulness separate.
-5. **Version actual product changes.** Follow [release rules](RELEASING.md): compatible
+4. **Version actual product changes.** Follow [release rules](RELEASING.md): compatible
    fixes are patch, compatible features minor, supported-contract breaks major.
    Documentation clarification alone does not require another skill release.
 

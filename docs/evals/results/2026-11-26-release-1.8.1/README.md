@@ -36,9 +36,21 @@ Published 1.8.0 metadata and all three asset identities are preserved.
 
 ## Website metadata
 
-Pending separately: update current installation pins and the append-only checksum
-index, pass metadata CI/Cloudflare/legacy Pages, then compare returned bodies to the
-exact committed build. Release publication does not establish website acceptance.
+Installation pins, current bilingual guides and the checksum index are deployed
+from metadata source `a5fba7f7c441c0def77883a259286ff633a0f560`.
+[CI](https://github.com/warbr1ng3r/tibicen/actions/runs/45750463037),
+[Cloudflare](https://github.com/warbr1ng3r/tibicen/actions/runs/45750463009) and
+[legacy Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/45750781835)
+passed on that exact source. All **27 returned bodies** match its source-bound
+local build using the exact Cloudflare site/base command; HTTPS certificate checks
+passed. Both indexes contain **19 versions**, preserving all 18 earlier records
+and warnings. The first audit attempt passed. Local metadata lint, types, strict
+OpenSpec, formatting and all 69 site unit checks passed; independent metadata and
+Pages-guard review: Ship. A missing escaped-version test replacement was corrected
+in the preview before application, with both previews retained.
+
+The release effort is closed. This later documentation-only closure changes no
+runtime or deployment input and does not claim another deployment.
 
 ## Limits
 

@@ -11,15 +11,17 @@ original grades remain in their reports and the dated history below.
 | Release 1.8.0 and website | none | Closed; [release report](../evals/results/2026-11-20-release-1.8.0/README.md) |
 | Five-case first-use execution and assessment | none | Closed with evidence limits; [assessment](../evals/results/2026-11-20-first-use-assessment/README.md) |
 | Five-front development package | none | Returned and independently assessed; targeted fixes integrated locally; [assessment](../evals/results/2026-11-26-development-assessment/README.md) |
-| Release 1.8.1 | root + independent workers | Authorized 26 November; candidate, public CI and publication in progress |
+| Release 1.8.1 and website | none | Closed; [release report](../evals/results/2026-11-26-release-1.8.1/README.md) |
 
-## Current effort — release 1.8.1
+## Closed effort — release 1.8.1
 
-The owner authorized the separate commit, public-CI and publication plan after
-reviewed integration. Root owns source projection and public writes; independent
-workers cover exact-candidate lifecycle and metadata. Local map:
-`.scratch/release-1.8.1-20261126/map.md`. Private packet:
-`Tibicen-work/release-1.8.1-20261126`. No paid API or new broad model sweep.
+Commit, source projection, candidate/public CI, six platform cells, local/public
+lifecycle, publication, returned assets and both website deployments are complete.
+All 27 returned website bodies match metadata source `a5fba7f7c441c0def77883a259286ff633a0f560`.
+The [release report](../evals/results/2026-11-26-release-1.8.1/README.md) records identities
+and limits. No live work remains assigned; no new model sweep or paid API use occurred.
+Local map `.scratch/release-1.8.1-20261126/map.md` and private packet
+`Tibicen-work/release-1.8.1-20261126` retain detailed receipts.
 
 ## Closed effort — delegated development after 1.8.0
 

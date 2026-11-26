@@ -68,7 +68,254 @@
     }
   },
   "review": "Ship",
-  "websiteMetadata": "pending",
+  "websiteMetadata": {
+    "status": "passed",
+    "sourceCommit": "a5fba7f7c441c0def77883a259286ff633a0f560",
+    "ciRun": 45750463037,
+    "cloudflareRun": 45750463009,
+    "legacyPagesRun": 45750781835,
+    "bodyCount": 27,
+    "bodyMatches": 27,
+    "primaryBodies": 22,
+    "legacyBodies": 5,
+    "indexVersions": 19,
+    "historicalVersionsPreserved": 18,
+    "historicalIndexSource": "da14bec29a55ade389b64c58bd8fe469a9f77859",
+    "historicalIndexSha256": "74c9cf3a6b84fbd7114e97a489a50331d381d0d283a7106672379c2d39cfe5de",
+    "indexSha256": "7b19e4e46fdab3ef35ee7195086a08878d1d0ef6db3e0d101d9c212855d12fcf",
+    "historicalWarningsPreserved": true,
+    "tlsVerification": true,
+    "buildCommand": [
+      "pnpm",
+      "--filter",
+      "@tibicen/landing",
+      "build",
+      "--site",
+      "https://tibicen.pages.dev",
+      "--base",
+      "/"
+    ],
+    "auditCompletedAtUtc": "2026-11-26T03:44:53.164331+00:00",
+    "attempts": 1,
+    "bodies": [
+      {
+        "url": "https://tibicen.pages.dev/_astro/Landing.astro_astro_type_script_index_0_lang.DT3-3a5N.js",
+        "httpStatus": 200,
+        "bytes": 5344,
+        "sha256": "824b02833acaec08fbbead727efd631e7c422a614f2d7964cc65d5d819cb3078",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/_astro/SelectRoot.astro_astro_type_script_index_0_lang.Ce_hi4Vm.js",
+        "httpStatus": 200,
+        "bytes": 79632,
+        "sha256": "7097913a4c8ce98e265c19ae3f66de91ce37e8cfacbc0978e9d3c5e7dea42449",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/_astro/SiteLayout.BfVk2eyo.css",
+        "httpStatus": 200,
+        "bytes": 39116,
+        "sha256": "af771c9e20c5f54b51afc69ba7b7d263a2221fcb824dd79979323821bfeef10f",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/_astro/SiteLayout.astro_astro_type_script_index_0_lang.46Pug8Zk.js",
+        "httpStatus": 200,
+        "bytes": 12210,
+        "sha256": "969205471b7419c4f906a9b57ad66601886e4bce333b315c10af85f49030e515",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/assets/cluster-graph.svg",
+        "httpStatus": 200,
+        "bytes": 24029,
+        "sha256": "717a89f486aad9f3621b6cb3bd6b5044b90befd1b16880e42bb63b7cdcb08882",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/assets/contour-wave.svg",
+        "httpStatus": 200,
+        "bytes": 9311,
+        "sha256": "152c1bb3c96f3a8511cdd20a38193c5c04ab5cd513c9d54354e05c01bc85dbbc",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/assets/cubes.svg",
+        "httpStatus": 200,
+        "bytes": 13493,
+        "sha256": "8fc36e6819a4058f4de17df8f2ed0efae4f70fec4bdcdd5b3145570a4fb39793",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/assets/favicon.svg",
+        "httpStatus": 200,
+        "bytes": 355,
+        "sha256": "46a0d078ec3795dbecc80cd2147b61653037d4dd59a76d58669b7367184f71aa",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/assets/lattice.svg",
+        "httpStatus": 200,
+        "bytes": 74834,
+        "sha256": "70a443e49761b690acf664da8089a9e4e2ff48d972a1a7d0a72d05eedb9b9a38",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/assets/layered-graph.svg",
+        "httpStatus": 200,
+        "bytes": 8255,
+        "sha256": "7375cdc9fd0d8bbd689c8bc4e24f35dbfd48e1c3e52e83c9a150a21268d0ecc2",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/assets/logo.svg",
+        "httpStatus": 200,
+        "bytes": 305,
+        "sha256": "bf7991b06280f422784d73dd44c0d283dd322b5bfe92c0b9075a855ddc4b68d7",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/assets/scaffold.svg",
+        "httpStatus": 200,
+        "bytes": 23150,
+        "sha256": "fabfcbafb57b4bb48ba57ed365988c89bf2655b36fb287686d79ca4867e379fb",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/assets/social-preview.png",
+        "httpStatus": 200,
+        "bytes": 68143,
+        "sha256": "1ea737735ab56418c067fb6638c57e2b6ed4409d2ff6660a3ca51b8e5e8342e9",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/assets/social-preview.svg",
+        "httpStatus": 200,
+        "bytes": 2082,
+        "sha256": "07ac6e737db133c4fd263e398d4aae0d769fedc2662d30aeb99f1a857f4339f1",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/assets/truss.svg",
+        "httpStatus": 200,
+        "bytes": 11640,
+        "sha256": "702ba21ae08d44d82a4b966e1c52b510763cde6ef320536cb4c9cec00fad0d99",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/",
+        "httpStatus": 200,
+        "bytes": 35631,
+        "sha256": "929ab6edd6b178986c91cb1f05f80b35fa924f51ad23e798e52442c0ec44ad7a",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/licenses/astrowind.txt",
+        "httpStatus": 200,
+        "bytes": 1065,
+        "sha256": "6b7e2fe59d6b85c47fd2de8cad65db3c37b84e8bbf662f37a7c7cc7fd1cfea25",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/licenses/starwind.txt",
+        "httpStatus": 200,
+        "bytes": 1096,
+        "sha256": "b75ec854b30c7ae3b2e31f4b43f804fea11ef6a78db2f5b608455da84cf28fcd",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/maintenance/index.json",
+        "httpStatus": 200,
+        "bytes": 27269,
+        "sha256": "7b19e4e46fdab3ef35ee7195086a08878d1d0ef6db3e0d101d9c212855d12fcf",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/preset/",
+        "httpStatus": 200,
+        "bytes": 22381,
+        "sha256": "bd0774d8e74b4801b80c0c7a3a59d01336ac78ac529c2923fff2577d01ee05d0",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/ru/",
+        "httpStatus": 200,
+        "bytes": 43361,
+        "sha256": "321e9d501dafe6c5f534bacf77d398b746d8b5c2703d8285f0c499f8ab76a376",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://tibicen.pages.dev/ru/preset/",
+        "httpStatus": 200,
+        "bytes": 24832,
+        "sha256": "3df159a05d3d55022308a4a86202bb8e63a73d0f68107ea13fc03931e3e9ca5c",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://warbr1ng3r.github.io/tibicen/",
+        "httpStatus": 200,
+        "bytes": 703,
+        "sha256": "1c9fa993b9b3f8a214efb3af5027008a771c5b25a268aab3d66d6fff4fc0bc1d",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://warbr1ng3r.github.io/tibicen/preset/",
+        "httpStatus": 200,
+        "bytes": 747,
+        "sha256": "7112f72491ba9e2aafce5381ced6ad3c29238cdd21dd9487c87565c2b3c48876",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://warbr1ng3r.github.io/tibicen/ru/",
+        "httpStatus": 200,
+        "bytes": 732,
+        "sha256": "490faec1c2bccc4b67f8e394d11b6de05c8a6bbd72dabfdcb45385337e01fa08",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://warbr1ng3r.github.io/tibicen/ru/preset/",
+        "httpStatus": 200,
+        "bytes": 776,
+        "sha256": "b548d81791791f9f5edb370aeb075e7ba6248eb85ff1a18bfa243c91d4462b6e",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      },
+      {
+        "url": "https://warbr1ng3r.github.io/tibicen/maintenance/index.json",
+        "httpStatus": 200,
+        "bytes": 27269,
+        "sha256": "7b19e4e46fdab3ef35ee7195086a08878d1d0ef6db3e0d101d9c212855d12fcf",
+        "matchesSourceBoundBuild": true,
+        "status": "passed"
+      }
+    ]
+  },
   "newPaidApiRub": 0,
   "nativeLoading": "unverified",
   "measuredHumanBenefit": "unknown",
@@ -88,5 +335,6 @@
     "releaseId": 452259773,
     "tagName": "v1.8.0",
     "metadataAndAssetIdentitiesUnchanged": true
-  }
+  },
+  "effortStatus": "closed"
 }
