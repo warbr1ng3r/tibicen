@@ -1,6 +1,6 @@
 # Issue tracker
 
-Updated 20 November 2026. This file lists current assignments; the
+Updated 26 November 2026. This file lists current assignments; the
 [roadmap](../DEVELOPMENT_PLAN.md) gives delivery order. Completed packets and
 original grades remain in their reports and the dated history below.
 
@@ -10,7 +10,23 @@ original grades remain in their reports and the dated history below.
 | --- | --- | --- |
 | Release 1.8.0 and website | none | Closed; [release report](../evals/results/2026-11-20-release-1.8.0/README.md) |
 | Five-case first-use execution and assessment | none | Closed with evidence limits; [assessment](../evals/results/2026-11-20-first-use-assessment/README.md) |
-| New product change or release | none | Not selected; returned product patch is empty |
+| Five-front development package | none | Returned and independently assessed; targeted fixes integrated locally; [assessment](../evals/results/2026-11-26-development-assessment/README.md) |
+| New product release | none | Not authorized in the delegated package |
+
+## Closed effort — delegated development after 1.8.0
+
+The returned `Tibicen-work/development-1.8.0-20261126` packet contains the full
+22-file patch and original reports. Root independently verified its protected inputs,
+patch, payloads and scoped code. The local integration includes the pytest comparison
+fix, two additional review corrections, clearer approval guidance and precise environment
+documentation. Tasks belong to [the OpenSpec change](../../openspec/changes/normalize-pytest-summary-timing/proposal.md).
+
+The [assessment](../evals/results/2026-11-26-development-assessment/README.md) preserves
+original outcomes and records protocol, consent, timing, context and receipt limitations.
+No general comparative benefit or fresh/native cross-host acceptance is claimed.
+There are no assigned live evaluations. Commit, version change, push and publication
+are separate actions and are not authorized by this effort. The next delivery, if
+requested, is a compatible patch rather than another broad model sweep.
 
 ## Closed effort — first use of published 1.8.0
 

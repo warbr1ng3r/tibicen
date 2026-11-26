@@ -5,10 +5,16 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+### Fixed
+
+- Ask the single first-proposal approval in plain language: the setup summary now leads with what changes and what does not (application code untouched when true) and the affected file list, the digest stays a binding reference rather than the user-facing headline, a prior "use defaults" is completed with one explicit approval question, and silence is never treated as approval.
+- Compare unchanged failing pytest runs correctly: the complete framed summary timing record (`=+ <counts or "no tests ran"> in Ts =+`) now normalizes timing, optional timedelta clocks and variable frame padding like Node spec/TAP and Python unittest records, so timing-only drift no longer reports `changed-failure`. Summary counts, test names, assertion values, non-clock annotations and unframed phrases remain strict differences.
+
 ### Documentation
 
 - Clarify valid CLI results with exit 1 and separate structure-only verification from project tests.
-- Separate the current roadmap from byte-preserved history and record the [qualified first-use assessment](docs/evals/results/2026-11-20-first-use-assessment/README.md), preserving original outcomes and evidence limits. Runtime and published 1.8.0 remain unchanged.
+- Separate the current roadmap from byte-preserved history and record the [qualified first-use assessment](docs/evals/results/2026-11-20-first-use-assessment/README.md), preserving original outcomes and evidence limits. That assessment did not change runtime or the published 1.8.0.
+- State the controlled-check environment boundaries precisely: interpreter pinning records the absolute path only, script binding covers the single approved entrypoint file, and project directories named `.venv`/`venv` are not copied or reproduced. Package availability depends on the pinned interpreter and approved environment; `environmentReady` is a checked-readiness attestation, not import isolation or environment reproduction.
 
 ## [1.8.0](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.0) — 2026-11-20
 
