@@ -1,0 +1,29 @@
+{
+  "id": 452259773,
+  "published_at": "2026-11-20T04:15:05Z",
+  "tag_name": "v1.8.0",
+  "name": "Tibicen 1.8.0 \u2014 approval receipts and accurate routing",
+  "body": "# Tibicen 1.8.0\n\nThis compatible minor adds retained approval receipts and corrects how installed\nTibicen skills are distinguished from similarly named third-party infrastructure.\n\n- Inspect the exact plan consumed by apply/resume in the result, status, report\n  and saved session summary. A refusal returns attempted/required digests without\n  writing to the project. Journals retain at most eight receipts.\n- Keep older receipt-free sessions readable; validate new journals, preserve\n  copied-project history and avoid inheriting receipts from another session.\n- Scope canonical name/version markers to their own full project-relative\n  directory. A similarly named third-party skill remains visible as existing\n  infrastructure with unknown provenance.\n\n## Install or update\n\nRequires Node 22.20 or newer and Git. Back up both complete installed skills,\nincluding local edits, before updating:\n\n```sh\nnpx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/a748ba3932e85f5194a3ea450c003f83bf8dcd9f -g --agent universal --skill tibicen-init tibicen-adopt --copy\n```\n\nNo dependency or persisted schema migration is introduced. Project setup and\nmemory remain separate from installed skills; replacing/removing the utility\ndoes not remove project files. Older-runtime writeback may omit new receipt\nfields. Re-running the pinned installer can restore a partial skill copy;\nrestoring a skill backup does not rewind project changes.\n\n## Verification\n\nSource: `ab509eccca659ac7a273540661974c882fb8908c`.\nDistribution: `a748ba3932e85f5194a3ea450c003f83bf8dcd9f`.\n\n[Offline CI](https://github.com/warbr1ng3r/tibicen/actions/runs/44672175401)\nand [all six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/44672177483)\npassed, including actual Windows commands on Node 22 and 24. The local gate\npassed 1,207 tests with zero failures and two existing skips. Standalone,\ninstallation/update/recovery/removal and compatibility checks retain their\ncontroller assistance and limits in the candidate report.\n\nArchive SHA-256: `2aad29f3a57bc2d93855fdc918eecd4daad478f595bac2673e4ef4705b4c672d`.\nPayload manifest SHA-256: `86b5876b5c0c5cf5e61d1f598f3552e7447d3993fc45c83be1a6c833d30e7e29`.\nAll 116 payloads and 117 archive files/modes match the frozen candidate.\n\nReceipts identify content and a caller-controlled channel, not who approved it;\nthey cannot authenticate consent or prevent an executor with shared tools from\nself-consenting. Markers are not cryptographic authenticity. Native harness\nloading, Windows policy restrictions and measured human benefit remain unverified.\nExisting failed behavioral observations are not regraded by these release checks.\n\n[Candidate report and release notes](https://github.com/warbr1ng3r/tibicen/blob/ab509eccca659ac7a273540661974c882fb8908c/docs/evals/results/2026-11-20-release-1.8.0-preparation/README.md).\n",
+  "draft": false,
+  "prerelease": false,
+  "assets": [
+    {
+      "id": 770412992,
+      "name": "distribution-SHA256SUMS",
+      "size": 12202,
+      "digest": "sha256:86b5876b5c0c5cf5e61d1f598f3552e7447d3993fc45c83be1a6c833d30e7e29"
+    },
+    {
+      "id": 770413011,
+      "name": "SHA256SUMS",
+      "size": 177,
+      "digest": "sha256:9ff5ba874a6ac81b9515a52e006bd8435d46b741f591ceec31ea042739b54e41"
+    },
+    {
+      "id": 770412948,
+      "name": "tibicen-1.8.0.tar.gz",
+      "size": 314167,
+      "digest": "sha256:2aad29f3a57bc2d93855fdc918eecd4daad478f595bac2673e4ef4705b4c672d"
+    }
+  ]
+}
