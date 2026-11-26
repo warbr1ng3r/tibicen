@@ -5,7 +5,7 @@ existing agent infrastructure. Use them inside a host that can read project
 files, read the complete installed skill and run its Node CLI. The host chooses
 the model/provider; Tibicen has no separate model account or API key.
 
-This generic entry flow is included in **published 1.8.0**. The commands and
+This generic entry flow is included in **published 1.8.1**. The commands and
 assets below pin that exact distribution. Public mechanical installation,
 replacement/repeat, complete edited-backup restoration into actual installed
 skill paths and removal passed for the explicit `universal` target. Explicit
@@ -14,7 +14,7 @@ host/model. See the [release scope](RELEASING.md).
 
 ## Requirements
 
-- Published 1.8.0 needs Node **≥22.20** for its installed CLI. The normal installer
+- Published 1.8.1 needs Node **≥22.20** for its installed CLI. The normal installer
   also needs Git and one of npm, pnpm or Yarn 2+. The archive route needs neither
   Git nor a package manager, source checkout or development dependencies.
 - The host must have access to the target project and the skill's files. It must
@@ -30,7 +30,7 @@ host/model. See the [release scope](RELEASING.md).
 Run this in a terminal, independently of your project packages:
 
 ```sh
-npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/a748ba3932e85f5194a3ea450c003f83bf8dcd9f -g --agent universal --skill tibicen-init tibicen-adopt --copy
+npx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/3fab265ce311c8d2de9d8942da1b031f6aba49b3 -g --agent universal --skill tibicen-init tibicen-adopt --copy
 ```
 
 For pnpm replace only `npx` with `pnpm dlx`; for Yarn 2+ use `yarn dlx`. Keep
@@ -89,16 +89,16 @@ Download these assets from the same published release into that directory:
 
 | Asset                                                                                                             | SHA256                                                             |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| [tibicen-1.8.0.tar.gz](https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.0/tibicen-1.8.0.tar.gz)       | `2aad29f3a57bc2d93855fdc918eecd4daad478f595bac2673e4ef4705b4c672d` |
-| [distribution-SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.0/distribution-SHA256SUMS) | `86b5876b5c0c5cf5e61d1f598f3552e7447d3993fc45c83be1a6c833d30e7e29` |
-| [SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.0/SHA256SUMS)                           | `9ff5ba874a6ac81b9515a52e006bd8435d46b741f591ceec31ea042739b54e41` |
+| [tibicen-1.8.1.tar.gz](https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.1/tibicen-1.8.1.tar.gz)       | `90dd9b9634ceca7c8238d6e8ab85c5e73b3d9e603844b083404f0a1e1702c3cc` |
+| [distribution-SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.1/distribution-SHA256SUMS) | `25cda5d8b181d67f85d058480f62ddf0e4b2e37c1bfb1b3513a28c9becfe5b69` |
+| [SHA256SUMS](https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.1/SHA256SUMS)                           | `8c8ff85f119570ed6c05bfdde373a9f0d4d4db73f5179cd26876e1e7b758939f` |
 
 For example, on macOS/Linux, after changing into your empty chosen directory:
 
 ```sh
-curl -fLO https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.0/tibicen-1.8.0.tar.gz &&
-curl -fLO https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.0/distribution-SHA256SUMS &&
-curl -fLO https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.0/SHA256SUMS &&
+curl -fLO https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.1/tibicen-1.8.1.tar.gz &&
+curl -fLO https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.1/distribution-SHA256SUMS &&
+curl -fLO https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.1/SHA256SUMS &&
 shasum -a 256 SHA256SUMS
 ```
 
@@ -108,7 +108,7 @@ verify both downloaded files, unpack and verify every payload file:
 ```sh
 shasum -a 256 -c SHA256SUMS &&
 mkdir unpacked &&
-tar -xzf tibicen-1.8.0.tar.gz -C unpacked &&
+tar -xzf tibicen-1.8.1.tar.gz -C unpacked &&
 cd unpacked &&
 cmp ../distribution-SHA256SUMS SHA256SUMS &&
 shasum -a 256 -c SHA256SUMS
@@ -130,7 +130,7 @@ Get-Content .\SHA256SUMS | ForEach-Object {
   if ((Get-FileHash -LiteralPath $relative -Algorithm SHA256).Hash.ToLower() -ne $expected) { throw "Checksum mismatch: $relative" }
 }
 New-Item -ItemType Directory unpacked
-tar -xzf tibicen-1.8.0.tar.gz -C unpacked
+tar -xzf tibicen-1.8.1.tar.gz -C unpacked
 if ($LASTEXITCODE -ne 0) { throw 'Archive extraction failed' }
 if ((Get-FileHash .\distribution-SHA256SUMS).Hash -ne (Get-FileHash .\unpacked\SHA256SUMS).Hash) { throw 'Payload manifest mismatch' }
 Set-Location unpacked
@@ -146,21 +146,21 @@ The unpacked directory contains `tibicen-init/`, `tibicen-adopt/` and
 or copy both entire folders to another chosen location. If your host documents a
 native destination, follow its documentation; this guide does not guess one.
 
-For a directory `/Users/me/Tibicen 1.8.0/unpacked`, the explicit entry files are:
+For a directory `/Users/me/Tibicen 1.8.1/unpacked`, the explicit entry files are:
 
 ```text
-/Users/me/Tibicen 1.8.0/unpacked/tibicen-init/SKILL.md
-/Users/me/Tibicen 1.8.0/unpacked/tibicen-adopt/SKILL.md
+/Users/me/Tibicen 1.8.1/unpacked/tibicen-init/SKILL.md
+/Users/me/Tibicen 1.8.1/unpacked/tibicen-adopt/SKILL.md
 ```
 
 Substitute those actual paths in the [first-session requests](#first-project-session).
 For Windows, use your actual path, for example
-`C:\Users\me\Tibicen 1.8.0\unpacked\tibicen-init\SKILL.md`. When invoking the
+`C:\Users\me\Tibicen 1.8.1\unpacked\tibicen-init\SKILL.md`. When invoking the
 CLI from a terminal, quote paths containing spaces:
 
 ```sh
-node "/Users/me/Tibicen 1.8.0/unpacked/tibicen-init/scripts/tibicen.ts" self-test
-node "/Users/me/Tibicen 1.8.0/unpacked/tibicen-adopt/scripts/tibicen.ts" self-test
+node "/Users/me/Tibicen 1.8.1/unpacked/tibicen-init/scripts/tibicen.ts" self-test
+node "/Users/me/Tibicen 1.8.1/unpacked/tibicen-adopt/scripts/tibicen.ts" self-test
 ```
 
 These local self-tests check the installed kernel/resources. They do not prove

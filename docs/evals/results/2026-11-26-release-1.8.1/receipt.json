@@ -1,0 +1,92 @@
+{
+  "version": "1.8.1",
+  "sourceCommit": "bb5758d688c0cd61115c7f24c9d25006b1766651",
+  "distributionCommit": "3fab265ce311c8d2de9d8942da1b031f6aba49b3",
+  "tagObject": "540173673908f6d4ed825c26b3b1faa35e6465d8",
+  "releaseId": 458919868,
+  "publishedAtUtc": "2026-11-26T03:35:49Z",
+  "releaseUrl": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.1",
+  "checks": {
+    "ci": 45749197647,
+    "platforms": 45749199727,
+    "publication": 45749907041
+  },
+  "assets": {
+    "tibicen-1.8.1.tar.gz": "90dd9b9634ceca7c8238d6e8ab85c5e73b3d9e603844b083404f0a1e1702c3cc",
+    "distribution-SHA256SUMS": "25cda5d8b181d67f85d058480f62ddf0e4b2e37c1bfb1b3513a28c9becfe5b69",
+    "SHA256SUMS": "8c8ff85f119570ed6c05bfdde373a9f0d4d4db73f5179cd26876e1e7b758939f"
+  },
+  "localGate": {
+    "tests": 1215,
+    "passed": 1213,
+    "failed": 0,
+    "skipped": 2
+  },
+  "payloads": 116,
+  "archiveFiles": 117,
+  "lifecycle": {
+    "local": {
+      "status": "passed",
+      "node": "v24.15.0",
+      "installerVersion": "1.7.4",
+      "installerCalls": 6,
+      "standaloneSelfTests": 12,
+      "completePayloadComparisons": 6,
+      "payloadFilesPerComparison": 116,
+      "manifestSha256": "25cda5d8b181d67f85d058480f62ddf0e4b2e37c1bfb1b3513a28c9becfe5b69",
+      "preservedSentinels": 4,
+      "candidateBaselineAndInstallerUnchanged": true,
+      "selectedSkillFoldersAbsentAtEnd": true,
+      "limits": [
+        "Controller-directed lifecycle; does not prove native skill discovery/loading or human approval.",
+        "Incomplete recovery starts from controller-created SKILL.md-only folders, not an observed mid-copy interruption. Genuine mid-copy SIGKILL behavior remains partial/unverified.",
+        "Uses explicit pinned add replacement, not skills update; installer lock-byte stability is not claimed.",
+        "Runs on local macOS with ordinary OS permissions; no child-process sandbox or broader platform acceptance is claimed."
+      ]
+    },
+    "public": {
+      "status": "passed",
+      "route": "actual-public-full-distribution-SHA",
+      "distributionCommit": "3fab265ce311c8d2de9d8942da1b031f6aba49b3",
+      "baselineDistributionCommit": "a748ba3932e85f5194a3ea450c003f83bf8dcd9f",
+      "node": "v24.15.0",
+      "installerVersion": "1.7.4",
+      "installerCalls": 6,
+      "standaloneSelfTests": 12,
+      "completePayloadComparisons": 6,
+      "payloadFilesPerComparison": 116,
+      "manifestSha256": "25cda5d8b181d67f85d058480f62ddf0e4b2e37c1bfb1b3513a28c9becfe5b69",
+      "preservedSentinels": 4,
+      "candidateBaselineAndInstallerUnchanged": true,
+      "selectedSkillFoldersAbsentAtEnd": true,
+      "limits": [
+        "Controller-directed lifecycle; does not prove native skill discovery/loading or human approval.",
+        "Incomplete recovery starts from controller-created SKILL.md-only folders, not an observed mid-copy interruption. Genuine mid-copy SIGKILL behavior remains partial/unverified.",
+        "Uses explicit pinned add replacement, not skills update; installer lock-byte stability is not claimed.",
+        "Runs on local macOS with ordinary OS permissions; no child-process sandbox or broader platform acceptance is claimed."
+      ]
+    }
+  },
+  "review": "Ship",
+  "websiteMetadata": "pending",
+  "newPaidApiRub": 0,
+  "nativeLoading": "unverified",
+  "measuredHumanBenefit": "unknown",
+  "returnedAssets": {
+    "status": "passed",
+    "atUtc": "2026-11-26T03:36:26.657337+00:00",
+    "releaseId": 458919868,
+    "publishedAtUtc": "2026-11-26T03:35:49Z",
+    "archiveFilesAndModes": 117,
+    "payloadHashes": 116,
+    "tlsVerification": true,
+    "noAuth": true,
+    "newPaidApiRub": 0
+  },
+  "previousReleasePreserved": {
+    "status": "passed",
+    "releaseId": 452259773,
+    "tagName": "v1.8.0",
+    "metadataAndAssetIdentitiesUnchanged": true
+  }
+}
