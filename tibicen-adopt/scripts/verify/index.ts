@@ -349,7 +349,11 @@ export function canonicalizeRunOutput(output: string) {
       /(^[ \t]*(?:not )?ok [^\r\n]+\r?\n[ \t]+---\r?\n[ \t]+duration_ms: )\d+(?:\.\d+)?(?=\r?$)/gm,
       '$1<t>',
     )
-    .replace(/^(Ran \d+ tests? in )\d+(?:\.\d+)?(s)(?=\r?$)/gm, '$1<t>$2');
+    .replace(/^(Ran \d+ tests? in )\d+(?:\.\d+)?(s)(?=\r?$)/gm, '$1<t>$2')
+    .replace(
+      /^=+ ((?:\d+ \w+(?:, \d+ \w+)*|no tests ran) in )\d+(?:\.\d+)?s(?: \((?:\d+ days?, )?\d+:\d{2}:\d{2}\))? =+(?=\r?$)/gm,
+      '= $1<t>s =',
+    );
 }
 
 export function compareChecks(
