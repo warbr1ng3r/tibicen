@@ -455,6 +455,114 @@ test(
         );
 
         await suite.test(
+          'a process-scoped PowerShell policy blocks the helper without an uncontained fallback',
+          async (s) => {
+            const output = await fixture(s, {});
+            const marker = path.join(output, 'project-started');
+            const script = `require("node:fs").writeFileSync(${JSON.stringify(marker)},"started");`;
+            const root = await fixture(s, { 'check.cjs': script });
+            const systemRoot = process.env.SystemRoot ?? process.env.WINDIR!;
+            const env = {
+              PATH: path.dirname(process.execPath),
+              SystemRoot: systemRoot,
+              WINDIR: systemRoot,
+            };
+            const approved = command(['./check.cjs'], {
+              envNames: ['PSExecutionPolicyPreference'],
+            });
+            const control = await execute(approved, {
+              root,
+              approvedDigest: digest,
+              env,
+            });
+            assert.equal(control.exitCode, 0, control.reason || control.stderr);
+            assert.equal(await readFile(marker, 'utf8'), 'started');
+            await rm(marker);
+
+            // Process scope changes only this child environment, never registry policy.
+            const restricted = {
+              ...env,
+              PSExecutionPolicyPreference: 'Restricted',
+            };
+            const policy = spawnSync(
+              path.join(
+                systemRoot,
+                'System32/WindowsPowerShell/v1.0/powershell.exe',
+              ),
+              [
+                '-NoLogo',
+                '-NoProfile',
+                '-NonInteractive',
+                '-Command',
+                'Get-ExecutionPolicy',
+              ],
+              { env: restricted, encoding: 'utf8', timeout: 20_000 },
+            );
+            assert.ifError(policy.error);
+            assert.equal(policy.status, 0, policy.stderr);
+            assert.equal(
+              policy.stdout.trim(),
+              'Restricted',
+              'The fixture needs an effective process policy, not an overridden preference.',
+            );
+            const denied = await execute(approved, {
+              root,
+              approvedDigest: digest,
+              env: restricted,
+            });
+            assert.equal(denied.exitCode, null);
+            assert.equal(denied.reason, 'process-tree-uncontrolled');
+            assert.equal(denied.timedOut, false);
+            assert.match(
+              denied.stderr,
+              /PSSecurityException|UnauthorizedAccess/,
+            );
+            await assert.rejects(readFile(marker), { code: 'ENOENT' });
+
+            const { createSnapshot, cleanupSnapshot, runProjectChecks } =
+              await import(
+                pathToFileURL(
+                  path.join(payload.root, 'scripts/verify/index.ts'),
+                ).href
+              );
+            const snapshot = await createSnapshot(root, {
+              approvedDigest: digest,
+            });
+            const originalPolicy = process.env.PSExecutionPolicyPreference;
+            try {
+              process.env.PSExecutionPolicyPreference = 'Restricted';
+              const checked = await runProjectChecks(snapshot, [approved], {
+                approvedDigest: digest,
+                environmentReady: true,
+                profile: 'docs',
+              });
+              assert.equal(checked.status, 'unverified');
+              assert.equal(checked.reason, 'process-tree-uncontrolled');
+              assert.deepEqual(checked.runs, []);
+              s.diagnostic(
+                JSON.stringify({
+                  phase: 'restricted-helper-policy',
+                  payload: payload.name,
+                  effectivePolicy: policy.stdout.trim(),
+                  denied,
+                  checked,
+                }),
+              );
+            } finally {
+              if (originalPolicy === undefined)
+                delete process.env.PSExecutionPolicyPreference;
+              else process.env.PSExecutionPolicyPreference = originalPolicy;
+              await cleanupSnapshot(snapshot);
+            }
+            await assert.rejects(readFile(marker), { code: 'ENOENT' });
+            assert.equal(
+              await readFile(path.join(root, 'check.cjs'), 'utf8'),
+              script,
+            );
+          },
+        );
+
+        await suite.test(
           'controlled docs CLI pins node.exe and completes the consent-bound lifecycle',
           async (s) => {
             const root = await fixture(s, {
