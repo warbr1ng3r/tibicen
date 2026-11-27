@@ -35,7 +35,11 @@ import {
   validateApprovalChannel,
   validateApprovalReceipts,
 } from './approvals.ts';
-import { safePath, isInfrastructurePath } from './paths.ts';
+import {
+  safePath,
+  validateRelativePath,
+  isInfrastructurePath,
+} from './paths.ts';
 import {
   containsSecret,
   isEmptyProject,
@@ -604,6 +608,8 @@ export async function applyPlan(
       'A retry must address a recorded unknown command outcome.',
     );
   for (const change of proposal.changes) {
+    // An unsafe path is never reported as internal, protected or stale.
+    validateRelativePath(change.path);
     assert(
       !change.path.startsWith('.tibicen/'),
       'forbidden-path',

@@ -15,6 +15,8 @@ import {
   validateData,
 } from '../core/contracts.ts';
 
+import { containsLiteralSecret } from '../core/policy.ts';
+
 const NAME = /^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,63}$/;
 const ENV = /^[A-Za-z_][A-Za-z0-9_]*$/;
 interface SyntaxNode {
@@ -231,20 +233,6 @@ function parseConfig(text: string) {
 }
 
 export { parseConfig as parseMcpJson };
-
-function containsLiteralSecret(value: unknown): boolean {
-  if (!value || typeof value !== 'object') return false;
-  return Object.entries(value).some(
-    ([key, child]) =>
-      (/token|password|api[_-]?key|secret|authorization|credential/i.test(
-        key,
-      ) &&
-        typeof child === 'string' &&
-        child.trim() &&
-        !/\$\{[^}]+\}/.test(child)) ||
-      containsLiteralSecret(child),
-  );
-}
 
 function updateServer(text: string, name: string, config: unknown) {
   const { ast } = parseConfig(text);

@@ -18,7 +18,11 @@ import {
   validateTargetFileMode,
   validateProposal,
 } from './contracts.ts';
-import { safePath, isInfrastructurePath } from './paths.ts';
+import {
+  safePath,
+  validateRelativePath,
+  isInfrastructurePath,
+} from './paths.ts';
 import {
   executableName,
   validateCommand,
@@ -41,6 +45,23 @@ import { infrastructureScope } from '../verify/scope.ts';
 import { inspectNodeEnvironment } from '../verify/environment.ts';
 import { memoryAllows, resolveMemory } from './memory.ts';
 
+import { isSecretKey, isSecretPlaceholder } from './policy.ts';
+
+// Bare text keeps the existing narrow placeholder-plus-word detection.
+const BARE_PARTIAL_PLACEHOLDER =
+  /^\s*(?:\$\{[^}]+\}|<[a-zA-Z0-9_-]+>|\[redacted\]|\*{3,})[a-zA-Z0-9_-]+(?![^"'\s])/;
+
+function decodeQuoted(token: string): string {
+  if (token.startsWith('"')) {
+    try {
+      return JSON.parse(token) as string;
+    } catch (error) {
+      if (!(error instanceof SyntaxError)) throw error;
+    }
+  }
+  return token.slice(1, -1);
+}
+
 export function containsSecret(content: string) {
   if (
     /(?:\b(?:sk-|gh[pousr]_|github_pat_)[a-zA-Z0-9_-]{16,}|-----BEGIN [A-Z ]*PRIVATE KEY-----)/.test(
@@ -48,17 +69,19 @@ export function containsSecret(content: string) {
     )
   )
     return true;
-  // Start once per identifier, rather than retrying a long prefix from every character.
+  // Inspect every source occurrence, including duplicates; escaped quotes cannot start keys.
   for (const match of content.matchAll(
-    /(?<![a-z0-9_-])["']?([a-z0-9_-]+)["']?\s*[:=]/gi,
+    /(?<![a-z0-9_\\-])("(?:\\[\s\S]|[^"\\])*"|'(?:\\[\s\S]|[^'\\])*'|[a-z0-9_-]+)\s*[:=]/gi,
   )) {
-    if (
-      /(?:api[_-]?key|token|password|secret)$/i.test(match[1]) &&
-      /^\s*["'](?!\$\{|<|\[redacted\]|\*{3})[^"'\s]{4,}["']/.test(
-        content.slice(match.index + match[0].length),
-      )
-    )
-      return true;
+    const rawKey = match[1];
+    const key = /^["']/.test(rawKey) ? decodeQuoted(rawKey) : rawKey;
+    if (!isSecretKey(key)) continue;
+    const tail = content.slice(match.index + match[0].length);
+    const quoted = /^\s*(["'])((?:\\[\s\S]|(?!\1)[^\\])*)\1/.exec(tail);
+    if (quoted) {
+      const value = decodeQuoted(quoted[0].trim());
+      if (value.trim() && !isSecretPlaceholder(value)) return true;
+    } else if (BARE_PARTIAL_PLACEHOLDER.test(tail)) return true;
   }
   return false;
 }
@@ -327,6 +350,11 @@ export async function createProposal(
   ].flatMap((source) => source.files ?? []);
   for (const requested of requestedChanges) {
     const change = { ...requested };
+    // A present unsafe path is never reported as internal, protected or stale;
+    // a missing path keeps the application refusal below.
+    if (typeof change.path === 'string') {
+      validateRelativePath(change.path);
+    }
     assert(
       !change.path?.startsWith('.tibicen/'),
       'forbidden-path',
