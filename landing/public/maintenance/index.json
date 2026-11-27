@@ -363,6 +363,25 @@
         }
       ],
       "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.1"
+    },
+    {
+      "version": "1.8.2",
+      "publishedAtUtc": "2026-11-27T02:12:04Z",
+      "sourceCommit": "4e2257a5ceff9df62ce2709f0cdf0b86e0105cc2",
+      "distributionCommit": "2f151b9fb1b9a2a3553e374fbb0ba6ad5b02fbb5",
+      "scope": "Compatible secret-handling and unsafe-path classification patch. Exact-source offline CI and all six macOS/Ubuntu/Windows x Node 22.20/24.15 platform cells passed, including actual Windows commands. Mechanical universal public full-SHA install, replacement, repeat, complete edited-backup restore, removal and constructed incomplete-copy recovery passed; all 116 payload bytes/modes match the frozen candidate. Native autoload, general model behavior, Windows policy restrictions, human benefit and completion of the selected 185-row matrix remain unverified. Secret detection retains declared key/quoted-value and bare-text limits. Prior failed and assisted observations remain unchanged.",
+      "payloadManifest": {
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.2/distribution-SHA256SUMS",
+        "sha256": "491e3cb133e7b7b197f68317170b3830562c6a1bf900830e3b8e8147c7a83481"
+      },
+      "archives": [
+        {
+          "name": "tibicen-1.8.2.tar.gz",
+          "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.2/tibicen-1.8.2.tar.gz",
+          "sha256": "27158c13d3d899c5c13755765634dff2e6f642a9ded04b1fd806a76bac71a4f2"
+        }
+      ],
+      "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.2"
     }
   ],
   "warnings": []
