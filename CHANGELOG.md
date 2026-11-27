@@ -5,6 +5,10 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+### Guidance
+
+- Preserve the owner's stated input/output domain when drafting project memory. Keep unspecified details separate from accepted rules instead of adding an unsupported standing clarification requirement. This clarifies the existing memory/interview contract; no runtime or schema change.
+
 ## [1.8.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.2) — 2026-11-27
 
 See the [release report](docs/evals/results/2026-11-27-release-1.8.2/README.md).
