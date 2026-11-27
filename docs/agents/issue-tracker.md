@@ -1,6 +1,6 @@
 # Issue tracker
 
-Updated 27 November 2026. This file lists current assignments; the
+Updated 28 November 2026. This file lists current assignments; the
 [roadmap](../DEVELOPMENT_PLAN.md) gives delivery order. Completed packets and
 original grades remain in their reports and the dated history below.
 
@@ -12,6 +12,46 @@ original grades remain in their reports and the dated history below.
 | Five-case first-use execution and assessment | none | Closed with evidence limits; [assessment](../evals/results/2026-11-20-first-use-assessment/README.md) |
 | Five-front development package | none | Returned and independently assessed; targeted fixes integrated locally; [assessment](../evals/results/2026-11-26-development-assessment/README.md) |
 | Release 1.8.1 and website | none | Closed; [release report](../evals/results/2026-11-26-release-1.8.1/README.md) |
+| Release 1.8.2 and website | none | Closed; [release report](../evals/results/2026-11-27-release-1.8.2/README.md) |
+| Mechanical 47 return | none | Closed with qualified evidence; [assessment](../evals/results/2026-11-27-mechanical-47-assessment/README.md) |
+| Eight-case agent return | none | Partial return assessed; [evidence](../evals/results/2026-11-27-agent-eight-assessment/README.md) |
+| Four-question follow-up | none | Returned and assessed; [evidence](../evals/results/2026-11-28-four-agent-followup-assessment/README.md) |
+| Windows helper-policy test | root | Test pushed; actual Windows CI pending access |
+
+## Four-question follow-up — assessed and closed
+
+The [assessment](../evals/results/2026-11-28-four-agent-followup-assessment/README.md)
+keeps incoming grades and root's separate conclusions. All four observations ended;
+AE-05 functional failure and AE-07 procedural limits remain. Known memory scope and
+material-question guidance are clarified locally under Unreleased; no runtime/schema
+change or release. Private coordination stays in the isolated acceptance packet. No new
+broad model run is assigned. Windows CI access remains separate and pending.
+
+## Eight-case agent return — partial execution closed
+
+The [assessment](../evals/results/2026-11-27-agent-eight-assessment/README.md) keeps both
+reviewer and coordinator grades, the unrun work and clock/oracle qualifications.
+All 427 indexed files rehash; source and released 1.8.2 are unchanged. AE-08's old failed
+is retained beside the semantic counterexample; AE-05's generated negative-amount
+uncertainty and missing working phase are explicit. Do not call this eight completed
+native passes. No old packet or host session was restarted during acceptance.
+
+Root prepared and sealed a separate four-question protocol with exact AE-05 lineage and
+controller-only synthetic application. It avoids asking child agents to count an
+agent message as human consent. Its return is now assessed above. Detailed evidence belongs in that finite packet,
+not a new broad matrix. Windows browser authentication/access remains pending separately.
+
+## Mechanical 47 return — assessed and closed
+
+The selected execution effort is complete on published 1.8.2. The
+[assessment](../evals/results/2026-11-27-mechanical-47-assessment/README.md) preserves 22 passed / 25 assisted, an empty patch,
+source/index verification and partial-review/collector/clock limits. Root's targeted
+19-case raw sample found no product bug. Original grades and attempts remain intact.
+
+The separate eight-case return and its four-question follow-up are assessed above;
+no repeat is assigned. Windows helper-policy acceptance at test commit
+`805b000f8fcc559947929531661473de9fb658e5` awaits actual Windows CI dispatch/access.
+These are bounded independent fronts; no new full matrix or paid API work is assigned.
 
 ## Closed effort — release 1.8.2
 

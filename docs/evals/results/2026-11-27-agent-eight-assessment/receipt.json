@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "date": "2026-11-27",
+  "status": "partial-return-assessed",
+  "version": "1.8.2",
+  "publicSource": "8fd9652f0adf9a82a4ea20796f3f7450fbc7bfd7",
+  "candidateManifestSha256": "491e3cb133e7b7b197f68317170b3830562c6a1bf900830e3b8e8147c7a83481",
+  "archiveSha256": "27158c13d3d899c5c13755765634dff2e6f642a9ded04b1fd806a76bac71a4f2",
+  "selected": 8,
+  "attempted": 5,
+  "concluded": 4,
+  "incomingCoordinatorGrades": {
+    "passed": 1,
+    "assisted": 2,
+    "failed": 1,
+    "unverified": 1,
+    "not-run-budget": 3
+  },
+  "incomingIndependentReviewerGrades": {
+    "passed": 2,
+    "assisted": 1,
+    "failed": 1,
+    "unverified": 1,
+    "not-run-budget": 3
+  },
+  "historicalGradesRewritten": false,
+  "integrity": {
+    "sealedInputs": 172,
+    "sourceFiles": 1568,
+    "worktreeClean": true,
+    "indexedFilesRehashed": 427,
+    "indexedBytesRehashed": 5599301,
+    "overOneMiBFiles": [
+      {
+        "type": "owned event projection",
+        "bytes": 1140861
+      },
+      {
+        "type": "owned event projection",
+        "bytes": 1242524
+      }
+    ],
+    "verify": "passed",
+    "validateResults": "valid-structure-only"
+  },
+  "sourcePatch": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "semanticAdjudication": {
+    "AE08": {
+      "oldGrade": "failed-retained",
+      "literalRatio1_0Absent": true,
+      "actualCounterexamples": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "exception": "ZeroDivisionError",
+      "intentSatisfied": true,
+      "newLiveRun": false
+    },
+    "AE05": {
+      "negativeIntegerCentsCoveredByOriginalOwnerRule": true,
+      "downstreamWorkNotRun": true,
+      "decimalSeparatorUnspecified": true,
+      "negativeIntegerCentUncertaintyUnsupported": true,
+      "nonintegerCentInputsOutsideDeclaredDomain": true
+    },
+    "AE06": {
+      "explicitCorrectionApplied": true,
+      "ownerBytesPreserved": true,
+      "evidenceIsSampledNotWholeRangeProof": true,
+      "separateWorkSessionResult": "Gift + signed integer-cents examples"
+    }
+  },
+  "observability": {
+    "exactFullBodyReadsVerified": 6,
+    "nativeAutoloadEstablished": false,
+    "cleanContextEstablishedUnderFrozenProtocol": false,
+    "hostContextInjected": true
+  },
+  "timing": {
+    "AE01": {
+      "overrunSupported": true,
+      "controllerGrantSecondsAfterDispatch": 1066.938
+    },
+    "AE05": {
+      "incomingGrade": "failed-retained",
+      "reportedOverrunSupported": false,
+      "retainedDispatchToCheckpointSeconds": 814.559,
+      "retainedEarliestInitToCheckpointSeconds": 884.267,
+      "earlierClockStartNotRetained": true
+    }
+  },
+  "lastLedger": {
+    "atUtc": "2026-11-27T14:31:34.652Z",
+    "startedRequests": 175,
+    "coordinator": 74,
+    "workersIncludingReviewer": 101,
+    "executionWorkers": 88,
+    "reviewer": 13,
+    "finalTurnsUnknown": true,
+    "providerFailureCountInconsistency": "AE01 narrative says two; FINAL per-session failed count says one; the two missing completed records are not enough to prove two failures."
+  },
+  "remainingOriginalWork": [
+    "AE-02",
+    "AE-03",
+    "AE-07",
+    "AE-05 work phase"
+  ],
+  "continuation": "Separate four-question prospective packet sealed and preparation-reviewed; no new live execution",
+  "newRootScenarioModelCalls": 0,
+  "newPaidApiRub": 0,
+  "productRuntimeDefectsReproduced": [],
+  "noCommitPushVersionReleaseForAssessment": true,
+  "followupPreparation": {
+    "packet": "agent-four-followup-1.8.2-20261127",
+    "revision": "four-followup-v1",
+    "scenarioIds": [
+      "AE-03",
+      "AE-02",
+      "AE-05",
+      "AE-07"
+    ],
+    "inputSealSha256": "139ce7871a3ffd57d1cf19fa4b7021041fa4ac985c107fbe7e1eeb3f7cc6f21a",
+    "offlineControls": 22,
+    "initialGuard": "passed",
+    "newLiveExecution": false
+  }
+}

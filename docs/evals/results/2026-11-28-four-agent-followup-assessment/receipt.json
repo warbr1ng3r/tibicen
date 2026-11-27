@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "date": "2026-11-28",
+  "status": "returned-observations-assessed-with-qualifications",
+  "version": "1.8.2",
+  "source": "8fd9652f0adf9a82a4ea20796f3f7450fbc7bfd7",
+  "inputSealSha256": "139ce7871a3ffd57d1cf19fa4b7021041fa4ac985c107fbe7e1eeb3f7cc6f21a",
+  "integrity": {
+    "inputFiles": 171,
+    "workerSourceFiles": 1568,
+    "originalTrackedFiles": 2106,
+    "indexedFiles": 432,
+    "indexedBytes": 3350177,
+    "largestIndexedFileBytes": 87238,
+    "returnedPatchBytes": 0
+  },
+  "incomingGrades": {
+    "AE-03": "passed",
+    "AE-02": "assisted",
+    "AE-05": "failed",
+    "AE-07": "assisted-qualified"
+  },
+  "historicalGradesRewritten": false,
+  "rootAdjudication": {
+    "AE05": {
+      "functional": "failed-missing-export",
+      "workerState": "stopped-for-clarification",
+      "fullBodyReadsVerified": 7,
+      "causalCounterfactual": false,
+      "allQuestionsIndispensable": false
+    },
+    "AE07": {
+      "functionalRecovery": "supported-assisted",
+      "frozenInstruments": "failed-retained-Ts-parser-defect",
+      "samePlanRoute": "not-observed",
+      "fullPreExecutionSemanticReview": "not-established-inaccurate-record",
+      "exactApprovalReceipts": "bind-actual-new-envelope",
+      "fullProtocolAcceptance": false
+    }
+  },
+  "approvalPolicy": "Approve the digest of the exact envelope being executed; without replacement envelope, freshly approve the saved plan digest. No old approval for a different plan.",
+  "checks": {
+    "existingTargetedTests": 3,
+    "localDeterministicApprovalRoutes": 2,
+    "crossDigestAttempts": "refused-without-state-writes",
+    "exactDigestAttempts": "complete-original-session",
+    "newGuidanceModelObservation": "not-run",
+    "fullGate": {
+      "tests": 1226,
+      "passed": 1224,
+      "failed": 0,
+      "skipped": 2,
+      "exitCode": 0
+    },
+    "standalone": {
+      "sha256Entries": 116,
+      "selfTestsPassed": 2,
+      "emptyPath": true,
+      "isolatedHome": true
+    },
+    "independentFinalReview": "Ship"
+  },
+  "localUnreleasedChange": "Clarify existing memory input/output scope and material-question guidance; no runtime/schema change",
+  "newLiveModelScenarios": 0,
+  "newPaidApiRub": 0,
+  "commitPushVersionRelease": false,
+  "localIntegrationBase": "805b000f8fcc559947929531661473de9fb658e5"
+}

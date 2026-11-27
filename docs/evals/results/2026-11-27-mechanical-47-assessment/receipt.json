@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "date": "2026-11-27",
+  "scope": "Read-only root assessment of the returned mechanical-47 packet; no scenario replay",
+  "targetVersion": "1.8.2",
+  "publicSource": "8fd9652f0adf9a82a4ea20796f3f7450fbc7bfd7",
+  "payloadManifestSha256": "491e3cb133e7b7b197f68317170b3830562c6a1bf900830e3b8e8147c7a83481",
+  "archiveSha256": "27158c13d3d899c5c13755765634dff2e6f642a9ded04b1fd806a76bac71a4f2",
+  "incomingGradesRetained": {
+    "passed": 22,
+    "assisted": 25,
+    "failed": 0,
+    "unverified": 0,
+    "blocked-prerequisite": 0,
+    "not-run-budget": 0
+  },
+  "selectedCases": 47,
+  "retainedAttemptDirectories": 219,
+  "currentAttempts": 47,
+  "otherAttempts": 172,
+  "sourceFilesMatchingPublicBase": 1568,
+  "patchBytes": 0,
+  "patchSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "index": {
+    "parts": 3,
+    "filesRehashed": 9889,
+    "bytesRehashed": 69786607,
+    "unindexedDirectorySymlinks": 31,
+    "unindexedBytecodeCaches": 35,
+    "unindexedDerivedIndexFiles": 5,
+    "symlinksCurrentlyResolveInsidePacket": true,
+    "wholePacketSealClaim": false
+  },
+  "trustedOriginalPacketGuards": {
+    "verify": "passed",
+    "validate-results": "valid-structure"
+  },
+  "rootRawEvidenceSample": {
+    "cases": 19,
+    "laneA": 10,
+    "laneC": 9,
+    "scenarioReexecution": false,
+    "confirmedProductBug": false
+  },
+  "incomingReview": {
+    "verdict": "SHIP-WITH-SHOULD-FIX",
+    "summaryReportedRawCases": 20,
+    "summaryReportedDigestOnlyCases": 27,
+    "explicitListRawOrPartlyRawCases": 21,
+    "explicitListDigestOnlyCases": 26,
+    "assistedCasesOutsideRawList": 15,
+    "blinded": false,
+    "fullRawReviewOfAllClausesEstablished": false
+  },
+  "lastRetainedModelLedger": {
+    "requestsStarted": 175,
+    "coordinator": 97,
+    "workers": 78,
+    "workerFailures": 28,
+    "atUtc": "2026-11-27T05:53:44Z",
+    "finalTurnsUnknown": true
+  },
+  "decisions": {
+    "ADOPT-020": "Next catalogue: only explicitly shown files may be deleted; count may exceed one. Original definition/results unchanged.",
+    "SKILL-015": "Successful input explicitly selects replace, as original before-state requests. Qualify r2 narrative; no missing-decision branch claim.",
+    "RECOVER-016": "Retained regressions/hook state contract supported; saved attempts all passed, so incomplete-attempt outcome and production firstAttempt selection are not established."
+  },
+  "reportedBaselineGate": {
+    "passed": 1224,
+    "failed": 0,
+    "skipped": 2,
+    "rerunByRoot": false
+  },
+  "newPaidApiRub": 0,
+  "rootLiveAgentCases": 0,
+  "productSourceEdits": false,
+  "newCommitPushVersionOrReleaseForThisAssessment": false,
+  "historicalGradesChanged": false
+}
