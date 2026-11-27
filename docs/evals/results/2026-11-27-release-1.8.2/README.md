@@ -32,12 +32,20 @@ were preserved through replacement, repeat, restore, removal and recovery. Fourt
 separate standalone CLI commands ran with empty PATH and isolated HOME outside the
 checkout. Published 1.8.1, its tag and its three asset identities remain unchanged.
 
-## Website
+## Website — verified
 
-Release metadata is prepared and checked locally. Public metadata CI, Cloudflare,
-legacy checksum-index deployment and returned-body comparison are pending; their
-actual identities are filled after observation. Runtime publication is already
-verified. No website completion is inferred from a local build.
+Metadata source `274c020d694301a08f1b637d3d2cfc563653beb6` passed
+[CI](https://github.com/warbr1ng3r/tibicen/actions/runs/45927608063),
+[Cloudflare](https://github.com/warbr1ng3r/tibicen/actions/runs/45927608043) and
+[legacy Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/45928055645).
+All **27 returned response bodies** match its exact build: 22 primary files,
+four legacy redirects and one legacy checksum index. Both indexes contain 20
+versions and preserve all 19 earlier records, history and warnings. This later
+report-only closure does not redeploy or change the accepted site/runtime bytes.
+
+The runtime source reached main before metadata because of a local status-label
+mismatch. The metadata commit followed; its exact CI and deployments passed.
+The earlier source/asset acceptance and immutable published bytes were unchanged.
 
 ## Limits
 

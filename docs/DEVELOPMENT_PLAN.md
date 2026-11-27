@@ -76,13 +76,13 @@ No new broad sweep is scheduled. Further agent execution first needs a working
 provider route and a prospective bounded protocol. The 47 mechanical rows and
 eight supplemental gaps remain visible; a code gate does not regrade them.
 
-## Release 1.8.2 — in progress
+## Release 1.8.2 — closed
 
-Owner authorized the complete compatible patch delivery. Candidate/source are prepared
-locally, then exact-source CI, six platforms, public delivery and returned assets
-must pass before publication and site metadata. [Release report](evals/results/2026-11-27-release-1.8.2/README.md)
-retains pending versus actual steps. Existing incomplete scenario coverage is not
-silently regraded. No new live model evaluation or paid API is required.
+The compatible patch is published. Exact-source CI, six platforms, local/public
+lifecycle, three returned assets and 27 website bodies passed. Both indexes preserve
+all 19 earlier records. [Release report](evals/results/2026-11-27-release-1.8.2/README.md)
+retains identities, limits and the early-main-update deviation. Published 1.8.1 and
+original scenario grades remain unchanged. No live agent sweep or paid API occurred.
 
 ## Next work
 

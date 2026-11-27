@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "version": "1.8.2",
-  "status": "published-site-verification-pending",
+  "status": "published-and-verified",
   "releaseId": 460085903,
   "publishedAtUtc": "2026-11-27T02:12:04Z",
   "releaseUrl": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.2",
@@ -51,14 +51,26 @@
   "standaloneCliCommands": 14,
   "independentReview": "Ship",
   "website": {
-    "status": "pending",
-    "metadataSource": null,
-    "checks": [],
-    "returnedBodies": null
+    "status": "passed",
+    "metadataSource": "274c020d694301a08f1b637d3d2cfc563653beb6",
+    "metadataCI": 45927608063,
+    "cloudflareDeploy": 45927608043,
+    "legacyPages": 45928055645,
+    "legacyDispatchRun": 45928028361,
+    "sourceBoundBuildFiles": 22,
+    "returnedBodies": 27,
+    "matchedBodies": 27,
+    "indexVersions": 20,
+    "previousVersionsPreserved": 19,
+    "previousWarningsAndHistoricalBytesPreserved": true,
+    "auditSummarySha256": "14b53e4b1b40cab9eaed0ec9641677d8e6bd3c51eeadd35e8d2068a7a615fcb0"
   },
   "newPaidApiRub": 0,
   "nativeAutoloadEstablished": false,
   "broadModelAcceptanceEstablished": false,
   "humanBenefitMeasured": false,
-  "originalScenarioGradesUnchanged": true
+  "originalScenarioGradesUnchanged": true,
+  "deviations": [
+    "Accepted runtime source reached main before its metadata update because a local status-label assertion failed; final metadata followed and passed exact-source CI, deployments and all returned-body checks. No release byte or previous asset changed."
+  ]
 }

@@ -13,15 +13,17 @@ original grades remain in their reports and the dated history below.
 | Five-front development package | none | Returned and independently assessed; targeted fixes integrated locally; [assessment](../evals/results/2026-11-26-development-assessment/README.md) |
 | Release 1.8.1 and website | none | Closed; [release report](../evals/results/2026-11-26-release-1.8.1/README.md) |
 
-## Current effort — release 1.8.2
+## Closed effort — release 1.8.2
 
-Owner authorized commit, push, source/platform CI, stable patch publication and site
-metadata in one package. Scope is the reviewed raw/MCP secret guard and path-refusal
-classification; no new feature or live sweep. Root owns publication; parallel agents
-own exact-candidate lifecycle and independent release review. The private map is
-`.scratch/release-1.8.2-20261127/map.md`. [Release report](../evals/results/2026-11-27-release-1.8.2/README.md)
-starts as an unpublished preparation record and receives actual public identities.
-Published 1.8.1 and original coverage outcomes remain unchanged.
+Owner-authorized commits, source projection/push, exact-source CI, six platform cells,
+local/public lifecycle, stable publication, returned assets and website acceptance
+are complete. All 27 returned bodies match metadata source
+`274c020d694301a08f1b637d3d2cfc563653beb6`; both indexes preserve 19 earlier records.
+The [release report](../evals/results/2026-11-27-release-1.8.2/README.md) keeps exact
+identities, evidence limits and the early-main-update deviation. Private map:
+`.scratch/release-1.8.2-20261127/map.md`. No assigned live release work remains.
+Original scenario grades and published 1.8.1 are unchanged; no new live model or
+paid API evaluation occurred.
 
 ## Closed effort — selected coverage return
 
