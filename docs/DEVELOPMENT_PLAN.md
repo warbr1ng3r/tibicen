@@ -1,6 +1,6 @@
 # Tibicen development plan
 
-Updated 26 November 2026. Assignments live in the [tracker](agents/issue-tracker.md).
+Updated 27 November 2026. Assignments live in the [tracker](agents/issue-tracker.md).
 Scope remains in the [vision](PRODUCT_VISION.md) and [current capabilities](CURRENT_CAPABILITIES.md).
 
 ## Current status
@@ -55,6 +55,34 @@ The compatible patch is published. Exact-source CI, six platform cells, local an
 public delivery/update/recovery/removal, all returned assets and 27 website bodies
 passed. Published 1.8.0 remains unchanged. The [release report](evals/results/2026-11-26-release-1.8.1/README.md)
 retains identities, reviews and limits. No broad model evaluation was required.
+
+## Coverage return and selected follow-up
+
+The [first assessment](evals/results/2026-11-26-coverage-assessment/README.md) retains
+the 288-case historical outcomes. The [selected follow-up](evals/results/2026-11-27-coverage-followup-assessment/README.md)
+has returned: 20 of 185 rows attempted, 18 concluded, 118 admission blocks and
+47 mechanical rows not run. Original grades remain unchanged; an incomplete final
+request ledger and unblinded grading qualify the return.
+
+The return exposed a raw secret-reflection defect. Root closed its remaining
+spaced-value, key/escape/duplicate cases in the shared proposal/read/apply guard,
+including ordinary infrastructure writes. Detailed work stays in the
+[OpenSpec change](../openspec/changes/classify-unsafe-paths-and-mcp-placeholders/proposal.md).
+The correction is Unreleased; published 1.8.1 remains unchanged.
+
+Next delivery is a compatible security/correctness patch after final engineering
+checks, separate commit/publication authorization and the ordinary release process.
+No new broad sweep is scheduled. Further agent execution first needs a working
+provider route and a prospective bounded protocol. The 47 mechanical rows and
+eight supplemental gaps remain visible; a code gate does not regrade them.
+
+## Release 1.8.2 — in progress
+
+Owner authorized the complete compatible patch delivery. Candidate/source are prepared
+locally, then exact-source CI, six platforms, public delivery and returned assets
+must pass before publication and site metadata. [Release report](evals/results/2026-11-27-release-1.8.2/README.md)
+retains pending versus actual steps. Existing incomplete scenario coverage is not
+silently regraded. No new live model evaluation or paid API is required.
 
 ## Next work
 

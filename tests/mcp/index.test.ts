@@ -16,6 +16,46 @@ const server = {
   envNames: ['SERVICE_TOKEN'],
 };
 
+test('MCP secret guards reject partial placeholders and mixed references', () => {
+  for (const agent of ['claude-code', 'cursor']) {
+    for (const literal of [
+      '<literal-without-close',
+      '<token>literal-suffix',
+      '***literal-credential',
+      '[redacted]literal-credential',
+      '${UNFINISHED_REFERENCE',
+      '${REF}literal-suffix',
+      'literal-prefix${REF}',
+    ]) {
+      const text = JSON.stringify({
+        mcpServers: {
+          example: { command: 'unused-server', env: { API_TOKEN: literal } },
+        },
+      });
+      const plan = planMcpChanges(agent, text, [
+        { name: 'example', action: 'upsert', server },
+      ]);
+      assert.equal(
+        plan.reason,
+        'existing-inline-secret',
+        `${agent}: ${literal}`,
+      );
+      assert.deepEqual(plan.changes, []);
+      assert.ok(!JSON.stringify(plan).includes(literal));
+      const verdict = validateMcpConfig(agent, text);
+      assert.equal(verdict.reason, 'existing-inline-secret');
+      assert.ok(!JSON.stringify(verdict).includes(literal));
+      for (const [before, after] of [
+        [text, null],
+        [null, text],
+      ])
+        assert.throws(() => mcpNeedsExecutionTrust(agent, before, after), {
+          code: 'invalid-mcp-format',
+        });
+    }
+  }
+});
+
 test('execution trust follows server command, args and environment changes, not JSON formatting', () => {
   const entry = {
     command: 'existing',
@@ -116,6 +156,54 @@ test('ambiguous JSON, literal secrets and unknown formats give a manual step wit
     assert.deepEqual(result.changes, []);
     assert.ok(!JSON.stringify(result).includes('do-not-return'));
   }
+});
+
+test('documented placeholders are not inline MCP secrets; literal credentials stay rejected', () => {
+  const config = (env: Record<string, string>) =>
+    JSON.stringify({
+      mcpServers: { example: { command: 'node', args: ['server.js'], env } },
+    });
+  const formatVerdict = {
+    agent: 'claude-code',
+    servers: [
+      {
+        name: 'example',
+        status: 'manual-action-required',
+        reason: 'invalid-env-reference',
+      },
+    ],
+  };
+  for (const placeholder of ['<token>', '<VALUE>', '[redacted]', '********']) {
+    const text = config({ SERVICE_TOKEN: placeholder });
+    // The verdict comes from format validation, never from secret inspection.
+    assert.deepEqual(validateMcpConfig('claude-code', text), formatVerdict);
+    const plan = planMcpChanges('claude-code', text, [
+      { name: 'other', action: 'upsert', server },
+    ]);
+    assert.notEqual(plan.status, 'manual-action-required', placeholder);
+    assert.deepEqual(plan.manualActions, []);
+    assert.doesNotThrow(() =>
+      mcpNeedsExecutionTrust('claude-code', text, text),
+    );
+  }
+  for (const literal of ['do-not-return-literal', 'sk-' + 'x'.repeat(24)])
+    for (const text of [
+      config({ SERVICE_TOKEN: literal }),
+      JSON.stringify({ settings: { API_TOKEN: literal }, mcpServers: {} }),
+    ]) {
+      const result = validateMcpConfig('claude-code', text);
+      assert.equal(result.status, 'manual-action-required', literal);
+      assert.equal(result.reason, 'existing-inline-secret', literal);
+      assert.deepEqual(result.servers, []);
+      assert.ok(!JSON.stringify(result).includes(literal));
+      const plan = planMcpChanges('claude-code', text, []);
+      assert.equal(plan.status, 'manual-action-required', literal);
+      assert.equal(plan.reason, 'existing-inline-secret', literal);
+      assert.deepEqual(plan.changes, []);
+      assert.throws(() => mcpNeedsExecutionTrust('claude-code', null, text), {
+        code: 'invalid-mcp-format',
+      });
+    }
 });
 
 test('env availability is specific to the target launch context', () => {

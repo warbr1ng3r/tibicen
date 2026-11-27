@@ -1,6 +1,6 @@
 # Issue tracker
 
-Updated 26 November 2026. This file lists current assignments; the
+Updated 27 November 2026. This file lists current assignments; the
 [roadmap](../DEVELOPMENT_PLAN.md) gives delivery order. Completed packets and
 original grades remain in their reports and the dated history below.
 
@@ -12,6 +12,33 @@ original grades remain in their reports and the dated history below.
 | Five-case first-use execution and assessment | none | Closed with evidence limits; [assessment](../evals/results/2026-11-20-first-use-assessment/README.md) |
 | Five-front development package | none | Returned and independently assessed; targeted fixes integrated locally; [assessment](../evals/results/2026-11-26-development-assessment/README.md) |
 | Release 1.8.1 and website | none | Closed; [release report](../evals/results/2026-11-26-release-1.8.1/README.md) |
+
+## Current effort — release 1.8.2
+
+Owner authorized commit, push, source/platform CI, stable patch publication and site
+metadata in one package. Scope is the reviewed raw/MCP secret guard and path-refusal
+classification; no new feature or live sweep. Root owns publication; parallel agents
+own exact-candidate lifecycle and independent release review. The private map is
+`.scratch/release-1.8.2-20261127/map.md`. [Release report](../evals/results/2026-11-27-release-1.8.2/README.md)
+starts as an unpublished preparation record and receives actual public identities.
+Published 1.8.1 and original coverage outcomes remain unchanged.
+
+## Closed effort — selected coverage return
+
+Root has completed acceptance of the returned 185-row follow-up; code and evidence were reviewed
+independently. [Assessment](../evals/results/2026-11-27-coverage-followup-assessment/README.md)
+retains incoming grades and limits. Assignments belong to the private map
+`.scratch/coverage-followup-return-20261127/map.md`; product tasks belong to
+[OpenSpec](../../openspec/changes/classify-unsafe-paths-and-mcp-placeholders/proposal.md).
+The raw-content secret guard is corrected locally, including ordinary infrastructure
+apply, spaced literals and decoded/duplicate keys. Full gate passed 1,224 tests with zero failures and two expected skips; build,
+standalone payload checks and final Ponytail review passed. The local effort is closed.
+No live scenario sweep, commit, push, version change or publication is included.
+
+The old packet and all candidates remain intact. Agent/native admission blocks are
+not product failures. Restoring the provider route is a prerequisite for a later
+bounded agent observation, not a reason to spend another complete matrix now.
+Mechanical gaps remain recorded rather than inferred passed from offline gates.
 
 ## Closed effort — release 1.8.1
 

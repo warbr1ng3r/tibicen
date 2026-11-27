@@ -1,0 +1,218 @@
+{
+  "schema": 1,
+  "assessmentDate": "2026-11-27",
+  "canonicalAssessment": "README.md",
+  "status": "assessed-and-integrated-uncommitted",
+  "version": "1.8.1",
+  "incomingModified": false,
+  "originalGradesPreserved": true,
+  "scope": {
+    "forensicOnly": true,
+    "newLiveModelSweep": false,
+    "newPaidApiCallsByAssessment": 0,
+    "commitsCreated": false,
+    "publicationPerformed": false,
+    "earlierAssessment": "../2026-11-26-coverage-assessment/README.md"
+  },
+  "catalog": {
+    "selectedRows": 185,
+    "originalNonpassed": 177,
+    "supplementalOldPasses": 8,
+    "reportedDispositionCounts": {
+      "passed": 13,
+      "assisted": 4,
+      "failed": 1,
+      "unverified": 2,
+      "blocked-prerequisite": 118,
+      "not-run-budget": 47
+    },
+    "reportedAttemptedRows": 20,
+    "attemptedMechanicalRows": 19,
+    "attemptedAgentRows": 1,
+    "reportedConcludedRows": 18,
+    "admissionBlocks": {
+      "agent": 111,
+      "native": 6,
+      "windows": 1
+    },
+    "supplementalGapsRetried": 0,
+    "acceptedGeneralAgentOrHostCoverage": false
+  },
+  "guards": {
+    "verify": {
+      "startedAtUtc": "2026-11-27T01:19:39.179475+00:00",
+      "exitCode": 0,
+      "frozenBindings": 142,
+      "protectedOriginalFiles": 2100
+    },
+    "validateResults": {
+      "startedAtUtc": "2026-11-27T01:19:40.067901+00:00",
+      "exitCode": 0,
+      "catalogRows": 185
+    },
+    "scope": "Observed before later authorized root integration; protects baseline tracked and intentional new bytes/modes, HEAD/raw status and frozen inputs, not all ignored/external host data."
+  },
+  "evidenceIndex": {
+    "rehashStatus": "passed",
+    "individuallyHashedFiles": 2985,
+    "individuallyHashedBytes": 20104283,
+    "sha256": "1357e0bfe1a7322712b3b46b35613f898c2c1d29c9635b808ff1c7ea64f7d98d",
+    "wholePacketSeal": false,
+    "bulkDirectories": "Aggregates only, without per-file hashes."
+  },
+  "returnedCandidates": {
+    "root-reviewed-01": {
+      "published": false,
+      "version": "1.8.1",
+      "inventoryEntriesIncludingManifest": 117,
+      "payloadFiles": 116,
+      "manifestSha256": "151cd17ef7c63be355f55c91e0f2d2dd96e404588bf8a351d079064a33dada86",
+      "archiveSha256": "cd6620c822c11faf97ddfe541f5acdaa5aeabefbe156ce9b50b1690d50275c9c",
+      "identitySha256": "46f0f7c875f0e9b9f3c8ad8b1b78027673d7d43c60143e76decd46aa9eb37a75",
+      "inventoryAndArchiveContentsMatch": true
+    },
+    "fix-01": {
+      "published": false,
+      "version": "1.8.1",
+      "inventoryEntriesIncludingManifest": 117,
+      "payloadFiles": 116,
+      "manifestSha256": "01458842bc784297e73b8287374cb6e1c192cee879d5fe89fead8c0b5f4f89a3",
+      "archiveSha256": "b22f77d1c395db4abe7ec42a0634665f239166b1e6691da8748eb6ed5f23c8c7",
+      "identitySha256": "7e50416299195c2e7661bbc6f02a9c1803b2926313c67e817f3a5c19c8cfdbe2",
+      "inventoryAndArchiveContentsMatch": true,
+      "returnedReviewVerdict": "ship-with-should-fix",
+      "securityBoundaryComplete": false
+    }
+  },
+  "returnedPatches": {
+    "delta": {
+      "files": 13,
+      "bytes": 40440,
+      "sha256": "11bb4a9dd2baf606fee30451c5ee3b8659486aeb2098a22838c15541c3e3eadc",
+      "baseTree": "2ba2994cf40ee816c5498da0b1874c67f0e59c3b",
+      "inMemoryApplicationMatchesReturnedSource": true
+    },
+    "fullFinal": {
+      "files": 24,
+      "bytes": 93711,
+      "sha256": "39be9f462370177ccdc2aa139a7dc188fa015ee56d750c5df8a91614069ebef8",
+      "baseCommit": "9615f7862c30651e3bfc304e32f6b773de760e9b",
+      "inMemoryApplicationMatchesReturnedSource": true
+    }
+  },
+  "readiness": {
+    "case": "CONSENT-010",
+    "triggerReached": false,
+    "completeAgentFlow": false,
+    "nativeLoadingEstablished": false,
+    "causalBenefitEstablished": false,
+    "projectAndOwnedHomeCheckpointMatch": true,
+    "hostStopSecondsFromLaunch": 466.764,
+    "laterControllerRecordSecondsFromLaunch": 478.853,
+    "phaseLimitSeconds": 600,
+    "timeoutOverrunObserved": false,
+    "retryClock": "Frozen protocol explicitly includes retries in the same clock; no retrospective fresh-clock reinterpretation."
+  },
+  "grading": {
+    "separateAuthorsAndGraders": true,
+    "authorProposedGradesVisible": true,
+    "frozenBlindInputRuleSatisfied": false,
+    "humanCalibrationEstablished": false,
+    "supersededGradeHistoryComplete": false,
+    "historyLimitation": "One MCP-007 grade was overwritten by another grader before the final retained reviewer revision; final grade exists."
+  },
+  "resources": {
+    "verifiedSnapshotRequests": 247,
+    "coordinatorSnapshotRequests": 76,
+    "subagentSnapshotRequests": 171,
+    "snapshotAtUtc": "2026-11-27T01:02:06.149+00:00",
+    "exactFinalRequests": null,
+    "finalBudgetCompliance": "unverified: subsequent coordinator calls not retained",
+    "elapsedMinutesAtSnapshot": 199.887,
+    "newPaidApiRubReported": 0,
+    "subscriptionCost": null
+  },
+  "integration": {
+    "status": "reviewed-checked-uncommitted",
+    "sourceIdentity": {
+      "kind": "runtime-build-input-manifest",
+      "sha256": "245031b72f6d4a3d74a0b6110a7ed20b6ad74735acd7966a6c74cf28699e0387",
+      "version": "1.8.1",
+      "published": false
+    },
+    "finalChecks": {
+      "pnpmTest": {
+        "exit": 0,
+        "total": 1226,
+        "passed": 1224,
+        "failed": 0,
+        "skipped": 2
+      },
+      "pnpmBuildExit": 0,
+      "focusedTests": {
+        "passed": 46,
+        "failed": 0,
+        "independentlyRepeated": true
+      },
+      "independentSemanticCasesPassed": 30,
+      "payloadFiles": 116,
+      "hashesVerified": 116,
+      "selfTests": [
+        {
+          "skill": "tibicen-init",
+          "exit": 0,
+          "outsideCheckout": true,
+          "isolatedHome": true,
+          "emptyPath": true
+        },
+        {
+          "skill": "tibicen-adopt",
+          "exit": 0,
+          "outsideCheckout": true,
+          "isolatedHome": true,
+          "emptyPath": true
+        }
+      ],
+      "deterministicBytesAndModesEqual": true,
+      "archiveBytesAndModesEqual": true
+    },
+    "finalReview": {
+      "skill": "ponytail-review",
+      "verdict": "Ship",
+      "reviewedFilesSha256": {
+        "scripts/core/plan.ts": "19c1842427b935f2cfb83444d7217f7e407aa2df680d4cbb4b0991be38defbe4",
+        "scripts/core/policy.ts": "7b8f5aebba866084f5de177e5403b0078e61dab97bcfb5f53d660dd4763c317e",
+        "scripts/core/apply.ts": "4f700a946d8ca16a7e165eda2b692765fe141f33e83355798ba1cab63986bdb3",
+        "scripts/mcp/index.ts": "d411b650359306dac2c72595845c670f3c5477ba4416fc3f684cb6fcbadebf60",
+        "tests/core/contracts.test.ts": "0199651b8ae5951c83ba46ea097a1c165dcc2fbf0a1517501806004ce37bbf02",
+        "tests/core/mcp-diagnosis-cli.test.ts": "a04633363661d46833c3f54ebf0108d91142092dbbaa70f21f5571651913f115",
+        "tests/mcp/index.test.ts": "d81295d1ec2954b537c14ff5bd89563a924fa3a7d4599a8a7112f456605cb6be"
+      },
+      "finalSourceMatchesReviewedFiles": true
+    },
+    "rootLocalCorrection": "Shared whole-placeholder/key predicates and per-source quoted key/value decoding; retain duplicates and encoded complete placeholders, exclude escaped key starts to bound scanning.",
+    "rootLocalFindings": [
+      "spaced placeholder-shaped literal",
+      "AUTHORIZATION key",
+      "escaped JSON keys",
+      "secret-bearing approved AGENTS.md writes",
+      "duplicate escaped keys and duplicate parent members",
+      "encoded-placeholder false refusals in an interim implementation",
+      "quadratic escaped-quote scan in an interim implementation"
+    ],
+    "preliminaryChecksReportedByRoot": {
+      "securityRegressionsFailIncomingCode": 2,
+      "performanceRegressionFailsInterimRoot": 1,
+      "focusedTestsPassed": 46,
+      "independentSemanticCasesPassed": 30,
+      "cliReproductionsPassed": 6
+    },
+    "newReleaseEstablished": false,
+    "candidate": {
+      "id": "root-corrected-followup",
+      "manifestSha256": "b002238a9a6677c1032ca2aa1f7855d1fd2cbc91b27ce3dc7479358ccc76f412",
+      "archiveSha256": "fadca7873f1f61934cd9665d10e721c8d1ed034542107018bc312638efb5768f",
+      "published": false
+    }
+  }
+}

@@ -5,6 +5,19 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+## 1.8.2 — unpublished candidate
+
+### Fixed
+
+- Classify an unsafe change path before other per-change refusals in proposal/apply, preserving plan-level consent/tamper checks. Previously rejected traversal forms still cause no writes; this corrects the refusal code.
+- Share secret-key and complete-placeholder rules across raw infrastructure content and structured MCP inspection. Refuse spaced/suffixed literals, AUTHORIZATION/CREDENTIALS and escaped or duplicate JSON secret keys before proposal output or approved writes; preserve complete encoded placeholders and unrelated file/consent boundaries.
+
+### Documentation
+
+- Assess the selected [185-case follow-up](docs/evals/results/2026-11-27-coverage-followup-assessment/README.md), preserving its incoming grades, provider-admission limits, unblinded grading and incomplete final request ledger.
+
+- Record the qualified [288-case coverage assessment](docs/evals/results/2026-11-26-coverage-assessment/README.md), retaining original grades, assisted instrumentation, missing agent/native coverage and accounting limits.
+
 ## [1.8.1](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.1) — 2026-11-26
 
 See the [release report](docs/evals/results/2026-11-26-release-1.8.1/README.md).

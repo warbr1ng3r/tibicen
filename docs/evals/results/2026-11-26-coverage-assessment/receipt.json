@@ -1,0 +1,169 @@
+{
+  "schema": 1,
+  "assessmentDate": "2026-11-26",
+  "status": "assessed-and-integrated-uncommitted",
+  "canonicalAssessment": "README.md",
+  "incomingEvidenceModified": false,
+  "originalGradesPreserved": true,
+  "productOrModelRerunsByForensicAudit": false,
+  "catalog": {
+    "rows": 288,
+    "originalCoordinatorCounts": {
+      "passed": 111,
+      "assisted": 19,
+      "failed": 3,
+      "unverified": 18,
+      "blocked-prerequisite": 7,
+      "not-run-budget": 130
+    },
+    "acceptedAggregatePassCount": null,
+    "executed114Definition": "original passed + failed; excludes assisted and incomplete attempts",
+    "waveOne": {
+      "nonNotRun": 29,
+      "attempted": 27,
+      "blocked": 2,
+      "notRun": 19
+    },
+    "criticalRows": 38,
+    "criticalNotRun": 12
+  },
+  "agentObservation": {
+    "attemptedRows": 1,
+    "proposalReadyApproximatelySeconds": 570,
+    "stopElapsedSeconds": 600.185,
+    "triggerReached": false,
+    "completeAgentFlowEstablished": false,
+    "nativeLoadingEstablished": false,
+    "causalBenefitEstablished": false,
+    "projectCheckpointEqual": true
+  },
+  "grading": {
+    "incorrectIndependentGraderFields": 13,
+    "coordinatorAdjudications": 12,
+    "reviewerAdjudications": 1,
+    "reviewerAdjudicatedCase": "MCP-003",
+    "independentGraderVerdicts": 0,
+    "embeddedHistoricalDimensionsOverwritten": 12,
+    "originalRecordsRetained": true
+  },
+  "partialMappedTestPasses": [
+    "ADOPT-007",
+    "ADOPT-009",
+    "ADOPT-013",
+    "ADOPT-014",
+    "ADOPT-015",
+    "ADOPT-020",
+    "SKILL-014",
+    "SKILL-015"
+  ],
+  "accounting": {
+    "reportBodyRequests": 248,
+    "latestSnapshotRequests": 249,
+    "additionalRetainedActorRequest": 1,
+    "knownMinimumApproximately": 250,
+    "exactFinalRequests": null,
+    "exactBudgetCompliance": "unverified",
+    "wallLimitHours": 8,
+    "wallWithinLimitObserved": true,
+    "newPaidApiSpendRubReported": 0,
+    "subscriptionCost": null
+  },
+  "observer": {
+    "files": 85,
+    "bytes": 6597198711,
+    "referencedRows": 36,
+    "assistedMcpRows": 19,
+    "nativeExecutionEstablished": false,
+    "containmentEstablished": false
+  },
+  "rootEvidenceIndexRehash": {
+    "status": "passed",
+    "files": 6826,
+    "bytes": 6764782672
+  },
+  "returnedPatch": {
+    "files": 14,
+    "bytes": 32519,
+    "sha256": "8c42aa9096ec9aedeb8d47707f22330ea32b4dd66631054db46d2bd4cc6cff57",
+    "sourceBase": "9615f7862c30651e3bfc304e32f6b773de760e9b"
+  },
+  "returnedCandidateBindings": {
+    "status": "matched",
+    "releasedManifestSha256": "25cda5d8b181d67f85d058480f62ddf0e4b2e37c1bfb1b3513a28c9becfe5b69",
+    "fix01ManifestSha256": "29cde4773b1862f436028b35069bde2087217789db1c87dad182bed4e45aea84"
+  },
+  "originalFailures": [
+    "SECURITY-001",
+    "SECURITY-008",
+    "MCP-003"
+  ],
+  "integration": {
+    "status": "reviewed-checked-uncommitted",
+    "returnedRegression": "Prefix-based placeholders could expose and overwrite literal credentials; corrected with full-value matching.",
+    "legacyMixedReferenceWeaknessAlsoClosed": true,
+    "finalSourceIdentity": {
+      "kind": "build-input-manifest",
+      "sha256": "9c229cb9bf4e822f38901720e117cc213483f23b9d88a4a4838882f457e68d08",
+      "version": "1.8.1",
+      "published": false
+    },
+    "finalChecks": {
+      "pnpmTest": {
+        "exit": 0,
+        "total": 1221,
+        "passed": 1219,
+        "failed": 0,
+        "skipped": 2
+      },
+      "pnpmBuildExit": 0,
+      "focusedTests": {
+        "passed": 41,
+        "failed": 0,
+        "independentlyRepeated": true
+      },
+      "standaloneSelfTests": [
+        {
+          "skill": "tibicen-init",
+          "exit": 0,
+          "cwdOutsideCheckout": true,
+          "PATH": "",
+          "isolatedHome": true
+        },
+        {
+          "skill": "tibicen-adopt",
+          "exit": 0,
+          "cwdOutsideCheckout": true,
+          "PATH": "",
+          "isolatedHome": true
+        }
+      ],
+      "payloadFiles": 116,
+      "allPayloadHashesPassed": true,
+      "deterministicBytesAndModesEqual": true,
+      "archiveBytesAndModesEqual": true
+    },
+    "candidate": {
+      "id": "root-reviewed-01",
+      "manifestSha256": "151cd17ef7c63be355f55c91e0f2d2dd96e404588bf8a351d079064a33dada86",
+      "archiveSha256": "cd6620c822c11faf97ddfe541f5acdaa5aeabefbe156ce9b50b1690d50275c9c"
+    },
+    "review": "No runtime blockers; missing-path wording qualified to nonempty projects.",
+    "publicationAuthorizedByAssessment": false
+  },
+  "protectionScope": "Original tracked file bytes/modes, HEAD and porcelain status only; ignored and external host data were not comprehensively inspected.",
+  "followup": {
+    "status": "prepared-not-executed",
+    "selectedRows": 185,
+    "originallyNonPassed": 177,
+    "supplementalAssertionGaps": 8,
+    "kindCounts": {
+      "mechanical": 67,
+      "agent": 112,
+      "native": 6
+    },
+    "revisedCase": "MCP-003-R2",
+    "oldGradesReplaced": false,
+    "defaultObserver": false,
+    "newPaidApiRub": 0
+  }
+}

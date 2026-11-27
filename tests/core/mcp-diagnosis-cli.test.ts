@@ -18,6 +18,7 @@ import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { main } from '../../scripts/tibicen.ts';
 import { createProposal } from '../../scripts/core/plan.ts';
+import { digest, hashContent } from '../../scripts/core/contracts.ts';
 import { applyPlan } from '../../scripts/core/apply.ts';
 import { runtimeHooks } from '../../scripts/core/runtime.ts';
 import type { diagnoseMcp } from '../../scripts/mcp/diagnosis.ts';
@@ -109,6 +110,144 @@ async function fixture(t: TestContext) {
   await mkdir(home);
   return { base, root, home };
 }
+
+test('MCP proposal and approved apply preserve partial-placeholder credentials', async (t) => {
+  const { root, home } = await fixture(t);
+  await writeFile(path.join(root, 'AGENTS.md'), 'Owner rules\n');
+  for (const agent of ['claude-code', 'cursor']) {
+    const relative = agent === 'cursor' ? '.cursor/mcp.json' : '.mcp.json';
+    const config = path.join(root, relative);
+    await mkdir(path.dirname(config), { recursive: true });
+    const content = (value: string) =>
+      JSON.stringify({
+        mcpServers: {
+          docs: { command: 'existing-server', env: { API_TOKEN: value } },
+        },
+      });
+    const input = {
+      mode: 'improve' as const,
+      compat: { enabled: false },
+      mcp: [
+        {
+          agent,
+          trusted: true,
+          operations: [
+            {
+              name: 'docs',
+              action: 'upsert' as const,
+              server: {
+                command: 'unused-server',
+                args: [],
+                envNames: ['API_TOKEN'],
+              },
+            },
+          ],
+        },
+      ],
+    };
+    for (const literal of [
+      '<token>literal-suffix',
+      '***literal-credential',
+      '${REF}literal-suffix',
+    ]) {
+      const original = content(literal);
+      await writeFile(config, original);
+      const envelope = await createProposal(root, input, { home });
+      assert.deepEqual(envelope.proposal.changes, [], agent);
+      assert.ok(!JSON.stringify(envelope).includes(literal));
+      assert.equal(await readFile(config, 'utf8'), original);
+    }
+    await writeFile(
+      config,
+      content(agent === 'cursor' ? '${env:API_TOKEN}' : '${API_TOKEN}'),
+    );
+    const approved = await createProposal(root, input, { home });
+    assert.equal(approved.proposal.changes.length, 1);
+    const literal = '<token>literal-suffix';
+    const original = content(literal);
+    await writeFile(config, original);
+    // Exercise the apply boundary with a digest-bound plan matching the current bytes.
+    // The raw scan of the current configuration refuses before the MCP trust comparison.
+    approved.proposal.changes[0].beforeHash = hashContent(original);
+    approved.digest = digest(approved.proposal);
+    const before = await readdir(root, { recursive: true });
+    await assert.rejects(
+      () =>
+        applyPlan(root, approved, {
+          home,
+          approvedDigest: approved.digest,
+        }),
+      { code: 'secret-content' },
+    );
+    assert.equal(await readFile(config, 'utf8'), original);
+    assert.deepEqual(await readdir(root, { recursive: true }), before);
+  }
+});
+
+test('proposal refuses a raw MCP change whose placeholder prefix hides a literal', async (t) => {
+  const { root } = await fixture(t);
+  await writeFile(path.join(root, 'AGENTS.md'), 'Owner rules\n');
+  for (const agent of ['claude-code', 'cursor']) {
+    const relative = agent === 'cursor' ? '.cursor/mcp.json' : '.mcp.json';
+    const config = path.join(root, relative);
+    await mkdir(path.dirname(config), { recursive: true });
+    const reference =
+      agent === 'cursor' ? '${env:DOCS_API_KEY}' : '${DOCS_API_KEY}';
+    const literal = '<token>SYNTH-LITERAL-7f3a9c';
+    const content = (token?: string) =>
+      `${JSON.stringify(
+        {
+          mcpServers: {
+            docs: {
+              command: 'docs-server',
+              env: { API_KEY: reference, ...(token ? { TOKEN: token } : {}) },
+            },
+          },
+        },
+        null,
+        2,
+      )}\n`;
+    const current = content();
+    await writeFile(config, current);
+    const before = await readdir(root, { recursive: true });
+    const result = spawnSync(
+      process.execPath,
+      [
+        fileURLToPath(new URL('../../scripts/tibicen.ts', import.meta.url)),
+        'proposal',
+        '--root',
+        root,
+        '--input',
+        '-',
+      ],
+      {
+        input: JSON.stringify({
+          mode: 'improve',
+          changes: [
+            {
+              path: relative,
+              action: 'modify',
+              content: content(literal),
+              reason: 'Regression probe',
+            },
+          ],
+        }),
+        encoding: 'utf8',
+        timeout: 10000,
+      },
+    );
+    const output = result.stdout + result.stderr;
+    assert.equal(result.status, 1, output);
+    assert.equal(
+      JSON.parse(result.stdout).error.code,
+      'secret-content',
+      output,
+    );
+    assert.ok(!output.includes(literal), agent);
+    assert.equal(await readFile(config, 'utf8'), current);
+    assert.deepEqual(await readdir(root, { recursive: true }), before);
+  }
+});
 
 async function diagnose(root: string, request: unknown): Promise<Diagnosis> {
   const input = path.join(path.dirname(root), 'request.json');
@@ -623,4 +762,73 @@ test('unknown code-defined MCP uses hash-bound observations without interpreting
   assert.equal(missing.configuration.basis, 'unverified');
   assert.deepEqual(missing.configuration.envNames, []);
   assert.deepEqual(await readdir(root), []);
+});
+
+test('MCP verification separates documented placeholders from literal inline secrets', async (t) => {
+  const { root } = await fixture(t);
+  await writeFile(path.join(root, 'AGENTS.md'), 'Owner rules\n');
+  type Verdict = {
+    status?: string;
+    reason?: string;
+    servers?: {
+      name: string;
+      status: string;
+      reason?: string;
+      envNames?: string[];
+    }[];
+  };
+  const verify = async (agent: string, env: Record<string, string>) => {
+    const config = path.join(
+      root,
+      agent === 'cursor' ? '.cursor/mcp.json' : '.mcp.json',
+    );
+    await mkdir(path.dirname(config), { recursive: true });
+    await writeFile(
+      config,
+      `${JSON.stringify({ mcpServers: { docs: { command: 'docs-server', env } } }, null, 2)}\n`,
+    );
+    return (await main([
+      'mcp-verify',
+      '--root',
+      root,
+      '--agent',
+      agent,
+    ])) as Verdict;
+  };
+  for (const agent of ['claude-code', 'cursor'])
+    for (const placeholder of ['<token>', '<VALUE>', '[redacted]', '********'])
+      // The verdict comes from format validation, never from secret inspection.
+      assert.deepEqual(
+        await verify(agent, { TOKEN: placeholder }),
+        {
+          agent,
+          servers: [
+            {
+              name: 'docs',
+              status: 'manual-action-required',
+              reason: 'invalid-env-reference',
+            },
+          ],
+        },
+        `${agent}: ${placeholder}`,
+      );
+  for (const agent of ['claude-code', 'cursor']) {
+    const literal = await verify(agent, { API_KEY: 'literal-secret-sentinel' });
+    assert.equal(literal.status, 'manual-action-required');
+    assert.equal(literal.reason, 'existing-inline-secret');
+    assert.deepEqual(literal.servers, []);
+    assert.ok(!JSON.stringify(literal).includes('literal-secret-sentinel'));
+  }
+  const reference = await verify('cursor', {
+    API_KEY: '${env:DOCS_API_KEY}',
+  });
+  assert.notEqual(reference.reason, 'existing-inline-secret');
+  assert.deepEqual(
+    reference.servers?.map((item) => item.envNames),
+    [['DOCS_API_KEY']],
+  );
+  assert.deepEqual(
+    (await readdir(root, { recursive: true })).sort(),
+    ['.cursor', '.cursor/mcp.json', '.mcp.json', 'AGENTS.md'].sort(),
+  );
 });

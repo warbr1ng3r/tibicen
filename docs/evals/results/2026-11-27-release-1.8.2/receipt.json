@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "version": "1.8.2",
+  "status": "preparing-unpublished",
+  "authorization": "Owner said \u043f\u043e\u0435\u0445\u0430\u043b\u0438 after the explicit whole-release plan: commits,push,CI,publication,site.",
+  "source": null,
+  "distribution": null,
+  "tag": null,
+  "checks": {},
+  "newPaidApiRub": 0,
+  "previousVersion": "1.8.1",
+  "unchangedPreviousRelease": null
+}
