@@ -5,9 +5,21 @@ immutable source/distribution references, checks and remaining scope limits.
 
 ## Unreleased
 
+## 1.8.3 — PREPARED 2026-11-28
+
+Prepared candidate; not published. The date shown is the preparation date.
+
 ### Guidance
 
 - Preserve the owner's stated input/output domain when drafting project memory. Keep unspecified details separate from accepted rules instead of adding an unsupported standing clarification requirement. This clarifies the existing memory/interview contract; no runtime or schema change.
+
+### Tests
+
+- Cover restricted Windows helper policies without changing the runtime. Actual Windows acceptance remains a separate platform CI check.
+
+### Documentation
+
+- Record the qualified mechanical, agent follow-up and memory-guidance assessments. Preserve original grades, assistance, missing observations and accounting limits; the new memory-guidance observation does not regrade earlier failures or establish causal or human benefit.
 
 ## [1.8.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.2) — 2026-11-27
 
