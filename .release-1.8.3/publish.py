@@ -45,15 +45,15 @@ try:
     assert api("git/tags/" + E["tagObject"])["object"]["sha"] == E["distribution"]
     previous = json.loads((D / "previous-release.json").read_text())
     def check_previous():
-        r = api("releases/tags/v1.8.1")
+        r = api("releases/tags/v1.8.2")
         assert all(r[k] == previous[k] for k in ["id", "published_at", "tag_name", "name", "body", "draft", "prerelease"])
         assert [{k:a.get(k) for k in ["id","name","size","digest"]} for a in r["assets"]] == previous["assets"]
     check_previous()
     phase = 'draft-selection'
     releases = api("releases?per_page=100")
-    candidates = [r for r in releases if r["tag_name"] == "v1.8.3" or r["name"] == "Tibicen 1.8.3 — secret-safe proposals and application"]
+    candidates = [r for r in releases if r["tag_name"] == "v1.8.3" or r["name"] == "Tibicen 1.8.3 — project memory without unnecessary blockers"]
     assert len(candidates) <= 1, "Ambiguous release draft"
-    body = {"tag_name":"v1.8.3", "target_commitish":E["distribution"], "name":"Tibicen 1.8.3 — secret-safe proposals and application", "body":(D/"release-notes.md").read_text(), "draft":True, "prerelease":False}
+    body = {"tag_name":"v1.8.3", "target_commitish":E["distribution"], "name":"Tibicen 1.8.3 — project memory without unnecessary blockers", "body":(D/"release-notes.md").read_text(), "draft":True, "prerelease":False}
     phase = 'draft-write'
     if candidates:
         release = candidates[0]

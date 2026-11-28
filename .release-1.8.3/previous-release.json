@@ -1,0 +1,29 @@
+{
+  "id": 460085903,
+  "published_at": "2026-11-27T02:12:04Z",
+  "tag_name": "v1.8.2",
+  "name": "Tibicen 1.8.2 \u2014 secret-safe proposals and application",
+  "body": "# Tibicen 1.8.2\n\nThis compatible patch prevents recognized literal credentials under secret-like keys from appearing in proposal content\nor diffs and from being written through approved ordinary infrastructure changes.\nRaw content and structured MCP inspection share strict complete-placeholder and\nsecret-key rules. Spaced literals, authorization/credential names and escaped or\nduplicate JSON keys are checked; complete encoded placeholders remain supported.\nIt also reports unsafe change paths consistently before other per-change refusals.\n\nPersisted schemas and dependencies are unchanged. Existing approval, application\nfile protection and interpreter restrictions remain. No project migration is needed.\n\nInstall/update uses the exact distribution SHA shown below after publication. Back\nup locally edited skill directories before replacement. Existing project setup is\nupdated separately through adopt. Installation/update/restore/removal and support\nlimits are recorded in the release report.\n\nThis release does not claim universal harness autoload, general model acceptance,\nhuman benefit or completion of the selected 185-scenario matrix.\n\n## Install or update\n\nRequires Node 22.20 or newer and Git. Back up locally edited skill folders first:\n\n```sh\nnpx skills@1.7.4 add https://github.com/warbr1ng3r/tibicen/tree/2f151b9fb1b9a2a3553e374fbb0ba6ad5b02fbb5 -g --agent universal --skill tibicen-init tibicen-adopt --copy\n```\n\n## Verification\n\nSource: `4e2257a5ceff9df62ce2709f0cdf0b86e0105cc2`.\nDistribution: `2f151b9fb1b9a2a3553e374fbb0ba6ad5b02fbb5`.\n\nLocal gate: 1,224 passed, zero failures, two expected skips. Independent Ponytail\nreview accepts the scoped correction. [Public offline CI](https://github.com/warbr1ng3r/tibicen/actions/runs/45926415370)\nand [all six platform cells](https://github.com/warbr1ng3r/tibicen/actions/runs/45926417347)\npassed, including actual Windows commands on both Node versions. Local and public lifecycle\nchecks retain controller assistance and ordinary OS permissions; recovery uses\nconstructed incomplete folders rather than proving interruption at every copy step.\nNo native harness autoload or measured human benefit is claimed.\n\nArchive SHA-256: `27158c13d3d899c5c13755765634dff2e6f642a9ded04b1fd806a76bac71a4f2`.\nPayload manifest SHA-256: `491e3cb133e7b7b197f68317170b3830562c6a1bf900830e3b8e8147c7a83481`.\n\n[Release report](https://github.com/warbr1ng3r/tibicen/blob/main/docs/evals/results/2026-11-27-release-1.8.2/README.md).\n",
+  "draft": false,
+  "prerelease": false,
+  "assets": [
+    {
+      "id": 798569369,
+      "name": "distribution-SHA256SUMS",
+      "size": 12202,
+      "digest": "sha256:491e3cb133e7b7b197f68317170b3830562c6a1bf900830e3b8e8147c7a83481"
+    },
+    {
+      "id": 798569394,
+      "name": "SHA256SUMS",
+      "size": 177,
+      "digest": "sha256:fa99727f4cbd5281310363629ec49df5881fbfe04afaca0e41c3fcba814f04d3"
+    },
+    {
+      "id": 798569326,
+      "name": "tibicen-1.8.2.tar.gz",
+      "size": 316345,
+      "digest": "sha256:27158c13d3d899c5c13755765634dff2e6f642a9ded04b1fd806a76bac71a4f2"
+    }
+  ]
+}
