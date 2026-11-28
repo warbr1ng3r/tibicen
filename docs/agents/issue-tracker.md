@@ -17,7 +17,8 @@ original grades remain in their reports and the dated history below.
 | Eight-case agent return | none | Partial return assessed; [evidence](../evals/results/2026-11-27-agent-eight-assessment/README.md) |
 | Four-question follow-up | none | Returned and assessed; [evidence](../evals/results/2026-11-28-four-agent-followup-assessment/README.md) |
 | Memory-guidance observation | none | Closed with qualifications; [evidence](../evals/results/2026-11-28-memory-guidance-assessment/README.md) |
-| Windows helper-policy test | root | Test pushed; actual Windows CI pending access |
+| Windows helper-policy test | none | Closed; corrected test passed both Windows Node versions in 1.8.3 |
+| Release 1.8.3 and website | none | Closed; [release report](../evals/results/2026-11-28-release-1.8.3/README.md) |
 
 ## Memory-guidance observation — assessed and closed
 
@@ -25,16 +26,16 @@ The [return](../evals/results/2026-11-28-memory-guidance-assessment/README.md) i
 as one qualified positive observation. A later blind audit is separate; original
 author grades/reports remain. The worker completes the formatter and preserves owner
 meaning. Generation/read/consent claims stay scoped; causality is unknown. No runtime
-defect or broad rerun follows. Pending-delivery guidance remains Unreleased.
+defect or broad rerun follows. The byte-identical guidance was subsequently published in 1.8.3.
 
 ## Four-question follow-up — assessed and closed
 
 The [assessment](../evals/results/2026-11-28-four-agent-followup-assessment/README.md)
 keeps incoming grades and root's separate conclusions. All four observations ended;
 AE-05 functional failure and AE-07 procedural limits remain. Known memory scope and
-material-question guidance are clarified locally under Unreleased; no runtime/schema
-change or release. Private coordination stays in the isolated acceptance packet. No new
-broad model run is assigned. Windows CI access remains separate and pending.
+material-question guidance were clarified under Unreleased during acceptance and
+subsequently published in 1.8.3 without runtime/schema changes. Private coordination stays in the isolated acceptance packet. No new
+broad model run is assigned. Windows helper-policy acceptance subsequently completed with 1.8.3.
 
 ## Eight-case agent return — partial execution closed
 
@@ -48,7 +49,7 @@ native passes. No old packet or host session was restarted during acceptance.
 Root prepared and sealed a separate four-question protocol with exact AE-05 lineage and
 controller-only synthetic application. It avoids asking child agents to count an
 agent message as human consent. Its return is now assessed above. Detailed evidence belongs in that finite packet,
-not a new broad matrix. Windows browser authentication/access remains pending separately.
+not a new broad matrix. Windows helper-policy CI subsequently completed without browser access.
 
 ## Mechanical 47 return — assessed and closed
 
@@ -58,9 +59,18 @@ source/index verification and partial-review/collector/clock limits. Root's targ
 19-case raw sample found no product bug. Original grades and attempts remain intact.
 
 The separate eight-case return and its four-question follow-up are assessed above;
-no repeat is assigned. Windows helper-policy acceptance at test commit
-`805b000f8fcc559947929531661473de9fb658e5` awaits actual Windows CI dispatch/access.
+no repeat is assigned. The corrected Windows helper-policy test subsequently passed both Node versions
+in the [1.8.3 release matrix](../evals/results/2026-11-28-release-1.8.3/README.md).
 These are bounded independent fronts; no new full matrix or paid API work is assigned.
+
+## Closed effort — release 1.8.3
+
+Guidance merged; stable release, exact-source CI, six platform cells, local/public
+lifecycle, returned assets and both website deployments are verified. All 27 bodies
+match metadata `5805d1c55c6ef2b7aac3c57c43cdc80f394cee1f`; both indexes preserve 20 earlier records.
+The working Codex installation is verified at 1.8.3 and its update is now a release
+checklist step. The [report](../evals/results/2026-11-28-release-1.8.3/README.md)
+retains evidence and limits. No live release work, broad model rerun or paid API is assigned.
 
 ## Closed effort — release 1.8.2
 

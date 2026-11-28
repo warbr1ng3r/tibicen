@@ -1,8 +1,15 @@
 # Preparing a release
 
+## Maintainer's working Codex installation
+
+An owner-authorized stable release also updates the maintainer's working Codex installation after public-asset verification. Install both `tibicen-init` and `tibicen-adopt` from the exact published distribution SHA. Before replacement, compare the existing files with their last recorded distribution and preserve local edits in a backup outside active skill directories. Verify both package versions, every distributed file hash and both self-tests; retain the distribution SHA and installation receipt outside the installed skills. Use `$CODEX_HOME/tibicen-installation.json` (default `~/.codex/tibicen-installation.json`) for working-installation provenance. This is an explicit release step, with no background updater or automatic project-infrastructure changes.
+
 ## 1.8.3 published — 2026-11-28
 
 [1.8.3](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.3) was published at 2026-11-28T03:34:22Z. Source bd8cdd3b80b6f43de3a934c913f099a8a758ca9d, distribution 1ab71cc59579bedee46cff0a83acddc328915260, annotated tag 1cb7b85e67e2b971fb5fd421dbadc95a7805c0f7. Published 1.8.2 is preserved. Exact checks, delivery and limits are retained in the [release report](evals/results/2026-11-28-release-1.8.3/README.md). Website metadata acceptance is tracked separately there.
+
+Website acceptance is complete: CI, Cloudflare and legacy Pages passed for metadata `5805d1c55c6ef2b7aac3c57c43cdc80f394cee1f`; all 27 returned bodies match and both indexes preserve 20 earlier records. Exact run IDs and limits are in the release report.
+
 
 ## 1.8.2 published — 2026-11-27
 

@@ -17,9 +17,25 @@ Independent Ponytail review accepted runtime publication. All three downloaded p
 
 Local and actual public full-SHA lifecycle each passed six pinned-installer calls, six complete byte/mode comparisons and twelve installed self-tests on Node 24.15.0. Complete edited backups, unrelated tools/settings/application data and a later memory note survived update, repeat, backup restoration, recovery and removal. Fourteen standalone CLI commands passed outside the checkout with isolated HOME and empty PATH.
 
-## Website — pending
+## Website — verified
 
-Runtime publication and returned-asset acceptance are complete. Current-release pointers, the appended checksum record and deployment acceptance follow separately. The exact deployed metadata source and all 27 returned response bodies will be recorded here after observation.
+Metadata source `5805d1c55c6ef2b7aac3c57c43cdc80f394cee1f` passed
+[CI](https://github.com/warbr1ng3r/tibicen/actions/runs/46105372729),
+[Cloudflare](https://github.com/warbr1ng3r/tibicen/actions/runs/46105372725) and
+[legacy Pages](https://github.com/warbr1ng3r/tibicen/actions/runs/46105686206).
+All **27 returned response bodies** match the exact source-bound build: 22 primary
+files, four legacy redirects and one legacy checksum index. Both indexes contain
+21 versions and preserve all 20 earlier records, historical bytes and warnings.
+This later documentation-only closure does not change accepted site or payload bytes.
+
+## Working Codex installation
+
+Both skills are installed in the maintainer's working Codex at **1.8.3**, from the
+same immutable public distribution. All 116 installed file hashes and both self-tests
+match the candidate. The [release checklist](../../../RELEASING.md) now includes
+updating this working installation after verified publication, preserving local edits
+and recording provenance. File installation and self-test do not establish native
+harness loading in a fresh session.
 
 ## Limits
 

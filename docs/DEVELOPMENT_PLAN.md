@@ -14,7 +14,8 @@ Scope remains in the [vision](PRODUCT_VISION.md) and [current capabilities](CURR
 | Release 1.8.2 and website | Published and verified; closed | [Release report](evals/results/2026-11-27-release-1.8.2/README.md) |
 | Mechanical 47 return | Execution complete; qualified evidence accepted, no product fix | [Assessment](evals/results/2026-11-27-mechanical-47-assessment/README.md) |
 | Eight-case agent return | Partial; five attempted, four concluded; no runtime fix | [Assessment](evals/results/2026-11-27-agent-eight-assessment/README.md) |
-| Four-question follow-up | Returned and assessed; memory guidance clarified under Unreleased | [Assessment](evals/results/2026-11-28-four-agent-followup-assessment/README.md) |
+| Four-question follow-up | Returned and assessed; memory guidance subsequently published in 1.8.3 | [Assessment](evals/results/2026-11-28-four-agent-followup-assessment/README.md) |
+| Release 1.8.3 and website | Published and verified; closed | [Release report](evals/results/2026-11-28-release-1.8.3/README.md) |
 | Memory-guidance observation | Closed; positive assisted behavior with later independent audit | [Assessment](evals/results/2026-11-28-memory-guidance-assessment/README.md) |
 
 Published **1.8.0** includes approval receipts and directory-scoped canonical-skill
@@ -89,8 +90,8 @@ No product bug was demonstrated. Original grades are not rewritten; a matched dr
 replay is not a full independent oracle review or native agent acceptance.
 
 The later partial eight-case return and its four-question follow-up are assessed
-below; neither needs a repeat. The Windows helper-policy test at
-`805b000f8fcc559947929531661473de9fb658e5` still needs actual Windows CI dispatch/access.
+below; neither needs a repeat. The corrected Windows helper-policy test subsequently passed both Node versions
+in the [1.8.3 platform matrix](evals/results/2026-11-28-release-1.8.3/README.md).
 Evaluation-collector improvements stay prospective. No runtime
 release is warranted by this empty patch; version only actual product changes.
 
@@ -117,7 +118,7 @@ plan, sufficient setup, AE-05 work from exact after-setup bytes, and assisted re
 diagnosis with a declared controller-created interruption. Plan-only workers and
 controller-only mechanical applications respect the host's consent hierarchy. Preserve
 old outcomes; do not repeat finished cases or increase every budget without addressing
-source-read and coordinator overhead. Windows CI access remains a parallel pending step.
+source-read and coordinator overhead. Windows helper-policy acceptance subsequently completed with 1.8.3.
 
 ## Memory-guidance observation — closed with qualifications
 
@@ -127,8 +128,8 @@ the worker implements formatPrice before optional final questions, and memory fa
 are updated separately. A later independent audit supports this behavior; it does
 not replace the missing in-packet review. Reading assistance and rule-bearing
 manifest input prevent unique memory-causality or native-loading claims. Historical
-AE-05 remains failed. No broad repeat is scheduled; guidance remains Unreleased
-until a separately authorized delivery.
+AE-05 remains failed. No broad repeat is scheduled; the byte-identical guidance was subsequently
+published in 1.8.3 with separate technical acceptance.
 
 ## Four-question follow-up — assessed
 
@@ -138,11 +139,20 @@ retains the failed instruments and pre-execution review deviation. Functional
 recovery is supported; the same-plan agent route and full protocol compliance are not.
 A new plan always needs approval of its own digest, not the saved plan's digest.
 
-The memory task stopped on a generated ask-first caveat. Local Unreleased guidance
+The memory task stopped on a generated ask-first caveat. Guidance released in 1.8.3
 clarifies existing input/output-domain and material-question requirements, without
 runtime/schema changes or promises of autonomous success. Old memory and old grades
 are unchanged. A further model observation would target only new memory drafting,
 if needed; no repeat of the four cases or broad matrix is assigned.
+
+## Release 1.8.3 — closed
+
+The memory-guidance patch, exact-source CI, six platform cells including observed
+Windows helper-policy refusal, local/public lifecycle, returned assets and both
+website deployments are accepted. All 27 returned bodies match metadata `5805d1c55c6ef2b7aac3c57c43cdc80f394cee1f`;
+both indexes preserve 20 earlier records. Both working Codex skills are installed
+and self-tested at 1.8.3. The [report](evals/results/2026-11-28-release-1.8.3/README.md)
+retains exact identities and limits. No broad model rerun follows.
 
 ## Next work
 

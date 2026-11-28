@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "version": "1.8.3",
-  "status": "published-runtime-website-pending",
+  "status": "published-and-verified",
   "releaseId": 461274281,
   "publishedAtUtc": "2026-11-28T03:34:22Z",
   "releaseUrl": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.3",
@@ -71,9 +71,19 @@
   "standaloneCliCommands": 14,
   "independentReview": "Ship for runtime publication",
   "website": {
-    "status": "pending",
-    "previousRecordsToPreserve": 20,
-    "plannedResponseBodies": 27
+    "status": "verified",
+    "metadataSource": "5805d1c55c6ef2b7aac3c57c43cdc80f394cee1f",
+    "ciRun": 46105372729,
+    "cloudflareRun": 46105372725,
+    "legacyPagesRun": 46105686206,
+    "primaryBodies": 22,
+    "legacyRedirectBodies": 4,
+    "legacyIndexBodies": 1,
+    "returnedBodiesMatched": 27,
+    "versionsAfter": 21,
+    "historicalRecordsPreserved": 20,
+    "historyAndWarningsPreserved": true,
+    "auditSummarySha256": "f372441b8569fbbde54312f9ebf260a126925b9c97913f2002c5456539285b88"
   },
   "newPaidApiRub": 0,
   "nativeAutoloadEstablished": false,
@@ -84,5 +94,14 @@
     "Initial Windows policy-query fixture timed out; final test removes query and verifies actual controlled-success/restricted-refusal pair. Payload remained identical.",
     "Initial local lifecycle used Node25; preserved and superseded by pinnedNode24 local/public checks.",
     "Returned-asset helper first failed before network due to outdated candidate path; corrected before asset acceptance."
-  ]
+  ],
+  "workingCodexInstallation": {
+    "status": "installed-and-self-tested",
+    "version": "1.8.3",
+    "distributionCommit": "1ab71cc59579bedee46cff0a83acddc328915260",
+    "fileHashesMatched": 116,
+    "selfTestsPassed": 2,
+    "provenanceFile": "$CODEX_HOME/tibicen-installation.json",
+    "nativeLoadingEstablished": false
+  }
 }
