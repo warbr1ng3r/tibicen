@@ -12,6 +12,6 @@
 - For project documentation changes, follow the language and translation convention in CONTRIBUTING.md.
 
 <!-- tibicen:begin v1 -->
-Before preparing a release or making a change that depends on a prior project decision, read the relevant entries in `.agents/memory.md`.
+Before preparing a release or making a change that depends on a prior project decision, read the relevant entries in `MEMORY.md`.
 During authorized work, record standing decisions with their scope and source. Keep verified implementation facts separate and update the decision only when the owner changes it. Keep task progress in the issue tracker.
 <!-- tibicen:end v1 -->
