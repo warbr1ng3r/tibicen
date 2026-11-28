@@ -1,4 +1,16 @@
 {
+  "version": "1.8.3",
   "source": "bd8cdd3b80b6f43de3a934c913f099a8a758ca9d",
-  "sourceBranch": "codex/release-1.8.3-source-20261128"
+  "sourceBranch": "codex/release-1.8.3-source-20261128",
+  "distribution": "1ab71cc59579bedee46cff0a83acddc328915260",
+  "tagObject": "1cb7b85e67e2b971fb5fd421dbadc95a7805c0f7",
+  "checks": [
+    46102648184,
+    46102649717
+  ],
+  "assets": {
+    "tibicen-1.8.3.tar.gz": "846d07eee23d621c640b9d771f183e48a86990567e63e0e6b0dddc96cc46514b",
+    "distribution-SHA256SUMS": "44c8d9b9f7f117640d2ba0db3abae17dd42bf3e78022245a469d10f12d93c729",
+    "SHA256SUMS": "b12dd228d0a65d8b165e5bdfe1517151b791841c31cdf2f7d7bf133b320cdf27"
+  }
 }
