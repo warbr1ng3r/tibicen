@@ -110,3 +110,5 @@ repeat of the four cases is scheduled. No commit, push, version bump or publicat
 is part of this acceptance. Exact conclusions are in the [receipt](receipt.json).
 
 Local verification: pnpm 11.21.0 full gate passes 1,224 tests, zero failures and two expected skips. Both skills pass standalone self-test outside checkout with empty PATH/isolated HOME; all 116 payload checksums match. Independent final review: Ship.
+
+Subsequent scoped observation: the [memory-guidance return](../2026-11-28-memory-guidance-assessment/README.md) supports one positive assisted result on the Unreleased build. It does not regrade this packet or prove a causal before/after improvement.

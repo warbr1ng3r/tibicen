@@ -16,7 +16,16 @@ original grades remain in their reports and the dated history below.
 | Mechanical 47 return | none | Closed with qualified evidence; [assessment](../evals/results/2026-11-27-mechanical-47-assessment/README.md) |
 | Eight-case agent return | none | Partial return assessed; [evidence](../evals/results/2026-11-27-agent-eight-assessment/README.md) |
 | Four-question follow-up | none | Returned and assessed; [evidence](../evals/results/2026-11-28-four-agent-followup-assessment/README.md) |
+| Memory-guidance observation | none | Closed with qualifications; [evidence](../evals/results/2026-11-28-memory-guidance-assessment/README.md) |
 | Windows helper-policy test | root | Test pushed; actual Windows CI pending access |
+
+## Memory-guidance observation — assessed and closed
+
+The [return](../evals/results/2026-11-28-memory-guidance-assessment/README.md) is accepted
+as one qualified positive observation. A later blind audit is separate; original
+author grades/reports remain. The worker completes the formatter and preserves owner
+meaning. Generation/read/consent claims stay scoped; causality is unknown. No runtime
+defect or broad rerun follows. Pending-delivery guidance remains Unreleased.
 
 ## Four-question follow-up — assessed and closed
 

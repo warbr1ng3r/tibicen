@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "date": "2026-11-28",
+  "status": "accepted-qualified-behavioral-observation",
+  "sourceCommit": "05047502fc6eea39cc8f6f768878eb3fbea63ed7",
+  "candidateKind": "local-Unreleased-not-published-1.8.2",
+  "candidateManifestSha256": "6f93c1be2888f0ac24205eee6750017f8d97215f9bf38c353ec56098ccdf6a06",
+  "inputSealSha256": "63460d3110fac278e731c31b83f8cbf805263b87f0ae0120f5cc4b01f2f4a8a1",
+  "integrity": {
+    "inputs": 125,
+    "payloadChecksumEntries": 116,
+    "candidateFiles": 117,
+    "retainedFilesHashedAtAcceptance": 90,
+    "retainedBytesHashed": 3010240,
+    "historicalCaptureCompleteness": false
+  },
+  "rootChecks": {
+    "scorerBaselineExit": 1,
+    "scorerFinalExit": 0,
+    "testedIntegerCents": [
+      0,
+      1,
+      -1,
+      123,
+      -123,
+      2500,
+      -2500,
+      9999,
+      -9999
+    ],
+    "onRemovedCopies": true,
+    "digestRecomputed": true,
+    "nativeReceiptMatchesExactGrant": true,
+    "controllerReviewGrantApplyChronology": "retained-order-matches"
+  },
+  "outcomes": {
+    "generation": "supported-pass-for-owner-scope-and-memory-drafting",
+    "workingFunction": "finite-functional-pass",
+    "workerBlocked": false,
+    "ownerDecisionSection": "byte-identical",
+    "memoryImplementationFacts": "separate-from-owner-decisions",
+    "generatorFinalJson": "CLI-input-not-returned-compiled-envelope",
+    "compiledEnvelope": "retained-in-tool-trace"
+  },
+  "review": {
+    "originalInPacket": "not-run; coordinator-adjudication-retained",
+    "laterIndependentAudit": "qualified-pass-observed-behavior",
+    "authorGradesWithheldFromLaterReviewer": true,
+    "retroactiveProtocolPass": false
+  },
+  "assistance": [
+    "synthetic-AI-controller-approval-and-native-application",
+    "explicit-read-entrypoint-and-memory-step"
+  ],
+  "limitations": [
+    "worker-also-reads-rule-bearing-manifest",
+    "inherited-workspace-context",
+    "close-fixture-example-in-guidance",
+    "no-causal-or-native-loading-proof",
+    "finite-valid-input-scorer",
+    "full-attempt-token-subscription-accounting-unknown"
+  ],
+  "reportedClosingStartedEvents": 42,
+  "newRootLiveProductScenarios": 0,
+  "newPaidApiRubReported": 0,
+  "historicalGradesRewritten": false,
+  "runtimeOrSchemaChangesFromAcceptance": false
+}

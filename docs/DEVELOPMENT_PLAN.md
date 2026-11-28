@@ -15,6 +15,7 @@ Scope remains in the [vision](PRODUCT_VISION.md) and [current capabilities](CURR
 | Mechanical 47 return | Execution complete; qualified evidence accepted, no product fix | [Assessment](evals/results/2026-11-27-mechanical-47-assessment/README.md) |
 | Eight-case agent return | Partial; five attempted, four concluded; no runtime fix | [Assessment](evals/results/2026-11-27-agent-eight-assessment/README.md) |
 | Four-question follow-up | Returned and assessed; memory guidance clarified under Unreleased | [Assessment](evals/results/2026-11-28-four-agent-followup-assessment/README.md) |
+| Memory-guidance observation | Closed; positive assisted behavior with later independent audit | [Assessment](evals/results/2026-11-28-memory-guidance-assessment/README.md) |
 
 Published **1.8.0** includes approval receipts and directory-scoped canonical-skill
 routing. Its CI, six platforms, public delivery and website checks remain accepted.
@@ -117,6 +118,17 @@ diagnosis with a declared controller-created interruption. Plan-only workers and
 controller-only mechanical applications respect the host's consent hierarchy. Preserve
 old outcomes; do not repeat finished cases or increase every budget without addressing
 source-read and coordinator overhead. Windows CI access remains a parallel pending step.
+
+## Memory-guidance observation — closed with qualifications
+
+The [assessment](evals/results/2026-11-28-memory-guidance-assessment/README.md) records
+one positive Unreleased-candidate observation at `0504750`: owner scope survives,
+the worker implements formatPrice before optional final questions, and memory facts
+are updated separately. A later independent audit supports this behavior; it does
+not replace the missing in-packet review. Reading assistance and rule-bearing
+manifest input prevent unique memory-causality or native-loading claims. Historical
+AE-05 remains failed. No broad repeat is scheduled; guidance remains Unreleased
+until a separately authorized delivery.
 
 ## Four-question follow-up — assessed
 
