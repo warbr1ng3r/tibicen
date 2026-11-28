@@ -496,7 +496,12 @@ test(
                 '-Command',
                 'Get-ExecutionPolicy',
               ],
-              { env: restricted, encoding: 'utf8', timeout: 20_000 },
+              {
+                env: restricted,
+                encoding: 'utf8',
+                stdio: ['ignore', 'pipe', 'pipe'],
+                timeout: 20_000,
+              },
             );
             assert.ifError(policy.error);
             assert.equal(policy.status, 0, policy.stderr);
