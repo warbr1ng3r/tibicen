@@ -7,8 +7,8 @@ BASE='https://api.github.com/repos/warbr1ng3r/tibicen/'
 H={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'Tibicen-release-1.8.3'}
 def api(p):
  with urllib.request.urlopen(urllib.request.Request(BASE+p,headers=H),timeout=30) as r:return json.load(r)
-run=api('actions/runs/46101311402');assert run['head_sha']=='d292ccebd2916aa8b5e7b80fd0f45e1d84bcb9ca' and run['head_branch']=='codex/memory-guidance-20261128'
-job=next(x for x in api('actions/runs/46101311402/jobs?per_page=100')['jobs'] if x['name']=='standalone (windows-2022, 24.15.0)')
+run=api('actions/runs/46101895202');assert run['head_sha']=='d4872a158c6a3902f529f409ccaf94c1300ffa38' and run['head_branch']=='codex/memory-guidance-20261128'
+job=next(x for x in api('actions/runs/46101895202/jobs?per_page=100')['jobs'] if x['name']=='standalone (windows-2022, 24.15.0)')
 class NoRedirect(urllib.request.HTTPRedirectHandler):
  def redirect_request(self,*a,**k):return None
 try:
