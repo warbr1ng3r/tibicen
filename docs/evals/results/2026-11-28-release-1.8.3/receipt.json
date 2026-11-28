@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "version": "1.8.3",
+  "status": "published-runtime-website-pending",
+  "releaseId": 461274281,
+  "publishedAtUtc": "2026-11-28T03:34:22Z",
+  "releaseUrl": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.3",
+  "sourceCommit": "bd8cdd3b80b6f43de3a934c913f099a8a758ca9d",
+  "sourceBranch": "codex/release-1.8.3-source-20261128",
+  "distributionCommit": "1ab71cc59579bedee46cff0a83acddc328915260",
+  "tagObject": "1cb7b85e67e2b971fb5fd421dbadc95a7805c0f7",
+  "sourceCI": 46102648184,
+  "platformCI": 46102649717,
+  "publicationRun": 46103477140,
+  "localGate": {
+    "passed": 1224,
+    "failed": 0,
+    "skipped": 2,
+    "node": "24.15.0",
+    "pnpm": "11.21.0"
+  },
+  "payloadFiles": 116,
+  "archiveFiles": 117,
+  "assets": [
+    {
+      "name": "distribution-SHA256SUMS",
+      "assetId": 803068846,
+      "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.3/distribution-SHA256SUMS",
+      "sha256": "44c8d9b9f7f117640d2ba0db3abae17dd42bf3e78022245a469d10f12d93c729",
+      "bytes": 12202,
+      "matchesFrozenCandidate": true,
+      "curlExitCode": 0
+    },
+    {
+      "name": "SHA256SUMS",
+      "assetId": 803068884,
+      "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.3/SHA256SUMS",
+      "sha256": "b12dd228d0a65d8b165e5bdfe1517151b791841c31cdf2f7d7bf133b320cdf27",
+      "bytes": 177,
+      "matchesFrozenCandidate": true,
+      "curlExitCode": 0
+    },
+    {
+      "name": "tibicen-1.8.3.tar.gz",
+      "assetId": 803068815,
+      "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.3/tibicen-1.8.3.tar.gz",
+      "sha256": "846d07eee23d621c640b9d771f183e48a86990567e63e0e6b0dddc96cc46514b",
+      "bytes": 317156,
+      "matchesFrozenCandidate": true,
+      "curlExitCode": 0
+    }
+  ],
+  "returnedAssetsMatch": true,
+  "previousVersion": "1.8.2",
+  "previousReleaseAndAssetsPreserved": true,
+  "localLifecycle": {
+    "status": "passed",
+    "installerCalls": 6,
+    "fileModeComparisons": 6,
+    "selfTests": 12,
+    "node": "24.15.0"
+  },
+  "publicLifecycle": {
+    "status": "passed",
+    "installerCalls": 6,
+    "fileModeComparisons": 6,
+    "selfTests": 12,
+    "node": "24.15.0",
+    "distributionSource": "1ab71cc59579bedee46cff0a83acddc328915260"
+  },
+  "standaloneCliCommands": 14,
+  "independentReview": "Ship for runtime publication",
+  "website": {
+    "status": "pending",
+    "previousRecordsToPreserve": 20,
+    "plannedResponseBodies": 27
+  },
+  "newPaidApiRub": 0,
+  "nativeAutoloadEstablished": false,
+  "broadModelAcceptanceEstablished": false,
+  "humanBenefitMeasured": false,
+  "originalScenarioGradesUnchanged": true,
+  "deviations": [
+    "Initial Windows policy-query fixture timed out; final test removes query and verifies actual controlled-success/restricted-refusal pair. Payload remained identical.",
+    "Initial local lifecycle used Node25; preserved and superseded by pinnedNode24 local/public checks.",
+    "Returned-asset helper first failed before network due to outdated candidate path; corrected before asset acceptance."
+  ]
+}

@@ -1,5 +1,9 @@
 # Подготовка выпуска
 
+## 1.8.3 опубликована — 2026-11-28
+
+[1.8.3](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.3) опубликована в 2026-11-28T03:34:22Z. Source bd8cdd3b80b6f43de3a934c913f099a8a758ca9d, distribution 1ab71cc59579bedee46cff0a83acddc328915260, annotated tag 1cb7b85e67e2b971fb5fd421dbadc95a7805c0f7. Опубликованная 1.8.2 сохранена. Точные проверки, доставку и ограничения сохраняет [отчёт выпуска](evals/results/2026-11-28-release-1.8.3/README.md). Приёмка метаданных сайта отмечается там отдельно.
+
 ## 1.8.2 опубликована — 2026-11-27
 
 [1.8.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.2) опубликована в 2026-11-27T02:12:04Z. Source 4e2257a5ceff9df62ce2709f0cdf0b86e0105cc2, distribution 2f151b9fb1b9a2a3553e374fbb0ba6ad5b02fbb5, annotated tag 8f29c64978b08241f85f1e20b8ef3665051ded1e. Опубликованная 1.8.1 сохранена. Точные проверки, доставку и ограничения сохраняет [отчёт выпуска](evals/results/2026-11-27-release-1.8.2/README.md). Приёмка метаданных сайта отмечается там отдельно.

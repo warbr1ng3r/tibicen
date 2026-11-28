@@ -1,5 +1,9 @@
 # Preparing a release
 
+## 1.8.3 published — 2026-11-28
+
+[1.8.3](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.3) was published at 2026-11-28T03:34:22Z. Source bd8cdd3b80b6f43de3a934c913f099a8a758ca9d, distribution 1ab71cc59579bedee46cff0a83acddc328915260, annotated tag 1cb7b85e67e2b971fb5fd421dbadc95a7805c0f7. Published 1.8.2 is preserved. Exact checks, delivery and limits are retained in the [release report](evals/results/2026-11-28-release-1.8.3/README.md). Website metadata acceptance is tracked separately there.
+
 ## 1.8.2 published — 2026-11-27
 
 [1.8.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.2) was published at 2026-11-27T02:12:04Z. Source 4e2257a5ceff9df62ce2709f0cdf0b86e0105cc2, distribution 2f151b9fb1b9a2a3553e374fbb0ba6ad5b02fbb5, annotated tag 8f29c64978b08241f85f1e20b8ef3665051ded1e. Published 1.8.1 is preserved. Exact checks, delivery and limits are retained in the [release report](evals/results/2026-11-27-release-1.8.2/README.md). Website metadata acceptance is tracked separately there.

@@ -1,9 +1,9 @@
 # Участие в разработке Tibicen
 
-Tibicen [1.8.2](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.2) опубликован.
+Tibicen [1.8.3](https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.3) опубликован.
 Репозиторий — [warbr1ng3r/tibicen](https://github.com/warbr1ng3r/tibicen).
 CI, шесть платформенных сочетаний и публичная поставка записаны в
-[сведениях о выпуске](docs/evals/results/2026-11-27-release-1.8.2/README.md).
+[сведениях о выпуске](docs/evals/results/2026-11-28-release-1.8.3/README.md).
 Ответственный и частный security-маршрут — в [SECURITY](SECURITY.md), область
 обращений — в [кодексе поведения](CODE_OF_CONDUCT.md). У Pages отдельные
 свидетельства выкладки и возвращённых байтов в [MAINTENANCE](docs/MAINTENANCE.md).

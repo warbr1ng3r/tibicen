@@ -133,12 +133,12 @@ for (const { filename, route, locale, other } of pages) {
   test(`${locale}: static page language, first use and project exits are complete`, async () => {
     const html = await readFile(new URL(filename, site), 'utf8');
     assert.match(html, new RegExp(`<html\\b[^>]*lang="${locale}"`));
-    assert.match(html, /Tibicen 1\.8\.2/);
+    assert.match(html, /Tibicen 1\.8\.3/);
     assert.ok(
       html.includes(
-        'https://github.com/warbr1ng3r/tibicen/tree/2f151b9fb1b9a2a3553e374fbb0ba6ad5b02fbb5',
+        'https://github.com/warbr1ng3r/tibicen/tree/1ab71cc59579bedee46cff0a83acddc328915260',
       ),
-      'The default installation must pin the 1.8.2 distribution commit.',
+      'The default installation must pin the 1.8.3 distribution commit.',
     );
     assert.match(
       html,
@@ -150,7 +150,7 @@ for (const { filename, route, locale, other } of pages) {
     assert.match(html, /INSTALLATION\.md#manual-archive-installation/);
     assert.ok(
       html.includes(
-        'href="https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.2"',
+        'href="https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.3"',
       ),
       'Release notes must describe the installed version.',
     );

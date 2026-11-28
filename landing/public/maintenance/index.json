@@ -382,6 +382,25 @@
         }
       ],
       "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.2"
+    },
+    {
+      "version": "1.8.3",
+      "publishedAtUtc": "2026-11-28T03:34:22Z",
+      "sourceCommit": "bd8cdd3b80b6f43de3a934c913f099a8a758ca9d",
+      "distributionCommit": "1ab71cc59579bedee46cff0a83acddc328915260",
+      "scope": "Compatible memory-guidance patch: preserve owner-declared input/output domains, keep unknown details separate and avoid unsupported ask-first rules. CLI runtime, state schemas and dependencies unchanged. Exact-source CI, six platform cells including observed Windows restricted-helper refusal, local/public lifecycle and returned assets passed. One assisted memory observation; native autoload, broad model behavior, enterprise-policy coverage and human/causal benefit remain unestablished. Original scenario grades unchanged; no new live model sweep.",
+      "payloadManifest": {
+        "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.3/distribution-SHA256SUMS",
+        "sha256": "44c8d9b9f7f117640d2ba0db3abae17dd42bf3e78022245a469d10f12d93c729"
+      },
+      "archives": [
+        {
+          "name": "tibicen-1.8.3.tar.gz",
+          "url": "https://github.com/warbr1ng3r/tibicen/releases/download/v1.8.3/tibicen-1.8.3.tar.gz",
+          "sha256": "846d07eee23d621c640b9d771f183e48a86990567e63e0e6b0dddc96cc46514b"
+        }
+      ],
+      "releaseNotes": "https://github.com/warbr1ng3r/tibicen/releases/tag/v1.8.3"
     }
   ],
   "warnings": []
