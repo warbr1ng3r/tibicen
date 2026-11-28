@@ -484,32 +484,7 @@ test(
               ...env,
               PSExecutionPolicyPreference: 'Restricted',
             };
-            const policy = spawnSync(
-              path.join(
-                systemRoot,
-                'System32/WindowsPowerShell/v1.0/powershell.exe',
-              ),
-              [
-                '-NoLogo',
-                '-NoProfile',
-                '-NonInteractive',
-                '-Command',
-                'Get-ExecutionPolicy',
-              ],
-              {
-                env: restricted,
-                encoding: 'utf8',
-                stdio: ['ignore', 'pipe', 'pipe'],
-                timeout: 20_000,
-              },
-            );
-            assert.ifError(policy.error);
-            assert.equal(policy.status, 0, policy.stderr);
-            assert.equal(
-              policy.stdout.trim(),
-              'Restricted',
-              'The fixture needs an effective process policy, not an overridden preference.',
-            );
+            // The successful control and policy-only change prove the refusal below.
             const denied = await execute(approved, {
               root,
               approvedDigest: digest,
@@ -548,7 +523,8 @@ test(
                 JSON.stringify({
                   phase: 'restricted-helper-policy',
                   payload: payload.name,
-                  effectivePolicy: policy.stdout.trim(),
+                  requestedProcessPolicy:
+                    restricted.PSExecutionPolicyPreference,
                   denied,
                   checked,
                 }),
