@@ -10,3 +10,8 @@
 - OpenSpec and its generated development skills must not become dependencies of the distributed Tibicen skills.
 - For ticket selection, parallel work, and integration, read docs/agents/issue-tracker.md and the current effort it links.
 - For project documentation changes, follow the language and translation convention in CONTRIBUTING.md.
+
+<!-- tibicen:begin v1 -->
+Before preparing a release or making a change that depends on a prior project decision, read the relevant entries in `.agents/memory.md`.
+During authorized work, record standing decisions with their scope and source. Keep verified implementation facts separate and update the decision only when the owner changes it. Keep task progress in the issue tracker.
+<!-- tibicen:end v1 -->
