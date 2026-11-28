@@ -1,0 +1,69 @@
+name: One-off Tibicen 1.8.3 publication
+on:
+  push:
+    branches: [codex/release-1.8.3-ops-20261128]
+permissions: {}
+concurrency:
+  group: release-1.8.3-publication
+  cancel-in-progress: false
+jobs:
+  dispatch:
+    if: >-
+      github.repository == 'warbr1ng3r/tibicen' &&
+      github.ref == 'refs/heads/codex/release-1.8.3-ops-20261128' &&
+      github.actor == 'warbr1ng3r' &&
+      github.run_attempt == 1 &&
+      github.event.head_commit.message == 'release-1.8.3-ops: dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Run the scoped publication phase
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .release-1.8.3/dispatch.py
+  publish:
+    if: >-
+      github.repository == 'warbr1ng3r/tibicen' &&
+      github.ref == 'refs/heads/codex/release-1.8.3-ops-20261128' &&
+      github.actor == 'warbr1ng3r' &&
+      github.run_attempt == 1 &&
+      github.event.head_commit.message == 'release-1.8.3-ops: publish'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Run the scoped publication phase
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .release-1.8.3/publish.py
+  pages:
+    if: >-
+      github.repository == 'warbr1ng3r/tibicen' &&
+      github.ref == 'refs/heads/codex/release-1.8.3-ops-20261128' &&
+      github.actor == 'warbr1ng3r' &&
+      github.run_attempt == 1 &&
+      github.event.head_commit.message == 'release-1.8.3-ops: pages'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Dispatch legacy Pages only at accepted metadata main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .release-1.8.3/pages.py
