@@ -93,7 +93,7 @@ jobs:
       github.ref == 'refs/heads/codex/release-1.8.3-ops-20261128' &&
       github.actor == 'warbr1ng3r' &&
       github.run_attempt == 1 &&
-      github.event.head_commit.message == 'release-1.8.3-ops: diagnose'
+      github.event.head_commit.message == 'release-1.8.3-ops: probe'
     runs-on: windows-2022
     timeout-minutes: 5
     permissions:
